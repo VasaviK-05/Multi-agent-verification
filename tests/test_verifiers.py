@@ -45,3 +45,51 @@ def test_all_verifiers_return_placeholder_results():
         assert result.passed is True
         assert result.reasoning == "Placeholder implementation"
 """
+def test_semantic_verifier_correct_answer():
+    verifier = SemanticVerifier()
+
+    result = verifier.verify(
+        "What is the capital of France?",
+        "Paris",
+        "The capital of France is Paris.",
+    )
+
+    assert result.score >= 0.7
+    assert result.passed is True
+
+
+def test_semantic_verifier_wrong_answer():
+    verifier = SemanticVerifier()
+
+    result = verifier.verify(
+        "What is the capital of France?",
+        "London",
+        "The capital of France is Paris.",
+    )
+
+    assert result.score < 0.7
+    assert result.passed is False
+
+def test_semantic_verifier_paraphrased_answer():
+    verifier = SemanticVerifier()
+
+    result = verifier.verify(
+        "What is the capital of France?",
+        "Paris is the capital city of France.",
+        "The capital of France is Paris.",
+    )
+
+    assert result.score >= 0.7
+    assert result.passed is True
+
+def test_semantic_verifier_without_context():
+    verifier = SemanticVerifier()
+
+    result = verifier.verify(
+        "What is the capital of France?",
+        "Paris",
+    )
+
+    assert result.score == 0.0
+    assert result.passed is False
+    assert result.reasoning == "No reference context provided for semantic comparison."
