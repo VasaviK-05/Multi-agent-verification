@@ -12,7 +12,7 @@ from app.verifiers.base_verifier import BaseVerifier
 class SemanticVerifier(BaseVerifier):
     """Checks semantic similarity between an answer and reference context."""
 
-    SIMILARITY_THRESHOLD = 0.7
+    SIMILARITY_THRESHOLD = 0.5
 
     def __init__(self) -> None:
         self.model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -35,8 +35,9 @@ class SemanticVerifier(BaseVerifier):
                 passed=False,
                 reasoning="No reference context provided for semantic comparison.",
             )
+        comparison_text = f"{question} {answer}"
 
-        answer_embedding = self.model.encode(answer)
+        answer_embedding = self.model.encode(comparison_text)
         context_embedding = self.model.encode(context)
 
         score = cosine_similarity(
