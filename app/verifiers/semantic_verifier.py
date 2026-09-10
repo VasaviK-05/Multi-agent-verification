@@ -1,7 +1,7 @@
 """Semantic similarity verifier."""
 
 from typing import Optional
-
+import time
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -27,13 +27,19 @@ class SemanticVerifier(BaseVerifier):
         answer: str,
         context: Optional[str] = None,
     ) -> VerificationResult:
-
+        start_time = time.perf_counter()
         if not context:
+            latency_ms = (time.perf_counter() - start_time) * 1000
             return VerificationResult(
                 verifier_name=self.name,
                 score=0.0,
                 passed=False,
                 reasoning="No reference context provided for semantic comparison.",
+                metadata={
+                    "threshold": self.SIMILARITY_THRESHOLD,
+                    "comparison_method": "question+answer_vs_context",
+                    "latency_ms": round(latency_ms, 2),
+                },
             )
         comparison_text = f"{question} {answer}"
 
@@ -46,7 +52,7 @@ class SemanticVerifier(BaseVerifier):
         )[0][0]
 
         passed = score >= self.SIMILARITY_THRESHOLD
-
+        latency_ms = (time.perf_counter() - start_time) * 1000
         return VerificationResult(
             verifier_name=self.name,
             score=float(score),
@@ -55,4 +61,9 @@ class SemanticVerifier(BaseVerifier):
                 f"Semantic similarity score: {score:.4f}. "
                 f"Threshold: {self.SIMILARITY_THRESHOLD:.2f}."
             ),
+            metadata={
+                "threshold": self.SIMILARITY_THRESHOLD,
+                "comparison_method": "question+answer_vs_context",
+                "latency_ms": round(latency_ms, 2),
+            },           
         )
