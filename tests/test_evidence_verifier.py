@@ -50,3 +50,18 @@ def test_who_question():
 
     assert result.passed is True
     assert result.metadata["nli_label"] == "entailment"
+
+
+def test_unrelated_answer():
+    verifier = EvidenceVerifier(corpus_path=TEST_CORPUS)
+
+    result = verifier.verify(
+        "What is the capital of France?",
+        "Bananas are yellow",
+    )
+
+    assert result.passed is False
+    assert result.metadata["nli_label"] in {
+        "neutral",
+        "contradiction",
+    }
