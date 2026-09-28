@@ -11,6 +11,7 @@ User Interface
   → Question Analyzer
   → Verifier Selector
   → Selected Verifier Services
+  → after each verifier, adaptive early termination may stop
   → Decision Engine
   → Validation Orchestrator
   → Backend API
@@ -68,14 +69,18 @@ Aggregates verifier outputs, manages reputation, and handles feedback.
 
 | Folder | Responsibility |
 |--------|---------------|
-| `app/decision/` | `DecisionEngine` — aggregates verifier results into a final decision |
-| `app/reputation/` | `ReputationManager` — domain-specific verifier reputation (EWMA) |
+| `app/decision/` | `DecisionEngine` and `AdaptiveEarlyTermination` — weighted vote and early stop |
+| `app/reputation/` | `ReputationManager` — per-domain Beta reputation mean |
+| `app/benchmark/` | Offline comparison runner; it does not store experimental results |
 | `app/feedback/` | `EvaluationService` — feedback, ground truth, learning triggers |
 
 **Where to add future work:**
-- Game-theoretic aggregation → `app/decision/decision_engine.py`
-- EWMA reputation updates → `app/reputation/reputation_manager.py`
+- Weighted decision score → `app/decision/decision_engine.py`
+- Early stopping → `app/decision/early_termination.py`
+- Beta reputation updates from external labels → `app/reputation/reputation_manager.py`
 - Feedback and learning loops → `app/feedback/evaluation_service.py`
+
+The formulas, including which parts are standard, which are local design choices, and which constants are still uncalibrated, are in [decision_formulas.md](decision_formulas.md).
 
 ---
 
