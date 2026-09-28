@@ -37,3 +37,45 @@ def test_disagreement_continues():
     decision = stopper.should_terminate(results, analysis)
     assert decision["terminate"] is False
     assert "disagreement" in decision["reason"]
+
+
+def test_hard_question_continues_after_the_minimum_is_met():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="medical", difficulty="hard", difficulty_score=0.9)
+    results = [_result(True, 0.95), _result(True, 0.95), _result(True, 0.95)]
+    decision = stopper.should_terminate(results, analysis)
+    assert decision["terminate"] is False
+    assert "hard" in decision["reason"]
+
+
+def test_medium_does_not_stop_before_the_minimum():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="general", difficulty="medium", difficulty_score=0.5)
+    decision = stopper.should_terminate([_result(True, 0.99)], analysis)
+    assert decision["terminate"] is False
+    assert "minimum" in decision["reason"]
+
+
+def test_easy_low_confidence_continues():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.2)
+    decision = stopper.should_terminate([_result(True, 0.6), _result(True, 0.6)], analysis)
+    assert decision["terminate"] is False
+    assert "insufficient" in decision["reason"]
+
+
+def test_explicit_minimum_blocks_an_otherwise_ready_stop():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.2)
+    ready = stopper.should_terminate([_result(True, 0.95)], analysis)
+    blocked = stopper.should_terminate([_result(True, 0.95)], analysis, min_verifiers=2)
+    assert ready["terminate"] is True
+    assert blocked["terminate"] is False
+
+
+def test_default_minima_match_the_selector_ranges():
+    from app.decision.early_termination import MIN_VERIFIERS_BY_DIFFICULTY
+    from app.selection.verifier_selector import DEFAULT_DIFFICULTY_RANGE
+
+    for band, (minimum, _maximum) in DEFAULT_DIFFICULTY_RANGE.items():
+        assert MIN_VERIFIERS_BY_DIFFICULTY[band] == minimum

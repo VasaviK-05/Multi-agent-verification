@@ -20,8 +20,12 @@ def test_validate_endpoint():
     data = response.json()
     assert "results" in data
     assert "final_status" in data
-    assert len(data["results"]) == 4
-    assert data["final_status"] == "passed"
+    # Easy question, cold-start costs: one cheap verifier, not the full set.
+    assert len(data["results"]) == 1
+    assert data["results"][0]["verifier_name"] == "rule"
+    # Placeholder confidence 0.5 sits in the abstention band. The score is
+    # a signed agreement, and 0.5 is not reported as a pass.
+    assert data["final_status"] == "uncertain"
     assert data["final_score"] == 0.5
 
 
@@ -43,6 +47,7 @@ def test_orchestrator_pipeline():
     )
     response = orchestrator.validate(request)
 
-    assert len(response.results) == 4
-    assert response.final_status == "passed"
+    assert len(response.results) == 1
+    assert response.results[0].verifier_name == "rule"
+    assert response.final_status == "uncertain"
     assert response.final_score == 0.5
