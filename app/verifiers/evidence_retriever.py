@@ -1,125 +1,117 @@
-"""Evidence corpus loading, chunking, and FAISS retrieval."""
+"""Evidence corpus loading, chunking, embedding, and FAISS retrieval."""
 
 import json
 from pathlib import Path
 
 import faiss
-import numpy as np
 from sentence_transformers import SentenceTransformer
 
 
 class EvidenceRetriever:
-    """Loads a local corpus and retrieves the most similar chunks."""
+    """Loads evidence once and reuses the FAISS index for retrieval."""
+
+    EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
     def __init__(
         self,
         corpus_path: str = "data/evidence_corpus.json",
-        chunk_size: int = 120,
-        chunk_overlap: int = 20,
-        model_name: str = "all-MiniLM-L6-v2",
+        chunk_size: int = 500,
     ) -> None:
-        if chunk_overlap >= chunk_size:
-            raise ValueError("chunk_overlap must be smaller than chunk_size")
-
         self.corpus_path = Path(corpus_path)
         self.chunk_size = chunk_size
-        self.chunk_overlap = chunk_overlap
-        self.model_name = model_name
 
-        self.model: SentenceTransformer | None = None
-        self.index: faiss.Index | None = None
-        self.chunks: list[dict] = []
+        # Load the embedding model only once.
+        self.model = SentenceTransformer(self.EMBEDDING_MODEL)
+
+        # Build the searchable evidence index only once.
+        self.index, self.chunks = self.build_index()
 
     def load_corpus(self) -> list[dict]:
+        """Load articles from the local evidence corpus."""
+
         with self.corpus_path.open("r", encoding="utf-8") as file:
             return json.load(file)
 
     def chunk_text(self, text: str) -> list[str]:
+        """Split text into fixed-size word chunks."""
+
         words = text.split()
-        if not words:
-            return []
 
-        step = self.chunk_size - self.chunk_overlap
-        chunks = []
-
-        for start in range(0, len(words), step):
-            piece = words[start : start + self.chunk_size]
-            chunks.append(" ".join(piece))
-            if start + self.chunk_size >= len(words):
-                break
-
-        return chunks
+        return [
+            " ".join(words[i : i + self.chunk_size])
+            for i in range(0, len(words), self.chunk_size)
+        ]
 
     def build_chunks(self) -> list[dict]:
+        """Convert articles into searchable evidence chunks."""
+
+        articles = self.load_corpus()
         chunks = []
 
-        for article in self.load_corpus():
-            for index, text in enumerate(self.chunk_text(article.get("text", ""))):
+        for article in articles:
+            article_chunks = self.chunk_text(article["text"])
+
+            for index, chunk in enumerate(article_chunks):
                 chunks.append(
                     {
-                        "article_id": article.get("id"),
-                        "title": article.get("title", ""),
-                        "url": article.get("url", ""),
+                        "article_id": article["id"],
+                        "title": article["title"],
+                        "url": article["url"],
                         "chunk_id": index,
-                        "text": text,
+                        "text": chunk,
                     }
                 )
 
         return chunks
 
-    def _ensure_index(self) -> None:
-        """Embed the corpus and build FAISS on the first query only."""
-        if self.index is not None:
-            return
+    def build_embeddings(self, chunks: list[dict]):
+        """Create embeddings for all evidence chunks."""
 
-        self.model = SentenceTransformer(self.model_name)
-        self.chunks = self.build_chunks()
-
-        if not self.chunks:
-            self.index = faiss.IndexFlatIP(self.model.get_sentence_embedding_dimension())
-            return
+        texts = [chunk["text"] for chunk in chunks]
 
         embeddings = self.model.encode(
-            [chunk["text"] for chunk in self.chunks],
+            texts,
             batch_size=32,
-            show_progress_bar=False,
-            convert_to_numpy=True,
+            show_progress_bar=True,
         )
-        embeddings = np.ascontiguousarray(embeddings, dtype=np.float32)
+
+        return embeddings
+
+    def build_index(self):
+        """Build a FAISS index from evidence embeddings."""
+
+        chunks = self.build_chunks()
+
+        embeddings = self.build_embeddings(chunks)
+
+        # Normalize vectors so inner product behaves like cosine similarity.
         faiss.normalize_L2(embeddings)
 
-        self.index = faiss.IndexFlatIP(embeddings.shape[1])
-        self.index.add(embeddings)
+        index = faiss.IndexFlatIP(embeddings.shape[1])
+
+        index.add(embeddings)
+
+        return index, chunks
 
     def retrieve(self, query: str, k: int = 3) -> list[dict]:
-        self._ensure_index()
+        """Retrieve the top-k evidence chunks for a query."""
 
-        if self.index.ntotal == 0:
-            return []
+        query_embedding = self.model.encode([query])
 
-        k = min(k, self.index.ntotal)
-        query_embedding = self.model.encode(
-            [query],
-            convert_to_numpy=True,
-        )
-        query_embedding = np.ascontiguousarray(query_embedding, dtype=np.float32)
         faiss.normalize_L2(query_embedding)
 
         scores, indices = self.index.search(query_embedding, k)
+
         results = []
 
         for score, index_id in zip(scores[0], indices[0]):
-            if index_id < 0:
-                continue
-
-            chunk = self.chunks[int(index_id)]
             results.append(
                 {
                     "score": float(score),
-                    "title": chunk["title"],
-                    "text": chunk["text"],
-                    "url": chunk["url"],
-                    "chunk_id": chunk["chunk_id"],
+                    "title": self.chunks[index_id]["title"],
+                    "text": self.chunks[index_id]["text"],
+                    "url": self.chunks[index_id]["url"],
+                    "chunk_id": self.chunks[index_id]["chunk_id"],
                 }
             )
 
