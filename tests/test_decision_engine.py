@@ -135,6 +135,40 @@ def test_weighted_score_matches_the_log_odds_formula():
     assert status in {"passed", "failed", "uncertain"}
 
 
+def test_supported_rule_rejection_is_strong_negative_evidence():
+    engine = DecisionEngine()
+    status, score = engine.decide(
+        [
+            VerificationResult(
+                verifier_name="rule",
+                score=0.0,
+                passed=False,
+                reasoning="Expected 4; received 5.",
+                metadata={"rule": "arithmetic_addition", "expected": 4, "actual": 5},
+            )
+        ]
+    )
+    assert status == "failed"
+    assert abs(score - (-1.0)) < 1e-6
+
+
+def test_unsupported_rule_is_not_a_rejection():
+    engine = DecisionEngine()
+    status, score = engine.decide(
+        [
+            VerificationResult(
+                verifier_name="rule",
+                score=0.0,
+                passed=False,
+                reasoning="No supported deterministic rule matched the question.",
+                metadata={"rule": "unsupported"},
+            )
+        ]
+    )
+    assert status == "uncertain"
+    assert score == 0.0
+
+
 def test_decide_does_not_update_reputation():
     manager = ReputationManager()
     engine = DecisionEngine(reputation_manager=manager)

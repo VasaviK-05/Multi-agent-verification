@@ -172,24 +172,36 @@ class VerifierSelector:
             self._cache[name] = cached
         return cached
 
-    def select(self, analysis: QuestionAnalysis) -> list[BaseVerifier]:
-        """Return a difficulty-aware subset, highest utility first.
+    def iter_ranked(self, analysis: QuestionAnalysis):
+        """Yield every candidate, highest utility first.
 
-        Equal utilities keep registration order. Only the chosen default
-        verifiers are constructed.
+        Default verifiers are constructed one at a time so a later fallback
+        does not load a model until the orchestrator asks for it. Equal
+        utilities keep registration order.
         """
-        count = self.target_count(analysis)
         if self._injected is not None:
             ranked = sorted(
                 self._injected,
                 key=lambda verifier: self.utility(verifier.name, analysis.domain),
                 reverse=True,
             )
-            return ranked[: min(count, len(ranked))]
+            yield from ranked
+            return
 
         names = sorted(
             DEFAULT_VERIFIER_ORDER,
             key=lambda name: self.utility(name, analysis.domain),
             reverse=True,
         )
-        return [self._default_instance(name) for name in names[: min(count, len(names))]]
+        for name in names:
+            yield self._default_instance(name)
+
+    def select(self, analysis: QuestionAnalysis) -> list[BaseVerifier]:
+        """Return a difficulty-aware subset, highest utility first."""
+        count = self.target_count(analysis)
+        chosen: list[BaseVerifier] = []
+        for verifier in self.iter_ranked(analysis):
+            chosen.append(verifier)
+            if len(chosen) >= count:
+                break
+        return chosen

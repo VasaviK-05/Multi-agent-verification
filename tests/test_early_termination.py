@@ -73,6 +73,35 @@ def test_explicit_minimum_blocks_an_otherwise_ready_stop():
     assert blocked["terminate"] is False
 
 
+def test_unsupported_rule_does_not_stop_early():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.2)
+    unsupported = VerificationResult(
+        verifier_name="rule",
+        score=0.0,
+        passed=False,
+        reasoning="No supported deterministic rule matched the question.",
+        metadata={"rule": "unsupported"},
+    )
+    decision = stopper.should_terminate([unsupported], analysis)
+    assert decision["terminate"] is False
+    assert "informative" in decision["reason"]
+
+
+def test_supported_rule_rejection_can_stop_on_easy():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.2)
+    rejection = VerificationResult(
+        verifier_name="rule",
+        score=0.0,
+        passed=False,
+        reasoning="Expected 4; received 5.",
+        metadata={"rule": "arithmetic_addition", "expected": 4, "actual": 5},
+    )
+    decision = stopper.should_terminate([rejection], analysis)
+    assert decision["terminate"] is True
+
+
 def test_default_minima_match_the_selector_ranges():
     from app.decision.early_termination import MIN_VERIFIERS_BY_DIFFICULTY
     from app.selection.verifier_selector import DEFAULT_DIFFICULTY_RANGE

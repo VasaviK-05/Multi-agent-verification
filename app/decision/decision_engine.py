@@ -3,11 +3,17 @@
 This is a weighted vote. It does not solve a game, and the score is not
 a probability.
 
-For verifier i with domain reputation p_i, confidence s_i in [0, 1], and
-vote v_i = +1 on pass and -1 on reject:
+For an informative verifier i, with domain reputation p_i, confidence
+s_i in [0, 1], and vote v_i = +1 on pass and -1 on reject:
 
     w_i = log(p_i / (1 - p_i))     # Bernoulli log likelihood ratio
     mass_i = s_i * v_i             # in [-1, 1]
+
+s_i is not always the raw ``score`` field. A supported rule stores score
+0 on failure; that result is still confidence 1 in a reject. An
+unsupported rule, a semantic check with no context, evidence with no
+directional NLI label, and confidence with no judgments are abstentions
+and contribute no mass. See app/decision/vote_normalization.py.
 
 p_i is clamped into (EPS, 1 - EPS) so the log is finite.
 
@@ -50,6 +56,7 @@ from __future__ import annotations
 
 import math
 
+from app.decision.vote_normalization import is_abstention, signed_mass
 from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import ReputationManager
 
@@ -76,13 +83,6 @@ def log_odds_weight(reputation: float, eps: float = EPS) -> float:
     if p == 0.5:
         return 0.0
     return math.log(p / (1.0 - p))
-
-
-def _vote_mass(result: VerificationResult) -> float:
-    """Confidence times the pass/reject vote. Pass is +1, reject is -1."""
-    vote = 1.0 if result.passed else -1.0
-    confidence = min(max(float(result.score), 0.0), 1.0)
-    return confidence * vote
 
 
 class DecisionEngine:
@@ -114,15 +114,22 @@ class DecisionEngine:
         if not results:
             return "unknown", 0.0
 
+        votes = [result for result in results if not is_abstention(result)]
+        if not votes:
+            # Verifiers ran, but every one abstained. That is not a rejection.
+            return "uncertain", 0.0
+
         domain_name = domain or self._default_domain
         weighted_sum = 0.0
         absolute_weight = 0.0
         uninformative: list[float] = []
 
-        for result in results:
+        for result in votes:
             reputation = self._reputation_manager.get_reputation(result.verifier_name, domain_name)
             weight = log_odds_weight(reputation)
-            mass = _vote_mass(result)
+            mass = signed_mass(result)
+            if mass is None:
+                continue
             if weight == 0.0:
                 # p = 0.5. Hold the vote for the all-uninformative fallback.
                 uninformative.append(mass)

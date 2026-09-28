@@ -78,7 +78,7 @@ otherwise        → s += 1
 
 ### Decision score
 
-For each result, `s` is the verifier confidence in [0, 1] and `v` is `+1` if it passed and `-1` if it rejected. `p` is that verifier's reputation in the analyzer's domain, clamped into `(1e-6, 1 - 1e-6)`:
+An abstention contributes nothing. Informative results use confidence `s` in [0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(1e-6, 1 - 1e-6)`:
 
 ```
 w    = log(p / (1 - p))
@@ -108,13 +108,31 @@ otherwise     → uncertain
 
 The abstention band is symmetric about 0. A positive cut pair such as "above 0.55 pass, below 0.45 fail" would mark a tie at 0 as a failure, because that pair assumes a score centered near one half. This score is centered at 0.
 
-No results → `unknown` and score `0`. That zero means "no score". An `uncertain` zero means the weighted votes cancelled or landed in the middle band. Neither number is a probability of a correct answer.
+No results → `unknown` and score `0`. That zero means "no score". An `uncertain` zero means the weighted votes cancelled, every verifier abstained, or the score landed in the middle band. Neither number is a probability of a correct answer.
+
+### What each verifier's score means
+
+| Verifier | Raw `score` | How the decision reads it |
+| --- | --- | --- |
+| rule, `metadata.rule` set and not `unsupported` | `1` if the rule passed, `0` if it failed | Deterministic vote. Confidence is 1, so a failure is mass `-1`, not `0`. |
+| rule, `metadata.rule == "unsupported"` | `0`, `passed` false | Abstention. Not evidence that the answer is wrong. |
+| semantic, no reference context | `0`, `passed` false | Abstention. |
+| semantic, with context | cosine similarity | Confidence of the `passed` vote. |
+| evidence, nothing retrieved | `0`, `passed` false | Abstention. |
+| evidence, NLI label `neutral` | confidence in that label | Abstention. Neutral is not a contradiction. |
+| evidence, entailment or contradiction | NLI confidence of that label | Confidence of the pass or reject vote. |
+| confidence, no judgments | `0`, `passed` false | Abstention. |
+| confidence, majority `support` or `reject` | agreement fraction | Confidence of that vote. |
+
+### Fallback when a verifier abstains
+
+Candidates are tried in utility order, not only the initial difficulty subset. Each abstention is kept on the response with `metadata.pipeline_role = "abstention"` and a `pipeline_note` saying it was not a vote. The next verifier runs until there are enough informative votes for the difficulty target, early stopping fires on those informative votes, or the list is exhausted. Early stopping ignores abstentions, including `unsupported`. Reputation updates skip them too.
 
 `+1` means every informative verifier contributed a full-confidence pass after inversion. `-1` means the same for reject.
 
 ### Early stopping
 
-After each selected verifier, with `n` results, vote `v_i`, and confidence `s_i`:
+After each informative verifier, with `n` informative results, vote `v_i`, and normalized confidence `s_i`:
 
 ```
 agreement      = all votes equal
@@ -145,7 +163,9 @@ These are local choices. They are not the published procedures above, and they a
 - The difficulty features, the trailing-`s` token rule, rounding the score to two decimals before the band cut, and the three named domains.
 - A linear penalty on hand-written cost and latency estimates, and running the highest utility first.
 - Mapping the in-band score position onto a `(min, max)` count with half-up rounding.
-- Multiplying the log-odds weight by the verifier's own confidence, then abstaining when the signed score is inside [-0.55, 0.55].
+- Reading a supported rule's 0/1 score as a deterministic vote (confidence 1), and treating unsupported rules, missing semantic context, non-directional evidence, and missing confidence judgments as abstentions.
+- Multiplying the log-odds weight by that confidence, then abstaining when the signed score is inside [-0.55, 0.55].
+- After an abstention, consulting the next verifier in utility order and recording why in `pipeline_note`.
 - On an all-zero weight vector, using the equal-weight mean of `confidence * vote` instead of abstaining immediately. Verifiers with weight 0 are ignored when any other weight is nonzero.
 - Not folding the cost estimate into the decision score a second time. Cost affects who is selected.
 - The early-stop rule on agreement, mean confidence, and margin, including "hard never stops early". This is not Wald's sequential probability ratio test (Wald, A., 1947, *Sequential Analysis*), which is not implemented.

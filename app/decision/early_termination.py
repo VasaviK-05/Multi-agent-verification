@@ -8,10 +8,13 @@ stop early once that minimum is met.
 This is an UNCALIBRATED threshold heuristic. It is not Wald's sequential
 probability ratio test. See docs/decision_formulas.md.
 
-Let n be the number of results so far, v_i the pass/reject vote, s_i the
-confidence in [0, 1]:
+Let n be the number of informative results so far. Abstentions, including
+an unsupported rule, are ignored and cannot trigger a stop. v_i is the
+pass/reject vote and s_i is the normalized confidence from
+``vote_normalization`` (1 for a supported rule, even when its stored
+score is 0):
 
-    agreement = all votes equal
+    agreement = all informative votes equal
     avg_confidence = mean(s_i)
     margin = abs(mean(s_i * v_i))
 
@@ -27,6 +30,7 @@ Otherwise continue. Disagreement continues. Low confidence continues.
 from __future__ import annotations
 
 from app.analysis.question_analyzer import QuestionAnalysis
+from app.decision.vote_normalization import is_abstention, vote_confidence
 from app.models.schemas import VerificationResult
 
 # UNCALIBRATED. These minima match VerifierSelector's default range minima.
@@ -55,9 +59,13 @@ class AdaptiveEarlyTermination:
         ``min_verifiers`` overrides the difficulty minimum. The orchestrator
         passes the selector's minimum so the two cannot drift at runtime.
         """
-        n = len(results)
+        informative = [result for result in results if not is_abstention(result)]
+        n = len(informative)
         if n == 0:
-            return {"terminate": False, "reason": "no verifier results yet"}
+            return {
+                "terminate": False,
+                "reason": "no informative verifier result yet",
+            }
 
         difficulty = analysis.difficulty
         required = (
@@ -77,11 +85,14 @@ class AdaptiveEarlyTermination:
                 "reason": "hard question — continue verification",
             }
 
-        votes = [result.passed for result in results]
-        scores = [result.score for result in results]
+        votes = [result.passed for result in informative]
+        confidences = [vote_confidence(result) for result in informative]
         agreement = len(set(votes)) == 1
-        avg_confidence = sum(scores) / n
-        signed = [score if passed else -score for score, passed in zip(scores, votes)]
+        avg_confidence = sum(confidences) / n
+        signed = [
+            confidence if passed else -confidence
+            for confidence, passed in zip(confidences, votes)
+        ]
         margin = abs(sum(signed) / n)
 
         if (

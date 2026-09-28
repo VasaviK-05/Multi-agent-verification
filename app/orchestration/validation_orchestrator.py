@@ -5,6 +5,7 @@ from __future__ import annotations
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.decision.decision_engine import DecisionEngine
 from app.decision.early_termination import AdaptiveEarlyTermination
+from app.decision.vote_normalization import is_abstention, vote_confidence
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import ReputationManager
 from app.selection.verifier_selector import VerifierSelector
@@ -118,21 +119,39 @@ class ValidationOrchestrator:
         return self._last_analysis
 
     def validate(self, request: ValidationRequest) -> ValidationResponse:
-        """Validate one answer. Does not learn from this decision."""
+        """Validate one answer. Does not learn from this decision.
+
+        Verifiers are taken in utility order. An abstention, such as an
+        unsupported rule, is kept in the response and does not count as a
+        vote or an early-stop signal. The next verifier is consulted until
+        the difficulty target is filled with informative votes, early
+        stopping applies, or no verifier remains.
+        """
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
-        verifiers = self._verifier_selector.select(analysis)
         minimum = self._verifier_selector.minimum_count(analysis)
+        target = self._verifier_selector.target_count(analysis)
 
         results: list[VerificationResult] = []
-        for verifier in verifiers:
-            results.append(verifier.verify(request.question, request.answer, request.context))
-            stop = self._early_termination.should_terminate(
-                results,
-                analysis,
-                min_verifiers=minimum,
-            )
-            if stop["terminate"]:
+        abstained: list[str] = []
+        informative = 0
+        for verifier in self._verifier_selector.iter_ranked(analysis):
+            raw = verifier.verify(request.question, request.answer, request.context)
+            if is_abstention(raw):
+                abstained.append(raw.verifier_name)
+                results.append(_annotate(raw, abstained_before=abstained[:-1], abstention=True))
+                continue
+            results.append(_annotate(raw, abstained_before=list(abstained), abstention=False))
+            informative += 1
+            if informative >= minimum:
+                stop = self._early_termination.should_terminate(
+                    results,
+                    analysis,
+                    min_verifiers=minimum,
+                )
+                if stop["terminate"]:
+                    break
+            if informative >= target:
                 break
 
         final_status, final_score = self._decision_engine.decide(
@@ -162,9 +181,68 @@ class ValidationOrchestrator:
                 raise ValueError("domain is required before validate() has been run")
             domain = self._last_analysis.domain
         for result in results:
+            if is_abstention(result):
+                continue
             self._reputation_manager.update_from_ground_truth(
                 result.verifier_name,
                 domain,
                 result.passed,
                 answer_is_correct,
             )
+
+
+def _annotate(
+    result: VerificationResult,
+    *,
+    abstained_before: list[str],
+    abstention: bool,
+) -> VerificationResult:
+    """Attach a visible note about how this result was used. Verifier fields stay."""
+    metadata = dict(result.metadata or {})
+    if abstention:
+        metadata["pipeline_role"] = "abstention"
+        metadata["pipeline_note"] = (
+            f"{result.verifier_name} abstained ({_abstention_reason(result)}). "
+            "This result is not a pass or a reject, and it does not trigger early stopping. "
+            "Another verifier is consulted when one is still available."
+        )
+    else:
+        metadata["pipeline_role"] = "vote"
+        confidence = vote_confidence(result)
+        consulted = ""
+        if abstained_before:
+            consulted = (
+                "Consulted after "
+                + ", ".join(abstained_before)
+                + " abstained. "
+            )
+        rule = metadata.get("rule")
+        if isinstance(rule, str) and rule != "unsupported":
+            scale = (
+                f"Supported rule '{rule}' is deterministic, so the decision uses "
+                f"confidence {confidence:.0f} rather than the stored score {result.score}."
+            )
+        else:
+            scale = (
+                f"The verifier score {result.score} is used as confidence {confidence:.4f} "
+                "in this pass/reject vote."
+            )
+        side = "pass" if result.passed else "reject"
+        metadata["pipeline_note"] = f"{consulted}Counted {result.verifier_name} as a {side} vote. {scale}"
+    return result.model_copy(update={"metadata": metadata})
+
+
+def _abstention_reason(result: VerificationResult) -> str:
+    metadata = result.metadata or {}
+    if metadata.get("rule") == "unsupported":
+        return "no supported rule matched the question"
+    if result.verifier_name == "semantic":
+        return "no reference context"
+    if result.verifier_name == "evidence":
+        label = metadata.get("nli_label")
+        if isinstance(label, str) and label.lower() == "neutral":
+            return "retrieved evidence was neutral, not a contradiction"
+        return "no evidence was retrieved"
+    if result.verifier_name == "confidence":
+        return "no verification judgments"
+    return "the verifier did not cast a vote"

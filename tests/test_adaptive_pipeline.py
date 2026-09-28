@@ -164,3 +164,92 @@ def test_low_confidence_and_hard_questions_keep_running():
     hard_response = hard_run.validate(ValidationRequest(question="q", answer="a"))
     assert len(hard_response.results) == 4
     assert all(stub.calls == 1 for stub in hard)
+
+
+def test_unsupported_rule_falls_back_and_is_not_a_reject():
+    from app.verifiers.rule_verifier import RuleVerifier
+
+    rule = RuleVerifier()
+    semantic_abstains = _AbstainingStub(
+        "semantic",
+        reasoning="No reference context provided for semantic comparison.",
+    )
+    confidence = _AbstainingStub(
+        "confidence",
+        reasoning="No verification judgments were provided.",
+        metadata={"method": "self_consistency", "judgments": []},
+    )
+    evidence = StubVerifier("evidence", passed=True, score=0.8)
+    orchestrator = ValidationOrchestrator(
+        verifier_selector=VerifierSelector(
+            verifiers=[rule, semantic_abstains, confidence, evidence]
+        ),
+    )
+    response = orchestrator.validate(
+        ValidationRequest(question="What is the capital of France?", answer="Paris")
+    )
+    roles = [result.metadata["pipeline_role"] for result in response.results]
+    assert [result.verifier_name for result in response.results] == [
+        "rule",
+        "semantic",
+        "confidence",
+        "evidence",
+    ]
+    assert roles == ["abstention", "abstention", "abstention", "vote"]
+    assert response.results[0].metadata["rule"] == "unsupported"
+    assert "not a pass or a reject" in response.results[0].metadata["pipeline_note"]
+    assert "Consulted after" in response.results[-1].metadata["pipeline_note"]
+    assert response.final_status == "passed"
+    assert response.final_score > 0.55
+    assert semantic_abstains.calls == 1
+    assert confidence.calls == 1
+    assert evidence.calls == 1
+
+    manager = orchestrator.reputation_manager
+    orchestrator.record_ground_truth(response.results, answer_is_correct=True)
+    assert manager.is_cold_start("rule", "general")
+    assert not manager.is_cold_start("evidence", "general")
+
+
+def test_supported_rule_rejection_stops_with_a_fail():
+    from app.verifiers.rule_verifier import RuleVerifier
+
+    rule = RuleVerifier()
+    semantic = StubVerifier("semantic", passed=True, score=0.95)
+    orchestrator = ValidationOrchestrator(
+        verifier_selector=VerifierSelector(verifiers=[rule, semantic]),
+    )
+    response = orchestrator.validate(ValidationRequest(question="What is 2+2?", answer="5"))
+    assert len(response.results) == 1
+    result = response.results[0]
+    assert result.verifier_name == "rule"
+    assert result.metadata["rule"] == "arithmetic_addition"
+    assert result.metadata["pipeline_role"] == "vote"
+    assert result.passed is False
+    assert result.score == 0.0
+    assert "confidence 1" in result.metadata["pipeline_note"]
+    assert response.final_status == "failed"
+    assert response.final_score < -0.55
+    assert semantic.calls == 0
+
+
+class _AbstainingStub(StubVerifier):
+    def __init__(self, name: str, reasoning: str, metadata: dict | None = None) -> None:
+        super().__init__(name, passed=False, score=0.0)
+        self._reasoning = reasoning
+        self._metadata = metadata or {}
+
+    def verify(
+        self,
+        question: str,
+        answer: str,
+        context: str | None = None,
+    ) -> VerificationResult:
+        self.calls += 1
+        return VerificationResult(
+            verifier_name=self._name,
+            score=0.0,
+            passed=False,
+            reasoning=self._reasoning,
+            metadata=dict(self._metadata),
+        )
