@@ -126,33 +126,37 @@ function App() {
 
           <div className="flow">
             <div className="flow-step">
-              <span>01</span>
-              <strong>Question Analyzer</strong>
-              <small>Analyzes question complexity</small>
+            <span>01</span>
+            <strong>Question Analyzer</strong>
+            <small>Analyzes question complexity</small>
+            <em>ANALYSIS</em>
+          </div>
+
+            <div className="flow-arrow">↓</div>
+
+          <div className="flow-step">
+            <span>02</span>
+            <strong>Verifier Selector</strong>
+            <small>Selects suitable verifiers</small>
+            <em>SELECTION</em>
+          </div>
+
+            <div className="flow-arrow">↓</div>
+
+            <div className="flow-step">
+             <span>03</span>
+             <strong>Verifier Agents</strong>
+             <small>Semantic · Evidence · Rule · Confidence</small>
+             <em>VERIFICATION</em>
             </div>
 
             <div className="flow-arrow">↓</div>
 
             <div className="flow-step">
-              <span>02</span>
-              <strong>Verifier Selector</strong>
-              <small>Selects suitable verifiers</small>
-            </div>
-
-            <div className="flow-arrow">↓</div>
-
-            <div className="flow-step">
-              <span>03</span>
-              <strong>Verifier Agents</strong>
-              <small>Semantic · Evidence · Rule · Confidence</small>
-            </div>
-
-            <div className="flow-arrow">↓</div>
-
-            <div className="flow-step">
-              <span>04</span>
-              <strong>Decision Engine</strong>
-              <small>Aggregates verification results</small>
+             <span>04</span>
+             <strong>Decision Engine</strong>
+             <small>Aggregates verification results</small>
+             <em>DECISION</em>
             </div>
           </div>
         </section>
@@ -191,11 +195,39 @@ function App() {
                   </div>
 
                   <div className="verifier-score">
-                    <span>Score</span>
-                    <strong>{verifier.score.toFixed(2)}</strong>
-                  </div>
+  <div className="score-row">
+    <span>Verification Score</span>
+    <strong>
+      {typeof verifier.score === 'number'
+        ? verifier.score.toFixed(2)
+        : '—'}
+    </strong>
+  </div>
 
-                  <p>{verifier.reasoning}</p>
+  <div className="score-bar">
+    <div
+      className="score-fill"
+      style={{
+        width: `${
+          typeof verifier.score === 'number'
+            ? verifier.score * 100
+            : 0
+        }%`,
+      }}
+    />
+  </div>
+
+  <span className="score-percent">
+    {typeof verifier.score === 'number'
+      ? `${Math.round(verifier.score * 100)}% confidence`
+      : 'Score unavailable'}
+  </span>
+</div>
+
+<div className="reasoning">
+  <span>Reasoning</span>
+  <p>{verifier.reasoning || 'No reasoning provided.'}</p>
+</div>
                 </div>
               ))}
             </div>
