@@ -30,11 +30,27 @@ class ValidationOrchestrator:
         # Step 2: Select verifiers
         verifiers = self._verifier_selector.select(analysis)
 
-        # Step 3: Run selected verifiers
+       # Step 3: Run selected verifiers
         results: list[VerificationResult] = [
             verifier.verify(request.question, request.answer, request.context)
             for verifier in verifiers
         ]
+
+        # DEBUG: Print individual verifier results
+        print("\n========== VERIFIER RESULTS ==========")
+
+        for result in results:
+            print(
+                f"{result.verifier_name}: "
+                f"passed={result.passed}, "
+                f"score={result.score}, "
+                f"reasoning={result.reasoning}"
+            )
+
+        print("======================================\n")
+
+        # Step 4: Aggregate results via decision engine
+        final_status, final_score = self._decision_engine.decide(results)
 
         # Step 4: Aggregate results via decision engine
         final_status, final_score = self._decision_engine.decide(results)
