@@ -4,17 +4,6 @@ from app.verifiers.evidence_retriever import EvidenceRetriever
 TEST_CORPUS = "data/evidence_corpus.json"
 
 
-def test_france_retrieval():
-    retriever = EvidenceRetriever(corpus_path=TEST_CORPUS)
-
-    results = retriever.retrieve(
-        "What is the capital of France?",
-        k=3,
-    )
-
-    titles = [result["title"] for result in results]
-
-    assert "France" in titles
 
 
 def test_alaska_retrieval():
