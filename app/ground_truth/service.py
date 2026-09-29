@@ -12,6 +12,7 @@ class GroundTruthService:
         self,
         question: str,
         validation_id: str,
+        question_id: int,
     ):
         # 1. Fetch ground truth from Wikidata
         result = self._wikidata.get_ground_truth(question)
@@ -23,9 +24,10 @@ class GroundTruthService:
         label = result["label"]
         source = result.get("source", "Wikidata")
 
-        # 3. Store it against the validation ID
+        # 3. Store it against both the validation and question IDs
         return save_ground_truth(
             validation_id=validation_id,
+            question_id=question_id,
             label=label,
             source=source,
         )

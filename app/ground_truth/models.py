@@ -7,6 +7,7 @@ from uuid import UUID
 class GroundTruthRecord:
     ground_truth_id: UUID
     validation_id: UUID
+    question_id: int
     label: str
     source: str
     labeled_at: datetime

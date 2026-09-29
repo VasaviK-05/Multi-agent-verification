@@ -1,12 +1,13 @@
 from datetime import datetime, timezone
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from app.ground_truth.models import GroundTruthRecord
 from database import get_connection
 
 
 def save_ground_truth(
-    validation_id: str,
+    validation_id: UUID,
+    question_id: int,
     label: str,
     source: str,
 ) -> GroundTruthRecord:
@@ -27,15 +28,17 @@ def save_ground_truth(
             (
                 ground_truth_id,
                 validation_id,
+                question_id,
                 label,
                 source,
                 labeled_at
             )
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s)
             """,
             (
                 str(ground_truth_id),
                 str(validation_id),
+                question_id,
                 label,
                 source,
                 labeled_at,
@@ -47,6 +50,7 @@ def save_ground_truth(
         return GroundTruthRecord(
             ground_truth_id=ground_truth_id,
             validation_id=validation_id,
+            question_id=question_id,
             label=label,
             source=source,
             labeled_at=labeled_at,
