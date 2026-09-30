@@ -1,15 +1,17 @@
 """Question difficulty and domain analyzer.
 
-This is an initial research-prototype heuristic. Feature weights and
-difficulty thresholds are not calibrated. They will later be replaced
-or fitted using benchmark data.
+The score is a weighted sum of surface features. Every weight, divisor,
+and cut-point below is an UNCALIBRATED prototype constant. They are not
+fitted item-response parameters and they are not a published difficulty
+model. See docs/decision_formulas.md.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 
-# PROTOTYPE: reasoning verbs that typically indicate harder questions.
+# UNCALIBRATED: whole-token reasoning cues. A token matches the cue or that
+# cue plus a trailing "s". This is not a stemmer.
 REASONING_KEYWORDS = frozenset(
     {
         "explain",
@@ -24,7 +26,8 @@ REASONING_KEYWORDS = frozenset(
     }
 )
 
-# PROTOTYPE: whole-word domain cues. Unknown domains fall back to "general".
+# UNCALIBRATED: whole-token domain cues. Unknown text, and exact ties, are
+# "general". The same trailing-"s" rule used above applies.
 DOMAIN_KEYWORDS: dict[str, frozenset[str]] = {
     "medical": frozenset(
         {
@@ -50,16 +53,22 @@ DOMAIN_KEYWORDS: dict[str, frozenset[str]] = {
     ),
 }
 
-# PROTOTYPE feature mix and cut-points — not research-validated.
+# UNCALIBRATED feature mix and cut-points.
 LENGTH_SATURATION_WORDS = 40
+CLAUSE_SATURATION = 3.0
+REASONING_SATURATION = 2.0
+DOMAIN_TERM_SATURATION = 3.0
 FEATURE_WEIGHTS = {
     "length": 0.30,
     "clauses": 0.25,
     "reasoning": 0.25,
     "domain_terms": 0.20,
 }
+# Bands use the rounded score: [0, EASY_MAX) easy, [EASY_MAX, MEDIUM_MAX) medium,
+# [MEDIUM_MAX, 1] hard.
 EASY_MAX = 0.35
 MEDIUM_MAX = 0.65
+SCORE_DECIMALS = 2
 
 
 def _tokenize(text: str) -> set[str]:
@@ -69,9 +78,34 @@ def _tokenize(text: str) -> set[str]:
     return set(cleaned.split())
 
 
+def _contains_keyword(tokens: set[str], keyword: str) -> bool:
+    """True when the token is the keyword or a simple plural of it."""
+    return keyword in tokens or f"{keyword}s" in tokens
+
+
+def _difficulty_band(score: float) -> str:
+    if score < EASY_MAX:
+        return "easy"
+    if score < MEDIUM_MAX:
+        return "medium"
+    return "hard"
+
+
+def _domain(tokens: set[str]) -> str:
+    counts = {
+        name: sum(1 for keyword in keywords if _contains_keyword(tokens, keyword))
+        for name, keywords in DOMAIN_KEYWORDS.items()
+    }
+    best_count = max(counts.values(), default=0)
+    winners = [name for name, count in counts.items() if count == best_count and count > 0]
+    if len(winners) == 1:
+        return winners[0]
+    return "general"
+
+
 @dataclass
 class QuestionAnalysis:
-    """Result of question analysis."""
+    """Domain label, difficulty band, and numeric difficulty score in [0, 1]."""
 
     domain: str
     difficulty: str
@@ -81,7 +115,9 @@ class QuestionAnalysis:
 class QuestionAnalyzer:
     """Estimates domain and difficulty from interpretable text features.
 
-    Prototype only. Do not treat scores as a final research estimator.
+    difficulty_score is rounded to SCORE_DECIMALS and then cut into the band
+    stored on ``difficulty``. The number is a heuristic rank in [0, 1], not a
+    probability and not a calibrated difficulty parameter.
     """
 
     def analyze(self, question: str) -> QuestionAnalysis:
@@ -95,41 +131,31 @@ class QuestionAnalyzer:
         clause_hits += sum(
             1 for sep in (" and ", " also ", " additionally ") if sep in lowered
         )
-        clause_score = min(clause_hits / 3.0, 1.0)
+        clause_score = min(clause_hits / CLAUSE_SATURATION, 1.0)
 
-        reasoning_hits = sum(1 for kw in REASONING_KEYWORDS if kw in tokens)
-        reasoning_score = min(reasoning_hits / 2.0, 1.0)
+        reasoning_hits = sum(
+            1 for keyword in REASONING_KEYWORDS if _contains_keyword(tokens, keyword)
+        )
+        reasoning_score = min(reasoning_hits / REASONING_SATURATION, 1.0)
 
         term_hits = sum(
-            1 for kws in DOMAIN_KEYWORDS.values() for kw in kws if kw in tokens
+            1
+            for keywords in DOMAIN_KEYWORDS.values()
+            for keyword in keywords
+            if _contains_keyword(tokens, keyword)
         )
-        domain_score = min(term_hits / 3.0, 1.0)
+        domain_score = min(term_hits / DOMAIN_TERM_SATURATION, 1.0)
 
-        score = min(
+        raw_score = (
             FEATURE_WEIGHTS["length"] * length_score
             + FEATURE_WEIGHTS["clauses"] * clause_score
             + FEATURE_WEIGHTS["reasoning"] * reasoning_score
-            + FEATURE_WEIGHTS["domain_terms"] * domain_score,
-            1.0,
+            + FEATURE_WEIGHTS["domain_terms"] * domain_score
         )
-        score = round(score, 2)
-
-        if score < EASY_MAX:
-            difficulty = "easy"
-        elif score < MEDIUM_MAX:
-            difficulty = "medium"
-        else:
-            difficulty = "hard"
-
-        domain_counts = {
-            name: sum(1 for kw in kws if kw in tokens)
-            for name, kws in DOMAIN_KEYWORDS.items()
-        }
-        best_domain = max(domain_counts, key=domain_counts.get)
-        domain = best_domain if domain_counts[best_domain] > 0 else "general"
+        score = round(min(max(raw_score, 0.0), 1.0), SCORE_DECIMALS)
 
         return QuestionAnalysis(
-            domain=domain,
-            difficulty=difficulty,
+            domain=_domain(tokens),
+            difficulty=_difficulty_band(score),
             difficulty_score=score,
         )
