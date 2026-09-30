@@ -8,7 +8,7 @@ from sentence_transformers import SentenceTransformer
 
 
 class EvidenceRetriever:
-    """Loads evidence once and reuses the FAISS index for retrieval."""
+    """Loads evidence and uses a persistent FAISS index for retrieval."""
 
     EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
@@ -16,15 +16,25 @@ class EvidenceRetriever:
         self,
         corpus_path: str = "data/evidence_corpus.json",
         chunk_size: int = 500,
+        index_path: str = "data/evidence_index/faiss.index",
+        chunks_path: str = "data/evidence_index/chunks.json",
     ) -> None:
         self.corpus_path = Path(corpus_path)
         self.chunk_size = chunk_size
 
-        # Load the embedding model only once.
+        self.index_path = Path(index_path)
+        self.chunks_path = Path(chunks_path)
+
+        # Load embedding model.
         self.model = SentenceTransformer(self.EMBEDDING_MODEL)
 
-        # Build the searchable evidence index only once.
-        self.index, self.chunks = self.build_index()
+        # Load existing index if available.
+        if self.index_path.exists() and self.chunks_path.exists():
+            self.index, self.chunks = self.load_index()
+        else:
+            # Otherwise build it once and save it.
+            self.index, self.chunks = self.build_index()
+            self.save_index()
 
     def load_corpus(self) -> list[dict]:
         """Load articles from the local evidence corpus."""
@@ -93,6 +103,45 @@ class EvidenceRetriever:
 
         return index, chunks
 
+    def save_index(self) -> None:
+        """Save FAISS index and chunk metadata to disk."""
+
+        self.index_path.parent.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        faiss.write_index(
+            self.index,
+            str(self.index_path),
+        )
+
+        with self.chunks_path.open(
+            "w",
+            encoding="utf-8",
+        ) as file:
+            json.dump(
+                self.chunks,
+                file,
+                ensure_ascii=False,
+                indent=2,
+            )
+
+    def load_index(self):
+        """Load FAISS index and chunk metadata from disk."""
+
+        index = faiss.read_index(
+            str(self.index_path)
+        )
+
+        with self.chunks_path.open(
+            "r",
+            encoding="utf-8",
+        ) as file:
+            chunks = json.load(file)
+
+        return index, chunks
+
     def retrieve(self, query: str, k: int = 3) -> list[dict]:
         """Retrieve the top-k evidence chunks for a query."""
 
@@ -100,11 +149,17 @@ class EvidenceRetriever:
 
         faiss.normalize_L2(query_embedding)
 
-        scores, indices = self.index.search(query_embedding, k)
+        scores, indices = self.index.search(
+            query_embedding,
+            k,
+        )
 
         results = []
 
-        for score, index_id in zip(scores[0], indices[0]):
+        for score, index_id in zip(
+            scores[0],
+            indices[0],
+        ):
             results.append(
                 {
                     "score": float(score),
