@@ -1,23 +1,10 @@
-"""Build a small targeted Wikipedia evidence corpus."""
-
 import json
 import os
 
 from datasets import load_dataset
 
 
-TARGET_TITLES = {
-    "France",
-    "Paris",
-    "Germany",
-    "India",
-    "Python (programming language)",
-    "Artificial intelligence",
-    "Machine learning",
-    "Albert Einstein",
-    "World War II",
-    "United States",
-}
+TARGET_COUNT = 500
 
 
 def build_corpus() -> None:
@@ -31,11 +18,9 @@ def build_corpus() -> None:
     articles = []
 
     for article in dataset:
-        if article["title"] in TARGET_TITLES:
-            articles.append(article)
-            print(f"Found: {article['title']}")
+        articles.append(article)
 
-        if len(articles) == len(TARGET_TITLES):
+        if len(articles) >= TARGET_COUNT:
             break
 
     os.makedirs("data", exist_ok=True)
@@ -52,10 +37,9 @@ def build_corpus() -> None:
             indent=2,
         )
 
-    print(f"\nSaved articles: {len(articles)}")
+    print(f"Saved articles: {len(articles)}")
     print("Output: data/evidence_corpus.json")
 
 
 if __name__ == "__main__":
     build_corpus()
-    

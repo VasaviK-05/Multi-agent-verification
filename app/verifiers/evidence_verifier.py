@@ -2,7 +2,7 @@
 
 from typing import Optional
 import time
-
+import re
 from transformers import pipeline
 
 from app.models.schemas import VerificationResult
@@ -32,7 +32,50 @@ class EvidenceVerifier(BaseVerifier):
     @property
     def name(self) -> str:
         return "evidence"
+    def extract_relevant_sentences(
+        self,
+        text: str,
+        claim: str,
+        max_sentences: int = 3,
+    ) -> str:
+        """Extract sentences from evidence that are most relevant to the claim."""
 
+        sentences = re.split(r"(?<=[.!?])\s+", text)
+
+        claim_words = set(
+            word.lower()
+            for word in re.findall(r"\b\w+\b", claim)
+        )
+
+        scored_sentences = []
+
+        for sentence in sentences:
+            sentence_words = set(
+                word.lower()
+                for word in re.findall(r"\b\w+\b", sentence)
+            )
+
+            overlap = len(claim_words & sentence_words)
+
+            if overlap > 0:
+                scored_sentences.append(
+                    (overlap, sentence.strip())
+                )
+
+        scored_sentences.sort(
+            key=lambda item: item[0],
+            reverse=True,
+        )
+
+        selected = [
+            sentence
+            for _, sentence in scored_sentences[:max_sentences]
+        ]
+
+        if not selected:
+            return text[:1500]
+
+        return " ".join(selected)
     def verify(
         self,
         question: str,
@@ -63,21 +106,74 @@ class EvidenceVerifier(BaseVerifier):
                 },
             )
 
-        best_evidence = retrieved_evidence[0]
-
         claim = self.claim_generator.generate(question, answer)
 
-        nli_result = self.nli(
+        nli_results = []
+
+        for evidence in retrieved_evidence:
+
+            relevant_evidence = self.extract_relevant_sentences(
+                evidence["text"],
+                claim,
+            )
+
+            nli_result = self.nli(
+                {
+                    "text": relevant_evidence,
+                    "text_pair": claim,
+                }
+            )
+
+            nli_results.append(
+                {
+                    "evidence": evidence,
+                    "relevant_evidence": relevant_evidence,
+                    "label": nli_result["label"],
+                    "score": float(nli_result["score"]),
+                }
+            )
+
+        
+
+                # Find evidence chunks that support the claim.
+        entailments = [
+            result
+            for result in nli_results
+            if result["label"] == "entailment"
+        ]
+
+        if entailments:
+            # If any chunk supports the claim, use the
+            # strongest supporting chunk.
+            best_result = max(
+                entailments,
+                key=lambda result: result["score"],
+            )
+            passed = True
+        else:
+            # No retrieved chunk supports the claim.
+            # Keep the strongest NLI result for reporting.
+            best_result = max(
+                nli_results,
+                key=lambda result: result["score"],
+            )
+            passed = False
+
+        best_evidence = best_result["evidence"]
+        label = best_result["label"]
+        nli_score = best_result["score"]
+
+        # Store NLI results for every retrieved chunk.
+        evaluated_evidence = [
             {
-                "text": best_evidence["text"],
-                "text_pair": claim,
+                "title": result["evidence"]["title"],
+                "chunk_id": result["evidence"]["chunk_id"],
+                "retrieval_score": result["evidence"]["score"],
+                "nli_label": result["label"],
+                "nli_score": result["score"],
             }
-        )
-
-        label = nli_result["label"]
-        nli_score = float(nli_result["score"])
-
-        passed = label == "entailment"
+            for result in nli_results
+        ]
 
         latency_ms = (time.perf_counter() - start_time) * 1000
 
@@ -98,6 +194,7 @@ class EvidenceVerifier(BaseVerifier):
                 "evidence_title": best_evidence["title"],
                 "evidence_chunk_id": best_evidence["chunk_id"],
                 "top_k": self.top_k,
+                "evaluated_evidence": evaluated_evidence,
                 "latency_ms": round(latency_ms, 2),
             },
         )
