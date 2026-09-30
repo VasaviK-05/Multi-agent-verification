@@ -1,8 +1,7 @@
-"""Database models — placeholder for future PostgreSQL integration.
+"""Database models for validation, verifier, reputation, and feedback records.
 
-These are plain Python dataclasses, not ORM models.
-TODO: Replace with SQLAlchemy or similar ORM models when
-PostgreSQL is configured.
+These are plain Python dataclasses used by the application layer.
+The PostgreSQL schema is managed separately.
 """
 
 from dataclasses import dataclass, field
@@ -15,6 +14,7 @@ class ValidationRecord:
     """A stored validation request and its outcome."""
 
     id: str
+    question_id: int
     question: str
     answer: str
     context: Optional[str]
@@ -29,11 +29,14 @@ class VerifierOutputRecord:
 
     id: str
     validation_id: str
+    question_id: int
     verifier_name: str
     score: float
     passed: bool
     reasoning: Optional[str]
     metadata: Optional[dict[str, Any]] = None
+    latency_ms: Optional[float] = None
+    execution_order: Optional[int] = None
 
 
 @dataclass

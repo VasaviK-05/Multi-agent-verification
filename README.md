@@ -25,6 +25,8 @@ User Interface
 
 See [docs/architecture.md](docs/architecture.md) for the four-layer architecture and folder mapping.
 
+The difficulty score, verifier-count rule, Beta reputation, decision score, and early-stop rule are written out in [docs/decision_formulas.md](docs/decision_formulas.md). That note separates published formulas, local design choices, and constants that are not calibrated yet.
+
 ## Repository Structure
 
 ```
@@ -36,8 +38,9 @@ app/
 ├── analysis/                # Question domain/difficulty analysis
 ├── selection/               # Adaptive verifier selection
 ├── verifiers/               # Individual verifier implementations
-├── decision/                # Decision aggregation engine
-├── reputation/              # Domain-specific verifier reputation
+├── decision/                # Weighted decision score and early stopping
+├── reputation/              # Domain-specific Beta reputation
+├── benchmark/               # Offline comparison runner (no stored results)
 ├── feedback/                # Feedback and evaluation service
 ├── services/                # Application-level service layer
 ├── database/                # PostgreSQL models and repository (placeholder)
