@@ -1,16 +1,32 @@
 """Strategic verifier selector.
 
 Chooses a subset of existing verifier instances. This module does not
-implement semantic, evidence, rule, or confidence verification.
+implement semantic, evidence, rule, or confidence verification, and it
+does not call a model.
 
-Utility, with UNCALIBRATED weights and cost/latency estimates:
+Utility, with UNCALIBRATED weights, cost/latency estimates, and
+suitability hints:
 
     U(v, d) = R(v, d) - lambda_cost * cost(v) - lambda_latency * latency(v)
+    U(v, d, q) = U(v, d) + lambda_suitability * S(v, q)
 
-R(v, d) is the domain reputation in [0, 1]. cost(v) and latency(v) are
-explicit estimates in [0, 1], not measured runtimes. At the cold-start
-reputation 0.5 every verifier shares the same R, so rank follows the
-cost and latency estimates.
+R(v, d) is the domain reputation in [0, 1] for analysis.domain only.
+cost(v) and latency(v) are explicit estimates in [0, 1], not measured
+runtimes. S(v, q) is 0 when verification_types is empty, which keeps the
+legacy ranking. Otherwise S is the share of unique types mapped to v,
+in [0, 1]. Duplicate labels are counted once. An unknown label matches
+no verifier and still occupies one share, so a longer list cannot raise
+anyone's bonus above that share. At the cold-start reputation 0.5 every
+verifier shares the same R, so an empty type list ranks by the cost and
+latency estimates.
+
+The type map is a hint, not a proof that the verifier can decide the
+question. RuleVerifier covers a few deterministic patterns and abstains
+with metadata.rule "unsupported" otherwise. SemanticVerifier abstains
+without reference context. ConfidenceVerifier abstains without supplied
+judgments. EvidenceVerifier can abstain when retrieval or NLI is not
+directional. Those abstentions stay in iter_ranked so the orchestrator
+can consult the next candidate.
 
 How many verifiers to run:
 
@@ -27,6 +43,8 @@ Lambdas, profiles, and ranges are UNCALIBRATED. See docs/decision_formulas.md.
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass
+from typing import Mapping
 
 from app.analysis.question_analyzer import EASY_MAX, MEDIUM_MAX, QuestionAnalysis
 from app.reputation.reputation_manager import ReputationManager
@@ -50,9 +68,22 @@ DEFAULT_DIFFICULTY_RANGE: dict[str, tuple[int, int]] = {
     "hard": (3, 4),
 }
 
-# UNCALIBRATED tradeoff weights.
+# UNCALIBRATED tradeoff weights. lambda_suitability scales a hint in [0, 1].
+# It is not a measured accuracy gain.
 DEFAULT_LAMBDA_COST = 0.15
 DEFAULT_LAMBDA_LATENCY = 0.10
+DEFAULT_LAMBDA_SUITABILITY = 0.20
+
+# UNCALIBRATED hints from the analyzer vocabulary to the verifier that
+# currently has the closest capability. Not a guarantee of coverage.
+DEFAULT_TYPE_SUITABILITY: dict[str, str] = {
+    "arithmetic": "rule",
+    "logical_rule": "rule",
+    "direct_fact": "evidence",
+    "evidence_retrieval": "evidence",
+    "semantic_comparison": "semantic",
+    "consistency": "confidence",
+}
 
 
 def band_position(difficulty: str, difficulty_score: float) -> float:
@@ -97,6 +128,77 @@ def target_verifier_count(
     return min_n + extra
 
 
+@dataclass(frozen=True)
+class RankingExplanation:
+    """One candidate's ranking terms. Building this does not construct a verifier."""
+
+    verifier_name: str
+    reputation: float
+    resource_penalty: float
+    suitability: float
+    suitability_contribution: float
+    utility: float
+
+
+def suitability_by_verifier(
+    verification_types: list[str] | None,
+    mapping: Mapping[str, str],
+) -> dict[str, float]:
+    """Share of unique verification types mapped to each verifier, in [0, 1].
+
+    An empty list yields an empty mapping, so every suitability contribution
+    is 0. Unknown labels, including non-strings, match nobody and remain in
+    the denominator. Repeated labels are counted once, in first-seen order.
+    """
+    if not isinstance(verification_types, list) or not verification_types:
+        return {}
+    unique: list[str] = []
+    seen: set[str] = set()
+    for item in verification_types:
+        token = item if isinstance(item, str) else f"<{type(item).__name__}:{item!r}>"
+        if token in seen:
+            continue
+        seen.add(token)
+        unique.append(token)
+    if not unique:
+        return {}
+    share = 1.0 / len(unique)
+    scores: dict[str, float] = {}
+    for token in unique:
+        verifier_name = mapping.get(token)
+        if verifier_name is None:
+            continue
+        scores[verifier_name] = scores.get(verifier_name, 0.0) + share
+    return scores
+
+
+def _require_unit_weight(name: str, value: object) -> float:
+    """Accept a finite weight in [0, 1]. Reject booleans and non-numbers."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"{name} must be a finite number in [0, 1]")
+    number = float(value)
+    if not math.isfinite(number) or number < 0.0 or number > 1.0:
+        raise ValueError(f"{name} must be a finite number in [0, 1]")
+    return number
+
+
+def _copy_type_mapping(mapping: Mapping[str, str] | None) -> dict[str, str]:
+    source: Mapping[str, str] = DEFAULT_TYPE_SUITABILITY if mapping is None else mapping
+    if not isinstance(source, Mapping):
+        raise ValueError("type_mapping must map verification types to verifier names")
+    copied: dict[str, str] = {}
+    for key, value in source.items():
+        if (
+            not isinstance(key, str)
+            or key.strip() == ""
+            or not isinstance(value, str)
+            or value.strip() == ""
+        ):
+            raise ValueError("type_mapping keys and values must be non-empty strings")
+        copied[key] = value
+    return copied
+
+
 def _build_default_verifier(name: str) -> BaseVerifier:
     """Construct one default verifier. Imports are local so unused models stay unloaded."""
     if name == "semantic":
@@ -119,7 +221,7 @@ def _build_default_verifier(name: str) -> BaseVerifier:
 
 
 class VerifierSelector:
-    """Selects verifiers by domain reputation and explicit resource estimates."""
+    """Selects verifiers by domain reputation, resource estimates, and type hints."""
 
     def __init__(
         self,
@@ -129,10 +231,17 @@ class VerifierSelector:
         verifier_profiles: dict[str, dict[str, float]] | None = None,
         difficulty_range: dict[str, tuple[int, int]] | None = None,
         verifiers: list[BaseVerifier] | None = None,
+        lambda_suitability: float = DEFAULT_LAMBDA_SUITABILITY,
+        type_mapping: Mapping[str, str] | None = None,
     ) -> None:
         self._reputation_manager = reputation_manager or ReputationManager()
         self.lambda_cost = lambda_cost
         self.lambda_latency = lambda_latency
+        self.lambda_suitability = _require_unit_weight(
+            "lambda_suitability",
+            lambda_suitability,
+        )
+        self.type_mapping = _copy_type_mapping(type_mapping)
         self.verifier_profiles = verifier_profiles or {
             name: dict(profile) for name, profile in DEFAULT_VERIFIER_PROFILES.items()
         }
@@ -157,13 +266,64 @@ class VerifierSelector:
         )
 
     def utility(self, verifier_name: str, domain: str) -> float:
+        """Domain utility without a question-type bonus.
+
+        Callers that only have a domain keep the previous ranking term.
+        iter_ranked uses ranking_utility, which adds suitability when the
+        analysis carries verification types.
+        """
+        return self._resource_utility(verifier_name, domain)
+
+    def ranking_utility(self, verifier_name: str, analysis: QuestionAnalysis) -> float:
+        """Shared utility for injected and default candidates."""
+        return self._factors(verifier_name, analysis).utility
+
+    def explain_ranking(self, analysis: QuestionAnalysis) -> list[RankingExplanation]:
+        """Return every registered candidate, highest utility first.
+
+        Default verifiers are named here and not constructed. Equal utilities
+        keep registration order.
+        """
+        names = self._candidate_names()
+        rows = [self._factors(name, analysis) for name in names]
+        order = sorted(range(len(rows)), key=lambda index: rows[index].utility, reverse=True)
+        return [rows[index] for index in order]
+
+    def _resource_utility(self, verifier_name: str, domain: str) -> float:
         reputation = self._reputation_manager.get_reputation(verifier_name, domain)
-        profile = self.verifier_profiles.get(verifier_name, {"cost": 0.5, "latency": 0.5})
-        return (
-            reputation
-            - self.lambda_cost * float(profile["cost"])
-            - self.lambda_latency * float(profile["latency"])
+        return reputation - self._resource_penalty(verifier_name)
+
+    def _resource_penalty(self, verifier_name: str) -> float:
+        profile = self.verifier_profiles.get(
+            verifier_name,
+            {"cost": 0.5, "latency": 0.5},
         )
+        return (
+            self.lambda_cost * float(profile["cost"])
+            + self.lambda_latency * float(profile["latency"])
+        )
+
+    def _factors(self, verifier_name: str, analysis: QuestionAnalysis) -> RankingExplanation:
+        reputation = self._reputation_manager.get_reputation(verifier_name, analysis.domain)
+        penalty = self._resource_penalty(verifier_name)
+        suitability = suitability_by_verifier(
+            analysis.verification_types,
+            self.type_mapping,
+        ).get(verifier_name, 0.0)
+        contribution = self.lambda_suitability * suitability
+        return RankingExplanation(
+            verifier_name=verifier_name,
+            reputation=reputation,
+            resource_penalty=penalty,
+            suitability=suitability,
+            suitability_contribution=contribution,
+            utility=reputation - penalty + contribution,
+        )
+
+    def _candidate_names(self) -> list[str]:
+        if self._injected is not None:
+            return [verifier.name for verifier in self._injected]
+        return list(DEFAULT_VERIFIER_ORDER)
 
     def _default_instance(self, name: str) -> BaseVerifier:
         cached = self._cache.get(name)
@@ -180,21 +340,23 @@ class VerifierSelector:
         utilities keep registration order.
         """
         if self._injected is not None:
-            ranked = sorted(
-                self._injected,
-                key=lambda verifier: self.utility(verifier.name, analysis.domain),
+            indexed = list(enumerate(self._injected))
+            indexed.sort(
+                key=lambda item: self.ranking_utility(item[1].name, analysis),
                 reverse=True,
             )
-            yield from ranked
+            for _, verifier in indexed:
+                yield verifier
             return
 
-        names = sorted(
-            DEFAULT_VERIFIER_ORDER,
-            key=lambda name: self.utility(name, analysis.domain),
+        names = self._candidate_names()
+        order = sorted(
+            range(len(names)),
+            key=lambda index: self.ranking_utility(names[index], analysis),
             reverse=True,
         )
-        for name in names:
-            yield self._default_instance(name)
+        for index in order:
+            yield self._default_instance(names[index])
 
     def select(self, analysis: QuestionAnalysis) -> list[BaseVerifier]:
         """Return a difficulty-aware subset, highest utility first."""

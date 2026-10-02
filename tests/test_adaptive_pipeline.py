@@ -233,6 +233,58 @@ def test_supported_rule_rejection_stops_with_a_fail():
     assert semantic.calls == 0
 
 
+def test_verification_types_change_the_ranked_pipeline_order():
+    stubs = _named(score=0.9)
+    by_name = {stub.name: stub for stub in stubs}
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(
+            QuestionAnalysis(
+                "general",
+                "easy",
+                0.0,
+                verification_types=["evidence_retrieval"],
+            )
+        ),
+        verifier_selector=VerifierSelector(verifiers=stubs),
+    )
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    assert response.results[0].verifier_name == "evidence"
+    assert by_name["evidence"].calls == 1
+    assert by_name["rule"].calls == 0
+    explained = orchestrator.verifier_selector.explain_ranking(orchestrator.last_analysis)
+    assert explained[0].verifier_name == "evidence"
+    assert explained[0].suitability_contribution > 0.0
+
+
+def test_type_preferred_abstention_still_falls_through_to_the_next_ranked_verifier():
+    evidence = _AbstainingStub(
+        "evidence",
+        reasoning="No supporting evidence was retrieved.",
+    )
+    rule = StubVerifier("rule", passed=True, score=0.9)
+    semantic = StubVerifier("semantic", passed=True, score=0.9)
+    confidence = StubVerifier("confidence", passed=True, score=0.9)
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(
+            QuestionAnalysis(
+                "general",
+                "easy",
+                0.0,
+                verification_types=["direct_fact"],
+            )
+        ),
+        verifier_selector=VerifierSelector(
+            verifiers=[semantic, evidence, rule, confidence]
+        ),
+    )
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    assert [result.verifier_name for result in response.results] == ["evidence", "rule"]
+    assert response.results[0].metadata["pipeline_role"] == "abstention"
+    assert response.results[1].metadata["pipeline_role"] == "vote"
+    assert semantic.calls == 0
+    assert confidence.calls == 0
+
+
 class _AbstainingStub(StubVerifier):
     def __init__(self, name: str, reasoning: str, metadata: dict | None = None) -> None:
         super().__init__(name, passed=False, score=0.0)

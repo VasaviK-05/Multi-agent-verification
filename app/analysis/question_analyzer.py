@@ -1,161 +1,214 @@
-"""Question difficulty and domain analyzer.
+"""Question analyzer: keyword heuristic, with an optional Ollama classification.
 
-The score is a weighted sum of surface features. Every weight, divisor,
-and cut-point below is an UNCALIBRATED prototype constant. They are not
-fitted item-response parameters and they are not a published difficulty
-model. See docs/decision_formulas.md.
+``QuestionAnalyzer().analyze(question)`` still returns ``QuestionAnalysis``
+with ``domain``, ``difficulty``, and ``difficulty_score``. The default mode
+is the original heuristic so existing callers stay on that path.
+
+Ollama mode is explicit. This module does not load a ``.env`` file and does
+not call the answer generator. See docs/analyzer_setup.md.
+
+The selector reads ``verification_types`` as a suitability hint. Reputation
+and decision scoring do not directly read the added metadata.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import math
+import os
+from typing import Mapping, Protocol
+from urllib.parse import urlparse
 
-# UNCALIBRATED: whole-token reasoning cues. A token matches the cue or that
-# cue plus a trailing "s". This is not a stemmer.
-REASONING_KEYWORDS = frozenset(
-    {
-        "explain",
-        "compare",
-        "analyse",
-        "analyze",
-        "why",
-        "how",
-        "discuss",
-        "evaluate",
-        "justify",
-    }
+import httpx
+
+from app.analysis.heuristic import (
+    EASY_MAX,
+    FEATURE_WEIGHTS,
+    MEDIUM_MAX,
+    heuristic_analysis,
 )
+from app.analysis.model_assessment import (
+    AnalyzerResponseError,
+    ModelAssessment,
+    build_generate_body,
+    parse_envelope,
+    validate_assessment,
+)
+from app.analysis.models import QuestionAnalysis
 
-# UNCALIBRATED: whole-token domain cues. Unknown text, and exact ties, are
-# "general". The same trailing-"s" rule used above applies.
-DOMAIN_KEYWORDS: dict[str, frozenset[str]] = {
-    "medical": frozenset(
-        {
-            "patient",
-            "disease",
-            "treatment",
-            "diagnosis",
-            "symptom",
-            "clinical",
-            "drug",
-        }
-    ),
-    "technical": frozenset(
-        {
-            "algorithm",
-            "system",
-            "database",
-            "api",
-            "software",
-            "network",
-            "protocol",
-        }
-    ),
-}
+__all__ = [
+    "EASY_MAX",
+    "FEATURE_WEIGHTS",
+    "MEDIUM_MAX",
+    "QuestionAnalysis",
+    "QuestionAnalyzer",
+]
 
-# UNCALIBRATED feature mix and cut-points.
-LENGTH_SATURATION_WORDS = 40
-CLAUSE_SATURATION = 3.0
-REASONING_SATURATION = 2.0
-DOMAIN_TERM_SATURATION = 3.0
-FEATURE_WEIGHTS = {
-    "length": 0.30,
-    "clauses": 0.25,
-    "reasoning": 0.25,
-    "domain_terms": 0.20,
-}
-# Bands use the rounded score: [0, EASY_MAX) easy, [EASY_MAX, MEDIUM_MAX) medium,
-# [MEDIUM_MAX, 1] hard.
-EASY_MAX = 0.35
-MEDIUM_MAX = 0.65
-SCORE_DECIMALS = 2
+_DEFAULT_OLLAMA_URL = "http://localhost:11434/api/generate"
+_DEFAULT_MODEL = "llama3.2:3b"
+_DEFAULT_TIMEOUT_SECONDS = 15.0
+_MODES = frozenset({"heuristic", "ollama"})
 
 
-def _tokenize(text: str) -> set[str]:
-    cleaned = text.lower()
-    for ch in ",.;:?!()[]{}\"'":
-        cleaned = cleaned.replace(ch, " ")
-    return set(cleaned.split())
-
-
-def _contains_keyword(tokens: set[str], keyword: str) -> bool:
-    """True when the token is the keyword or a simple plural of it."""
-    return keyword in tokens or f"{keyword}s" in tokens
-
-
-def _difficulty_band(score: float) -> str:
-    if score < EASY_MAX:
-        return "easy"
-    if score < MEDIUM_MAX:
-        return "medium"
-    return "hard"
-
-
-def _domain(tokens: set[str]) -> str:
-    counts = {
-        name: sum(1 for keyword in keywords if _contains_keyword(tokens, keyword))
-        for name, keywords in DOMAIN_KEYWORDS.items()
-    }
-    best_count = max(counts.values(), default=0)
-    winners = [name for name, count in counts.items() if count == best_count and count > 0]
-    if len(winners) == 1:
-        return winners[0]
-    return "general"
-
-
-@dataclass
-class QuestionAnalysis:
-    """Domain label, difficulty band, and numeric difficulty score in [0, 1]."""
-
-    domain: str
-    difficulty: str
-    difficulty_score: float = 0.0
+class _GenerateClient(Protocol):
+    def post(self, url: str, *, json: dict, timeout: float) -> httpx.Response:
+        """POST one generate request. Implementations must not retry."""
 
 
 class QuestionAnalyzer:
-    """Estimates domain and difficulty from interpretable text features.
+    """Classify a question with the heuristic or with one Ollama call."""
 
-    difficulty_score is rounded to SCORE_DECIMALS and then cut into the band
-    stored on ``difficulty``. The number is a heuristic rank in [0, 1], not a
-    probability and not a calibrated difficulty parameter.
-    """
+    def __init__(
+        self,
+        *,
+        mode: str | None = None,
+        ollama_url: str | None = None,
+        model: str | None = None,
+        timeout_seconds: float | None = None,
+        client: _GenerateClient | None = None,
+        environ: Mapping[str, str] | None = None,
+    ) -> None:
+        env = os.environ if environ is None else environ
+        self.mode = _resolve_mode(mode, env)
+        self.ollama_url = _resolve_url(ollama_url, env)
+        self.model = _resolve_model(model, env)
+        self.timeout_seconds = _resolve_timeout(timeout_seconds, env)
+        self._client = client
 
     def analyze(self, question: str) -> QuestionAnalysis:
-        words = question.split()
-        lowered = question.lower()
-        tokens = _tokenize(question)
+        """Return domain, difficulty, and difficulty_score for ``question``.
 
-        length_score = min(len(words) / LENGTH_SATURATION_WORDS, 1.0)
+        Blank text raises ``ValueError``. A non-string raises ``TypeError``.
+        Both happen before any network call. Ollama failures that are
+        transport, HTTP, or schema problems return the heuristic result
+        with ``analysis_method`` ``heuristic_fallback``.
+        """
+        if not isinstance(question, str):
+            raise TypeError("question must be a string")
+        if question.strip() == "":
+            raise ValueError("question must not be blank")
+        if self.mode == "heuristic":
+            return heuristic_analysis(question)
+        try:
+            assessment = self._assess(question)
+        except httpx.TimeoutException:
+            return _fallback(question, "timeout")
+        except httpx.HTTPError:
+            return _fallback(question, "http_error")
+        except AnalyzerResponseError as exc:
+            return _fallback(question, exc.code)
+        return _from_assessment(assessment)
 
-        clause_hits = lowered.count("?") + lowered.count(";")
-        clause_hits += sum(
-            1 for sep in (" and ", " also ", " additionally ") if sep in lowered
-        )
-        clause_score = min(clause_hits / CLAUSE_SATURATION, 1.0)
+    def _assess(self, question: str) -> ModelAssessment:
+        body = build_generate_body(question, self.model)
+        response = self._post(body)
+        if response.status_code < 200 or response.status_code >= 300:
+            raise httpx.HTTPStatusError(
+                "analyzer request failed",
+                request=httpx.Request("POST", self.ollama_url),
+                response=response,
+            )
+        try:
+            envelope = response.json()
+        except ValueError:
+            # httpx raises JSONDecodeError, a ValueError, for a non-JSON body.
+            raise AnalyzerResponseError("malformed_envelope") from None
+        return validate_assessment(parse_envelope(envelope))
 
-        reasoning_hits = sum(
-            1 for keyword in REASONING_KEYWORDS if _contains_keyword(tokens, keyword)
-        )
-        reasoning_score = min(reasoning_hits / REASONING_SATURATION, 1.0)
+    def _post(self, body: dict) -> httpx.Response:
+        if self._client is not None:
+            return self._client.post(
+                self.ollama_url,
+                json=body,
+                timeout=self.timeout_seconds,
+            )
+        with httpx.Client(timeout=self.timeout_seconds) as client:
+            return client.post(self.ollama_url, json=body)
 
-        term_hits = sum(
-            1
-            for keywords in DOMAIN_KEYWORDS.values()
-            for keyword in keywords
-            if _contains_keyword(tokens, keyword)
-        )
-        domain_score = min(term_hits / DOMAIN_TERM_SATURATION, 1.0)
 
-        raw_score = (
-            FEATURE_WEIGHTS["length"] * length_score
-            + FEATURE_WEIGHTS["clauses"] * clause_score
-            + FEATURE_WEIGHTS["reasoning"] * reasoning_score
-            + FEATURE_WEIGHTS["domain_terms"] * domain_score
-        )
-        score = round(min(max(raw_score, 0.0), 1.0), SCORE_DECIMALS)
+def _fallback(question: str, reason: str) -> QuestionAnalysis:
+    return heuristic_analysis(
+        question,
+        analysis_method="heuristic_fallback",
+        fallback_reason=reason,
+    )
 
-        return QuestionAnalysis(
-            domain=_domain(tokens),
-            difficulty=_difficulty_band(score),
-            difficulty_score=score,
-        )
+
+def _from_assessment(assessment: ModelAssessment) -> QuestionAnalysis:
+    return QuestionAnalysis(
+        domain=assessment.domain,
+        difficulty=assessment.band(),
+        difficulty_score=assessment.score(),
+        subject=assessment.subject,
+        domain_candidates=list(assessment.domain_candidates),
+        domain_status=assessment.domain_status,
+        verification_types=list(assessment.verification_types),
+        analysis_method="ollama",
+        fallback_reason=None,
+        rubric_ratings={
+            "reasoning_depth": assessment.reasoning_depth,
+            "evidence_burden": assessment.evidence_burden,
+            "constraint_interactions": assessment.constraint_interactions,
+        },
+    )
+
+
+def _resolve_mode(mode: str | None, env: Mapping[str, str]) -> str:
+    if mode is not None:
+        chosen = mode.strip().lower()
+    elif "ANALYZER_MODE" in env:
+        chosen = env["ANALYZER_MODE"].strip().lower()
+    else:
+        chosen = "heuristic"
+    if chosen not in _MODES:
+        raise ValueError("ANALYZER_MODE must be 'heuristic' or 'ollama'")
+    return chosen
+
+
+def _resolve_url(url: str | None, env: Mapping[str, str]) -> str:
+    chosen = url if url is not None else env.get("OLLAMA_URL", _DEFAULT_OLLAMA_URL)
+    if not isinstance(chosen, str):
+        raise ValueError("OLLAMA_URL must be an http(s) URL")
+    chosen = chosen.strip()
+    parsed = urlparse(chosen)
+    if parsed.scheme not in {"http", "https"} or parsed.netloc == "":
+        raise ValueError("OLLAMA_URL must be an http(s) URL")
+    return chosen
+
+
+def _resolve_model(model: str | None, env: Mapping[str, str]) -> str:
+    if model is not None:
+        chosen = model.strip()
+    else:
+        chosen = _blank_as_missing(env.get("ANALYZER_MODEL"))
+        if chosen is None:
+            chosen = _blank_as_missing(env.get("OLLAMA_MODEL")) or _DEFAULT_MODEL
+    if chosen == "":
+        raise ValueError("ANALYZER_MODEL must be a non-empty model name")
+    return chosen
+
+
+def _resolve_timeout(timeout_seconds: float | None, env: Mapping[str, str]) -> float:
+    if timeout_seconds is not None:
+        value = float(timeout_seconds)
+    elif "ANALYZER_TIMEOUT_SECONDS" in env:
+        raw = env["ANALYZER_TIMEOUT_SECONDS"].strip()
+        try:
+            value = float(raw)
+        except ValueError:
+            raise ValueError(
+                "ANALYZER_TIMEOUT_SECONDS must be a positive finite number"
+            ) from None
+    else:
+        value = _DEFAULT_TIMEOUT_SECONDS
+    if not math.isfinite(value) or value <= 0:
+        raise ValueError("ANALYZER_TIMEOUT_SECONDS must be a positive finite number")
+    return value
+
+
+def _blank_as_missing(value: str | None) -> str | None:
+    if value is None:
+        return None
+    stripped = value.strip()
+    if stripped == "":
+        return None
+    return stripped
