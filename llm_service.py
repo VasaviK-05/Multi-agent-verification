@@ -26,6 +26,8 @@ answer verification system.
 
 Answer the following question clearly and accurately.
 
+For questions requiring a numeric, boolean, date, URL, email, or other structured answer, provide the answer in the simplest valid form without unnecessary explanation.
+
 Question:
 
 {question}

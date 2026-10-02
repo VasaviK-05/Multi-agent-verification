@@ -14,14 +14,23 @@ class EvidenceVerifier(BaseVerifier):
     """Verifies an answer against retrieved evidence using NLI."""
 
     NLI_MODEL = "cross-encoder/nli-deberta-v3-small"
+class EvidenceVerifier(BaseVerifier):
+    """Verifies an answer against retrieved evidence using NLI."""
+
+    NLI_MODEL = "cross-encoder/nli-deberta-v3-small"
 
     def __init__(
         self,
         corpus_path: str = "data/evidence_corpus.json",
         top_k: int = 3,
-        
+        index_path: str = "data/evidence_index/faiss.index",
+        chunks_path: str = "data/evidence_index/chunks.json",
     ) -> None:
-        self.retriever = EvidenceRetriever(corpus_path=corpus_path)
+        self.retriever = EvidenceRetriever(
+            corpus_path=corpus_path,
+            index_path=index_path,
+            chunks_path=chunks_path,
+        )
         self.top_k = top_k
         self.claim_generator = ClaimGenerator()
         self.nli = pipeline(

@@ -165,8 +165,12 @@ function App() {
     return Math.round(score * 100);
   };
 
-  const getStatusClass = (passed) => {
-    return passed ? "passed" : "failed";
+  const getStatusClass = (verifier) => {
+    if (verifier.metadata?.pipeline_role === "abstention") {
+      return "abstained";
+    }
+
+    return verifier.passed ? "passed" : "failed";
   };
 
   return (
@@ -219,7 +223,6 @@ function App() {
             </div>
           )}
         </div>
-
       </aside>
 
       <main className="main-content">
@@ -262,11 +265,11 @@ function App() {
                   )}
 
                   {answer && (
-                   <div className="message ai-message">
-                     <div className="ai-response">
-                       {answer}
-                     </div>
-                   </div>
+                    <div className="message ai-message">
+                      <div className="ai-response">
+                        {answer}
+                      </div>
+                    </div>
                   )}
 
                   {answer && (
@@ -276,10 +279,10 @@ function App() {
                       </div>
 
                       <div className="context-hint">
-                       Optional — it can help the verification agents
-                       assess the answer.
-                     </div>
-                   </div>
+                        Optional — it can help the verification agents
+                        assess the answer.
+                      </div>
+                    </div>
                   )}
                 </div>
               )}
@@ -385,51 +388,57 @@ function App() {
               <h2>Verifier Results</h2>
 
               <div className="verifier-grid">
-                {result?.results?.map((verifier, index) => (
-                  <div
-                    className="verifier-card"
-                    key={index}
-                  >
-                    <div className="verifier-top">
-                      <h3>
-                        {verifier.verifier_name}
-                      </h3>
+                {result?.results
+                  ?.filter(
+                    (verifier) =>
+                      verifier.metadata?.pipeline_role === "vote"
+                  )
+                  .map((verifier, index) => (
+                    <div
+                      className="verifier-card"
+                      key={index}
+                    >
+                      <div className="verifier-top">
+                        <h3>
+                          {verifier.verifier_name}
+                        </h3>
 
-                      <span
-                        className={`status-badge ${
-                          getStatusClass(verifier.passed)
-                        }`}
-                      >
-                        {verifier.passed
-                          ? "Passed"
-                          : "Failed"}
-                      </span>
-                    </div>
+                        <span
+                          className={`status-badge ${getStatusClass(
+                            verifier
+                          )}`}
+                        >
+                          {verifier.metadata?.pipeline_role ===
+                          "abstention"
+                            ? "Abstained"
+                            : verifier.passed
+                            ? "Passed"
+                            : "Failed"}
+                        </span>
+                      </div>
 
-                    <div className="score-number">
-                      {getScorePercentage(verifier.score)}%
-                    </div>
+                      <div className="score-number">
+                        {getScorePercentage(verifier.score)}%
+                      </div>
 
-                    <div className="score-bar">
-                      <div
-                        className="score-fill"
-                        style={{
-                          width: `${
-                            getScorePercentage(
+                      <div className="score-bar">
+                        <div
+                          className="score-fill"
+                          style={{
+                            width: `${getScorePercentage(
                               verifier.score
-                            )
-                          }%`,
-                        }}
-                      ></div>
-                    </div>
+                            )}%`,
+                          }}
+                        ></div>
+                      </div>
 
-                    {verifier.reasoning && (
-                      <p className="reasoning">
-                        {verifier.reasoning}
-                      </p>
-                    )}
-                  </div>
-                ))}
+                      {verifier.reasoning && (
+                        <p className="reasoning">
+                          {verifier.reasoning}
+                        </p>
+                      )}
+                    </div>
+                  ))}
               </div>
             </div>
 
@@ -442,7 +451,8 @@ function App() {
                 <div className="final-score">
                   {getScorePercentage(
                     result?.final_score
-                  )}%
+                  )}
+                  %
                 </div>
               </div>
 
