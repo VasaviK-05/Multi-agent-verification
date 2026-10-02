@@ -68,17 +68,18 @@ At cold start every `R` is 0.5. When `verification_types` is empty, ranking foll
 
 ### Reputation
 
-For each verifier and domain, with positive evidence `r` and negative evidence `s`:
+For each verifier and domain, successes `r` and failures `s` are integer counts. With the default prior:
 
 ```
 alpha = 1 + r
 beta  = 1 + s
 R     = alpha / (alpha + beta) = (r + 1) / (r + s + 2)
+variance = alpha * beta / ((alpha + beta)^2 * (alpha + beta + 1))
 ```
 
-Cold start is `r = s = 0`, so `R = 0.5`, and only for that pair. Another domain is not copied.
+`r` and `s` are stored. The observation count is `r + s`. It is not computed by subtracting the prior from alpha and beta. Cold start is `r = s = 0`, so `R = 0.5`, and only for that pair. Another domain is not copied. `R` and the variance are a Beta–Bernoulli belief about the verifier. They are not the probability that an answer is correct.
 
-A later label updates one pair:
+A later external boolean updates one pair:
 
 ```
 verifier_correct = (verifier_passed == answer_is_correct)
@@ -86,7 +87,11 @@ verifier_correct → r += 1
 otherwise        → s += 1
 ```
 
-`answer_is_correct` has to be a boolean from outside the system. The status string from `decide` is not accepted. A caller that sets the update source to anything other than `ground_truth` is rejected. `validate` does not call the update.
+Rejecting an incorrect answer is a success. `answer_is_correct` has to be a boolean from outside the system. The status string from `decide`, a consensus, a confidence score, and a reference-answer string are not labels. `validate` does not call the update. Abstentions and verifiers that did not run add no observation.
+
+`update_reputation` and `update_from_ground_truth` have no validation identity, so a repeated call is another observation. On those methods the source tag must be the string `ground_truth`. Any other tag is refused. The tag is caller metadata, not authentication and not proof that the boolean is true.
+
+`record_feedback` binds the boolean, the original domain, and the executed votes to a validation id. The same delivery again does nothing. A different label or vote list for an id that is already stored is rejected and does not change counts. Changing a stored label needs a future correction workflow. Two validations of the same question text are different ids. The orchestrator stores each run's domain with that id. Feedback for an earlier run does not use the domain of a later run. See `docs/reputation_integration.md`.
 
 ### Decision score
 

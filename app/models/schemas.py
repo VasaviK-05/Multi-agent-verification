@@ -24,8 +24,14 @@ class VerificationResult(BaseModel):
 
 
 class ValidationResponse(BaseModel):
-    """Aggregated validation response returned to the client."""
+    """Aggregated validation response returned to the client.
+
+    ``validation_id`` and ``domain`` identify the run for a later label.
+    They are empty when a caller builds a response without the orchestrator.
+    """
 
     results: list[VerificationResult]
     final_status: str
     final_score: Optional[float] = None
+    validation_id: Optional[str] = None
+    domain: Optional[str] = None

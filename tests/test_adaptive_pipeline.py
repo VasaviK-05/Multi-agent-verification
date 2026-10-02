@@ -233,6 +233,174 @@ def test_supported_rule_rejection_stops_with_a_fail():
     assert semantic.calls == 0
 
 
+def test_delayed_feedback_uses_the_original_validation_domain():
+    class SwitchingAnalyzer(QuestionAnalyzer):
+        def analyze(self, question: str) -> QuestionAnalysis:
+            domain = "medical" if question == "A" else "technical"
+            return QuestionAnalysis(domain, "easy", 0.0)
+
+    stubs = _named(score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=SwitchingAnalyzer(),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    first = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    assert manager.observation_count("rule", "medical") == 0
+    second = orchestrator.validate(ValidationRequest(question="B", answer="b"))
+    assert first.domain == "medical"
+    assert second.domain == "technical"
+    assert first.validation_id != second.validation_id
+    applied = orchestrator.record_ground_truth(
+        first.results,
+        False,
+        validation_id=first.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("rule", "medical") == 1
+    assert manager.is_cold_start("rule", "technical")
+    replay = orchestrator.record_ground_truth(
+        first.results,
+        False,
+        validation_id=first.validation_id,
+    )
+    assert replay == 0
+    assert manager.observation_count("rule", "medical") == 1
+    try:
+        orchestrator.record_ground_truth(
+            first.results,
+            True,
+            domain="technical",
+            validation_id=first.validation_id,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.statistics("rule", "medical").failures == 1
+    assert manager.is_cold_start("rule", "technical")
+
+
+def test_snapshot_and_result_identity_protect_delayed_feedback():
+    stubs = _named(score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    first = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    orchestrator._question_analyzer.analysis = QuestionAnalysis("technical", "easy", 0.0)
+    second = orchestrator.validate(ValidationRequest(question="B", answer="b"))
+    stored = orchestrator._contexts[first.validation_id].results[0]
+    original_passed = stored.passed
+    original_name = stored.verifier_name
+    first.results[0].passed = not original_passed
+    first.results[0].verifier_name = "renamed"
+    first.results[0].metadata["rule"] = "unsupported"
+    assert stored.passed is original_passed
+    assert stored.verifier_name == original_name
+    assert stored.metadata.get("rule") != "unsupported"
+    viewed = orchestrator.validation_context(first.validation_id)
+    viewed.results[0].metadata["rule"] = "unsupported"
+    viewed.results[0].passed = not original_passed
+    assert orchestrator._contexts[first.validation_id].results[0].metadata.get("rule") != "unsupported"
+    assert manager.is_cold_start("rule", "medical")
+    try:
+        orchestrator.record_ground_truth(
+            first.results,
+            False,
+            validation_id=first.validation_id,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.is_cold_start("rule", "medical")
+
+    applied = orchestrator.record_ground_truth(second.results, True)
+    assert applied == 1
+    assert manager.observation_count("rule", "technical") == 1
+    assert manager.is_cold_start("rule", "medical")
+    clone = [result.model_copy(deep=True) for result in second.results]
+    try:
+        orchestrator.record_ground_truth(clone, True)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.observation_count("rule", "technical") == 1
+    assert orchestrator.record_ground_truth(clone, True, domain="general") == 1
+    assert orchestrator.record_ground_truth(clone, True, domain="general") == 1
+    assert manager.observation_count("rule", "general") == 2
+    assert manager.observation_count("rule", "technical") == 1
+    try:
+        orchestrator.record_ground_truth(second.results, True, validation_id="missing")
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    try:
+        orchestrator.record_ground_truth(
+            second.results,
+            False,
+            domain="medical",
+            validation_id=second.validation_id,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert orchestrator.record_ground_truth(
+        second.results,
+        True,
+        validation_id=second.validation_id,
+    ) == 0
+    assert manager.observation_count("rule", "technical") == 1
+    try:
+        orchestrator.record_ground_truth(
+            [first.results[0], second.results[0]],
+            True,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+
+
+def test_mismatched_binding_slot_does_not_resolve_a_different_object():
+    stubs = _named(score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    response = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    original = response.results[0]
+    lookalike = original.model_copy(deep=True)
+    orchestrator._result_binding[id(lookalike)] = (original, response.validation_id)
+    viewed = orchestrator.validation_context(response.validation_id)
+    retained, bound_id = orchestrator._result_binding[id(original)]
+    assert retained is original
+    assert bound_id == response.validation_id
+    assert viewed.results[0] is not retained
+    assert viewed.results[0] is not orchestrator._contexts[response.validation_id].results[0]
+    try:
+        orchestrator.record_ground_truth([lookalike], True)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.observation_count("rule", "medical") == 0
+    assert orchestrator.record_ground_truth(response.results, True) == 1
+    assert manager.observation_count("rule", "medical") == 1
+
+
 def test_verification_types_change_the_ranked_pipeline_order():
     stubs = _named(score=0.9)
     by_name = {stub.name: stub for stub in stubs}
