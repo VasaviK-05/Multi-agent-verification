@@ -186,6 +186,31 @@ class ReputationManager:
         with self._lock:
             return self._statistics_unlocked(verifier_name, domain)
 
+    def statistics_batch(
+        self,
+        pairs: Sequence[tuple[str, str]],
+    ) -> tuple[ReputationStatistics, ...]:
+        """Return detached statistics for each pair under one lock acquisition.
+
+        The result follows ``pairs`` in order. This read does not change
+        counts or feedback. It is atomic in this process, not a
+        multi-process or database transaction.
+        """
+        if isinstance(pairs, (str, bytes)) or not isinstance(pairs, Sequence):
+            raise TypeError("pairs must be a sequence of (verifier_name, domain) pairs")
+        requested: list[tuple[str, str]] = []
+        for item in pairs:
+            if not isinstance(item, tuple) or len(item) != 2:
+                raise TypeError(
+                    "each statistics request must be a (verifier_name, domain) pair"
+                )
+            requested.append(item)
+        with self._lock:
+            return tuple(
+                self._statistics_unlocked(verifier_name, domain)
+                for verifier_name, domain in requested
+            )
+
     def _statistics_unlocked(self, verifier_name: str, domain: str) -> ReputationStatistics:
         _require_identifier("verifier_name", verifier_name)
         _require_identifier("domain", domain)

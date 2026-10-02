@@ -227,6 +227,7 @@ def test_supported_rule_rejection_stops_with_a_fail():
     assert result.metadata["pipeline_role"] == "vote"
     assert result.passed is False
     assert result.score == 0.0
+    assert "deterministic" in result.metadata["pipeline_note"]
     assert "confidence 1" in result.metadata["pipeline_note"]
     assert response.final_status == "failed"
     assert response.final_score < -0.55
@@ -451,6 +452,98 @@ def test_type_preferred_abstention_still_falls_through_to_the_next_ranked_verifi
     assert response.results[1].metadata["pipeline_role"] == "vote"
     assert semantic.calls == 0
     assert confidence.calls == 0
+
+
+def test_unrelated_rule_metadata_keeps_the_score_explanation():
+    semantic = _RuleLabeledSemantic()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.0)),
+        verifier_selector=VerifierSelector(verifiers=[semantic]),
+    )
+    response = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    result = response.results[0]
+    note = result.metadata["pipeline_note"]
+    assert result.verifier_name == "semantic"
+    assert result.metadata["rule"] == "arithmetic_addition"
+    assert "deterministic" not in note
+    assert "0.4000" in note
+    assert response.final_score == 0.4
+
+
+class _RuleLabeledSemantic(StubVerifier):
+    def __init__(self) -> None:
+        super().__init__("semantic", passed=True, score=0.4)
+
+    def verify(
+        self,
+        question: str,
+        answer: str,
+        context: str | None = None,
+    ) -> VerificationResult:
+        self.calls += 1
+        return VerificationResult(
+            verifier_name="semantic",
+            score=0.4,
+            passed=True,
+            reasoning="compared",
+            metadata={"rule": "arithmetic_addition"},
+        )
+
+
+def test_tied_confidence_is_not_a_vote_and_does_not_learn():
+    confidence = _TiedConfidence()
+    semantic = StubVerifier("semantic", passed=True, score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        verifier_selector=VerifierSelector(
+            reputation_manager=manager,
+            verifiers=[confidence, semantic],
+            verifier_profiles={
+                "confidence": {"cost": 0.0, "latency": 0.0},
+                "semantic": {"cost": 1.0, "latency": 1.0},
+            },
+        ),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    response = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    assert [result.verifier_name for result in response.results] == ["confidence", "semantic"]
+    assert response.results[0].metadata["pipeline_role"] == "abstention"
+    assert "tied" in response.results[0].metadata["pipeline_note"]
+    assert response.results[1].metadata["pipeline_role"] == "vote"
+    applied = orchestrator.record_ground_truth(
+        response.results,
+        True,
+        validation_id=response.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("confidence", "medical") == 0
+    assert manager.observation_count("semantic", "medical") == 1
+    assert orchestrator.decision_engine.reputation_manager is manager
+
+
+class _TiedConfidence(StubVerifier):
+    def __init__(self) -> None:
+        super().__init__("confidence", passed=True, score=1.0)
+
+    def verify(
+        self,
+        question: str,
+        answer: str,
+        context: str | None = None,
+    ) -> VerificationResult:
+        self.calls += 1
+        return VerificationResult(
+            verifier_name="confidence",
+            score=1.0,
+            passed=True,
+            reasoning="Majority judgment: support. Agreement: 1/2.",
+            metadata={
+                "judgments": ["support", "reject"],
+                "majority_label": "support",
+            },
+        )
 
 
 class _AbstainingStub(StubVerifier):

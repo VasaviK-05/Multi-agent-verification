@@ -95,7 +95,7 @@ Rejecting an incorrect answer is a success. `answer_is_correct` has to be a bool
 
 ### Decision score
 
-An abstention contributes nothing. Informative results use confidence `s` in [0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(1e-6, 1 - 1e-6)`:
+An abstention contributes nothing. Informative results use confidence `s` in [0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(eps, 1 - eps)`. The default `eps` is `1e-6`. An `eps` so small that `1 - eps` rounds to `1` is rejected before the division:
 
 ```
 w    = log(p / (1 - p))
@@ -115,15 +115,17 @@ score = sum(mass_i) / n                   when every w_i is 0
 
 The absolute value in the denominator is required. Dividing by `sum(w_i)` would flip the sign back and undo inversion from `p < 0.5`.
 
-The score is clipped to [-1, 1] and rounded to 6 decimals.
+The raw score is clipped to [-1, 1]. Status uses that unrounded value and a threshold that is finite and strictly between 0 and 1. The default is 0.55. `decide` returns the raw score rounded to 6 decimals, so the displayed score can equal the threshold after the raw score has already crossed it. Status still follows the raw comparison.
 
 ```
-score >  0.55 → passed
-score < -0.55 → failed
-otherwise     → uncertain
+raw >  threshold → passed
+raw < -threshold → failed
+otherwise        → uncertain
 ```
 
 The abstention band is symmetric about 0. A positive cut pair such as "above 0.55 pass, below 0.45 fail" would mark a tie at 0 as a failure, because that pair assumes a score centered near one half. This score is centered at 0.
+
+`p` is the six-decimal reputation from one batch read of the requested verifier/domain pairs. That read does not update reputation. Weights use those rounded means, the same values `get_reputation` returns.
 
 No results → `unknown` and score `0`. That zero means "no score". An `uncertain` zero means the weighted votes cancelled, every verifier abstained, or the score landed in the middle band. Neither number is a probability of a correct answer.
 
@@ -131,7 +133,7 @@ No results → `unknown` and score `0`. That zero means "no score". An `uncertai
 
 | Verifier | Raw `score` | How the decision reads it |
 | --- | --- | --- |
-| rule, `metadata.rule` set and not `unsupported` | `1` if the rule passed, `0` if it failed | Deterministic vote. Confidence is 1, so a failure is mass `-1`, not `0`. |
+| rule, `metadata.rule` set and not `unsupported` | `1` if the rule passed, `0` if it failed | Deterministic vote, and only when the verifier name is `rule`. Confidence is 1, so a failure is mass `-1`, not `0`. The same metadata on another verifier does not grant confidence 1. |
 | rule, `metadata.rule == "unsupported"` | `0`, `passed` false | Abstention. Not evidence that the answer is wrong. |
 | semantic, no reference context | `0`, `passed` false | Abstention. |
 | semantic, with context | cosine similarity | Confidence of the `passed` vote. |
@@ -139,7 +141,9 @@ No results → `unknown` and score `0`. That zero means "no score". An `uncertai
 | evidence, NLI label `neutral` | confidence in that label | Abstention. Neutral is not a contradiction. |
 | evidence, entailment or contradiction | NLI confidence of that label | Confidence of the pass or reject vote. |
 | confidence, no judgments | `0`, `passed` false | Abstention. |
-| confidence, majority `support` or `reject` | agreement fraction | Confidence of that vote. |
+| confidence, tied highest judgment count | agreement fraction stored by the verifier | Abstention, in either judgment order. Not a pass or a reject. |
+| confidence, unique majority `support` or `reject` | agreement fraction | Confidence of that vote. |
+| any verifier, score outside [0, 1] or non-finite | not a usable vote | Rejected. Not clipped into a confidence. |
 
 ### Fallback when a verifier abstains
 
@@ -181,7 +185,7 @@ These are local choices. They are not the published procedures above, and they a
 - A linear penalty on hand-written cost and latency estimates, plus an uncalibrated suitability bonus from `verification_types`, and running the highest utility first.
 - Mapping the in-band score position onto a `(min, max)` count with half-up rounding.
 - Reading a supported rule's 0/1 score as a deterministic vote (confidence 1), and treating unsupported rules, missing semantic context, non-directional evidence, and missing confidence judgments as abstentions.
-- Multiplying the log-odds weight by that confidence, then abstaining when the signed score is inside [-0.55, 0.55].
+- Multiplying the log-odds weight by that confidence, then abstaining when the unrounded signed score is inside [-threshold, threshold]. The default threshold is 0.55. The returned score is rounded to 6 decimals after that comparison.
 - After an abstention, consulting the next verifier in utility order and recording why in `pipeline_note`.
 - On an all-zero weight vector, using the equal-weight mean of `confidence * vote` instead of abstaining immediately. Verifiers with weight 0 are ignored when any other weight is nonzero.
 - Not folding the cost estimate into the decision score a second time. Cost affects who is selected.

@@ -8,7 +8,11 @@ from uuid import uuid4
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.decision.decision_engine import DecisionEngine
 from app.decision.early_termination import AdaptiveEarlyTermination
-from app.decision.vote_normalization import is_abstention, vote_confidence
+from app.decision.vote_normalization import (
+    confidence_judgment_tie,
+    is_abstention,
+    vote_confidence,
+)
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
@@ -342,7 +346,11 @@ def _annotate(
                 + " abstained. "
             )
         rule = metadata.get("rule")
-        if isinstance(rule, str) and rule != "unsupported":
+        if (
+            result.verifier_name == "rule"
+            and isinstance(rule, str)
+            and rule != "unsupported"
+        ):
             scale = (
                 f"Supported rule '{rule}' is deterministic, so the decision uses "
                 f"confidence {confidence:.0f} rather than the stored score {result.score}."
@@ -359,7 +367,7 @@ def _annotate(
 
 def _abstention_reason(result: VerificationResult) -> str:
     metadata = result.metadata or {}
-    if metadata.get("rule") == "unsupported":
+    if result.verifier_name == "rule" and metadata.get("rule") == "unsupported":
         return "no supported rule matched the question"
     if result.verifier_name == "semantic":
         return "no reference context"
@@ -369,5 +377,7 @@ def _abstention_reason(result: VerificationResult) -> str:
             return "retrieved evidence was neutral, not a contradiction"
         return "no evidence was retrieved"
     if result.verifier_name == "confidence":
+        if confidence_judgment_tie(result):
+            return "the highest judgment counts were tied"
         return "no verification judgments"
     return "the verifier did not cast a vote"

@@ -467,6 +467,73 @@ def test_feedback_batch_does_not_consume_ids_when_a_later_pair_fails():
     assert manager.observation_count("rule", "general") == 2**53
 
 
+def test_statistics_batch_is_one_locked_read():
+    import threading
+
+    manager = ReputationManager()
+    manager.update_reputation("semantic", "general", True)
+    entered = threading.Event()
+    release = threading.Event()
+    original = manager._statistics_unlocked
+    errors: list[BaseException] = []
+
+    def wrapped(verifier_name: str, domain: str):
+        stats = original(verifier_name, domain)
+        if verifier_name == "semantic":
+            entered.set()
+            if not release.wait(5):
+                raise TimeoutError("batch reader was not released")
+        return stats
+
+    manager._statistics_unlocked = wrapped
+    outcome: dict = {}
+
+    def read() -> None:
+        try:
+            outcome["stats"] = manager.statistics_batch(
+                (("semantic", "general"), ("rule", "general"))
+            )
+        except BaseException as exc:
+            errors.append(exc)
+
+    reader = threading.Thread(target=read)
+    held = False
+    try:
+        reader.start()
+        assert entered.wait(5)
+        held = manager._lock.acquire(blocking=False)
+        assert held is False
+        release.set()
+        reader.join(5)
+        assert not reader.is_alive()
+        assert errors == []
+        snapshot = outcome["stats"]
+        assert snapshot[0].successes == 1
+        assert snapshot[1].observation_count == 0
+        assert snapshot[0] is not manager.statistics("semantic", "general")
+        held = manager._lock.acquire(blocking=False)
+        assert held is True
+        manager._lock.release()
+        held = False
+        manager.update_reputation("semantic", "general", True)
+        assert snapshot[0].successes == 1
+        assert manager.observation_count("semantic", "general") == 2
+        before = manager.export_state()
+        with pytest.raises(TypeError):
+            manager.statistics_batch("semantic")  # type: ignore[arg-type]
+        with pytest.raises(TypeError):
+            manager.statistics_batch((("semantic",),))  # type: ignore[arg-type]
+        with pytest.raises(ValueError):
+            manager.statistics_batch((("", "general"),))
+        assert manager.export_state() == before
+    finally:
+        release.set()
+        if reader.is_alive():
+            reader.join(5)
+        if held:
+            manager._lock.release()
+
+
 def test_status_string_is_not_a_label():
     manager = ReputationManager()
     try:

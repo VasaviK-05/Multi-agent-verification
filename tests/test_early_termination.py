@@ -102,6 +102,24 @@ def test_supported_rule_rejection_can_stop_on_easy():
     assert decision["terminate"] is True
 
 
+def test_tied_confidence_judgments_do_not_stop_early():
+    stopper = AdaptiveEarlyTermination()
+    analysis = QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.0)
+    tied = VerificationResult(
+        verifier_name="confidence",
+        score=1.0,
+        passed=True,
+        reasoning="Majority judgment: support. Agreement: 1/2.",
+        metadata={
+            "judgments": ["support", "reject"],
+            "majority_label": "support",
+        },
+    )
+    decision = stopper.should_terminate([tied], analysis, min_verifiers=1)
+    assert decision["terminate"] is False
+    assert "informative" in decision["reason"]
+
+
 def test_default_minima_match_the_selector_ranges():
     from app.decision.early_termination import MIN_VERIFIERS_BY_DIFFICULTY
     from app.selection.verifier_selector import DEFAULT_DIFFICULTY_RANGE
