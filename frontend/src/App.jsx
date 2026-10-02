@@ -1,268 +1,413 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = "http://127.0.0.1:8000";
 
 function App() {
-  const [question, setQuestion] = useState('')
-  const [answer, setAnswer] = useState('')
-  const [context, setContext] = useState('')
-  const [result, setResult] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [generating, setGenerating] = useState(false)
-  const [error, setError] = useState('')
+  const [question, setQuestion] = useState("");
+  const [submittedQuestion, setSubmittedQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [context, setContext] = useState("");
+
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [error, setError] = useState("");
+
+  const [history, setHistory] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  const handleQuestionChange = (e) => {
+    const textarea = e.target;
+
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+
+    setQuestion(textarea.value);
+  };
+
+  const handleContextChange = (e) => {
+    const textarea = e.target;
+
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+
+    setContext(textarea.value);
+  };
+
+  const enterPresentationMode = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.error("Fullscreen mode could not be enabled:", error);
+    }
+  };
+
+  const startNewChat = () => {
+    setQuestion("");
+    setSubmittedQuestion("");
+    setAnswer("");
+    setContext("");
+    setResult(null);
+    setError("");
+    setShowResults(false);
+  };
 
   const generateAnswer = async () => {
     if (!question.trim()) {
-      setError('Please enter a question first.')
-      return
+      setError("Please enter a question first.");
+      return;
     }
 
-    setGenerating(true)
-    setError('')
-    setAnswer('')
-    setResult(null)
+    setGenerating(true);
+    setError("");
 
     try {
       const response = await fetch(`${API_URL}/generate-answer`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           question: question.trim(),
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`Server returned ${response.status}`)
+        throw new Error("Failed to generate answer.");
       }
 
-      const data = await response.json()
+      const data = await response.json();
 
-      setAnswer(data.answer)
+      setSubmittedQuestion(question.trim());
+      setAnswer(data.answer || "");
     } catch (err) {
-      setError(
-        'Could not generate an answer. Make sure the FastAPI backend and Ollama are running.'
-      )
+      setError(err.message || "Unable to generate answer.");
     } finally {
-      setGenerating(false)
+      setGenerating(false);
     }
-  }
+  };
 
-  const validateAnswer = async (e) => {
-    e.preventDefault()
-
+  const validateAnswer = async (providedContext = "") => {
     if (!question.trim() || !answer.trim()) {
-      setError('Please enter a question and generate or enter an answer.')
-      return
+      setError("Question and answer are required.");
+      return;
     }
 
-    setLoading(true)
-    setError('')
-    setResult(null)
+    setLoading(true);
+    setError("");
 
     try {
       const response = await fetch(`${API_URL}/validate`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          question,
-          answer,
-          context: context.trim() || null,
+          question: question.trim(),
+          answer: answer.trim(),
+          context: providedContext.trim() || null,
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`Server returned ${response.status}`)
+        throw new Error("Validation failed.");
       }
 
-      const data = await response.json()
-      setResult(data)
+      const data = await response.json();
+
+      setResult(data);
+      setShowResults(true);
+
+      const historyItem = {
+        question: question,
+        answer: answer,
+        context: providedContext,
+        result: data,
+      };
+
+      setHistory((prev) => [historyItem, ...prev]);
     } catch (err) {
-      setError(
-        'Could not connect to the validation server. Make sure the FastAPI backend is running.'
-      )
+      setError(err.message || "Unable to validate the answer.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
+
+  const submitContext = async () => {
+    await validateAnswer(context);
+  };
+
+  const skipContext = async () => {
+    setContext("");
+    await validateAnswer("");
+  };
+
+  const openHistory = (item) => {
+    setQuestion(item.question);
+    setSubmittedQuestion(item.question);
+    setAnswer(item.answer);
+    setContext(item.context || "");
+    setResult(item.result);
+    setShowResults(true);
+    setError("");
+  };
+
+  const getScorePercentage = (score) => {
+    if (score === null || score === undefined) {
+      return 0;
+    }
+
+    return Math.round(score * 100);
+  };
+
+  const getStatusClass = (passed) => {
+    return passed ? "passed" : "failed";
+  };
 
   return (
     <div className="app">
-      <header className="header">
-        <div>
-          <p className="eyebrow">MULTI-AGENT SYSTEM</p>
-          <h1>Answer Validation Dashboard</h1>
-          <p className="subtitle">
-            Validate AI-generated answers using multiple independent
-            verification agents.
-          </p>
+      <aside className="sidebar">
+        <div className="brand">
+          <div className="brand-mark">
+            <span></span>
+          </div>
+
+          <div className="brand-name">
+            <strong>MAV</strong>
+            <span>Multi-Agent Validator</span>
+          </div>
         </div>
 
-        <div className="status-badge">
-          <span className="status-dot"></span>
-          System Online
-        </div>
-      </header>
+        <button
+          className="new-chat-button"
+          onClick={startNewChat}
+        >
+          <span className="plus">+</span>
+          <span>New Validation</span>
+        </button>
 
-      <main className="dashboard">
-        <section className="input-card">
-          <div className="section-heading">
-            <div>
-              <p className="section-label">VALIDATION REQUEST</p>
-              <h2>Enter an answer to validate</h2>
-            </div>
-          </div>
+        <button
+          className="presentation-button"
+          onClick={enterPresentationMode}
+        >
+          ⛶ Presentation Mode
+        </button>
 
-          <form onSubmit={validateAnswer}>
-            <label htmlFor="question">Question</label>
+        <div className="previous-section">
+          <h3>PREVIOUS QUESTIONS</h3>
 
-            <textarea
-              id="question"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              placeholder="e.g. What is the capital of France?"
-              rows="3"
-            />
-
-            <button
-              className="generate-button"
-              type="button"
-              onClick={generateAnswer}
-              disabled={generating || loading}
-            >
-              {generating ? 'Generating Answer...' : 'Generate Answer'}
-            </button>
-
-            <label htmlFor="answer">Answer</label>
-
-            <textarea
-              id="answer"
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              placeholder="Generate an answer using Llama or enter your own answer..."
-              rows="4"
-            />
-
-            <label htmlFor="context">
-              Context <span>(optional)</span>
-            </label>
-
-            <textarea
-              id="context"
-              value={context}
-              onChange={(e) => setContext(e.target.value)}
-              placeholder="Add supporting context if available..."
-              rows="3"
-            />
-
-            <button
-              className="validate-button"
-              type="submit"
-              disabled={loading || generating}
-            >
-              {loading ? 'Validating...' : 'Validate Answer'}
-            </button>
-          </form>
-
-          {error && <div className="error-message">{error}</div>}
-        </section>
-
-        <section className="flow-card">
-          <div className="section-heading">
-            <div>
-              <p className="section-label">VALIDATION PIPELINE</p>
-              <h2>How the system works</h2>
-            </div>
-          </div>
-
-          <div className="flow">
-            <div className="flow-step">
-              <span>01</span>
-              <strong>Question Analyzer</strong>
-              <small>Analyzes question complexity</small>
-              <em>ANALYSIS</em>
-            </div>
-
-            <div className="flow-arrow">↓</div>
-
-            <div className="flow-step">
-              <span>02</span>
-              <strong>Verifier Selector</strong>
-              <small>Selects suitable verifiers</small>
-              <em>SELECTION</em>
-            </div>
-
-            <div className="flow-arrow">↓</div>
-
-            <div className="flow-step">
-              <span>03</span>
-              <strong>Verifier Agents</strong>
-              <small>Semantic · Evidence · Rule · Confidence</small>
-              <em>VERIFICATION</em>
-            </div>
-
-            <div className="flow-arrow">↓</div>
-
-            <div className="flow-step">
-              <span>04</span>
-              <strong>Decision Engine</strong>
-              <small>Aggregates verification results</small>
-              <em>DECISION</em>
-            </div>
-          </div>
-        </section>
-
-        {result && (
-          <section className="results-section">
-            <div className="result-summary">
-              <div>
-                <p className="section-label">FINAL DECISION</p>
-                <h2>{result.final_status}</h2>
-              </div>
-
-              <div className="score">
-                <span>Final Score</span>
-                <strong>
-                  {typeof result.final_score === 'number'
-                    ? result.final_score.toFixed(2)
-                    : '—'}
-                </strong>
-              </div>
-            </div>
-
-            <div className="verifier-grid">
-              {result.results?.map((verifier) => (
-                <div
-                  className="verifier-card"
-                  key={verifier.verifier_name}
+          {history.length === 0 ? (
+            <p className="empty-history">
+              Your validated questions will appear here.
+            </p>
+          ) : (
+            <div className="history-list">
+              {history.map((item, index) => (
+                <button
+                  key={index}
+                  className="history-item"
+                  onClick={() => openHistory(item)}
                 >
-                  <div className="verifier-header">
-                    <h3>{verifier.verifier_name}</h3>
+                  {item.question}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
-                    <span
-                      className={
-                        verifier.passed
-                          ? 'passed-badge'
-                          : 'failed-badge'
-                      }
-                    >
-                      {verifier.passed ? 'Passed' : 'Failed'}
-                    </span>
+      </aside>
+
+      <main className="main-content">
+        {!showResults ? (
+          <>
+            <div className="page-header">
+              <div className="eyebrow">
+                MULTI-AGENT SYSTEM
+              </div>
+
+              <h1>Answer Validation</h1>
+            </div>
+
+            <div className="chat-container">
+              {!submittedQuestion && !answer ? (
+                <div className="welcome-area">
+                  <div className="welcome-icon brand-mark">
+                    <span></span>
                   </div>
 
-                  <div className="verifier-score">
-                    <div className="score-row">
-                      <span>Verification Score</span>
+                  <h2>Ask a question</h2>
 
-                      <strong>
-                        {typeof verifier.score === 'number'
-                          ? verifier.score.toFixed(2)
-                          : '—'}
-                      </strong>
+                  <p>
+                    Generate an answer with Llama and validate it
+                    using multiple independent agents.
+                  </p>
+                </div>
+              ) : (
+                <div className="conversation">
+                  {submittedQuestion && (
+                    <div className="message user-message">
+                      <div className="message-label">
+                        You
+                      </div>
+
+                      <div className="user-bubble">
+                        {submittedQuestion}
+                      </div>
+                    </div>
+                  )}
+
+                  {answer && (
+                   <div className="message ai-message">
+                     <div className="ai-response">
+                       {answer}
+                     </div>
+                   </div>
+                  )}
+
+                  {answer && (
+                    <div className="message ai-message context-message">
+                      <div className="ai-response context-response">
+                        Do you have any supporting context?
+                      </div>
+
+                      <div className="context-hint">
+                       Optional — it can help the verification agents
+                       assess the answer.
+                     </div>
+                   </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {!answer && (
+              <div className="composer-area">
+                <div className="composer">
+                  <textarea
+                    className="question-composer"
+                    placeholder="Ask a question..."
+                    value={question}
+                    onChange={handleQuestionChange}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        generateAnswer();
+                      }
+                    }}
+                    rows="1"
+                  />
+
+                  <button
+                    className="send-button"
+                    onClick={generateAnswer}
+                    disabled={generating}
+                    title="Generate Answer"
+                  >
+                    {generating ? "..." : "↑"}
+                  </button>
+                </div>
+
+                <p className="composer-hint">
+                  Press Enter to generate an answer
+                </p>
+              </div>
+            )}
+
+            {answer && !loading && (
+              <div className="composer-area context-composer-area">
+                <div className="composer">
+                  <textarea
+                    className="question-composer"
+                    placeholder="Add supporting context (optional)..."
+                    value={context}
+                    onChange={handleContextChange}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        submitContext();
+                      }
+                    }}
+                    rows="1"
+                  />
+
+                  <button
+                    className="send-button"
+                    onClick={submitContext}
+                    title="Validate Answer"
+                  >
+                    ↑
+                  </button>
+                </div>
+
+                <button
+                  className="skip-button"
+                  onClick={skipContext}
+                  disabled={loading}
+                >
+                  Skip & Validate
+                </button>
+
+                <p className="composer-hint">
+                  Press Enter to validate with this context
+                </p>
+              </div>
+            )}
+
+            {loading && (
+              <div className="validation-loading">
+                <span className="loading-dot"></span>
+                Validating your answer...
+              </div>
+            )}
+
+            {error && (
+              <div className="error-message">
+                {error}
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            <div className="results-header">
+              <div className="eyebrow">
+                MULTI-AGENT SYSTEM
+              </div>
+
+              <h1>Validation Results</h1>
+            </div>
+
+            <div className="verifier-section">
+              <h2>Verifier Results</h2>
+
+              <div className="verifier-grid">
+                {result?.results?.map((verifier, index) => (
+                  <div
+                    className="verifier-card"
+                    key={index}
+                  >
+                    <div className="verifier-top">
+                      <h3>
+                        {verifier.verifier_name}
+                      </h3>
+
+                      <span
+                        className={`status-badge ${
+                          getStatusClass(verifier.passed)
+                        }`}
+                      >
+                        {verifier.passed
+                          ? "Passed"
+                          : "Failed"}
+                      </span>
+                    </div>
+
+                    <div className="score-number">
+                      {getScorePercentage(verifier.score)}%
                     </div>
 
                     <div className="score-bar">
@@ -270,38 +415,72 @@ function App() {
                         className="score-fill"
                         style={{
                           width: `${
-                            typeof verifier.score === 'number'
-                              ? verifier.score * 100
-                              : 0
+                            getScorePercentage(
+                              verifier.score
+                            )
                           }%`,
                         }}
-                      />
+                      ></div>
                     </div>
 
-                    <span className="score-percent">
-                      {typeof verifier.score === 'number'
-                        ? `${Math.round(
-                            verifier.score * 100
-                          )}% confidence`
-                        : 'Score unavailable'}
-                    </span>
+                    {verifier.reasoning && (
+                      <p className="reasoning">
+                        {verifier.reasoning}
+                      </p>
+                    )}
                   </div>
-
-                  <div className="reasoning">
-                    <span>Reasoning</span>
-                    <p>
-                      {verifier.reasoning ||
-                        'No reasoning provided.'}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </section>
+
+            <div className="final-result-card">
+              <div className="final-result-left">
+                <div className="final-label">
+                  FINAL SCORE
+                </div>
+
+                <div className="final-score">
+                  {getScorePercentage(
+                    result?.final_score
+                  )}%
+                </div>
+              </div>
+
+              <div className="final-result-right">
+                <div className="final-label">
+                  FINAL DECISION
+                </div>
+
+                <div
+                  className={`final-status ${
+                    result?.final_status === "passed"
+                      ? "final-passed"
+                      : result?.final_status === "failed"
+                      ? "final-failed"
+                      : "final-uncertain"
+                  }`}
+                >
+                  {result?.final_status
+                    ? result.final_status
+                        .charAt(0)
+                        .toUpperCase() +
+                      result.final_status.slice(1)
+                    : "Uncertain"}
+                </div>
+              </div>
+            </div>
+
+            <button
+              className="back-button"
+              onClick={() => setShowResults(false)}
+            >
+              ← Back
+            </button>
+          </>
         )}
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
