@@ -2,6 +2,7 @@
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.decision.decision_engine import DecisionEngine
+from app.decision.early_termination import AdaptiveEarlyTermination
 from app.models.schemas import ValidationRequest, VerificationResult
 from app.orchestration.validation_orchestrator import ValidationOrchestrator
 from app.reputation.reputation_manager import ReputationManager
@@ -142,6 +143,98 @@ def test_early_stop_runs_after_each_verifier_and_respects_the_minimum():
     assert fresh_by_name["rule"].calls == 1
     assert fresh_by_name["semantic"].calls == 1
     assert fresh_by_name["evidence"].calls == 0
+
+
+def test_orchestrator_uses_its_engine_and_keeps_the_stopped_decision():
+    stubs = _named(score=0.95)
+    by_name = {stub.name: stub for stub in stubs}
+    manager = ReputationManager()
+    engine = DecisionEngine(reputation_manager=manager)
+    seen: dict = {}
+
+    class RecordingStop(AdaptiveEarlyTermination):
+        def should_terminate(self, results, analysis, min_verifiers=None, *, decision_engine=None):
+            seen["engine"] = decision_engine
+            seen["domain"] = analysis.domain
+            return super().should_terminate(
+                results,
+                analysis,
+                min_verifiers,
+                decision_engine=decision_engine,
+            )
+
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=engine,
+        reputation_manager=manager,
+        early_termination=RecordingStop(),
+    )
+    before = manager.export_state()
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    assert seen["engine"] is orchestrator.decision_engine
+    assert seen["domain"] == "medical"
+    assert by_name["rule"].calls == 1
+    assert by_name["semantic"].calls == 0
+    assert response.final_status == "passed"
+    assert manager.export_state() == before
+    applied = orchestrator.record_ground_truth(
+        response.results,
+        True,
+        validation_id=response.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("rule", "medical") == 1
+    assert manager.observation_count("semantic", "medical") == 0
+
+
+def test_response_uses_the_decision_from_before_a_reputation_change():
+    stubs = _named(score=0.95)
+    by_name = {stub.name: stub for stub in stubs}
+    manager = ReputationManager()
+    engine = DecisionEngine(reputation_manager=manager)
+    seen: dict = {}
+
+    class MutatingStop(AdaptiveEarlyTermination):
+        def should_terminate(self, results, analysis, min_verifiers=None, *, decision_engine=None):
+            seen["engine"] = decision_engine
+            seen["domain"] = analysis.domain
+            decision = super().should_terminate(
+                results,
+                analysis,
+                min_verifiers,
+                decision_engine=decision_engine,
+            )
+            if decision["terminate"]:
+                seen["decision"] = decision["decision"]
+                for _ in range(12):
+                    manager.update_reputation("rule", "medical", False)
+            return decision
+
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=engine,
+        reputation_manager=manager,
+        early_termination=MutatingStop(),
+    )
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    captured = seen["decision"]
+    assert (response.final_status, response.final_score) == (captured.status, captured.score)
+    revised_status, revised_score = engine.decide(response.results, domain="medical")
+    assert (revised_status, revised_score) != (response.final_status, response.final_score)
+    assert seen["engine"] is orchestrator.decision_engine
+    assert seen["domain"] == "medical"
+    assert by_name["rule"].calls == 1
+    assert by_name["semantic"].calls == 0
+    applied = orchestrator.record_ground_truth(
+        response.results,
+        True,
+        validation_id=response.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("rule", "medical") == 13
+    assert manager.observation_count("semantic", "medical") == 0
 
 
 def test_low_confidence_and_hard_questions_keep_running():

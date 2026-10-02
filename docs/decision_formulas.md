@@ -153,22 +153,16 @@ Candidates are tried in utility order, not only the initial difficulty subset. E
 
 ### Early stopping
 
-After each informative verifier, with `n` informative results, vote `v_i`, and normalized confidence `s_i`:
+After a new informative result, stopping calls `DecisionEngine.decide_detailed` once on the current prefix and the analyzer domain. It does not recompute the log-odds score. Abstentions, zero-confidence results, and zero log-odds weights are not contributing votes. In equal-weight cold start, direction is the normalized pass/reject vote. In log-odds mode, a negative weight reverses that direction.
+
+The minimum count is the selector's minimum for that difficulty (by default 1, 2, and 3), counted on distinct contributing verifiers. Below that minimum the run continues. A hard question continues after the minimum as well. Otherwise stop only when the contributing directions agree, the decision status is `passed` or `failed` under the engine's own threshold, and the band cuts hold:
 
 ```
-agreement      = all votes equal
-avg_confidence = mean(s_i)
-margin         = abs(mean(s_i * v_i))
+easy:   mean normalized confidence ≥ 0.75 and |raw score| ≥ 0.60
+medium: mean normalized confidence ≥ 0.80 and |raw score| ≥ 0.70
 ```
 
-The minimum `n` is the selector's minimum for that difficulty (by default 1, 2, and 3). Below that minimum the run continues. A hard question continues after the minimum as well. Otherwise stop only if all votes agree and either:
-
-```
-easy band: avg_confidence ≥ 0.75 and margin ≥ 0.60
-any non-hard band: avg_confidence ≥ 0.80 and margin ≥ 0.70
-```
-
-Disagreement continues. Confidence under those cuts continues. The remaining selected verifiers still run.
+Those cuts are configurable finite values in [0, 1]. Raw agreement does not stop the run when the weighted score cancels or the status is uncertain. Reaching the selector target, or running out of candidates, is not an early stop. On an early stop the response status and score are the detail from that call. A later reputation update does not rewrite them. The remaining selected verifiers do not run.
 
 ## Published foundations
 
@@ -189,7 +183,7 @@ These are local choices. They are not the published procedures above, and they a
 - After an abstention, consulting the next verifier in utility order and recording why in `pipeline_note`.
 - On an all-zero weight vector, using the equal-weight mean of `confidence * vote` instead of abstaining immediately. Verifiers with weight 0 are ignored when any other weight is nonzero.
 - Not folding the cost estimate into the decision score a second time. Cost affects who is selected.
-- The early-stop rule on agreement, mean confidence, and margin, including "hard never stops early". This is not Wald's sequential probability ratio test (Wald, A., 1947, *Sequential Analysis*), which is not implemented.
+- Stopping early only when contributing directions agree, confidence and absolute raw score clear the band cuts, and `decide_detailed` is already `passed` or `failed`. Hard questions never stop early. This is not Wald's sequential probability ratio test (Wald, A., 1947, *Sequential Analysis*), which is not implemented.
 - The Weighted Majority algorithm's multiplicative update (Littlestone, N. and Warmuth, M. K., 1994, *Information and Computation*) is not implemented. Reputation moves only by Beta counts from external labels.
 
 ## Values that still need calibration

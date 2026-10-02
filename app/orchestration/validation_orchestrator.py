@@ -160,6 +160,7 @@ class ValidationOrchestrator:
         results: list[VerificationResult] = []
         abstained: list[str] = []
         informative = 0
+        stopped_decision = None
         for verifier in self._verifier_selector.iter_ranked(analysis):
             raw = verifier.verify(request.question, request.answer, request.context)
             if is_abstention(raw):
@@ -173,16 +174,22 @@ class ValidationOrchestrator:
                     results,
                     analysis,
                     min_verifiers=minimum,
+                    decision_engine=self._decision_engine,
                 )
                 if stop["terminate"]:
+                    stopped_decision = stop["decision"]
                     break
             if informative >= target:
                 break
 
-        final_status, final_score = self._decision_engine.decide(
-            results,
-            domain=analysis.domain,
-        )
+        if stopped_decision is not None:
+            final_status = stopped_decision.status
+            final_score = stopped_decision.score
+        else:
+            final_status, final_score = self._decision_engine.decide(
+                results,
+                domain=analysis.domain,
+            )
         context = ValidationContext(
             validation_id=validation_id,
             domain=analysis.domain,
