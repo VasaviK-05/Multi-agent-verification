@@ -204,6 +204,39 @@ def test_jsonl_loader_skips_blank_lines(tmp_path):
     assert report.method("majority").n_correct == 1
 
 
+def test_all_verifiers_skip_abstentions_and_learn_after_the_prediction():
+    class AbstainingEvidence(StubVerifier):
+        def __init__(self) -> None:
+            super().__init__("evidence", passed=False, score=0.0)
+
+        def verify(self, question: str, answer: str, context: str | None = None) -> VerificationResult:
+            return VerificationResult(
+                verifier_name="evidence",
+                score=0.0,
+                passed=False,
+                reasoning="No evidence was retrieved.",
+            )
+
+    verifiers = [
+        StubVerifier("semantic", passed=True, score=0.95),
+        AbstainingEvidence(),
+        StubVerifier("rule", passed=True, score=0.95),
+        StubVerifier("confidence", passed=True, score=0.95),
+    ]
+    report = run_benchmark(
+        [LabeledExample("q", "a", False), LabeledExample("q2", "a2", False)],
+        verifiers=verifiers,
+        analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        update_reputation=True,
+    )
+    full = report.method("all_verifiers")
+    assert full.reputation_updates == 6
+    assert report.all_verifiers_reputation.is_cold_start("evidence", "medical")
+    assert report.all_verifiers_reputation.observation_count("semantic", "medical") == 2
+    assert report.adaptive_reputation is not report.all_verifiers_reputation
+    assert report.adaptive_reputation.observation_count("evidence", "medical") == 0
+
+
 def test_cli_requires_a_dataset():
     try:
         main([])

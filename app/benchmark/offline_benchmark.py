@@ -12,9 +12,11 @@ non-abstentions over examples. Abstentions are "uncertain" and "unknown".
 Verifier calls are ``verify`` invocations. Latency is wall time measured
 around those calls. Cost-table estimates are not reported as latency.
 
-Reputation, when updates are on, changes only after each example and only
-from that example's label. Adaptive and all-verifiers keep separate
-reputation tables. Majority ignores reputation.
+Reputation, when updates are on, changes only after that example's
+prediction and only from that example's boolean label. Abstentions are
+not observations. Adaptive and all-verifiers keep separate reputation
+tables. Majority ignores reputation. The all-verifiers path has no
+validation id, so a repeated example is another observation.
 
 This module does not ship a dataset and does not store a result. It does
 not rank a winner. See docs/decision_formulas.md.
@@ -449,8 +451,11 @@ def _run_adaptive(
         )
         _tally(response.final_status, example.answer_is_correct, buckets)
         if update_reputation:
-            orchestrator.record_ground_truth(response.results, example.answer_is_correct)
-            updates += len(response.results)
+            updates += orchestrator.record_ground_truth(
+                response.results,
+                example.answer_is_correct,
+                validation_id=response.validation_id,
+            )
     return (
         _finish(
             "adaptive",
@@ -530,14 +535,11 @@ def _run_all_verifiers(
         status, _score = engine.decide(results, domain=analysis.domain)
         _tally(status, example.answer_is_correct, buckets)
         if update_reputation:
-            for result in results:
-                reputation.update_from_ground_truth(
-                    result.verifier_name,
-                    analysis.domain,
-                    result.passed,
-                    example.answer_is_correct,
-                )
-                updates += 1
+            updates += reputation.record_unscoped_ground_truth(
+                analysis.domain,
+                results,
+                example.answer_is_correct,
+            )
     return (
         _finish(
             "all_verifiers",
