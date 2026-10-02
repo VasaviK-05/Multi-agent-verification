@@ -388,7 +388,11 @@ def _default_verifiers() -> list[BaseVerifier]:
 
     return [
         SemanticVerifier(),
-        EvidenceVerifier(),
+        EvidenceVerifier(
+           corpus_path="data/test_evidence_corpus.json",
+           index_path="data/test_evidence_index/faiss.index",
+           chunks_path="data/test_evidence_index/chunks.json",
+        ),
         RuleVerifier(),
         ConfidenceVerifier(),
     ]
