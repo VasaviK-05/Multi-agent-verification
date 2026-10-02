@@ -7,8 +7,8 @@ is the original heuristic so existing callers stay on that path.
 Ollama mode is explicit. This module does not load a ``.env`` file and does
 not call the answer generator. See docs/analyzer_setup.md.
 
-Metadata fields are recorded for inspection. Selector, reputation, and the
-decision engine do not read them.
+The selector reads ``verification_types`` as a suitability hint. Reputation
+and decision scoring do not directly read the added metadata.
 """
 
 from __future__ import annotations

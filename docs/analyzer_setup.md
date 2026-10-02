@@ -1,6 +1,6 @@
 # Question analyzer setup
 
-`QuestionAnalyzer.analyze` still returns `domain`, `difficulty`, and `difficulty_score`. Extra fields are metadata. The selector, reputation table, and decision engine do not read them.
+`QuestionAnalyzer.analyze` still returns `domain`, `difficulty`, and `difficulty_score`. The default mode is `heuristic`. Heuristic analysis leaves `verification_types` empty, and an empty list preserves the previous ranking: domain reputation and resource estimates, with no suitability bonus. When `verification_types` is not empty, the selector uses that list as a suitability hint and still uses `domain` for reputation. Subject, domain candidates, domain status, rubric ratings, analysis method, and fallback reason do not change selection, reputation, or the decision score.
 
 This module does not load a `.env` file. Importing the answer generator can load one, because that module calls `load_dotenv`. The analyzer does not import the answer generator. Set variables in the process environment before constructing `QuestionAnalyzer`.
 
@@ -111,7 +111,7 @@ A live Ollama print shows whether the call connected. It is not a measured test 
 
 ## Limitations
 
-- Metadata does not change which verifiers run or how votes are weighted.
+- The default analyzer mode is `heuristic`. Its empty `verification_types` list preserves the previous ranking. A non-empty list can change verifier order. It does not change how many verifiers the difficulty range requests, and it does not change vote weights. The other metadata fields are not read by the selector or the decision engine. Reputation still uses `domain` only.
 - The rubric cuts are the old uncalibrated thresholds.
 - Only three primary domains exist. Finer subject text is not a new domain key.
 - Heuristic fallback can still mark a question hard because it is long or contains "why". That path is labeled `heuristic_fallback`.

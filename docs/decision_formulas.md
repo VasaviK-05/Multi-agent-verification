@@ -36,9 +36,21 @@ Domain is the cue list with the unique highest hit count. Zero hits, or a tie, y
 
 ```
 U(v, d) = R(v, d) - 0.15 * cost(v) - 0.10 * latency(v)
+U(v, d, q) = U(v, d) + 0.20 * S(v, q)
 ```
 
-The selected list is the highest `U` first. Equal utilities keep the registration order semantic, evidence, rule, confidence.
+`utility(name, domain)` still returns `U(v, d)`. Ranking uses `U(v, d, q)`. `S(v, q)` is 0 when `verification_types` is empty, so that ranking matches `U(v, d)`. Otherwise each unique label has an equal share. Labels mapped below add that share to one verifier. A repeated label is counted once. An unknown label matches nobody and still uses a share, so duplicates and longer lists cannot push a bonus above 1. `S` is a hint in [0, 1], not a measured chance that the verifier applies.
+
+| Verification type | Suitability hint |
+| --- | --- |
+| `arithmetic`, `logical_rule` | `rule` |
+| `direct_fact`, `evidence_retrieval` | `evidence` |
+| `semantic_comparison` | `semantic` |
+| `consistency` | `confidence` |
+
+The hint is not coverage. The rule verifier only matches a few deterministic patterns and otherwise abstains as unsupported. Semantic comparison abstains without reference context. Consistency abstains without supplied judgments. Evidence can abstain when retrieval or NLI is not directional. `iter_ranked` still yields every registered candidate so an abstention can fall through to the next one. Reputation stays `R(v, analysis.domain)`. Domain candidates are not mixed into that reputation.
+
+The selected list is the highest `U(v, d, q)` first. Equal utilities keep registration order. For the built-in verifiers that order is semantic, evidence, rule, confidence. Injected verifiers keep the order in which they were supplied. `explain_ranking` reports reputation, the resource penalty, the suitability contribution, and the final utility without constructing a default verifier.
 
 The count uses where the score sits inside its band, clipped to [0, 1]:
 
@@ -52,7 +64,7 @@ count = min_n + floor((max_n - min_n) * position + 1/2)
 
 Default ranges are easy (1, 2), medium (2, 3), hard (3, 4). `floor(x + 1/2)` is half-up on this non-negative number, so a score at the bottom of a band selects `min_n` and a score at the top selects `max_n`. `int(span * score)` did not: with a span of 1 it stayed on `min_n` for every score below 1, including scores that the band already calls hard.
 
-At cold start every `R` is 0.5, so the order is the cost and latency order. The default estimates put `rule` first.
+At cold start every `R` is 0.5. When `verification_types` is empty, ranking follows the resource estimates, and the default estimates put `rule` first. When `verification_types` is not empty, suitability also affects that order.
 
 ### Reputation
 
@@ -161,7 +173,7 @@ These are standard formulas. Using them here is not a claim that the combination
 These are local choices. They are not the published procedures above, and they are not claimed as a contribution.
 
 - The difficulty features, the trailing-`s` token rule, rounding the score to two decimals before the band cut, and the three named domains.
-- A linear penalty on hand-written cost and latency estimates, and running the highest utility first.
+- A linear penalty on hand-written cost and latency estimates, plus an uncalibrated suitability bonus from `verification_types`, and running the highest utility first.
 - Mapping the in-band score position onto a `(min, max)` count with half-up rounding.
 - Reading a supported rule's 0/1 score as a deterministic vote (confidence 1), and treating unsupported rules, missing semantic context, non-directional evidence, and missing confidence judgments as abstentions.
 - Multiplying the log-odds weight by that confidence, then abstaining when the signed score is inside [-0.55, 0.55].
@@ -177,12 +189,13 @@ Nothing in this table was fitted on a labeled set in this repository.
 
 | Value | Where it lives |
 | --- | --- |
-| Feature weights 0.30, 0.25, 0.25, 0.20 | `app/analysis/question_analyzer.py` |
-| Divisors 40, 3, 2, 3 and score rounding to 2 decimals | same |
-| Band cuts 0.35 and 0.65 | same |
-| Keyword lists and the trailing-`s` rule | same |
-| `lambda_cost = 0.15`, `lambda_latency = 0.10` | `app/selection/verifier_selector.py` |
+| Feature weights 0.30, 0.25, 0.25, 0.20 | `app/analysis/heuristic.py` |
+| Divisors 40, 3, 2, 3 and score rounding to 2 decimals | `app/analysis/heuristic.py` |
+| Band cuts 0.35 and 0.65 | `app/analysis/heuristic.py` |
+| Keyword lists and the trailing-`s` rule | `app/analysis/heuristic.py` |
+| `lambda_cost = 0.15`, `lambda_latency = 0.10`, `lambda_suitability = 0.20` | `app/selection/verifier_selector.py` |
 | Cost and latency estimates for the four verifiers | same |
+| Verification-type suitability map | same |
 | Count ranges (1, 2), (2, 3), (3, 4) | same |
 | Beta prior `alpha = beta = 1` and the +1 update | `app/reputation/reputation_manager.py` |
 | Decision abstention margin 0.55, reputation clamp `1e-6` | `app/decision/decision_engine.py` |
