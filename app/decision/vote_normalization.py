@@ -103,6 +103,12 @@ def is_abstention(result: VerificationResult) -> bool:
     metadata = _metadata(result)
     name = result.verifier_name
     reasoning = result.reasoning or ""
+        # Preserve the verifier result for reporting, but do not treat
+    # structural validity as evidence of factual correctness.
+    if name == "rule":
+        rule = metadata.get("rule")
+        if isinstance(rule, str) and rule in STRUCTURAL_RANGE_RULES:
+            return True
 
     if name == "rule" and metadata.get("rule") == "unsupported":
         return True
