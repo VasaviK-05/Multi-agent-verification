@@ -142,7 +142,7 @@ class ValidationOrchestrator:
     def last_analysis(self) -> QuestionAnalysis | None:
         return self._last_analysis
 
-        def validate(self, request: ValidationRequest) -> ValidationResponse:
+    def validate(self, request: ValidationRequest) -> ValidationResponse:
         """Complete the adaptive verifier target without early termination.
 
         Verifiers run in the selector's ranked order. Abstentions remain
