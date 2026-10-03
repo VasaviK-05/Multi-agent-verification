@@ -37,6 +37,19 @@ import math
 
 from app.models.schemas import VerificationResult
 
+# These rules check structure or range, not factual correctness.
+STRUCTURAL_RANGE_RULES = frozenset(
+    {
+        "probability_range",
+        "percentage_range",
+        "email_regex",
+        "url_regex",
+        "date_regex",
+        "id_regex",
+        "json_structure",
+    }
+)
+
 
 def _metadata(result: VerificationResult) -> dict:
     return dict(result.metadata or {})
