@@ -8,15 +8,22 @@ What this verifier measures
     has to be measured against external labels; ``score`` is not accuracy.
 
 Where judgments come from
-    This class aggregates judgments. It does not generate them and never
-    fabricates them. Sources, in priority order:
+    Sources, in priority order (cheap explicit input beats sampling):
 
     1. ``judgments=[...]`` passed to ``verify``.
-    2. A ``judgment_provider(question, answer) -> list[str]`` given to the
-       constructor (for example, a wrapper that samples a model N times).
-    3. Legacy: ``context`` when, and only when, it is a pure comma-separated
-       list of judgment labels. Reference prose in ``context`` is not a
-       judgment list and leads to an abstention.
+    2. ``context`` when, and only when, it is a comma-separated list of
+       judgment labels. Reference prose is not a judgment list and is
+       ignored here (the semantic verifier uses it).
+    3. The ``judgment_provider(question, answer) -> list[str]``. By default
+       this is ``SelfConsistencyJudge`` (``self_consistency.py``): N
+       regenerations from the answer model, each labelled against the
+       candidate answer. This is what lets ``ConfidenceVerifier()`` act on
+       a bare question/answer pair inside the pipeline. Pass
+       ``judgment_provider=None`` for a pure counter with no sampling.
+
+    The verifier never fabricates judgments. If the provider fails (the
+    generator is down) it abstains with ``NO_JUDGMENTS_REASON`` as the
+    prefix of its reasoning, so the decision layer's hook still matches.
 
 Vocabulary
     ``support``, ``reject``, ``unsure`` (case-insensitive). Any other token
@@ -35,7 +42,7 @@ from __future__ import annotations
 
 import time
 from collections import Counter
-from typing import Callable, Optional
+from typing import Any, Callable, Optional
 
 from app.models.schemas import VerificationResult
 from app.verifiers.base_verifier import (
@@ -52,8 +59,13 @@ INVALID_JUDGMENTS_REASON = (
     "No valid verification judgments were provided: "
     "judgments must be one of support, reject, unsure."
 )
+PROVIDER_UNAVAILABLE_SOURCE = "provider_unavailable"
 
 JudgmentProvider = Callable[[str, str], list[str]]
+
+# Sentinel: "build the default SelfConsistencyJudge on first use".
+# Distinct from None, which means "no provider; count explicit judgments only".
+AUTO: Any = object()
 
 
 def normalize_judgments(judgments: list[str]) -> tuple[list[str], list[str]]:
@@ -89,12 +101,31 @@ class ConfidenceVerifier(BaseVerifier):
     """Estimates confidence from agreement among verification judgments."""
 
     SCORE_MEANING = (
-        "Agreement fraction among the supplied judgments (majority count / total). "
-        "A consistency signal, not accuracy and not a probability of correctness."
+        "Agreement fraction among the judgments (majority count / total). With the "
+        "default provider the judgments are N independent regenerations of the answer "
+        "labelled against the candidate answer. A consistency signal, not accuracy "
+        "and not a probability of correctness: a model can be consistently wrong."
     )
 
-    def __init__(self, judgment_provider: JudgmentProvider | None = None) -> None:
-        self.judgment_provider = judgment_provider
+    def __init__(self, judgment_provider: JudgmentProvider | None | Any = AUTO) -> None:
+        self._provider_arg = judgment_provider
+        self._provider: JudgmentProvider | None = (
+            None if judgment_provider is AUTO else judgment_provider
+        )
+
+    @property
+    def judgment_provider(self) -> JudgmentProvider | None:
+        """The provider in use. The default judge is built lazily on first access."""
+        if self._provider is None and self._provider_arg is AUTO:
+            from app.verifiers.self_consistency import SelfConsistencyJudge
+
+            self._provider = SelfConsistencyJudge()
+        return self._provider
+
+    @judgment_provider.setter
+    def judgment_provider(self, provider: JudgmentProvider | None) -> None:
+        self._provider_arg = provider
+        self._provider = provider
 
     @property
     def name(self) -> str:
@@ -147,7 +178,17 @@ class ConfidenceVerifier(BaseVerifier):
     ) -> VerificationResult:
         start_time = time.perf_counter()
 
-        raw_judgments, source = self._collect(question, answer, context, judgments)
+        try:
+            raw_judgments, source, trace = self._collect(question, answer, context, judgments)
+        except Exception as exc:  # generator down, timeout, malformed reply
+            return self._abstain(
+                f"{NO_JUDGMENTS_REASON} Judgment source unavailable: {exc}",
+                PROVIDER_UNAVAILABLE_SOURCE,
+                [],
+                [],
+                start_time,
+                error=f"{type(exc).__name__}: {exc}",
+            )
         if raw_judgments is None:
             return self._abstain(NO_JUDGMENTS_REASON, "none", [], [], start_time)
 
@@ -160,9 +201,10 @@ class ConfidenceVerifier(BaseVerifier):
                 invalid,
                 start_time,
                 majority_label="invalid",
+                **trace,
             )
         if not valid:
-            return self._abstain(NO_JUDGMENTS_REASON, source, [], [], start_time)
+            return self._abstain(NO_JUDGMENTS_REASON, source, [], [], start_time, **trace)
 
         majority_label, agreement_count, confidence = self._majority(valid)
         counts = Counter(valid)
@@ -203,6 +245,7 @@ class ConfidenceVerifier(BaseVerifier):
                 "majority_label": majority_label,
                 "agreement_count": agreement_count,
                 "total_judgments": len(valid),
+                **trace,
                 "latency_ms": round(latency_ms, 2),
             },
         )
@@ -213,26 +256,35 @@ class ConfidenceVerifier(BaseVerifier):
         answer: str,
         context: Optional[str],
         judgments: Optional[list[str]],
-    ) -> tuple[Optional[list[str]], str]:
-        """Return (raw judgments, source) or (None, "none")."""
+    ) -> tuple[Optional[list[str]], str, dict]:
+        """Return (raw judgments, source, provider trace) or (None, "none", {}).
+
+        Order: explicit ``judgments`` -> label list in ``context`` -> provider.
+        Prose in ``context`` is not judgment input and falls through to the
+        provider. Provider exceptions propagate to ``verify``.
+        """
         if judgments is not None:
-            return list(judgments), "argument"
-        if self.judgment_provider is not None:
-            provided = self.judgment_provider(question, answer)
-            return list(provided or []), "provider"
+            return list(judgments), "argument", {}
+
         if context is not None and context.strip():
             parsed = parse_judgment_list(context)
             if parsed is not None:
-                return parsed, "context"
+                return parsed, "context", {}
             tokens = [token.strip() for token in context.split(",") if token.strip()]
             valid, _ = normalize_judgments(tokens)
             if valid and all(" " not in token for token in tokens):
                 # A label list with unknown labels ("support,maybe"): report
                 # the invalid entries rather than silently dropping them.
-                return tokens, "context"
-            # Prose (reference text) is not a judgment list. Do not guess.
-            return None, "none"
-        return None, "none"
+                return tokens, "context", {}
+            # Otherwise prose: not judgments. Fall through to the provider.
+
+        provider = self.judgment_provider
+        if provider is None:
+            return None, "none", {}
+        provided = provider(question, answer)
+        source = getattr(provider, "source_name", "provider")
+        trace = getattr(provider, "last_trace", None)
+        return list(provided or []), source, dict(trace) if isinstance(trace, dict) else {}
 
     def _abstain(
         self,
@@ -242,6 +294,7 @@ class ConfidenceVerifier(BaseVerifier):
         invalid: list[str],
         start_time: float,
         majority_label: str | None = None,
+        **extra: Any,
     ) -> VerificationResult:
         latency_ms = (time.perf_counter() - start_time) * 1000
         metadata = {
@@ -250,6 +303,7 @@ class ConfidenceVerifier(BaseVerifier):
             "method": "self_consistency",
             "judgment_source": source,
             "judgments": [] if invalid else valid,
+            **extra,
             "latency_ms": round(latency_ms, 2),
         }
         if invalid:

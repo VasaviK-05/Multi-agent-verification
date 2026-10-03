@@ -41,7 +41,8 @@ def test_every_verifier_sets_decision_and_score_meaning():
         (RuleVerifier(), ("What is 2+2?", "4", None)),
         (RuleVerifier(), ("Who is the president of France?", "Someone", None)),
         (ConfidenceVerifier(), ("q", "a", "support,support,reject")),
-        (ConfidenceVerifier(), ("q", "a", None)),
+        (ConfidenceVerifier(judgment_provider=None), ("q", "a", None)),
+        (ConfidenceVerifier(judgment_provider=lambda q, a: ["reject", "reject", "support"]), ("q", "a", None)),
     ]
     for verifier, args in cases:
         result = verifier.verify(*args)

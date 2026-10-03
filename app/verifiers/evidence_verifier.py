@@ -54,6 +54,7 @@ All thresholds are UNCALIBRATED defaults and are echoed in metadata.
 
 from __future__ import annotations
 
+import functools
 import re
 import time
 from typing import Any, Callable, Optional
@@ -69,8 +70,22 @@ from app.verifiers.claim_generator import ClaimGenerator
 from app.verifiers.evidence_retriever import EvidenceRetriever
 
 NLI_LABELS = ("entailment", "contradiction", "neutral")
+NLI_MODEL = "cross-encoder/nli-deberta-v3-small"
 NO_EVIDENCE_REASON = "No evidence was retrieved."
 NO_RELEVANT_EVIDENCE_REASON = "No sufficiently relevant evidence was retrieved."
+
+
+@functools.lru_cache(maxsize=1)
+def default_nli_pipeline() -> Any:
+    """Process-wide NLI pipeline shared by the evidence and confidence verifiers.
+
+    Loading the cross-encoder twice costs several hundred MB; both verifiers
+    call this when no ``nli`` is injected. ``top_k=None`` returns every label
+    so callers can read all three probabilities.
+    """
+    from transformers import pipeline
+
+    return pipeline("text-classification", model=NLI_MODEL, top_k=None)
 
 
 def normalize_nli_label(label: str) -> str:
@@ -122,7 +137,7 @@ def parse_nli_output(raw: Any) -> tuple[dict[str, float], str]:
 class EvidenceVerifier(BaseVerifier):
     """Verifies each claim of an answer against retrieved evidence using NLI."""
 
-    NLI_MODEL = "cross-encoder/nli-deberta-v3-small"
+    NLI_MODEL = NLI_MODEL
 
     SCORE_MEANING = (
         "NLI probability of the label that decided the result (entailment for "
@@ -149,9 +164,7 @@ class EvidenceVerifier(BaseVerifier):
         self.claim_generator = ClaimGenerator()
 
         if nli is None:
-            from transformers import pipeline
-
-            nli = pipeline("text-classification", model=self.NLI_MODEL, top_k=None)
+            nli = default_nli_pipeline()
         self.nli = nli
         self.nli_label_map = self._check_label_map(nli)
 
