@@ -142,62 +142,70 @@ class ValidationOrchestrator:
     def last_analysis(self) -> QuestionAnalysis | None:
         return self._last_analysis
 
-    def validate(self, request: ValidationRequest) -> ValidationResponse:
-        """Validate one answer. Does not learn from this decision.
+        def validate(self, request: ValidationRequest) -> ValidationResponse:
+        """Complete the adaptive verifier target without early termination.
 
-        Verifiers are taken in utility order. An abstention, such as an
-        unsupported rule, is kept in the response and does not count as a
-        vote or an early-stop signal. The next verifier is consulted until
-        the difficulty target is filled with informative votes, early
-        stopping applies, or no verifier remains.
+        Verifiers run in the selector's ranked order. Abstentions remain
+        visible in the response and are replaced by another candidate
+        when available. Aggregate after reaching the informative-vote
+        target or exhausting the candidates.
         """
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
         validation_id = str(uuid4())
-        minimum = self._verifier_selector.minimum_count(analysis)
+
         target = self._verifier_selector.target_count(analysis)
 
         results: list[VerificationResult] = []
         abstained: list[str] = []
         informative = 0
-        stopped_decision = None
+
         for verifier in self._verifier_selector.iter_ranked(analysis):
-            raw = verifier.verify(request.question, request.answer, request.context)
+            raw = verifier.verify(
+                request.question,
+                request.answer,
+                request.context,
+            )
+
             if is_abstention(raw):
                 abstained.append(raw.verifier_name)
-                results.append(_annotate(raw, abstained_before=abstained[:-1], abstention=True))
-                continue
-            results.append(_annotate(raw, abstained_before=list(abstained), abstention=False))
-            informative += 1
-            if informative >= minimum:
-                stop = self._early_termination.should_terminate(
-                    results,
-                    analysis,
-                    min_verifiers=minimum,
-                    decision_engine=self._decision_engine,
+                results.append(
+                    _annotate(
+                        raw,
+                        abstained_before=abstained[:-1],
+                        abstention=True,
+                    )
                 )
-                if stop["terminate"]:
-                    stopped_decision = stop["decision"]
-                    break
+                continue
+
+            results.append(
+                _annotate(
+                    raw,
+                    abstained_before=list(abstained),
+                    abstention=False,
+                )
+            )
+            informative += 1
+
+            # Complete the selector's target; no confidence-based stop.
             if informative >= target:
                 break
 
-        if stopped_decision is not None:
-            final_status = stopped_decision.status
-            final_score = stopped_decision.score
-        else:
-            final_status, final_score = self._decision_engine.decide(
-                results,
-                domain=analysis.domain,
-            )
+        final_status, final_score = self._decision_engine.decide(
+            results,
+            domain=analysis.domain,
+        )
+
         context = ValidationContext(
             validation_id=validation_id,
             domain=analysis.domain,
             results=_detach_results(results),
         )
         self._contexts[validation_id] = context
+
         for result in results:
             self._result_binding[id(result)] = (result, validation_id)
+
         return ValidationResponse(
             results=results,
             final_status=final_status,
