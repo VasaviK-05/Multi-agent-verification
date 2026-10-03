@@ -31,6 +31,27 @@ def test_verifier_output_conforms_to_schema():
     assert isinstance(result.passed, bool)
     assert result.reasoning is not None
 
+
+def test_every_verifier_sets_decision_and_score_meaning():
+    """Shared metadata contract from app/verifiers/base_verifier.py."""
+    cases = [
+        (SemanticVerifier(), ("What is the capital of France?", "Paris", "Paris is the capital of France.")),
+        (SemanticVerifier(), ("What is the capital of France?", "Paris", None)),
+        (EvidenceVerifier(corpus_path="data/test_evidence_corpus.json"), ("What is the capital of France?", "Paris", None)),
+        (RuleVerifier(), ("What is 2+2?", "4", None)),
+        (RuleVerifier(), ("Who is the president of France?", "Someone", None)),
+        (ConfidenceVerifier(), ("q", "a", "support,support,reject")),
+        (ConfidenceVerifier(), ("q", "a", None)),
+    ]
+    for verifier, args in cases:
+        result = verifier.verify(*args)
+        assert result.metadata["decision"] in {"SUPPORT", "REJECT", "UNSURE"}, verifier.name
+        assert isinstance(result.metadata["score_meaning"], str) and result.metadata["score_meaning"], verifier.name
+        if result.metadata["decision"] == "SUPPORT":
+            assert result.passed is True
+        else:
+            assert result.passed is False
+
 """
 def test_all_verifiers_return_placeholder_results():
     verifiers = [
@@ -93,3 +114,4 @@ def test_semantic_verifier_without_context():
     assert result.score == 0.0
     assert result.passed is False
     assert result.reasoning == "No reference context provided for semantic comparison."
+    assert result.metadata["decision"] == "UNSURE"
