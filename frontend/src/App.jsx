@@ -8,6 +8,7 @@ function App() {
   const [submittedQuestion, setSubmittedQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [context, setContext] = useState("");
+  const [questionId, setQuestionId] = useState(null);
 
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -110,14 +111,40 @@ function App() {
     }
   };
 
-  const startNewChat = () => {
-    setQuestion("");
-    setSubmittedQuestion("");
-    setAnswer("");
-    setContext("");
-    setResult(null);
+  const startNewChat = async () => {
     setError("");
-    setShowResults(false);
+
+    try {
+      const response = await fetch(`${API_URL}/sessions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: "New Validation",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create a new session.");
+      }
+
+      const newSession = await response.json();
+
+      setSessions((prev) => [newSession, ...prev]);
+      setActiveSessionId(newSession.session_id);
+
+      setQuestion("");
+      setSubmittedQuestion("");
+      setAnswer("");
+      setContext("");
+      setResult(null);
+      setSessionQuestions([]);
+      setShowResults(false);
+      setQuestionId(null);
+    } catch (err) {
+      setError(err.message || "Unable to create a new session.");
+    }
   };
 
   const generateAnswer = async () => {
@@ -146,6 +173,7 @@ function App() {
 
       const data = await response.json();
 
+      setQuestionId(data.question_id);
       setSubmittedQuestion(question.trim());
       setAnswer(data.answer || "");
     } catch (err) {
@@ -174,6 +202,8 @@ function App() {
           question: question.trim(),
           answer: answer.trim(),
           context: providedContext.trim() || null,
+          session_id: activeSessionId,
+          question_id: questionId,
         }),
       });
 
@@ -185,6 +215,17 @@ function App() {
 
       setResult(data);
       setShowResults(true);
+
+      if (activeSessionId) {
+        const questionsResponse = await fetch(
+          `${API_URL}/sessions/${activeSessionId}/questions`
+        );
+
+        if (questionsResponse.ok) {
+          const questions = await questionsResponse.json();
+          setSessionQuestions(questions);
+        }
+      }
 
       const historyItem = {
         question: question,
@@ -303,6 +344,7 @@ function App() {
                       key={item.validation_id}
                       className="history-item"
                       onClick={() => {
+                        setQuestionId(item.question_id);
                         setQuestion(item.question);
                         setSubmittedQuestion(item.question);
                         setAnswer(item.generated_answer);
