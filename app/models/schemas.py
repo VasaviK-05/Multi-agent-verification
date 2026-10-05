@@ -11,6 +11,7 @@ class ValidationRequest(BaseModel):
     question: str
     answer: str
     context: Optional[str] = None
+    session_id: Optional[str] = None
 
 
 class VerificationResult(BaseModel):
@@ -24,8 +25,29 @@ class VerificationResult(BaseModel):
 
 
 class ValidationResponse(BaseModel):
-    """Aggregated validation response returned to the client."""
+    """Aggregated validation response returned to the client.
+
+    ``validation_id`` and ``domain`` identify the run for a later label.
+    They are empty when a caller builds a response without the orchestrator.
+    """
 
     results: list[VerificationResult]
     final_status: str
     final_score: Optional[float] = None
+    validation_id: Optional[str] = None
+    domain: Optional[str] = None
+    session_id: Optional[str] = None
+
+class CreateSessionRequest(BaseModel):
+    """Input payload for creating a session."""
+
+    title: str
+
+
+class SessionResponse(BaseModel):
+    """Session information returned to the client."""
+
+    session_id: str
+    title: str
+    created_at: Any
+    updated_at: Any

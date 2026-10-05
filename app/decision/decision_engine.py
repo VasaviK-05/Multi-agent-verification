@@ -41,13 +41,18 @@ cuts are "uncertain" (abstain). No verifier results yield status "unknown"
 and score 0; that 0 is an empty sentinel, not a calibrated chance and not
 the same claim as an "uncertain" 0 from cancelling votes.
 
-Cuts, also UNCALIBRATED, applied to the rounded score. The band is
-symmetric about 0 because a positive score is net pass evidence and a
-negative score is net reject evidence. A tie at 0 is inside the band.
+Cuts, also UNCALIBRATED, applied to the bounded score before rounding.
+The band is symmetric about 0 because a positive score is net pass
+evidence and a negative score is net reject evidence. A tie at 0 is
+inside the band. The default threshold is 0.55:
 
-    score >  0.55 → passed
-    score < -0.55 → failed
-    otherwise     → uncertain
+    raw >  threshold → passed
+    raw < -threshold → failed
+    otherwise        → uncertain
+
+The value returned to callers is that raw score rounded to 6 decimals.
+Rounding can land on the threshold after the raw score has already
+crossed it. Status follows the raw comparison, not the rounded number.
 
 See docs/decision_formulas.md.
 """
@@ -55,8 +60,10 @@ See docs/decision_formulas.md.
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass
+from typing import Sequence
 
-from app.decision.vote_normalization import is_abstention, signed_mass
+from app.decision.vote_normalization import is_abstention, signed_mass, vote_confidence
 from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import ReputationManager
 
@@ -75,14 +82,77 @@ def log_odds_weight(reputation: float, eps: float = EPS) -> float:
     """Bernoulli weight of evidence for a reputation in [0, 1].
 
     Returns 0 at 0.5, a positive weight above 0.5, and a negative weight
-    below 0.5. Non-finite input is rejected.
+    below 0.5. Reputations of 0 and 1 are clamped into ``(eps, 1 - eps)``.
+    Non-finite or out-of-range reputations, and an ``eps`` that is not
+    strictly inside (0, 0.5), are rejected. ``eps`` must also be large
+    enough that ``1 - eps`` is strictly below 1 in floating point. A
+    smaller value is a ``ValueError``, not a division by zero.
     """
-    if not math.isfinite(reputation):
+    if isinstance(reputation, bool) or not isinstance(reputation, (int, float)):
+        raise TypeError("reputation must be a finite value in [0, 1]")
+    if not math.isfinite(reputation) or reputation < 0.0 or reputation > 1.0:
         raise ValueError("reputation must be a finite value in [0, 1]")
-    p = min(max(float(reputation), eps), 1.0 - eps)
+    if isinstance(eps, bool) or not isinstance(eps, (int, float)):
+        raise TypeError("eps must be a finite value strictly between 0 and 0.5")
+    if not math.isfinite(eps) or eps <= 0.0 or eps >= 0.5:
+        raise ValueError("eps must be a finite value strictly between 0 and 0.5")
+    upper = 1.0 - float(eps)
+    if not math.isfinite(upper) or upper >= 1.0:
+        raise ValueError("eps must be large enough that 1 - eps is strictly below 1")
+    p = min(max(float(reputation), float(eps)), upper)
     if p == 0.5:
         return 0.0
     return math.log(p / (1.0 - p))
+
+
+def _require_domain(domain: object) -> str:
+    if not isinstance(domain, str) or domain.strip() == "":
+        raise ValueError("domain must be a non-blank string")
+    return domain
+
+
+def _require_threshold(threshold: object) -> float:
+    if isinstance(threshold, bool) or not isinstance(threshold, (int, float)):
+        raise TypeError("threshold must be a finite value strictly between 0 and 1")
+    if not math.isfinite(threshold) or threshold <= 0.0 or threshold >= 1.0:
+        raise ValueError("threshold must be a finite value strictly between 0 and 1")
+    return float(threshold)
+
+
+@dataclass(frozen=True)
+class VoteExplanation:
+    """One verifier's detached contribution to a decision.
+
+    ``contribution`` is ``weight * mass`` in log-odds mode and ``mass`` in
+    equal-weight mode. An abstention and a zero-weight vote that was ignored
+    because another weight was nonzero both contribute 0.
+    """
+
+    verifier_name: str
+    abstained: bool
+    passed: bool
+    confidence: float
+    reputation: float
+    weight: float
+    contribution: float
+
+
+@dataclass(frozen=True)
+class DecisionDetail:
+    """Immutable explanation of one ``decide`` call.
+
+    ``raw_score`` is the bounded score used for the status cut. ``score``
+    is ``raw_score`` rounded to 6 decimals. ``aggregation`` is ``unknown``,
+    ``abstentions``, ``log_odds``, or ``equal_weight``.
+    """
+
+    domain: str
+    status: str
+    raw_score: float
+    score: float
+    threshold: float
+    aggregation: str
+    votes: tuple[VoteExplanation, ...]
 
 
 class DecisionEngine:
@@ -92,13 +162,19 @@ class DecisionEngine:
         self,
         reputation_manager: ReputationManager | None = None,
         default_domain: str = "general",
+        threshold: float = ABSTAIN_ABOVE,
     ) -> None:
         self._reputation_manager = reputation_manager or ReputationManager()
-        self._default_domain = default_domain
+        self._default_domain = _require_domain(default_domain)
+        self._threshold = _require_threshold(threshold)
 
     @property
     def reputation_manager(self) -> ReputationManager:
         return self._reputation_manager
+
+    @property
+    def threshold(self) -> float:
+        return self._threshold
 
     def decide(
         self,
@@ -108,50 +184,151 @@ class DecisionEngine:
         """Return (status, score) for one domain.
 
         ``score`` is the uncalibrated signed agreement in [-1, 1] described
-        in the module docstring. It is not a probability of correctness.
-        Status is "passed", "failed", "uncertain", or "unknown".
+        in the module docstring, rounded to 6 decimals. It is not a
+        probability of correctness. Status is "passed", "failed",
+        "uncertain", or "unknown", and it follows the unrounded score.
         """
-        if not results:
-            return "unknown", 0.0
+        detail = self.decide_detailed(results, domain=domain)
+        return detail.status, detail.score
 
-        votes = [result for result in results if not is_abstention(result)]
-        if not votes:
-            # Verifiers ran, but every one abstained. That is not a rejection.
-            return "uncertain", 0.0
+    def decide_detailed(
+        self,
+        results: list[VerificationResult],
+        domain: str | None = None,
+    ) -> DecisionDetail:
+        """Return the same decision as ``decide``, with per-verifier terms.
 
-        domain_name = domain or self._default_domain
-        weighted_sum = 0.0
-        absolute_weight = 0.0
-        uninformative: list[float] = []
+        Reputation is read once for every supplied verifier. This method
+        does not update the manager.
+        """
+        if domain is None:
+            domain_name = self._default_domain
+        else:
+            domain_name = _require_domain(domain)
+        checked = _checked_results(results)
+        if not checked:
+            return DecisionDetail(
+                domain=domain_name,
+                status="unknown",
+                raw_score=0.0,
+                score=0.0,
+                threshold=self._threshold,
+                aggregation="unknown",
+                votes=(),
+            )
 
-        for result in votes:
-            reputation = self._reputation_manager.get_reputation(result.verifier_name, domain_name)
+        statistics = self._reputation_manager.statistics_batch(
+            tuple((result.verifier_name, domain_name) for result in checked)
+        )
+        reputations = {
+            stats.verifier_name: round(stats.posterior_mean, 6) for stats in statistics
+        }
+        prepared: list[tuple[VerificationResult, bool, float, float, float]] = []
+        informative: list[tuple[VerificationResult, float, float, float]] = []
+        for result in checked:
+            abstained = is_abstention(result)
+            confidence = vote_confidence(result)
+            reputation = reputations[result.verifier_name]
             weight = log_odds_weight(reputation)
+            prepared.append((result, abstained, confidence, reputation, weight))
+            if abstained:
+                continue
             mass = signed_mass(result)
             if mass is None:
                 continue
-            if weight == 0.0:
-                # p = 0.5. Hold the vote for the all-uninformative fallback.
-                uninformative.append(mass)
-                continue
-            weighted_sum += weight * mass
-            absolute_weight += abs(weight)
+            informative.append((result, mass, reputation, weight))
 
+        if not informative:
+            return DecisionDetail(
+                domain=domain_name,
+                status="uncertain",
+                raw_score=0.0,
+                score=0.0,
+                threshold=self._threshold,
+                aggregation="abstentions",
+                votes=tuple(
+                    VoteExplanation(
+                        verifier_name=result.verifier_name,
+                        abstained=True,
+                        passed=result.passed,
+                        confidence=0.0,
+                        reputation=reputation,
+                        weight=weight,
+                        contribution=0.0,
+                    )
+                    for result, _abstained, _confidence, reputation, weight in prepared
+                ),
+            )
+
+        absolute_weight = sum(abs(weight) for _result, _mass, _reputation, weight in informative if weight != 0.0)
         if absolute_weight == 0.0:
-            # Cold start / every reputation is 0.5: equal-weight signed mean.
-            final_score = sum(uninformative) / len(uninformative)
+            aggregation = "equal_weight"
+            raw_score = sum(mass for _result, mass, _reputation, _weight in informative) / len(informative)
         else:
-            # |w| in the denominator keeps negative log-odds inverted.
-            final_score = weighted_sum / absolute_weight
+            aggregation = "log_odds"
+            weighted_sum = sum(
+                weight * mass
+                for _result, mass, _reputation, weight in informative
+                if weight != 0.0
+            )
+            raw_score = weighted_sum / absolute_weight
 
-        final_score = min(max(final_score, SCORE_LOW), SCORE_HIGH)
-        final_score = round(final_score, 6)
+        raw_score = min(max(raw_score, SCORE_LOW), SCORE_HIGH)
+        status = _status(raw_score, self._threshold)
+        contributions = {
+            id(result): _contribution(mass, weight, aggregation)
+            for result, mass, _reputation, weight in informative
+        }
+        return DecisionDetail(
+            domain=domain_name,
+            status=status,
+            raw_score=raw_score,
+            score=round(raw_score, 6),
+            threshold=self._threshold,
+            aggregation=aggregation,
+            votes=tuple(
+                VoteExplanation(
+                    verifier_name=result.verifier_name,
+                    abstained=abstained,
+                    passed=result.passed,
+                    confidence=0.0 if abstained else confidence,
+                    reputation=reputation,
+                    weight=weight,
+                    contribution=0.0 if abstained else contributions[id(result)],
+                )
+                for result, abstained, confidence, reputation, weight in prepared
+            ),
+        )
 
-        if final_score > ABSTAIN_ABOVE:
-            status = "passed"
-        elif final_score < -ABSTAIN_ABOVE:
-            status = "failed"
-        else:
-            status = "uncertain"
 
-        return status, final_score
+def _checked_results(results: Sequence[VerificationResult]) -> tuple[VerificationResult, ...]:
+    if isinstance(results, (str, bytes)) or not isinstance(results, Sequence):
+        raise TypeError("results must be a sequence of VerificationResult values")
+    seen: set[str] = set()
+    checked: list[VerificationResult] = []
+    for result in results:
+        if not isinstance(result, VerificationResult):
+            raise TypeError("results must contain VerificationResult values")
+        is_abstention(result)
+        name = result.verifier_name
+        if name in seen:
+            raise ValueError(f"duplicate verifier name {name!r}")
+        seen.add(name)
+        checked.append(result)
+    return tuple(checked)
+
+
+def _contribution(mass: float, weight: float, aggregation: str) -> float:
+    if aggregation == "equal_weight":
+        return mass
+    if weight == 0.0:
+        return 0.0
+    return weight * mass
+
+
+def _status(raw_score: float, threshold: float) -> str:
+    if raw_score > threshold:
+        return "passed"
+    if raw_score < -threshold:
+        return "failed"
+    return "uncertain"

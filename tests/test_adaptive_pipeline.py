@@ -2,6 +2,7 @@
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.decision.decision_engine import DecisionEngine
+from app.decision.early_termination import AdaptiveEarlyTermination
 from app.models.schemas import ValidationRequest, VerificationResult
 from app.orchestration.validation_orchestrator import ValidationOrchestrator
 from app.reputation.reputation_manager import ReputationManager
@@ -144,6 +145,98 @@ def test_early_stop_runs_after_each_verifier_and_respects_the_minimum():
     assert fresh_by_name["evidence"].calls == 0
 
 
+def test_orchestrator_uses_its_engine_and_keeps_the_stopped_decision():
+    stubs = _named(score=0.95)
+    by_name = {stub.name: stub for stub in stubs}
+    manager = ReputationManager()
+    engine = DecisionEngine(reputation_manager=manager)
+    seen: dict = {}
+
+    class RecordingStop(AdaptiveEarlyTermination):
+        def should_terminate(self, results, analysis, min_verifiers=None, *, decision_engine=None):
+            seen["engine"] = decision_engine
+            seen["domain"] = analysis.domain
+            return super().should_terminate(
+                results,
+                analysis,
+                min_verifiers,
+                decision_engine=decision_engine,
+            )
+
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=engine,
+        reputation_manager=manager,
+        early_termination=RecordingStop(),
+    )
+    before = manager.export_state()
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    assert seen["engine"] is orchestrator.decision_engine
+    assert seen["domain"] == "medical"
+    assert by_name["rule"].calls == 1
+    assert by_name["semantic"].calls == 0
+    assert response.final_status == "passed"
+    assert manager.export_state() == before
+    applied = orchestrator.record_ground_truth(
+        response.results,
+        True,
+        validation_id=response.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("rule", "medical") == 1
+    assert manager.observation_count("semantic", "medical") == 0
+
+
+def test_response_uses_the_decision_from_before_a_reputation_change():
+    stubs = _named(score=0.95)
+    by_name = {stub.name: stub for stub in stubs}
+    manager = ReputationManager()
+    engine = DecisionEngine(reputation_manager=manager)
+    seen: dict = {}
+
+    class MutatingStop(AdaptiveEarlyTermination):
+        def should_terminate(self, results, analysis, min_verifiers=None, *, decision_engine=None):
+            seen["engine"] = decision_engine
+            seen["domain"] = analysis.domain
+            decision = super().should_terminate(
+                results,
+                analysis,
+                min_verifiers,
+                decision_engine=decision_engine,
+            )
+            if decision["terminate"]:
+                seen["decision"] = decision["decision"]
+                for _ in range(12):
+                    manager.update_reputation("rule", "medical", False)
+            return decision
+
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=engine,
+        reputation_manager=manager,
+        early_termination=MutatingStop(),
+    )
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    captured = seen["decision"]
+    assert (response.final_status, response.final_score) == (captured.status, captured.score)
+    revised_status, revised_score = engine.decide(response.results, domain="medical")
+    assert (revised_status, revised_score) != (response.final_status, response.final_score)
+    assert seen["engine"] is orchestrator.decision_engine
+    assert seen["domain"] == "medical"
+    assert by_name["rule"].calls == 1
+    assert by_name["semantic"].calls == 0
+    applied = orchestrator.record_ground_truth(
+        response.results,
+        True,
+        validation_id=response.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("rule", "medical") == 13
+    assert manager.observation_count("semantic", "medical") == 0
+
+
 def test_low_confidence_and_hard_questions_keep_running():
     easy = _named(score=0.55)
     easy_by_name = {stub.name: stub for stub in easy}
@@ -227,10 +320,323 @@ def test_supported_rule_rejection_stops_with_a_fail():
     assert result.metadata["pipeline_role"] == "vote"
     assert result.passed is False
     assert result.score == 0.0
+    assert "deterministic" in result.metadata["pipeline_note"]
     assert "confidence 1" in result.metadata["pipeline_note"]
     assert response.final_status == "failed"
     assert response.final_score < -0.55
     assert semantic.calls == 0
+
+
+def test_delayed_feedback_uses_the_original_validation_domain():
+    class SwitchingAnalyzer(QuestionAnalyzer):
+        def analyze(self, question: str) -> QuestionAnalysis:
+            domain = "medical" if question == "A" else "technical"
+            return QuestionAnalysis(domain, "easy", 0.0)
+
+    stubs = _named(score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=SwitchingAnalyzer(),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    first = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    assert manager.observation_count("rule", "medical") == 0
+    second = orchestrator.validate(ValidationRequest(question="B", answer="b"))
+    assert first.domain == "medical"
+    assert second.domain == "technical"
+    assert first.validation_id != second.validation_id
+    applied = orchestrator.record_ground_truth(
+        first.results,
+        False,
+        validation_id=first.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("rule", "medical") == 1
+    assert manager.is_cold_start("rule", "technical")
+    replay = orchestrator.record_ground_truth(
+        first.results,
+        False,
+        validation_id=first.validation_id,
+    )
+    assert replay == 0
+    assert manager.observation_count("rule", "medical") == 1
+    try:
+        orchestrator.record_ground_truth(
+            first.results,
+            True,
+            domain="technical",
+            validation_id=first.validation_id,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.statistics("rule", "medical").failures == 1
+    assert manager.is_cold_start("rule", "technical")
+
+
+def test_snapshot_and_result_identity_protect_delayed_feedback():
+    stubs = _named(score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    first = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    orchestrator._question_analyzer.analysis = QuestionAnalysis("technical", "easy", 0.0)
+    second = orchestrator.validate(ValidationRequest(question="B", answer="b"))
+    stored = orchestrator._contexts[first.validation_id].results[0]
+    original_passed = stored.passed
+    original_name = stored.verifier_name
+    first.results[0].passed = not original_passed
+    first.results[0].verifier_name = "renamed"
+    first.results[0].metadata["rule"] = "unsupported"
+    assert stored.passed is original_passed
+    assert stored.verifier_name == original_name
+    assert stored.metadata.get("rule") != "unsupported"
+    viewed = orchestrator.validation_context(first.validation_id)
+    viewed.results[0].metadata["rule"] = "unsupported"
+    viewed.results[0].passed = not original_passed
+    assert orchestrator._contexts[first.validation_id].results[0].metadata.get("rule") != "unsupported"
+    assert manager.is_cold_start("rule", "medical")
+    try:
+        orchestrator.record_ground_truth(
+            first.results,
+            False,
+            validation_id=first.validation_id,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.is_cold_start("rule", "medical")
+
+    applied = orchestrator.record_ground_truth(second.results, True)
+    assert applied == 1
+    assert manager.observation_count("rule", "technical") == 1
+    assert manager.is_cold_start("rule", "medical")
+    clone = [result.model_copy(deep=True) for result in second.results]
+    try:
+        orchestrator.record_ground_truth(clone, True)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.observation_count("rule", "technical") == 1
+    assert orchestrator.record_ground_truth(clone, True, domain="general") == 1
+    assert orchestrator.record_ground_truth(clone, True, domain="general") == 1
+    assert manager.observation_count("rule", "general") == 2
+    assert manager.observation_count("rule", "technical") == 1
+    try:
+        orchestrator.record_ground_truth(second.results, True, validation_id="missing")
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    try:
+        orchestrator.record_ground_truth(
+            second.results,
+            False,
+            domain="medical",
+            validation_id=second.validation_id,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert orchestrator.record_ground_truth(
+        second.results,
+        True,
+        validation_id=second.validation_id,
+    ) == 0
+    assert manager.observation_count("rule", "technical") == 1
+    try:
+        orchestrator.record_ground_truth(
+            [first.results[0], second.results[0]],
+            True,
+        )
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+
+
+def test_mismatched_binding_slot_does_not_resolve_a_different_object():
+    stubs = _named(score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    response = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    original = response.results[0]
+    lookalike = original.model_copy(deep=True)
+    orchestrator._result_binding[id(lookalike)] = (original, response.validation_id)
+    viewed = orchestrator.validation_context(response.validation_id)
+    retained, bound_id = orchestrator._result_binding[id(original)]
+    assert retained is original
+    assert bound_id == response.validation_id
+    assert viewed.results[0] is not retained
+    assert viewed.results[0] is not orchestrator._contexts[response.validation_id].results[0]
+    try:
+        orchestrator.record_ground_truth([lookalike], True)
+        raised = False
+    except ValueError:
+        raised = True
+    assert raised
+    assert manager.observation_count("rule", "medical") == 0
+    assert orchestrator.record_ground_truth(response.results, True) == 1
+    assert manager.observation_count("rule", "medical") == 1
+
+
+def test_verification_types_change_the_ranked_pipeline_order():
+    stubs = _named(score=0.9)
+    by_name = {stub.name: stub for stub in stubs}
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(
+            QuestionAnalysis(
+                "general",
+                "easy",
+                0.0,
+                verification_types=["evidence_retrieval"],
+            )
+        ),
+        verifier_selector=VerifierSelector(verifiers=stubs),
+    )
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    assert response.results[0].verifier_name == "evidence"
+    assert by_name["evidence"].calls == 1
+    assert by_name["rule"].calls == 0
+    explained = orchestrator.verifier_selector.explain_ranking(orchestrator.last_analysis)
+    assert explained[0].verifier_name == "evidence"
+    assert explained[0].suitability_contribution > 0.0
+
+
+def test_type_preferred_abstention_still_falls_through_to_the_next_ranked_verifier():
+    evidence = _AbstainingStub(
+        "evidence",
+        reasoning="No supporting evidence was retrieved.",
+    )
+    rule = StubVerifier("rule", passed=True, score=0.9)
+    semantic = StubVerifier("semantic", passed=True, score=0.9)
+    confidence = StubVerifier("confidence", passed=True, score=0.9)
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(
+            QuestionAnalysis(
+                "general",
+                "easy",
+                0.0,
+                verification_types=["direct_fact"],
+            )
+        ),
+        verifier_selector=VerifierSelector(
+            verifiers=[semantic, evidence, rule, confidence]
+        ),
+    )
+    response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
+    assert [result.verifier_name for result in response.results] == ["evidence", "rule"]
+    assert response.results[0].metadata["pipeline_role"] == "abstention"
+    assert response.results[1].metadata["pipeline_role"] == "vote"
+    assert semantic.calls == 0
+    assert confidence.calls == 0
+
+
+def test_unrelated_rule_metadata_keeps_the_score_explanation():
+    semantic = _RuleLabeledSemantic()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.0)),
+        verifier_selector=VerifierSelector(verifiers=[semantic]),
+    )
+    response = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    result = response.results[0]
+    note = result.metadata["pipeline_note"]
+    assert result.verifier_name == "semantic"
+    assert result.metadata["rule"] == "arithmetic_addition"
+    assert "deterministic" not in note
+    assert "0.4000" in note
+    assert response.final_score == 0.4
+
+
+class _RuleLabeledSemantic(StubVerifier):
+    def __init__(self) -> None:
+        super().__init__("semantic", passed=True, score=0.4)
+
+    def verify(
+        self,
+        question: str,
+        answer: str,
+        context: str | None = None,
+    ) -> VerificationResult:
+        self.calls += 1
+        return VerificationResult(
+            verifier_name="semantic",
+            score=0.4,
+            passed=True,
+            reasoning="compared",
+            metadata={"rule": "arithmetic_addition"},
+        )
+
+
+def test_tied_confidence_is_not_a_vote_and_does_not_learn():
+    confidence = _TiedConfidence()
+    semantic = StubVerifier("semantic", passed=True, score=0.95)
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.0)),
+        verifier_selector=VerifierSelector(
+            reputation_manager=manager,
+            verifiers=[confidence, semantic],
+            verifier_profiles={
+                "confidence": {"cost": 0.0, "latency": 0.0},
+                "semantic": {"cost": 1.0, "latency": 1.0},
+            },
+        ),
+        decision_engine=DecisionEngine(reputation_manager=manager),
+        reputation_manager=manager,
+    )
+    response = orchestrator.validate(ValidationRequest(question="A", answer="a"))
+    assert [result.verifier_name for result in response.results] == ["confidence", "semantic"]
+    assert response.results[0].metadata["pipeline_role"] == "abstention"
+    assert "tied" in response.results[0].metadata["pipeline_note"]
+    assert response.results[1].metadata["pipeline_role"] == "vote"
+    applied = orchestrator.record_ground_truth(
+        response.results,
+        True,
+        validation_id=response.validation_id,
+    )
+    assert applied == 1
+    assert manager.observation_count("confidence", "medical") == 0
+    assert manager.observation_count("semantic", "medical") == 1
+    assert orchestrator.decision_engine.reputation_manager is manager
+
+
+class _TiedConfidence(StubVerifier):
+    def __init__(self) -> None:
+        super().__init__("confidence", passed=True, score=1.0)
+
+    def verify(
+        self,
+        question: str,
+        answer: str,
+        context: str | None = None,
+    ) -> VerificationResult:
+        self.calls += 1
+        return VerificationResult(
+            verifier_name="confidence",
+            score=1.0,
+            passed=True,
+            reasoning="Majority judgment: support. Agreement: 1/2.",
+            metadata={
+                "judgments": ["support", "reject"],
+                "majority_label": "support",
+            },
+        )
 
 
 class _AbstainingStub(StubVerifier):

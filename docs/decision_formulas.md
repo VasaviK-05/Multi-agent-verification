@@ -36,9 +36,21 @@ Domain is the cue list with the unique highest hit count. Zero hits, or a tie, y
 
 ```
 U(v, d) = R(v, d) - 0.15 * cost(v) - 0.10 * latency(v)
+U(v, d, q) = U(v, d) + 0.20 * S(v, q)
 ```
 
-The selected list is the highest `U` first. Equal utilities keep the registration order semantic, evidence, rule, confidence.
+`utility(name, domain)` still returns `U(v, d)`. Ranking uses `U(v, d, q)`. `S(v, q)` is 0 when `verification_types` is empty, so that ranking matches `U(v, d)`. Otherwise each unique label has an equal share. Labels mapped below add that share to one verifier. A repeated label is counted once. An unknown label matches nobody and still uses a share, so duplicates and longer lists cannot push a bonus above 1. `S` is a hint in [0, 1], not a measured chance that the verifier applies.
+
+| Verification type | Suitability hint |
+| --- | --- |
+| `arithmetic`, `logical_rule` | `rule` |
+| `direct_fact`, `evidence_retrieval` | `evidence` |
+| `semantic_comparison` | `semantic` |
+| `consistency` | `confidence` |
+
+The hint is not coverage. The rule verifier only matches a few deterministic patterns and otherwise abstains as unsupported. Semantic comparison abstains without reference context. Consistency abstains without supplied judgments. Evidence can abstain when retrieval or NLI is not directional. `iter_ranked` still yields every registered candidate so an abstention can fall through to the next one. Reputation stays `R(v, analysis.domain)`. Domain candidates are not mixed into that reputation.
+
+The selected list is the highest `U(v, d, q)` first. Equal utilities keep registration order. For the built-in verifiers that order is semantic, evidence, rule, confidence. Injected verifiers keep the order in which they were supplied. `explain_ranking` reports reputation, the resource penalty, the suitability contribution, and the final utility without constructing a default verifier.
 
 The count uses where the score sits inside its band, clipped to [0, 1]:
 
@@ -52,21 +64,22 @@ count = min_n + floor((max_n - min_n) * position + 1/2)
 
 Default ranges are easy (1, 2), medium (2, 3), hard (3, 4). `floor(x + 1/2)` is half-up on this non-negative number, so a score at the bottom of a band selects `min_n` and a score at the top selects `max_n`. `int(span * score)` did not: with a span of 1 it stayed on `min_n` for every score below 1, including scores that the band already calls hard.
 
-At cold start every `R` is 0.5, so the order is the cost and latency order. The default estimates put `rule` first.
+At cold start every `R` is 0.5. When `verification_types` is empty, ranking follows the resource estimates, and the default estimates put `rule` first. When `verification_types` is not empty, suitability also affects that order.
 
 ### Reputation
 
-For each verifier and domain, with positive evidence `r` and negative evidence `s`:
+For each verifier and domain, successes `r` and failures `s` are integer counts. With the default prior:
 
 ```
 alpha = 1 + r
 beta  = 1 + s
 R     = alpha / (alpha + beta) = (r + 1) / (r + s + 2)
+variance = alpha * beta / ((alpha + beta)^2 * (alpha + beta + 1))
 ```
 
-Cold start is `r = s = 0`, so `R = 0.5`, and only for that pair. Another domain is not copied.
+`r` and `s` are stored. The observation count is `r + s`. It is not computed by subtracting the prior from alpha and beta. Cold start is `r = s = 0`, so `R = 0.5`, and only for that pair. Another domain is not copied. `R` and the variance are a Beta–Bernoulli belief about the verifier. They are not the probability that an answer is correct.
 
-A later label updates one pair:
+A later external boolean updates one pair:
 
 ```
 verifier_correct = (verifier_passed == answer_is_correct)
@@ -74,11 +87,15 @@ verifier_correct → r += 1
 otherwise        → s += 1
 ```
 
-`answer_is_correct` has to be a boolean from outside the system. The status string from `decide` is not accepted. A caller that sets the update source to anything other than `ground_truth` is rejected. `validate` does not call the update.
+Rejecting an incorrect answer is a success. `answer_is_correct` has to be a boolean from outside the system. The status string from `decide`, a consensus, a confidence score, and a reference-answer string are not labels. `validate` does not call the update. Abstentions and verifiers that did not run add no observation.
+
+`update_reputation` and `update_from_ground_truth` have no validation identity, so a repeated call is another observation. On those methods the source tag must be the string `ground_truth`. Any other tag is refused. The tag is caller metadata, not authentication and not proof that the boolean is true.
+
+`record_feedback` binds the boolean, the original domain, and the executed votes to a validation id. The same delivery again does nothing. A different label or vote list for an id that is already stored is rejected and does not change counts. Changing a stored label needs a future correction workflow. Two validations of the same question text are different ids. The orchestrator stores each run's domain with that id. Feedback for an earlier run does not use the domain of a later run. See `docs/reputation_integration.md`.
 
 ### Decision score
 
-An abstention contributes nothing. Informative results use confidence `s` in [0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(1e-6, 1 - 1e-6)`:
+An abstention contributes nothing. Informative results use confidence `s` in [0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(eps, 1 - eps)`. The default `eps` is `1e-6`. An `eps` so small that `1 - eps` rounds to `1` is rejected before the division:
 
 ```
 w    = log(p / (1 - p))
@@ -98,15 +115,17 @@ score = sum(mass_i) / n                   when every w_i is 0
 
 The absolute value in the denominator is required. Dividing by `sum(w_i)` would flip the sign back and undo inversion from `p < 0.5`.
 
-The score is clipped to [-1, 1] and rounded to 6 decimals.
+The raw score is clipped to [-1, 1]. Status uses that unrounded value and a threshold that is finite and strictly between 0 and 1. The default is 0.55. `decide` returns the raw score rounded to 6 decimals, so the displayed score can equal the threshold after the raw score has already crossed it. Status still follows the raw comparison.
 
 ```
-score >  0.55 → passed
-score < -0.55 → failed
-otherwise     → uncertain
+raw >  threshold → passed
+raw < -threshold → failed
+otherwise        → uncertain
 ```
 
 The abstention band is symmetric about 0. A positive cut pair such as "above 0.55 pass, below 0.45 fail" would mark a tie at 0 as a failure, because that pair assumes a score centered near one half. This score is centered at 0.
+
+`p` is the six-decimal reputation from one batch read of the requested verifier/domain pairs. That read does not update reputation. Weights use those rounded means, the same values `get_reputation` returns.
 
 No results → `unknown` and score `0`. That zero means "no score". An `uncertain` zero means the weighted votes cancelled, every verifier abstained, or the score landed in the middle band. Neither number is a probability of a correct answer.
 
@@ -114,7 +133,7 @@ No results → `unknown` and score `0`. That zero means "no score". An `uncertai
 
 | Verifier | Raw `score` | How the decision reads it |
 | --- | --- | --- |
-| rule, `metadata.rule` set and not `unsupported` | `1` if the rule passed, `0` if it failed | Deterministic vote. Confidence is 1, so a failure is mass `-1`, not `0`. |
+| rule, `metadata.rule` set and not `unsupported` | `1` if the rule passed, `0` if it failed | Deterministic vote, and only when the verifier name is `rule`. Confidence is 1, so a failure is mass `-1`, not `0`. The same metadata on another verifier does not grant confidence 1. |
 | rule, `metadata.rule == "unsupported"` | `0`, `passed` false | Abstention. Not evidence that the answer is wrong. |
 | semantic, no reference context | `0`, `passed` false | Abstention. |
 | semantic, with context | cosine similarity | Confidence of the `passed` vote. |
@@ -122,7 +141,9 @@ No results → `unknown` and score `0`. That zero means "no score". An `uncertai
 | evidence, NLI label `neutral` | confidence in that label | Abstention. Neutral is not a contradiction. |
 | evidence, entailment or contradiction | NLI confidence of that label | Confidence of the pass or reject vote. |
 | confidence, no judgments | `0`, `passed` false | Abstention. |
-| confidence, majority `support` or `reject` | agreement fraction | Confidence of that vote. |
+| confidence, tied highest judgment count | agreement fraction stored by the verifier | Abstention, in either judgment order. Not a pass or a reject. |
+| confidence, unique majority `support` or `reject` | agreement fraction | Confidence of that vote. |
+| any verifier, score outside [0, 1] or non-finite | not a usable vote | Rejected. Not clipped into a confidence. |
 
 ### Fallback when a verifier abstains
 
@@ -132,22 +153,16 @@ Candidates are tried in utility order, not only the initial difficulty subset. E
 
 ### Early stopping
 
-After each informative verifier, with `n` informative results, vote `v_i`, and normalized confidence `s_i`:
+After a new informative result, stopping calls `DecisionEngine.decide_detailed` once on the current prefix and the analyzer domain. It does not recompute the log-odds score. Abstentions, zero-confidence results, and zero log-odds weights are not contributing votes. In equal-weight cold start, direction is the normalized pass/reject vote. In log-odds mode, a negative weight reverses that direction.
+
+The minimum count is the selector's minimum for that difficulty (by default 1, 2, and 3), counted on distinct contributing verifiers. Below that minimum the run continues. A hard question continues after the minimum as well. Otherwise stop only when the contributing directions agree, the decision status is `passed` or `failed` under the engine's own threshold, and the band cuts hold:
 
 ```
-agreement      = all votes equal
-avg_confidence = mean(s_i)
-margin         = abs(mean(s_i * v_i))
+easy:   mean normalized confidence ≥ 0.75 and |raw score| ≥ 0.60
+medium: mean normalized confidence ≥ 0.80 and |raw score| ≥ 0.70
 ```
 
-The minimum `n` is the selector's minimum for that difficulty (by default 1, 2, and 3). Below that minimum the run continues. A hard question continues after the minimum as well. Otherwise stop only if all votes agree and either:
-
-```
-easy band: avg_confidence ≥ 0.75 and margin ≥ 0.60
-any non-hard band: avg_confidence ≥ 0.80 and margin ≥ 0.70
-```
-
-Disagreement continues. Confidence under those cuts continues. The remaining selected verifiers still run.
+Those cuts are configurable finite values in [0, 1]. Raw agreement does not stop the run when the weighted score cancels or the status is uncertain. Reaching the selector target, or running out of candidates, is not an early stop. On an early stop the response status and score are the detail from that call. A later reputation update does not rewrite them. The remaining selected verifiers do not run.
 
 ## Published foundations
 
@@ -161,14 +176,14 @@ These are standard formulas. Using them here is not a claim that the combination
 These are local choices. They are not the published procedures above, and they are not claimed as a contribution.
 
 - The difficulty features, the trailing-`s` token rule, rounding the score to two decimals before the band cut, and the three named domains.
-- A linear penalty on hand-written cost and latency estimates, and running the highest utility first.
+- A linear penalty on hand-written cost and latency estimates, plus an uncalibrated suitability bonus from `verification_types`, and running the highest utility first.
 - Mapping the in-band score position onto a `(min, max)` count with half-up rounding.
 - Reading a supported rule's 0/1 score as a deterministic vote (confidence 1), and treating unsupported rules, missing semantic context, non-directional evidence, and missing confidence judgments as abstentions.
-- Multiplying the log-odds weight by that confidence, then abstaining when the signed score is inside [-0.55, 0.55].
+- Multiplying the log-odds weight by that confidence, then abstaining when the unrounded signed score is inside [-threshold, threshold]. The default threshold is 0.55. The returned score is rounded to 6 decimals after that comparison.
 - After an abstention, consulting the next verifier in utility order and recording why in `pipeline_note`.
 - On an all-zero weight vector, using the equal-weight mean of `confidence * vote` instead of abstaining immediately. Verifiers with weight 0 are ignored when any other weight is nonzero.
 - Not folding the cost estimate into the decision score a second time. Cost affects who is selected.
-- The early-stop rule on agreement, mean confidence, and margin, including "hard never stops early". This is not Wald's sequential probability ratio test (Wald, A., 1947, *Sequential Analysis*), which is not implemented.
+- Stopping early only when contributing directions agree, confidence and absolute raw score clear the band cuts, and `decide_detailed` is already `passed` or `failed`. Hard questions never stop early. This is not Wald's sequential probability ratio test (Wald, A., 1947, *Sequential Analysis*), which is not implemented.
 - The Weighted Majority algorithm's multiplicative update (Littlestone, N. and Warmuth, M. K., 1994, *Information and Computation*) is not implemented. Reputation moves only by Beta counts from external labels.
 
 ## Values that still need calibration
@@ -177,12 +192,13 @@ Nothing in this table was fitted on a labeled set in this repository.
 
 | Value | Where it lives |
 | --- | --- |
-| Feature weights 0.30, 0.25, 0.25, 0.20 | `app/analysis/question_analyzer.py` |
-| Divisors 40, 3, 2, 3 and score rounding to 2 decimals | same |
-| Band cuts 0.35 and 0.65 | same |
-| Keyword lists and the trailing-`s` rule | same |
-| `lambda_cost = 0.15`, `lambda_latency = 0.10` | `app/selection/verifier_selector.py` |
+| Feature weights 0.30, 0.25, 0.25, 0.20 | `app/analysis/heuristic.py` |
+| Divisors 40, 3, 2, 3 and score rounding to 2 decimals | `app/analysis/heuristic.py` |
+| Band cuts 0.35 and 0.65 | `app/analysis/heuristic.py` |
+| Keyword lists and the trailing-`s` rule | `app/analysis/heuristic.py` |
+| `lambda_cost = 0.15`, `lambda_latency = 0.10`, `lambda_suitability = 0.20` | `app/selection/verifier_selector.py` |
 | Cost and latency estimates for the four verifiers | same |
+| Verification-type suitability map | same |
 | Count ranges (1, 2), (2, 3), (3, 4) | same |
 | Beta prior `alpha = beta = 1` and the +1 update | `app/reputation/reputation_manager.py` |
 | Decision abstention margin 0.55, reputation clamp `1e-6` | `app/decision/decision_engine.py` |

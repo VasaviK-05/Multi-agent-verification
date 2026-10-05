@@ -5,32 +5,23 @@ A False result means keep running the rest of the selected list. The rule
 never stops before the difficulty minimum, and a hard question does not
 stop early once that minimum is met.
 
+Stopping uses one ``DecisionEngine.decide_detailed`` result for the current
+prefix. It does not recompute log-odds, cold-start means, or reputation
+rounding. Abstentions, zero-confidence results, and zero log-odds weights
+do not count as contributing votes. A negative weight reverses that vote's
+direction. Raw pass/reject agreement is not enough when the weighted score
+cancels or the decision is uncertain.
+
 This is an UNCALIBRATED threshold heuristic. It is not Wald's sequential
 probability ratio test. See docs/decision_formulas.md.
-
-Let n be the number of informative results so far. Abstentions, including
-an unsupported rule, are ignored and cannot trigger a stop. v_i is the
-pass/reject vote and s_i is the normalized confidence from
-``vote_normalization`` (1 for a supported rule, even when its stored
-score is 0):
-
-    agreement = all informative votes equal
-    avg_confidence = mean(s_i)
-    margin = abs(mean(s_i * v_i))
-
-Stop only when n >= minimum(difficulty) and the question is not hard and
-either the easy rule or the strong-agreement rule holds:
-
-    easy:  agreement and avg_confidence >= 0.75 and margin >= 0.60
-    strong: agreement and avg_confidence >= 0.80 and margin >= 0.70
-
-Otherwise continue. Disagreement continues. Low confidence continues.
 """
 
 from __future__ import annotations
 
+import math
+
 from app.analysis.question_analyzer import QuestionAnalysis
-from app.decision.vote_normalization import is_abstention, vote_confidence
+from app.decision.decision_engine import DecisionDetail, DecisionEngine, VoteExplanation
 from app.models.schemas import VerificationResult
 
 # UNCALIBRATED. These minima match VerifierSelector's default range minima.
@@ -48,77 +39,120 @@ STRONG_MARGIN = 0.70
 class AdaptiveEarlyTermination:
     """Sequential stopping rule for an already chosen verifier list."""
 
+    def __init__(
+        self,
+        *,
+        easy_confidence: float = EASY_CONFIDENCE,
+        easy_margin: float = EASY_MARGIN,
+        medium_confidence: float = STRONG_CONFIDENCE,
+        medium_margin: float = STRONG_MARGIN,
+    ) -> None:
+        self._easy_confidence = _require_unit("easy_confidence", easy_confidence)
+        self._easy_margin = _require_unit("easy_margin", easy_margin)
+        self._medium_confidence = _require_unit("medium_confidence", medium_confidence)
+        self._medium_margin = _require_unit("medium_margin", medium_margin)
+
     def should_terminate(
         self,
         results: list[VerificationResult],
         analysis: QuestionAnalysis,
         min_verifiers: int | None = None,
+        *,
+        decision_engine: DecisionEngine | None = None,
     ) -> dict:
-        """Return {"terminate": bool, "reason": str}.
+        """Return ``terminate`` and ``reason``.
 
-        ``min_verifiers`` overrides the difficulty minimum. The orchestrator
-        passes the selector's minimum so the two cannot drift at runtime.
+        A stop also includes ``decision``, the immutable detail for this
+        prefix. ``min_verifiers`` overrides the difficulty minimum. The
+        orchestrator passes its own engine and the selector minimum.
+        Omitting the engine uses a neutral default manager.
         """
-        informative = [result for result in results if not is_abstention(result)]
-        n = len(informative)
-        if n == 0:
-            return {
-                "terminate": False,
-                "reason": "no informative verifier result yet",
-            }
-
-        difficulty = analysis.difficulty
+        domain = _require_domain(analysis.domain)
+        if analysis.difficulty not in MIN_VERIFIERS_BY_DIFFICULTY:
+            raise ValueError(f"unknown difficulty {analysis.difficulty!r}")
         required = (
-            min_verifiers
+            _require_minimum(min_verifiers)
             if min_verifiers is not None
-            else MIN_VERIFIERS_BY_DIFFICULTY.get(difficulty, 2)
+            else MIN_VERIFIERS_BY_DIFFICULTY[analysis.difficulty]
         )
-        if n < required:
-            return {
-                "terminate": False,
-                "reason": f"minimum {required} verifier result(s) not yet available",
-            }
+        engine = decision_engine if decision_engine is not None else DecisionEngine()
+        detail = engine.decide_detailed(results, domain=domain)
+        contributors = _contributors(detail)
+        if not contributors:
+            return _continue("no usable contributing votes")
+        if len(contributors) < required:
+            return _continue(
+                f"minimum {required} contributing verifier(s) not yet available"
+            )
+        if analysis.difficulty == "hard":
+            return _continue("hard question — continue verification")
 
-        if difficulty == "hard":
-            return {
-                "terminate": False,
-                "reason": "hard question — continue verification",
-            }
+        directions = {direction for _vote, direction in contributors}
+        if len(directions) != 1:
+            return _continue("effective disagreement — continue verification")
+        if detail.status not in {"passed", "failed"}:
+            return _continue("uncertain weighted decision — continue verification")
 
-        votes = [result.passed for result in informative]
-        confidences = [vote_confidence(result) for result in informative]
-        agreement = len(set(votes)) == 1
-        avg_confidence = sum(confidences) / n
-        signed = [
-            confidence if passed else -confidence
-            for confidence, passed in zip(confidences, votes)
-        ]
-        margin = abs(sum(signed) / n)
-
-        if (
-            difficulty == "easy"
-            and agreement
-            and avg_confidence >= EASY_CONFIDENCE
-            and margin >= EASY_MARGIN
-        ):
-            return {
-                "terminate": True,
-                "reason": "easy question with strong agreement and confidence",
-            }
-
-        if agreement and avg_confidence >= STRONG_CONFIDENCE and margin >= STRONG_MARGIN:
-            return {
-                "terminate": True,
-                "reason": "strong agreement and confidence margin",
-            }
-
-        if not agreement:
-            return {
-                "terminate": False,
-                "reason": "verifier disagreement — continue verification",
-            }
-
+        confidence_cut, margin_cut = self._cuts(analysis.difficulty)
+        average_confidence = sum(vote.confidence for vote, _direction in contributors) / len(
+            contributors
+        )
+        if average_confidence < confidence_cut or abs(detail.raw_score) < margin_cut:
+            return _continue("insufficient confidence or margin to stop early")
         return {
-            "terminate": False,
-            "reason": "insufficient confidence to stop early",
+            "terminate": True,
+            "reason": (
+                f"{analysis.difficulty} question with sufficient confidence, "
+                "margin, and a decisive decision"
+            ),
+            "decision": detail,
         }
+
+    def _cuts(self, difficulty: str) -> tuple[float, float]:
+        if difficulty == "easy":
+            return self._easy_confidence, self._easy_margin
+        return self._medium_confidence, self._medium_margin
+
+
+def _contributors(detail: DecisionDetail) -> list[tuple[VoteExplanation, int]]:
+    """Return ``(vote, effective direction)`` pairs that can support a stop."""
+    rows: list[tuple[object, int]] = []
+    for vote in detail.votes:
+        if vote.abstained or vote.confidence == 0.0:
+            continue
+        if detail.aggregation == "equal_weight":
+            direction = 1 if vote.passed else -1
+        elif detail.aggregation == "log_odds":
+            if vote.weight == 0.0:
+                continue
+            direction = 1 if vote.passed else -1
+            if vote.weight < 0.0:
+                direction = -direction
+        else:
+            continue
+        rows.append((vote, direction))
+    return rows
+
+
+def _continue(reason: str) -> dict:
+    return {"terminate": False, "reason": reason}
+
+
+def _require_domain(domain: object) -> str:
+    if not isinstance(domain, str) or domain.strip() == "":
+        raise ValueError("domain must be a non-blank string")
+    return domain
+
+
+def _require_minimum(value: object) -> int:
+    if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
+        raise ValueError("min_verifiers must be a positive integer")
+    return value
+
+
+def _require_unit(name: str, value: object) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise TypeError(f"{name} must be a finite value in [0, 1]")
+    if not math.isfinite(value) or value < 0.0 or value > 1.0:
+        raise ValueError(f"{name} must be a finite value in [0, 1]")
+    return float(value)

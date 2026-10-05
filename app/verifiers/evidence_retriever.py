@@ -173,7 +173,10 @@ class EvidenceRetriever:
         query_embedding = np.ascontiguousarray(query_embedding, dtype=np.float32)
         faiss.normalize_L2(query_embedding)
 
-        scores, indices = self.index.search(query_embedding, k)
+        scores, indices = self.index.search(
+            query_embedding,
+            k,
+        )
 
         results = []
         for score, index_id in zip(scores[0], indices[0]):
