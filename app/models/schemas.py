@@ -12,7 +12,7 @@ class ValidationRequest(BaseModel):
     answer: str
     context: Optional[str] = None
     session_id: Optional[str] = None
-
+    question_id: Optional[int] = None
 
 class VerificationResult(BaseModel):
     """Output from a single verifier."""
