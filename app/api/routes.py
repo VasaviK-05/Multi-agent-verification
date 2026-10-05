@@ -5,7 +5,13 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from app.models.schemas import ValidationRequest, ValidationResponse
+from app.database.session_repository import create_session, get_sessions
+from app.models.schemas import (
+    CreateSessionRequest,
+    SessionResponse,
+    ValidationRequest,
+    ValidationResponse,
+)
 from app.services.validation_service import ValidationService
 from llm_service import generate_answer
 
@@ -79,3 +85,15 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             status_code=503,
             detail=f"Generation or validation failed: {exc}",
         )
+
+
+@router.post("/sessions", response_model=SessionResponse)
+def create_new_session(request: CreateSessionRequest) -> SessionResponse:
+    """Create a new validation session."""
+    return create_session(request.title)
+
+
+@router.get("/sessions", response_model=list[SessionResponse])
+def list_sessions() -> list[SessionResponse]:
+    """Return all validation sessions."""
+    return get_sessions()
