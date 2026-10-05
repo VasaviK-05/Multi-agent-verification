@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const API_URL = "http://127.0.0.1:8000";
@@ -15,7 +15,70 @@ function App() {
   const [error, setError] = useState("");
 
   const [history, setHistory] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [activeSessionId, setActiveSessionId] = useState(null);
+  const [sessionsLoading, setSessionsLoading] = useState(false);
+  const [sessionQuestions, setSessionQuestions] = useState([]);
+  const [questionsLoading, setQuestionsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    const fetchSessions = async () => {
+      setSessionsLoading(true);
+
+      try {
+        const response = await fetch(`${API_URL}/sessions`);
+
+        if (!response.ok) {
+          throw new Error("Failed to load sessions.");
+        }
+
+        const data = await response.json();
+        setSessions(data);
+
+        if (data.length > 0) {
+          setActiveSessionId(data[0].session_id);
+        }
+      } catch (err) {
+        console.error("Unable to load sessions:", err);
+      } finally {
+        setSessionsLoading(false);
+      }
+    };
+
+    fetchSessions();
+  }, []);
+
+  useEffect(() => {
+    if (!activeSessionId) {
+      setSessionQuestions([]);
+      return;
+    }
+
+    const fetchSessionQuestions = async () => {
+      setQuestionsLoading(true);
+
+      try {
+        const response = await fetch(
+          `${API_URL}/sessions/${activeSessionId}/questions`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to load session questions.");
+        }
+
+        const data = await response.json();
+        setSessionQuestions(data);
+      } catch (err) {
+        console.error("Unable to load session questions:", err);
+        setSessionQuestions([]);
+      } finally {
+        setQuestionsLoading(false);
+      }
+    };
+
+    fetchSessionQuestions();
+  }, [activeSessionId]);
 
   const handleQuestionChange = (e) => {
     const textarea = e.target;
@@ -203,23 +266,56 @@ function App() {
         </button>
 
         <div className="previous-section">
-          <h3>PREVIOUS QUESTIONS</h3>
+          <h3>SESSIONS</h3>
 
-          {history.length === 0 ? (
-            <p className="empty-history">
-              Your validated questions will appear here.
-            </p>
+          {sessionsLoading ? (
+            <p className="empty-history">Loading sessions...</p>
+          ) : sessions.length === 0 ? (
+            <p className="empty-history">No sessions yet.</p>
           ) : (
             <div className="history-list">
-              {history.map((item, index) => (
+              {sessions.map((session) => (
                 <button
-                  key={index}
-                  className="history-item"
-                  onClick={() => openHistory(item)}
+                  key={session.session_id}
+                  className={`history-item ${
+                    activeSessionId === session.session_id ? "active" : ""
+                  }`}
+                  onClick={() => setActiveSessionId(session.session_id)}
                 >
-                  {item.question}
+                  {session.title}
                 </button>
               ))}
+            </div>
+          )}
+
+          {activeSessionId && (
+            <div className="session-questions">
+              <h3>QUESTIONS</h3>
+
+              {questionsLoading ? (
+                <p className="empty-history">Loading questions...</p>
+              ) : sessionQuestions.length === 0 ? (
+                <p className="empty-history">No questions in this session.</p>
+              ) : (
+                <div className="history-list">
+                  {sessionQuestions.map((item) => (
+                    <button
+                      key={item.validation_id}
+                      className="history-item"
+                      onClick={() => {
+                        setQuestion(item.question);
+                        setSubmittedQuestion(item.question);
+                        setAnswer(item.generated_answer);
+                        setResult(null);
+                        setShowResults(false);
+                        setError("");
+                      }}
+                    >
+                      {item.question}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
