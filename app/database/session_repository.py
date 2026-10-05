@@ -84,3 +84,51 @@ def get_sessions():
             cursor.close()
         if connection:
             connection.close()
+
+def get_session_questions(session_id: str):
+    connection = None
+    cursor = None
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            SELECT
+                validation_id,
+                question_id,
+                question,
+                generated_answer,
+                final_status,
+                final_score,
+                domain,
+                created_at
+            FROM validation_records
+            WHERE session_id = %s
+            ORDER BY created_at ASC
+            """,
+            (session_id,),
+        )
+
+        rows = cursor.fetchall()
+
+        return [
+            {
+                "validation_id": row[0],
+                "question_id": row[1],
+                "question": row[2],
+                "generated_answer": row[3],
+                "final_status": row[4],
+                "final_score": row[5],
+                "domain": row[6],
+                "created_at": row[7],
+            }
+            for row in rows
+        ]
+
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()

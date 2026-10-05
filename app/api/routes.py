@@ -5,7 +5,11 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
-from app.database.session_repository import create_session, get_sessions
+from app.database.session_repository import (
+    create_session,
+    get_session_questions,
+    get_sessions,
+)
 from app.database.validation_repository import save_validation
 from app.models.schemas import (
     CreateSessionRequest,
@@ -142,3 +146,8 @@ def create_new_session(request: CreateSessionRequest) -> SessionResponse:
 def list_sessions() -> list[SessionResponse]:
     """Return all validation sessions."""
     return get_sessions()
+
+@router.get("/sessions/{session_id}/questions")
+def list_session_questions(session_id: str):
+    """Return all questions asked in a validation session."""
+    return get_session_questions(session_id)
