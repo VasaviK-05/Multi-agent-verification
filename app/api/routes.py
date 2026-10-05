@@ -12,11 +12,13 @@ from app.database.session_repository import (
     get_sessions,
 )
 from app.database.validation_repository import save_validation
+from app.database.feedback_repository import save_feedback
 from app.models.schemas import (
     CreateSessionRequest,
     SessionResponse,
     ValidationRequest,
     ValidationResponse,
+    FeedbackRequest,
 )
 from app.services.validation_service import ValidationService
 from database import get_connection
@@ -202,3 +204,25 @@ def list_sessions() -> list[SessionResponse]:
 def list_session_questions(session_id: str):
     """Return all questions asked in a validation session."""
     return get_session_questions(session_id)
+
+@router.post("/feedback")
+def submit_feedback(request: FeedbackRequest):
+    """Store user feedback for a validation result."""
+
+    try:
+        feedback = save_feedback(
+            validation_id=request.validation_id,
+            is_correct=request.is_correct,
+            comment=request.comment,
+        )
+
+        return {
+            "status": "success",
+            "feedback": feedback,
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to save feedback: {str(e)}",
+        )

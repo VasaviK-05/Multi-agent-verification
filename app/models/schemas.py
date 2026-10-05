@@ -51,3 +51,8 @@ class SessionResponse(BaseModel):
     title: str
     created_at: Any
     updated_at: Any
+
+class FeedbackRequest(BaseModel):
+    validation_id: str
+    is_correct: bool
+    comment: Optional[str] = None
