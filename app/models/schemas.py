@@ -11,6 +11,7 @@ class ValidationRequest(BaseModel):
     question: str
     answer: str
     context: Optional[str] = None
+    session_id: Optional[str] = None
 
 
 class VerificationResult(BaseModel):
@@ -35,3 +36,18 @@ class ValidationResponse(BaseModel):
     final_score: Optional[float] = None
     validation_id: Optional[str] = None
     domain: Optional[str] = None
+    session_id: Optional[str] = None
+
+class CreateSessionRequest(BaseModel):
+    """Input payload for creating a session."""
+
+    title: str
+
+
+class SessionResponse(BaseModel):
+    """Session information returned to the client."""
+
+    session_id: str
+    title: str
+    created_at: Any
+    updated_at: Any

@@ -212,6 +212,7 @@ class ValidationOrchestrator:
             final_score=final_score,
             validation_id=validation_id,
             domain=analysis.domain,
+            session_id=request.session_id,
         )
 
     def validation_context(self, validation_id: str) -> ValidationContext:
