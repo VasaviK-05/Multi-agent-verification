@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from app.verifiers.evidence_retriever import EvidenceRetriever
+from app.verifiers.evidence_retriever import EvidenceRetriever, content_terms
 
 FULL_CORPUS = "data/evidence_corpus.json"
 TEST_CORPUS = "data/test_evidence_corpus.json"
@@ -78,6 +78,25 @@ def test_scores_are_cosine_similarities():
     assert results[0]["title"] in {"France", "Paris"}
     assert all(-1.0 <= result["score"] <= 1.0 + 1e-6 for result in results)
     assert results[0]["score"] >= results[-1]["score"]
+
+
+# ----------------------------------------------------------------------
+# Term statistics for the topic gate
+# ----------------------------------------------------------------------
+
+def test_content_terms_drops_stopwords_and_keeps_numbers():
+    assert content_terms("Who won the 2010 UEFA Europa League Final?") == {
+        "won", "2010", "uefa", "europa", "league", "final",
+    }
+
+
+def test_term_weights_rank_rare_terms_above_common_ones():
+    retriever = EvidenceRetriever(corpus_path=TEST_CORPUS)
+    weights = retriever.term_weights({"capital", "france", "seine", "notinthecorpus"})
+
+    assert "notinthecorpus" not in weights  # cannot discriminate between chunks
+    assert weights["seine"] > weights["france"] > weights["capital"]
+    assert all(weight >= 0 for weight in weights.values())
 
 
 # ----------------------------------------------------------------------
