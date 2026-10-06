@@ -18,11 +18,11 @@ class GroundTruthService:
         result = self._wikidata.get_ground_truth(question)
 
         if not result:
-            raise ValueError("Could not find ground truth")
+            return None
 
         # 2. Extract the label returned by Wikidata
         label = result["label"]
-        source = result.get("source", "Wikidata")
+        source = result.get("source"qq, "Wikidata")
 
         # 3. Store it against both the validation and question IDs
         return save_ground_truth(

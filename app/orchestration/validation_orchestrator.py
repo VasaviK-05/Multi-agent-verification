@@ -219,6 +219,8 @@ class ValidationOrchestrator:
         answer=request.answer,
         )
 
+        signed_score = detail.raw_score
+
         context = ValidationContext(
             validation_id=validation_id,
             domain=analysis.domain,
@@ -239,6 +241,10 @@ class ValidationOrchestrator:
             domain=analysis.domain,
             session_id=request.session_id,
             ground_truth=ground_truth,
+            difficulty=analysis.difficulty,
+            selected_verifiers=[result.verifier_name for result in results],
+            early_stop_reason=reason,
+            signed_score=signed_score,
         )
 
     def validation_context(self, validation_id: str) -> ValidationContext:
