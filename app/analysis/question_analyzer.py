@@ -30,8 +30,10 @@ from app.analysis.model_assessment import (
     AnalyzerResponseError,
     ModelAssessment,
     build_generate_body,
+    additional_answer_clauses,
     parse_envelope,
     validate_assessment,
+    validate_routing,
 )
 from app.analysis.models import QuestionAnalysis
 
@@ -112,7 +114,8 @@ class QuestionAnalyzer:
         except (ValueError, RecursionError):
             # httpx raises JSONDecodeError, a ValueError, for a non-JSON body.
             raise AnalyzerResponseError("malformed_envelope") from None
-        return validate_assessment(parse_envelope(envelope))
+        assessment = validate_assessment(parse_envelope(envelope))
+        return validate_routing(assessment, question)
 
     def _post(self, body: dict) -> httpx.Response:
         if self._client is not None:
@@ -126,11 +129,18 @@ class QuestionAnalyzer:
 
 
 def _fallback(question: str, reason: str) -> QuestionAnalysis:
-    return heuristic_analysis(
+    analysis = heuristic_analysis(
         question,
         analysis_method="heuristic_fallback",
         fallback_reason=reason,
     )
+    # Preserve the whole heuristic assessment, adding only independently
+    # recognized obligations from explicit additional answer clauses.
+    for clause in additional_answer_clauses(question):
+        for hint in heuristic_analysis(clause).verification_types:
+            if hint not in analysis.verification_types:
+                analysis.verification_types.append(hint)
+    return analysis
 
 
 def _from_assessment(assessment: ModelAssessment) -> QuestionAnalysis:

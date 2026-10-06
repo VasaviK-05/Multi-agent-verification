@@ -29,7 +29,135 @@ $env:ANALYZER_TIMEOUT_SECONDS = "15"
 
 `OLLAMA_URL` defaults to `http://localhost:11434/api/generate`. `ANALYZER_MODEL` is the model name. If it is unset or blank, the analyzer uses `OLLAMA_MODEL`, then `llama3.2:3b`. `ANALYZER_TIMEOUT_SECONDS` defaults to 15 and must be a positive finite number. `ANALYZER_MODE` must be `heuristic` or `ollama`. Invalid values raise `ValueError` when the analyzer is constructed.
 
-The call is one synchronous `httpx` POST. `stream` is false. `format` is `json`. Generation options set `temperature` to 0 and `seed` to 0 where Ollama honors them. There are no retries. The system instruction and the question travel in different fields. The question is a JSON object, `{"question": "..."}`, and is treated as untrusted data.
+The call is one synchronous `httpx` POST. `stream` is false. `format` is a JSON-schema object requiring all eight assessment fields, limiting domain/hint labels and integer rubric values, and excluding extra fields. Generation options set `temperature` to 0 and `seed` to 0 where Ollama honors them. There are no retries. The system instruction and the question travel in different fields. The question is a JSON object, `{"question": "..."}`, and is treated as untrusted data.
+
+This request was live-tested with Ollama `0.35.1` and `llama3.2:3b`. The
+generate API's schema format is documented at
+<https://docs.ollama.com/api/generate>. An older server that rejects the
+format produces the existing HTTP-error fallback; the analyzer does not
+retry using weaker unconstrained output. Python still strictly validates
+the response, including domain/status/candidate consistency, subject
+whitespace, and unique lists. A server accepting the schema does not prove
+that every schema keyword is enforced by its generation grammar.
+
+The reproduced pre-fix geography response was complete (`done: true`,
+`done_reason: stop`) but omitted `subject` despite the system instruction.
+Generic JSON format did not require that field. The schema requires it.
+An initial schema-only trial then returned all three domains as candidates
+for a clear general question. The prompt now describes matching domains
+rather than domains "considered" and includes complete geography and
+programming examples. Explicit code-writing requests are technical;
+factual lookup and arithmetic are distinct from checking program behavior.
+These remain model-generated routing hints, not correctness guarantees.
+
+The initial cold call also exceeded the unchanged 15-second budget. Model
+loading, prompt evaluation, and generation are separate from schema
+validity. A cold server can legitimately fall back with `timeout`; do not
+label this successful model analysis. A longer timeout can be selected
+explicitly for diagnostics or a deployment's measured latency budget.
+Loading the model ahead of a latency-sensitive request is an operational
+choice, not an automatic retry or a changed analyzer default.
+
+In the measured model-process reload, a valid geography assessment took
+24.582 seconds wall time with a 60-second diagnostic budget: Ollama reported
+6.763 seconds loading, 9.482 seconds evaluating the uncached prompt, and
+5.867 seconds generating. Warm five-subject calls with the unchanged
+15-second timeout all used Ollama successfully. These are observations on
+one CPU host, not latency guarantees. The initial live programming output
+was schema-valid and correctly technical but included excess
+`direct_fact`/`arithmetic` hints. The routing contract below addresses this
+recognized case; schema enforcement alone does not establish routing accuracy.
+
+### Code-artifact routing contract
+
+`direct_fact` asks for a factual-answer capability, and `arithmetic` asks
+for a numerical-answer capability. They are obligations in orchestration,
+not harmless subject tags. A request whose deliverable is code does not
+require these capabilities merely because that code calculates numbers,
+converts units, or looks up facts. Program behavior can instead use
+`logical_rule`, `semantic_comparison`, `consistency`, or documentation
+retrieval through `evidence_retrieval`. These hints do not guarantee that
+an available verifier can check the program.
+
+The analyzer applies this rule conservatively to explicit write/implement/
+debug/refactor/create/generate requests for a function, program, script,
+class, or code in Python, JavaScript, TypeScript, Java, or C++. It accepts
+bounded modifiers such as "sorting function" and polite request prefixes.
+Any nonempty continuation separated by a sentence boundary, comma, or
+and/also/then/additionally leaves all hint types available. Coordination
+inside a program specification is ambiguous too and stays unrestricted. Thus
+"write a function that adds integers" remains a code-artifact task, while
+"write a function; calculate 2 + 2" retains the separate numerical obligation.
+Requests to give/provide an answer, tell me a fact, or ask a separate
+question retain their answer capabilities. Unknown or ambiguous task forms remain unrestricted; this is not a general
+natural-language parser or a universal routing-accuracy guarantee.
+
+For recognized code-only tasks, the request schema excludes `direct_fact`
+and `arithmetic`. A separate Python check rejects either hint even if the
+server returns it in otherwise structurally valid JSON. Such a result uses
+the existing whole-assessment heuristic fallback with `invalid_routing`;
+the analyzer does not delete hints, fabricate fields, rewrite domains, or
+report the rejected assessment as successful Ollama analysis. Other domain,
+subject, rubric, and mixed-domain rules are unchanged. On fallback, explicit
+additional answer clauses in a recognized code request are separately passed
+through the existing heuristic hint recognizer. Bounded give/provide/tell-me
+phrases are normalized to factual lookup or calculation wording. Recognized
+hints are added to the whole heuristic result without changing its domain,
+score, or failure reason. This preserves the confirmed capital lookup and
+2 + 2 obligations even on timeout or malformed model output. Program-relative
+clauses such as "that returns a country's capital" and "that adds two integers"
+are not separate answer tasks. Unrecognized wording remains a heuristic
+limitation; this is not a general mixed-task parser.
+
+In a controlled trace of the actual earlier four-hint output, default
+ranking was rule, semantic, evidence, confidence. The rule and evidence
+abstained; two agreeing generic votes scored 0.95 numerically but exhausted
+the candidates with missing arithmetic and direct-fact coverage, yielding
+public uncertainty. Removing those inappropriate *requested* capabilities
+at the analyzer boundary permits an approved stop once the same two
+contributors meet the existing cuts. Coverage safeguards are unchanged.
+This controlled trace verifies wiring, not the correctness of generated code.
+
+The follow-up warm live checks covered Python sorting (including a modifier
+before "function"), JavaScript integer addition, and Python unit conversion.
+All passed both structural and routing validation at the unchanged timeout;
+none requested factual/numerical answer coverage. A mixed request for a
+sorting function followed by "What is 2 + 2?" retained `arithmetic`.
+The model still sometimes selected all four allowed nonfactual hints, so
+hint relevance is not guaranteed. One successful call took 16.294 seconds
+wall time: HTTPX's 15-second timeout applies to network operations, not an
+absolute deadline including client setup. Warm calls passing the default
+timeout do not imply that cold calls pass it; the measured cold reload
+above required more than 15 seconds and can still trigger timeout fallback.
+
+
+### Mixed-task follow-up verification
+
+The code-only recognizer now leaves coordinated or separate clauses
+unrestricted rather than relying on a finite list of second-task verbs.
+Regression cases include give/provide/tell-me requests, separate questions,
+ambiguous program coordination, and code-only capital lookup/integer addition.
+Connected controlled checks confirm that generic agreement cannot replace
+missing direct-fact/arithmetic coverage, including after analyzer fallback.
+No stopping or coverage implementation was changed.
+
+In the bounded follow-up live matrix on Ollama 0.35.1 / llama3.2:3b, three
+of five calls produced strictly valid Ollama assessments: the code-plus-
+arithmetic request (8.806 seconds), code-plus-Hamlet request (8.040 seconds),
+and code-only integer addition (7.964 seconds). Two calls returned invalid
+domain metadata and used strict fallback: code-plus-France (16.128 seconds,
+retaining direct_fact) and code-only capital lookup (8.455 seconds, no answer
+obligation). These are fallbacks, not successful model classifications.
+All used the default 15-second network-operation timeout after a separately
+reported operational model-load request. An initial matrix also observed a
+timeout on code-plus-France; its fallback retained direct_fact.
+
+The arithmetic multi-task output included an excess direct_fact hint alongside
+arithmetic. The unrestricted schema keeps separately requested capabilities
+eligible; it does not prove every model-selected hint is relevant. The model
+can still produce inconsistent domain metadata or excessive requirements,
+leading to fallback or justified public uncertainty. Python validation,
+downstream factual coverage, and cold-start timeout behavior remain strict.
 
 ## Rubric
 
@@ -66,6 +194,7 @@ If Ollama times out, returns an HTTP error, or returns an envelope or object tha
 - `malformed_envelope`
 - `malformed_json`
 - `invalid_schema`
+- `invalid_routing`: structurally valid hints violate the code-artifact contract.
 - `error_envelope`: Ollama returned an error field.
 - `incomplete_envelope`: done was missing or was not exactly true.
 - `duplicate_key`: the assessment JSON contained a repeated key.
@@ -114,6 +243,125 @@ print(
 ```
 
 A live Ollama print shows whether the call connected. It is not a measured test of classification quality.
+
+## Capture a live integration failure
+
+Run this from the repository root with the existing virtual environment. It
+uses the actual analyzer and a recording HTTP transport, not supplied model
+responses. It changes no persistent configuration and does not download a
+model. The explicit empty environment mapping selects the documented local
+endpoint and `llama3.2:3b`, without printing unrelated environment values.
+The raw responses below contain only the fixed diagnostic questions; avoid
+using confidential questions when sharing a capture.
+
+The first two calls compare the reported 15- and 60-second behavior. The
+remaining calls exercise five subjects with a 60-second diagnostic budget.
+That budget is not a proposed production default. A cold load can consume
+time before generation; compare Ollama's `load_duration`, `total_duration`,
+`eval_count`, and `done_reason` with wall time. Durations in the envelope are
+nanoseconds. A later call may benefit from the first call loading the model.
+
+```powershell
+@'
+import json
+import time
+import httpx
+from app.analysis.question_analyzer import QuestionAnalyzer
+from app.analysis import model_assessment as schema
+
+def schema_error(payload):
+    if not isinstance(payload, dict):
+        return "assessment must be an object"
+    if set(payload) != schema.EXPECTED_KEYS:
+        return {"missing": sorted(schema.EXPECTED_KEYS - set(payload)),
+                "unexpected": sorted(set(payload) - schema.EXPECTED_KEYS)}
+    checks = [
+        ("domain", lambda: schema._label(payload["domain"], schema.PRIMARY_DOMAINS)),
+        ("domain_status", lambda: schema._label(payload["domain_status"], schema.DOMAIN_STATUSES)),
+        ("subject", lambda: schema._subject(payload["subject"], payload["domain_status"])),
+        ("domain_candidates", lambda: schema._candidates(payload["domain_candidates"])),
+        ("verification_types", lambda: schema._verification_types(payload["verification_types"])),
+    ]
+    checks += [(name, lambda name=name: schema._rating(payload[name]))
+               for name in schema.RUBRIC_FIELDS]
+    checks.append(("domain consistency", lambda: schema._check_domain_consistency(
+        payload["domain"], payload["domain_status"], payload["domain_candidates"])))
+    for field, check in checks:
+        try:
+            check()
+        except schema.AnalyzerResponseError:
+            return {"failed_check": field, "payload": payload}
+    return None
+
+class RecordingClient:
+    def __init__(self):
+        self.response = None
+    def post(self, url, *, json, timeout):
+        limits = httpx.Timeout(timeout, connect=3, write=3, pool=3)
+        self.response = httpx.post(url, json=json, timeout=limits)
+        return self.response
+
+with httpx.Client(timeout=3) as client:
+    print("VERSION", client.get("http://localhost:11434/api/version").text)
+    tags = client.get("http://localhost:11434/api/tags")
+    tags.raise_for_status()
+    print("MODELS", [item["name"] for item in tags.json().get("models", [])])
+
+cases = [("baseline", "What is the capital of France?", timeout) for timeout in (15, 60)]
+cases += [(subject, question, 60) for subject, question in [
+    ("geography", "What is the capital of France?"),
+    ("history", "Who was the first president of the United States?"),
+    ("arithmetic", "What is 2 + 2?"),
+    ("programming", "Write a Python function to sort a list."),
+    ("medical", "What is hypertension?"),
+]]
+for subject, question, timeout in cases:
+    recorder = RecordingClient()
+    analyzer = QuestionAnalyzer(mode="ollama", timeout_seconds=timeout,
+                                client=recorder, environ={})
+    started = time.perf_counter()
+    analysis = analyzer.analyze(question)
+    elapsed = time.perf_counter() - started
+    validity = "no response"
+    routing_validity = "not evaluated"
+    if recorder.response is not None:
+        print("RAW_ENVELOPE", recorder.response.text)
+        try:
+            payload = schema.parse_envelope(recorder.response.json())
+            assessment = schema.validate_assessment(payload)
+            validity = "valid"
+            try:
+                schema.validate_routing(assessment, question)
+                routing_validity = "valid"
+            except schema.AnalyzerResponseError as error:
+                routing_validity = error.code
+        except schema.AnalyzerResponseError as error:
+            validity = {"code": error.code}
+            if error.code == "invalid_schema":
+                validity["detail"] = schema_error(payload)
+        except (json.JSONDecodeError, RecursionError):
+            validity = "malformed outer JSON"
+    print(json.dumps({"case": subject, "timeout_seconds": timeout,
+        "analysis_source": analysis.analysis_method,
+        "fallback_reason": analysis.fallback_reason,
+        "domain": analysis.domain, "subject": analysis.subject,
+        "verification_hints": analysis.verification_types,
+        "difficulty": analysis.difficulty, "schema_validity": validity,
+        "routing_validity": routing_validity,
+        "elapsed_seconds": round(elapsed, 3)}, ensure_ascii=False))
+'@ | .\.venv\Scripts\python.exe -B -
+```
+
+The field diagnostic deliberately reuses the current strict checks; it does
+not fill missing fields, coerce ratings, or change the fallback. A successful
+live assessment requires `schema_validity: "valid"`, `routing_validity: "valid"`, and
+`analysis_source: "ollama"` with no fallback reason. Schema validity alone
+does not establish domain/subject accuracy. Preserve the raw invalid output
+as a regression fixture only after reproducing it. Check the installed API
+version and structured-output support before proposing a JSON-schema format
+change. The pre-fix generic `format: "json"` guaranteed neither required
+keys nor the allowed values; the current request supplies a schema, and
+Python validation remains authoritative.
 
 ## Limitations
 
