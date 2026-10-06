@@ -154,6 +154,103 @@ def test_distant_neighbour_cannot_create_a_false_contradiction():
 
 
 # ----------------------------------------------------------------------
+# Topic gate (UEFA / SK Brann regression)
+# ----------------------------------------------------------------------
+
+UEFA_QUESTION = "Who won the 2010 UEFA Europa League Final?"
+UEFA_FINAL = chunk(
+    "2010 UEFA Europa League Final",
+    "The 2010 UEFA Europa League Final was played in Hamburg. Atletico Madrid won the final "
+    "against Fulham 2-1 after extra time.",
+    0.74,
+)
+BRANN_2008 = chunk(
+    "2008 SK Brann season",
+    "Brann won the league and entered the UEFA Cup, but were eliminated by Hamburg in the "
+    "group stage. Fulham were not among their opponents.",
+    0.66,
+)
+
+
+class WeightedFakeRetriever(FakeRetriever):
+    """FakeRetriever with fixed IDF-like weights (rare names weigh more than 'league')."""
+
+    WEIGHTS = {"2010": 2.0, "uefa": 3.0, "europa": 4.0, "league": 1.0, "final": 1.0, "won": 0.5}
+
+    def term_weights(self, terms):
+        return {t: self.WEIGHTS.get(t, 1.0) for t in terms}
+
+
+def test_off_topic_chunk_cannot_contradict_when_right_article_supports():
+    retriever = WeightedFakeRetriever([UEFA_FINAL, BRANN_2008])
+    nli = FakeNLI({"Atletico": ENTAILS, "Brann": CONTRADICTS})
+
+    result = make_verifier(retriever, nli).verify(UEFA_QUESTION, "Atletico Madrid")
+
+    assert result.metadata["decision"] == "SUPPORT"
+    assert result.passed is True
+    assert result.metadata["contradicting"] == []
+    assert [e["title"] for e in result.metadata["evaluated_evidence"]] == ["2010 UEFA Europa League Final"]
+    discarded = result.metadata["discarded_evidence"]
+    assert [d["title"] for d in discarded] == ["2008 SK Brann season"]
+    assert discarded[0]["missing_numbers"] == ["2010"]
+
+
+def test_off_topic_chunk_alone_abstains_instead_of_rejecting():
+    retriever = WeightedFakeRetriever([BRANN_2008])
+    calls = []
+
+    def nli(inputs):
+        calls.append(inputs)
+        return [[{"label": "contradiction", "score": 0.99}]]
+
+    result = make_verifier(retriever, nli).verify(UEFA_QUESTION, "Fulham")
+
+    assert calls == []  # NLI never sees the off-topic premise
+    assert result.metadata["decision"] == "UNSURE"
+    assert result.metadata["unsure_reason"] == "no_relevant_evidence"
+    assert result.metadata["nli_label"] is None
+    assert result.score == 0.0
+
+
+def test_right_article_can_still_reject_a_wrong_answer():
+    retriever = WeightedFakeRetriever([UEFA_FINAL, BRANN_2008])
+    nli = FakeNLI({"Atletico": CONTRADICTS, "Brann": ENTAILS})
+
+    result = make_verifier(retriever, nli).verify(UEFA_QUESTION, "Fulham")
+
+    assert result.metadata["decision"] == "REJECT"
+    assert result.metadata["evidence_title"] == "2010 UEFA Europa League Final"
+    assert result.metadata["supporting"] == []
+
+
+def test_low_weighted_coverage_is_discarded_even_without_numbers():
+    retriever = WeightedFakeRetriever(
+        [
+            chunk("UEFA Europa League", "The UEFA Europa League final is played each May.", 0.70),
+            chunk("Football league", "A football league has a final match.", 0.68),
+        ]
+    )
+    nli = FakeNLI({"May": NEUTRAL, "football": CONTRADICTS})
+
+    result = make_verifier(retriever, nli).verify("Which club won the UEFA Europa League final?", "Sevilla")
+
+    assert result.metadata["contradicting"] == []
+    assert [d["title"] for d in result.metadata["discarded_evidence"]] == ["Football league"]
+    assert result.metadata["decision"] == "UNSURE"
+
+
+def test_answer_numbers_are_not_required_in_evidence():
+    retriever = FakeRetriever([chunk("Paris", "Paris has about two million residents in 2020.", 0.70)])
+    nli = FakeNLI({"two million": CONTRADICTS})
+
+    result = make_verifier(retriever, nli).verify("How many residents does Paris have?", "40 million")
+
+    assert result.metadata["decision"] == "REJECT"
+    assert result.metadata["discarded_evidence"] == []
+
+
+# ----------------------------------------------------------------------
 # Conflict-aware aggregation (issue 5)
 # ----------------------------------------------------------------------
 
@@ -189,8 +286,8 @@ def test_only_contradiction_rejects_with_its_probability():
 
 
 def test_neutral_evidence_abstains():
-    retriever = FakeRetriever([chunk("Paris", "Paris is on the Seine.", 0.70)])
-    result = make_verifier(retriever, FakeNLI({"Seine": NEUTRAL})).verify("What is the capital of France?", "Paris")
+    retriever = FakeRetriever([chunk("France", "The capital of France hosts many museums.", 0.70)])
+    result = make_verifier(retriever, FakeNLI({"museums": NEUTRAL})).verify("What is the capital of France?", "Paris")
 
     assert result.passed is False
     assert result.score == 0.0

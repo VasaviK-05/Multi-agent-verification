@@ -13,16 +13,45 @@ retriever built on one corpus never answers from another corpus's index.
 Retrieval scores are cosine similarities (inner product of L2-normalised
 MiniLM vectors). FAISS always returns the nearest chunks; "nearest" is not
 "relevant", so callers apply their own relevance cutoff.
+
+``term_weights`` exposes inverse document frequencies over the chunks
+(title + text) so callers can tell distinctive terms ("Europa", "Brann")
+from common ones ("league", "final") when checking a chunk's topic.
 """
 
 from __future__ import annotations
 
 import json
+import math
+import re
+from collections import Counter
 from pathlib import Path
 
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+
+STOPWORDS = frozenset(
+    """
+    a an and are as at be been being but by can could did do does for from had
+    has have he her his how i if in into is it its may might of on or our she
+    should so than that the their them then there these they this those to was
+    we were what when where which while who whom whose why will with would you
+    your about after also any before both each more most not other over same
+    some such only own very just name named list give tell
+    """.split()
+)
+
+_TOKEN = re.compile(r"[a-z0-9]+")
+
+
+def content_terms(text: str) -> set[str]:
+    """Lowercase content tokens: numbers, and words of 3+ letters not in STOPWORDS."""
+    return {
+        token
+        for token in _TOKEN.findall(str(text).lower())
+        if token.isdigit() or (len(token) >= 3 and token not in STOPWORDS)
+    }
 
 
 class EvidenceRetriever:
@@ -49,6 +78,7 @@ class EvidenceRetriever:
         self.manifest_path = self.index_dir / "manifest.json"
 
         self.model = model or SentenceTransformer(self.EMBEDDING_MODEL)
+        self._document_frequency: Counter[str] | None = None
 
         if self._index_is_current():
             self.index, self.chunks = self.load_index()
@@ -153,6 +183,28 @@ class EvidenceRetriever:
         with self.chunks_path.open("r", encoding="utf-8") as file:
             chunks = json.load(file)
         return index, chunks
+
+    # ------------------------------------------------------------------
+    # Term statistics
+    # ------------------------------------------------------------------
+
+    def term_weights(self, terms: set[str]) -> dict[str, float]:
+        """Smoothed IDF ``log((1 + N) / (1 + df))`` for terms that occur in the corpus.
+
+        Terms absent from every chunk are omitted: no chunk can contain
+        them, so they cannot tell an on-topic chunk from an off-topic one.
+        """
+        if self._document_frequency is None:
+            frequency: Counter[str] = Counter()
+            for chunk in self.chunks:
+                frequency.update(content_terms(f"{chunk.get('title', '')} {chunk.get('text', '')}"))
+            self._document_frequency = frequency
+        total = len(self.chunks)
+        return {
+            term: math.log((1 + total) / (1 + self._document_frequency[term]))
+            for term in terms
+            if self._document_frequency[term] > 0
+        }
 
     # ------------------------------------------------------------------
     # Search
