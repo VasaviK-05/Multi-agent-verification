@@ -23,6 +23,13 @@ class VerificationResult(BaseModel):
     reasoning: Optional[str] = None
     metadata: Optional[dict[str, Any]] = None
 
+class GroundTruthEvaluation(BaseModel):
+    """Automatic correctness result based on available ground truth."""
+
+    label: str
+    source: str
+    answer_is_correct: bool
+
 
 class ValidationResponse(BaseModel):
     """Aggregated validation response returned to the client.
@@ -37,6 +44,7 @@ class ValidationResponse(BaseModel):
     validation_id: Optional[str] = None
     domain: Optional[str] = None
     session_id: Optional[str] = None
+    ground_truth: Optional[GroundTruthEvaluation] = None
 
 class CreateSessionRequest(BaseModel):
     """Input payload for creating a session."""
