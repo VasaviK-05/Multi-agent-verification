@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from copy import deepcopy
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.database.reputation_repository import (
@@ -14,6 +14,7 @@ from app.database.reputation_repository import (
 from app.database.reputation_repository import load_reputation_state
 from app.decision.decision_engine import DecisionDetail, DecisionEngine
 from app.evaluation.automatic_ground_truth import AutomaticGroundTruthEvaluator
+from app.ground_truth.storage import save_ground_truth
 from app.decision.early_termination import AdaptiveEarlyTermination
 from app.decision.vote_normalization import (
     confidence_judgment_tie,
@@ -226,6 +227,14 @@ class ValidationOrchestrator:
         ground_truth = self._automatic_ground_truth.evaluate(
         question=request.question,
         answer=request.answer,
+        )
+
+        if ground_truth and request.question_id is not None:
+           save_ground_truth(
+               validation_id=UUID(validation_id),
+               question_id=request.question_id,
+               label=ground_truth["label"],
+               source=ground_truth["source"],
         )
 
         signed_score = detail.raw_score
