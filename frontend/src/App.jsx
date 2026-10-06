@@ -11,6 +11,7 @@ function App() {
   const [questionId, setQuestionId] = useState(null);
 
   const [result, setResult] = useState(null);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState("");
@@ -139,6 +140,7 @@ function App() {
       setAnswer("");
       setContext("");
       setResult(null);
+      setFeedbackSubmitted(false);
       setSessionQuestions([]);
       setShowResults(false);
       setQuestionId(null);
@@ -241,6 +243,41 @@ function App() {
       setLoading(false);
     }
   };
+
+  const submitFeedback = async (isCorrect) => {
+  if (!result?.validation_id) {
+    setError("No validation result is available for feedback.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/feedback`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        validation_id: result.validation_id,
+        is_correct: isCorrect,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(
+        errorData?.detail || "Failed to submit feedback."
+      );
+    }
+
+    setError("");
+    setFeedbackSubmitted(true);
+  } catch (requestError) {
+    setError(
+      requestError.message ||
+        "Unable to submit feedback. Please try again."
+    );
+  }
+};
 
   const submitContext = async () => {
     await validateAnswer(context);
@@ -617,6 +654,32 @@ function App() {
                 </div>
               </div>
             </div>
+
+            <div className="feedback-section">
+               <h3>Was this validation helpful?</h3>
+
+               {!feedbackSubmitted ? (
+                  <div className="feedback-buttons">
+                     <button
+                        className="feedback-button"
+                        onClick={() => submitFeedback(true)}
+                      >
+                        ✓ Correct
+                      </button>
+
+                      <button
+                        className="feedback-button"
+                        onClick={() => submitFeedback(false)}
+                      >
+                        ✕ Incorrect
+                      </button>
+                    </div>
+                  ) : (
+                    <p className="feedback-success">
+                       Thank you! Your feedback has been recorded.
+                    </p>
+                  )}
+                </div>
 
             <button
               className="back-button"
