@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const API_URL = "http://127.0.0.1:8000";
@@ -8,14 +8,79 @@ function App() {
   const [submittedQuestion, setSubmittedQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [context, setContext] = useState("");
+  const [questionId, setQuestionId] = useState(null);
 
   const [result, setResult] = useState(null);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState("");
 
   const [history, setHistory] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [activeSessionId, setActiveSessionId] = useState(null);
+  const [sessionsLoading, setSessionsLoading] = useState(false);
+  const [sessionQuestions, setSessionQuestions] = useState([]);
+  const [questionsLoading, setQuestionsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    const fetchSessions = async () => {
+      setSessionsLoading(true);
+
+      try {
+        const response = await fetch(`${API_URL}/sessions`);
+
+        if (!response.ok) {
+          throw new Error("Failed to load sessions.");
+        }
+
+        const data = await response.json();
+        setSessions(data);
+
+        if (data.length > 0) {
+          setActiveSessionId(data[0].session_id);
+        }
+      } catch (err) {
+        console.error("Unable to load sessions:", err);
+      } finally {
+        setSessionsLoading(false);
+      }
+    };
+
+    fetchSessions();
+  }, []);
+
+  useEffect(() => {
+    if (!activeSessionId) {
+      setSessionQuestions([]);
+      return;
+    }
+
+    const fetchSessionQuestions = async () => {
+      setQuestionsLoading(true);
+
+      try {
+        const response = await fetch(
+          `${API_URL}/sessions/${activeSessionId}/questions`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to load session questions.");
+        }
+
+        const data = await response.json();
+        setSessionQuestions(data);
+      } catch (err) {
+        console.error("Unable to load session questions:", err);
+        setSessionQuestions([]);
+      } finally {
+        setQuestionsLoading(false);
+      }
+    };
+
+    fetchSessionQuestions();
+  }, [activeSessionId]);
 
   const handleQuestionChange = (e) => {
     const textarea = e.target;
@@ -47,14 +112,41 @@ function App() {
     }
   };
 
-  const startNewChat = () => {
-    setQuestion("");
-    setSubmittedQuestion("");
-    setAnswer("");
-    setContext("");
-    setResult(null);
+  const startNewChat = async () => {
     setError("");
-    setShowResults(false);
+
+    try {
+      const response = await fetch(`${API_URL}/sessions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: "New Validation",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create a new session.");
+      }
+
+      const newSession = await response.json();
+
+      setSessions((prev) => [newSession, ...prev]);
+      setActiveSessionId(newSession.session_id);
+
+      setQuestion("");
+      setSubmittedQuestion("");
+      setAnswer("");
+      setContext("");
+      setResult(null);
+      setFeedbackSubmitted(false);
+      setSessionQuestions([]);
+      setShowResults(false);
+      setQuestionId(null);
+    } catch (err) {
+      setError(err.message || "Unable to create a new session.");
+    }
   };
 
   const generateAnswer = async () => {
@@ -83,6 +175,7 @@ function App() {
 
       const data = await response.json();
 
+      setQuestionId(data.question_id);
       setSubmittedQuestion(question.trim());
       setAnswer(data.answer || "");
     } catch (err) {
@@ -111,6 +204,8 @@ function App() {
           question: question.trim(),
           answer: answer.trim(),
           context: providedContext.trim() || null,
+          session_id: activeSessionId,
+          question_id: questionId,
         }),
       });
 
@@ -122,6 +217,17 @@ function App() {
 
       setResult(data);
       setShowResults(true);
+
+      if (activeSessionId) {
+        const questionsResponse = await fetch(
+          `${API_URL}/sessions/${activeSessionId}/questions`
+        );
+
+        if (questionsResponse.ok) {
+          const questions = await questionsResponse.json();
+          setSessionQuestions(questions);
+        }
+      }
 
       const historyItem = {
         question: question,
@@ -137,6 +243,41 @@ function App() {
       setLoading(false);
     }
   };
+
+  const submitFeedback = async (isCorrect) => {
+  if (!result?.validation_id) {
+    setError("No validation result is available for feedback.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/feedback`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        validation_id: result.validation_id,
+        is_correct: isCorrect,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(
+        errorData?.detail || "Failed to submit feedback."
+      );
+    }
+
+    setError("");
+    setFeedbackSubmitted(true);
+  } catch (requestError) {
+    setError(
+      requestError.message ||
+        "Unable to submit feedback. Please try again."
+    );
+  }
+};
 
   const submitContext = async () => {
     await validateAnswer(context);
@@ -203,23 +344,57 @@ function App() {
         </button>
 
         <div className="previous-section">
-          <h3>PREVIOUS QUESTIONS</h3>
+          <h3>SESSIONS</h3>
 
-          {history.length === 0 ? (
-            <p className="empty-history">
-              Your validated questions will appear here.
-            </p>
+          {sessionsLoading ? (
+            <p className="empty-history">Loading sessions...</p>
+          ) : sessions.length === 0 ? (
+            <p className="empty-history">No sessions yet.</p>
           ) : (
             <div className="history-list">
-              {history.map((item, index) => (
+              {sessions.map((session) => (
                 <button
-                  key={index}
-                  className="history-item"
-                  onClick={() => openHistory(item)}
+                  key={session.session_id}
+                  className={`history-item ${
+                    activeSessionId === session.session_id ? "active" : ""
+                  }`}
+                  onClick={() => setActiveSessionId(session.session_id)}
                 >
-                  {item.question}
+                  {session.title}
                 </button>
               ))}
+            </div>
+          )}
+
+          {activeSessionId && (
+            <div className="session-questions">
+              <h3>QUESTIONS</h3>
+
+              {questionsLoading ? (
+                <p className="empty-history">Loading questions...</p>
+              ) : sessionQuestions.length === 0 ? (
+                <p className="empty-history">No questions in this session.</p>
+              ) : (
+                <div className="history-list">
+                  {sessionQuestions.map((item) => (
+                    <button
+                      key={item.validation_id}
+                      className="history-item"
+                      onClick={() => {
+                        setQuestionId(item.question_id);
+                        setQuestion(item.question);
+                        setSubmittedQuestion(item.question);
+                        setAnswer(item.generated_answer);
+                        setResult(null);
+                        setShowResults(false);
+                        setError("");
+                      }}
+                    >
+                      {item.question}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -479,6 +654,32 @@ function App() {
                 </div>
               </div>
             </div>
+
+            <div className="feedback-section">
+               <h3>Was this validation helpful?</h3>
+
+               {!feedbackSubmitted ? (
+                  <div className="feedback-buttons">
+                     <button
+                        className="feedback-button"
+                        onClick={() => submitFeedback(true)}
+                      >
+                        ✓ Correct
+                      </button>
+
+                      <button
+                        className="feedback-button"
+                        onClick={() => submitFeedback(false)}
+                      >
+                        ✕ Incorrect
+                      </button>
+                    </div>
+                  ) : (
+                    <p className="feedback-success">
+                       Thank you! Your feedback has been recorded.
+                    </p>
+                  )}
+                </div>
 
             <button
               className="back-button"

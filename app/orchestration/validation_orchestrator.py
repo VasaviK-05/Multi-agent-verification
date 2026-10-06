@@ -8,6 +8,7 @@ from uuid import uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.decision.decision_engine import DecisionDetail, DecisionEngine
+from app.evaluation.automatic_ground_truth import AutomaticGroundTruthEvaluator
 from app.decision.early_termination import AdaptiveEarlyTermination
 from app.decision.vote_normalization import (
     confidence_judgment_tie,
@@ -55,6 +56,7 @@ class ValidationOrchestrator:
     ) -> None:
         self._question_analyzer = question_analyzer or QuestionAnalyzer()
         self._early_termination = early_termination or AdaptiveEarlyTermination()
+        self._automatic_ground_truth = AutomaticGroundTruthEvaluator()
         self._last_analysis: QuestionAnalysis | None = None
         self._contexts: dict[str, ValidationContext] = {}
         # Strong refs to the result objects validate() returned. Lookup checks
@@ -212,6 +214,11 @@ class ValidationOrchestrator:
             metadata[RUN_SUMMARY_KEY] = deepcopy(summary)
             results[-1] = results[-1].model_copy(update={"metadata": metadata})
 
+        ground_truth = self._automatic_ground_truth.evaluate(
+        question=request.question,
+        answer=request.answer,
+        )
+
         context = ValidationContext(
             validation_id=validation_id,
             domain=analysis.domain,
@@ -231,6 +238,7 @@ class ValidationOrchestrator:
             validation_id=validation_id,
             domain=analysis.domain,
             session_id=request.session_id,
+            ground_truth=ground_truth,
         )
 
     def validation_context(self, validation_id: str) -> ValidationContext:

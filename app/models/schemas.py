@@ -12,7 +12,7 @@ class ValidationRequest(BaseModel):
     answer: str
     context: Optional[str] = None
     session_id: Optional[str] = None
-
+    question_id: Optional[int] = None
 
 class VerificationResult(BaseModel):
     """Output from a single verifier."""
@@ -22,6 +22,13 @@ class VerificationResult(BaseModel):
     passed: bool
     reasoning: Optional[str] = None
     metadata: Optional[dict[str, Any]] = None
+
+class GroundTruthEvaluation(BaseModel):
+    """Automatic correctness result based on available ground truth."""
+
+    label: str
+    source: str
+    answer_is_correct: bool
 
 
 class ValidationResponse(BaseModel):
@@ -37,6 +44,7 @@ class ValidationResponse(BaseModel):
     validation_id: Optional[str] = None
     domain: Optional[str] = None
     session_id: Optional[str] = None
+    ground_truth: Optional[GroundTruthEvaluation] = None
 
 class CreateSessionRequest(BaseModel):
     """Input payload for creating a session."""
@@ -51,3 +59,8 @@ class SessionResponse(BaseModel):
     title: str
     created_at: Any
     updated_at: Any
+
+class FeedbackRequest(BaseModel):
+    validation_id: str
+    is_correct: bool
+    comment: Optional[str] = None
