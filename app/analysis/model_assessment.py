@@ -157,7 +157,7 @@ def parse_envelope(body: object) -> object:
         raise AnalyzerResponseError("incomplete_envelope")
     try:
         return json.loads(raw, object_pairs_hook=_object_without_duplicate_keys)
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, RecursionError):
         raise AnalyzerResponseError("malformed_json") from None
 
 

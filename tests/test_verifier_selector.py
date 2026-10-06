@@ -4,13 +4,16 @@ import math
 
 import pytest
 
-from app.analysis.question_analyzer import QuestionAnalysis
+from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import ReputationManager
 from app.selection.verifier_selector import (
     DEFAULT_DIFFICULTY_RANGE,
+    DEFAULT_VERIFIER_PROFILES,
     VerifierSelector,
+    band_position,
     suitability_by_verifier,
+    target_verifier_count,
 )
 from app.verifiers.base_verifier import BaseVerifier
 
@@ -37,7 +40,9 @@ def _stubs() -> list[StubVerifier]:
 
 
 def test_select_returns_base_verifiers():
-    selector = VerifierSelector()
+    # Two default easy candidates can include a model-backed verifier.
+    # Inject implementations here to keep this selection test deterministic.
+    selector = VerifierSelector(verifiers=_stubs())
     selected = selector.select(
         QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.1)
     )
@@ -60,7 +65,7 @@ def test_hard_selects_more_than_easy():
 
 def test_configured_range_endpoints_are_reachable():
     selector = VerifierSelector(verifiers=[])
-    assert selector.target_count(QuestionAnalysis("general", "easy", 0.0)) == 1
+    assert selector.target_count(QuestionAnalysis("general", "easy", 0.0)) == 2
     assert selector.target_count(QuestionAnalysis("general", "easy", 0.34)) == 2
     assert selector.target_count(QuestionAnalysis("general", "medium", 0.35)) == 2
     assert selector.target_count(QuestionAnalysis("general", "medium", 0.64)) == 3
@@ -101,7 +106,7 @@ def test_higher_reputation_ranks_first():
     manager.update_reputation("rule", "general", True)
     manager.update_reputation("rule", "general", True)
     manager.update_reputation("evidence", "general", False)
-    selector = VerifierSelector(reputation_manager=manager)
+    selector = VerifierSelector(reputation_manager=manager, verifiers=_stubs())
     selected = selector.select(
         QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=0.1)
     )
@@ -115,7 +120,7 @@ def _names(selector: VerifierSelector, analysis: QuestionAnalysis) -> list[str]:
 def test_empty_verification_types_keep_the_resource_ranking():
     selector = VerifierSelector(verifiers=_stubs())
     analysis = QuestionAnalysis("general", "easy", 0.1, verification_types=[])
-    assert _names(selector, analysis) == ["rule", "semantic", "confidence", "evidence"]
+    assert _names(selector, analysis) == ["rule", "semantic", "evidence", "confidence"]
     assert selector.ranking_utility("rule", analysis) == selector.utility("rule", "general")
     explained = selector.explain_ranking(analysis)
     assert all(row.suitability == 0.0 and row.suitability_contribution == 0.0 for row in explained)
@@ -221,8 +226,8 @@ def test_explanation_matches_ranking_without_constructing_default_verifiers():
     assert [row.verifier_name for row in explained] == [
         "semantic",
         "rule",
-        "confidence",
         "evidence",
+        "confidence",
     ]
     stubbed = VerifierSelector(verifiers=_stubs())
     assert [row.verifier_name for row in stubbed.explain_ranking(analysis)] == _names(stubbed, analysis)
@@ -256,3 +261,145 @@ def test_suitability_configuration_is_validated():
     )
     analysis = QuestionAnalysis("general", "easy", 0.1, verification_types=["arithmetic"])
     assert _names(custom, analysis)[0] == "semantic"
+
+
+@pytest.mark.parametrize("weight", ["lambda_cost", "lambda_latency"])
+@pytest.mark.parametrize("value", [True, None, "0.5", -0.1, 1.1, math.nan, math.inf, -math.inf])
+def test_invalid_resource_weights_are_rejected(weight, value):
+    with pytest.raises(ValueError, match=weight):
+        VerifierSelector(verifiers=[], **{weight: value})
+
+
+@pytest.mark.parametrize("field", ["cost", "latency"])
+@pytest.mark.parametrize("value", [True, None, "0.5", -0.1, 1.1, math.nan, math.inf])
+def test_invalid_profile_values_are_rejected(field, value):
+    profile = {"cost": 0.5, "latency": 0.5, field: value}
+    with pytest.raises(ValueError, match=field):
+        VerifierSelector(verifiers=[], verifier_profiles={"rule": profile})
+
+
+@pytest.mark.parametrize("profile", [{}, {"cost": 0.2}, {"latency": 0.2}, None])
+def test_missing_profile_fields_have_clear_errors(profile):
+    with pytest.raises(ValueError, match="requires cost and latency"):
+        VerifierSelector(verifiers=[], verifier_profiles={"rule": profile})
+
+
+@pytest.mark.parametrize("pair", [(0, 1), (-1, 2), (2, 1), (True, 2), (1, False),
+                                  (1.0, 2), (1, 2.0), (1,), (1, 2, 3), "12", None])
+def test_invalid_difficulty_ranges_are_rejected(pair):
+    with pytest.raises(ValueError, match="positive integer pairs"):
+        VerifierSelector(verifiers=[], difficulty_range={"easy": pair})
+    with pytest.raises(ValueError, match="difficulty_range"):
+        target_verifier_count("easy", 0.1, {"easy": pair})
+
+
+@pytest.mark.parametrize("option", ["verifier_profiles", "difficulty_range"])
+def test_configuration_requires_mappings(option):
+    with pytest.raises(ValueError, match=option):
+        VerifierSelector(verifiers=[], **{option: []})
+    with pytest.raises(ValueError, match="difficulty_range"):
+        VerifierSelector(verifiers=[], difficulty_range={})
+
+
+@pytest.mark.parametrize("score", [None, "0.1", True, math.nan, math.inf, -math.inf])
+def test_invalid_scores_fail_in_count_and_ranking_entry_points(score):
+    selector = VerifierSelector(verifiers=[])
+    analysis = QuestionAnalysis("general", "easy", score)
+    operations = [
+        lambda: band_position("easy", score),
+        lambda: target_verifier_count("easy", score),
+        lambda: selector.minimum_count(analysis),
+        lambda: selector.target_count(analysis),
+        lambda: selector.explain_ranking(analysis),
+        lambda: list(selector.iter_ranked(analysis)),
+        lambda: selector.select(analysis),
+    ]
+    for operation in operations:
+        with pytest.raises(ValueError, match="difficulty_score must be a finite number"):
+            operation()
+
+
+@pytest.mark.parametrize("name", ["", "  ", " rule", "rule ", None, 1, True])
+def test_invalid_registered_names_are_rejected(name):
+    with pytest.raises(ValueError, match="verifier name"):
+        VerifierSelector(verifiers=[StubVerifier(name)])
+
+
+def test_duplicate_and_invalid_registrations_are_rejected():
+    with pytest.raises(ValueError, match="duplicate registered"):
+        VerifierSelector(verifiers=[StubVerifier("rule"), StubVerifier("rule")])
+    with pytest.raises(ValueError, match="BaseVerifier"):
+        VerifierSelector(verifiers=[object()])
+    selector = VerifierSelector(verifiers=[StubVerifier("custom")])
+    assert _names(selector, QuestionAnalysis("general", "easy", 0.1)) == ["custom"]
+
+
+def test_caller_configuration_mutations_do_not_change_selection():
+    profiles = {name: {"cost": 0.5, "latency": 0.5} for name in DEFAULT_VERIFIER_PROFILES}
+    ranges = {"easy": [1, 1], "medium": [2, 3], "hard": [3, 4]}
+    mapping = {"direct_fact": "evidence"}
+    verifiers = _stubs()
+    selector = VerifierSelector(verifiers=verifiers, verifier_profiles=profiles,
+                                difficulty_range=ranges, type_mapping=mapping)
+    analysis = QuestionAnalysis("general", "easy", 0.1, verification_types=["direct_fact"])
+    original = selector.explain_ranking(analysis)
+    profiles["evidence"]["cost"] = 1
+    profiles.clear()
+    ranges["easy"][0] = 4
+    ranges.clear()
+    mapping["direct_fact"] = "rule"
+    verifiers.clear()
+    assert selector.explain_ranking(analysis) == original
+    assert selector.minimum_count(analysis) == 1
+    assert selector.target_count(analysis) == 1
+    assert [v.name for v in selector.select(analysis)] == ["evidence"]
+
+
+def test_default_and_custom_counts_preserve_finite_score_clamping():
+    default = VerifierSelector(verifiers=_stubs())
+    custom = VerifierSelector(verifiers=_stubs(), difficulty_range={"easy": (1, 2)})
+    for score in (-10, 0, 0.1, 0.34, 10):
+        analysis = QuestionAnalysis("general", "easy", score)
+        assert default.minimum_count(analysis) == 2
+        assert default.target_count(analysis) == 2
+        assert len(default.select(analysis)) == 2
+    assert custom.target_count(QuestionAnalysis("general", "easy", -10)) == 1
+    assert custom.target_count(QuestionAnalysis("general", "easy", 10)) == 2
+    assert band_position("hard", -10) == 0
+    assert band_position("hard", 10) == 1
+
+
+def test_confidence_estimates_and_custom_overrides():
+    assert DEFAULT_VERIFIER_PROFILES["confidence"] == {"cost": 0.9, "latency": 1.0}
+    selector = VerifierSelector(verifiers=_stubs(), verifier_profiles={
+        name: {"cost": 0, "latency": 0} if name == "confidence" else {"cost": 1, "latency": 1}
+        for name in DEFAULT_VERIFIER_PROFILES
+    })
+    assert _names(selector, QuestionAnalysis("general", "easy", 0.1))[0] == "confidence"
+    for weight in (0, 1):
+        VerifierSelector(verifiers=[], lambda_cost=weight, lambda_latency=weight,
+                         verifier_profiles={"custom": {"cost": weight, "latency": weight}})
+
+
+@pytest.mark.parametrize("question,hint,order", [
+    ("Who wrote Hamlet?", "direct_fact", ["evidence", "rule", "semantic", "confidence"]),
+    ("What is 2 + 2?", "arithmetic", ["rule", "semantic", "evidence", "confidence"]),
+])
+def test_analyzer_hints_reach_selector_without_forcing_a_universal_order(question, hint, order):
+    analysis = QuestionAnalyzer(mode="heuristic", environ={}).analyze(question)
+    selector = VerifierSelector(verifiers=_stubs())
+    assert analysis.verification_types == [hint]
+    assert _names(selector, analysis) == order
+    assert selector.target_count(analysis) == 2
+    assert [v.name for v in selector.select(analysis)] == order[:2]
+
+
+def test_low_reputation_evidence_remains_reachable_beyond_initial_target():
+    manager = ReputationManager()
+    for _ in range(3):
+        manager.update_reputation("evidence", "general", False)
+    selector = VerifierSelector(reputation_manager=manager, verifiers=_stubs())
+    analysis = QuestionAnalyzer(mode="heuristic", environ={}).analyze("Who wrote Hamlet?")
+    assert [v.name for v in selector.select(analysis)] == ["rule", "semantic"]
+    assert _names(selector, analysis) == ["rule", "semantic", "confidence", "evidence"]
+    # Iterator reachability is not an assertion that orchestration will run it.

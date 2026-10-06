@@ -6,6 +6,8 @@ Weights and cut-points are UNCALIBRATED. This is not model analysis.
 
 from __future__ import annotations
 
+import re
+
 from app.analysis.models import QuestionAnalysis
 
 # UNCALIBRATED: whole-token reasoning cues. A token matches the cue or that
@@ -121,6 +123,38 @@ def _domain_metadata(tokens: set[str]) -> tuple[str, list[str]]:
     return "unknown", []
 
 
+def _programming_request(text: str) -> bool:
+    """Bounded task phrases, rather than standalone language/function words."""
+    return bool(re.match(
+        r"(?:please\s+)?(?:write|implement|debug|refactor)\s+(?:a\s+|an\s+)?"
+        r"(?:python|javascript|typescript|java|c\+\+)\s+"
+        r"(?:function|program|script|class|code)\b", text,
+    ))
+
+
+def _verification_hints(text: str) -> list[str]:
+    """Conservative routing cues; these do not judge answer correctness."""
+    # Avoid explanation, speculation and advice, even if numbers are present.
+    if re.search(r"\b(?:why|how|explain|would|could|should|if|recommend|best)\b", text):
+        return []
+    number = r"[+-]?(?:\d+(?:\.\d+)?|\.\d+)"
+    expression = rf"{number}\s*(?:\+|-|\*\*?|/|×|÷)\s*{number}"
+    if re.fullmatch(
+        rf"(?:what is\s+|calculate\s+|compute\s+|evaluate\s+)?"
+        rf"{expression}(?:\s*(?:\+|-|\*\*?|/|×|÷)\s*{number})*[?.!]*", text,
+    ) or re.fullmatch(
+        rf"(?:what is\s+)?(?:the\s+)?(?:sum|product|difference) of "
+        rf"{number} and {number}[?.!]*", text,
+    ):
+        return ["arithmetic"]
+    if re.fullmatch(
+        r"(?:who (?:wrote|authored|invented|discovered|founded)|"
+        r"what is the (?:capital|population|birthplace) of)\s+.+[?]?", text,
+    ):
+        return ["direct_fact"]
+    return []
+
+
 def heuristic_analysis(
     question: str,
     *,
@@ -160,16 +194,19 @@ def heuristic_analysis(
         + FEATURE_WEIGHTS["domain_terms"] * domain_score
     )
     score = round(min(max(raw_score, 0.0), 1.0), SCORE_DECIMALS)
-    status, candidates = _domain_metadata(tokens)
+    # Programming cues affect domain routing only, not the legacy score.
+    routing_text = " ".join(lowered.split())
+    domain_tokens = tokens | {"software"} if _programming_request(routing_text) else tokens
+    status, candidates = _domain_metadata(domain_tokens)
 
     return QuestionAnalysis(
-        domain=_domain(tokens),
+        domain=_domain(domain_tokens),
         difficulty=difficulty_band(score),
         difficulty_score=score,
         subject="",
         domain_candidates=candidates,
         domain_status=status,
-        verification_types=[],
+        verification_types=_verification_hints(routing_text),
         analysis_method=analysis_method,
         fallback_reason=fallback_reason,
         rubric_ratings=None,

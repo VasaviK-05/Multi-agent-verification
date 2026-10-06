@@ -1,16 +1,18 @@
 """Adaptive early-termination rule.
 
-The orchestrator calls ``should_terminate`` after each selected verifier.
-A False result means keep running the rest of the selected list. The rule
-never stops before the difficulty minimum, and a hard question does not
-stop early once that minimum is met.
+Standalone stopping assessment; orchestration wiring remains deferred.
+A False result means continue verification when candidates remain. Easy
+and medium require at least two contributors, or a larger supplied minimum.
+Hard questions never stop early. Approval does not establish factual
+coverage: orchestration must also satisfy requested capabilities.
 
 Stopping uses one ``DecisionEngine.decide_detailed`` result for the current
 prefix. It does not recompute log-odds, cold-start means, or reputation
-rounding. Abstentions, zero-confidence results, and zero log-odds weights
-do not count as contributing votes. A negative weight reverses that vote's
-direction. Raw pass/reject agreement is not enough when the weighted score
-cancels or the decision is uncertain.
+rounding. Abstentions, zero-confidence results, structural rule outputs,
+and zero log-odds weights do not count as contributing votes. A negative
+weight reverses effective direction. In addition, original directional
+disagreement vetoes stopping, including dissent with zero or negative
+weight. This conservative stopping policy does not change aggregation.
 
 This is an UNCALIBRATED threshold heuristic. It is not Wald's sequential
 probability ratio test. See docs/decision_formulas.md.
@@ -22,11 +24,12 @@ import math
 
 from app.analysis.question_analyzer import QuestionAnalysis
 from app.decision.decision_engine import DecisionDetail, DecisionEngine, VoteExplanation
+from app.decision.vote_normalization import STRUCTURAL_RANGE_RULES
 from app.models.schemas import VerificationResult
 
 # UNCALIBRATED. These minima match VerifierSelector's default range minima.
 MIN_VERIFIERS_BY_DIFFICULTY = {
-    "easy": 1,
+    "easy": 2,
     "medium": 2,
     "hard": 3,
 }
@@ -63,21 +66,28 @@ class AdaptiveEarlyTermination:
         """Return ``terminate`` and ``reason``.
 
         A stop also includes ``decision``, the immutable detail for this
-        prefix. ``min_verifiers`` overrides the difficulty minimum. The
-        orchestrator passes its own engine and the selector minimum.
-        Omitting the engine uses a neutral default manager.
+        prefix. ``min_verifiers`` supplies the selector minimum, subject
+        to an easy/medium floor of two. Callers should supply their shared
+        engine; omission uses a neutral default manager. Orchestration
+        must check requested factual coverage before using this approval.
         """
         domain = _require_domain(analysis.domain)
         if analysis.difficulty not in MIN_VERIFIERS_BY_DIFFICULTY:
             raise ValueError(f"unknown difficulty {analysis.difficulty!r}")
+        _require_score(analysis.difficulty_score)
         required = (
             _require_minimum(min_verifiers)
             if min_verifiers is not None
             else MIN_VERIFIERS_BY_DIFFICULTY[analysis.difficulty]
         )
+        if analysis.difficulty != "hard":
+            required = max(2, required)
         engine = decision_engine if decision_engine is not None else DecisionEngine()
         detail = engine.decide_detailed(results, domain=domain)
-        contributors = _contributors(detail)
+        structural_names = {
+            result.verifier_name for result in results if _is_structural_rule(result)
+        }
+        contributors = _contributors(detail, structural_names)
         if not contributors:
             return _continue("no usable contributing votes")
         if len(contributors) < required:
@@ -90,6 +100,13 @@ class AdaptiveEarlyTermination:
         directions = {direction for _vote, direction in contributors}
         if len(directions) != 1:
             return _continue("effective disagreement — continue verification")
+        raw_directions = {
+            vote.passed for vote in detail.votes
+            if not vote.abstained and vote.confidence > 0.0
+            and vote.verifier_name not in structural_names
+        }
+        if len(raw_directions) > 1:
+            return _continue("original directional disagreement — continue verification")
         if detail.status not in {"passed", "failed"}:
             return _continue("uncertain weighted decision — continue verification")
 
@@ -108,17 +125,50 @@ class AdaptiveEarlyTermination:
             "decision": detail,
         }
 
+    @staticmethod
+    def contributor_count(
+        detail: DecisionDetail, results: list[VerificationResult],
+    ) -> int:
+        """Count eligible contributors in an already captured decision.
+
+        Results supply structural metadata only; no reputation reads or
+        numerical aggregation occur here. They must be the assessed prefix.
+        """
+        if tuple(r.verifier_name for r in results) != tuple(v.verifier_name for v in detail.votes):
+            raise ValueError("results must match the decision snapshot prefix")
+        structural = {r.verifier_name for r in results if _is_structural_rule(r)}
+        return len(_contributors(detail, structural))
+
     def _cuts(self, difficulty: str) -> tuple[float, float]:
         if difficulty == "easy":
             return self._easy_confidence, self._easy_margin
         return self._medium_confidence, self._medium_margin
 
 
-def _contributors(detail: DecisionDetail) -> list[tuple[VoteExplanation, int]]:
+def _is_structural_rule(result: VerificationResult) -> bool:
+    """Use RuleVerifier's factual/structural kind, scoped to its identity.
+
+    Old results with absent/null kind use only the normalization layer's
+    established structural/range labels. format_validity is factual: it
+    answers an explicit validity question, unlike generating formatted text.
+    """
+    if result.verifier_name != "rule":
+        return False
+    metadata = result.metadata or {}
+    kind = metadata.get("rule_kind")
+    if kind is not None:
+        return kind == "structural"
+    rule = metadata.get("rule")
+    return isinstance(rule, str) and rule in STRUCTURAL_RANGE_RULES
+
+
+def _contributors(
+    detail: DecisionDetail, structural_names: set[str],
+) -> list[tuple[VoteExplanation, int]]:
     """Return ``(vote, effective direction)`` pairs that can support a stop."""
-    rows: list[tuple[object, int]] = []
+    rows: list[tuple[VoteExplanation, int]] = []
     for vote in detail.votes:
-        if vote.abstained or vote.confidence == 0.0:
+        if vote.verifier_name in structural_names or vote.abstained or vote.confidence == 0.0:
             continue
         if detail.aggregation == "equal_weight":
             direction = 1 if vote.passed else -1
@@ -148,6 +198,17 @@ def _require_minimum(value: object) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
         raise ValueError("min_verifiers must be a positive integer")
     return value
+
+
+def _require_score(value: object) -> None:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError("difficulty_score must be a finite number")
+    try:
+        finite = math.isfinite(value)
+    except OverflowError:
+        finite = False
+    if not finite:
+        raise ValueError("difficulty_score must be a finite number")
 
 
 def _require_unit(name: str, value: object) -> float:
