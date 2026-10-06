@@ -12,6 +12,7 @@ Bands still use the heuristic cuts 0.35 and 0.65.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 
 from app.analysis.heuristic import difficulty_band
@@ -60,15 +61,37 @@ domain must be one of: general, medical, technical.
 Use medical or technical only when that specialist area is the clear home
 of the question. Use general for every other subject, including a clear
 non-specialist subject such as geography or history.
+Explicit requests to write code, when code is the only task, belong to
+technical with subject "programming". Program behavior can use logical_rule
+or semantic_comparison hints. Writing code is not a direct_fact lookup and
+does not need arithmetic merely because the program computes numbers.
+Only a separately requested factual or numerical answer uses direct_fact
+or arithmetic; code-and-answer tasks must retain those obligations.
+Multiple tasks are not automatically a mixed domain. Choose domain metadata
+for the actual primary areas involved. Code-only requests stay technical
+with candidates ["technical"], even if the program handles country data.
+If primary domains are mixed, domain MUST be general, never technical.
 domain_status must be one of: clear, mixed, unknown.
-domain_candidates lists primary domains you considered, each one of
-general, medical, technical.
+domain_candidates lists matching primary domains, not all allowed labels.
+For a clear question it is exactly [domain]. Do not include medical or
+technical unless the question actually belongs to that specialist area.
 - clear: exactly one candidate, and it equals domain.
 - mixed: at least two candidates, and domain is general.
 - unknown: domain_candidates is empty, domain is general, and subject is "".
 A clear general question has domain general, domain_status clear,
 domain_candidates ["general"], and a short non-empty subject.
 An unknown question has an empty subject.
+
+Example for "What is the capital of France?":
+{"domain":"general","subject":"geography","domain_candidates":["general"],
+"domain_status":"clear","verification_types":["direct_fact"],
+"reasoning_depth":0,"evidence_burden":0,"constraint_interactions":0}
+Example for "Write a Python function to sort a list.":
+{"domain":"technical","subject":"programming","domain_candidates":["technical"],
+"domain_status":"clear","verification_types":["logical_rule"],
+"reasoning_depth":0,"evidence_burden":0,"constraint_interactions":0}
+Use subject "history" for clear historical lookups, "arithmetic" for simple
+calculations, and a short specialist subject for medical/technical questions.
 
 subject is a short finer label, at most 80 characters, with no line breaks.
 verification_types is a list of 1 to 4 labels, without duplicates, chosen
@@ -127,6 +150,109 @@ class ModelAssessment:
         return difficulty_band(self.score())
 
 
+def _code_request_prefix(question: str) -> re.Match | None:
+    """Recognize an explicit, bounded code-artifact request prefix."""
+    language = r"(?:python|javascript|typescript|java|c\+\+)"
+    artifact = r"(?:function|program|script|class|code)"
+    return re.match(
+        rf"(?:please\s+|(?:can|could|would)\s+you\s+)?"
+        rf"(?:write|implement|debug|refactor|create|generate)\s+"
+        rf"(?:(?:a|an|the)\s+)?(?:{language}\s+(?:[\w-]+\s+){{0,3}}{artifact}\b"
+        rf"|{artifact}\s+in\s+{language}(?=\s|$|[?.!,;:]))",
+        question.strip().lower(),
+    )
+
+
+# Coordination can belong to the program specification or a second task.
+# Without a general language parser, leave both interpretations unrestricted.
+_TASK_BOUNDARY = re.compile(
+    r"[!?;\n]+|\.(?=\s|$)|,\s*|\b(?:and|also|then|additionally)\b"
+)
+
+
+def additional_answer_clauses(question: str) -> list[str]:
+    """Extract bounded explicit answer clauses after a code request.
+
+    This does not interpret program-relative clauses ('that returns ...').
+    It only supplies existing heuristic checks with separately stated tasks.
+    """
+    text = question.strip().lower()
+    prefix = _code_request_prefix(question)
+    if prefix is None:
+        return []
+    clauses = _TASK_BOUNDARY.split(text[prefix.end():])[1:]
+    answers = []
+    for clause in clauses:
+        clause = re.sub(r"^\s*(?:\d+[.)]\s*)?(?:please\s+)?", "", clause).strip()
+        # A boundary alone is ambiguous. Require an explicit answer command
+        # or question, rather than treating coordinated program data as a task.
+        if not re.match(
+            r"(?:give|provide|tell\s+me|state|name|identify|answer|"
+            r"calculate|compute|evaluate|who|what|when|where|why|how)\b", clause,
+        ):
+            continue
+        clause = re.sub(r"^(?:give|provide|tell\s+me|state|name|identify|answer)\s+", "", clause)
+        clause = re.sub(r"^(?:the\s+)?(?:answer|result)\s+(?:to|of)\s+", "", clause)
+        if re.match(r"(?:the\s+)?(?:capital|population|birthplace) of\b", clause):
+            clause = "what is " + (clause if clause.startswith("the ") else "the " + clause)
+        answers.append(clause)
+    return answers
+
+
+def _code_only_request(question: str) -> bool:
+    """Restrict only an explicit code request with no ambiguous continuation."""
+    text = question.strip().lower()
+    prefix = _code_request_prefix(question)
+    if prefix is None:
+        return False
+    remainder = text[prefix.end():].rstrip(".!? ")
+    return _TASK_BOUNDARY.search(remainder) is None
+
+
+def routing_verification_types(question: str | None = None) -> tuple[str, ...]:
+    """Code-only output is not a factual/numerical answer to be verified."""
+    if question is not None and _code_only_request(question):
+        return tuple(label for label in VERIFICATION_TYPES if label not in {"direct_fact", "arithmetic"})
+    return VERIFICATION_TYPES
+
+
+def validate_routing(assessment: ModelAssessment, question: str) -> ModelAssessment:
+    """Reject inconsistent hints without rewriting the model assessment."""
+    allowed = routing_verification_types(question)
+    if any(label not in allowed for label in assessment.verification_types):
+        raise AnalyzerResponseError("invalid_routing")
+    return assessment
+
+
+def assessment_json_schema(question: str | None = None) -> dict:
+    """Guide Ollama generation; Python still validates relational constraints.
+
+    Return fresh nested containers so a caller cannot change future requests.
+    Domain/status/candidate consistency, subject whitespace, and duplicate
+    handling remain the responsibility of the Python parser and validator.
+    """
+    return {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "domain": {"type": "string", "enum": list(PRIMARY_DOMAINS)},
+            "subject": {"type": "string", "maxLength": MAX_SUBJECT_LENGTH},
+            "domain_candidates": {
+                "type": "array", "items": {"type": "string", "enum": list(PRIMARY_DOMAINS)},
+                "maxItems": len(PRIMARY_DOMAINS), "uniqueItems": True,
+            },
+            "domain_status": {"type": "string", "enum": list(DOMAIN_STATUSES)},
+            "verification_types": {
+                "type": "array", "items": {"type": "string", "enum": list(routing_verification_types(question))},
+                "minItems": 1, "maxItems": MAX_VERIFICATION_TYPES, "uniqueItems": True,
+            },
+            **{name: {"type": "integer", "enum": [0, 1, 2]} for name in RUBRIC_FIELDS},
+        },
+        "required": ["domain", "subject", "domain_candidates", "domain_status",
+                     "verification_types", *RUBRIC_FIELDS],
+    }
+
+
 def build_generate_body(question: str, model: str) -> dict:
     """Ollama generate payload. The question is only inside the JSON prompt."""
     return {
@@ -134,7 +260,7 @@ def build_generate_body(question: str, model: str) -> dict:
         "system": SYSTEM_INSTRUCTION,
         "prompt": json.dumps({"question": question}, ensure_ascii=False),
         "stream": False,
-        "format": "json",
+        "format": assessment_json_schema(question),
         "options": {"temperature": 0, "seed": 0},
     }
 
