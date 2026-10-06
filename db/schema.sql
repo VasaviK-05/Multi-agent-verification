@@ -51,6 +51,10 @@ CREATE TABLE validation_records (
     question_id BIGINT,
     session_id UUID,
 
+    CONSTRAINT fk_validation_question
+        FOREIGN KEY (question_id)
+        REFERENCES questions_answers(id),
+
     CONSTRAINT fk_validation_session
         FOREIGN KEY (session_id)
         REFERENCES sessions(session_id)
@@ -74,8 +78,13 @@ CREATE TABLE verifier_outputs (
     execution_order INTEGER,
     question_id BIGINT,
 
-    FOREIGN KEY (validation_id)
-        REFERENCES validation_records(validation_id)
+    CONSTRAINT fk_verifier_validation
+        FOREIGN KEY (validation_id)
+        REFERENCES validation_records(validation_id),
+
+    CONSTRAINT fk_verifier_question
+        FOREIGN KEY (question_id)
+        REFERENCES questions_answers(id)
 );
 
 
@@ -89,7 +98,15 @@ CREATE TABLE ground_truth_labels (
     label TEXT NOT NULL,
     source TEXT,
     labeled_at TIMESTAMPTZ DEFAULT NOW(),
-    question_id BIGINT
+    question_id BIGINT,
+
+    CONSTRAINT fk_ground_truth_validation
+        FOREIGN KEY (validation_id)
+        REFERENCES validation_records(validation_id),
+
+    CONSTRAINT fk_ground_truth_question
+        FOREIGN KEY (question_id)
+        REFERENCES questions_answers(id)
 );
 
 
@@ -122,6 +139,10 @@ CREATE TABLE feedback (
     comment TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
 
-    FOREIGN KEY (validation_id)
+    CONSTRAINT feedback_validation_id_unique
+        UNIQUE (validation_id),
+
+    CONSTRAINT feedback_validation_id_fk
+        FOREIGN KEY (validation_id)
         REFERENCES validation_records(validation_id)
 );
