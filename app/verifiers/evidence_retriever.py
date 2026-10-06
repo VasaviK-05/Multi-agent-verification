@@ -71,7 +71,7 @@ class EvidenceRetriever:
         self.chunk_size = chunk_size
 
         if index_dir is None:
-            index_dir = self.corpus_path.parent / "evidence_index" / self.corpus_path.stem
+           index_dir = self.corpus_path.parent / "articles_13083_index"
         self.index_dir = Path(index_dir)
         self.index_path = self.index_dir / "faiss.index"
         self.chunks_path = self.index_dir / "chunks.json"
