@@ -242,6 +242,12 @@ def submit_feedback(request: FeedbackRequest):
             "feedback": feedback,
         }
 
+    except ValueError as e:
+        raise HTTPException(
+            status_code=409,
+            detail=str(e),
+        )
+
     except Exception as e:
         raise HTTPException(
             status_code=500,
