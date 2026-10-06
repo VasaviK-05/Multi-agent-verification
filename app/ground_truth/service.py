@@ -1,3 +1,4 @@
+
 from app.ground_truth.wikidata_client import WikidataClient
 from app.ground_truth.storage import save_ground_truth
 
@@ -22,7 +23,7 @@ class GroundTruthService:
 
         # 2. Extract the label returned by Wikidata
         label = result["label"]
-        source = result.get("source"qq, "Wikidata")
+        source = result.get("source", "Wikidata")
 
         # 3. Store it against both the validation and question IDs
         return save_ground_truth(

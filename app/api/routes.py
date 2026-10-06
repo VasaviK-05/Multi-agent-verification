@@ -39,7 +39,7 @@ def health() -> dict[str, str]:
 def validate(request: ValidationRequest):
     result = _validation_service.validate(request)
 
-    if request.question_id is not None and result.validation_id is not None:
+    if result.validation_id is not None:
         save_validation(
             validation_id=result.validation_id,
             question_id=request.question_id,

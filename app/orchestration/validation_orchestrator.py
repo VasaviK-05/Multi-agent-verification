@@ -7,6 +7,11 @@ from copy import deepcopy
 from uuid import uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
+from app.database.reputation_repository import (
+    build_reputation_state,
+    save_reputation,
+)
+from app.database.reputation_repository import load_reputation_state
 from app.decision.decision_engine import DecisionDetail, DecisionEngine
 from app.evaluation.automatic_ground_truth import AutomaticGroundTruthEvaluator
 from app.decision.early_termination import AdaptiveEarlyTermination
@@ -74,6 +79,10 @@ class ValidationOrchestrator:
     ) -> tuple[VerifierSelector, DecisionEngine, ReputationManager]:
         if verifier_selector is None and decision_engine is None:
             shared = reputation_manager or ReputationManager()
+
+            if reputation_manager is None:
+                shared.restore_state(build_reputation_state())
+
             return (
                 VerifierSelector(reputation_manager=shared),
                 DecisionEngine(reputation_manager=shared),
@@ -307,6 +316,23 @@ class ValidationOrchestrator:
                 results=context.results,
             )
         )
+
+        if receipt.applied:
+            state = self._reputation_manager.export_state()
+
+            for pair in state["pairs"]:
+                stats = self._reputation_manager.statistics(
+                    pair["verifier_name"],
+                    pair["domain"],
+                )
+
+                save_reputation(
+                    verifier_name=pair["verifier_name"],
+                    domain=pair["domain"],
+                    alpha=stats.alpha,
+                    beta=stats.beta,
+                )
+
         return receipt.observations_applied
 
     def _resolve_context(
