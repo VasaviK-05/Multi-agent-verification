@@ -2,6 +2,7 @@
 
 import dataclasses
 import math
+import itertools
 
 import pytest
 
@@ -370,3 +371,209 @@ def test_unrelated_rule_metadata_does_not_force_confidence_one():
     )
     assert status == "uncertain"
     assert score == 0.4
+
+
+def _directional(name: str, score: float, passed: bool) -> VerificationResult:
+    return VerificationResult(
+        verifier_name=name, score=score, passed=passed,
+        metadata={"decision": "SUPPORT" if passed else "REJECT"},
+    )
+
+
+@pytest.mark.parametrize("history", ["prior", "success", "failure", "balanced", "mixed"])
+def test_campaign_exhaustive_abstention_and_zero_confidence_invariants(history):
+    """Retained weights are policies, not calibrated correctness estimates."""
+    manager = ReputationManager()
+    for name in ("a", "b"):
+        observations = {"prior": [], "success": [True], "failure": [False],
+                        "balanced": [True, False],
+                        "mixed": [name == "a"]}[history]
+        for correct in observations:
+            manager.update_reputation(name, "general", correct)
+    engine = DecisionEngine(manager)
+    # 36 two-vote combinations per history, including both confidence endpoints.
+    states = list(itertools.product(("SUPPORT", "REJECT", "UNSURE"), (0., 1.)))
+    for pair in itertools.product(states, repeat=2):
+        results = [VerificationResult(verifier_name=name, passed=direction != "REJECT",
+                    score=confidence, metadata={"decision": direction})
+                   for name, (direction, confidence) in zip(("a", "b"), pair)]
+        detail = engine.decide_detailed(results, domain="general")
+        extra = VerificationResult(verifier_name="unused", score=1., passed=True,
+                                   metadata={"decision": "UNSURE"})
+        extended = engine.decide_detailed(results + [extra], domain="general")
+        assert (extended.status, extended.score, extended.aggregation) == (
+            detail.status, detail.score, detail.aggregation), (history, pair)
+        assert -1 <= detail.score <= 1, (history, pair)
+        assert all(v.confidence == v.contribution == 0
+                   for v in detail.votes if v.abstained or v.confidence == 0)
+        active = [r for r in results if r.metadata["decision"] != "UNSURE" and r.score > 0]
+        if active:
+            reduced = engine.decide_detailed(active, domain="general")
+            assert (reduced.status, reduced.score, reduced.aggregation) == (
+                detail.status, detail.score, detail.aggregation), (history, pair)
+        else:
+            assert detail.status == "uncertain" and detail.score == 0, (history, pair)
+
+
+@pytest.mark.parametrize("learned", [False, True])
+def test_zero_confidence_does_not_dilute_either_aggregation_mode(learned):
+    manager = ReputationManager()
+    if learned:
+        for name in ("semantic", "evidence"):
+            manager.update_reputation(name, "general", True)
+    before = manager.export_state()
+    detail = DecisionEngine(manager).decide_detailed([
+        _directional("semantic", 0.9, True), _directional("evidence", 0.0, False),
+    ])
+    assert detail.aggregation == ("log_odds" if learned else "equal_weight")
+    assert detail.raw_score == pytest.approx(0.9)
+    assert detail.status == "passed"
+    zero = detail.votes[1]
+    assert zero.passed is False and zero.abstained is False
+    assert zero.confidence == zero.contribution == 0.0
+    assert manager.export_state() == before
+
+
+def test_learned_zero_confidence_does_not_disable_prior_fallback():
+    manager = ReputationManager()
+    manager.update_reputation("evidence", "general", True)
+    calls = []
+    original = manager.statistics_batch
+
+    def snapshot(pairs):
+        calls.append(tuple(pairs))
+        return original(pairs)
+
+    manager.statistics_batch = snapshot
+    detail = DecisionEngine(manager).decide_detailed([
+        _directional("semantic", 0.9, True), _directional("evidence", 0.0, False),
+    ])
+    assert calls == [(("semantic", "general"), ("evidence", "general"))]
+    assert detail.votes[1].weight > 0.0
+    assert detail.votes[1].contribution == 0.0
+    assert detail.aggregation == "equal_weight"
+    assert (detail.status, detail.score) == ("passed", 0.9)
+
+
+@pytest.mark.parametrize("with_abstention", [False, True])
+def test_all_zero_confidence_directions_are_not_relabelled_as_abstentions(with_abstention):
+    results = [_directional("semantic", 0.0, True), _directional("evidence", 0.0, False)]
+    if with_abstention:
+        results.append(VerificationResult(
+            verifier_name="rule", score=1.0, passed=True,
+            metadata={"decision": "UNSURE", "rule": "email_regex"},
+        ))
+    detail = DecisionEngine().decide_detailed(results)
+    assert (detail.status, detail.score, detail.raw_score) == ("uncertain", 0.0, 0.0)
+    assert detail.aggregation == "zero_confidence"
+    assert [vote.passed for vote in detail.votes[:2]] == [True, False]
+    assert all(not vote.abstained for vote in detail.votes[:2])
+    assert all(vote.confidence == vote.contribution == 0.0 for vote in detail.votes)
+    if with_abstention:
+        assert detail.votes[2].abstained is True
+    from app.analysis.question_analyzer import QuestionAnalysis
+    from app.decision.early_termination import AdaptiveEarlyTermination
+
+    assert not AdaptiveEarlyTermination().should_terminate(
+        results, QuestionAnalysis("general", "easy", 0.0)
+    )["terminate"]
+
+
+@pytest.mark.parametrize("update,error", [
+    ({"metadata": {"decision": None}}, "metadata.decision"),
+    ({"metadata": {"decision": "SUPPORT"}}, "requires passed=True"),
+    ({"verifier_name": " "}, "verifier_name"),
+    ({"passed": "false"}, "boolean"),
+])
+def test_zero_confidence_results_are_validated_before_exclusion(update, error):
+    invalid = _directional("evidence", 0.0, False).model_copy(update=update)
+    manager = ReputationManager()
+    before = manager.export_state()
+    with pytest.raises((TypeError, ValueError), match=error):
+        DecisionEngine(manager).decide([_directional("semantic", 0.9, True), invalid])
+    assert manager.export_state() == before
+
+
+def test_duplicate_zero_confidence_identities_are_still_rejected():
+    zero = _directional("semantic", 0.0, True)
+    with pytest.raises(ValueError, match="duplicate verifier name"):
+        DecisionEngine().decide([zero, zero])
+
+
+def test_factual_rule_zero_stored_score_remains_in_scoring_pool():
+    result = VerificationResult(
+        verifier_name="rule", score=0.0, passed=False,
+        metadata={"decision": "REJECT", "rule": "arithmetic_addition"},
+    )
+    detail = DecisionEngine().decide_detailed([result, _directional("semantic", 0.0, True)])
+    assert (detail.status, detail.score) == ("failed", -1.0)
+    assert detail.votes[0].confidence == 1.0
+    assert detail.votes[0].contribution == -1.0
+    assert detail.votes[0].abstained is False
+
+
+@pytest.mark.parametrize("succeeded,expected", [(True, 0.9), (False, -0.9)])
+def test_current_policy_one_observation_dominates_opposing_untouched_votes(succeeded, expected):
+    """Retained sparse-data policy, not evidence of empirical reliability."""
+    manager = ReputationManager()
+    manager.update_reputation("semantic", "general", succeeded)
+    detail = DecisionEngine(manager).decide_detailed([
+        _directional("semantic", 0.9, True),
+        _directional("evidence", 0.9, False),
+        _directional("confidence", 0.9, False),
+    ])
+    assert detail.aggregation == "log_odds"
+    assert detail.raw_score == pytest.approx(expected)
+    assert detail.status == ("passed" if succeeded else "failed")
+    assert all(vote.weight == vote.contribution == 0.0 for vote in detail.votes[1:])
+
+
+def test_mixed_abstentions_do_not_change_log_odds_score():
+    manager = ReputationManager(8.0, 2.0)
+    directional = [_directional("semantic", 0.9, True), _directional("confidence", 0.7, False)]
+    abstentions = [VerificationResult(
+        verifier_name=name, score=1.0, passed=True,
+        metadata={"decision": "UNSURE"},
+    ) for name in ("rule", "evidence")]
+    engine = DecisionEngine(manager)
+    expected = engine.decide_detailed(directional)
+    detail = engine.decide_detailed(directional + abstentions)
+    assert detail.aggregation == "log_odds"
+    assert detail.raw_score == pytest.approx(0.1)
+    assert (detail.status, detail.score) == (expected.status, expected.score)
+    assert all(vote.abstained and vote.contribution == 0.0 for vote in detail.votes[2:])
+
+
+def test_current_policy_experienced_balanced_reputations_use_equal_weight_fallback():
+    """Observation count does not change this retained weighting policy."""
+    manager = ReputationManager()
+    for name in ("semantic", "evidence"):
+        for succeeded in (True, False) * 4:
+            manager.update_reputation(name, "general", succeeded)
+        assert manager.observation_count(name, "general") == 8
+    detail = DecisionEngine(manager).decide_detailed([
+        _directional("semantic", 0.9, True), _directional("evidence", 0.7, False),
+    ])
+    assert detail.aggregation == "equal_weight"
+    assert detail.raw_score == pytest.approx(0.1)
+    assert all(vote.reputation == 0.5 and vote.weight == 0.0 for vote in detail.votes)
+
+
+@pytest.mark.parametrize("successes,failures", [(500001, 500000), (500000, 500001)])
+def test_current_policy_near_half_reputation_rounding_can_trigger_fallback(successes, failures):
+    """Retained six-decimal precision, not a calibrated observation cutoff."""
+    manager = ReputationManager()
+    state = manager.export_state()
+    state["pairs"] = [{
+        "verifier_name": "semantic", "domain": "general",
+        "successes": successes, "failures": failures,
+    }]
+    manager.restore_state(state)
+    assert manager.statistics("semantic", "general").posterior_mean != 0.5
+    detail = DecisionEngine(manager).decide_detailed([
+        _directional("semantic", 0.9, True), _directional("evidence", 0.7, False),
+    ])
+    assert detail.votes[0].reputation == 0.5
+    assert detail.votes[0].weight == 0.0
+    assert detail.aggregation == "equal_weight"
+    assert detail.raw_score == pytest.approx(0.1)

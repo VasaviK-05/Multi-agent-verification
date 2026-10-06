@@ -109,7 +109,7 @@ class QuestionAnalyzer:
             )
         try:
             envelope = response.json()
-        except ValueError:
+        except (ValueError, RecursionError):
             # httpx raises JSONDecodeError, a ValueError, for a non-JSON body.
             raise AnalyzerResponseError("malformed_envelope") from None
         return validate_assessment(parse_envelope(envelope))

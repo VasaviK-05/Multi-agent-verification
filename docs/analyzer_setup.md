@@ -1,6 +1,6 @@
 # Question analyzer setup
 
-`QuestionAnalyzer.analyze` still returns `domain`, `difficulty`, and `difficulty_score`. The default mode is `heuristic`. Heuristic analysis leaves `verification_types` empty, and an empty list preserves the previous ranking: domain reputation and resource estimates, with no suitability bonus. When `verification_types` is not empty, the selector uses that list as a suitability hint and still uses `domain` for reputation. Subject, domain candidates, domain status, rubric ratings, analysis method, and fallback reason do not change selection, reputation, or the decision score.
+`QuestionAnalyzer.analyze` still returns `domain`, `difficulty`, and `difficulty_score`. The default mode is `heuristic`. Heuristic analysis supplies conservative `direct_fact` and `arithmetic` routing hints for recognized lookup and calculation forms. An empty list preserves ranking by domain reputation and resource estimates, with no suitability bonus. When `verification_types` is not empty, the selector uses that list as a suitability hint and still uses `domain` for reputation. Subject, domain candidates, domain status, rubric ratings, analysis method, and fallback reason do not change selection, reputation, or the decision score.
 
 This module does not load a `.env` file. Importing the answer generator can load one, because that module calls `load_dotenv`. The analyzer does not import the answer generator. Set variables in the process environment before constructing `QuestionAnalyzer`.
 
@@ -8,11 +8,15 @@ This module does not load a `.env` file. Importing the answer generator can load
 
 `ANALYZER_MODE` is `heuristic` or `ollama`. When the variable is absent, the mode is `heuristic`, which is the existing keyword scorer.
 
-Heuristic output uses `analysis_method` `heuristic`. It does not claim to be model analysis. `rubric_ratings` is null. `subject` and `verification_types` are empty. `domain_status` describes the same keyword counts:
+Heuristic output uses `analysis_method` `heuristic`. It does not claim to be model analysis. `rubric_ratings` is null. `subject` is empty. `verification_types` contains a recognized routing hint or is empty. `domain_status` describes the same keyword counts:
 
-- one specialist list wins: `clear`, and `domain` is `medical` or `technical`
+- one specialist list wins: `clear`, and `domain` is `medical` or `technical`; this remains true even when the other list has fewer hits
 - the two lists tie: `mixed`, and `domain` stays `general`
 - no domain cue: `unknown`, and `domain` stays `general`
+
+Heuristic hints are routing suggestions, not correctness judgments. Recognized lookup forms include "Who wrote Hamlet?" and "What is the capital of France?". Numeric expressions such as "What is 2 + 2?" and sum/product/difference wording receive `arithmetic`, ahead of generic factual phrasing. Explanation, hypothetical, and advice cues suppress these hints. Other who/what questions receive no hint by default.
+
+Explicit task prefixes such as "Write a Python function" add one technical domain cue without changing the difficulty formula. Standalone language names and the word "function" are insufficient. This cue participates in the existing domain-count policy: exact ties are mixed; a unique winner remains clear. This policy does not detect every semantically mixed question.
 
 ## Enable Ollama in PowerShell
 
@@ -66,6 +70,8 @@ If Ollama times out, returns an HTTP error, or returns an envelope or object tha
 - `incomplete_envelope`: done was missing or was not exactly true.
 - `duplicate_key`: the assessment JSON contained a repeated key.
 
+Excessively nested JSON at either decoding boundary uses `malformed_envelope` or `malformed_json`, respectively, and returns the same heuristic fields as direct analysis. The recursion limit is unchanged.
+
 The reason does not include the question, the response body, or the exception text. Other exceptions are not caught.
 
 ## Smoke test
@@ -111,7 +117,7 @@ A live Ollama print shows whether the call connected. It is not a measured test 
 
 ## Limitations
 
-- The default analyzer mode is `heuristic`. Its empty `verification_types` list preserves the previous ranking. A non-empty list can change verifier order. It does not change how many verifiers the difficulty range requests, and it does not change vote weights. The other metadata fields are not read by the selector or the decision engine. Reputation still uses `domain` only.
+- The default analyzer mode is `heuristic`. Unrecognized questions retain an empty `verification_types` list and the previous ranking; recognized heuristic hints intentionally change suitability ranking. A non-empty list can change verifier order. It does not change how many verifiers the difficulty range requests, and it does not change vote weights. The other metadata fields are not read by the selector or the decision engine. Reputation still uses `domain` only.
 - The rubric cuts are the old uncalibrated thresholds.
 - Only three primary domains exist. Finer subject text is not a new domain key.
 - Heuristic fallback can still mark a question hard because it is long or contains "why". That path is labeled `heuristic_fallback`.

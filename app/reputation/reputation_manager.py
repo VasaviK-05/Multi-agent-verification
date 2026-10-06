@@ -770,8 +770,13 @@ def _belief(alpha: float, beta: float) -> tuple[float, float]:
         ratio = alpha / beta
         mean = ratio / (1.0 + ratio)
         scale = beta
-    inside = 1.0 + ratio + (1.0 / scale)
-    variance = mean * (1.0 - mean) / scale / inside
+    if scale <= 1.0:
+        # alpha + beta + 1 is safe here; reciprocal scaling can overflow.
+        variance = mean * (1.0 - mean) / (1.0 + scale * (1.0 + ratio))
+    else:
+        # Keep the scaled form so very large alpha + beta cannot overflow.
+        inside = 1.0 + ratio + (1.0 / scale)
+        variance = mean * (1.0 - mean) / scale / inside
     if not math.isfinite(mean) or not math.isfinite(variance):
         raise ValueError("reputation parameters cannot be represented safely")
     return mean, variance

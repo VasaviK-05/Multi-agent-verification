@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from copy import deepcopy
 from uuid import uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
-from app.decision.decision_engine import DecisionEngine
+from app.decision.decision_engine import DecisionDetail, DecisionEngine
 from app.decision.early_termination import AdaptiveEarlyTermination
 from app.decision.vote_normalization import (
     confidence_judgment_tie,
@@ -28,6 +29,8 @@ class ValidationContext:
     validation_id: str
     domain: str
     results: tuple[VerificationResult, ...]
+    decision: DecisionDetail
+    run_summary: dict
 
 
 class ValidationOrchestrator:
@@ -143,63 +146,78 @@ class ValidationOrchestrator:
         return self._last_analysis
 
     def validate(self, request: ValidationRequest) -> ValidationResponse:
-        """Complete the adaptive verifier target without early termination.
-
-        Verifiers run in the selector's ranked order. Abstentions remain
-        visible in the response and are replaced by another candidate
-        when available. Aggregate after reaching the informative-vote
-        target or exhausting the candidates.
-        """
+        """Run ranked candidates until an approved, covered stop or exhaustion."""
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
         validation_id = str(uuid4())
-
-        target = self._verifier_selector.target_count(analysis)
-
+        minimum = self._verifier_selector.minimum_count(analysis)
+        if analysis.difficulty != "hard":
+            minimum = max(2, minimum)
+        names = [row.verifier_name for row in self._verifier_selector.explain_ranking(analysis)]
+        required = set(analysis.verification_types or ()) & {"direct_fact", "arithmetic"}
+        coverage = {
+            capability: {
+                "available": any(name in names for name in {
+                    "evidence" if capability == "direct_fact" else "rule",
+                    self._verifier_selector.type_mapping.get(capability),
+                }),
+                "unattempted": [name for name in names if name in {
+                    "evidence" if capability == "direct_fact" else "rule",
+                    self._verifier_selector.type_mapping.get(capability),
+                }],
+                "attempts": [], "directional": [],
+            }
+            for capability in sorted(required)
+        }
         results: list[VerificationResult] = []
         abstained: list[str] = []
-        informative = 0
-
+        detail = None
+        reason = "candidate_exhaustion"
+        last_assessment = None
         for verifier in self._verifier_selector.iter_ranked(analysis):
-            raw = verifier.verify(
-                request.question,
-                request.answer,
-                request.context,
-            )
-
-            if is_abstention(raw):
+            raw = verifier.verify(request.question, request.answer, request.context)
+            abstention = is_abstention(raw)
+            annotated = _annotate(raw, abstained_before=list(abstained), abstention=abstention)
+            results.append(annotated)
+            if abstention:
                 abstained.append(raw.verifier_name)
-                results.append(
-                    _annotate(
-                        raw,
-                        abstained_before=abstained[:-1],
-                        abstention=True,
-                    )
-                )
-                continue
-
-            results.append(
-                _annotate(
-                    raw,
-                    abstained_before=list(abstained),
-                    abstention=False,
-                )
+            _track_coverage(coverage, raw, self._verifier_selector.type_mapping)
+            assessment = self._early_termination.should_terminate(
+                results, analysis, minimum, decision_engine=self._decision_engine,
             )
-            informative += 1
-
-            # Complete the selector's target; no confidence-based stop.
-            if informative >= target:
+            last_assessment = assessment["reason"]
+            if (analysis.difficulty != "hard" and assessment["terminate"]
+                    and all(row["directional"] for row in coverage.values())):
+                detail = assessment["decision"]
+                reason = "approved_early_stop"
                 break
-
-        final_status, final_score = self._decision_engine.decide(
-            results,
-            domain=analysis.domain,
-        )
+        if detail is None:
+            detail = self._decision_engine.decide_detailed(results, domain=analysis.domain)
+        contributors = self._early_termination.contributor_count(detail, results)
+        missing = [key for key, row in coverage.items() if not row["directional"]]
+        final_status = detail.status
+        if contributors < minimum or missing:
+            final_status = "uncertain"
+        final_score = detail.score
+        summary = {
+            "termination": reason, "last_stopping_assessment": last_assessment,
+            "minimum_contributors": minimum, "contributors": contributors,
+            "missing_coverage": missing, "coverage": coverage,
+            "numerical_decision": asdict(detail), "public_status": final_status,
+        }
+        if results:
+            metadata = dict(results[-1].metadata or {})
+            if RUN_SUMMARY_KEY in metadata:
+                raise ValueError(f"reserved metadata key {RUN_SUMMARY_KEY!r} already exists")
+            metadata[RUN_SUMMARY_KEY] = deepcopy(summary)
+            results[-1] = results[-1].model_copy(update={"metadata": metadata})
 
         context = ValidationContext(
             validation_id=validation_id,
             domain=analysis.domain,
             results=_detach_results(results),
+            decision=detail,
+            run_summary=deepcopy(summary),
         )
         self._contexts[validation_id] = context
 
@@ -224,6 +242,8 @@ class ValidationOrchestrator:
             validation_id=context.validation_id,
             domain=context.domain,
             results=_detach_results(context.results),
+            decision=context.decision,
+            run_summary=deepcopy(context.run_summary),
         )
 
     def record_ground_truth(
@@ -397,3 +417,69 @@ def _abstention_reason(result: VerificationResult) -> str:
             return "the highest judgment counts were tied"
         return "no verification judgments"
     return "the verifier did not cast a vote"
+
+
+RUN_SUMMARY_KEY = "multi_agent_verification.execution"
+ARITHMETIC_RULES = frozenset({
+    "arithmetic_addition", "arithmetic_subtraction",
+    "arithmetic_multiplication", "arithmetic_division",
+})
+
+
+def _factual_capabilities(result: VerificationResult) -> set[str]:
+    """Recognize current factual output contracts, regardless of checker name.
+
+    Rule expected/actual fields are optional on legitimate invalid-answer
+    rejections. Evidence requires assessed claims and matching evidence rows;
+    an identity or bare decision is never a coverage certificate.
+    """
+    metadata = result.metadata or {}
+    if is_abstention(result) or vote_confidence(result) == 0:
+        return set()
+    decision = metadata.get("decision")
+    if decision not in {"SUPPORT", "REJECT"}:
+        return set()
+    capabilities = set()
+    rule = metadata.get("rule")
+    if (metadata.get("rule_kind") == "factual"
+            and isinstance(rule, str) and rule in ARITHMETIC_RULES):
+        capabilities.add("arithmetic")
+    label = "entailment" if decision == "SUPPORT" else "contradiction"
+    rows = metadata.get("supporting" if result.passed else "contradicting")
+    opposite = metadata.get("contradicting" if result.passed else "supporting")
+    claims = metadata.get("claim_decisions")
+    if (metadata.get("nli_label") == label and metadata.get("unsure_reason") is None
+            and isinstance(rows, list) and rows
+            and any(isinstance(row, dict) and row.get("nli_label") == label for row in rows)
+            and isinstance(claims, list) and claims):
+        # Support requires every claim; rejection needs one decisive claim.
+        directions = [c.get("decision") for c in claims if isinstance(c, dict)]
+        if ((decision == "SUPPORT" and len(directions) == len(claims)
+                and all(d == "SUPPORT" for d in directions) and not opposite)
+                or (decision == "REJECT" and "REJECT" in directions)):
+            capabilities.add("direct_fact")
+    return capabilities
+
+
+def _track_coverage(coverage: dict, result: VerificationResult, mapping: dict) -> None:
+    qualified = _factual_capabilities(result)
+    metadata = result.metadata or {}
+    rule = metadata.get("rule")
+    for capability, row in coverage.items():
+        candidate = (result.verifier_name in {
+            "evidence" if capability == "direct_fact" else "rule", mapping.get(capability),
+        } or capability in qualified
+            or (capability == "direct_fact" and "claim_decisions" in metadata)
+            or (capability == "arithmetic" and isinstance(rule, str)
+                and rule in ARITHMETIC_RULES))
+        if not candidate:
+            continue
+        row["available"] = True
+        if result.verifier_name in row["unattempted"]:
+            row["unattempted"].remove(result.verifier_name)
+        state = ("directional" if capability in qualified else
+                 "abstained" if is_abstention(result) else
+                 "zero_confidence" if vote_confidence(result) == 0 else "unproven")
+        row["attempts"].append({"verifier": result.verifier_name, "state": state})
+        if capability in qualified:
+            row["directional"].append(result.verifier_name)

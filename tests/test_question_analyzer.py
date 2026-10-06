@@ -1,5 +1,7 @@
 """Isolated tests for the keyword heuristic. These stay in heuristic mode."""
 
+import pytest
+
 from app.analysis.models import QuestionAnalysis
 from app.analysis.question_analyzer import QuestionAnalyzer
 
@@ -93,3 +95,62 @@ def test_score_stays_inside_the_unit_interval():
     analysis = _heuristic().analyze(text + "patient disease treatment diagnosis")
     assert 0.0 <= analysis.difficulty_score <= 1.0
     assert analysis.difficulty in {"easy", "medium", "hard"}
+
+
+@pytest.mark.parametrize("question,hint,score", [
+    ("Who wrote Hamlet?", "direct_fact", 0.11),
+    ("What is the capital of France?", "direct_fact", 0.13),
+    ("What is 2 + 2?", "arithmetic", 0.12),
+    ("Calculate -2.5 * 4", "arithmetic", 0.03),
+    ("What is the sum of 2 and 3?", "arithmetic", 0.23),
+    ("Compute 8 / 2 + 1", "arithmetic", 0.04),
+])
+def test_conservative_routing_hints_preserve_difficulty(question, hint, score):
+    analysis = _heuristic().analyze(question)
+    assert analysis.verification_types == [hint]
+    assert analysis.difficulty_score == score
+    assert analysis.difficulty == "easy"
+    assert analysis == _heuristic().analyze(question)
+
+
+@pytest.mark.parametrize("question", [
+    "Who should write my essay?", "Who would have written Hamlet if Shakespeare had not?",
+    "What is the best treatment?", "What is the meaning of life?",
+    "What is the capital of France and why was it chosen?",
+    "Who wrote Hamlet and what should I read next?",
+    "Explain why 2 + 2 equals 4.", "What would 2 + 2 mean in this story?",
+    "What is it?", "Who are you?",
+])
+def test_non_lookup_questions_do_not_receive_factual_hints(question):
+    assert _heuristic().analyze(question).verification_types == []
+
+
+@pytest.mark.parametrize("question", [
+    "Write a Python function to sort a list.",
+    "Please implement a JavaScript function to sort a list.",
+    "Debug a Python script that sorts names.",
+])
+def test_explicit_programming_requests_have_consistent_technical_metadata(question):
+    analysis = _heuristic().analyze(question)
+    assert analysis.domain == "technical"
+    assert analysis.domain_status == "clear"
+    assert analysis.domain_candidates == ["technical"]
+    if question.startswith("Write"):
+        assert analysis.difficulty_score == 0.06
+
+
+@pytest.mark.parametrize("question", [
+    "What is the function of the heart?", "Write a story about a python.",
+    "Is Java a good place to visit?", "Write a Python poem.",
+])
+def test_standalone_programming_words_do_not_change_domain(question):
+    assert _heuristic().analyze(question).domain == "general"
+
+
+def test_mixed_domain_policy_keeps_unique_winner_and_exact_tie():
+    winner = _heuristic().analyze("patient treatment algorithm")
+    assert (winner.domain, winner.domain_status, winner.domain_candidates) == (
+        "medical", "clear", ["medical"])
+    tie = _heuristic().analyze("Write a Python function for a patient.")
+    assert (tie.domain, tie.domain_status, tie.domain_candidates) == (
+        "general", "mixed", ["medical", "technical"])

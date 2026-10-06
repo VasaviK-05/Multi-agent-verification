@@ -23,8 +23,10 @@ latency estimates.
 The type map is a hint, not a proof that the verifier can decide the
 question. RuleVerifier covers a few deterministic patterns and abstains
 with metadata.rule "unsupported" otherwise. SemanticVerifier abstains
-without reference context. ConfidenceVerifier abstains without supplied
-judgments. EvidenceVerifier can abstain when retrieval or NLI is not
+without reference context. ConfidenceVerifier uses explicit judgments when
+supplied, otherwise its default provider samples five generations; it can
+abstain when sampling fails or judgments are not directional.
+EvidenceVerifier can abstain when retrieval or NLI is not
 directional. Those abstentions stay in iter_ranked so the orchestrator
 can consult the next candidate.
 
@@ -37,7 +39,11 @@ floor(x + 1/2) is half-up for this non-negative value, so both ends of
 the configured (min, max) range are reachable. Truncating with int()
 never reaches max when max - min == 1 and the score is below 1.
 
-Lambdas, profiles, and ranges are UNCALIBRATED. See docs/decision_formulas.md.
+Lambdas and profile fields must be finite non-boolean numbers in [0, 1].
+Ranges contain positive integer pairs (min <= max). Easy defaults to (2, 2);
+medium and hard remain (2, 3) and (3, 4). Counts do not guarantee factual
+coverage. Lambdas, profiles, and ranges are UNCALIBRATED.
+See docs/decision_formulas.md.
 """
 
 from __future__ import annotations
@@ -55,7 +61,9 @@ DEFAULT_VERIFIER_PROFILES: dict[str, dict[str, float]] = {
     "semantic": {"cost": 0.30, "latency": 0.40},
     "evidence": {"cost": 0.80, "latency": 0.90},
     "rule": {"cost": 0.20, "latency": 0.20},
-    "confidence": {"cost": 0.40, "latency": 0.30},
+    # Provisional estimates for five default generations, not measured timings.
+    # Explicit supplied judgments can be cheaper; custom profiles override this.
+    "confidence": {"cost": 0.90, "latency": 1.00},
 }
 
 # Registration order is the tie-break when utilities are equal.
@@ -63,7 +71,7 @@ DEFAULT_VERIFIER_ORDER = ("semantic", "evidence", "rule", "confidence")
 
 # UNCALIBRATED: (min, max) selected verifiers by difficulty band.
 DEFAULT_DIFFICULTY_RANGE: dict[str, tuple[int, int]] = {
-    "easy": (1, 2),
+    "easy": (2, 2),
     "medium": (2, 3),
     "hard": (3, 4),
 }
@@ -94,7 +102,7 @@ def band_position(difficulty: str, difficulty_score: float) -> float:
     Scores outside the band are clamped, so a hand-built analysis can
     still reach both ends of the verifier-count range.
     """
-    score = min(max(difficulty_score, 0.0), 1.0)
+    score = min(max(_require_score(difficulty_score), 0.0), 1.0)
     if difficulty == "easy":
         low, high = 0.0, EASY_MAX
     elif difficulty == "hard":
@@ -115,8 +123,11 @@ def target_verifier_count(
     difficulty_range: dict[str, tuple[int, int]] | None = None,
 ) -> int:
     """Return how many verifiers the configured range allows for this score."""
-    ranges = difficulty_range or DEFAULT_DIFFICULTY_RANGE
+    _require_score(difficulty_score)
+    ranges = _copy_ranges(difficulty_range)
     band = difficulty if difficulty in ranges else "medium"
+    if band not in ranges:
+        raise ValueError("difficulty_range must include medium for an unknown difficulty")
     min_n, max_n = ranges[band]
     if max_n <= min_n:
         return min_n
@@ -176,10 +187,64 @@ def _require_unit_weight(name: str, value: object) -> float:
     """Accept a finite weight in [0, 1]. Reject booleans and non-numbers."""
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise ValueError(f"{name} must be a finite number in [0, 1]")
-    number = float(value)
+    try:
+        number = float(value)
+    except OverflowError:
+        raise ValueError(f"{name} must be a finite number in [0, 1]") from None
     if not math.isfinite(number) or number < 0.0 or number > 1.0:
         raise ValueError(f"{name} must be a finite number in [0, 1]")
     return number
+
+
+def _require_score(value: object) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError("difficulty_score must be a finite number")
+    try:
+        number = float(value)
+    except OverflowError:
+        raise ValueError("difficulty_score must be a finite number") from None
+    if not math.isfinite(number):
+        raise ValueError("difficulty_score must be a finite number")
+    return number
+
+
+def _require_name(value: object) -> str:
+    if not isinstance(value, str) or not value.strip() or value != value.strip():
+        raise ValueError("verifier name must be a non-blank string without surrounding whitespace")
+    return value
+
+
+def _copy_profiles(profiles: Mapping | None) -> dict[str, dict[str, float]]:
+    source = DEFAULT_VERIFIER_PROFILES if profiles is None else profiles
+    if not isinstance(source, Mapping):
+        raise ValueError("verifier_profiles must be a mapping")
+    copied = {}
+    for name, profile in source.items():
+        _require_name(name)
+        if not isinstance(profile, Mapping) or not {"cost", "latency"} <= profile.keys():
+            raise ValueError(f"verifier_profiles[{name!r}] requires cost and latency fields")
+        copied[name] = {
+            field: _require_unit_weight(f"verifier_profiles[{name!r}].{field}", profile[field])
+            for field in ("cost", "latency")
+        }
+    return copied
+
+
+def _copy_ranges(ranges: Mapping | None) -> dict[str, tuple[int, int]]:
+    source = DEFAULT_DIFFICULTY_RANGE if ranges is None else ranges
+    if not isinstance(source, Mapping) or not source:
+        raise ValueError("difficulty_range must be a non-empty mapping")
+    copied = {}
+    for band, pair in source.items():
+        if (
+            not isinstance(band, str) or not band.strip()
+            or not isinstance(pair, (tuple, list)) or len(pair) != 2
+            or any(type(count) is not int or count <= 0 for count in pair)
+            or pair[0] > pair[1]
+        ):
+            raise ValueError("difficulty_range requires positive integer pairs with min <= max")
+        copied[band] = tuple(pair)
+    return copied
 
 
 def _copy_type_mapping(mapping: Mapping[str, str] | None) -> dict[str, str]:
@@ -235,18 +300,24 @@ class VerifierSelector:
         type_mapping: Mapping[str, str] | None = None,
     ) -> None:
         self._reputation_manager = reputation_manager or ReputationManager()
-        self.lambda_cost = lambda_cost
-        self.lambda_latency = lambda_latency
+        self.lambda_cost = _require_unit_weight("lambda_cost", lambda_cost)
+        self.lambda_latency = _require_unit_weight("lambda_latency", lambda_latency)
         self.lambda_suitability = _require_unit_weight(
             "lambda_suitability",
             lambda_suitability,
         )
         self.type_mapping = _copy_type_mapping(type_mapping)
-        self.verifier_profiles = verifier_profiles or {
-            name: dict(profile) for name, profile in DEFAULT_VERIFIER_PROFILES.items()
-        }
-        self.difficulty_range = difficulty_range or dict(DEFAULT_DIFFICULTY_RANGE)
+        self.verifier_profiles = _copy_profiles(verifier_profiles)
+        self.difficulty_range = _copy_ranges(difficulty_range)
         self._injected = list(verifiers) if verifiers is not None else None
+        if self._injected is not None:
+            names = []
+            for verifier in self._injected:
+                if not isinstance(verifier, BaseVerifier):
+                    raise ValueError("registered verifiers must be BaseVerifier instances")
+                names.append(_require_name(verifier.name))
+            if len(set(names)) != len(names):
+                raise ValueError("duplicate registered verifier names")
         self._cache: dict[str, BaseVerifier] = {}
 
     @property
@@ -255,7 +326,10 @@ class VerifierSelector:
 
     def minimum_count(self, analysis: QuestionAnalysis) -> int:
         """Minimum verifiers for this difficulty. Early stopping must not go below it."""
+        _require_score(analysis.difficulty_score)
         band = analysis.difficulty if analysis.difficulty in self.difficulty_range else "medium"
+        if band not in self.difficulty_range:
+            raise ValueError("difficulty_range must include medium for an unknown difficulty")
         return self.difficulty_range[band][0]
 
     def target_count(self, analysis: QuestionAnalysis) -> int:
@@ -284,6 +358,7 @@ class VerifierSelector:
         Default verifiers are named here and not constructed. Equal utilities
         keep registration order.
         """
+        _require_score(analysis.difficulty_score)
         names = self._candidate_names()
         rows = [self._factors(name, analysis) for name in names]
         order = sorted(range(len(rows)), key=lambda index: rows[index].utility, reverse=True)
@@ -304,6 +379,7 @@ class VerifierSelector:
         )
 
     def _factors(self, verifier_name: str, analysis: QuestionAnalysis) -> RankingExplanation:
+        _require_score(analysis.difficulty_score)
         reputation = self._reputation_manager.get_reputation(verifier_name, analysis.domain)
         penalty = self._resource_penalty(verifier_name)
         suitability = suitability_by_verifier(
@@ -339,6 +415,7 @@ class VerifierSelector:
         does not load a model until the orchestrator asks for it. Equal
         utilities keep registration order.
         """
+        _require_score(analysis.difficulty_score)
         if self._injected is not None:
             indexed = list(enumerate(self._injected))
             indexed.sort(

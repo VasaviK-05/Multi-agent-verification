@@ -1,6 +1,8 @@
 """Ollama analyzer tests. Transport is injected, so Ollama is not contacted."""
 
 import json
+from dataclasses import asdict
+import sys
 
 import httpx
 import pytest
@@ -9,6 +11,35 @@ from app.analysis.model_assessment import SYSTEM_INSTRUCTION, build_generate_bod
 from app.analysis.question_analyzer import QuestionAnalyzer
 
 QUESTION = "What is 2 + 2?"
+
+
+@pytest.mark.parametrize("ratings,score,band,count", [
+    ((0, 0, 0), 0., "easy", 2), ((1, 1, 0), .33, "easy", 2),
+    ((1, 1, 1), .5, "medium", 2), ((2, 1, 1), .67, "hard", 3),
+    ((2, 2, 2), 1., "hard", 3),
+])
+def test_campaign_model_rubric_reaches_selector(ratings, score, band, count):
+    from app.selection.verifier_selector import VerifierSelector
+    analysis = _analyzer(FakeClient(_response(_payload(
+        reasoning_depth=ratings[0], evidence_burden=ratings[1],
+        constraint_interactions=ratings[2])))).analyze(QUESTION)
+    assert analysis.analysis_method == "ollama" and analysis.fallback_reason is None
+    assert (analysis.difficulty_score, analysis.difficulty) == (score, band)
+    assert VerifierSelector().minimum_count(analysis) == count
+
+
+@pytest.mark.parametrize("boundary,lower,upper", [(.35, "easy", "medium"), (.65, "medium", "hard")])
+def test_campaign_exact_band_boundaries_reach_selector(boundary, lower, upper):
+    import math
+    from app.analysis.heuristic import difficulty_band
+    from app.analysis.question_analyzer import QuestionAnalysis
+    from app.selection.verifier_selector import VerifierSelector
+    for value, expected in [(math.nextafter(boundary, -math.inf), lower),
+                            (boundary, upper), (math.nextafter(boundary, math.inf), upper)]:
+        band = difficulty_band(value)
+        assert band == expected
+        analysis = QuestionAnalysis("general", band, value)
+        assert VerifierSelector().minimum_count(analysis) == (3 if band == "hard" else 2)
 
 
 class FakeClient:
@@ -182,6 +213,9 @@ def test_invalid_model_fields_fall_back_to_the_heuristic(overrides: dict):
 
 def _assert_heuristic_fallback(analysis, reason: str) -> None:
     heuristic = QuestionAnalyzer(mode="heuristic", environ={}).analyze(QUESTION)
+    expected = asdict(heuristic)
+    expected.update(analysis_method="heuristic_fallback", fallback_reason=reason)
+    assert asdict(analysis) == expected
     assert analysis.domain == heuristic.domain
     assert analysis.difficulty == heuristic.difficulty
     assert analysis.difficulty_score == heuristic.difficulty_score
@@ -298,6 +332,18 @@ def test_programming_errors_are_not_turned_into_fallback():
     client = FakeClient(error=RuntimeError("bug in the test double"))
     with pytest.raises(RuntimeError, match="bug"):
         _analyzer(client).analyze(QUESTION)
+
+
+@pytest.mark.parametrize("boundary", ["envelope", "assessment"])
+def test_deeply_nested_json_matches_complete_heuristic_fallback(boundary):
+    depth = sys.getrecursionlimit() + 100
+    raw = "[" * depth + "0" + "]" * depth
+    response = httpx.Response(200, content=raw.encode()) if boundary == "envelope" else _response(raw=raw)
+    client = FakeClient(response)
+    analysis = _analyzer(client).analyze(QUESTION)
+    reason = "malformed_envelope" if boundary == "envelope" else "malformed_json"
+    _assert_heuristic_fallback(analysis, reason)
+    assert len(client.calls) == 1
 
 
 def test_question_payload_is_separate_from_the_system_instruction():

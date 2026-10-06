@@ -3,8 +3,8 @@
 This is a weighted vote. It does not solve a game, and the score is not
 a probability.
 
-For an informative verifier i, with domain reputation p_i, confidence
-s_i in [0, 1], and vote v_i = +1 on pass and -1 on reject:
+For a scoring verifier i, with domain reputation p_i, normalized confidence
+s_i in (0, 1], and vote v_i = +1 on pass and -1 on reject:
 
     w_i = log(p_i / (1 - p_i))     # Bernoulli log likelihood ratio
     mass_i = s_i * v_i             # in [-1, 1]
@@ -14,6 +14,11 @@ s_i is not always the raw ``score`` field. A supported rule stores score
 unsupported rule, a semantic check with no context, evidence with no
 directional NLI label, and confidence with no judgments are abstentions
 and contribute no mass. See app/decision/vote_normalization.py.
+
+All supplied results are validated first. Directional results with zero
+normalized confidence stay in explanations but are excluded from scoring,
+denominators, and the choice between log-odds and equal-weight aggregation.
+They remain directional for reputation learning.
 
 p_i is clamped into (EPS, 1 - EPS) so the log is finite.
 
@@ -30,16 +35,23 @@ sum would cancel that inversion.
 
     score = sum_i w_i * mass_i / sum_i |w_i|     when some |w_i| > 0
 
-Cold start, when every consulted reputation has w_i = 0 (the default
-prior is 0.5):
+Fallback, when every scoring verifier has w_i = 0 (including the default
+prior of 0.5 and experienced balanced reputations):
 
     score = sum_i mass_i / n
 
-The score is in [-1, 1]. +1 is a unanimous full-confidence pass after
-any inversions. -1 is the same for reject. Values between the UNCALIBRATED
+The score is in [-1, 1]. +1 means every result included in aggregation
+is a full-confidence pass after any negative-weight inversion. -1 means
+the same for reject. Zero-weight results are not included in log-odds
+aggregation. Values between the UNCALIBRATED
 cuts are "uncertain" (abstain). No verifier results yield status "unknown"
 and score 0; that 0 is an empty sentinel, not a calibrated chance and not
 the same claim as an "uncertain" 0 from cancelling votes.
+
+These are retained, uncalibrated policies: one observation can give a
+verifier sole influence over untouched verifiers, and one failure can
+invert its vote. Similarity, NLI confidence, and agreement fractions are
+not calibrated probabilities of answer correctness.
 
 Cuts, also UNCALIBRATED, applied to the bounded score before rounding.
 The band is symmetric about 0 because a positive score is net pass
@@ -125,7 +137,8 @@ class VoteExplanation:
 
     ``contribution`` is ``weight * mass`` in log-odds mode and ``mass`` in
     equal-weight mode. An abstention and a zero-weight vote that was ignored
-    because another weight was nonzero both contribute 0.
+    because another scoring weight was nonzero both contribute 0. A
+    zero-confidence directional result also contributes 0 without abstaining.
     """
 
     verifier_name: str
@@ -143,7 +156,9 @@ class DecisionDetail:
 
     ``raw_score`` is the bounded score used for the status cut. ``score``
     is ``raw_score`` rounded to 6 decimals. ``aggregation`` is ``unknown``,
-    ``abstentions``, ``log_odds``, or ``equal_weight``.
+    ``abstentions``, ``zero_confidence``, ``log_odds``, or ``equal_weight``.
+    ``zero_confidence`` means no scoring result remains, but at least one
+    supplied result is directional; ``abstentions`` means all abstained.
     """
 
     domain: str
@@ -231,7 +246,7 @@ class DecisionEngine:
             reputation = reputations[result.verifier_name]
             weight = log_odds_weight(reputation)
             prepared.append((result, abstained, confidence, reputation, weight))
-            if abstained:
+            if abstained or confidence == 0.0:
                 continue
             mass = signed_mass(result)
             if mass is None:
@@ -245,18 +260,20 @@ class DecisionEngine:
                 raw_score=0.0,
                 score=0.0,
                 threshold=self._threshold,
-                aggregation="abstentions",
+                aggregation=(
+                    "abstentions" if all(row[1] for row in prepared) else "zero_confidence"
+                ),
                 votes=tuple(
                     VoteExplanation(
                         verifier_name=result.verifier_name,
-                        abstained=True,
+                        abstained=abstained,
                         passed=result.passed,
                         confidence=0.0,
                         reputation=reputation,
                         weight=weight,
                         contribution=0.0,
                     )
-                    for result, _abstained, _confidence, reputation, weight in prepared
+                    for result, abstained, _confidence, reputation, weight in prepared
                 ),
             )
 
@@ -294,7 +311,7 @@ class DecisionEngine:
                     confidence=0.0 if abstained else confidence,
                     reputation=reputation,
                     weight=weight,
-                    contribution=0.0 if abstained else contributions[id(result)],
+                    contribution=contributions.get(id(result), 0.0),
                 )
                 for result, abstained, confidence, reputation, weight in prepared
             ),

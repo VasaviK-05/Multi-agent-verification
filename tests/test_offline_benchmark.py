@@ -97,16 +97,16 @@ def test_early_stop_calls_fewer_verifiers_than_the_baselines():
     adaptive = report.method("adaptive")
     majority = report.method("majority")
     full = report.method("all_verifiers")
-    assert adaptive.verifier_calls == 1
+    assert adaptive.verifier_calls == 2
     assert majority.verifier_calls == 4
     assert full.verifier_calls == 4
-    assert adaptive.reputation_updates == 1
+    assert adaptive.reputation_updates == 2
     assert majority.reputation_updates == 0
     assert full.reputation_updates == 4
     assert adaptive.n_incorrect == 1
     assert adaptive.accuracy == 0.0
     assert report.adaptive_reputation.get_reputation("rule", "medical") < 0.5
-    assert report.adaptive_reputation.is_cold_start("semantic", "medical")
+    assert report.adaptive_reputation.observation_count("semantic", "medical") == 1
     assert report.adaptive_reputation.is_cold_start("rule", "general")
     assert not report.all_verifiers_reputation.is_cold_start("semantic", "medical")
     assert report.adaptive_reputation is not report.all_verifiers_reputation
@@ -125,7 +125,7 @@ def test_neutral_votes_abstain_and_majority_does_not():
     adaptive = report.method("adaptive")
     majority = report.method("majority")
     full = report.method("all_verifiers")
-    assert adaptive.verifier_calls == 1
+    assert adaptive.verifier_calls == 4
     assert adaptive.n_abstentions == 1
     assert adaptive.accuracy is None
     assert adaptive.coverage == 0.0
@@ -138,26 +138,38 @@ def test_neutral_votes_abstain_and_majority_does_not():
     assert adaptive.reputation_updates == 0
 
 
-def test_measured_latency_is_not_the_cost_table():
+def test_measured_latency_is_not_the_cost_table(monkeypatch):
+    from itertools import count
+
+    ticks = count()
+    monkeypatch.setattr("app.benchmark.offline_benchmark.time.perf_counter",
+                        lambda: next(ticks) * 0.125)
     profiles = {
-        name: {"cost": 0.0, "latency": 1e9}
-        for name in ("semantic", "evidence", "rule", "confidence")
+        name: {"cost": 0.0, "latency": (index + 1) / 4}
+        for index, name in enumerate(("semantic", "evidence", "rule", "confidence"))
     }
     report = run_benchmark(
         [LabeledExample("q", "a", True)],
-        verifiers=_stubs(0.5),
+        verifiers=_stubs(0.95),
         analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.1)),
         verifier_profiles=profiles,
         update_reputation=False,
     )
     assert report.method("all_verifiers").latency_ms_total < 10_000
+    assert report.method("adaptive").latency_ms_total < 10_000
+    # Every timed stub takes 125 ms, regardless of its normalized estimate.
+    assert report.method("adaptive").mean_latency_ms == 125.0
+    assert report.method("all_verifiers").mean_latency_ms == 125.0
     assert report.method("adaptive").verifier_calls < report.method("all_verifiers").verifier_calls
 
 
 def test_real_analyzer_still_selects_a_subset():
+    from app.verifiers.rule_verifier import RuleVerifier
+
     report = run_benchmark(
         [LabeledExample("What is 2 + 2?", "4", True)],
-        verifiers=_stubs(0.5),
+        verifiers=[RuleVerifier(), StubVerifier("semantic", score=0.95),
+                   StubVerifier("evidence", score=0.95), StubVerifier("confidence", score=0.95)],
         update_reputation=False,
     )
     assert report.method("adaptive").verifier_calls < report.method("all_verifiers").verifier_calls

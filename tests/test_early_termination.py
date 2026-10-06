@@ -24,6 +24,10 @@ def _easy(score: float = 0.2) -> QuestionAnalysis:
     return QuestionAnalysis(domain="general", difficulty="easy", difficulty_score=score)
 
 
+def _pair(passed: bool, score: float) -> list[VerificationResult]:
+    return [_vote("semantic", passed, score), _vote("evidence", passed, score)]
+
+
 def test_easy_agreement_can_stop():
     stopper = AdaptiveEarlyTermination()
     decision = stopper.should_terminate(
@@ -90,11 +94,11 @@ def test_easy_low_confidence_continues():
 
 def test_explicit_minimum_blocks_an_otherwise_ready_stop():
     stopper = AdaptiveEarlyTermination()
-    ready = stopper.should_terminate([_vote("semantic", True, 0.95)], _easy())
+    ready = stopper.should_terminate(_pair(True, 0.95), _easy())
     blocked = stopper.should_terminate(
-        [_vote("semantic", True, 0.95)],
+        _pair(True, 0.95),
         _easy(),
-        min_verifiers=2,
+        min_verifiers=3,
     )
     assert ready["terminate"] is True
     assert blocked["terminate"] is False
@@ -124,7 +128,7 @@ def test_supported_rule_rejection_can_stop_on_easy():
         reasoning="Expected 4; received 5.",
         metadata={"rule": "arithmetic_addition", "expected": 4, "actual": 5},
     )
-    decision = stopper.should_terminate([rejection], _easy())
+    decision = stopper.should_terminate([rejection, _vote("semantic", False, 1.0)], _easy())
     assert decision["terminate"] is True
     assert decision["decision"].status == "failed"
     assert decision["decision"].score == -1.0
@@ -214,16 +218,17 @@ def test_duplicate_names_and_invalid_settings_are_rejected():
             )
 def test_cold_start_and_reputation_weights():
     stopper = AdaptiveEarlyTermination()
-    cold = stopper.should_terminate([_vote("semantic", True, 0.9)], _easy())
+    cold = stopper.should_terminate(_pair(True, 0.9), _easy())
     assert cold["terminate"] is True
     assert cold["decision"].aggregation == "equal_weight"
 
     positive = ReputationManager()
     for _ in range(6):
         positive.update_reputation("semantic", "general", True)
+        positive.update_reputation("evidence", "general", True)
     engine = DecisionEngine(reputation_manager=positive)
     followed = stopper.should_terminate(
-        [_vote("semantic", True, 0.9)],
+        _pair(True, 0.9),
         _easy(),
         decision_engine=engine,
     )
@@ -232,7 +237,7 @@ def test_cold_start_and_reputation_weights():
 
     negative = ReputationManager(prior_alpha=1.0, prior_beta=8.0)
     inverted = stopper.should_terminate(
-        [_vote("semantic", True, 1.0)],
+        _pair(True, 1.0),
         _easy(),
         decision_engine=DecisionEngine(reputation_manager=negative),
     )
@@ -283,7 +288,7 @@ def test_equal_opposite_weights_cancel_and_do_not_stop():
     assert decision["terminate"] is False
 
 
-def test_effective_agreement_after_inversion_stops_with_that_status():
+def test_effective_agreement_after_inversion_is_vetoed_by_original_disagreement():
     manager = ReputationManager(prior_alpha=1.0, prior_beta=8.0)
     for _ in range(8):
         manager.update_reputation("semantic", "general", True)
@@ -292,8 +297,8 @@ def test_effective_agreement_after_inversion_stops_with_that_status():
         _easy(),
         decision_engine=DecisionEngine(reputation_manager=manager),
     )
-    assert decision["terminate"] is True
-    assert decision["decision"].status == "passed"
+    assert decision["terminate"] is False
+    assert "original directional disagreement" in decision["reason"]
 
 
 def _medium() -> QuestionAnalysis:
@@ -302,32 +307,32 @@ def _medium() -> QuestionAnalysis:
 
 def test_exact_policy_boundaries_and_custom_threshold():
     stopper = AdaptiveEarlyTermination()
-    exact = stopper.should_terminate([_vote("semantic", True, 0.75)], _easy())
+    exact = stopper.should_terminate(_pair(True, 0.75), _easy())
     assert exact["terminate"] is True
     assert exact["decision"].status == "passed"
-    rejected = stopper.should_terminate([_vote("evidence", False, 0.75)], _easy())
+    rejected = stopper.should_terminate(_pair(False, 0.75), _easy())
     assert rejected["terminate"] is True
     assert rejected["decision"].status == "failed"
     below = math.nextafter(0.75, 0.0)
-    missed = stopper.should_terminate([_vote("semantic", True, below)], _easy())
+    missed = stopper.should_terminate(_pair(True, below), _easy())
     assert missed["terminate"] is False
     assert "insufficient" in missed["reason"]
-    missed_reject = stopper.should_terminate([_vote("evidence", False, below)], _easy())
+    missed_reject = stopper.should_terminate(_pair(False, below), _easy())
     assert missed_reject["terminate"] is False
     assert "insufficient" in missed_reject["reason"]
 
     margin_stopper = AdaptiveEarlyTermination(easy_confidence=0.0, easy_margin=0.60)
-    at_margin = margin_stopper.should_terminate([_vote("semantic", True, 0.60)], _easy())
+    at_margin = margin_stopper.should_terminate(_pair(True, 0.60), _easy())
     assert at_margin["terminate"] is True
     assert at_margin["decision"].status == "passed"
-    at_margin_reject = margin_stopper.should_terminate([_vote("evidence", False, 0.60)], _easy())
+    at_margin_reject = margin_stopper.should_terminate(_pair(False, 0.60), _easy())
     assert at_margin_reject["terminate"] is True
     assert at_margin_reject["decision"].status == "failed"
     under_margin = math.nextafter(0.60, 0.0)
-    short = margin_stopper.should_terminate([_vote("semantic", True, under_margin)], _easy())
+    short = margin_stopper.should_terminate(_pair(True, under_margin), _easy())
     assert short["terminate"] is False
     short_reject = margin_stopper.should_terminate(
-        [_vote("evidence", False, under_margin)],
+        _pair(False, under_margin),
         _easy(),
     )
     assert short_reject["terminate"] is False
@@ -385,7 +390,7 @@ def test_exact_policy_boundaries_and_custom_threshold():
 
     strict = DecisionEngine(threshold=0.9)
     blocked = stopper.should_terminate(
-        [_vote("semantic", True, 0.8)],
+        _pair(True, 0.8),
         _easy(),
         decision_engine=strict,
     )
@@ -423,3 +428,124 @@ def test_default_minima_match_the_selector_ranges():
 
     for band, (minimum, _maximum) in DEFAULT_DIFFICULTY_RANGE.items():
         assert MIN_VERIFIERS_BY_DIFFICULTY[band] == minimum
+
+
+@pytest.mark.parametrize("difficulty", ["easy", "medium"])
+@pytest.mark.parametrize("minimum", [None, 1, 2])
+def test_one_strong_vote_cannot_bypass_the_safety_floor(difficulty, minimum):
+    analysis = QuestionAnalysis("general", difficulty, 0.2 if difficulty == "easy" else 0.5)
+    decision = AdaptiveEarlyTermination().should_terminate(
+        [_vote("semantic", True, 1.0)], analysis, min_verifiers=minimum)
+    assert decision["terminate"] is False
+    assert "minimum 2" in decision["reason"]
+
+
+def test_actual_structural_rejection_does_not_supply_a_second_contributor():
+    from app.verifiers.rule_verifier import RuleVerifier
+
+    structural = RuleVerifier().verify("Return the answer as JSON.", "not json")
+    assert structural.metadata["rule_kind"] == "structural"
+    assert structural.metadata["decision"] == "REJECT"
+    votes = [structural, _vote("semantic", False, 1.0)]
+    engine = DecisionEngine()
+    before = engine.decide_detailed(votes)
+    stop = AdaptiveEarlyTermination().should_terminate(votes, _easy(), decision_engine=engine)
+    assert stop["terminate"] is False
+    assert "minimum" in stop["reason"]
+    assert before.status == "failed" and before.score == -1.0
+    assert engine.decide_detailed(votes) == before
+
+
+@pytest.mark.parametrize("kind,rule,stops", [
+    ("structural", "new_format_rule", False),
+    (None, "json_structure", False),
+    ("factual", "format_validity", True),
+    ("factual", "arithmetic_addition", True),
+])
+def test_rule_kind_is_preferred_and_legacy_fallback_is_narrow(kind, rule, stops):
+    result = _vote("rule", False, 0).model_copy(update={
+        "metadata": {"decision": "REJECT", "rule_kind": kind, "rule": rule}})
+    decision = AdaptiveEarlyTermination().should_terminate(
+        [result, _vote("semantic", False, 1)], _easy())
+    assert decision["terminate"] is stops
+
+
+def test_structural_dissent_does_not_enter_agreement_or_confidence_average():
+    from app.verifiers.rule_verifier import RuleVerifier
+
+    structural = RuleVerifier().verify("Return the answer as JSON.", "not json")
+    # Its numerical rejection remains, but cannot veto factual stopping agreement.
+    manager = ReputationManager()
+    for name in ("semantic", "evidence"):
+        manager.update_reputation(name, "general", True)
+    stop = AdaptiveEarlyTermination().should_terminate(
+        _pair(True, 0.75) + [structural], _easy(), decision_engine=DecisionEngine(manager))
+    assert stop["terminate"] is True
+    assert stop["decision"].score == 0.75
+
+
+def test_actual_factual_zero_score_rejection_remains_eligible():
+    from app.verifiers.rule_verifier import RuleVerifier
+
+    result = RuleVerifier().verify("What is 2 + 2?", "5")
+    assert result.score == 0 and result.metadata["rule_kind"] == "factual"
+    stop = AdaptiveEarlyTermination().should_terminate(
+        [result, _vote("semantic", False, 1)], _easy())
+    assert stop["terminate"] is True
+    assert stop["decision"].votes[0].confidence == 1
+    assert stop["decision"].score == -1
+
+
+@pytest.mark.parametrize("passed", [True, False])
+@pytest.mark.parametrize("decision,score", [("UNSURE", 1), (None, 0)])
+def test_noncontributing_directions_do_not_affect_counts_agreement_or_average(passed, decision, score):
+    result = _vote("confidence", passed, score)
+    if decision:
+        result.metadata = {"decision": decision}
+    stop = AdaptiveEarlyTermination().should_terminate([_vote("semantic", True, 0.75), result], _easy())
+    assert stop["terminate"] is False
+    stop = AdaptiveEarlyTermination().should_terminate(_pair(True, 0.75) + [result], _easy())
+    assert stop["terminate"] is True
+    assert stop["decision"].score == 0.75
+
+
+def test_zero_weight_raw_dissent_vetoes_a_decisive_agreeing_weighted_prefix():
+    manager = ReputationManager()
+    for name in ("semantic", "evidence"):
+        manager.update_reputation(name, "general", True)
+    votes = _pair(True, 0.95) + [_vote("confidence", False, 1)]
+    engine = DecisionEngine(manager)
+    detail = engine.decide_detailed(votes)
+    assert detail.status == "passed" and detail.votes[-1].weight == 0
+    stop = AdaptiveEarlyTermination().should_terminate(votes, _easy(), decision_engine=engine)
+    assert stop["terminate"] is False
+    assert "original directional disagreement" in stop["reason"]
+
+
+@pytest.mark.parametrize("score", [True, False, None, "0.2", float("nan"), float("inf"), -float("inf")])
+def test_invalid_analysis_scores_fail_before_decision_evaluation(score):
+    class UnusedEngine:
+        def decide_detailed(self, *args, **kwargs):
+            pytest.fail("invalid analysis must fail before decision evaluation")
+    with pytest.raises(ValueError, match="difficulty_score must be a finite number"):
+        AdaptiveEarlyTermination().should_terminate(_pair(True, 1), _easy(score), decision_engine=UnusedEngine())
+
+
+def test_accepted_stop_uses_one_immutable_snapshot_despite_later_learning():
+    manager = ReputationManager()
+    class RecordingEngine(DecisionEngine):
+        calls = 0
+        captured = None
+        def decide_detailed(self, results, domain=None):
+            self.calls += 1
+            self.captured = super().decide_detailed(results, domain)
+            for name in ("semantic", "evidence"):
+                manager.update_reputation(name, "general", False)
+            return self.captured
+    engine = RecordingEngine(manager)
+    votes = _pair(True, 0.9)
+    stop = AdaptiveEarlyTermination().should_terminate(votes, _easy(), decision_engine=engine)
+    assert stop["terminate"] is True and engine.calls == 1
+    assert stop["decision"] is engine.captured
+    assert stop["decision"].score == 0.9
+    assert DecisionEngine(manager).decide_detailed(votes).status == "failed"

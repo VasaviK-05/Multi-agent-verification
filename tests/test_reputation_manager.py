@@ -1,6 +1,7 @@
 """Isolated tests for ReputationManager."""
 
 import math
+from decimal import Decimal, localcontext
 
 import pytest
 
@@ -9,6 +10,60 @@ from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, FeedbackReceipt, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
 from app.verifiers.base_verifier import BaseVerifier
+
+
+def test_campaign_tiny_prior_restore_keeps_feedback_retry_identity_and_domain():
+    manager = ReputationManager(prior_alpha=1e-309, prior_beta=1e-309)
+    support = VerificationResult(verifier_name="custom", score=0., passed=True,
+                                 metadata={"decision": "SUPPORT"})
+    event = FeedbackEvent("campaign-original", "medical", False, (support,))
+    assert manager.record_feedback(event).observations_applied == 1
+    restored = ReputationManager()
+    restored.restore_state(manager.export_state())
+    before = restored.export_state()
+    assert restored.record_feedback(event).observations_applied == 0
+    assert restored.export_state() == before
+    with pytest.raises(ValueError):
+        restored.record_feedback(FeedbackEvent("campaign-original", "medical", True, (support,)))
+    assert restored.export_state() == before
+    assert restored.observation_count("custom", "medical") == 1
+    assert restored.observation_count("custom", "technical") == 0
+    untouched = restored.statistics("untouched", "technical")
+    assert untouched.posterior_mean == .5
+    assert untouched.posterior_variance == pytest.approx(.25)
+
+
+@pytest.mark.parametrize("passed", [False, True])
+@pytest.mark.parametrize("label", [False, True])
+@pytest.mark.parametrize("scoped", [False, True])
+def test_current_policy_zero_confidence_directions_still_learn(passed, label, scoped):
+    """Numerical exclusion does not change directional ground-truth learning."""
+    manager = ReputationManager()
+    result = VerificationResult(
+        verifier_name="semantic", score=0.0, passed=passed,
+        metadata={"decision": "SUPPORT" if passed else "REJECT"},
+    )
+    if scoped:
+        applied = manager.record_feedback(
+            FeedbackEvent("zero", "general", label, (result,))
+        ).observations_applied
+    else:
+        applied = manager.record_unscoped_ground_truth("general", [result], label)
+    assert applied == 1
+    stats = manager.statistics("semantic", "general")
+    assert stats.observation_count == 1
+    assert stats.successes == int(passed == label)
+    assert stats.failures == int(passed != label)
+
+
+def test_identical_duplicate_feedback_votes_count_once():
+    manager = ReputationManager()
+    result = _result("semantic", True)
+    event = FeedbackEvent("duplicates", "general", True, (result, result.model_copy(deep=True)))
+    assert manager.record_feedback(event).observations_applied == 1
+    assert manager.observation_count("semantic", "general") == 1
+    assert manager.record_feedback(event).applied is False
+    assert manager.observation_count("semantic", "general") == 1
 
 
 def test_prior_reputation_is_one_half():
@@ -316,6 +371,64 @@ def test_extreme_priors_stay_finite_and_unsafe_counts_do_not_restore():
         with pytest.raises(ValueError, match="schema_version"):
             normal.restore_state(broken)
     assert normal.export_state() == before
+
+
+@pytest.mark.parametrize("alpha,beta", [
+    (1e-309, 1e-309),
+    (1e-309, 3e-309),
+    (3e-309, 1e-309),
+    (1e-320, 2e-320),
+    (math.ulp(0.0), math.ulp(0.0)),
+    (0.2, 0.3),
+    (2.0, 3.0),
+    (1e308, 1e308),
+    (8e307, 2e307),
+])
+def test_prior_statistics_match_independent_decimal_beta_formula(alpha, beta):
+    with localcontext() as context:
+        context.prec = 100
+        a, b = Decimal.from_float(alpha), Decimal.from_float(beta)
+        total = a + b
+        expected_mean = float(a / total)
+        expected_variance = float(a * b / (total * total * (total + 1)))
+    manager = ReputationManager(prior_alpha=alpha, prior_beta=beta)
+    stats = manager.statistics("semantic", "general")
+    assert stats.posterior_mean == pytest.approx(expected_mean, rel=1e-14, abs=0.0)
+    assert stats.posterior_variance == pytest.approx(expected_variance, rel=1e-12, abs=0.0)
+    assert math.isfinite(stats.posterior_variance)
+    assert manager.get_reputation("semantic", "general") == round(stats.posterior_mean, 6)
+    assert stats.observation_count == 0
+    if alpha == beta == 1e-309:
+        assert stats.posterior_mean == 0.5
+        assert stats.posterior_variance == pytest.approx(0.25)
+
+
+@pytest.mark.parametrize("with_feedback", [False, True])
+def test_tiny_positive_priors_statistics_and_feedback_survive_export_restore(with_feedback):
+    manager = ReputationManager(prior_alpha=1e-309, prior_beta=1e-309)
+    if with_feedback:
+        manager.record_feedback(_event("correct", "semantic", True, True, "general"))
+        manager.record_feedback(_event("incorrect", "semantic", True, False, "general"))
+    before = manager.statistics("semantic", "general")
+    payload = manager.export_state()
+    restored = ReputationManager()
+    restored.restore_state(payload)
+    assert restored.prior_alpha == restored.prior_beta == 1e-309
+    assert restored.export_state() == payload
+    assert restored.statistics("semantic", "general") == before
+    assert restored.statistics("evidence", "technical").posterior_variance == pytest.approx(0.25)
+    if with_feedback:
+        assert before.observation_count == 2
+        assert before.posterior_variance == pytest.approx(1 / 12)
+        receipt = restored.record_feedback(_event("correct", "semantic", True, True, "general"))
+        assert receipt.applied is False
+        assert restored.export_state() == payload
+    for invalid in (0.0, -1e-309, math.nan, math.inf, True):
+        broken = restored.export_state()
+        broken["prior_alpha"] = invalid
+        with pytest.raises(ValueError):
+            restored.restore_state(broken)
+        assert restored.export_state() == payload
 
 
 def test_concurrent_feedback_keeps_each_committed_event():

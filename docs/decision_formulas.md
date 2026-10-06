@@ -32,7 +32,7 @@ Domain is the cue list with the unique highest hit count. Zero hits, or a tie, y
 
 ### How many verifiers, and which ones
 
-`R(v, d)` is the reputation of verifier `v` in domain `d`, in [0, 1]. `cost(v)` and `latency(v)` are the explicit estimates in the selector table, also in [0, 1]. They are not measured seconds.
+`R(v, d)` is the reputation of verifier `v` in domain `d`, in [0, 1]. `cost(v)` and `latency(v)` are the explicit estimates in the selector table, also in [0, 1]. They are not measured seconds. The default confidence profile is cost 0.9 and latency 1.0: provisional estimates for five default sampling generations, not measured timings. Explicit supplied judgments can be cheaper; custom profiles override the defaults. Resource weights and profile fields must be finite non-boolean numbers in [0, 1]. Ranges must be positive integer pairs with minimum <= maximum. Difficulty scores must be finite non-boolean numbers; finite out-of-range scores retain clamping. Registered verifier names must be unique, non-blank strings without surrounding whitespace. Caller configurations are copied, including nested profiles and range pairs.
 
 ```
 U(v, d) = R(v, d) - 0.15 * cost(v) - 0.10 * latency(v)
@@ -48,7 +48,7 @@ U(v, d, q) = U(v, d) + 0.20 * S(v, q)
 | `semantic_comparison` | `semantic` |
 | `consistency` | `confidence` |
 
-The hint is not coverage. The rule verifier only matches a few deterministic patterns and otherwise abstains as unsupported. Semantic comparison abstains without reference context. Consistency abstains without supplied judgments. Evidence can abstain when retrieval or NLI is not directional. `iter_ranked` still yields every registered candidate so an abstention can fall through to the next one. Reputation stays `R(v, analysis.domain)`. Domain candidates are not mixed into that reputation.
+The hint is not coverage. The rule verifier only matches a few deterministic patterns and otherwise abstains as unsupported. Semantic comparison abstains without reference context. Consistency uses supplied judgments when available; otherwise the default provider samples five generations and can abstain when sampling fails or judgments are not directional. Evidence can abstain when retrieval or NLI is not directional. `iter_ranked` still yields every registered candidate so an abstention can fall through to the next one. Reputation stays `R(v, analysis.domain)`. Domain candidates are not mixed into that reputation.
 
 The selected list is the highest `U(v, d, q)` first. Equal utilities keep registration order. For the built-in verifiers that order is semantic, evidence, rule, confidence. Injected verifiers keep the order in which they were supplied. `explain_ranking` reports reputation, the resource penalty, the suitability contribution, and the final utility without constructing a default verifier.
 
@@ -62,7 +62,7 @@ hard:   (score - 0.65) / 0.35
 count = min_n + floor((max_n - min_n) * position + 1/2)
 ```
 
-Default ranges are easy (1, 2), medium (2, 3), hard (3, 4). `floor(x + 1/2)` is half-up on this non-negative number, so a score at the bottom of a band selects `min_n` and a score at the top selects `max_n`. `int(span * score)` did not: with a span of 1 it stayed on `min_n` for every score below 1, including scores that the band already calls hard.
+Default ranges are easy (2, 2), medium (2, 3), hard (3, 4). Valid custom ranges remain supported. Two easy votes do not guarantee factual coverage or resolve disagreement; coverage and zero-confidence stopping counts require separate integration safeguards. `floor(x + 1/2)` is half-up on this non-negative number, so a score at the bottom of a band selects `min_n` and a score at the top selects `max_n`. `int(span * score)` did not: with a span of 1 it stayed on `min_n` for every score below 1, including scores that the band already calls hard.
 
 At cold start every `R` is 0.5. When `verification_types` is empty, ranking follows the resource estimates, and the default estimates put `rule` first. When `verification_types` is not empty, suitability also affects that order.
 
@@ -95,7 +95,16 @@ Rejecting an incorrect answer is a success. `answer_is_correct` has to be a bool
 
 ### Decision score
 
-An abstention contributes nothing. Informative results use confidence `s` in [0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(eps, 1 - eps)`. The default `eps` is `1e-6`. An `eps` so small that `1 - eps` rounds to `1` is rejected before the division:
+Every supplied result is validated before exclusion. Abstentions and results
+with normalized vote confidence zero are excluded from the scoring pool,
+both denominators, and the choice between log-odds aggregation and fallback.
+Zero-confidence directions remain in `DecisionDetail.votes` with their actual
+`passed` flag, `abstained=False`, and zero confidence and contribution. They
+still receive directional reputation observations from external labels.
+A factual rule rejection with stored score zero has normalized confidence
+one and remains eligible.
+
+Scoring results use normalized confidence `s` in (0, 1] and vote `v` = `+1` on pass and `-1` on reject. `p` is that verifier's reputation in the analyzer's domain, clamped into `(eps, 1 - eps)`. The default `eps` is `1e-6`. An `eps` so small that `1 - eps` rounds to `1` is rejected before the division:
 
 ```
 w    = log(p / (1 - p))
@@ -112,6 +121,19 @@ mass = s * v
 score = sum(w_i * mass_i) / sum(|w_i|)    when some |w_i| > 0
 score = sum(mass_i) / n                   when every w_i is 0
 ```
+
+These sums and `n` range over the scoring pool only. In log-odds mode,
+zero-weight results are ignored. Fallback also applies to experienced
+verifiers whose balanced counts or six-decimal rounding yield reputation
+0.5; it does not depend on the observation count.
+
+Thus support confidence 0.9 plus rejection confidence zero scores 0.9,
+at the prior or with equal nonzero reputations. A learned weight on only
+the zero-confidence result cannot suppress the untouched support's fallback.
+If no scoring results remain, status is `uncertain` and score is zero:
+`aggregation="abstentions"` means all results abstained;
+`aggregation="zero_confidence"` means at least one result was directional
+but all directional confidences were zero, possibly mixed with abstentions.
 
 The absolute value in the denominator is required. Dividing by `sum(w_i)` would flip the sign back and undo inversion from `p < 0.5`.
 
@@ -131,6 +153,10 @@ No results → `unknown` and score `0`. That zero means "no score". An `uncertai
 
 ### What each verifier's score means
 
+The legacy abstention cues below apply only when `metadata.decision` is
+absent. Explicit decisions use the contract in the next section; the
+existing score-to-confidence scales still apply to directional votes.
+
 | Verifier | Raw `score` | How the decision reads it |
 | --- | --- | --- |
 | rule, `metadata.rule` set and not `unsupported` | `1` if the rule passed, `0` if it failed | Deterministic vote, and only when the verifier name is `rule`. Confidence is 1, so a failure is mass `-1`, not `0`. The same metadata on another verifier does not grant confidence 1. |
@@ -145,24 +171,91 @@ No results → `unknown` and score `0`. That zero means "no score". An `uncertai
 | confidence, unique majority `support` or `reject` | agreement fraction | Confidence of that vote. |
 | any verifier, score outside [0, 1] or non-finite | not a usable vote | Rejected. Not clipped into a confidence. |
 
+### Explicit verifier decisions
+
+When `metadata.decision` is present, vote normalization requires exactly
+`SUPPORT`, `REJECT`, or `UNSURE`. This contract takes precedence over legacy
+reasoning phrases, rule labels, NLI labels, and judgment metadata.
+`SUPPORT` requires `passed=True`; `REJECT` requires `passed=False`.
+Invalid values (including null) or contradictory directional fields raise
+`ValueError` before aggregation or reputation learning changes state.
+
+`UNSURE` always abstains, with zero vote confidence, no signed mass, no
+early-stop eligibility, and no reputation observation. A successful
+structural check may retain `passed=True` and its stored score while
+abstaining from factual correctness. These reporting fields are preserved.
+Absent decisions retain the legacy interpretation, including abstention
+for structural/range rule outputs. A supported factual rule rejection with
+stored score zero remains a deterministic rejection with confidence one.
+This does not change score calibration, weights, thresholds, or stopping
+policy. The current orchestrator completes the selector target without
+calling early termination; restoring that wiring is deferred work.
+
 ### Fallback when a verifier abstains
 
-Candidates are tried in utility order, not only the initial difficulty subset. Each abstention is kept on the response with `metadata.pipeline_role = "abstention"` and a `pipeline_note` saying it was not a vote. The next verifier runs until there are enough informative votes for the difficulty target, early stopping fires on those informative votes, or the list is exhausted. Early stopping ignores abstentions, including `unsupported`. Reputation updates skip them too.
+Candidates are tried in utility order, not only the initial difficulty subset. Each abstention is kept on the response with `metadata.pipeline_role = "abstention"` and a `pipeline_note` saying it was not a vote. The current orchestrator runs until there are enough informative votes for the difficulty target or the list is exhausted. The standalone early-termination engine ignores abstentions, including `unsupported`. Reputation updates skip them too.
 
-`+1` means every informative verifier contributed a full-confidence pass after inversion. `-1` means the same for reject.
+`+1` means every result actually included in aggregation contributed a
+full-confidence pass after negative-weight inversion, if applicable.
+`-1` means the same for reject. Abstentions, zero-confidence directions,
+and zero-weight directions in log-odds mode do not establish unanimity.
 
 ### Early stopping
 
-After a new informative result, stopping calls `DecisionEngine.decide_detailed` once on the current prefix and the analyzer domain. It does not recompute the log-odds score. Abstentions, zero-confidence results, and zero log-odds weights are not contributing votes. In equal-weight cold start, direction is the normalized pass/reject vote. In log-odds mode, a negative weight reverses that direction.
+This describes the standalone engine. The current orchestrator does not
+call it. Repair 7 must wire the shared engine and selector minimum, satisfy
+requested factual capabilities before using an approved stop, and preserve
+the exact accepted decision snapshot. Standalone approval does not establish
+factual coverage or independence between verifiers with different names.
 
-The minimum count is the selector's minimum for that difficulty (by default 1, 2, and 3), counted on distinct contributing verifiers. Below that minimum the run continues. A hard question continues after the minimum as well. Otherwise stop only when the contributing directions agree, the decision status is `passed` or `failed` under the engine's own threshold, and the band cuts hold:
+Stopping calls `DecisionEngine.decide_detailed` once on the current prefix
+and analyzer domain. All supplied results are validated before exclusion.
+The immutable detail supplies normalized confidence, original directions,
+weights, effective contributions, status, and raw score. No accepted decision
+is silently recomputed. Numerical aggregation and reputation learning remain
+unchanged.
+
+Abstentions, normalized zero-confidence directions, and structural/range/format-only
+rule outputs do not count toward the minimum, agreement, or confidence average.
+For `verifier_name == "rule"`, `metadata.rule_kind == "structural"` identifies
+those outputs; `"factual"` retains eligibility, including arithmetic and the
+explicit `format_validity` question. Results with absent/null kind use only
+the existing legacy structural labels: `probability_range`, `percentage_range`,
+`email_regex`, `url_regex`, `date_regex`, `id_regex`, and `json_structure`.
+The same metadata on another verifier does not classify it as a structural rule.
+A factual arithmetic rejection with stored score zero has normalized confidence
+one and remains eligible. Structural rejections retain their reporting,
+numerical contribution, and learning behavior despite exclusion from stopping.
+
+Default contributor minima match the selector: easy 2, medium 2, hard 3.
+Easy and medium enforce a floor of two even if a caller supplies minimum one;
+a larger explicit minimum remains binding. Hard questions never stop early.
+Boolean, nonnumeric, and nonfinite difficulty scores are rejected. Finite
+scores retain their existing behavior; stopping thresholds depend on the band.
+
+In equal-weight fallback, effective direction is the original direction.
+In log-odds mode, zero-weight directions do not count as contributors and
+negative weights invert effective direction. Contributors must effectively
+agree, and the decision must already be `passed` or `failed` under the engine's
+strict status threshold. Additionally, any original-direction disagreement
+among validated, positive-confidence, non-abstaining, nonstructural results
+vetoes stopping, including zero-weight dissent or dissent that inversion
+would turn into effective agreement. This is a conservative stopping policy,
+not a change to numerical weights. It does not establish calibrated correctness.
+
+The existing inclusive cuts use unrounded values:
 
 ```
-easy:   mean normalized confidence ≥ 0.75 and |raw score| ≥ 0.60
-medium: mean normalized confidence ≥ 0.80 and |raw score| ≥ 0.70
+easy:   mean contributor confidence ≥ 0.75 and |raw score| ≥ 0.60
+medium: mean contributor confidence ≥ 0.80 and |raw score| ≥ 0.70
 ```
 
-Those cuts are configurable finite values in [0, 1]. Raw agreement does not stop the run when the weighted score cancels or the status is uncertain. Reaching the selector target, or running out of candidates, is not an early stop. On an early stop the response status and score are the detail from that call. A later reputation update does not rewrite them. The remaining selected verifiers do not run.
+Those cuts remain configurable finite values in [0, 1]. On approval, the
+returned `decision` is the exact immutable detail used for the assessment;
+later feedback does not rewrite it. Reaching a selector target or exhausting
+candidates is not an approved early stop. There is no weaker target-count
+stopping path in this engine. Coverage-unavailable and exhaustion handling
+remain orchestration work for Repair 7.
 
 ## Published foundations
 
@@ -182,9 +275,19 @@ These are local choices. They are not the published procedures above, and they a
 - Multiplying the log-odds weight by that confidence, then abstaining when the unrounded signed score is inside [-threshold, threshold]. The default threshold is 0.55. The returned score is rounded to 6 decimals after that comparison.
 - After an abstention, consulting the next verifier in utility order and recording why in `pipeline_note`.
 - On an all-zero weight vector, using the equal-weight mean of `confidence * vote` instead of abstaining immediately. Verifiers with weight 0 are ignored when any other weight is nonzero.
+- Excluding normalized zero-confidence results from scoring without changing their directional reporting or reputation learning. The aggregation-mode choice uses only positive-confidence, non-abstaining results.
 - Not folding the cost estimate into the decision score a second time. Cost affects who is selected.
 - Stopping early only when contributing directions agree, confidence and absolute raw score clear the band cuts, and `decide_detailed` is already `passed` or `failed`. Hard questions never stop early. This is not Wald's sequential probability ratio test (Wald, A., 1947, *Sequential Analysis*), which is not implemented.
 - The Weighted Majority algorithm's multiplicative update (Littlestone, N. and Warmuth, M. K., 1994, *Information and Computation*) is not implemented. Reputation moves only by Beta counts from external labels.
+
+Sparse-data dominance and inversion remain unchanged: one correct observation
+can give a verifier sole numerical influence over untouched opposing votes;
+one incorrect observation can invert its vote. Normalization cancels weight
+magnitude when only one nonzero weight remains. Observation counts and
+posterior variance do not temper these weights. Regression tests describe
+these current policies, not empirical evidence of reliability. Similarity,
+NLI probabilities, and agreement fractions are uncalibrated confidence scales,
+not interchangeable probabilities of answer correctness.
 
 ## Values that still need calibration
 

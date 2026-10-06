@@ -49,3 +49,51 @@ No migration in this repository creates the reputation tables. `app/database/mod
 `app/ground_truth/storage.py` inserts into `ground_truth_labels` (`ground_truth_id`, `validation_id`, `question_id`, `label`, `source`, `labeled_at`). `label` is a string. Reputation does not read that table and does not treat the string as a boolean label.
 
 A later database adapter would need the export fields above, and it would also need durable storage for each validation id, its domain, and the executed-result snapshot. Neither the reputation tables nor those validation contexts are written to PostgreSQL. Automatic persistence is outstanding.
+
+
+## Adaptive execution and factual coverage
+
+The orchestrator iterates ranked candidates without a target-count exit.
+Easy and medium runs can stop only when the shared stopper approves a
+captured immutable DecisionDetail, the selector minimum (with a floor of
+two) is respected, and every requested direct_fact/arithmetic capability
+has a qualifying factual direction. Hard runs exhaust all candidates.
+Distinct identities do not establish independent evidence.
+
+Arithmetic coverage uses factual rule_kind plus one of the four supported
+arithmetic rule labels and a validated positive-confidence SUPPORT/REJECT.
+Expected/actual/comparison fields are not required: legitimate rejections
+of unparseable answers omit them. Direct factual coverage uses matching
+NLI direction, assessed claim decisions and matching supporting/contradicting
+rows. SUPPORT must establish every assessed claim; REJECT may be based on
+one decisive claim. Neutral/conflicting, unsupported, structural, bare
+votes and zero-confidence outputs do not establish coverage. A custom
+checker can emit the same contracts. Type mappings declare potential
+candidates, not factual success. Unknown custom capabilities cannot be
+known before execution without a mapping; discovered metadata updates
+availability. Neither registration nor directional metadata guarantees
+model availability, evidence truth or calibrated answer correctness.
+
+Availability, unattempted candidates, attempts (abstained, unproven,
+zero_confidence or directional), and qualifying checker identities are
+tracked separately for each required capability. A low-reputation factual
+direction can satisfy coverage while contributing zero to aggregation;
+the stopper's snapshot-based contributor count still controls eligibility.
+
+An approved covered stop returns the exact captured detail without another
+reputation read. At exhaustion one final numerical detail is obtained.
+Missing contributors or coverage force public uncertain while preserving
+its numerical score and detail. Otherwise numerical status is retained:
+disagreement and early confidence/margin cuts do not independently override
+exhaustion status. Validation itself never learns.
+
+The detached validation context keeps the decision and run diagnostics.
+The last actual executed result carries the collision-checked reserved
+metadata key multi_agent_verification.execution. It records termination,
+coverage, contributor counts, numerical detail and public status, without
+overwriting verifier decisions or evidence. Annotation precedes feedback
+snapshot capture and identity binding. Existing keys cause a visible error,
+not silent replacement. With zero results, public uncertain and score zero
+are returned; diagnostics remain internal because the existing response
+schema has no top-level field for them. No synthetic verifier is created.
+Unexpected factory/runtime errors propagate; they are not abstention votes.
