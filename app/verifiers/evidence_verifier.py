@@ -167,7 +167,7 @@ class EvidenceVerifier(BaseVerifier):
 
     def __init__(
         self,
-        corpus_path: str = "data/evidence_corpus.json",
+        corpus_path: str = "data/articles_13083.json",
         top_k: int = 3,
         min_retrieval_score: float = 0.45,
         retrieval_margin: float = 0.15,
