@@ -12,6 +12,7 @@ from app.database.session_repository import (
     get_sessions,
 )
 from app.database.validation_repository import save_validation
+from app.database.verifier_repository import save_verifier_outputs
 from app.database.feedback_repository import save_feedback
 from app.models.schemas import (
     CreateSessionRequest,
@@ -38,7 +39,7 @@ def health() -> dict[str, str]:
 def validate(request: ValidationRequest):
     result = _validation_service.validate(request)
 
-    if request.question_id is not None and result.validation_id is not None:
+    if result.validation_id is not None:
         save_validation(
             validation_id=result.validation_id,
             question_id=request.question_id,
@@ -49,6 +50,16 @@ def validate(request: ValidationRequest):
             final_score=result.final_score,
             session_id=request.session_id,
             domain=result.domain,
+            difficulty=result.difficulty,
+            selected_verifiers=result.selected_verifiers,
+            early_stop_reason=result.early_stop_reason,
+            signed_score=result.signed_score,
+        )
+
+        save_verifier_outputs(
+            validation_id=result.validation_id,
+            question_id=request.question_id,
+            results=result.results,
         )
 
     return result
@@ -173,6 +184,16 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             final_score=validation_result.final_score,
             session_id=request.session_id,
             domain=validation_result.domain,
+            difficulty=result.difficulty,
+            selected_verifiers=result.selected_verifiers,
+            early_stop_reason=result.early_stop_reason,
+            signed_score=result.signed_score,
+        )
+
+        save_verifier_outputs(
+            validation_id=validation_result.validation_id,
+            question_id=question_id,
+            results=validation_result.results,
         )
 
         return {
@@ -220,6 +241,12 @@ def submit_feedback(request: FeedbackRequest):
             "status": "success",
             "feedback": feedback,
         }
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=409,
+            detail=str(e),
+        )
 
     except Exception as e:
         raise HTTPException(

@@ -1,6 +1,5 @@
 """Shared Pydantic models for validation requests and responses."""
-
-from typing import Any, Optional
+from typing import Any, List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -30,7 +29,6 @@ class GroundTruthEvaluation(BaseModel):
     source: str
     answer_is_correct: bool
 
-
 class ValidationResponse(BaseModel):
     """Aggregated validation response returned to the client.
 
@@ -45,6 +43,10 @@ class ValidationResponse(BaseModel):
     domain: Optional[str] = None
     session_id: Optional[str] = None
     ground_truth: Optional[GroundTruthEvaluation] = None
+    difficulty: Optional[str] = None
+    selected_verifiers: Optional[List[str]] = None
+    early_stop_reason: Optional[str] = None
+    signed_score: Optional[float] = None
 
 class CreateSessionRequest(BaseModel):
     """Input payload for creating a session."""
