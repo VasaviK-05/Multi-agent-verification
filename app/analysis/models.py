@@ -10,6 +10,25 @@ from dataclasses import dataclass, field
 
 
 @dataclass
+class QuestionResearchContext:
+    """Derived research inputs, not correctness or calibrated probabilities.
+
+    requirements_known means at least one supported requirement was identified,
+    not that the assessment is complete. Zero weight does not prove absence of
+    an obligation. This flag must not be a complete-coverage stopping condition.
+    """
+
+    context_version: str
+    verification_requirements: list[str]
+    requirement_weights: dict[str, float]
+    requirements_known: bool
+    normalized_rubric: dict[str, float] | None
+    domain_status: str
+    analysis_method: str
+    scoring_version: str
+
+
+@dataclass
 class QuestionAnalysis:
     """Domain label, difficulty band, and numeric difficulty score in [0, 1].
 
@@ -29,3 +48,4 @@ class QuestionAnalysis:
     analysis_method: str = "heuristic"
     fallback_reason: str | None = None
     rubric_ratings: dict[str, int] | None = None
+    research_context: QuestionResearchContext | None = None

@@ -371,3 +371,115 @@ Python validation remains authoritative.
 - Heuristic fallback can still mark a question hard because it is long or contains "why". That path is labeled `heuristic_fallback`.
 - One failed request is not retried. The default wait is 15 seconds.
 - `temperature` 0 does not make every model deterministic.
+
+
+## Derived research context (v1)
+
+Every `QuestionAnalyzer.analyze()` result now has an optional
+`research_context` dataclass, attached after its final legacy fields are
+complete. Old positional/keyword `QuestionAnalysis` construction still works
+and defaults this field to `None`. Direct low-level `heuristic_analysis()`
+construction remains unchanged. No additional Ollama call or response-schema
+field is introduced. Strict validation, fallback reasons, domain policy,
+legacy hints, scores, and thresholds are unchanged.
+
+Fields:
+
+- `context_version`: `question_context_v1`, the context contract identifier.
+- `verification_requirements`: unique existing labels in canonical order:
+  direct_fact, arithmetic, logical_rule, semantic_comparison,
+  evidence_retrieval, consistency. Legacy `verification_types` keeps its
+  original order/content. Unrecognized legacy labels are not requirements.
+- `requirement_weights`: all six labels, each assigned `1/N` if among the N
+  identified unique requirements, otherwise zero. These are uncalibrated
+  relative demand weights, not probabilities, accuracy, or information gain.
+- `requirements_known`: true iff at least one supported requirement was
+  identified; it does not establish completeness. Zero weight on another
+  label does not prove that obligation is absent. This flag must not be used
+  as a complete-coverage stopping condition. An all-zero vector with false means unknown requirements,
+  not evidence that verification demand is zero.
+- `normalized_rubric`: reasoning_depth, evidence_burden, and
+  constraint_interactions divided by two, or `None` when ratings are absent.
+  The rubric is an ordinal feature vector, not a correctness probability.
+- `domain_status`, `analysis_method`: copied categorical provenance; no
+  numerical confidence is inferred from them.
+- `scoring_version`: `heuristic_surface_features_v1` for the existing
+  weighted surface features, including fallback; `rubric_sum_over_six_v1`
+  for successful Ollama ratings. These identify the current formulas,
+  rounding and bands described above; changing those requires a new version.
+
+Each output owns fresh context/list/dictionary containers, detached from its
+legacy hints and rubric. Context is an output snapshot: later mutation of
+legacy fields does not automatically rebuild it. `dataclasses.asdict()` and
+FastAPI's `jsonable_encoder()` recursively serialize it. The existing
+`/validate` response does not expose the complete analyzer object, so this
+change neither extends that endpoint nor alters shared API schemas. Python
+research callers can consume `analysis.research_context` or serialize the
+analysis explicitly.
+
+Examples (from existing validated or fallback outputs, not new rules):
+
+- A validated code-only assessment with `verification_types=["logical_rule"]`
+  yields requirements `["logical_rule"]`, weight one on logical_rule and
+  zero on the other five labels. A heuristic code-only result with no hints
+  instead has unknown requirements and an all-zero vector; the context does
+  not invent capabilities that the analyzer did not identify.
+- A code-plus-answer assessment with hints `["logical_rule", "arithmetic"]`
+  yields canonical `["arithmetic", "logical_rule"]` with weights 0.5 each.
+  On timeout for "Write a Python function to sort a list and provide the
+  answer to 2 + 2.", fallback preserves `["arithmetic"]`; context therefore
+  assigns arithmetic one, with `analysis_method="heuristic_fallback"` and
+  `normalized_rubric=None`. It is built after the additional-clause hints.
+
+Future selection may consume these inputs alongside independently specified
+capabilities, resource constraints and reputation, with explicit missing-data
+handling. The current selector ignores research_context and continues reading
+legacy fields. This change does not infer an answer, ground truth, reputation,
+costs, utility, coalitions, incentives, equilibrium, or information gain.
+It does not establish game-theoretic behavior or research novelty.
+
+### Small offline semantic evaluation
+
+`tests/fixtures/analyzer_semantic_examples.json` contains ten illustrative
+human-authored semantic expectations. They are distinct from exact parser and
+unit-test assertions, are not independently annotated, and are not a research
+benchmark. Null difficulty means unlabeled. Empty expected requirements on
+ambiguous text mean no identifiable requirement, not known zero demand.
+
+Run without services, downloads, external network, or new dependencies:
+
+```powershell
+.\.venv\Scripts\python.exe -B -m app.analysis.evaluate_context
+```
+
+Default evaluation explicitly uses heuristic mode with an empty environment
+mapping. Capture outputs and independently re-score them:
+
+```powershell
+.\.venv\Scripts\python.exe -B -m app.analysis.evaluate_context --save-outputs $env:TEMP/analyzer-outputs.json
+.\.venv\Scripts\python.exe -B -m app.analysis.evaluate_context --outputs $env:TEMP/analyzer-outputs.json
+```
+
+Supplied output format is a JSON array of objects with `id` and `analysis`
+(the serialized QuestionAnalysis). IDs must match all fixture cases exactly
+once. Domain/status accuracy, micro verification-type precision/recall,
+labeled difficulty-band agreement, and fallback rate are reported separately,
+with denominators/counts and analysis-method counts. Undefined precision or
+recall is null, never silently perfect. Heuristic mode is not a fallback;
+a zero fallback rate says nothing about semantic accuracy. No live mode is
+implemented here. Evaluating supplied live captures does not rerun a model
+or independently attest their provenance. Unit-test passes are contract
+checks, not evidence of semantic or research performance.
+
+The ten-case v2 fixture adds a long but simple single calculation (rubric
+0/0/0, easy) and a short prime-number-theorem proof (2/1/2, hard). Each has
+an explicit difficulty rationale: verification work, not length, determines
+the semantic label. These are human judgments, not target assertions for the
+heuristic; mismatches remain visible and do not tune its scoring.
+
+Evaluator inputs are validated before metrics are computed or output captures
+are written: object/list structure, required label fields, supported labels,
+explicit null for unlabeled expected difficulty, and unique nonempty matching
+IDs. Invalid supplied analyses or expected labels raise case/field-specific
+ValueError messages. A rejected run neither creates nor overwrites the
+--save-outputs target. Verification-type comparison remains set-based.
