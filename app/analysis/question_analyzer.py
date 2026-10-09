@@ -36,6 +36,7 @@ from app.analysis.model_assessment import (
     validate_routing,
 )
 from app.analysis.models import QuestionAnalysis
+from app.analysis.research_context import build_research_context
 
 __all__ = [
     "EASY_MAX",
@@ -89,16 +90,20 @@ class QuestionAnalyzer:
         if question.strip() == "":
             raise ValueError("question must not be blank")
         if self.mode == "heuristic":
-            return heuristic_analysis(question)
-        try:
-            assessment = self._assess(question)
-        except httpx.TimeoutException:
-            return _fallback(question, "timeout")
-        except httpx.HTTPError:
-            return _fallback(question, "http_error")
-        except AnalyzerResponseError as exc:
-            return _fallback(question, exc.code)
-        return _from_assessment(assessment)
+            analysis = heuristic_analysis(question)
+        else:
+            try:
+                assessment = self._assess(question)
+            except httpx.TimeoutException:
+                analysis = _fallback(question, "timeout")
+            except httpx.HTTPError:
+                analysis = _fallback(question, "http_error")
+            except AnalyzerResponseError as exc:
+                analysis = _fallback(question, exc.code)
+            else:
+                analysis = _from_assessment(assessment)
+        analysis.research_context = build_research_context(analysis)
+        return analysis
 
     def _assess(self, question: str) -> ModelAssessment:
         body = build_generate_body(question, self.model)

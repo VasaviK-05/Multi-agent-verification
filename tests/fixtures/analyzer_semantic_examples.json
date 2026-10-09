@@ -1,0 +1,141 @@
+{
+  "fixture_version": "analyzer_semantic_examples_v2",
+  "label_kind": "human_authored_semantic_expectations",
+  "notes": "Illustrative author judgments, not an independently annotated benchmark. Not parser assertions. Empty expected types mean no identifiable requirement from ambiguous text, not proven zero demand. Null difficulty is unlabeled. Code plus self-contained arithmetic is labeled technical/clear; specialist ties are labeled mixed.",
+  "cases": [
+    {
+      "id": "factual",
+      "question": "Who wrote Hamlet?",
+      "expected": {
+        "domain": "general",
+        "domain_status": "clear",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "difficulty": "easy"
+      }
+    },
+    {
+      "id": "arithmetic",
+      "question": "What is 2 + 2?",
+      "expected": {
+        "domain": "general",
+        "domain_status": "clear",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "difficulty": "easy"
+      }
+    },
+    {
+      "id": "code_only",
+      "question": "Write a Python function to sort a list.",
+      "expected": {
+        "domain": "technical",
+        "domain_status": "clear",
+        "verification_types": [
+          "logical_rule"
+        ],
+        "difficulty": "easy"
+      }
+    },
+    {
+      "id": "code_answer",
+      "question": "Write a Python function to sort a list and provide the answer to 2 + 2.",
+      "expected": {
+        "domain": "technical",
+        "domain_status": "clear",
+        "verification_types": [
+          "logical_rule",
+          "arithmetic"
+        ],
+        "difficulty": "easy"
+      }
+    },
+    {
+      "id": "specialist",
+      "question": "Explain clinical treatment options for a patient.",
+      "expected": {
+        "domain": "medical",
+        "domain_status": "clear",
+        "verification_types": [
+          "evidence_retrieval"
+        ],
+        "difficulty": null
+      }
+    },
+    {
+      "id": "mixed",
+      "question": "Compare clinical diagnosis and database algorithm constraints.",
+      "expected": {
+        "domain": "general",
+        "domain_status": "mixed",
+        "verification_types": [
+          "evidence_retrieval",
+          "logical_rule"
+        ],
+        "difficulty": null
+      }
+    },
+    {
+      "id": "ambiguous",
+      "question": "What is it?",
+      "expected": {
+        "domain": "general",
+        "domain_status": "unknown",
+        "verification_types": [],
+        "difficulty": null
+      }
+    },
+    {
+      "id": "multi_obligation",
+      "question": "Who wrote Hamlet? What is 2 + 2?",
+      "expected": {
+        "domain": "general",
+        "domain_status": "clear",
+        "verification_types": [
+          "direct_fact",
+          "arithmetic"
+        ],
+        "difficulty": "easy"
+      }
+    },
+    {
+      "id": "long_simple",
+      "question": "For a classroom worksheet that uses ordinary base ten numbers and standard addition, without requiring a proof, a comparison of methods, historical context, or any discussion of alternative conventions, please give only the numerical answer to this single calculation: what is 2 + 2?",
+      "expected": {
+        "domain": "general",
+        "domain_status": "clear",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "difficulty": "easy"
+      },
+      "difficulty_rationale": {
+        "reasoning_depth": 0,
+        "evidence_burden": 0,
+        "constraint_interactions": 0,
+        "explanation": "One self-contained calculation and one output requirement. The introductory wording adds length, not verification steps or interacting constraints; rubric score 0/6 implies easy."
+      }
+    },
+    {
+      "id": "short_difficult",
+      "question": "Prove the prime number theorem.",
+      "expected": {
+        "domain": "general",
+        "domain_status": "clear",
+        "verification_types": [
+          "logical_rule",
+          "evidence_retrieval"
+        ],
+        "difficulty": "hard"
+      },
+      "difficulty_rationale": {
+        "reasoning_depth": 2,
+        "evidence_burden": 1,
+        "constraint_interactions": 2,
+        "explanation": "A substantial mathematical proof needing specialized theorem/lemma checks and interacting asymptotic conditions; rubric score 5/6 implies hard despite few words."
+      }
+    }
+  ]
+}

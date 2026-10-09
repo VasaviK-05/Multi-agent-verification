@@ -219,6 +219,7 @@ def _assert_heuristic_fallback(analysis, reason: str) -> None:
     heuristic = QuestionAnalyzer(mode="heuristic", environ={}).analyze(QUESTION)
     expected = asdict(heuristic)
     expected.update(analysis_method="heuristic_fallback", fallback_reason=reason)
+    expected["research_context"]["analysis_method"] = "heuristic_fallback"
     assert asdict(analysis) == expected
     assert analysis.domain == heuristic.domain
     assert analysis.difficulty == heuristic.difficulty
@@ -379,6 +380,7 @@ def test_live_reproduced_missing_subject_remains_invalid_and_is_required_in_gene
     expected = asdict(QuestionAnalyzer(mode="heuristic", environ={}).analyze(
         "What is the capital of France?"))
     expected.update(analysis_method="heuristic_fallback", fallback_reason="invalid_schema")
+    expected["research_context"]["analysis_method"] = "heuristic_fallback"
     assert asdict(analysis) == expected
     schema = client.calls[0]["json"]["format"]
     assert "subject" in schema["required"]
@@ -460,6 +462,7 @@ def test_code_artifact_contract_excludes_factual_and_numeric_answer_capabilities
     actual = _analyzer(client).analyze(question)
     expected = asdict(QuestionAnalyzer(mode="heuristic", environ={}).analyze(question))
     expected.update(analysis_method="heuristic_fallback", fallback_reason="invalid_routing")
+    expected["research_context"]["analysis_method"] = "heuristic_fallback"
     assert asdict(actual) == expected
     assert len(client.calls) == 1
 
@@ -588,7 +591,7 @@ def test_mixed_answer_obligation_survives_generation_validation_and_fallback(que
         assert fallback.analysis_method == "heuristic_fallback" and fallback.fallback_reason == reason
         assert fallback.verification_types == [hint]
         actual_fields, baseline_fields = asdict(fallback), asdict(baseline)
-        for key in ("analysis_method", "fallback_reason", "verification_types"):
+        for key in ("analysis_method", "fallback_reason", "verification_types", "research_context"):
             actual_fields.pop(key)
             baseline_fields.pop(key)
         assert actual_fields == baseline_fields
