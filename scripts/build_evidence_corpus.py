@@ -2,9 +2,11 @@ import json
 import os
 
 from datasets import load_dataset
+from dotenv import load_dotenv
 
 
 TARGET_COUNT = 500
+DEFAULT_CORPUS_PATH = "data/evidence_corpus.json"
 
 
 def build_corpus() -> None:
@@ -23,10 +25,12 @@ def build_corpus() -> None:
         if len(articles) >= TARGET_COUNT:
             break
 
-    os.makedirs("data", exist_ok=True)
+    load_dotenv()
+    output = os.getenv("EVIDENCE_CORPUS_PATH", DEFAULT_CORPUS_PATH)
+    os.makedirs(os.path.dirname(output) or ".", exist_ok=True)
 
     with open(
-        "data/evidence_corpus.json",
+        output,
         "w",
         encoding="utf-8",
     ) as file:
@@ -38,7 +42,7 @@ def build_corpus() -> None:
         )
 
     print(f"Saved articles: {len(articles)}")
-    print("Output: data/evidence_corpus.json")
+    print(f"Output: {output}")
 
 
 if __name__ == "__main__":
