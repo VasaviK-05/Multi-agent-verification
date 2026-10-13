@@ -1,6 +1,7 @@
 """FastAPI route definitions."""
 
 from typing import Optional
+from uuid import UUID
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -24,6 +25,7 @@ from app.models.schemas import (
 from app.services.validation_service import ValidationService
 from database import get_connection
 from llm_service import generate_answer
+from app.ground_truth.storage import save_ground_truth
 
 
 router = APIRouter()
@@ -62,6 +64,14 @@ def validate(request: ValidationRequest):
             question_id=request.question_id,
             results=result.results,
         )
+
+        if result.ground_truth and request.question_id is not None:
+            save_ground_truth(
+                validation_id=UUID(result.validation_id),
+                question_id=request.question_id,
+                label=result.ground_truth.label,
+                source=result.ground_truth.source,
+            )
 
     return result
 
@@ -171,6 +181,7 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             answer=answer,
             context=request.context,
             session_id=request.session_id,
+            question_id=question_id,
         )
 
         validation_result = _validation_service.validate(validation_request)
@@ -196,6 +207,14 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             question_id=question_id,
             results=validation_result.results,
         )
+
+        if validation_result.ground_truth:
+            save_ground_truth(
+                validation_id=UUID(validation_result.validation_id),
+                question_id=question_id,
+                label=validation_result.ground_truth.label,
+                source=validation_result.ground_truth.source,
+            )
 
         return {
             "question": request.question,
