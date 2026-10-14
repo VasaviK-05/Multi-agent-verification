@@ -4,17 +4,20 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from copy import deepcopy
-from uuid import UUID, uuid4
+from uuid import uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.database.reputation_repository import (
     build_reputation_state,
+    load_reputation_manager_state,
+    load_reputation_state,
     save_reputation,
+    save_reputation_manager_state,
+    save_reputation_state_and_rows,
 )
-from app.database.reputation_repository import load_reputation_state
 from app.decision.decision_engine import DecisionDetail, DecisionEngine
 from app.evaluation.automatic_ground_truth import AutomaticGroundTruthEvaluator
-from app.ground_truth.storage import save_ground_truth
+
 from app.decision.early_termination import AdaptiveEarlyTermination
 from app.decision.vote_normalization import (
     confidence_judgment_tie,
@@ -82,7 +85,11 @@ class ValidationOrchestrator:
             shared = reputation_manager or ReputationManager()
 
             if reputation_manager is None:
-                shared.restore_state(build_reputation_state())
+                saved_state = load_reputation_manager_state()
+                if saved_state is not None:
+                    shared.restore_state(saved_state)
+                else:
+                    shared.restore_state(build_reputation_state())
 
             return (
                 VerifierSelector(reputation_manager=shared),
@@ -229,14 +236,6 @@ class ValidationOrchestrator:
         answer=request.answer,
         )
 
-        if ground_truth and request.question_id is not None:
-           save_ground_truth(
-               validation_id=UUID(validation_id),
-               question_id=request.question_id,
-               label=ground_truth["label"],
-               source=ground_truth["source"],
-        )
-
         signed_score = detail.raw_score
 
         context = ValidationContext(
@@ -317,6 +316,8 @@ class ValidationOrchestrator:
             )
         if _learning_votes(results) != _learning_votes(context.results):
             raise ValueError("results do not match the bound validation")
+        previous_state = self._reputation_manager.export_state()
+
         receipt = self._reputation_manager.record_feedback(
             FeedbackEvent(
                 validation_id=context.validation_id,
@@ -329,20 +330,14 @@ class ValidationOrchestrator:
         if receipt.applied:
             state = self._reputation_manager.export_state()
 
-            for pair in state["pairs"]:
-                stats = self._reputation_manager.statistics(
-                    pair["verifier_name"],
-                    pair["domain"],
-                )
-
-                save_reputation(
-                    verifier_name=pair["verifier_name"],
-                    domain=pair["domain"],
-                    alpha=stats.alpha,
-                    beta=stats.beta,
-                )
+            try:
+                save_reputation_state_and_rows(state)
+            except Exception:
+                self._reputation_manager.restore_state(previous_state)
+                raise
 
         return receipt.observations_applied
+
 
     def _resolve_context(
         self,

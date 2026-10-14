@@ -1100,3 +1100,34 @@ def test_actual_arithmetic_rule_qualifies_after_malformed_generic_metadata(rule)
     assert summary(response)["coverage"]["arithmetic"]["directional"] == ["rule"]
     assert summary(response)["termination"] == "approved_early_stop"
     assert later.calls == 0
+
+def test_failed_reputation_snapshot_save_does_not_silently_succeed(monkeypatch):
+    from app.orchestration import validation_orchestrator as orchestrator_module
+
+    manager = ReputationManager()
+    orchestrator = ValidationOrchestrator(reputation_manager=manager)
+
+    response = orchestrator.validate(
+        ValidationRequest(question="test question", answer="test answer")
+    )
+    before = manager.export_state()
+
+    def fail_snapshot_save(state):
+        raise RuntimeError("simulated database failure")
+
+    monkeypatch.setattr(
+        orchestrator_module,
+        "save_reputation_state_and_rows",
+        fail_snapshot_save,
+    )
+
+    with pytest.raises(RuntimeError, match="simulated database failure"):
+        orchestrator.record_ground_truth(
+            response.results,
+            answer_is_correct=True,
+            validation_id=response.validation_id,
+        )
+
+    # This captures the current behavior. We'll use the result
+    # to decide whether the manager needs rollback support.
+    assert manager.export_state() == before
