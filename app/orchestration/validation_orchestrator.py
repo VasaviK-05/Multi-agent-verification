@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from copy import deepcopy
 import json
+import threading
 from uuid import UUID, uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
@@ -70,6 +71,10 @@ class ValidationOrchestrator:
         # Strong refs to the result objects validate() returned. Lookup checks
         # identity with ``is``; the id is only a slot. Snapshots stay separate.
         self._result_binding: dict[int, tuple[VerificationResult, str]] = {}
+        # Serialize this orchestrator's learning and absolute posterior writes.
+        # Dirty pairs survive a failed save, not a process restart.
+        self._feedback_lock = threading.RLock()
+        self._pending_posterior_pairs: set[tuple[str, str]] = set()
         self._verifier_selector, self._decision_engine, self._reputation_manager = (
             self._assemble(verifier_selector, decision_engine, reputation_manager)
         )
@@ -346,6 +351,7 @@ class ValidationOrchestrator:
         domain: str | None = None,
         *,
         validation_id: str | None = None,
+        source: str = "external_feedback",
     ) -> int:
         """Update reputation from a label received after validation.
 
@@ -358,8 +364,27 @@ class ValidationOrchestrator:
         domain with no bound result objects uses the unscoped update, which
         has no replay protection. Learning always uses the stored snapshot,
         and only when the supplied votes still match it. Returns the number
-        of observations applied. A replay returns 0.
+        of observations applied. A replay returns 0, but retries pending saves.
+        ``source`` is metadata, not authentication. Changing it for a recorded
+        validation conflicts under the manager's existing identity policy.
         """
+        if not isinstance(source, str) or not source.strip():
+            raise ValueError("source must be a non-blank string")
+        with self._feedback_lock:
+            return self._record_ground_truth_locked(
+                results, answer_is_correct, domain,
+                validation_id=validation_id, source=source,
+            )
+
+    def _record_ground_truth_locked(
+        self,
+        results: list[VerificationResult],
+        answer_is_correct: bool,
+        domain: str | None,
+        *,
+        validation_id: str | None,
+        source: str,
+    ) -> int:
         context = self._resolve_context(results, validation_id)
         if context is None:
             if domain is None:
@@ -371,6 +396,7 @@ class ValidationOrchestrator:
                 domain,
                 results,
                 answer_is_correct,
+                source=source,
             )
         if domain is not None and domain != context.domain:
             raise ValueError(
@@ -384,26 +410,34 @@ class ValidationOrchestrator:
                 domain=context.domain,
                 answer_is_correct=answer_is_correct,
                 results=context.results,
+                source=source,
             )
         )
 
         if receipt.applied:
-            state = self._reputation_manager.export_state()
-
-            for pair in state["pairs"]:
-                stats = self._reputation_manager.statistics(
-                    pair["verifier_name"],
-                    pair["domain"],
-                )
-
-                save_reputation(
-                    verifier_name=pair["verifier_name"],
-                    domain=pair["domain"],
-                    alpha=stats.alpha,
-                    beta=stats.beta,
-                )
-
+            self._pending_posterior_pairs.update(
+                (result.verifier_name, context.domain)
+                for result in context.results if not is_abstention(result)
+            )
+        # Conflicting feedback raises above, before any pending writes. A
+        # matching replay may flush pending work without learning again.
+        self._flush_pending_posteriors()
         return receipt.observations_applied
+
+    def _flush_pending_posteriors(self) -> None:
+        """Called under _feedback_lock; save latest counts, never old events.
+
+        Each repository call upserts absolute alpha/beta in its own transaction.
+        Only successful calls remove their pair. Other orchestrators, direct
+        manager mutations, and other processes do not share this lock.
+        """
+        for name, domain in sorted(self._pending_posterior_pairs):
+            stats = self._reputation_manager.statistics(name, domain)
+            save_reputation(
+                verifier_name=name, domain=domain,
+                alpha=stats.alpha, beta=stats.beta,
+            )
+            self._pending_posterior_pairs.remove((name, domain))
 
     def _resolve_context(
         self,

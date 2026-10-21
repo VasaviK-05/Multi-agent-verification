@@ -76,6 +76,26 @@ def _assert_accounting(report) -> None:
             assert item.coverage == item.n_covered / item.n_examples
 
 
+def test_benchmark_feedback_propagates_source_without_replacing_learning(monkeypatch):
+    from app.reputation.reputation_manager import ReputationManager
+
+    unscoped_sources = []
+    original = ReputationManager.record_unscoped_ground_truth
+
+    def capture(self, *args, **kwargs):
+        unscoped_sources.append(kwargs.get("source"))
+        return original(self, *args, **kwargs)
+
+    monkeypatch.setattr(ReputationManager, "record_unscoped_ground_truth", capture)
+    report = run_benchmark([LabeledExample("q", "a", True)], verifiers=_stubs(.9),
+                           analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", .1)))
+    state = report.adaptive_reputation.export_state()
+    assert state["feedback"][0]["source"] == "benchmark_ground_truth"
+    assert unscoped_sources == ["benchmark_ground_truth"]
+    assert report.adaptive_reputation.observation_count("rule", "general") == 1
+    assert report.all_verifiers_reputation.observation_count("rule", "general") == 1
+
+
 def test_empty_input_does_not_invent_rates():
     report = run_benchmark([], verifiers=_stubs(0.5))
     _assert_accounting(report)
