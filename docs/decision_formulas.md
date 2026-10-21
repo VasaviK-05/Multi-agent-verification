@@ -97,6 +97,21 @@ Rejecting an incorrect answer is a success. `answer_is_correct` has to be a bool
 
 `record_feedback` binds the boolean, the original domain, and the executed votes to a validation id. The same delivery again does nothing. A different label or vote list for an id that is already stored is rejected and does not change counts. Changing a stored label needs a future correction workflow. Two validations of the same question text are different ids. The orchestrator stores each run's domain with that id. Feedback for an earlier run does not use the domain of a later run. See `docs/reputation_integration.md`.
 
+The owned orchestrator feedback entry point defaults source to `external_feedback`;
+benchmark callers explicitly pass `benchmark_ground_truth`. This is provenance
+metadata, not verification of the label. A changed source conflicts for an existing
+scoped event, just like a changed label; it never bypasses replay protection.
+The unscoped path has no retained provenance history or replay identity.
+
+Scoped learning and posterior persistence are separate: dirty verifier/domain
+pairs remain pending after a visible repository failure. An identical replay
+retries their latest posteriors without incrementing counts. A per-orchestrator
+lock serializes its learning and saves; this is not a database transaction or a
+cross-worker/crash-durability guarantee. Completed saves do not imply that priors,
+feedback identity, or source were durably stored. Current database replay still
+reconstructs default-prior counts from feedback and loses other manager state.
+See `docs/reputation_integration.md` for the exact boundary and owner dependencies.
+
 ### Decision score
 
 Every supplied result is validated before exclusion. Abstentions and results
