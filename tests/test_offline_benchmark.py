@@ -1,6 +1,7 @@
 """Offline benchmark accounting. These tests use stubs, not a published score."""
 
 import json
+import pytest
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.benchmark.offline_benchmark import (
@@ -12,6 +13,14 @@ from app.benchmark.offline_benchmark import (
 )
 from app.models.schemas import VerificationResult
 from app.verifiers.base_verifier import BaseVerifier
+
+
+@pytest.fixture(autouse=True)
+def offline_feedback_storage(monkeypatch):
+    # Benchmark tests exercise real feedback math, not the database/network.
+    import app.orchestration.validation_orchestrator as module
+    monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
+    monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
 
 
 class StubVerifier(BaseVerifier):
@@ -85,7 +94,7 @@ def test_empty_input_does_not_invent_rates():
         assert banned not in blob
 
 
-def test_early_stop_calls_fewer_verifiers_than_the_baselines():
+def test_unknown_requirements_exhaust_candidates_in_benchmark():
     example = LabeledExample("q", "a", answer_is_correct=False)
     report = run_benchmark(
         [example],
@@ -97,10 +106,10 @@ def test_early_stop_calls_fewer_verifiers_than_the_baselines():
     adaptive = report.method("adaptive")
     majority = report.method("majority")
     full = report.method("all_verifiers")
-    assert adaptive.verifier_calls == 2
+    assert adaptive.verifier_calls == 4
     assert majority.verifier_calls == 4
     assert full.verifier_calls == 4
-    assert adaptive.reputation_updates == 2
+    assert adaptive.reputation_updates == 4
     assert majority.reputation_updates == 0
     assert full.reputation_updates == 4
     assert adaptive.n_incorrect == 1
@@ -160,7 +169,8 @@ def test_measured_latency_is_not_the_cost_table(monkeypatch):
     # Every timed stub takes 125 ms, regardless of its normalized estimate.
     assert report.method("adaptive").mean_latency_ms == 125.0
     assert report.method("all_verifiers").mean_latency_ms == 125.0
-    assert report.method("adaptive").verifier_calls < report.method("all_verifiers").verifier_calls
+    # This analysis has unknown requirements, so it exhausts all candidates.
+    assert report.method("adaptive").verifier_calls == report.method("all_verifiers").verifier_calls
 
 
 def test_real_analyzer_still_selects_a_subset():

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from copy import deepcopy
+import json
 from uuid import UUID, uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
@@ -24,6 +25,7 @@ from app.decision.vote_normalization import (
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
+from app.selection.models import VerifierUnavailable
 
 
 @dataclass(frozen=True)
@@ -162,21 +164,27 @@ class ValidationOrchestrator:
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
         validation_id = str(uuid4())
-        minimum = self._verifier_selector.minimum_count(analysis)
+        plan = self._verifier_selector.plan(analysis, request.context)
+        minimum = plan.minimum_count
         if analysis.difficulty != "hard":
             minimum = max(2, minimum)
-        names = [row.verifier_name for row in self._verifier_selector.explain_ranking(analysis)]
-        required = set(analysis.verification_types or ()) & {"direct_fact", "arithmetic"}
+        names = plan.initial_selected + plan.fallback
+        required = plan.requirements.requirements + plan.requirements.unsupported
+        # Only these existing result contracts establish achieved coverage.
+        unsupported_contracts = sorted(set(required) - {"direct_fact", "arithmetic"})
         coverage = {
             capability: {
-                "available": any(name in names for name in {
-                    "evidence" if capability == "direct_fact" else "rule",
-                    self._verifier_selector.type_mapping.get(capability),
-                }),
-                "unattempted": [name for name in names if name in {
-                    "evidence" if capability == "direct_fact" else "rule",
-                    self._verifier_selector.type_mapping.get(capability),
-                }],
+                # Historical boolean retained, now strictly observed: a declared
+                # or output-qualified candidate returned a result. Not coverage.
+                "available": False,
+                "planned_candidates": [name for name in names if any(
+                    row.verifier_name == name and capability in row.expected_capabilities
+                    for row in plan.candidates)],
+                "runtime_available": [], "runtime_unavailable": [],
+                "unattempted": [name for name in names if any(
+                    row.verifier_name == name and capability in row.expected_capabilities
+                    for row in plan.candidates)],
+                "achieved_contract": capability in {"direct_fact", "arithmetic"},
                 "attempts": [], "directional": [],
             }
             for capability in sorted(required)
@@ -186,20 +194,60 @@ class ValidationOrchestrator:
         detail = None
         reason = "candidate_exhaustion"
         last_assessment = None
-        for verifier in self._verifier_selector.iter_ranked(analysis):
-            raw = verifier.verify(request.question, request.answer, request.context)
+        attempted = []
+        unavailable = []
+        runtime_availability = {row.verifier_name: "unobserved" for row in plan.candidates}
+        stopping_policy_vetoes = []
+        for name in names:
+            attempted.append(name)
+            try:
+                verifier = self._verifier_selector.resolve(name)
+                raw = verifier.verify(request.question, request.answer, request.context)
+            except VerifierUnavailable as exc:
+                unavailable.append({"verifier": name, "reason": str(exc)})
+                runtime_availability[name] = "unavailable"
+                for row in coverage.values():
+                    if name in row["unattempted"]:
+                        row["unattempted"].remove(name)
+                        row["runtime_unavailable"].append(name)
+                        row["attempts"].append({"verifier": name, "state": "unavailable"})
+                continue
+            if raw.verifier_name != name:
+                raise ValueError("returned verifier_name does not match planned candidate")
+            runtime_availability[name] = "returned_result"
             abstention = is_abstention(raw)
             annotated = _annotate(raw, abstained_before=list(abstained), abstention=abstention)
             results.append(annotated)
             if abstention:
                 abstained.append(raw.verifier_name)
-            _track_coverage(coverage, raw, self._verifier_selector.type_mapping)
+            _track_coverage(coverage, raw)
             assessment = self._early_termination.should_terminate(
                 results, analysis, minimum, decision_engine=self._decision_engine,
             )
             last_assessment = assessment["reason"]
-            if (analysis.difficulty != "hard" and assessment["terminate"]
-                    and all(row["directional"] for row in coverage.values())):
+            vetoes = []
+            if assessment["terminate"]:
+                if plan.requirements.status == "invalid":
+                    vetoes.append("invalid_requirement_context")
+                elif not plan.requirements.requirements_known:
+                    vetoes.append("requirements_unknown")
+                if plan.requirements.unsupported:
+                    vetoes.append("unsupported_requirements")
+                if len(attempted) < len(plan.initial_selected):
+                    vetoes.append("initial_team_incomplete")
+                if analysis.difficulty == "hard":
+                    vetoes.append("hard_question")
+                for capability, row in coverage.items():
+                    if not row["directional"]:
+                        prefix = ("missing_achieved_coverage" if row["achieved_contract"]
+                                  else "no_achieved_coverage_contract")
+                        vetoes.append(f"{prefix}:{capability}")
+                if vetoes:
+                    stopping_policy_vetoes.append({
+                        "after_verifier": name, "result_count": len(results),
+                        "numerical_assessment": assessment["reason"], "reasons": vetoes,
+                    })
+            if assessment["terminate"] and not vetoes:
                 detail = assessment["decision"]
                 reason = "approved_early_stop"
                 break
@@ -208,15 +256,27 @@ class ValidationOrchestrator:
         contributors = self._early_termination.contributor_count(detail, results)
         missing = [key for key, row in coverage.items() if not row["directional"]]
         final_status = detail.status
-        if contributors < minimum or missing:
+        if contributors < minimum or missing or plan.requirements.status == "invalid":
             final_status = "uncertain"
         final_score = detail.score
         summary = {
+            "audit_version": "execution_audit_v2",
             "termination": reason, "last_stopping_assessment": last_assessment,
             "minimum_contributors": minimum, "contributors": contributors,
             "missing_coverage": missing, "coverage": coverage,
             "numerical_decision": asdict(detail), "public_status": final_status,
+            "selection_plan": plan.to_dict(),
+            "attempted_verifiers": attempted,
+            "returned_result_verifiers": [result.verifier_name for result in results],
+            "unavailable_verifiers": unavailable,
+            "runtime_availability": runtime_availability,
+            "stopping_policy_vetoes": stopping_policy_vetoes,
+            "coverage_unknown": not plan.requirements.requirements_known,
+            "unsupported_coverage_contracts": unsupported_contracts,
         }
+        # Keep response, in-memory context, and JSONB metadata identical (the
+        # detailed decision contains tuple fields before JSON normalization).
+        summary = json.loads(json.dumps(summary, allow_nan=False))
         if results:
             metadata = dict(results[-1].metadata or {})
             if RUN_SUMMARY_KEY in metadata:
@@ -263,6 +323,7 @@ class ValidationOrchestrator:
             selected_verifiers=[result.verifier_name for result in results],
             early_stop_reason=reason,
             signed_score=signed_score,
+            execution_audit=deepcopy(summary),
         )
 
     def validation_context(self, validation_id: str) -> ValidationContext:
@@ -510,22 +571,26 @@ def _factual_capabilities(result: VerificationResult) -> set[str]:
     return capabilities
 
 
-def _track_coverage(coverage: dict, result: VerificationResult, mapping: dict) -> None:
+def _track_coverage(coverage: dict, result: VerificationResult) -> None:
+    """Track declared candidates and qualifying outputs, never checker names.
+
+    Runtime availability means that this request returned a result from a
+    declared or output-qualified candidate. Abstention still cannot cover a
+    requirement, and unattempted candidates are never observed available.
+    """
     qualified = _factual_capabilities(result)
-    metadata = result.metadata or {}
-    rule = metadata.get("rule")
     for capability, row in coverage.items():
-        candidate = (result.verifier_name in {
-            "evidence" if capability == "direct_fact" else "rule", mapping.get(capability),
-        } or capability in qualified
-            or (capability == "direct_fact" and "claim_decisions" in metadata)
-            or (capability == "arithmetic" and isinstance(rule, str)
-                and rule in ARITHMETIC_RULES))
-        if not candidate:
+        if result.verifier_name not in row["planned_candidates"] and capability not in qualified:
             continue
+        row["runtime_available"].append(result.verifier_name)
         row["available"] = True
         if result.verifier_name in row["unattempted"]:
             row["unattempted"].remove(result.verifier_name)
+        if not row["achieved_contract"]:
+            # A directional vote is not a certificate for semantic/consistency,
+            # arbitrary logic, or an unrecognized requirement.
+            row["attempts"].append({"verifier": result.verifier_name, "state": "no_achieved_contract"})
+            continue
         state = ("directional" if capability in qualified else
                  "abstained" if is_abstention(result) else
                  "zero_confidence" if vote_confidence(result) == 0 else "unproven")
