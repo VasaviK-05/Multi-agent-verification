@@ -32,6 +32,10 @@ Domain is the cue list with the unique highest hit count. Zero hits, or a tie, y
 
 ### How many verifiers, and which ones
 
+The live coverage-aware plan, requirement precedence, prerequisites, execution
+policy, and audit limitations are specified in [selector_policy.md](selector_policy.md).
+The utility/count formulas below also remain available through legacy wrappers.
+
 `R(v, d)` is the reputation of verifier `v` in domain `d`, in [0, 1]. `cost(v)` and `latency(v)` are the explicit estimates in the selector table, also in [0, 1]. They are not measured seconds. The default confidence profile is cost 0.9 and latency 1.0: provisional estimates for five default sampling generations, not measured timings. Explicit supplied judgments can be cheaper; custom profiles override the defaults. Resource weights and profile fields must be finite non-boolean numbers in [0, 1]. Ranges must be positive integer pairs with minimum <= maximum. Difficulty scores must be finite non-boolean numbers; finite out-of-range scores retain clamping. Registered verifier names must be unique, non-blank strings without surrounding whitespace. Caller configurations are copied, including nested profiles and range pairs.
 
 ```
@@ -188,12 +192,18 @@ Absent decisions retain the legacy interpretation, including abstention
 for structural/range rule outputs. A supported factual rule rejection with
 stored score zero remains a deterministic rejection with confidence one.
 This does not change score calibration, weights, thresholds, or stopping
-policy. The current orchestrator completes the selector target without
-calling early termination; restoring that wiring is deferred work.
+policy. The current orchestrator consumes a coverage-aware selection plan and
+calls early termination with the shared engine and result-based coverage guards.
 
 ### Fallback when a verifier abstains
 
-Candidates are tried in utility order, not only the initial difficulty subset. Each abstention is kept on the response with `metadata.pipeline_role = "abstention"` and a `pipeline_note` saying it was not a vote. The current orchestrator runs until there are enough informative votes for the difficulty target or the list is exhausted. The standalone early-termination engine ignores abstentions, including `unsupported`. Reputation updates skip them too.
+The initial coverage-aware team is attempted first, then eligible fallbacks in
+utility order. The difficulty target is soft, not an execution cap. Abstentions
+remain in the response with `metadata.pipeline_role = "abstention"` and a
+`pipeline_note`; they count neither as votes nor reputation observations.
+Unknown requirements and hard questions exhaust eligible candidates. Known
+requirements permit stopping only after the initial team, sufficient contributors,
+an approved stopping assessment, and actual required coverage.
 
 `+1` means every result actually included in aggregation contributed a
 full-confidence pass after negative-weight inversion, if applicable.
@@ -202,11 +212,10 @@ and zero-weight directions in log-odds mode do not establish unanimity.
 
 ### Early stopping
 
-This describes the standalone engine. The current orchestrator does not
-call it. Repair 7 must wire the shared engine and selector minimum, satisfy
-requested factual capabilities before using an approved stop, and preserve
-the exact accepted decision snapshot. Standalone approval does not establish
-factual coverage or independence between verifiers with different names.
+The current orchestrator calls this engine with the selector minimum and shared
+decision engine, checks actual required coverage, and preserves the exact
+accepted decision snapshot. Standalone approval and expected capabilities do
+not establish factual coverage or independence between differently named verifiers.
 
 Stopping calls `DecisionEngine.decide_detailed` once on the current prefix
 and analyzer domain. All supplied results are validated before exclusion.
@@ -302,7 +311,7 @@ Nothing in this table was fitted on a labeled set in this repository.
 | `lambda_cost = 0.15`, `lambda_latency = 0.10`, `lambda_suitability = 0.20` | `app/selection/verifier_selector.py` |
 | Cost and latency estimates for the four verifiers | same |
 | Verification-type suitability map | same |
-| Count ranges (1, 2), (2, 3), (3, 4) | same |
+| Count ranges (2, 2), (2, 3), (3, 4) | same |
 | Beta prior `alpha = beta = 1` and the +1 update | `app/reputation/reputation_manager.py` |
 | Decision abstention margin 0.55, reputation clamp `1e-6` | `app/decision/decision_engine.py` |
 | Early-stop minima and the 0.75 / 0.60 and 0.80 / 0.70 cuts | `app/decision/early_termination.py` |

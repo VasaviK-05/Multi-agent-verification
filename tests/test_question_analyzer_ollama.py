@@ -514,9 +514,10 @@ def test_programming_hints_connected_coverage_trace_preserves_safeguards():
     from tests.test_adaptive_pipeline import FixedAnalyzer, MetadataChecker
     for hints, expected_status, missing in [
         (["logical_rule", "arithmetic", "direct_fact", "semantic_comparison"],
-         "uncertain", ["arithmetic", "direct_fact"]),
-        (["logical_rule", "semantic_comparison"], "passed", []),
-        (["logical_rule", "semantic_comparison", "evidence_retrieval", "consistency"], "passed", []),
+         "uncertain", ["arithmetic", "direct_fact", "logical_rule", "semantic_comparison"]),
+        (["logical_rule", "semantic_comparison"], "uncertain", ["logical_rule", "semantic_comparison"]),
+        (["logical_rule", "semantic_comparison", "evidence_retrieval", "consistency"], "uncertain",
+         ["consistency", "evidence_retrieval", "logical_rule", "semantic_comparison"]),
     ]:
         analysis = QuestionAnalysis("technical", "easy", 0, subject="programming",
             domain_candidates=["technical"], domain_status="clear", verification_types=hints)
@@ -639,7 +640,8 @@ def test_mixed_obligations_reach_connected_coverage_even_after_fallback(question
     summary = result.results[-1].metadata["multi_agent_verification.execution"]
     assert run.last_analysis.analysis_method == ("heuristic_fallback" if fallback else "ollama")
     assert [r.verifier_name for r in result.results] == ["first", "second", "later"]
-    assert summary["missing_coverage"] == [hint]
+    # Nonfactual requirements without an achieved contract are no longer ignored.
+    assert summary["missing_coverage"] == ([hint] if fallback else sorted([hint, "logical_rule"]))
     assert summary["termination"] == "candidate_exhaustion"
     assert summary["numerical_decision"]["status"] == "passed"
     assert result.final_status == "uncertain" and result.final_score == .95

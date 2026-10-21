@@ -1,6 +1,12 @@
 # Question analyzer setup
 
-`QuestionAnalyzer.analyze` still returns `domain`, `difficulty`, and `difficulty_score`. The default mode is `heuristic`. Heuristic analysis supplies conservative `direct_fact` and `arithmetic` routing hints for recognized lookup and calculation forms. An empty list preserves ranking by domain reputation and resource estimates, with no suitability bonus. When `verification_types` is not empty, the selector uses that list as a suitability hint and still uses `domain` for reputation. Subject, domain candidates, domain status, rubric ratings, analysis method, and fallback reason do not change selection, reputation, or the decision score.
+`QuestionAnalyzer.analyze` returns legacy routing fields and typed research_context.
+The default mode is `heuristic`, with conservative `direct_fact` and `arithmetic`
+hints for recognized lookup/calculation forms. The live selector uses valid typed
+requirements first, falling back to legacy hints only when context is absent.
+Unknown requirements retain reputation/resource ordering and disable early stopping.
+See [selector_policy.md](selector_policy.md). Reputation still uses `domain` only;
+subject, domain candidates, rubric and provenance do not alter vote weights.
 
 This module does not load a `.env` file. Importing the answer generator can load one, because that module calls `load_dotenv`. The analyzer does not import the answer generator. Set variables in the process environment before constructing `QuestionAnalyzer`.
 
@@ -365,7 +371,11 @@ Python validation remains authoritative.
 
 ## Limitations
 
-- The default analyzer mode is `heuristic`. Unrecognized questions retain an empty `verification_types` list and the previous ranking; recognized heuristic hints intentionally change suitability ranking. A non-empty list can change verifier order. It does not change how many verifiers the difficulty range requests, and it does not change vote weights. The other metadata fields are not read by the selector or the decision engine. Reputation still uses `domain` only.
+- The default analyzer mode is `heuristic`. Unrecognized questions have unknown
+  requirements. Recognized requirements can change coverage-first initial-team
+  order and can exceed the soft difficulty target. They do not change vote weights.
+  The selector records context provenance but does not use rubric/domain candidates
+  to mix reputations. Reputation still uses `domain` only.
 - The rubric cuts are the old uncalibrated thresholds.
 - Only three primary domains exist. Finer subject text is not a new domain key.
 - Heuristic fallback can still mark a question hard because it is long or contains "why". That path is labeled `heuristic_fallback`.
@@ -431,12 +441,13 @@ Examples (from existing validated or fallback outputs, not new rules):
   assigns arithmetic one, with `analysis_method="heuristic_fallback"` and
   `normalized_rubric=None`. It is built after the additional-clause hints.
 
-Future selection may consume these inputs alongside independently specified
-capabilities, resource constraints and reputation, with explicit missing-data
-handling. The current selector ignores research_context and continues reading
-legacy fields. This change does not infer an answer, ground truth, reputation,
-costs, utility, coalitions, incentives, equilibrium, or information gain.
-It does not establish game-theoretic behavior or research novelty.
+The live selector now consumes valid typed research_context as the authoritative
+requirement source, with legacy fallback only when context is absent. It combines
+these inputs with bounded selector-owned capability descriptors, relative resource
+estimates, and one domain-reputation snapshot. See [selector_policy.md](selector_policy.md)
+for precedence, coverage, unknown-input handling, compatibility wrappers, and audit
+limitations. These inputs do not infer ground truth, incentives, equilibrium, or
+research novelty; the selection policy remains a coverage-aware heuristic.
 
 ### Small offline semantic evaluation
 
