@@ -98,9 +98,13 @@ class PlanningContext(FrozenModel):
     aggregation_versions: tuple[tuple[str, str], ...]
     provenance: PayoffProvenance
     version: str = "game_context_v1"
+    # Optional, content-addressed offline replay contract; legacy contexts remain usable.
+    offline_evaluation_id: str | None = None
 
     @model_validator(mode="after")
     def validate_context(self):
+        if self.offline_evaluation_id is not None:
+            identifier(self.offline_evaluation_id)
         plan = _SELECTION_ADAPTER.validate_json(self.selection_json, strict=True)
         canonical = canonical_json(asdict(plan))
         object.__setattr__(self, "selection_json", canonical)
@@ -236,6 +240,8 @@ class PlanningContext(FrozenModel):
     @property
     def compatibility_id(self) -> str:
         data = self.model_dump(mode="json")
+        if self.offline_evaluation_id is None:
+            data.pop("offline_evaluation_id")  # Preserve pre-offline compatibility identifiers.
         plan = json.loads(data.pop("selection_json"))
         # Baseline rankings and diagnostic ordering do not define obligations.
         data["planning"] = {key: plan[key] for key in (

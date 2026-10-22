@@ -17,6 +17,7 @@ from app.database.reputation_repository import load_reputation_state
 from app.decision.decision_engine import DecisionDetail, DecisionEngine
 from app.evaluation.automatic_ground_truth import AutomaticGroundTruthEvaluator
 from app.ground_truth.storage import save_ground_truth
+from app.decision.coverage import ARITHMETIC_RULES, factual_capabilities as _factual_capabilities
 from app.decision.early_termination import AdaptiveEarlyTermination
 from app.decision.vote_normalization import (
     confidence_judgment_tie,
@@ -564,45 +565,6 @@ def _abstention_reason(result: VerificationResult) -> str:
 
 
 RUN_SUMMARY_KEY = "multi_agent_verification.execution"
-ARITHMETIC_RULES = frozenset({
-    "arithmetic_addition", "arithmetic_subtraction",
-    "arithmetic_multiplication", "arithmetic_division",
-})
-
-
-def _factual_capabilities(result: VerificationResult) -> set[str]:
-    """Recognize current factual output contracts, regardless of checker name.
-
-    Rule expected/actual fields are optional on legitimate invalid-answer
-    rejections. Evidence requires assessed claims and matching evidence rows;
-    an identity or bare decision is never a coverage certificate.
-    """
-    metadata = result.metadata or {}
-    if is_abstention(result) or vote_confidence(result) == 0:
-        return set()
-    decision = metadata.get("decision")
-    if decision not in {"SUPPORT", "REJECT"}:
-        return set()
-    capabilities = set()
-    rule = metadata.get("rule")
-    if (metadata.get("rule_kind") == "factual"
-            and isinstance(rule, str) and rule in ARITHMETIC_RULES):
-        capabilities.add("arithmetic")
-    label = "entailment" if decision == "SUPPORT" else "contradiction"
-    rows = metadata.get("supporting" if result.passed else "contradicting")
-    opposite = metadata.get("contradicting" if result.passed else "supporting")
-    claims = metadata.get("claim_decisions")
-    if (metadata.get("nli_label") == label and metadata.get("unsure_reason") is None
-            and isinstance(rows, list) and rows
-            and any(isinstance(row, dict) and row.get("nli_label") == label for row in rows)
-            and isinstance(claims, list) and claims):
-        # Support requires every claim; rejection needs one decisive claim.
-        directions = [c.get("decision") for c in claims if isinstance(c, dict)]
-        if ((decision == "SUPPORT" and len(directions) == len(claims)
-                and all(d == "SUPPORT" for d in directions) and not opposite)
-                or (decision == "REJECT" and "REJECT" in directions)):
-            capabilities.add("direct_fact")
-    return capabilities
 
 
 def _track_coverage(coverage: dict, result: VerificationResult) -> None:
