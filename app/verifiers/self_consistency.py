@@ -14,7 +14,13 @@ Pipeline
          - short answers: normalised containment ("paris" in "paris, france")
          - otherwise: NLI with premise = regeneration, hypothesis = claim
            (entailment -> support, contradiction -> reject, neutral -> unsure)
-    3. Return the label list. ``SelfConsistencyJudge.last_trace`` keeps the
+    3. Require a stable answer. A "reject" says the model answers something
+       else, which only means something when the model keeps giving one
+       answer. When no single answer (the candidate, or one alternative)
+       holds a majority of the samples ("May 26, 2010", "5 May 2010",
+       "May 18, 2010", ...), the model does not know; every "reject" becomes
+       "unsure" so scattered guesses do not add up to a confident REJECT.
+    4. Return the label list. ``SelfConsistencyJudge.last_trace`` keeps the
        samples, per-sample labels and timings for the verifier's metadata.
 
 What agreement means
@@ -35,7 +41,7 @@ import time
 from decimal import Decimal, InvalidOperation
 from typing import Any, Callable, Optional
 
-from app.verifiers.claim_generator import ClaimGenerator
+from app.verifiers.claim_generator import ClaimGenerator, spell_out_dates
 from app.verifiers.evidence_verifier import parse_nli_output
 
 Sampler = Callable[[str, int], list[str]]
@@ -58,6 +64,7 @@ NLI_TO_JUDGMENT = {
 
 _ARTICLES = re.compile(r"\b(the|a|an)\b")
 _NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
+_MONTH_FIRST_DATE = re.compile(r"\b([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})\b")
 
 
 class JudgmentSourceError(RuntimeError):
@@ -79,6 +86,12 @@ def extract_number(text: str) -> Optional[Decimal]:
         return Decimal(found[0])
     except InvalidOperation:
         return None
+
+
+def answer_key(text: str) -> str:
+    """Comparable form of a short answer: "May 26, 2010." and "26 May 2010" share one key."""
+    day_first = _MONTH_FIRST_DATE.sub(r"\2 \1 \3", spell_out_dates(text))
+    return normalize_text(day_first)
 
 
 class OllamaSampler:
@@ -217,11 +230,18 @@ class SelfConsistencyJudge:
             {"sample": sample, **self.labeler.label(sample, question, answer, claim)}
             for sample in samples
         ]
+        stable = self.has_stable_answer(rows)
+        if not stable:
+            for row in rows:
+                if row["label"] == "reject":
+                    row["label"] = "unsure"
+                    row["unstable_reject"] = True
         done = time.perf_counter()
 
         self.last_trace = {
             "n_samples": self.n_samples,
             "claim": claim,
+            "stable_answer": stable,
             "samples": rows,
             "generator_model": getattr(self.sampler, "model", None),
             "temperature": getattr(self.sampler, "temperature", None),
@@ -231,3 +251,17 @@ class SelfConsistencyJudge:
             },
         }
         return [row["label"] for row in rows]
+
+    @staticmethod
+    def has_stable_answer(rows: list[dict]) -> bool:
+        """True when the candidate or one alternative answer holds a majority of the samples."""
+        if not rows:
+            return False
+        supporting = sum(1 for row in rows if row["label"] == "support")
+        alternatives: dict[str, int] = {}
+        for row in rows:
+            if row["label"] == "reject":
+                key = answer_key(row["sample"])
+                alternatives[key] = alternatives.get(key, 0) + 1
+        largest = max([supporting, *alternatives.values()])
+        return 2 * largest > len(rows)
