@@ -277,13 +277,13 @@ class DecisionEngine:
                 ),
             )
 
-        absolute_weight = sum(abs(weight) for _result, _mass, _reputation, weight in informative if weight != 0.0)
+        absolute_weight = math.fsum(abs(weight) for _result, _mass, _reputation, weight in informative if weight != 0.0)
         if absolute_weight == 0.0:
             aggregation = "equal_weight"
-            raw_score = sum(mass for _result, mass, _reputation, _weight in informative) / len(informative)
+            raw_score = math.fsum(mass for _result, mass, _reputation, _weight in informative) / len(informative)
         else:
             aggregation = "log_odds"
-            weighted_sum = sum(
+            weighted_sum = math.fsum(
                 weight * mass
                 for _result, mass, _reputation, weight in informative
                 if weight != 0.0

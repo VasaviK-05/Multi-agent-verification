@@ -2,6 +2,7 @@
 
 from dataclasses import asdict, dataclass
 import json
+from app.reputation.reputation_manager import ReputationStatistics
 
 
 @dataclass(frozen=True)
@@ -69,6 +70,7 @@ class SelectionPlan:
     expected_uncovered: tuple[str, ...]
     coverage_status: str
     exclusions: tuple[tuple[str, str], ...]
+    reputation_statistics: tuple[ReputationStatistics, ...] = ()
 
     def to_dict(self) -> dict:
         """Return a fully detached JSON-shaped value for responses/persistence."""
