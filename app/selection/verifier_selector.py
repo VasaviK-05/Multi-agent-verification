@@ -414,6 +414,7 @@ class VerifierSelector:
             coverage_status=("unknown" if not requirements.requirements_known else
                              "incomplete" if uncovered else "expected_only"),
             exclusions=tuple((row.verifier_name, row.exclusion_reason) for row in candidates if not row.eligible),
+            reputation_statistics=stats,
         )
 
     def resolve(self, name: str) -> BaseVerifier:
