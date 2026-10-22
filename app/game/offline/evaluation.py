@@ -68,6 +68,12 @@ def bind_evaluation(context, manifest, contract, specification):
         raise ValueError("offline settings changed; rebuild a compatible context and policy")
     data = context.model_dump()
     data["offline_evaluation_id"] = binding
+    from app.game.models import canonical_json
+    encoded = canonical_json(contract.model_dump(mode="json"))
+    if context.execution_contract_json not in {None, encoded}:
+        raise ValueError("execution contract differs from the evaluated binding")
+    if context.execution_contract_json is not None or context.offline_evaluation_id is None:
+        data["execution_contract_json"] = encoded
     return PlanningContext(**data)
 
 
@@ -180,3 +186,11 @@ def evaluate_final_test(policy, context, manifest, contract, specification):
         metrics.append((attack.attack_id, summarize(tuple(weighted), context.loss_configuration)))
     return PolicyEvaluation(role="final_test", policy_id=policy.policy_id, manifest_id=manifest.manifest_id,
         outcomes=tuple(outcomes), probabilities=policy.solution.probabilities, attack_metrics=tuple(metrics))
+
+
+def export_artifact(policy, context, manifest, contract, specification, *, applicable_domain):
+    """Offline deployment export: verify training provenance before constructing artifact."""
+    from app.game.artifacts import PolicyArtifact
+    context, manifest, contract, specification = _inputs(context, manifest, contract, specification)
+    return PolicyArtifact(policy=policy, context=context, contract=contract,
+        execution_configuration_id=contract.execution_configuration_id, applicable_domain=applicable_domain)

@@ -5,7 +5,7 @@ import hashlib
 import json
 import math
 
-from pydantic import Field, StrictFloat, TypeAdapter, model_validator
+from pydantic import Field, StrictFloat, TypeAdapter, model_validator, model_serializer
 
 from app.game.dependencies import DependencyRegistry, FrozenModel, identifier
 from app.selection.models import SelectionPlan
@@ -100,9 +100,21 @@ class PlanningContext(FrozenModel):
     version: str = "game_context_v1"
     # Optional, content-addressed offline replay contract; legacy contexts remain usable.
     offline_evaluation_id: str | None = None
+    execution_contract_json: str | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_context(self, handler):
+        data = handler(self)
+        if self.execution_contract_json is None:
+            data.pop("execution_contract_json", None)
+        return data
 
     @model_validator(mode="after")
     def validate_context(self):
+        if self.execution_contract_json is not None:
+            from app.game.execution_contract import ExecutionContract
+            contract = ExecutionContract.model_validate_json(self.execution_contract_json, strict=True)
+            object.__setattr__(self, "execution_contract_json", canonical_json(contract.model_dump(mode="json")))
         if self.offline_evaluation_id is not None:
             identifier(self.offline_evaluation_id)
         plan = _SELECTION_ADAPTER.validate_json(self.selection_json, strict=True)

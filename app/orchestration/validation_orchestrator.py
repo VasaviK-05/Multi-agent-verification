@@ -63,10 +63,23 @@ class ValidationOrchestrator:
         decision_engine: DecisionEngine | None = None,
         reputation_manager: ReputationManager | None = None,
         early_termination: AdaptiveEarlyTermination | None = None,
+        *,
+        execution_mode: str = "baseline",
+        game_runtime=None,
     ) -> None:
+        if execution_mode not in {"baseline", "game"}:
+            raise ValueError("execution_mode must be baseline or game")
+        if execution_mode == "game":
+            from app.game.execution import GameRuntime
+            if not isinstance(game_runtime, GameRuntime):
+                raise ValueError("game mode requires a server-configured GameRuntime")
+        elif game_runtime is not None:
+            raise ValueError("game runtime requires explicit game mode")
+        self._execution_mode = execution_mode
+        self._game_runtime = game_runtime
         self._question_analyzer = question_analyzer or QuestionAnalyzer()
         self._early_termination = early_termination or AdaptiveEarlyTermination()
-        self._automatic_ground_truth = AutomaticGroundTruthEvaluator()
+        self._automatic_ground_truth = AutomaticGroundTruthEvaluator() if execution_mode == "baseline" else None
         self._last_analysis: QuestionAnalysis | None = None
         self._contexts: dict[str, ValidationContext] = {}
         # Strong refs to the result objects validate() returned. Lookup checks
@@ -170,6 +183,8 @@ class ValidationOrchestrator:
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
         validation_id = str(uuid4())
+        if self._execution_mode == "game":
+            return self._validate_game(request, analysis, validation_id)
         plan = self._verifier_selector.plan(analysis, request.context)
         minimum = plan.minimum_count
         if analysis.difficulty != "hard":
@@ -331,6 +346,29 @@ class ValidationOrchestrator:
             signed_score=signed_score,
             execution_audit=deepcopy(summary),
         )
+
+    def _validate_game(self, request, analysis, validation_id):
+        # One server-configured runtime/episode per run; request metadata cannot replace it.
+        runtime = self._game_runtime
+        run = runtime.run(self._verifier_selector, analysis, request, validation_id)
+        results = list(run.results)
+        summary = json.loads(json.dumps(run.summary, allow_nan=False))
+        if results:
+            metadata = dict(results[-1].metadata or {})
+            if RUN_SUMMARY_KEY in metadata:
+                raise ValueError(f"reserved metadata key {RUN_SUMMARY_KEY!r} already exists")
+            metadata[RUN_SUMMARY_KEY] = deepcopy(summary)
+            results[-1] = results[-1].model_copy(update={"metadata": metadata})
+        self._contexts[validation_id] = ValidationContext(validation_id, analysis.domain,
+            _detach_results(results), run.detail, deepcopy(summary))
+        for result in results:
+            self._result_binding[id(result)] = (result, validation_id)
+        return ValidationResponse(results=results, final_status=run.public_status,
+            final_score=run.detail.score, signed_score=run.detail.raw_score,
+            validation_id=validation_id, domain=analysis.domain, session_id=request.session_id,
+            difficulty=analysis.difficulty, selected_verifiers=summary["team"],
+            early_stop_reason=summary.get("termination", "game_selection_failure"),
+            execution_audit=deepcopy(summary))
 
     def validation_context(self, validation_id: str) -> ValidationContext:
         """Return a detached copy of one validation's domain and results."""

@@ -66,7 +66,7 @@ def change_example(manifest, role, **updates):
 
 
 def unbind(context):
-    return PlanningContext(**{**context.model_dump(), "offline_evaluation_id": None})
+    return PlanningContext(**{**context.model_dump(), "offline_evaluation_id": None, "execution_contract_json": None})
 
 
 def test_development_matrix_hand_losses_cost_once_and_policy_final_test():
