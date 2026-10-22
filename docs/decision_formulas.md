@@ -146,6 +146,12 @@ zero-weight results are ignored. Fallback also applies to experienced
 verifiers whose balanced counts or six-decimal rounding yield reputation
 0.5; it does not depend on the observation count.
 
+Aggregate numerators, absolute-weight denominators, and equal-weight fallback
+sums use `math.fsum`. This preserves the formulas while avoiding order-dependent
+loss of low-order bits in the finite input sets covered by permutation tests.
+Products, division, and score bounds still use ordinary floating-point arithmetic;
+this is not exact real arithmetic. Per-verifier explanations retain input order.
+
 Thus support confidence 0.9 plus rejection confidence zero scores 0.9,
 at the prior or with equal nonzero reputations. A learned weight on only
 the zero-confidence result cannot suppress the untouched support's fallback.
@@ -163,6 +169,13 @@ raw >  threshold → passed
 raw < -threshold → failed
 otherwise        → uncertain
 ```
+
+Exact positive and negative boundaries are uncertain. Adjacent representable
+values are classified using these same strict comparisons: no epsilon, isclose
+band, or pre-classification rounding is applied. For the three cold-start support
+confidences `0.5499999999999999`, `0.55`, and `0.5500000000000002`, stable summation
+and division yield `0.55` in every tested order, hence uncertain. The rejection
+counterpart yields `-0.55`, also uncertain. Six-decimal display rounding is separate.
 
 The abstention band is symmetric about 0. A positive cut pair such as "above 0.55 pass, below 0.45 fail" would mark a tie at 0 as a failure, because that pair assumes a score centered near one half. This score is centered at 0.
 
@@ -274,12 +287,23 @@ easy:   mean contributor confidence ≥ 0.75 and |raw score| ≥ 0.60
 medium: mean contributor confidence ≥ 0.80 and |raw score| ≥ 0.70
 ```
 
+The contributor-confidence sum also uses `math.fsum`; contributor eligibility,
+effective directions, and disagreement vetoes are unchanged. Equality with a cut
+still satisfies it. The reported three-confidence reproduction
+`0.39999999999999997`, `0.8499999999999999`, `0.9999999999999999` has a stable
+floating-point mean of `0.7499999999999999`, below the easy confidence cut in
+every tested order. It must continue, regardless of its decisive numerical status.
+Stable summation can change low-order score bits; resulting classification or
+stopping differences are confined to floating-point boundary cases, not new cuts.
+
 Those cuts remain configurable finite values in [0, 1]. On approval, the
 returned `decision` is the exact immutable detail used for the assessment;
 later feedback does not rewrite it. Reaching a selector target or exhausting
 candidates is not an approved early stop. There is no weaker target-count
-stopping path in this engine. Coverage-unavailable and exhaustion handling
-remain orchestration work for Repair 7.
+stopping path in this engine. The live orchestrator consumes the accepted snapshot,
+applies requested achieved-coverage and requirement-context guards, records stopping
+vetoes in execution_audit, and handles candidate exhaustion. It preserves the
+numerical detail when public status must be uncertain.
 
 ## Published foundations
 

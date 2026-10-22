@@ -1,6 +1,8 @@
 """Isolated tests for AdaptiveEarlyTermination."""
 
 import math
+import itertools
+from fractions import Fraction
 
 import pytest
 
@@ -549,3 +551,52 @@ def test_accepted_stop_uses_one_immutable_snapshot_despite_later_learning():
     assert stop["decision"] is engine.captured
     assert stop["decision"].score == 0.9
     assert DecisionEngine(manager).decide_detailed(votes).status == "failed"
+
+
+@pytest.mark.parametrize("passed", [True, False])
+def test_reported_confidence_cut_reproduction_is_stable_in_every_order(passed):
+    scores = (0.39999999999999997, 0.8499999999999999, 0.9999999999999999)
+    expected_mean = float(sum(Fraction.from_float(x) for x in scores)) / len(scores)
+    assert expected_mean == math.nextafter(.75, 0.)
+    engine = DecisionEngine()
+    stopper = AdaptiveEarlyTermination()
+    rows = [_vote(str(i), passed, score) for i, score in enumerate(scores)]
+    for ordered in itertools.permutations(rows):
+        detail = engine.decide_detailed(list(ordered))
+        assert detail.raw_score == (expected_mean if passed else -expected_mean)
+        assert detail.status == ("passed" if passed else "failed")
+        assessment = stopper.should_terminate(list(ordered), _easy(), 3, decision_engine=engine)
+        assert assessment["terminate"] is False
+        assert assessment["reason"] == "insufficient confidence or margin to stop early"
+        assert stopper.contributor_count(detail, list(ordered)) == 3
+
+
+@pytest.mark.parametrize("passed", [True, False])
+@pytest.mark.parametrize("score,stops", [
+    (math.nextafter(.75, 0.), False), (.75, True), (math.nextafter(.75, 1.), True),
+])
+def test_stable_mean_keeps_confidence_cut_inclusive_and_snapshot_order(passed, score, stops):
+    engine = DecisionEngine()
+    stopper = AdaptiveEarlyTermination()
+    rows = [_vote(name, passed, score) for name in ("a", "b")]
+    for ordered in itertools.permutations(rows):
+        assessment = stopper.should_terminate(list(ordered), _easy(), decision_engine=engine)
+        assert assessment["terminate"] is stops
+        if stops:
+            detail = assessment["decision"]
+            assert detail.raw_score == (score if passed else -score)
+            assert tuple(v.verifier_name for v in detail.votes) == tuple(r.verifier_name for r in ordered)
+
+
+def test_stable_stopping_mean_ignores_abstention_and_zero_confidence():
+    engine = DecisionEngine()
+    stopper = AdaptiveEarlyTermination()
+    rows = [_vote("a", True, .75), _vote("b", True, .75),
+            _vote("zero", False, 0.),
+            VerificationResult(verifier_name="abstain", passed=False, score=1.,
+                               metadata={"decision": "UNSURE"})]
+    for ordered in itertools.permutations(rows):
+        assessment = stopper.should_terminate(list(ordered), _easy(), decision_engine=engine)
+        assert assessment["terminate"] is True
+        assert assessment["decision"].raw_score == .75
+        assert stopper.contributor_count(assessment["decision"], list(ordered)) == 2
