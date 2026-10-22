@@ -73,11 +73,15 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 from app.decision.vote_normalization import is_abstention, signed_mass, vote_confidence
 from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import ReputationManager
+
+if TYPE_CHECKING:
+    from app.game.decision_inputs import FrozenReputationSnapshot
+    from app.game.dependencies import DependencyRegistry
 
 # Clamp so log(p / (1-p)) stays finite at reputations of 0 or 1.
 EPS = 1e-6
@@ -195,6 +199,12 @@ class DecisionEngine:
         self,
         results: list[VerificationResult],
         domain: str | None = None,
+        *,
+        snapshot: FrozenReputationSnapshot | None = None,
+        aggregation: str = "reputation_weighted",
+        dependencies: DependencyRegistry | None = None,
+        team: Sequence[str] | None = None,
+        validation_id: str | None = None,
     ) -> tuple[str, float]:
         """Return (status, score) for one domain.
 
@@ -203,18 +213,71 @@ class DecisionEngine:
         probability of correctness. Status is "passed", "failed",
         "uncertain", or "unknown", and it follows the unrounded score.
         """
-        detail = self.decide_detailed(results, domain=domain)
+        options = dict(snapshot=snapshot, aggregation=aggregation, dependencies=dependencies,
+                       team=team, validation_id=validation_id)
+        if (snapshot is None and aggregation == "reputation_weighted" and dependencies is None
+            and team is None and validation_id is None):
+            detail = self.decide_detailed(results, domain=domain)
+        else:
+            detail = self.decide_detailed(results, domain=domain, **options)
         return detail.status, detail.score
 
     def decide_detailed(
         self,
         results: list[VerificationResult],
         domain: str | None = None,
+        *,
+        snapshot: FrozenReputationSnapshot | None = None,
+        aggregation: str = "reputation_weighted",
+        dependencies: DependencyRegistry | None = None,
+        team: Sequence[str] | None = None,
+        validation_id: str | None = None,
+    ) -> DecisionDetail:
+        """Opt into frozen reputation or dependency aggregation; legacy calls retain their shape.
+
+        Dependency aggregation requires a PlanningContext-backed snapshot. Team/run
+        identity checks are additive on the baseline and automatic for dependency groups.
+        The returned status is numerical, not an achieved-coverage certificate.
+        """
+        domain_name = self._default_domain if domain is None else _require_domain(domain)
+        if aggregation == "dependency_group":
+            from app.decision.dependency_aggregation import aggregate_dependency_groups
+            return aggregate_dependency_groups(results, domain=domain_name, threshold=self._threshold,
+                snapshot=snapshot, dependencies=dependencies, team=team, validation_id=validation_id)
+        if aggregation != "reputation_weighted":
+            raise ValueError("unknown aggregation identifier")
+        if dependencies is not None:
+            raise ValueError("dependencies apply only to dependency_group aggregation")
+        identity_checks = team is not None or validation_id is not None
+        if identity_checks:
+            from app.decision.report_identity import canonical_reports
+            results, validation_id, team = canonical_reports(
+                results, team=team, validation_id=validation_id, deduplicate=False)
+        reputations = None
+        if snapshot is not None:
+            from app.game.decision_inputs import checked_snapshot
+            checked = _checked_results(results)
+            names = tuple(team) if team is not None else tuple(r.verifier_name for r in checked)
+            snapshot = checked_snapshot(snapshot, domain_name, names, aggregation)
+            reputations = snapshot.means(domain_name, names)
+        detail = self._decide_reputation_detailed(results, domain=domain_name, reputations=reputations)
+        if snapshot is not None or identity_checks:
+            from app.decision.dependency_aggregation import explain_reputation
+            return explain_reputation(detail, snapshot, validation_id=validation_id, team=team)
+        return detail
+
+    def _decide_reputation_detailed(
+        self,
+        results: Sequence[VerificationResult],
+        domain: str | None = None,
+        *,
+        reputations: dict[str, float] | None = None,
     ) -> DecisionDetail:
         """Return the same decision as ``decide``, with per-verifier terms.
 
-        Reputation is read once for every supplied verifier. This method
-        does not update the manager.
+        Without supplied reputations, one atomic batch provides the existing
+        rounded live means. Supplied means are consumed as captured, without a
+        live read or rounding. This method never updates the manager.
         """
         if domain is None:
             domain_name = self._default_domain
@@ -232,12 +295,13 @@ class DecisionEngine:
                 votes=(),
             )
 
-        statistics = self._reputation_manager.statistics_batch(
-            tuple((result.verifier_name, domain_name) for result in checked)
-        )
-        reputations = {
-            stats.verifier_name: round(stats.posterior_mean, 6) for stats in statistics
-        }
+        if reputations is None:
+            statistics = self._reputation_manager.statistics_batch(
+                tuple((result.verifier_name, domain_name) for result in checked)
+            )
+            reputations = {
+                stats.verifier_name: round(stats.posterior_mean, 6) for stats in statistics
+            }
         prepared: list[tuple[VerificationResult, bool, float, float, float]] = []
         informative: list[tuple[VerificationResult, float, float, float]] = []
         for result in checked:

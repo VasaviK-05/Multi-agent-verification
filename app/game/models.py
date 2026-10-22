@@ -12,7 +12,7 @@ from app.selection.models import SelectionPlan
 from app.selection.capabilities import CapabilityDescriptor
 
 
-# Strategy labels, not decision callables. Dependency aggregation is still pending.
+# Strategy labels, not decision callables; execution integration remains separate.
 AGGREGATIONS = ("reputation_weighted", "dependency_group")
 _SELECTION_ADAPTER = TypeAdapter(SelectionPlan)
 
