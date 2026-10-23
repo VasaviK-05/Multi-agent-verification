@@ -134,8 +134,17 @@ def _content_counts(text: str) -> Counter[str]:
     )
 
 
+def content_terms(text: str) -> set[str]:
+    """Return normalized terms from text."""
+    return {
+        term
+        for term in text.lower().split()
+        if term
+    }
+
+
 class EvidenceRetriever:
-    """Loads evidence and uses a persistent, corpus-keyed FAISS index."""
+    """Retrieve relevant evidence chunks from a FAISS index."""
 
     EMBEDDING_MODEL = "all-MiniLM-L6-v2"
     MANIFEST_VERSION = 1
@@ -166,7 +175,8 @@ class EvidenceRetriever:
         )[:12]
 
         if index_dir is None:
-            index_dir = self.corpus_path.parent / "evidence_index" / self.corpus_path.stem
+            index_dir = self.corpus_path.parent / "articles_13083_index"
+
         self.index_dir = Path(index_dir)
         self.index_path = self.index_dir / "faiss.index"
         self.chunks_path = self.index_dir / "chunks.json"
@@ -184,65 +194,74 @@ class EvidenceRetriever:
             self.index, self.chunks = self.build_index()
             self.save_index()
 
-    # ------------------------------------------------------------------
-    # Corpus and chunks
-    # ------------------------------------------------------------------
-
-    def load_corpus(self) -> list[dict]:
-        """Load articles from the local evidence corpus."""
-        with self.corpus_path.open("r", encoding="utf-8") as file:
-            return json.load(file)
-
-    def chunk_text(self, text: str) -> list[str]:
-        """Split text into fixed-size word chunks."""
-        words = text.split()
-        return [
-            " ".join(words[i : i + self.chunk_size])
-            for i in range(0, len(words), self.chunk_size)
-        ]
+        self._document_frequency: Counter[str] | None = None
 
     def build_chunks(self) -> list[dict]:
-        """Convert articles into searchable evidence chunks."""
+        """Split corpus articles into chunks."""
+        with self.corpus_path.open("r", encoding="utf-8") as file:
+            data = json.load(file)
+
         chunks = []
-        for article in self.load_corpus():
-            for index, chunk in enumerate(self.chunk_text(article.get("text", ""))):
+
+        for article in data:
+            article_id = article.get("id", article.get("article_id"))
+            title = article.get("title", "")
+            text = article.get("text", article.get("content", ""))
+            url = article.get("url", "")
+
+            words = text.split()
+
+            for start in range(0, len(words), self.chunk_size):
+                chunk_words = words[start:start + self.chunk_size]
+
+                if not chunk_words:
+                    continue
+
                 chunks.append(
                     {
-                        "article_id": article.get("id"),
-                        "title": article.get("title", ""),
-                        "url": article.get("url", ""),
-                        "chunk_id": index,
-                        "text": chunk,
+                        "article_id": article_id,
+                        "title": title,
+                        "text": " ".join(chunk_words),
+                        "url": url,
+                        "chunk_id": len(chunks),
                     }
                 )
+
         return chunks
 
-    # ------------------------------------------------------------------
-    # Index
-    # ------------------------------------------------------------------
-
     def build_embeddings(self, chunks: list[dict]) -> np.ndarray:
-        """Create L2-normalised float32 embeddings for all evidence chunks."""
-        texts = [chunk["text"] for chunk in chunks]
-        if not texts:
-            return np.zeros((0, self.model.get_sentence_embedding_dimension()), dtype=np.float32)
+        """Build normalized embeddings for evidence chunks."""
+        texts = [
+            f"{chunk.get('title', '')}\n{chunk.get('text', '')}"
+            for chunk in chunks
+        ]
+
         embeddings = self.model.encode(
             texts,
             batch_size=32,
             show_progress_bar=len(texts) > 256,
             convert_to_numpy=True,
         )
-        embeddings = np.ascontiguousarray(embeddings, dtype=np.float32)
+
+        embeddings = np.ascontiguousarray(
+            embeddings,
+            dtype=np.float32,
+        )
+
         faiss.normalize_L2(embeddings)
+
         return embeddings
 
     def build_index(self) -> tuple[faiss.Index, list[dict]]:
         """Build a FAISS inner-product index from evidence embeddings."""
         chunks = self.build_chunks()
         embeddings = self.build_embeddings(chunks)
+
         index = faiss.IndexFlatIP(embeddings.shape[1])
+
         if len(chunks):
             index.add(embeddings)
+
         return index, chunks
 
     # Fields that decide whether a stored index still matches the corpus.
@@ -252,6 +271,7 @@ class EvidenceRetriever:
 
     def _manifest(self) -> dict:
         stat = self.corpus_path.stat()
+
         return {
             "version": self.MANIFEST_VERSION,
             "corpus_path": str(self.corpus_path.resolve()),
@@ -265,11 +285,20 @@ class EvidenceRetriever:
         }
 
     def _index_is_current(self) -> bool:
-        if not (self.index_path.exists() and self.chunks_path.exists() and self.manifest_path.exists()):
+        if not (
+            self.index_path.exists()
+            and self.chunks_path.exists()
+            and self.manifest_path.exists()
+        ):
             return False
+
         try:
-            with self.manifest_path.open("r", encoding="utf-8") as file:
+            with self.manifest_path.open(
+                "r",
+                encoding="utf-8",
+            ) as file:
                 stored = json.load(file)
+
         except (OSError, json.JSONDecodeError):
             return False
         current = self._manifest()
@@ -295,9 +324,16 @@ class EvidenceRetriever:
 
     def load_index(self) -> tuple[faiss.Index, list[dict]]:
         """Load FAISS index and chunk metadata from disk."""
-        index = faiss.read_index(str(self.index_path))
-        with self.chunks_path.open("r", encoding="utf-8") as file:
+        index = faiss.read_index(
+            str(self.index_path)
+        )
+
+        with self.chunks_path.open(
+            "r",
+            encoding="utf-8",
+        ) as file:
             chunks = json.load(file)
+
         return index, chunks
 
     # ------------------------------------------------------------------
@@ -381,12 +417,22 @@ class EvidenceRetriever:
         than ``k`` dense results are returned when the index is smaller.
         """
         total = int(self.index.ntotal)
+
         if total == 0 or k <= 0:
             return []
+
         k = min(k, total)
 
-        query_embedding = self.model.encode([query], convert_to_numpy=True)
-        query_embedding = np.ascontiguousarray(query_embedding, dtype=np.float32)
+        query_embedding = self.model.encode(
+            [query],
+            convert_to_numpy=True,
+        )
+
+        query_embedding = np.ascontiguousarray(
+            query_embedding,
+            dtype=np.float32,
+        )
+
         faiss.normalize_L2(query_embedding)
 
         scores, indices = self.index.search(

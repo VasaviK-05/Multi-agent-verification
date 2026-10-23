@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import router
+from app.api.feedback_routes import router as feedback_router
 from app.utils.config import settings
 
 app = FastAPI(title=settings.APP_NAME)
@@ -19,4 +20,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(feedback_router)
 app.include_router(router)

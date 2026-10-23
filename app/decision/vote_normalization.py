@@ -4,6 +4,13 @@ The four verifiers do not use ``score`` the same way. This module is the
 decision layer's reading of those conventions. It does not change verifier
 code.
 
+When ``metadata.decision`` is present, it is authoritative: ``UNSURE``
+abstains even if a structural check reports ``passed=True``. ``SUPPORT``
+requires ``passed=True`` and ``REJECT`` requires ``passed=False``. Invalid
+or contradictory decisions raise ValueError. Only absent decisions use
+the legacy inference below. Score validation and confidence scales stay
+unchanged.
+
 - rule, supported (``metadata.rule`` is present and not ``unsupported``):
   ``score`` is a correctness bit, 1 when the rule passed and 0 when it
   failed. The vote is deterministic, so confidence is 1 either way.
@@ -101,9 +108,21 @@ def is_abstention(result: VerificationResult) -> bool:
     """True when the verifier did not cast a pass or reject vote."""
     _require_result(result)
     metadata = _metadata(result)
+    if "decision" in metadata:
+        decision = metadata["decision"]
+        if not isinstance(decision, str) or decision not in {"SUPPORT", "REJECT", "UNSURE"}:
+            raise ValueError("metadata.decision must be SUPPORT, REJECT, or UNSURE")
+        if decision == "UNSURE":
+            return True
+        expected_passed = decision == "SUPPORT"
+        if result.passed != expected_passed:
+            raise ValueError(
+                f"metadata.decision {decision} requires passed={expected_passed}"
+            )
+        return False
     name = result.verifier_name
     reasoning = result.reasoning or ""
-        # Preserve the verifier result for reporting, but do not treat
+    # Preserve the verifier result for reporting, but do not treat
     # structural validity as evidence of factual correctness.
     if name == "rule":
         rule = metadata.get("rule")

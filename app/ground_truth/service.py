@@ -1,3 +1,4 @@
+
 from app.ground_truth.wikidata_client import WikidataClient
 from app.ground_truth.storage import save_ground_truth
 
@@ -18,7 +19,7 @@ class GroundTruthService:
         result = self._wikidata.get_ground_truth(question)
 
         if not result:
-            raise ValueError("Could not find ground truth")
+            return None
 
         # 2. Extract the label returned by Wikidata
         label = result["label"]

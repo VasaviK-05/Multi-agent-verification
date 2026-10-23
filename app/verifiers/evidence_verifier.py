@@ -559,6 +559,81 @@ class EvidenceVerifier(BaseVerifier):
             return f"topic coverage {topic['topic_coverage']:.2f} below {self.min_topic_coverage:.2f}"
         return f"topic coverage {topic['topic_coverage']:.2f} more than {self.topic_margin:.2f} below best {best:.2f}"
 
+    def anchor_weights(self, question: str, claim: str, template: str) -> dict[str, float]:
+        """IDF-weighted subject terms the evidence must be about.
+
+        A claim built from a question template contains the answer under
+        test, so its anchors are the question's terms. A sentence claim
+        (from a multi-sentence answer) may be about something the question
+        does not name ("It lies on the Seine."), so its own terms are used.
+        """
+        if template == SENTENCE_TEMPLATE:
+            terms = content_terms(claim)
+        else:
+            terms = content_terms(question) or content_terms(claim)
+        weigh = getattr(self.retriever, "term_weights", None)
+        if weigh is None:
+            return {term: 1.0 for term in terms}
+        return weigh(terms)
+
+    @staticmethod
+    def topic_coverage(
+        anchors: dict[str, float], required_numbers: set[str], evidence: dict, premise: str
+    ) -> dict:
+        """Coverage of the anchors by the chunk title + premise, and required numbers it lacks."""
+        present = content_terms(f"{evidence.get('title', '')} {premise}")
+        total = sum(anchors.values())
+        covered = sum(weight for term, weight in anchors.items() if term in present)
+        return {
+            "topic_coverage": covered / total if total > 0 else 1.0,
+            "missing_anchor_terms": sorted(term for term in anchors if term not in present),
+            "missing_numbers": sorted(term for term in required_numbers if term not in present),
+        }
+
+    def select_on_topic(
+        self, question: str, claim: str, kept: list[dict], template: str = ""
+    ) -> tuple[list[tuple[dict, str, dict]], list[dict]]:
+        """Split kept chunks into (on-topic (evidence, premise, topic), discarded briefs).
+
+        Only numbers from the question are required: a number in the answer
+        is a value under test, and evidence with a different value must
+        still reach NLI to be able to contradict it.
+        """
+        anchors = self.anchor_weights(question, claim, template)
+        required_numbers = {term for term in content_terms(question) if term.isdigit()} & set(anchors)
+        candidates = []
+        for evidence in kept:
+            premise = self.extract_relevant_sentences(evidence["text"], claim)
+            topic = self.topic_coverage(anchors, required_numbers, evidence, premise)
+            candidates.append((evidence, premise, topic))
+
+        passing = [
+            c for c in candidates
+            if not c[2]["missing_numbers"] and c[2]["topic_coverage"] >= self.min_topic_coverage
+        ]
+        best = max((c[2]["topic_coverage"] for c in passing), default=0.0)
+        on_topic = [c for c in passing if c[2]["topic_coverage"] >= best - self.topic_margin]
+
+        discarded = [
+            {
+                "title": evidence.get("title"),
+                "chunk_id": evidence.get("chunk_id"),
+                "retrieval_score": float(evidence["score"]),
+                **topic,
+                "reason": self._discard_reason(topic, best),
+            }
+            for evidence, _, topic in candidates
+            if not any(evidence is kept_evidence for kept_evidence, _, _ in on_topic)
+        ]
+        return on_topic, discarded
+
+    def _discard_reason(self, topic: dict, best: float) -> str:
+        if topic["missing_numbers"]:
+            return f"missing number(s) from the question: {', '.join(topic['missing_numbers'])}"
+        if topic["topic_coverage"] < self.min_topic_coverage:
+            return f"topic coverage {topic['topic_coverage']:.2f} below {self.min_topic_coverage:.2f}"
+        return f"topic coverage {topic['topic_coverage']:.2f} more than {self.topic_margin:.2f} below best {best:.2f}"
+
     def _strong(self, rows: list[dict], label: str) -> list[dict]:
         return [
             row
