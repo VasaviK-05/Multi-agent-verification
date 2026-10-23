@@ -72,6 +72,30 @@ def enumerate_attacks(registry, specification):
     return tuple(actions)
 
 
+class AdapterIncompatibility(FrozenModel):
+    verifier_name: str
+    adapter: str
+    expected_adapter: str
+
+
+def adapter_incompatibility(attempt):
+    """Pure directional-adapter check shared with readiness; never transforms.
+
+    Absent reports and normalized abstentions do not enter directional adapters.
+    Their existing preservation/suppression behavior requires no adapter mapping.
+    """
+    attempt = Attempt.model_validate(attempt)
+    row = attempt.report
+    if row is None or is_abstention(row):
+        return None
+    expected = {"rule": "rule_v1", "evidence": "evidence_v1", "confidence": "confidence_v1",
+                "semantic": "semantic_v1"}.get(row.verifier_name, "generic_v1")
+    if attempt.adapter != expected:
+        return AdapterIncompatibility(verifier_name=row.verifier_name, adapter=attempt.adapter,
+                                      expected_adapter=expected)
+    return None
+
+
 def transform(attempt, attack, specification):
     """No label or sampled-team parameter: target/action was committed beforehand."""
     attempt = Attempt.model_validate(attempt)
@@ -102,9 +126,7 @@ def transform(attempt, attack, specification):
         elif is_abstention(row):
             reason = "preserved_abstention"
         else:
-            expected_adapter = {"rule": "rule_v1", "evidence": "evidence_v1", "confidence": "confidence_v1",
-                                "semantic": "semantic_v1"}.get(row.verifier_name, "generic_v1")
-            if attempt.adapter != expected_adapter:
+            if adapter_incompatibility(attempt) is not None:
                 raise ValueError("unsupported verifier-aware transformation adapter")
             direction = row.passed if attack.kind == "confidence_inflation" else attack.kind == "forced_support"
             metadata = dict(row.metadata or {})
