@@ -35,6 +35,7 @@ def category_id(context):
     data = context.model_dump()
     data["offline_evaluation_id"] = None
     data["execution_contract_json"] = None
+    data["pooling_contract_json"] = None
     return PlanningContext(**data).compatibility_id
 
 
@@ -44,6 +45,8 @@ def replay(context, strategy, attack, specification, contract, example):
     strategy = Strategy.model_validate(strategy)
     example = Example.model_validate(example)
     contract = ReplayContract.model_validate(contract)
+    from app.game.resource_provenance import validate_recorded_resources
+    validate_recorded_resources(contract, example)
     if strategy not in enumerate_strategies(context).strategies:
         raise ValueError("strategy is not an exact feasible team/aggregation/cost definition")
     if attack not in enumerate_attacks(context.dependencies, specification):

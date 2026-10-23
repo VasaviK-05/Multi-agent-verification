@@ -98,10 +98,19 @@ Each spec represents one exact compatible planning category. Domain, analyzer
 requirements/validity/versions, reference availability, candidates, prerequisites,
 costs, budget, dependencies, loss/provenance and frozen statistics fragment categories.
 Records from another category reject; report each category's sample/group counts.
-The library never pools categories automatically or drops small categories. Existing
-pooled provenance still requires matching domain/reputation/applicability; it does
-not implement population pooling or cross-domain learning. A pooled scientific design
-requires an explicit future mapping and compatible policies, not relabelled matrices.
+The library never pools categories automatically or drops small categories. Explicit
+weighted cross-domain pooling is now available through `app.game.offline.pooling`;
+it requires compatible task/strategy semantics, source weights and exact target
+applicability while preserving domain-specific reputation. The single-domain
+seven-method comparison workflow rejects pooled contexts; its protocol is not
+silently extended to multi-domain inference. See
+[pooling and provenance](game_pooling_and_provenance.md) for the separate pooled
+fit/frozen-scoring interfaces and the testing/research handoff.
+
+Empirical readiness also requires resource-bound execution contract v2, complete
+all-candidate resource manifests and matching per-attempt observations. Integration
+and verifier owners supply actual fingerprints; the engine validates their declared
+content identities and cannot authenticate collection claims.
 
 ## Required inputs, splits and preregistration
 
