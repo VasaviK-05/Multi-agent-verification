@@ -27,6 +27,8 @@ class DeploymentEpisode(FrozenModel):
             raise ValueError("execution contract differs from context's evaluated contract")
         if self.execution_configuration_id != self.contract.execution_configuration_id:
             raise ValueError("execution configuration differs from evaluated identity")
+        if self.contract.resource_manifest is not None:
+            self.contract.resource_manifest.require_candidates(c.verifier_name for c in self.context.plan.candidates)
         if dict(self.context.aggregation_versions) != {
             "reputation_weighted": REPUTATION_VERSION, "dependency_group": DEPENDENCY_VERSION}:
             raise ValueError("unsupported aggregation versions")

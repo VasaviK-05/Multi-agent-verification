@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import StrictBool, model_validator
+from pydantic import StrictBool, model_serializer, model_validator
 
 from app.decision.report_identity import canonical_reports
 from app.decision.vote_normalization import is_abstention
@@ -20,9 +20,23 @@ class Attempt(FrozenModel):
     configuration_id: str
     report_provenance: str
     adapter: Literal["generic_v1", "rule_v1", "evidence_v1", "confidence_v1", "semantic_v1"]
+    observed_resources_json: str | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_attempt(self, handler):
+        data = handler(self)
+        if self.observed_resources_json is None:
+            data.pop("observed_resources_json", None)
+        return data
 
     @model_validator(mode="after")
     def check(self):
+        if self.observed_resources_json is not None:
+            from app.game.resource_provenance import VerifierResources
+            observation = VerifierResources.model_validate_json(self.observed_resources_json, strict=True)
+            if observation.verifier_name != self.verifier_name:
+                raise ValueError("observed resource verifier identity mismatch")
+            object.__setattr__(self, "observed_resources_json", canonical_json(observation.model_dump(mode="json")))
         for value in (self.verifier_name, self.execution_id, self.configuration_id, self.report_provenance):
             identifier(value)
         if (self.state in {"directional", "abstention"}) != (self.report_json is not None):

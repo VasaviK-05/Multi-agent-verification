@@ -48,6 +48,12 @@ def bind_evaluation(context, manifest, contract, specification):
     manifest = DatasetManifest.model_validate(manifest)
     contract = ReplayContract.model_validate(contract)
     specification = AttackSpecification.model_validate(specification)
+    from app.game.resource_provenance import validate_recorded_resources
+    if contract.resource_manifest is not None:
+        contract.resource_manifest.require_candidates(c.verifier_name for c in context.plan.candidates)
+        for partition in manifest.partitions:
+            for example in partition.examples:
+                validate_recorded_resources(contract, example)
     provenance = context.provenance
     for role, dataset in (("history", provenance.history_dataset), ("development", provenance.development_dataset),
                           ("final_test", provenance.final_test_dataset)):
@@ -132,6 +138,8 @@ def summarize(weighted_outcomes, loss):
 def construct_payoffs(context, manifest, contract, specification):
     """Fit only on development, including every declared example in each cell."""
     context, manifest, contract, specification = _inputs(context, manifest, contract, specification)
+    if context.pooling_contract_json is not None:
+        raise ValueError("use fit_pooled_policies with original member contexts; a target-only matrix is not pooled evidence")
     strategies = enumerate_strategies(context).strategies
     if not strategies:
         raise ValueError("no_feasible_strategy")

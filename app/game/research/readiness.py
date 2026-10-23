@@ -28,6 +28,13 @@ class AdapterReadinessBlocker(AdapterIncompatibility):
     example_id: str
 
 
+class ResourceReadinessBlocker(FrozenModel):
+    partition: str
+    example_id: str
+    verifier_name: str
+    reason: str
+
+
 class ReadinessReport(FrozenModel):
     ready: bool
     specification_id: str
@@ -41,6 +48,7 @@ class ReadinessReport(FrozenModel):
     attacks: tuple[Attack, ...]
     greedy_strategy_id: str | None
     evidence_failures: tuple[str, ...]
+    resource_blockers: tuple[ResourceReadinessBlocker, ...] = ()
 
 
 def check_readiness(spec, *, actual_code_revision):
@@ -48,6 +56,11 @@ def check_readiness(spec, *, actual_code_revision):
     context, manifest = spec.context, spec.manifest
     blockers = []
     adapter_blockers = []
+    resource_blockers = []
+    if context.pooling_contract_json is not None:
+        blockers.append("pooled_context_requires_explicit_multi_domain_workflow")
+    if manifest.evidence_kind == "empirical" and spec.contract.resource_manifest is None:
+        blockers.append("empirical_study_requires_resource_bound_execution_v2")
     if actual_code_revision != spec.code_revision:
         blockers.append("code_revision_mismatch")
     try:
@@ -72,6 +85,17 @@ def check_readiness(spec, *, actual_code_revision):
         for example in part.examples:
             prefix = f"{part.role}/{example.example_id}:"
             for attempt in example.attempts:
+                if spec.contract.resource_manifest is not None:
+                    from app.game.resource_provenance import VerifierResources
+                    try:
+                        if attempt.observed_resources_json is None:
+                            raise ValueError("missing observed resources")
+                        observation = VerifierResources.model_validate_json(attempt.observed_resources_json, strict=True)
+                        spec.contract.resource_manifest.require_observation(observation)
+                    except ValueError as exc:
+                        resource_blockers.append(ResourceReadinessBlocker(partition=part.role,
+                            example_id=example.example_id, verifier_name=attempt.verifier_name, reason=str(exc)))
+                        blockers.append(prefix + attempt.verifier_name + ":resource_provenance_incompatible")
                 incompatible = adapter_incompatibility(attempt)
                 if incompatible is not None:
                     adapter_blockers.append(AdapterReadinessBlocker(**incompatible.model_dump(),
@@ -98,7 +122,8 @@ def check_readiness(spec, *, actual_code_revision):
         blockers=tuple(blockers), adapter_blockers=tuple(adapter_blockers),
         unsupported_achieved=unsupported, strategies=enumeration.strategies,
         attacks=enumerate_attacks(context.dependencies, spec.attacks),
-        greedy_strategy_id=greedy.strategy_id if greedy else None, evidence_failures=EVIDENCE_FAILURES)
+        greedy_strategy_id=greedy.strategy_id if greedy else None, evidence_failures=EVIDENCE_FAILURES,
+        resource_blockers=tuple(resource_blockers))
 
 
 def require_ready(spec, *, actual_code_revision):

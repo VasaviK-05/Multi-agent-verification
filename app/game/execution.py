@@ -40,13 +40,38 @@ class GameRuntime:
     episode: DeploymentEpisode
     rng: object
     allow_synthetic_for_tests: bool = False
+    # Adapter-owned observations; no automatic model/service probing in the engine.
+    resource_observer: object = None
+    domain_routes: tuple = ()
 
     def __post_init__(self):
         object.__setattr__(self, "episode", DeploymentEpisode.model_validate(self.episode))
         if type(self.allow_synthetic_for_tests) is not bool:
             raise TypeError("test-only artifact permission must be an explicit boolean")
+        from app.game.domain_routing import DomainRoute
+        routes = tuple(DomainRoute.model_validate(r) for r in self.domain_routes)
+        if len({r.domain for r in routes}) != len(routes):
+            raise ValueError("domain routes must be unique")
+        object.__setattr__(self, "domain_routes", routes)
 
     def run(self, selector, analysis, request, validation_id):
+        if self.domain_routes:
+            route = next((r for r in self.domain_routes if r.domain == analysis.domain), None)
+            if route is None:
+                # Empty provider guarantees no accidental execution via an anchor episode.
+                from app.game.artifacts import InMemoryPolicyProvider
+                run = GameRuntime(InMemoryPolicyProvider(), self.episode, self.rng,
+                    self.allow_synthetic_for_tests, self.resource_observer).run(selector, analysis, request, validation_id)
+                run.summary.update(selection_status="unmapped_domain", selection_reasons=["no explicit domain route"])
+                return run
+            episode = route.pooled_episode if route.is_sparse else route.direct_episode
+            run = GameRuntime(self.provider, episode, self.rng, self.allow_synthetic_for_tests,
+                              self.resource_observer).run(selector, analysis, request, validation_id)
+            run.summary.update(policy_route="pooled" if route.is_sparse else "direct",
+                routing_domain=route.domain, routing_rule="minimum_eligible_candidate_history_v1",
+                routing_history_observations=route.history_observations,
+                routing_minimum_history_observations=route.minimum_history_observations)
+            return run
         # Capture all externally replaceable references once, before planning or dispatch.
         episode = DeploymentEpisode.model_validate(self.episode)
         registered = tuple(self.provider.snapshot())
@@ -64,6 +89,9 @@ class GameRuntime:
             attempted_verifiers=[], attempts=[], selection_status="pending", selection_reasons=[],
             numerical_decision=None, public_status="uncertain", override_reasons=[],
             contributors=0, minimum_contributors=context.minimum_participant_count,
+            pooling_contract_json=context.pooling_contract_json,
+            expected_resource_manifest_id=None if contract.resource_manifest is None else contract.resource_manifest.manifest_id,
+            observed_resource_manifest_id=None,
             required=sorted(set(context.plan.requirements.requirements + context.plan.requirements.unsupported)),
             achieved=[], unresolved=sorted(set(context.plan.requirements.requirements + context.plan.requirements.unsupported)))
 
@@ -103,6 +131,18 @@ class GameRuntime:
         if len(matching) != 1:
             return failed("ambiguous_policy", "multiple exactly compatible registered artifacts")
         artifact = matching[0]
+        if contract.resource_manifest is not None:
+            from app.game.resource_provenance import ResourceManifest
+            if self.resource_observer is None:
+                return failed("provenance_incompatible", "resource-bound execution requires an observation adapter")
+            try:
+                observed = ResourceManifest.model_validate(self.resource_observer.snapshot())
+                observed.require_candidates(c.verifier_name for c in current.plan.candidates)
+                summary["observed_resource_manifest_id"] = observed.manifest_id
+                if observed != contract.resource_manifest:
+                    return failed("provenance_incompatible", "observed resources differ from evaluated resources")
+            except (ValidationError, ValueError) as exc:
+                return failed("provenance_incompatible", str(exc))
         # Validation already certifies definitions/costs/budget. Recheck before RNG and dispatch.
         if any(s.estimated_cost > current.budget or s.estimated_cost != math.fsum(
                 dict(current.attempt_costs)[name] for name in s.verifiers) for s in artifact.policy.strategies):
@@ -135,6 +175,15 @@ class GameRuntime:
             states.append((name, state))
             attempts.append(record)
         finalized = finalize_decision(current, strategy, contract, results, states, validation_id)
+        resource_drift = False
+        if contract.resource_manifest is not None:
+            try:
+                after = ResourceManifest.model_validate(self.resource_observer.snapshot())
+                summary["after_resource_manifest_id"] = after.manifest_id
+                resource_drift = after != observed
+            except (ValidationError, ValueError) as exc:
+                summary["resource_observation_error"] = str(exc)
+                resource_drift = True
         summary.update(attempted_verifiers=list(strategy.verifiers), attempts=attempts,
             estimated_attempted_cost=math.fsum(a["estimated_attempt_cost"] for a in attempts),
             contributors=finalized.contributors, minimum_contributors=current.minimum_participant_count,
@@ -142,4 +191,7 @@ class GameRuntime:
             override_reasons=list(finalized.reasons), numerical_decision=finalized.detail.to_dict(),
             public_status=finalized.public_status, selection_plan=current.plan.to_dict(),
             termination="complete_selected_team", early_stopping_enabled=False, fallback_enabled=False)
-        return GameRun(tuple(results), finalized.detail, finalized.public_status, deepcopy(summary))
+        if resource_drift:
+            summary["override_reasons"].append("resource_provenance_changed_during_execution")
+            summary["public_status"] = "uncertain"
+        return GameRun(tuple(results), finalized.detail, summary["public_status"], deepcopy(summary))
