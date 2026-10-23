@@ -10,9 +10,8 @@ The manifest records the corpus file (path, size, mtime, SHA-256 of its
 bytes), chunk size, and embedding model. An index is reused only when the
 content hash, chunk size and model match, so a retriever built on one
 corpus never answers from another corpus's index, and a same-size edit
-that keeps the timestamp still triggers a rebuild. A manifest written
-before the hash was recorded is checked by path, size and mtime once and
-then upgraded in place.
+that keeps the timestamp still triggers a rebuild. A legacy manifest
+without a content hash is never trusted and causes a one-time rebuild.
 
 Versions and source identifiers
     corpus_version  "sha256:<hex>" of the corpus file bytes.
@@ -147,7 +146,7 @@ class EvidenceRetriever:
     """Retrieve relevant evidence chunks from a FAISS index."""
 
     EMBEDDING_MODEL = "all-MiniLM-L6-v2"
-    MANIFEST_VERSION = 1
+    MANIFEST_VERSION = 2
     # Standard BM25 parameters (Robertson). Not fitted to any question.
     BM25_K1 = 1.5
     BM25_B = 0.75
@@ -266,8 +265,6 @@ class EvidenceRetriever:
 
     # Fields that decide whether a stored index still matches the corpus.
     _MANIFEST_KEYS = ("version", "corpus_sha256", "chunk_size", "embedding_model")
-    # What a manifest without a content hash was checked on.
-    _LEGACY_MANIFEST_KEYS = ("version", "corpus_path", "corpus_size", "corpus_mtime", "chunk_size", "embedding_model")
 
     def _manifest(self) -> dict:
         stat = self.corpus_path.stat()
@@ -302,10 +299,10 @@ class EvidenceRetriever:
         except (OSError, json.JSONDecodeError):
             return False
         current = self._manifest()
-        if "corpus_sha256" in stored:
-            matches = all(stored.get(key) == current[key] for key in self._MANIFEST_KEYS)
-        else:
-            matches = all(stored.get(key) == current[key] for key in self._LEGACY_MANIFEST_KEYS)
+        # Never accept a legacy size/mtime-only manifest: replacing a corpus
+        # with same-size bytes while preserving its timestamp would otherwise
+        # reuse stale chunks and vectors.
+        matches = all(stored.get(key) == current[key] for key in self._MANIFEST_KEYS)
         if matches and stored != current:
             self._write_manifest(current)
         return matches
