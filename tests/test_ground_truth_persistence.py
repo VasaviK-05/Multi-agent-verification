@@ -34,6 +34,24 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
         def validate(self, request):
             return make_validation_response()
 
+        def get_validation_context(self, validation_id):
+            return type(
+                "FakeContext",
+                (),
+                {
+                    "run_summary": {
+                        "coverage": {},
+                        "missing_coverage": [],
+                        "termination": "candidate_exhaustion",
+                        "last_stopping_assessment": None,
+                        "minimum_contributors": 1,
+                        "contributors": 1,
+                        "numerical_decision": {},
+                    }
+                },
+            )()
+    monkeypatch.setattr(routes, "_validation_service", FakeService())
+
     def fake_save_validation(**kwargs):
         events.append(("validation", kwargs["validation_id"]))
 
@@ -46,10 +64,21 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
         assert kwargs["label"] == "Paris"
         assert kwargs["source"] == "test"
 
-    monkeypatch.setattr(routes, "_validation_service", FakeService())
     monkeypatch.setattr(routes, "save_validation", fake_save_validation)
     monkeypatch.setattr(routes, "save_verifier_outputs", fake_save_verifier_outputs)
     monkeypatch.setattr(routes, "save_ground_truth", fake_save_ground_truth)
+    monkeypatch.setattr(
+        routes,
+        "create_audit",
+        lambda **kwargs: events.append(("audit_create", kwargs["validation_id"])),
+    )
+    monkeypatch.setattr(
+        routes,
+        "update_audit",
+        lambda validation_id, **kwargs: events.append(
+            ("audit_update", validation_id, kwargs)
+        ),
+    )
 
     with TestClient(app) as client:
         response = client.post(
@@ -64,8 +93,10 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
     assert response.status_code == 200
     assert [event[0] for event in events] == [
         "validation",
+        "audit_create",
         "verifiers",
         "ground_truth",
+        "audit_update",
     ]
     assert UUID(events[0][1]) == UUID(VALIDATION_ID)
 
@@ -78,6 +109,25 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
         def validate(self, request):
             assert request.question_id == question_id
             return make_validation_response()
+
+        def get_validation_context(self, validation_id):
+            assert validation_id == VALIDATION_ID
+
+            return type(
+                "FakeContext",
+                (),
+                {
+                    "run_summary": {
+                        "coverage": {},
+                        "missing_coverage": [],
+                        "termination": "candidate_exhaustion",
+                        "last_stopping_assessment": None,
+                        "minimum_contributors": 1,
+                        "contributors": 1,
+                        "numerical_decision": {},
+                    }
+                },
+            )()
 
     class FakeCursor:
         def execute(self, query, params):
@@ -120,6 +170,20 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
     monkeypatch.setattr(routes, "save_validation", fake_save_validation)
     monkeypatch.setattr(routes, "save_verifier_outputs", fake_save_verifier_outputs)
     monkeypatch.setattr(routes, "save_ground_truth", fake_save_ground_truth)
+    monkeypatch.setattr(
+        routes,
+        "create_audit",
+        lambda **kwargs: events.append(
+            ("audit_create", kwargs["validation_id"])
+        ),
+    )
+    monkeypatch.setattr(
+        routes,
+        "update_audit",
+        lambda validation_id, **kwargs: events.append(
+            ("audit_update", validation_id, kwargs)
+        ),
+    )
 
     with TestClient(app) as client:
         response = client.post(
@@ -132,10 +196,16 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
         "question_insert",
         "question_commit",
         "validation",
+        "audit_create",
         "verifiers",
         "ground_truth",
+        "audit_update",
     ]
     assert UUID(events[2][1]) == UUID(VALIDATION_ID)
+
+    audit_update = events[-1]
+    assert audit_update[2]["run_status"] == "completed"
+    assert audit_update[2]["coverage_outcomes"]["coverage"] == {}
 
 def test_validate_does_not_save_ground_truth_if_validation_save_fails(monkeypatch):
     question_id = 789
@@ -144,6 +214,23 @@ def test_validate_does_not_save_ground_truth_if_validation_save_fails(monkeypatc
     class FakeService:
         def validate(self, request):
             return make_validation_response()
+
+        def get_validation_context(self, validation_id):
+            return type(
+                "FakeContext",
+                (),
+                {
+                    "run_summary": {
+                        "coverage": {},
+                        "missing_coverage": [],
+                        "termination": "candidate_exhaustion",
+                        "last_stopping_assessment": None,
+                        "minimum_contributors": 1,
+                        "contributors": 1,
+                        "numerical_decision": {},
+                    }
+                },
+            )()
 
     def fail_save_validation(**kwargs):
         raise RuntimeError("validation persistence failed")
