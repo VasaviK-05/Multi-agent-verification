@@ -6,9 +6,32 @@ The FAISS index is persisted next to the corpus it was built from:
     <corpus dir>/evidence_index/<corpus stem>/chunks.json
     <corpus dir>/evidence_index/<corpus stem>/manifest.json
 
-The manifest records the corpus file (path, size, mtime), chunk size, and
-embedding model. An index is reused only when the manifest matches, so a
-retriever built on one corpus never answers from another corpus's index.
+The manifest records the corpus file (path, size, mtime, SHA-256 of its
+bytes), chunk size, and embedding model. An index is reused only when the
+content hash, chunk size and model match, so a retriever built on one
+corpus never answers from another corpus's index, and a same-size edit
+that keeps the timestamp still triggers a rebuild. A manifest written
+before the hash was recorded is checked by path, size and mtime once and
+then upgraded in place.
+
+Versions and source identifiers
+    corpus_version  "sha256:<hex>" of the corpus file bytes.
+    index_version   "idx-<12 hex>" over corpus_version, chunk size and
+                    embedding model: chunk boundaries and vectors depend on
+                    all three.
+    article_id      the corpus's own ``id``, as a string. Only meaningful
+                    within one corpus_version (a regenerated file may
+                    number its articles differently).
+    article_key     the article independent of any corpus file: "wiki:<page>"
+                    from a Wikipedia URL, "url:<url>" for another URL, and
+                    "corpus:<corpus hash>:<article_id>" when there is no URL
+                    (``article_key_scope`` says which: "global" or "corpus").
+    source_id       "<article_key>#<12 hex of SHA-256 of the chunk text>".
+                    Equal on every machine for identical text; different
+                    text never shares one, so two results only share a
+                    source_id when they used the same words.
+    index_ref       "<index_version>:<article_id>:<chunk_id>", the chunk's
+                    position in this exact index build.
 
 Retrieval scores are cosine similarities (inner product of L2-normalised
 MiniLM vectors). FAISS always returns the nearest chunks; "nearest" is not
@@ -24,12 +47,14 @@ from common ones ("league", "final") when checking a chunk's topic.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import os
 import re
 from collections import Counter
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 import faiss
 import numpy as np
@@ -66,6 +91,35 @@ def default_corpus_path() -> str:
     return os.getenv("EVIDENCE_CORPUS_PATH", DEFAULT_CORPUS_PATH)
 
 
+def file_sha256(path: Path) -> str:
+    """Hex SHA-256 of a file's bytes, read in 1 MiB blocks."""
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as file:
+        for block in iter(lambda: file.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def text_sha256(text: str) -> str:
+    return hashlib.sha256(str(text).encode("utf-8")).hexdigest()
+
+
+def article_key(url: str | None, article_id: str | None, corpus_version: str) -> tuple[str, str]:
+    """(key, scope) naming an article independently of row order where possible.
+
+    Scope "global": the key comes from the URL and is the same in any corpus
+    that contains the page. Scope "corpus": no URL, so the key is only valid
+    for this corpus file.
+    """
+    parsed = urlparse(url or "")
+    if parsed.netloc.endswith("wikipedia.org") and parsed.path.startswith("/wiki/"):
+        return f"wiki:{unquote(parsed.path[len('/wiki/'):])}", "global"
+    if parsed.scheme and parsed.netloc:
+        return f"url:{url}", "global"
+    corpus_hash = corpus_version.split(":", 1)[-1][:12]
+    return f"corpus:{corpus_hash}:{article_id}", "corpus"
+
+
 def content_terms(text: str) -> set[str]:
     """Lowercase content tokens: numbers, and words of 3+ letters not in STOPWORDS."""
     return set(_content_counts(text))
@@ -99,7 +153,17 @@ class EvidenceRetriever:
         if corpus_path is None:
             corpus_path = default_corpus_path()
         self.corpus_path = Path(corpus_path)
+        if not self.corpus_path.is_file():
+            raise FileNotFoundError(
+                f"Evidence corpus not found: {self.corpus_path.resolve()}. Set "
+                f"EVIDENCE_CORPUS_PATH (environment or .env) to an existing article JSON "
+                f"file, or unset it to use the bundled {DEFAULT_CORPUS_PATH}."
+            )
         self.chunk_size = chunk_size
+        self.corpus_version = f"sha256:{file_sha256(self.corpus_path)}"
+        self.index_version = "idx-" + text_sha256(
+            json.dumps([self.corpus_version, self.chunk_size, self.EMBEDDING_MODEL])
+        )[:12]
 
         if index_dir is None:
             index_dir = self.corpus_path.parent / "evidence_index" / self.corpus_path.stem
@@ -181,6 +245,11 @@ class EvidenceRetriever:
             index.add(embeddings)
         return index, chunks
 
+    # Fields that decide whether a stored index still matches the corpus.
+    _MANIFEST_KEYS = ("version", "corpus_sha256", "chunk_size", "embedding_model")
+    # What a manifest without a content hash was checked on.
+    _LEGACY_MANIFEST_KEYS = ("version", "corpus_path", "corpus_size", "corpus_mtime", "chunk_size", "embedding_model")
+
     def _manifest(self) -> dict:
         stat = self.corpus_path.stat()
         return {
@@ -188,6 +257,9 @@ class EvidenceRetriever:
             "corpus_path": str(self.corpus_path.resolve()),
             "corpus_size": stat.st_size,
             "corpus_mtime": stat.st_mtime,
+            "corpus_sha256": self.corpus_version.split(":", 1)[1],
+            "corpus_version": self.corpus_version,
+            "index_version": self.index_version,
             "chunk_size": self.chunk_size,
             "embedding_model": self.EMBEDDING_MODEL,
         }
@@ -200,7 +272,18 @@ class EvidenceRetriever:
                 stored = json.load(file)
         except (OSError, json.JSONDecodeError):
             return False
-        return stored == self._manifest()
+        current = self._manifest()
+        if "corpus_sha256" in stored:
+            matches = all(stored.get(key) == current[key] for key in self._MANIFEST_KEYS)
+        else:
+            matches = all(stored.get(key) == current[key] for key in self._LEGACY_MANIFEST_KEYS)
+        if matches and stored != current:
+            self._write_manifest(current)
+        return matches
+
+    def _write_manifest(self, manifest: dict) -> None:
+        with self.manifest_path.open("w", encoding="utf-8") as file:
+            json.dump(manifest, file, indent=2)
 
     def save_index(self) -> None:
         """Save FAISS index, chunk metadata, and manifest to disk."""
@@ -208,8 +291,7 @@ class EvidenceRetriever:
         faiss.write_index(self.index, str(self.index_path))
         with self.chunks_path.open("w", encoding="utf-8") as file:
             json.dump(self.chunks, file, ensure_ascii=False, indent=2)
-        with self.manifest_path.open("w", encoding="utf-8") as file:
-            json.dump(self._manifest(), file, indent=2)
+        self._write_manifest(self._manifest())
 
     def load_index(self) -> tuple[faiss.Index, list[dict]]:
         """Load FAISS index and chunk metadata from disk."""
@@ -336,7 +418,23 @@ class EvidenceRetriever:
                     "text": chunk["text"],
                     "url": chunk["url"],
                     "chunk_id": chunk["chunk_id"],
+                    **self.source_fields(chunk),
                 }
             )
         results.sort(key=lambda row: row["score"], reverse=True)
         return results
+
+    def source_fields(self, chunk: dict) -> dict:
+        """Identifiers for one chunk; see the module docstring for each field."""
+        raw_id = chunk.get("article_id")
+        article_id = None if raw_id is None else str(raw_id)
+        key, scope = article_key(chunk.get("url"), article_id, self.corpus_version)
+        return {
+            "article_id": article_id,
+            "article_key": key,
+            "article_key_scope": scope,
+            "source_id": f"{key}#{text_sha256(chunk.get('text', ''))[:12]}",
+            "index_ref": f"{self.index_version}:{article_id}:{chunk.get('chunk_id')}",
+            "corpus_version": self.corpus_version,
+            "index_version": self.index_version,
+        }

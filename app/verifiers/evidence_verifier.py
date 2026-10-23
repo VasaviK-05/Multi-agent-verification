@@ -101,6 +101,17 @@ Across claims (issue 7)
     any REJECT  -> REJECT  (confidence = strongest rejection)
     otherwise   -> UNSURE  (partial support / unchecked claims listed)
 
+Provenance
+    Every evidence row (evaluated, supporting, contradicting, ignored,
+    discarded) carries the retriever's ``article_id``, ``article_key``,
+    ``article_key_scope``, ``source_id`` and ``index_ref``; metadata carries
+    ``corpus_version`` and ``index_version``. Field meanings are in
+    evidence_retriever's docstring. Each claim has a ``claim_id``
+    ("claim-0", ...); its ``claim_decisions`` entry lists the source_ids
+    behind it by role in ``evidence_refs`` and names the
+    ``deciding_source_id``, and every evidence row repeats the
+    ``claim_id`` it was checked against.
+
 Decision-layer hooks (unchanged)
     SUPPORT -> passed=True,  nli_label="entailment"
     REJECT  -> passed=False, nli_label="contradiction"
@@ -140,6 +151,8 @@ NO_EVIDENCE_REASON = "No evidence was retrieved."
 NO_RELEVANT_EVIDENCE_REASON = "No sufficiently relevant evidence was retrieved."
 OFF_SUBJECT_REASON = "article title is about a different subject than the question"
 SAME_ARTICLE_REASON = "a passage of the same article that matches the claim better entails it"
+# Provenance copied from each retrieved chunk; see evidence_retriever's docstring.
+SOURCE_FIELDS = ("article_id", "article_key", "article_key_scope", "source_id", "index_ref")
 
 _SENTENCE_BOUNDARY = re.compile(r"(?<=[.!?])\s+")
 _PREMISE_TERM = re.compile(r"\d+(?:[.,]\d+)*|[^\W\d_]+")
@@ -375,6 +388,7 @@ class EvidenceVerifier(BaseVerifier):
             "title": evidence.get("title"),
             "chunk_id": evidence.get("chunk_id"),
             "url": evidence.get("url"),
+            **self.source_ref(evidence),
             "retrieval_score": float(evidence["score"]),
             "relevant_evidence": chosen["premise"],
             "match_score": self.match_score(claim, title, body),
@@ -392,6 +406,11 @@ class EvidenceVerifier(BaseVerifier):
                 for w in windows
             ],
         }
+
+    @staticmethod
+    def source_ref(evidence: dict) -> dict:
+        """The chunk's provenance fields; None for any the retriever did not supply."""
+        return {field: evidence.get(field) for field in SOURCE_FIELDS}
 
     def _nli_window(self, premise: str, claim: str) -> dict:
         probabilities, shape = parse_nli_output(self.nli({"text": premise, "text_pair": claim}))
@@ -522,6 +541,8 @@ class EvidenceVerifier(BaseVerifier):
             {
                 "title": evidence.get("title"),
                 "chunk_id": evidence.get("chunk_id"),
+                "url": evidence.get("url"),
+                **self.source_ref(evidence),
                 "retrieval_score": float(evidence["score"]),
                 **topic,
                 "reason": self._discard_reason(topic, best),
@@ -734,7 +755,7 @@ class EvidenceVerifier(BaseVerifier):
         latency: dict[str, float],
     ) -> VerificationResult:
         evaluated_evidence = [
-            {"claim_index": c["index"], **{k: v for k, v in row.items()}}
+            {"claim_index": c["index"], "claim_id": self.claim_id(c["index"]), **row}
             for c in claim_results
             for row in c["evidence"]
         ]
@@ -768,31 +789,28 @@ class EvidenceVerifier(BaseVerifier):
             "topic_margin": self.topic_margin,
             "max_premise_windows": self.max_premise_windows,
             "thresholds_calibrated": False,
+            "corpus_version": getattr(self.retriever, "corpus_version", None),
+            "index_version": getattr(self.retriever, "index_version", None),
             "claims": [c["claim"] for c in claim_results],
-            "claim_decisions": [
-                {
-                    "claim": c["claim"],
-                    "hypothesis": c.get("hypothesis", c["claim"]),
-                    "template": c["template"],
-                    "decision": c["decision"],
-                    "confidence": c["confidence"],
-                    "unsure_reason": c["unsure_reason"],
-                    "best_retrieval_score": c["best_retrieval_score"],
-                }
-                for c in claim_results
-            ],
+            "claim_decisions": [self._claim_decision(c) for c in claim_results],
             "unchecked_claims": unchecked,
-            "supporting": [self._brief(r) for c in claim_results for r in c["supporting"]],
-            "contradicting": [self._brief(r) for c in claim_results for r in c["contradicting"]],
+            "supporting": [
+                {**self._claim_tag(c), **self._brief(r)} for c in claim_results for r in c["supporting"]
+            ],
+            "contradicting": [
+                {**self._claim_tag(c), **self._brief(r)} for c in claim_results for r in c["contradicting"]
+            ],
             "ignored_contradictions": [
-                {"claim_index": c["index"], **row}
+                {**self._claim_tag(c), **row}
                 for c in claim_results
                 for row in c.get("ignored_contradictions", [])
             ],
             "evaluated_evidence": evaluated_evidence,
             "discarded_evidence": [
-                {"claim_index": c["index"], **row} for c in claim_results for row in c["discarded"]
+                {**self._claim_tag(c), **row} for c in claim_results for row in c["discarded"]
             ],
+            "deciding_claim_id": self.claim_id(deciding_claim["index"]) if deciding_claim else None,
+            "evidence_source_id": deciding_row.get("source_id") if deciding_row else None,
             "evidence_title": deciding_row["title"] if deciding_row else None,
             "evidence_chunk_id": deciding_row["chunk_id"] if deciding_row else None,
             "retrieval_score": deciding_row["retrieval_score"] if deciding_row else None,
@@ -812,10 +830,51 @@ class EvidenceVerifier(BaseVerifier):
         )
 
     @staticmethod
+    def claim_id(index: int) -> str:
+        """Identifier of the claim at ``index`` within one verify() result."""
+        return f"claim-{index}"
+
+    def _claim_tag(self, claim_result: dict) -> dict:
+        return {"claim_index": claim_result["index"], "claim_id": self.claim_id(claim_result["index"])}
+
+    def _claim_decision(self, c: dict) -> dict:
+        """One claim's decision with the source_ids of the evidence behind it.
+
+        ``evidence_refs`` lists every evidence row this claim's decision was
+        made from or set aside, by role; ``deciding_source_id`` is the row
+        that set the claim's confidence (None when the claim is UNSURE).
+        """
+
+        def ids(rows: list[dict]) -> list:
+            return [row.get("source_id") for row in rows]
+
+        deciding = c.get("deciding")
+        return {
+            **self._claim_tag(c),
+            "claim": c["claim"],
+            "hypothesis": c.get("hypothesis", c["claim"]),
+            "template": c["template"],
+            "decision": c["decision"],
+            "confidence": c["confidence"],
+            "unsure_reason": c["unsure_reason"],
+            "best_retrieval_score": c["best_retrieval_score"],
+            "deciding_source_id": deciding.get("source_id") if deciding else None,
+            "evidence_refs": {
+                "supporting": ids(c.get("supporting", [])),
+                "contradicting": ids(c.get("contradicting", [])),
+                "ignored_contradictions": ids(c.get("ignored_contradictions", [])),
+                "evaluated": ids(c.get("evidence", [])),
+                "discarded": ids(c.get("discarded", [])),
+            },
+        }
+
+    @staticmethod
     def _brief(row: dict) -> dict:
         return {
             "title": row["title"],
             "chunk_id": row["chunk_id"],
+            "url": row.get("url"),
+            **EvidenceVerifier.source_ref(row),
             "retrieval_score": row["retrieval_score"],
             "topic_coverage": row.get("topic_coverage"),
             "nli_label": row["nli_label"],
