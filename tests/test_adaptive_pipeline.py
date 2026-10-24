@@ -10,7 +10,25 @@ from app.models.schemas import ValidationRequest, VerificationResult
 from app.orchestration.validation_orchestrator import ValidationOrchestrator
 from app.reputation.reputation_manager import ReputationManager
 from app.selection.verifier_selector import VerifierSelector
+from app.selection.capabilities import CapabilityDescriptor
 from app.verifiers.base_verifier import BaseVerifier
+
+
+@pytest.fixture(autouse=True)
+def offline_pipeline_boundaries(monkeypatch):
+    """Exercise real planning/decisions, with persistence and lookup isolated.
+
+    These unit/integration tests do not validate a live PostgreSQL deployment
+    or Wikidata. Patch only those boundaries, never selector/decision math.
+    """
+    import app.orchestration.validation_orchestrator as module
+    monkeypatch.setattr(module, "build_reputation_state", lambda: ReputationManager().export_state())
+    monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
+    monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
+    # Import after replacing bootstrap I/O; service construction remains real.
+    from app.api import routes
+    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "save_verifier_outputs", lambda **kwargs: None)
 
 
 @pytest.mark.parametrize("history", ["prior", "success", "failure", "balanced"])
@@ -89,10 +107,12 @@ def test_campaign_actual_partial_evidence_continues_without_factual_coverage():
         "capital of France": [chunk("France", "Paris is the capital of France.", .85)],
     }), nli=FakeNLI({"capital of France": ENTAILS}))
     run = connected([MetadataChecker("generic"), evidence, MetadataChecker("later")],
-                    hints=["direct_fact"])
+                    hints=["direct_fact"],
+                    capabilities={"evidence": CapabilityDescriptor(("direct_fact",))})
     response = run.validate(ValidationRequest(question="What is the capital of France?",
         answer="Paris is the capital of France. It lies on the Seine."))
-    assert response.results[1].metadata["unsure_reason"] == "partial_support"
+    assert response.results[0].verifier_name == "evidence"
+    assert response.results[0].metadata["unsure_reason"] == "partial_support"
     assert len(response.results) == 3 and response.final_status == "uncertain"
     assert summary(response)["coverage"]["direct_fact"]["directional"] == []
     assert summary(response)["coverage"]["direct_fact"]["attempts"] == [
@@ -119,8 +139,9 @@ def test_campaign_raw_dissent_blocks_stop_despite_zero_or_inverted_weight(dissen
     response = run.validate(ValidationRequest(question="q", answer="a"))
     assert [r.verifier_name for r in response.results] == ["dissent", "a", "b", "later"]
     assert summary(response)["termination"] == "candidate_exhaustion"
-    # Exhaustion deliberately retains decisive numerical status once minima hold.
-    assert response.final_status == "passed" and response.final_score == 1
+    # logical_rule has no implemented achieved-coverage contract.
+    assert response.final_status == "uncertain" and response.final_score == 1
+    assert summary(response)["unsupported_coverage_contracts"] == ["logical_rule"]
 
 
 @pytest.mark.parametrize("band", ["easy", "medium"])
@@ -133,10 +154,11 @@ def test_campaign_custom_selector_minimum_is_binding_in_connected_run(band):
     run = ValidationOrchestrator(question_analyzer=FixedAnalyzer(QuestionAnalysis("general", band, .5)),
         verifier_selector=selector, decision_engine=DecisionEngine(manager))
     response = run.validate(ValidationRequest(question="q", answer="a"))
-    assert [r.verifier_name for r in response.results] == ["a", "b", "c"]
-    assert checkers[-1].calls == 0
-    assert summary(response)["contributors"] == 3
-    assert summary(response)["termination"] == "approved_early_stop"
+    # Unknown requirements must exhaust candidates even after the minimum.
+    assert [r.verifier_name for r in response.results] == ["a", "b", "c", "later"]
+    assert checkers[-1].calls == 1
+    assert summary(response)["contributors"] == 4
+    assert summary(response)["termination"] == "candidate_exhaustion"
 
 
 @pytest.mark.parametrize("answer,passed,expected", [("4", True, "passed"), ("5", False, "failed")])
@@ -245,7 +267,9 @@ def test_validate_does_not_learn_and_ground_truth_can_disagree_with_the_status()
     assert manager.is_cold_start("rule", "general")
 
     second = orchestrator.validate(ValidationRequest(question="q", answer="a"))
-    assert second.results[0].verifier_name == "evidence"
+    # Unknown requirements execute all agents, so all four learned equally.
+    assert second.results[0].verifier_name == "rule"
+    assert {manager.get_reputation(stub.name, "medical") for stub in stubs} == {.333333}
 
     analyzer.analysis = QuestionAnalysis("general", "easy", 0.1)
     third = orchestrator.validate(ValidationRequest(question="q", answer="a"))
@@ -273,10 +297,10 @@ def test_analyzer_domain_reaches_the_decision_engine():
 
 
 def test_early_stop_runs_after_each_verifier_and_respects_the_minimum():
-    stubs = _named(score=0.95)
+    stubs = _named_factual()
     by_name = {stub.name: stub for stub in stubs}
     orchestrator = ValidationOrchestrator(
-        question_analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.34)),
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.34, verification_types=["arithmetic"])),
         verifier_selector=VerifierSelector(verifiers=stubs),
     )
     response = orchestrator.validate(ValidationRequest(question="q", answer="a"))
@@ -284,10 +308,10 @@ def test_early_stop_runs_after_each_verifier_and_respects_the_minimum():
     assert by_name["rule"].calls == 1
     assert by_name["semantic"].calls == 1
 
-    fresh = _named(score=0.95)
+    fresh = _named_factual()
     fresh_by_name = {stub.name: stub for stub in fresh}
     held = ValidationOrchestrator(
-        question_analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.0)),
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.0, verification_types=["arithmetic"])),
         verifier_selector=VerifierSelector(
             verifiers=fresh,
             difficulty_range={"easy": (3, 3), "medium": (2, 3), "hard": (3, 4)},
@@ -301,7 +325,7 @@ def test_early_stop_runs_after_each_verifier_and_respects_the_minimum():
 
 
 def test_orchestrator_uses_its_engine_and_keeps_the_stopped_decision():
-    stubs = _named(score=0.95)
+    stubs = _named_factual()
     by_name = {stub.name: stub for stub in stubs}
     manager = ReputationManager()
     engine = DecisionEngine(reputation_manager=manager)
@@ -319,7 +343,7 @@ def test_orchestrator_uses_its_engine_and_keeps_the_stopped_decision():
             )
 
     orchestrator = ValidationOrchestrator(
-        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34)),
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34, verification_types=["arithmetic"])),
         verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
         decision_engine=engine,
         reputation_manager=manager,
@@ -346,7 +370,7 @@ def test_orchestrator_uses_its_engine_and_keeps_the_stopped_decision():
 
 
 def test_response_uses_the_decision_from_before_a_reputation_change():
-    stubs = _named(score=0.95)
+    stubs = _named_factual()
     by_name = {stub.name: stub for stub in stubs}
     manager = ReputationManager()
     engine = DecisionEngine(reputation_manager=manager)
@@ -369,7 +393,7 @@ def test_response_uses_the_decision_from_before_a_reputation_change():
             return decision
 
     orchestrator = ValidationOrchestrator(
-        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34)),
+        question_analyzer=FixedAnalyzer(QuestionAnalysis("medical", "easy", 0.34, verification_types=["arithmetic"])),
         verifier_selector=VerifierSelector(reputation_manager=manager, verifiers=stubs),
         decision_engine=engine,
         reputation_manager=manager,
@@ -510,7 +534,7 @@ def test_delayed_feedback_uses_the_original_validation_domain():
         False,
         validation_id=first.validation_id,
     )
-    assert applied == 2
+    assert applied == 4  # Unknown requirements now execute all four agents.
     assert manager.observation_count("rule", "medical") == 1
     assert manager.is_cold_start("rule", "technical")
     replay = orchestrator.record_ground_truth(
@@ -574,7 +598,7 @@ def test_snapshot_and_result_identity_protect_delayed_feedback():
     assert manager.is_cold_start("rule", "medical")
 
     applied = orchestrator.record_ground_truth(second.results, True)
-    assert applied == 2
+    assert applied == 4  # Unknown requirements now execute all four agents.
     assert manager.observation_count("rule", "technical") == 1
     assert manager.is_cold_start("rule", "medical")
     clone = [result.model_copy(deep=True) for result in second.results]
@@ -585,8 +609,8 @@ def test_snapshot_and_result_identity_protect_delayed_feedback():
         raised = True
     assert raised
     assert manager.observation_count("rule", "technical") == 1
-    assert orchestrator.record_ground_truth(clone, True, domain="general") == 2
-    assert orchestrator.record_ground_truth(clone, True, domain="general") == 2
+    assert orchestrator.record_ground_truth(clone, True, domain="general") == 4
+    assert orchestrator.record_ground_truth(clone, True, domain="general") == 4
     assert manager.observation_count("rule", "general") == 2
     assert manager.observation_count("rule", "technical") == 1
     try:
@@ -649,7 +673,7 @@ def test_mismatched_binding_slot_does_not_resolve_a_different_object():
         raised = True
     assert raised
     assert manager.observation_count("rule", "medical") == 0
-    assert orchestrator.record_ground_truth(response.results, True) == 2
+    assert orchestrator.record_ground_truth(response.results, True) == 4
     assert manager.observation_count("rule", "medical") == 1
 
 
@@ -830,6 +854,14 @@ class MetadataChecker(StubVerifier):
         return result.model_copy(update={"metadata": dict(self.metadata)})
 
 
+def _named_factual():
+    """Explicit arithmetic output contract for tests of approved stopping."""
+    return [MetadataChecker(name, metadata=(
+        {"decision": "SUPPORT", "rule_kind": "factual", "rule": "arithmetic_addition"}
+        if name == "rule" else {"decision": "SUPPORT"}
+    )) for name in ("semantic", "evidence", "rule", "confidence")]
+
+
 def factual_metadata(passed=True):
     decision = "SUPPORT" if passed else "REJECT"
     label = "entailment" if passed else "contradiction"
@@ -841,10 +873,11 @@ def factual_metadata(passed=True):
     }
 
 
-def connected(checkers, *, hints=None, difficulty="easy", manager=None, mapping=None):
+def connected(checkers, *, hints=None, difficulty="easy", manager=None, mapping=None, capabilities=None):
     manager = manager or ReputationManager()
     selector = VerifierSelector(
         verifiers=checkers, reputation_manager=manager, type_mapping=mapping,
+        capabilities=capabilities,
         lambda_cost=0, lambda_latency=0, lambda_suitability=0,
     )
     return ValidationOrchestrator(
@@ -885,7 +918,8 @@ def test_low_reputation_factual_evidence_is_reached_and_preserved():
 def test_generic_agreement_cannot_replace_factual_coverage(metadata, score, state):
     checker = MetadataChecker("evidence", metadata.get("decision") != "UNSURE", score, metadata)
     run = connected([MetadataChecker("semantic"), MetadataChecker("confidence"), checker],
-                    hints=["direct_fact"])
+                    hints=["direct_fact"],
+                    capabilities={"evidence": CapabilityDescriptor(("direct_fact",))})
     response = run.validate(ValidationRequest(question="Who wrote Hamlet?", answer="Shakespeare"))
     assert len(response.results) == 3
     assert response.final_status == "uncertain" and response.final_score > .55
@@ -919,7 +953,8 @@ def test_disagreement_and_zero_confidence_continue_past_two_results(second_score
     assert len(response.results) == 3
     if second_score == 0:
         assert summary(response)["contributors"] == 2
-        assert response.results[1].passed and summary(response)["termination"] == "approved_early_stop"
+        assert response.results[1].passed and summary(response)["termination"] == "candidate_exhaustion"
+        assert summary(response)["coverage_unknown"]  # Unknown requirements cannot approve a stop.
     else:
         assert summary(response)["termination"] == "candidate_exhaustion"
         assert response.final_status == "uncertain"
@@ -962,14 +997,15 @@ def test_missing_coverage_or_contributors_guard_exhaustion(checkers, hints):
 
 
 @pytest.mark.parametrize("metadata,qualified", [(factual_metadata(), True), ({"decision": "SUPPORT"}, False)])
-def test_custom_mapping_is_only_a_candidate_declaration(metadata, qualified):
+def test_custom_suitability_mapping_does_not_declare_a_capability(metadata, qualified):
     checker = MetadataChecker("custom", metadata=metadata)
     run = connected([MetadataChecker("generic"), checker, MetadataChecker("later")],
                     hints=["direct_fact"], mapping={"direct_fact": "custom"})
     response = run.validate(ValidationRequest(question="Who wrote Hamlet?", answer="Shakespeare"))
     assert len(response.results) == (2 if qualified else 3)
     assert response.final_status == ("passed" if qualified else "uncertain")
-    assert summary(response)["coverage"]["direct_fact"]["available"]
+    assert summary(response)["coverage"]["direct_fact"]["available"] is qualified
+    assert summary(response)["coverage"]["direct_fact"]["planned_candidates"] == []
     assert bool(summary(response)["coverage"]["direct_fact"]["directional"]) == qualified
 
 
@@ -1077,8 +1113,9 @@ def test_nonstring_rule_metadata_does_not_authorize_arithmetic_coverage(rule, ma
     coverage = summary(response)["coverage"]["arithmetic"]
     assert coverage["directional"] == []
     assert summary(response)["missing_coverage"] == ["arithmetic"]
-    assert coverage["available"] is mapped
-    assert coverage["attempts"] == ([{"verifier": "custom", "state": "unproven"}] if mapped else [])
+    # Suitability configuration is not an expected-capability declaration.
+    assert coverage["available"] is False
+    assert coverage["attempts"] == []
     # Ancillary metadata does not change the valid directional vote or its score.
     vote = summary(response)["numerical_decision"]["votes"][1]
     assert vote["passed"] and not vote["abstained"]
@@ -1131,3 +1168,337 @@ def test_failed_reputation_snapshot_save_does_not_silently_succeed(monkeypatch):
     # This captures the current behavior. We'll use the result
     # to decide whether the manager needs rollback support.
     assert manager.export_state() == before
+
+def test_live_plan_specialist_precedes_utility_order_and_is_built_once(monkeypatch):
+    from app.selection.capabilities import CapabilityDescriptor
+    checkers = [MetadataChecker("cheap"), MetadataChecker("generic"),
+                MetadataChecker("specialist", metadata=factual_metadata())]
+    selector = VerifierSelector(verifiers=checkers, lambda_suitability=0,
+        verifier_profiles={"specialist": {"cost": 1, "latency": 1}},
+        capabilities={"specialist": CapabilityDescriptor(("direct_fact",))})
+    calls = []
+    original = selector.plan
+    def record(analysis, context):
+        calls.append(context)
+        return original(analysis, context)
+    monkeypatch.setattr(selector, "plan", record)
+    monkeypatch.setattr(selector, "iter_ranked", lambda *args: pytest.fail("legacy production path"))
+    monkeypatch.setattr(selector, "explain_ranking", lambda *args: pytest.fail("second ranking"))
+    run = ValidationOrchestrator(question_analyzer=FixedAnalyzer(QuestionAnalysis(
+        "general", "easy", .1, verification_types=["direct_fact"])), verifier_selector=selector)
+    response = run.validate(ValidationRequest(question="q", answer="a", context="reference"))
+    assert calls == ["reference"]
+    assert response.selected_verifiers == ["specialist", "cheap"]
+    audit = response.execution_audit
+    assert audit["selection_plan"]["initial_selected"] == ["specialist", "cheap"]
+    assert audit["selection_plan"]["fallback"] == ["generic"]
+    assert audit["coverage"]["direct_fact"]["directional"] == ["specialist"]
+    assert audit["termination"] == "approved_early_stop" and checkers[1].calls == 0
+
+
+def test_live_unknown_requirements_exhaust_and_preserve_numerical_decision():
+    run = connected([MetadataChecker(n) for n in ("a", "b", "fallback")])
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert response.selected_verifiers == ["a", "b", "fallback"]
+    assert response.execution_audit["coverage_unknown"]
+    assert response.early_stop_reason == "candidate_exhaustion"
+    assert response.final_status == "passed"  # Exhaustion alone does not set direction.
+    assert response.final_score == response.execution_audit["numerical_decision"]["score"]
+
+
+def test_live_abstention_and_expected_unavailability_continue_to_fallback():
+    from app.selection.capabilities import CapabilityDescriptor
+    from app.selection.models import VerifierUnavailable
+    class Unavailable(MetadataChecker):
+        def verify(self, *args):
+            raise VerifierUnavailable("provider maintenance")
+    checkers = [Unavailable("offline"), MetadataChecker("abstain", False, 0, {"decision": "UNSURE"}),
+                MetadataChecker("generic"), MetadataChecker("fact", metadata=factual_metadata())]
+    selector = VerifierSelector(verifiers=checkers, lambda_cost=0, lambda_latency=0, lambda_suitability=0,
+        capabilities={"offline": CapabilityDescriptor(("direct_fact",))})
+    run = ValidationOrchestrator(question_analyzer=FixedAnalyzer(QuestionAnalysis(
+        "general", "easy", .1, verification_types=["direct_fact"])), verifier_selector=selector)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert audit["selection_plan"]["initial_selected"] == ["offline", "abstain"]
+    assert audit["attempted_verifiers"] == ["offline", "abstain", "generic", "fact"]
+    assert response.selected_verifiers == ["abstain", "generic", "fact"]
+    assert audit["returned_result_verifiers"] == response.selected_verifiers
+    assert audit["unavailable_verifiers"] == [{"verifier": "offline", "reason": "provider maintenance"}]
+    assert response.final_status == "passed"
+    assert audit["coverage"]["direct_fact"]["directional"] == ["fact"]
+
+
+@pytest.mark.parametrize("requirement", ["logical_rule", "semantic_comparison", "consistency", "evidence_retrieval", "new_type"])
+def test_known_requirements_without_achieved_contract_are_explicitly_uncertain(requirement):
+    from app.selection.capabilities import CapabilityDescriptor
+    selector = VerifierSelector(verifiers=[MetadataChecker(n) for n in ("a", "b", "c")],
+        capabilities={"a": CapabilityDescriptor((requirement,))})
+    run = ValidationOrchestrator(question_analyzer=FixedAnalyzer(QuestionAnalysis(
+        "general", "easy", .1, verification_types=[requirement])), verifier_selector=selector)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert len(response.results) == 3 and response.final_status == "uncertain"
+    assert response.execution_audit["unsupported_coverage_contracts"] == [requirement]
+    assert response.execution_audit["missing_coverage"] == [requirement]
+    assert response.final_score == .95  # Aggregation is preserved, public status is guarded.
+
+
+def test_live_context_precedence_cannot_be_replaced_by_legacy_coverage():
+    from app.analysis.research_context import build_research_context
+    analysis = QuestionAnalysis("general", "easy", .1, verification_types=["arithmetic"])
+    analysis.research_context = build_research_context(analysis)
+    analysis.verification_types = ["direct_fact"]
+    run = connected([MetadataChecker("fact", metadata=factual_metadata()), MetadataChecker("generic")])
+    run._question_analyzer = FixedAnalyzer(analysis)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert response.execution_audit["missing_coverage"] == ["arithmetic"]
+    assert response.execution_audit["selection_plan"]["requirements"]["disagreements"]
+    assert response.final_status == "uncertain"
+
+
+def test_unknown_typed_context_does_not_use_known_legacy_hints():
+    from app.analysis.research_context import build_research_context
+    analysis = QuestionAnalysis("general", "easy", .1)
+    analysis.research_context = build_research_context(analysis)
+    analysis.verification_types = ["direct_fact"]
+    run = connected([MetadataChecker(n) for n in ("a", "b", "c")])
+    run._question_analyzer = FixedAnalyzer(analysis)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert len(response.results) == 3 and response.execution_audit["coverage_unknown"]
+    assert response.execution_audit["selection_plan"]["requirements"]["requirements"] == []
+
+
+def test_empty_pool_audit_is_additive_detached_and_serializable():
+    from app.models.schemas import ValidationResponse
+    run = connected([], hints=["direct_fact"])
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert response.results == [] and response.selected_verifiers == []
+    assert response.final_status == "uncertain"
+    assert response.execution_audit["selection_plan"]["expected_uncovered"] == ["direct_fact"]
+    assert response.execution_audit["attempted_verifiers"] == []
+    assert ValidationResponse.model_validate_json(response.model_dump_json()) == response
+    response.execution_audit["selection_plan"]["domain"] = "mutated"
+    assert run.validation_context(response.validation_id).run_summary["selection_plan"]["domain"] == "general"
+    assert ValidationResponse(results=[], final_status="uncertain").execution_audit is None
+
+
+def test_execution_audit_reaches_existing_result_metadata_persistence(monkeypatch):
+    import json
+    from app.database import verifier_repository
+    run = connected([MetadataChecker("a"), MetadataChecker("b")], hints=["direct_fact"])
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    writes = []
+    class Cursor:
+        def execute(self, sql, values):
+            writes.append(values)
+        def close(self):
+            pass
+    class Connection:
+        def cursor(self):
+            return Cursor()
+        def commit(self):
+            pass
+        def close(self):
+            pass
+    monkeypatch.setattr(verifier_repository, "get_connection", Connection)
+    verifier_repository.save_verifier_outputs(response.validation_id, 1, response.results)
+    persisted = json.loads(writes[-1][6])["multi_agent_verification.execution"]
+    assert persisted == response.execution_audit
+    assert persisted["selection_plan"]["policy_version"] == "coverage_greedy_v1"
+
+
+def test_hard_known_requirements_exhaust_even_after_coverage():
+    run = connected([MetadataChecker("fact", metadata=factual_metadata()),
+                     MetadataChecker("a"), MetadataChecker("b"), MetadataChecker("last")],
+                    hints=["direct_fact"], difficulty="hard")
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert response.selected_verifiers == ["fact", "a", "b", "last"]
+    assert response.early_stop_reason == "candidate_exhaustion"
+
+
+def test_declared_expected_coverage_does_not_certify_a_bare_directional_vote():
+    from app.selection.capabilities import CapabilityDescriptor
+    selector = VerifierSelector(verifiers=[MetadataChecker("declared"), MetadataChecker("generic")],
+        capabilities={"declared": CapabilityDescriptor(("direct_fact",))})
+    run = ValidationOrchestrator(question_analyzer=FixedAnalyzer(QuestionAnalysis(
+        "general", "easy", .1, verification_types=["direct_fact"])), verifier_selector=selector)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert response.execution_audit["selection_plan"]["expected_covered"] == ["direct_fact"]
+    row = response.execution_audit["coverage"]["direct_fact"]
+    assert row["unattempted"] == [] and row["directional"] == []
+    assert row["attempts"] == [{"verifier": "declared", "state": "unproven"}]
+    assert response.final_status == "uncertain"
+
+
+def test_invalid_present_context_is_audited_and_cannot_approve_a_decision():
+    from app.analysis.research_context import build_research_context
+    analysis = QuestionAnalysis("general", "easy", .1, verification_types=["direct_fact"])
+    analysis.research_context = build_research_context(analysis)
+    analysis.research_context.context_version = "future"
+    run = connected([MetadataChecker("fact", metadata=factual_metadata()),
+                     MetadataChecker("generic"), MetadataChecker("later")])
+    run._question_analyzer = FixedAnalyzer(analysis)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert len(response.results) == 3 and response.final_status == "uncertain"
+    assert response.execution_audit["selection_plan"]["requirements"]["status"] == "invalid"
+    assert response.early_stop_reason == "candidate_exhaustion"
+
+
+def test_all_runtime_unavailable_candidates_retain_empty_run_attempt_audit():
+    from app.selection.models import VerifierUnavailable
+    class Offline(MetadataChecker):
+        def verify(self, *args):
+            raise VerifierUnavailable("offline")
+    run = connected([Offline("a"), Offline("b")], hints=["direct_fact"])
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    assert response.results == [] and response.selected_verifiers == []
+    assert response.execution_audit["attempted_verifiers"] == ["a", "b"]
+    assert len(response.execution_audit["unavailable_verifiers"]) == 2
+    assert response.final_status == "uncertain"
+
+
+def test_wrong_returned_identity_remains_a_visible_error():
+    class WrongIdentity(MetadataChecker):
+        def verify(self, *args):
+            return super().verify(*args).model_copy(update={"verifier_name": "someone_else"})
+    run = connected([WrongIdentity("planned")])
+    with pytest.raises(ValueError, match="planned candidate"):
+        run.validate(ValidationRequest(question="q", answer="a"))
+
+
+@pytest.mark.parametrize("passed", [True, False])
+def test_p2_invalid_weight_context_stays_uncertain_despite_strong_factual_results(passed):
+    import json
+    from app.analysis.research_context import build_research_context
+    analysis = QuestionAnalysis("general", "easy", .1, verification_types=["direct_fact"])
+    analysis.research_context = build_research_context(analysis)
+    analysis.research_context.requirement_weights.update(direct_fact=.5, arithmetic=.5)
+    analysis.verification_types = ["arithmetic"]  # Must not become the fallback source.
+    run = connected([MetadataChecker("fact", passed, .95, factual_metadata(passed)),
+                     MetadataChecker("generic", passed)])
+    run._question_analyzer = FixedAnalyzer(analysis)
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = json.loads(json.dumps(response.execution_audit, allow_nan=False))
+    requirements = audit["selection_plan"]["requirements"]
+    assert requirements["status"] == "invalid" and requirements["source"] == "research_context"
+    assert requirements["requirements"] == ["direct_fact"]
+    assert requirements["weight_discrepancies"] == [["arithmetic", .5]]
+    assert "positive requirement weights assigned to omitted requirements" in requirements["errors"]
+    assert audit["missing_coverage"] == []  # Factual output really qualifies; invalid input is the veto.
+    assert audit["numerical_decision"]["status"] == ("passed" if passed else "failed")
+    assert response.final_status == audit["public_status"] == "uncertain"
+    assert response.final_score == (.95 if passed else -.95)
+    assert audit["termination"] == "candidate_exhaustion"
+    assert audit["stopping_policy_vetoes"][-1]["reasons"] == ["invalid_requirement_context"]
+
+
+class UnavailableChecker(MetadataChecker):
+    def verify(self, *args):
+        from app.selection.models import VerifierUnavailable
+        self.calls += 1
+        raise VerifierUnavailable("maintenance")
+
+
+def test_p2_only_specialist_unavailable_has_observed_audit_and_unchanged_plan():
+    run = connected([UnavailableChecker("specialist")], hints=["direct_fact"],
+        capabilities={"specialist": CapabilityDescriptor(("direct_fact",))})
+    expected_plan = run.verifier_selector.plan(run._question_analyzer.analysis).to_dict()
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert response.final_status == "uncertain" and response.results == []
+    assert audit["selection_plan"] == expected_plan
+    assert audit["selection_plan"]["expected_covered"] == ["direct_fact"]
+    assert audit["runtime_availability"] == {"specialist": "unavailable"}
+    row = audit["coverage"]["direct_fact"]
+    assert row["planned_candidates"] == ["specialist"]
+    assert row["available"] is False and row["runtime_available"] == []
+    assert row["runtime_unavailable"] == ["specialist"]
+    assert row["unattempted"] == [] and row["directional"] == []
+    assert row["attempts"] == [{"verifier": "specialist", "state": "unavailable"}]
+
+
+def test_p2_unavailable_specialist_uses_explicitly_capable_fallback():
+    run = connected([UnavailableChecker("offline"), MetadataChecker("generic"),
+                     MetadataChecker("fallback", metadata=factual_metadata())], hints=["direct_fact"],
+        capabilities={name: CapabilityDescriptor(("direct_fact",)) for name in ("offline", "fallback")})
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert audit["selection_plan"]["initial_selected"] == ["offline", "generic"]
+    assert audit["selection_plan"]["fallback"] == ["fallback"]
+    assert audit["attempted_verifiers"] == ["offline", "generic", "fallback"]
+    assert response.selected_verifiers == ["generic", "fallback"]
+    assert response.final_status == "passed" and audit["termination"] == "approved_early_stop"
+    row = audit["coverage"]["direct_fact"]
+    assert row["available"] is True and row["runtime_available"] == ["fallback"]
+    assert row["runtime_unavailable"] == ["offline"] and row["directional"] == ["fallback"]
+    assert audit["runtime_availability"] == {
+        "offline": "unavailable", "generic": "returned_result", "fallback": "returned_result"}
+
+
+def test_p2_unattempted_capable_fallback_remains_runtime_unobserved():
+    later = MetadataChecker("later", metadata=factual_metadata())
+    run = connected([MetadataChecker("primary", metadata=factual_metadata()), MetadataChecker("generic"), later],
+        hints=["direct_fact"], capabilities={name: CapabilityDescriptor(("direct_fact",)) for name in ("primary", "later")})
+    expected_plan = run.verifier_selector.plan(run._question_analyzer.analysis).to_dict()
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert response.early_stop_reason == "approved_early_stop" and later.calls == 0
+    assert audit["selection_plan"] == expected_plan
+    assert audit["selection_plan"]["candidates"][-1]["eligible"] is True
+    assert audit["runtime_availability"]["later"] == "unobserved"
+    row = audit["coverage"]["direct_fact"]
+    assert row["planned_candidates"] == ["primary", "later"]
+    assert row["unattempted"] == ["later"]
+    assert row["runtime_available"] == row["directional"] == ["primary"]
+    assert audit["stopping_policy_vetoes"] == []
+
+
+def test_p2_injected_evidence_name_and_suitability_mapping_do_not_grant_capabilities():
+    run = connected([MetadataChecker("evidence"), MetadataChecker("generic")],
+                    hints=["direct_fact"], mapping={"direct_fact": "evidence"})
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    candidate = audit["selection_plan"]["candidates"][0]
+    assert candidate["capability_source"] == "unknown" and candidate["expected_capabilities"] == []
+    assert audit["runtime_availability"]["evidence"] == "returned_result"
+    row = audit["coverage"]["direct_fact"]
+    assert row["planned_candidates"] == [] and row["runtime_available"] == []
+    assert row["available"] is False and row["directional"] == [] and row["attempts"] == []
+    assert response.final_status == "uncertain"
+    assert audit["stopping_policy_vetoes"][-1]["reasons"] == ["missing_achieved_coverage:direct_fact"]
+    assert audit["stopping_policy_vetoes"][-1]["numerical_assessment"] == audit["last_stopping_assessment"]
+
+
+@pytest.mark.parametrize("names", [[], ["a", "b"]])
+def test_p2_empty_and_all_unavailable_pool_availability_audit(names):
+    run = connected([UnavailableChecker(name) for name in names], hints=["direct_fact"],
+                    capabilities={name: CapabilityDescriptor(("direct_fact",)) for name in names})
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert response.results == [] and response.selected_verifiers == [] and response.final_status == "uncertain"
+    assert audit["attempted_verifiers"] == names
+    assert audit["runtime_availability"] == {name: "unavailable" for name in names}
+    row = audit["coverage"]["direct_fact"]
+    assert row["planned_candidates"] == row["runtime_unavailable"] == names
+    assert row["available"] is False and row["runtime_available"] == row["directional"] == []
+    assert row["unattempted"] == [] and audit["stopping_policy_vetoes"] == []
+
+
+def test_p2_unsupported_achieved_contract_has_explicit_veto_without_changing_score():
+    run = connected([MetadataChecker("fact", metadata=factual_metadata()), MetadataChecker("similarity")],
+                    hints=["direct_fact", "semantic_comparison"])
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert audit["numerical_decision"]["status"] == "passed" and response.final_score == .95
+    assert audit["public_status"] == "uncertain" and audit["termination"] == "candidate_exhaustion"
+    assert audit["stopping_policy_vetoes"][-1]["reasons"] == ["no_achieved_coverage_contract:semantic_comparison"]
+
+
+def test_p2_unknown_requirements_record_veto_instead_of_accepted_numerical_stop():
+    run = connected([MetadataChecker(name) for name in ("a", "b", "later")])
+    response = run.validate(ValidationRequest(question="q", answer="a"))
+    audit = response.execution_audit
+    assert len(response.results) == 3 and response.final_status == "passed"
+    assert audit["termination"] == "candidate_exhaustion"
+    assert [event["result_count"] for event in audit["stopping_policy_vetoes"]] == [2, 3]
+    assert all(event["reasons"] == ["requirements_unknown"] for event in audit["stopping_policy_vetoes"])

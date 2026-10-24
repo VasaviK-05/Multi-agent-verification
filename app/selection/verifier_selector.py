@@ -1,4 +1,8 @@
-"""Strategic verifier selector.
+"""Coverage-aware verifier planning with legacy utility-ranking wrappers.
+
+Production uses plan()/resolve(): captured reputation, bounded capabilities,
+coverage-first greedy selection, then a utility-ordered fallback queue.
+select()/iter_ranked() retain the legacy top-k/ranking contract described below.
 
 Chooses a subset of existing verifier instances. This module does not
 implement semantic, evidence, rule, or confidence verification, and it
@@ -55,6 +59,9 @@ from typing import Mapping
 from app.analysis.question_analyzer import EASY_MAX, MEDIUM_MAX, QuestionAnalysis
 from app.reputation.reputation_manager import ReputationManager
 from app.verifiers.base_verifier import BaseVerifier
+from app.selection.capabilities import BUILTIN_CAPABILITIES, CapabilityDescriptor, prerequisite_status
+from app.selection.models import CandidateExplanation, SelectionPlan
+from app.selection.requirements import requirement_inputs
 
 # UNCALIBRATED: relative cost/latency estimates in [0, 1]. Not measured times.
 DEFAULT_VERIFIER_PROFILES: dict[str, dict[str, float]] = {
@@ -286,7 +293,7 @@ def _build_default_verifier(name: str) -> BaseVerifier:
 
 
 class VerifierSelector:
-    """Selects verifiers by domain reputation, resource estimates, and type hints."""
+    """Plan complementary expected coverage using reputation and relative resources."""
 
     def __init__(
         self,
@@ -298,6 +305,7 @@ class VerifierSelector:
         verifiers: list[BaseVerifier] | None = None,
         lambda_suitability: float = DEFAULT_LAMBDA_SUITABILITY,
         type_mapping: Mapping[str, str] | None = None,
+        capabilities: Mapping[str, CapabilityDescriptor] | None = None,
     ) -> None:
         self._reputation_manager = reputation_manager or ReputationManager()
         self.lambda_cost = _require_unit_weight("lambda_cost", lambda_cost)
@@ -319,6 +327,103 @@ class VerifierSelector:
             if len(set(names)) != len(names):
                 raise ValueError("duplicate registered verifier names")
         self._cache: dict[str, BaseVerifier] = {}
+        if capabilities is not None and not isinstance(capabilities, Mapping):
+            raise ValueError("capabilities must map registered names to CapabilityDescriptor")
+        self._capabilities = dict(capabilities or {})
+        if any(name not in self._candidate_names() or not isinstance(value, CapabilityDescriptor)
+               for name, value in self._capabilities.items()):
+            raise ValueError("capabilities must map registered names to CapabilityDescriptor")
+
+    def plan(self, analysis: QuestionAnalysis, context: str | None = None) -> SelectionPlan:
+        """Capture one reputation snapshot, then greedily cover expected demand.
+
+        No verifier construction or readiness probes occur here. Target size is
+        soft; adding required specialists takes precedence. See selector_policy.md.
+        """
+        target, minimum = self.target_count(analysis), self.minimum_count(analysis)
+        reference_available = prerequisite_status(CapabilityDescriptor(requires_reference=True), context)[1] is None
+        requirements = requirement_inputs(analysis)
+        names = self._candidate_names()
+        # Atomic under the manager's process-local lock; detached statistics.
+        stats = self._reputation_manager.statistics_batch([(name, analysis.domain) for name in names])
+        labels = list(requirements.requirements + requirements.unsupported) if requirements.status != "invalid" else []
+        suitability = suitability_by_verifier(labels, self.type_mapping)
+        candidates = []
+        for index, (name, reputation) in enumerate(zip(names, stats)):
+            descriptor = self._capabilities.get(name)
+            source = "explicit"
+            if descriptor is None:
+                descriptor = BUILTIN_CAPABILITIES[name] if self._injected is None else CapabilityDescriptor()
+                source = "builtin" if self._injected is None else "unknown"
+            status, exclusion = prerequisite_status(descriptor, context)
+            profile = self.verifier_profiles.get(name, {"cost": .5, "latency": .5})
+            cost, latency = profile["cost"], profile["latency"]
+            penalty = self.lambda_cost * cost + self.lambda_latency * latency
+            hint = suitability.get(name, 0.0)
+            contribution = self.lambda_suitability * hint
+            mean = round(reputation.posterior_mean, 6)  # existing get_reputation semantics
+            candidates.append(CandidateExplanation(
+                verifier_name=name, registration_order=index, reputation=mean,
+                observation_count=reputation.observation_count, cold_start=reputation.cold_start,
+                cost=cost, latency=latency, resource_penalty=penalty, suitability=hint,
+                suitability_contribution=contribution, utility=mean - penalty + contribution,
+                registered=True, eligible=exclusion is None, capability_source=source,
+                expected_capabilities=descriptor.expected_capabilities,
+                requires_reference=descriptor.requires_reference, configured_readiness=descriptor.readiness,
+                prerequisite_status=status, exclusion_reason=exclusion, limitations=descriptor.limitations,
+            ))
+        ranked = sorted((row for row in candidates if row.eligible),
+                        key=lambda row: (-row.utility, row.registration_order))
+        chosen = []
+        remaining = set(requirements.requirements) if requirements.requirements_known else set()
+        weights = dict(requirements.weights)
+        while remaining:
+            adding = [row for row in ranked if row.verifier_name not in chosen
+                      and remaining.intersection(row.expected_capabilities)]
+            if not adding:
+                break
+            best = min(adding, key=lambda row: (
+                -sum(weights[label] for label in sorted(remaining.intersection(row.expected_capabilities))),
+                -row.utility, row.registration_order,
+            ))
+            chosen.append(best.verifier_name)
+            remaining.difference_update(best.expected_capabilities)
+        for row in ranked:
+            if len(chosen) >= target:
+                break
+            if row.verifier_name not in chosen:
+                chosen.append(row.verifier_name)
+        expected = {label for row in ranked if row.verifier_name in chosen for label in row.expected_capabilities}
+        covered = tuple(label for label in requirements.requirements if label in expected
+                        and requirements.requirements_known)
+        uncovered = tuple(label for label in requirements.requirements if label not in covered) + requirements.unsupported
+        research = analysis.research_context
+        return SelectionPlan(
+            policy_version="coverage_greedy_v1", domain=analysis.domain, domain_status=analysis.domain_status,
+            difficulty=analysis.difficulty, difficulty_score=analysis.difficulty_score,
+            analysis_method=analysis.analysis_method,
+            context_version=getattr(research, "context_version", None) if requirements.status != "invalid" else None,
+            scoring_version=getattr(research, "scoring_version", None) if requirements.status != "invalid" else None,
+            reference_available=reference_available, requirements=requirements,
+            lambda_cost=self.lambda_cost, lambda_latency=self.lambda_latency,
+            lambda_suitability=self.lambda_suitability, type_mapping=tuple(self.type_mapping.items()),
+            resource_units="dimensionless relative estimates in [0,1]; uncalibrated",
+            minimum_count=minimum, target_count=target, candidates=tuple(candidates), initial_selected=tuple(chosen),
+            fallback=tuple(row.verifier_name for row in ranked if row.verifier_name not in chosen),
+            expected_covered=covered, expected_uncovered=uncovered,
+            coverage_status=("unknown" if not requirements.requirements_known else
+                             "incomplete" if uncovered else "expected_only"),
+            exclusions=tuple((row.verifier_name, row.exclusion_reason) for row in candidates if not row.eligible),
+            reputation_statistics=stats,
+        )
+
+    def resolve(self, name: str) -> BaseVerifier:
+        """Resolve one planned name lazily. Unexpected construction errors propagate."""
+        if name not in self._candidate_names():
+            raise ValueError(f"unregistered verifier {name!r}")
+        if self._injected is not None:
+            return next(verifier for verifier in self._injected if verifier.name == name)
+        return self._default_instance(name)
 
     @property
     def reputation_manager(self) -> ReputationManager:
@@ -411,6 +516,8 @@ class VerifierSelector:
     def iter_ranked(self, analysis: QuestionAnalysis):
         """Yield every candidate, highest utility first.
 
+        Legacy compatibility API: utility order with legacy type hints, without
+        request prerequisites or coverage planning. Production uses plan().
         Default verifiers are constructed one at a time so a later fallback
         does not load a model until the orchestrator asks for it. Equal
         utilities keep registration order.
@@ -436,7 +543,7 @@ class VerifierSelector:
             yield self._default_instance(names[index])
 
     def select(self, analysis: QuestionAnalysis) -> list[BaseVerifier]:
-        """Return a difficulty-aware subset, highest utility first."""
+        """Legacy top-k compatibility wrapper; use plan() for coverage selection."""
         count = self.target_count(analysis)
         chosen: list[BaseVerifier] = []
         for verifier in self.iter_ranked(analysis):

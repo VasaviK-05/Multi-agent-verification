@@ -1,6 +1,6 @@
 """Adaptive early-termination rule.
 
-Standalone stopping assessment; orchestration wiring remains deferred.
+Stopping assessment consumed by orchestration alongside its coverage guards.
 A False result means continue verification when candidates remain. Easy
 and medium require at least two contributors, or a larger supplied minimum.
 Hard questions never stop early. Approval does not establish factual
@@ -111,7 +111,7 @@ class AdaptiveEarlyTermination:
             return _continue("uncertain weighted decision — continue verification")
 
         confidence_cut, margin_cut = self._cuts(analysis.difficulty)
-        average_confidence = sum(vote.confidence for vote, _direction in contributors) / len(
+        average_confidence = math.fsum(vote.confidence for vote, _direction in contributors) / len(
             contributors
         )
         if average_confidence < confidence_cut or abs(detail.raw_score) < margin_cut:

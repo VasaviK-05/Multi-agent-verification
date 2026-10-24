@@ -455,6 +455,7 @@ def _run_adaptive(
                 response.results,
                 example.answer_is_correct,
                 validation_id=response.validation_id,
+                source="benchmark_ground_truth",
             )
     return (
         _finish(
@@ -539,6 +540,7 @@ def _run_all_verifiers(
                 analysis.domain,
                 results,
                 example.answer_is_correct,
+                source="benchmark_ground_truth",
             )
     return (
         _finish(

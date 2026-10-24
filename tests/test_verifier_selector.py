@@ -403,3 +403,251 @@ def test_low_reputation_evidence_remains_reachable_beyond_initial_target():
     assert [v.name for v in selector.select(analysis)] == ["rule", "semantic"]
     assert _names(selector, analysis) == ["rule", "semantic", "confidence", "evidence"]
     # Iterator reachability is not an assertion that orchestration will run it.
+
+
+# New planning API: legacy wrappers above intentionally retain utility top-k.
+from dataclasses import FrozenInstanceError
+from app.analysis.research_context import build_research_context
+from app.selection.capabilities import CapabilityDescriptor
+
+
+def _analysis(*requirements, typed=True):
+    analysis = QuestionAnalysis("general", "easy", .1, verification_types=list(requirements))
+    if typed:
+        analysis.research_context = build_research_context(analysis)
+    return analysis
+
+
+def test_plan_prefers_lower_utility_specialist_and_uses_one_snapshot():
+    class SnapshotOnly(ReputationManager):
+        calls = 0
+
+        def statistics_batch(self, pairs):
+            self.calls += 1
+            snapshot = super().statistics_batch(pairs)
+            self.update_reputation("specialist", "general", True)
+            return snapshot
+
+        def get_reputation(self, *args):
+            raise AssertionError("plan must use only the captured batch")
+
+    manager = SnapshotOnly()
+    for _ in range(3):
+        manager.update_reputation("specialist", "general", False)
+    selector = VerifierSelector(verifiers=[StubVerifier(n) for n in ("cheap", "other", "specialist")],
+        reputation_manager=manager, capabilities={"specialist": CapabilityDescriptor(("direct_fact",))})
+    plan = selector.plan(_analysis("direct_fact"))
+    assert plan.initial_selected == ("specialist", "cheap")
+    assert plan.fallback == ("other",)
+    row = plan.candidates[-1]
+    assert row.reputation == .2 and row.observation_count == 3 and not row.cold_start
+    assert row.utility == pytest.approx(row.reputation - row.resource_penalty + row.suitability_contribution)
+    assert manager.calls == 1
+    saved = plan.to_dict()
+    manager.update_reputation("specialist", "general", False)
+    selector.verifier_profiles.clear()
+    assert plan.to_dict() == saved
+    saved["candidates"][0]["reputation"] = 999
+    assert plan.candidates[0].reputation == .5
+    with pytest.raises(FrozenInstanceError):
+        plan.candidates[-1].reputation = 1
+
+
+def test_plan_complementarity_soft_target_overflow_and_no_duplicates():
+    requirements = ("direct_fact", "arithmetic", "consistency")
+    names = ("a", "b", "c", "duplicate", "generic")
+    selector = VerifierSelector(verifiers=[StubVerifier(n) for n in names], capabilities={
+        "a": CapabilityDescriptor(("direct_fact",)),
+        "b": CapabilityDescriptor(("arithmetic",)),
+        "c": CapabilityDescriptor(("consistency",)),
+        "duplicate": CapabilityDescriptor(("direct_fact",)),
+    }, lambda_cost=0, lambda_latency=0, lambda_suitability=0)
+    plan = selector.plan(_analysis(*requirements))
+    assert plan.target_count == 2
+    assert plan.initial_selected == ("a", "b", "c")
+    assert plan.expected_uncovered == ()
+    assert plan.fallback == ("duplicate", "generic")
+    assert len(set(plan.initial_selected + plan.fallback)) == 5
+
+
+def test_plan_uses_weighted_marginal_coverage_then_utility_then_registration():
+    analysis = _analysis("direct_fact", "arithmetic", "consistency")
+    analysis.research_context.requirement_weights.update(direct_fact=.8, arithmetic=.1, consistency=.1)
+    selector = VerifierSelector(verifiers=[StubVerifier(n) for n in ("multi", "fact", "tie")],
+        capabilities={"multi": CapabilityDescriptor(("arithmetic", "consistency")),
+                      "fact": CapabilityDescriptor(("direct_fact",)),
+                      "tie": CapabilityDescriptor(("direct_fact",))},
+        lambda_cost=0, lambda_latency=0, lambda_suitability=0)
+    assert selector.plan(analysis).initial_selected == ("fact", "multi")
+    analysis.research_context.requirement_weights.update(direct_fact=.2, arithmetic=.4, consistency=.4)
+    assert selector.plan(analysis).initial_selected == ("multi", "fact")
+    selector.reputation_manager.update_reputation("tie", "general", True)
+    assert selector.plan(analysis).initial_selected == ("multi", "tie")
+
+
+def test_plan_context_precedence_legacy_fallback_and_observable_unknowns():
+    selector = VerifierSelector(verifiers=_stubs(), capabilities={
+        "rule": CapabilityDescriptor(("arithmetic",)), "evidence": CapabilityDescriptor(("direct_fact",))})
+    analysis = _analysis("arithmetic")
+    analysis.verification_types = ["direct_fact", "mystery"]
+    plan = selector.plan(analysis)
+    assert plan.requirements.source == "research_context"
+    assert plan.requirements.requirements == ("arithmetic",)
+    assert plan.requirements.weights == (("arithmetic", 1),)
+    assert plan.requirements.disagreements
+    assert plan.requirements.legacy_unrecognized == ("mystery",)
+    assert plan.initial_selected[0] == "rule"
+    analysis.research_context = None
+    legacy = selector.plan(analysis)
+    assert legacy.requirements.source == "legacy"
+    assert legacy.requirements.unsupported == ("mystery",)
+    assert legacy.expected_uncovered == ("mystery",)
+    assert legacy.initial_selected[0] == "evidence"
+
+
+@pytest.mark.parametrize("mutation", ["wrong_type", "version", "weights", "missing_weight", "known"])
+def test_invalid_present_context_never_falls_back_to_legacy(mutation):
+    analysis = _analysis("arithmetic")
+    if mutation == "wrong_type":
+        analysis.research_context = {"verification_requirements": ["direct_fact"]}
+    elif mutation == "version":
+        analysis.research_context.context_version = "future"
+    elif mutation == "weights":
+        analysis.research_context.requirement_weights["arithmetic"] = float("nan")
+    elif mutation == "missing_weight":
+        analysis.research_context.requirement_weights = {}
+    else:
+        analysis.research_context.requirements_known = False
+    plan = VerifierSelector(verifiers=_stubs()).plan(analysis)
+    assert plan.requirements.source == "research_context"
+    assert plan.requirements.status == "invalid" and plan.requirements.errors
+    assert not plan.requirements.requirements_known and plan.coverage_status == "unknown"
+
+
+def test_plan_builtin_limits_and_unknown_injected_capabilities_no_constructors(monkeypatch):
+    import app.selection.verifier_selector as module
+    monkeypatch.setattr(module, "_build_default_verifier", lambda name: pytest.fail("constructor probe"))
+    selector = VerifierSelector()
+    plan = selector.plan(_analysis("logical_rule", "arithmetic", "direct_fact", "consistency"))
+    assert "logical_rule" in plan.expected_uncovered
+    assert dict(plan.exclusions)["semantic"] == "reference context is absent"
+    assert selector._cache == {}
+    assert {row.prerequisite_status for row in plan.candidates if row.verifier_name != "semantic"} == {"unknown"}
+    injected = VerifierSelector(verifiers=_stubs()).plan(_analysis("arithmetic", "direct_fact"))
+    assert injected.expected_covered == ()
+    assert all(row.capability_source == "unknown" and row.expected_capabilities == () for row in injected.candidates)
+
+
+@pytest.mark.parametrize("context,excluded", [(None, True), ("  ", True),
+    ("support,reject", True), ("A reference passage.", False)])
+def test_plan_observable_reference_prerequisite(context, excluded):
+    selector = VerifierSelector(verifiers=[StubVerifier("custom")], capabilities={
+        "custom": CapabilityDescriptor(("semantic_comparison",), requires_reference=True)})
+    plan = selector.plan(_analysis("semantic_comparison"), context)
+    assert plan.candidates[0].eligible is not excluded
+    assert bool(plan.exclusions) is excluded
+    assert plan.expected_uncovered == (("semantic_comparison",) if excluded else ())
+
+
+def test_plan_explicit_unavailable_and_unknown_requirements():
+    selector = VerifierSelector(verifiers=_stubs(), capabilities={
+        "rule": CapabilityDescriptor(("arithmetic",), readiness="unavailable", unavailable_reason="disabled")})
+    known = selector.plan(_analysis("arithmetic"))
+    assert known.expected_uncovered == ("arithmetic",)
+    assert "rule" not in known.initial_selected + known.fallback
+    unknown = selector.plan(_analysis())
+    assert unknown.coverage_status == "unknown" and not unknown.requirements.requirements_known
+    assert unknown.initial_selected == ("semantic", "evidence")
+    assert unknown.fallback == ("confidence",)
+
+
+def test_plan_zero_weight_requirement_still_requires_coverage():
+    analysis = _analysis("direct_fact", "arithmetic")
+    analysis.research_context.requirement_weights.update(direct_fact=1, arithmetic=0)
+    selector = VerifierSelector(verifiers=[StubVerifier("fact"), StubVerifier("math")], capabilities={
+        "fact": CapabilityDescriptor(("direct_fact",)), "math": CapabilityDescriptor(("arithmetic",))})
+    assert selector.plan(analysis).initial_selected == ("fact", "math")
+
+
+def test_plan_compatibility_wrapper_still_returns_legacy_top_k():
+    selector = VerifierSelector(verifiers=[StubVerifier(n) for n in ("a", "b", "specialist")],
+        capabilities={"specialist": CapabilityDescriptor(("arithmetic",))})
+    analysis = _analysis("arithmetic")
+    assert selector.plan(analysis).initial_selected[0] == "specialist"
+    assert [v.name for v in selector.select(analysis)] == ["a", "b"]
+    assert [v.name for v in selector.iter_ranked(analysis)] == ["a", "b", "specialist"]
+
+
+@pytest.mark.parametrize("kwargs", [{"expected_capabilities": "arithmetic"},
+    {"readiness": "maybe"}, {"readiness": "unavailable"}, {"requires_reference": 1}])
+def test_capability_configuration_rejects_malformed_descriptors(kwargs):
+    with pytest.raises(ValueError):
+        CapabilityDescriptor(**kwargs)
+
+
+def test_explicit_descriptor_copies_caller_sequences_and_configuration():
+    labels = ["arithmetic"]
+    descriptor = CapabilityDescriptor(labels)
+    config = {"custom": descriptor}
+    selector = VerifierSelector(verifiers=[StubVerifier("custom")], capabilities=config)
+    labels.clear()
+    config.clear()
+    assert selector.plan(_analysis("arithmetic")).expected_covered == ("arithmetic",)
+
+
+@pytest.mark.parametrize("omitted", [
+    {"arithmetic": .5},
+    {"arithmetic": .2, "consistency": .3},
+])
+def test_plan_p2_rejects_positive_weights_for_omitted_requirements(omitted):
+    import json
+    analysis = _analysis("direct_fact")
+    analysis.research_context.requirement_weights.update(direct_fact=.5, **omitted)
+    # Recognized legacy hints cannot rescue or silently expand invalid context.
+    analysis.verification_types = ["direct_fact", *omitted]
+    plan = VerifierSelector(verifiers=_stubs()).plan(analysis)
+    assert plan.requirements.source == "research_context"
+    assert plan.requirements.status == "invalid"
+    assert plan.requirements.requirements == ("direct_fact",)
+    assert plan.requirements.weights == () and not plan.requirements.requirements_known
+    assert plan.requirements.errors == ("positive requirement weights assigned to omitted requirements",)
+    assert plan.requirements.weight_discrepancies == tuple(sorted(omitted.items()))
+    assert plan.requirements.disagreements
+    assert plan.expected_covered == () and plan.coverage_status == "unknown"
+    audit = json.loads(json.dumps(plan.to_dict(), allow_nan=False))
+    assert dict(audit["requirements"]["weight_discrepancies"]) == omitted
+
+
+def test_plan_p2_matching_weights_and_extra_zero_entries_remain_valid():
+    analysis = _analysis("direct_fact", "arithmetic")
+    analysis.research_context.requirement_weights.update(direct_fact=.25, arithmetic=.75)
+    # Current schema emits zero entries outside the requirement list. Extra
+    # zero entries do not become obligations, including an unrecognized key.
+    analysis.research_context.requirement_weights["future_label"] = 0
+    plan = VerifierSelector(verifiers=_stubs()).plan(analysis)
+    assert plan.requirements.status == "known" and plan.requirements.errors == ()
+    assert plan.requirements.weights == (("direct_fact", .25), ("arithmetic", .75))
+    assert plan.requirements.weight_discrepancies == ()
+    assert plan.requirements.unsupported == ()
+    untouched = VerifierSelector(verifiers=_stubs()).plan(_analysis("direct_fact"))
+    assert untouched.requirements.status == "known"
+    assert untouched.requirements.weights == (("direct_fact", 1),)
+
+
+def test_plan_p2_overlap_recomputes_marginal_coverage_after_each_selection():
+    analysis = _analysis("direct_fact", "arithmetic", "semantic_comparison", "consistency")
+    analysis.research_context.requirement_weights.update(
+        direct_fact=.4, arithmetic=.3, semantic_comparison=.2, consistency=.1)
+    selector = VerifierSelector(verifiers=[StubVerifier(n) for n in ("a", "b", "c")],
+        lambda_cost=0, lambda_latency=0, lambda_suitability=0,
+        capabilities={"a": CapabilityDescriptor(("direct_fact", "arithmetic")),
+                      "b": CapabilityDescriptor(("direct_fact", "semantic_comparison")),
+                      "c": CapabilityDescriptor(("semantic_comparison", "consistency"))})
+    selector.reputation_manager.update_reputation("b", "general", True)
+    plan = selector.plan(analysis)
+    # Initially A adds .7, B .6, C .3. After A, B adds only .2,
+    # so C must win despite B's higher utility and registration priority.
+    assert plan.candidates[1].utility > plan.candidates[2].utility
+    assert plan.initial_selected == ("a", "c")
+    assert plan.fallback == ("b",) and plan.expected_uncovered == ()
+    assert len(plan.initial_selected) == plan.target_count == 2

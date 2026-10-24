@@ -32,6 +32,10 @@ Domain is the cue list with the unique highest hit count. Zero hits, or a tie, y
 
 ### How many verifiers, and which ones
 
+The live coverage-aware plan, requirement precedence, prerequisites, execution
+policy, and audit limitations are specified in [selector_policy.md](selector_policy.md).
+The utility/count formulas below also remain available through legacy wrappers.
+
 `R(v, d)` is the reputation of verifier `v` in domain `d`, in [0, 1]. `cost(v)` and `latency(v)` are the explicit estimates in the selector table, also in [0, 1]. They are not measured seconds. The default confidence profile is cost 0.9 and latency 1.0: provisional estimates for five default sampling generations, not measured timings. Explicit supplied judgments can be cheaper; custom profiles override the defaults. Resource weights and profile fields must be finite non-boolean numbers in [0, 1]. Ranges must be positive integer pairs with minimum <= maximum. Difficulty scores must be finite non-boolean numbers; finite out-of-range scores retain clamping. Registered verifier names must be unique, non-blank strings without surrounding whitespace. Caller configurations are copied, including nested profiles and range pairs.
 
 ```
@@ -93,6 +97,21 @@ Rejecting an incorrect answer is a success. `answer_is_correct` has to be a bool
 
 `record_feedback` binds the boolean, the original domain, and the executed votes to a validation id. The same delivery again does nothing. A different label or vote list for an id that is already stored is rejected and does not change counts. Changing a stored label needs a future correction workflow. Two validations of the same question text are different ids. The orchestrator stores each run's domain with that id. Feedback for an earlier run does not use the domain of a later run. See `docs/reputation_integration.md`.
 
+The owned orchestrator feedback entry point defaults source to `external_feedback`;
+benchmark callers explicitly pass `benchmark_ground_truth`. This is provenance
+metadata, not verification of the label. A changed source conflicts for an existing
+scoped event, just like a changed label; it never bypasses replay protection.
+The unscoped path has no retained provenance history or replay identity.
+
+Scoped learning and posterior persistence are separate: dirty verifier/domain
+pairs remain pending after a visible repository failure. An identical replay
+retries their latest posteriors without incrementing counts. A per-orchestrator
+lock serializes its learning and saves; this is not a database transaction or a
+cross-worker/crash-durability guarantee. Completed saves do not imply that priors,
+feedback identity, or source were durably stored. Current database replay still
+reconstructs default-prior counts from feedback and loses other manager state.
+See `docs/reputation_integration.md` for the exact boundary and owner dependencies.
+
 ### Decision score
 
 Every supplied result is validated before exclusion. Abstentions and results
@@ -127,6 +146,12 @@ zero-weight results are ignored. Fallback also applies to experienced
 verifiers whose balanced counts or six-decimal rounding yield reputation
 0.5; it does not depend on the observation count.
 
+Aggregate numerators, absolute-weight denominators, and equal-weight fallback
+sums use `math.fsum`. This preserves the formulas while avoiding order-dependent
+loss of low-order bits in the finite input sets covered by permutation tests.
+Products, division, and score bounds still use ordinary floating-point arithmetic;
+this is not exact real arithmetic. Per-verifier explanations retain input order.
+
 Thus support confidence 0.9 plus rejection confidence zero scores 0.9,
 at the prior or with equal nonzero reputations. A learned weight on only
 the zero-confidence result cannot suppress the untouched support's fallback.
@@ -144,6 +169,13 @@ raw >  threshold → passed
 raw < -threshold → failed
 otherwise        → uncertain
 ```
+
+Exact positive and negative boundaries are uncertain. Adjacent representable
+values are classified using these same strict comparisons: no epsilon, isclose
+band, or pre-classification rounding is applied. For the three cold-start support
+confidences `0.5499999999999999`, `0.55`, and `0.5500000000000002`, stable summation
+and division yield `0.55` in every tested order, hence uncertain. The rejection
+counterpart yields `-0.55`, also uncertain. Six-decimal display rounding is separate.
 
 The abstention band is symmetric about 0. A positive cut pair such as "above 0.55 pass, below 0.45 fail" would mark a tie at 0 as a failure, because that pair assumes a score centered near one half. This score is centered at 0.
 
@@ -188,12 +220,18 @@ Absent decisions retain the legacy interpretation, including abstention
 for structural/range rule outputs. A supported factual rule rejection with
 stored score zero remains a deterministic rejection with confidence one.
 This does not change score calibration, weights, thresholds, or stopping
-policy. The current orchestrator completes the selector target without
-calling early termination; restoring that wiring is deferred work.
+policy. The current orchestrator consumes a coverage-aware selection plan and
+calls early termination with the shared engine and result-based coverage guards.
 
 ### Fallback when a verifier abstains
 
-Candidates are tried in utility order, not only the initial difficulty subset. Each abstention is kept on the response with `metadata.pipeline_role = "abstention"` and a `pipeline_note` saying it was not a vote. The current orchestrator runs until there are enough informative votes for the difficulty target or the list is exhausted. The standalone early-termination engine ignores abstentions, including `unsupported`. Reputation updates skip them too.
+The initial coverage-aware team is attempted first, then eligible fallbacks in
+utility order. The difficulty target is soft, not an execution cap. Abstentions
+remain in the response with `metadata.pipeline_role = "abstention"` and a
+`pipeline_note`; they count neither as votes nor reputation observations.
+Unknown requirements and hard questions exhaust eligible candidates. Known
+requirements permit stopping only after the initial team, sufficient contributors,
+an approved stopping assessment, and actual required coverage.
 
 `+1` means every result actually included in aggregation contributed a
 full-confidence pass after negative-weight inversion, if applicable.
@@ -202,11 +240,10 @@ and zero-weight directions in log-odds mode do not establish unanimity.
 
 ### Early stopping
 
-This describes the standalone engine. The current orchestrator does not
-call it. Repair 7 must wire the shared engine and selector minimum, satisfy
-requested factual capabilities before using an approved stop, and preserve
-the exact accepted decision snapshot. Standalone approval does not establish
-factual coverage or independence between verifiers with different names.
+The current orchestrator calls this engine with the selector minimum and shared
+decision engine, checks actual required coverage, and preserves the exact
+accepted decision snapshot. Standalone approval and expected capabilities do
+not establish factual coverage or independence between differently named verifiers.
 
 Stopping calls `DecisionEngine.decide_detailed` once on the current prefix
 and analyzer domain. All supplied results are validated before exclusion.
@@ -250,12 +287,23 @@ easy:   mean contributor confidence ≥ 0.75 and |raw score| ≥ 0.60
 medium: mean contributor confidence ≥ 0.80 and |raw score| ≥ 0.70
 ```
 
+The contributor-confidence sum also uses `math.fsum`; contributor eligibility,
+effective directions, and disagreement vetoes are unchanged. Equality with a cut
+still satisfies it. The reported three-confidence reproduction
+`0.39999999999999997`, `0.8499999999999999`, `0.9999999999999999` has a stable
+floating-point mean of `0.7499999999999999`, below the easy confidence cut in
+every tested order. It must continue, regardless of its decisive numerical status.
+Stable summation can change low-order score bits; resulting classification or
+stopping differences are confined to floating-point boundary cases, not new cuts.
+
 Those cuts remain configurable finite values in [0, 1]. On approval, the
 returned `decision` is the exact immutable detail used for the assessment;
 later feedback does not rewrite it. Reaching a selector target or exhausting
 candidates is not an approved early stop. There is no weaker target-count
-stopping path in this engine. Coverage-unavailable and exhaustion handling
-remain orchestration work for Repair 7.
+stopping path in this engine. The live orchestrator consumes the accepted snapshot,
+applies requested achieved-coverage and requirement-context guards, records stopping
+vetoes in execution_audit, and handles candidate exhaustion. It preserves the
+numerical detail when public status must be uncertain.
 
 ## Published foundations
 
@@ -302,7 +350,7 @@ Nothing in this table was fitted on a labeled set in this repository.
 | `lambda_cost = 0.15`, `lambda_latency = 0.10`, `lambda_suitability = 0.20` | `app/selection/verifier_selector.py` |
 | Cost and latency estimates for the four verifiers | same |
 | Verification-type suitability map | same |
-| Count ranges (1, 2), (2, 3), (3, 4) | same |
+| Count ranges (2, 2), (2, 3), (3, 4) | same |
 | Beta prior `alpha = beta = 1` and the +1 update | `app/reputation/reputation_manager.py` |
 | Decision abstention margin 0.55, reputation clamp `1e-6` | `app/decision/decision_engine.py` |
 | Early-stop minima and the 0.75 / 0.60 and 0.80 / 0.70 cuts | `app/decision/early_termination.py` |

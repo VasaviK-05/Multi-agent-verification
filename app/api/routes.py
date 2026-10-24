@@ -6,6 +6,7 @@ from uuid import UUID
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from database import get_connection
+from app.database.reputation_repository import load_reputation
 
 from app.database.session_repository import (
     create_session,
@@ -409,3 +410,8 @@ def submit_feedback(request: FeedbackRequest):
             status_code=500,
             detail=f"Failed to save feedback: {str(e)}",
         )
+
+@router.get("/reputation")
+def get_reputation():
+    """Return persisted verifier reputation data."""
+    return load_reputation()

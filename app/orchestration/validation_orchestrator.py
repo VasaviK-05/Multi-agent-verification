@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from copy import deepcopy
-from uuid import uuid4
+import json
+import threading
+from uuid import UUID, uuid4
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.database.reputation_repository import (
@@ -17,7 +19,8 @@ from app.database.reputation_repository import (
 )
 from app.decision.decision_engine import DecisionDetail, DecisionEngine
 from app.evaluation.automatic_ground_truth import AutomaticGroundTruthEvaluator
-
+from app.ground_truth.storage import save_ground_truth
+from app.decision.coverage import ARITHMETIC_RULES, factual_capabilities as _factual_capabilities
 from app.decision.early_termination import AdaptiveEarlyTermination
 from app.decision.vote_normalization import (
     confidence_judgment_tie,
@@ -27,6 +30,7 @@ from app.decision.vote_normalization import (
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
+from app.selection.models import VerifierUnavailable
 
 
 @dataclass(frozen=True)
@@ -62,15 +66,32 @@ class ValidationOrchestrator:
         decision_engine: DecisionEngine | None = None,
         reputation_manager: ReputationManager | None = None,
         early_termination: AdaptiveEarlyTermination | None = None,
+        *,
+        execution_mode: str = "baseline",
+        game_runtime=None,
     ) -> None:
+        if execution_mode not in {"baseline", "game"}:
+            raise ValueError("execution_mode must be baseline or game")
+        if execution_mode == "game":
+            from app.game.execution import GameRuntime
+            if not isinstance(game_runtime, GameRuntime):
+                raise ValueError("game mode requires a server-configured GameRuntime")
+        elif game_runtime is not None:
+            raise ValueError("game runtime requires explicit game mode")
+        self._execution_mode = execution_mode
+        self._game_runtime = game_runtime
         self._question_analyzer = question_analyzer or QuestionAnalyzer()
         self._early_termination = early_termination or AdaptiveEarlyTermination()
-        self._automatic_ground_truth = AutomaticGroundTruthEvaluator()
+        self._automatic_ground_truth = AutomaticGroundTruthEvaluator() if execution_mode == "baseline" else None
         self._last_analysis: QuestionAnalysis | None = None
         self._contexts: dict[str, ValidationContext] = {}
         # Strong refs to the result objects validate() returned. Lookup checks
         # identity with ``is``; the id is only a slot. Snapshots stay separate.
         self._result_binding: dict[int, tuple[VerificationResult, str]] = {}
+        # Serialize this orchestrator's learning and absolute posterior writes.
+        # Dirty pairs survive a failed save, not a process restart.
+        self._feedback_lock = threading.RLock()
+        self._pending_posterior_pairs: set[tuple[str, str]] = set()
         self._verifier_selector, self._decision_engine, self._reputation_manager = (
             self._assemble(verifier_selector, decision_engine, reputation_manager)
         )
@@ -169,21 +190,29 @@ class ValidationOrchestrator:
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
         validation_id = str(uuid4())
-        minimum = self._verifier_selector.minimum_count(analysis)
+        if self._execution_mode == "game":
+            return self._validate_game(request, analysis, validation_id)
+        plan = self._verifier_selector.plan(analysis, request.context)
+        minimum = plan.minimum_count
         if analysis.difficulty != "hard":
             minimum = max(2, minimum)
-        names = [row.verifier_name for row in self._verifier_selector.explain_ranking(analysis)]
-        required = set(analysis.verification_types or ()) & {"direct_fact", "arithmetic"}
+        names = plan.initial_selected + plan.fallback
+        required = plan.requirements.requirements + plan.requirements.unsupported
+        # Only these existing result contracts establish achieved coverage.
+        unsupported_contracts = sorted(set(required) - {"direct_fact", "arithmetic"})
         coverage = {
             capability: {
-                "available": any(name in names for name in {
-                    "evidence" if capability == "direct_fact" else "rule",
-                    self._verifier_selector.type_mapping.get(capability),
-                }),
-                "unattempted": [name for name in names if name in {
-                    "evidence" if capability == "direct_fact" else "rule",
-                    self._verifier_selector.type_mapping.get(capability),
-                }],
+                # Historical boolean retained, now strictly observed: a declared
+                # or output-qualified candidate returned a result. Not coverage.
+                "available": False,
+                "planned_candidates": [name for name in names if any(
+                    row.verifier_name == name and capability in row.expected_capabilities
+                    for row in plan.candidates)],
+                "runtime_available": [], "runtime_unavailable": [],
+                "unattempted": [name for name in names if any(
+                    row.verifier_name == name and capability in row.expected_capabilities
+                    for row in plan.candidates)],
+                "achieved_contract": capability in {"direct_fact", "arithmetic"},
                 "attempts": [], "directional": [],
             }
             for capability in sorted(required)
@@ -193,20 +222,60 @@ class ValidationOrchestrator:
         detail = None
         reason = "candidate_exhaustion"
         last_assessment = None
-        for verifier in self._verifier_selector.iter_ranked(analysis):
-            raw = verifier.verify(request.question, request.answer, request.context)
+        attempted = []
+        unavailable = []
+        runtime_availability = {row.verifier_name: "unobserved" for row in plan.candidates}
+        stopping_policy_vetoes = []
+        for name in names:
+            attempted.append(name)
+            try:
+                verifier = self._verifier_selector.resolve(name)
+                raw = verifier.verify(request.question, request.answer, request.context)
+            except VerifierUnavailable as exc:
+                unavailable.append({"verifier": name, "reason": str(exc)})
+                runtime_availability[name] = "unavailable"
+                for row in coverage.values():
+                    if name in row["unattempted"]:
+                        row["unattempted"].remove(name)
+                        row["runtime_unavailable"].append(name)
+                        row["attempts"].append({"verifier": name, "state": "unavailable"})
+                continue
+            if raw.verifier_name != name:
+                raise ValueError("returned verifier_name does not match planned candidate")
+            runtime_availability[name] = "returned_result"
             abstention = is_abstention(raw)
             annotated = _annotate(raw, abstained_before=list(abstained), abstention=abstention)
             results.append(annotated)
             if abstention:
                 abstained.append(raw.verifier_name)
-            _track_coverage(coverage, raw, self._verifier_selector.type_mapping)
+            _track_coverage(coverage, raw)
             assessment = self._early_termination.should_terminate(
                 results, analysis, minimum, decision_engine=self._decision_engine,
             )
             last_assessment = assessment["reason"]
-            if (analysis.difficulty != "hard" and assessment["terminate"]
-                    and all(row["directional"] for row in coverage.values())):
+            vetoes = []
+            if assessment["terminate"]:
+                if plan.requirements.status == "invalid":
+                    vetoes.append("invalid_requirement_context")
+                elif not plan.requirements.requirements_known:
+                    vetoes.append("requirements_unknown")
+                if plan.requirements.unsupported:
+                    vetoes.append("unsupported_requirements")
+                if len(attempted) < len(plan.initial_selected):
+                    vetoes.append("initial_team_incomplete")
+                if analysis.difficulty == "hard":
+                    vetoes.append("hard_question")
+                for capability, row in coverage.items():
+                    if not row["directional"]:
+                        prefix = ("missing_achieved_coverage" if row["achieved_contract"]
+                                  else "no_achieved_coverage_contract")
+                        vetoes.append(f"{prefix}:{capability}")
+                if vetoes:
+                    stopping_policy_vetoes.append({
+                        "after_verifier": name, "result_count": len(results),
+                        "numerical_assessment": assessment["reason"], "reasons": vetoes,
+                    })
+            if assessment["terminate"] and not vetoes:
                 detail = assessment["decision"]
                 reason = "approved_early_stop"
                 break
@@ -215,15 +284,27 @@ class ValidationOrchestrator:
         contributors = self._early_termination.contributor_count(detail, results)
         missing = [key for key, row in coverage.items() if not row["directional"]]
         final_status = detail.status
-        if contributors < minimum or missing:
+        if contributors < minimum or missing or plan.requirements.status == "invalid":
             final_status = "uncertain"
         final_score = detail.score
         summary = {
+            "audit_version": "execution_audit_v2",
             "termination": reason, "last_stopping_assessment": last_assessment,
             "minimum_contributors": minimum, "contributors": contributors,
             "missing_coverage": missing, "coverage": coverage,
             "numerical_decision": asdict(detail), "public_status": final_status,
+            "selection_plan": plan.to_dict(),
+            "attempted_verifiers": attempted,
+            "returned_result_verifiers": [result.verifier_name for result in results],
+            "unavailable_verifiers": unavailable,
+            "runtime_availability": runtime_availability,
+            "stopping_policy_vetoes": stopping_policy_vetoes,
+            "coverage_unknown": not plan.requirements.requirements_known,
+            "unsupported_coverage_contracts": unsupported_contracts,
         }
+        # Keep response, in-memory context, and JSONB metadata identical (the
+        # detailed decision contains tuple fields before JSON normalization).
+        summary = json.loads(json.dumps(summary, allow_nan=False))
         if results:
             metadata = dict(results[-1].metadata or {})
             if RUN_SUMMARY_KEY in metadata:
@@ -262,7 +343,31 @@ class ValidationOrchestrator:
             selected_verifiers=[result.verifier_name for result in results],
             early_stop_reason=reason,
             signed_score=signed_score,
+            execution_audit=deepcopy(summary),
         )
+
+    def _validate_game(self, request, analysis, validation_id):
+        # One server-configured runtime/episode per run; request metadata cannot replace it.
+        runtime = self._game_runtime
+        run = runtime.run(self._verifier_selector, analysis, request, validation_id)
+        results = list(run.results)
+        summary = json.loads(json.dumps(run.summary, allow_nan=False))
+        if results:
+            metadata = dict(results[-1].metadata or {})
+            if RUN_SUMMARY_KEY in metadata:
+                raise ValueError(f"reserved metadata key {RUN_SUMMARY_KEY!r} already exists")
+            metadata[RUN_SUMMARY_KEY] = deepcopy(summary)
+            results[-1] = results[-1].model_copy(update={"metadata": metadata})
+        self._contexts[validation_id] = ValidationContext(validation_id, analysis.domain,
+            _detach_results(results), run.detail, deepcopy(summary))
+        for result in results:
+            self._result_binding[id(result)] = (result, validation_id)
+        return ValidationResponse(results=results, final_status=run.public_status,
+            final_score=run.detail.score, signed_score=run.detail.raw_score,
+            validation_id=validation_id, domain=analysis.domain, session_id=request.session_id,
+            difficulty=analysis.difficulty, selected_verifiers=summary["team"],
+            early_stop_reason=summary.get("termination", "game_selection_failure"),
+            execution_audit=deepcopy(summary))
 
     def validation_context(self, validation_id: str) -> ValidationContext:
         """Return a detached copy of one validation's domain and results."""
@@ -284,6 +389,7 @@ class ValidationOrchestrator:
         domain: str | None = None,
         *,
         validation_id: str | None = None,
+        source: str = "external_feedback",
     ) -> int:
         """Update reputation from a label received after validation.
 
@@ -296,8 +402,27 @@ class ValidationOrchestrator:
         domain with no bound result objects uses the unscoped update, which
         has no replay protection. Learning always uses the stored snapshot,
         and only when the supplied votes still match it. Returns the number
-        of observations applied. A replay returns 0.
+        of observations applied. A replay returns 0, but retries pending saves.
+        ``source`` is metadata, not authentication. Changing it for a recorded
+        validation conflicts under the manager's existing identity policy.
         """
+        if not isinstance(source, str) or not source.strip():
+            raise ValueError("source must be a non-blank string")
+        with self._feedback_lock:
+            return self._record_ground_truth_locked(
+                results, answer_is_correct, domain,
+                validation_id=validation_id, source=source,
+            )
+
+    def _record_ground_truth_locked(
+        self,
+        results: list[VerificationResult],
+        answer_is_correct: bool,
+        domain: str | None,
+        *,
+        validation_id: str | None,
+        source: str,
+    ) -> int:
         context = self._resolve_context(results, validation_id)
         if context is None:
             if domain is None:
@@ -309,6 +434,7 @@ class ValidationOrchestrator:
                 domain,
                 results,
                 answer_is_correct,
+                source=source,
             )
         if domain is not None and domain != context.domain:
             raise ValueError(
@@ -324,6 +450,7 @@ class ValidationOrchestrator:
                 domain=context.domain,
                 answer_is_correct=answer_is_correct,
                 results=context.results,
+                source=source,
             )
         )
 
@@ -336,8 +463,30 @@ class ValidationOrchestrator:
                 self._reputation_manager.restore_state(previous_state)
                 raise
 
+            self._pending_posterior_pairs.update(
+                (result.verifier_name, context.domain)
+                for result in context.results
+                if not is_abstention(result)
+            )
+
+        # Flush pending persistence work after successfully applying feedback.
+        self._flush_pending_posteriors()
         return receipt.observations_applied
 
+    def _flush_pending_posteriors(self) -> None:
+        """Called under _feedback_lock; save latest counts, never old events.
+
+        Each repository call upserts absolute alpha/beta in its own transaction.
+        Only successful calls remove their pair. Other orchestrators, direct
+        manager mutations, and other processes do not share this lock.
+        """
+        for name, domain in sorted(self._pending_posterior_pairs):
+            stats = self._reputation_manager.statistics(name, domain)
+            save_reputation(
+                verifier_name=name, domain=domain,
+                alpha=stats.alpha, beta=stats.beta,
+            )
+            self._pending_posterior_pairs.remove((name, domain))
 
     def _resolve_context(
         self,
@@ -464,63 +613,28 @@ def _abstention_reason(result: VerificationResult) -> str:
 
 
 RUN_SUMMARY_KEY = "multi_agent_verification.execution"
-ARITHMETIC_RULES = frozenset({
-    "arithmetic_addition", "arithmetic_subtraction",
-    "arithmetic_multiplication", "arithmetic_division",
-})
 
 
-def _factual_capabilities(result: VerificationResult) -> set[str]:
-    """Recognize current factual output contracts, regardless of checker name.
+def _track_coverage(coverage: dict, result: VerificationResult) -> None:
+    """Track declared candidates and qualifying outputs, never checker names.
 
-    Rule expected/actual fields are optional on legitimate invalid-answer
-    rejections. Evidence requires assessed claims and matching evidence rows;
-    an identity or bare decision is never a coverage certificate.
+    Runtime availability means that this request returned a result from a
+    declared or output-qualified candidate. Abstention still cannot cover a
+    requirement, and unattempted candidates are never observed available.
     """
-    metadata = result.metadata or {}
-    if is_abstention(result) or vote_confidence(result) == 0:
-        return set()
-    decision = metadata.get("decision")
-    if decision not in {"SUPPORT", "REJECT"}:
-        return set()
-    capabilities = set()
-    rule = metadata.get("rule")
-    if (metadata.get("rule_kind") == "factual"
-            and isinstance(rule, str) and rule in ARITHMETIC_RULES):
-        capabilities.add("arithmetic")
-    label = "entailment" if decision == "SUPPORT" else "contradiction"
-    rows = metadata.get("supporting" if result.passed else "contradicting")
-    opposite = metadata.get("contradicting" if result.passed else "supporting")
-    claims = metadata.get("claim_decisions")
-    if (metadata.get("nli_label") == label and metadata.get("unsure_reason") is None
-            and isinstance(rows, list) and rows
-            and any(isinstance(row, dict) and row.get("nli_label") == label for row in rows)
-            and isinstance(claims, list) and claims):
-        # Support requires every claim; rejection needs one decisive claim.
-        directions = [c.get("decision") for c in claims if isinstance(c, dict)]
-        if ((decision == "SUPPORT" and len(directions) == len(claims)
-                and all(d == "SUPPORT" for d in directions) and not opposite)
-                or (decision == "REJECT" and "REJECT" in directions)):
-            capabilities.add("direct_fact")
-    return capabilities
-
-
-def _track_coverage(coverage: dict, result: VerificationResult, mapping: dict) -> None:
     qualified = _factual_capabilities(result)
-    metadata = result.metadata or {}
-    rule = metadata.get("rule")
     for capability, row in coverage.items():
-        candidate = (result.verifier_name in {
-            "evidence" if capability == "direct_fact" else "rule", mapping.get(capability),
-        } or capability in qualified
-            or (capability == "direct_fact" and "claim_decisions" in metadata)
-            or (capability == "arithmetic" and isinstance(rule, str)
-                and rule in ARITHMETIC_RULES))
-        if not candidate:
+        if result.verifier_name not in row["planned_candidates"] and capability not in qualified:
             continue
+        row["runtime_available"].append(result.verifier_name)
         row["available"] = True
         if result.verifier_name in row["unattempted"]:
             row["unattempted"].remove(result.verifier_name)
+        if not row["achieved_contract"]:
+            # A directional vote is not a certificate for semantic/consistency,
+            # arbitrary logic, or an unrecognized requirement.
+            row["attempts"].append({"verifier": result.verifier_name, "state": "no_achieved_contract"})
+            continue
         state = ("directional" if capability in qualified else
                  "abstained" if is_abstention(result) else
                  "zero_confidence" if vote_confidence(result) == 0 else "unproven")
