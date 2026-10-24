@@ -6,8 +6,12 @@ milliseconds. The second part loads the real models once and checks the
 tiny ``data/test_evidence_corpus.json`` end to end.
 """
 
+import ast
+import inspect
+
 import pytest
 
+import app.verifiers.evidence_verifier as evidence_verifier
 from app.verifiers.evidence_verifier import (
     NO_RELEVANT_EVIDENCE_REASON,
     EvidenceVerifier,
@@ -106,6 +110,20 @@ def test_verifier_handles_every_pipeline_shape(shape):
 # ----------------------------------------------------------------------
 # Relevance gate (issue 6)
 # ----------------------------------------------------------------------
+
+def test_topic_filter_methods_each_have_one_authoritative_definition():
+    tree = ast.parse(inspect.getsource(evidence_verifier))
+    verifier = next(
+        node for node in tree.body
+        if isinstance(node, ast.ClassDef) and node.name == "EvidenceVerifier"
+    )
+    names = [
+        node.name for node in verifier.body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    ]
+    for name in ("anchor_weights", "topic_coverage", "select_on_topic", "_discard_reason"):
+        assert names.count(name) == 1
+
 
 def test_best_hit_below_floor_abstains_without_running_nli():
     retriever = FakeRetriever([chunk("India", "New Delhi is the capital of India.", 0.20)])

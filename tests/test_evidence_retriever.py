@@ -1,7 +1,10 @@
+import ast
+import inspect
 import json
 
 import pytest
 
+import app.verifiers.evidence_retriever as evidence_retriever
 from app.verifiers.evidence_retriever import EvidenceRetriever, content_terms
 
 FULL_CORPUS = "data/evidence_corpus.json"
@@ -88,6 +91,20 @@ def test_content_terms_drops_stopwords_and_keeps_numbers():
     assert content_terms("Who won the 2010 UEFA Europa League Final?") == {
         "won", "2010", "uefa", "europa", "league", "final",
     }
+
+
+def test_content_terms_normalizes_case_and_punctuation():
+    assert content_terms("Hamlet? HAMLET. hamlet!") == {"hamlet"}
+
+
+def test_content_terms_has_one_authoritative_definition():
+    tree = ast.parse(inspect.getsource(evidence_retriever))
+    definitions = [
+        node for node in tree.body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        and node.name == "content_terms"
+    ]
+    assert len(definitions) == 1
 
 
 def test_term_weights_rank_rare_terms_above_common_ones():

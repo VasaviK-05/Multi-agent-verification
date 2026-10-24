@@ -133,15 +133,6 @@ def _content_counts(text: str) -> Counter[str]:
     )
 
 
-def content_terms(text: str) -> set[str]:
-    """Return normalized terms from text."""
-    return {
-        term
-        for term in text.lower().split()
-        if term
-    }
-
-
 class EvidenceRetriever:
     """Retrieve relevant evidence chunks from a FAISS index."""
 
@@ -174,7 +165,7 @@ class EvidenceRetriever:
         )[:12]
 
         if index_dir is None:
-            index_dir = self.corpus_path.parent / "articles_13083_index"
+            index_dir = self.corpus_path.parent / "evidence_index" / self.corpus_path.stem
 
         self.index_dir = Path(index_dir)
         self.index_path = self.index_dir / "faiss.index"
