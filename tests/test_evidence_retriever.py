@@ -83,6 +83,38 @@ def test_scores_are_cosine_similarities():
     assert results[0]["score"] >= results[-1]["score"]
 
 
+def test_diversity_prefers_distinct_articles_before_overlapping_chunks():
+    retriever = object.__new__(EvidenceRetriever)
+    retriever.chunks = [
+        {"article_id": "a"},
+        {"article_id": "a"},
+        {"article_id": "b"},
+        {"article_id": "c"},
+    ]
+
+    assert retriever._diverse_ids([0, 1, 2, 3], 3) == [0, 2, 3]
+    assert retriever._diverse_ids([0, 1, 2, 3], 4) == [0, 2, 3, 1]
+
+
+def test_lexical_ranking_prefers_compact_relation_entity_coverage():
+    retriever = object.__new__(EvidenceRetriever)
+    retriever.chunks = [
+        {
+            "title": "Scattered",
+            "text": "France " + "filler " * 100 + "capital capital capital",
+        },
+        {
+            "title": "Direct",
+            "text": "Paris is the capital city of France.",
+        },
+    ]
+    retriever._postings = None
+    retriever._doc_lengths = []
+    retriever._avgdl = 0.0
+
+    assert retriever._lexical_top("What is the capital of France?", 2)[0][0] == 1
+
+
 # ----------------------------------------------------------------------
 # Term statistics for the topic gate
 # ----------------------------------------------------------------------

@@ -276,6 +276,8 @@ class EvidenceVerifier(BaseVerifier):
         if nli is None:
             nli = default_nli_pipeline()
         self.nli = nli
+        self.nli_tokenizer = getattr(nli, "tokenizer", None)
+        self.nli_max_length = self._nli_max_length(nli)
         self.nli_label_map = self._check_label_map(nli)
 
     @property
@@ -375,12 +377,13 @@ class EvidenceVerifier(BaseVerifier):
         prefix = f"{title}. " if title else ""
         windows = []
         for text in premises:
-            window = self._nli_window(text, claim)
-            if prefix and text.startswith(prefix) and self._is_strong(window, "entailment"):
-                bare = self._nli_window(text[len(prefix) :], claim)
-                if self._is_strong(bare, "contradiction"):
-                    window = {**bare, "premise": text, "title_dependent": True}
-            windows.append(window)
+            for bounded in self._token_windows(text, claim):
+                window = self._nli_window(bounded, claim)
+                if prefix and bounded.startswith(prefix) and self._is_strong(window, "entailment"):
+                    bare = self._nli_window(bounded[len(prefix) :], claim)
+                    if self._is_strong(bare, "contradiction"):
+                        window = {**bare, "premise": bounded, "title_dependent": True}
+                windows.append(window)
         chosen = self._choose_window(windows)
         label = chosen["nli_label"]
         body = chosen["premise"][len(prefix) :] if prefix and chosen["premise"].startswith(prefix) else chosen["premise"]
@@ -401,6 +404,7 @@ class EvidenceVerifier(BaseVerifier):
                     "premise": w["premise"],
                     "nli_label": w["nli_label"],
                     "probabilities": w["probabilities"],
+                    "token_count": w.get("token_count"),
                     "title_dependent": w.get("title_dependent", False),
                 }
                 for w in windows
@@ -412,13 +416,87 @@ class EvidenceVerifier(BaseVerifier):
         """The chunk's provenance fields; None for any the retriever did not supply."""
         return {field: evidence.get(field) for field in SOURCE_FIELDS}
 
+    @staticmethod
+    def _nli_max_length(nli: Any) -> int | None:
+        """Return the smallest usable tokenizer/model input limit."""
+        tokenizer = getattr(nli, "tokenizer", None)
+        config = getattr(getattr(nli, "model", None), "config", None)
+        candidates = [
+            getattr(tokenizer, "model_max_length", None),
+            getattr(config, "max_position_embeddings", None),
+        ]
+        usable = [
+            int(value) for value in candidates
+            if isinstance(value, (int, float)) and 2 < value < 1_000_000
+        ]
+        return min(usable) if usable else None
+
+    def _token_windows(self, premise: str, claim: str) -> list[str]:
+        """Split a premise into overlapping windows that fit with the claim."""
+        tokenizer = self.nli_tokenizer
+        limit = self.nli_max_length
+        if tokenizer is None or limit is None:
+            return [premise]
+
+        backend = getattr(tokenizer, "backend_tokenizer", None)
+        if backend is not None:
+            claim_tokens = list(backend.encode(claim, add_special_tokens=False).ids)
+            premise_encoding = backend.encode(premise, add_special_tokens=False)
+            premise_tokens = list(premise_encoding.ids)
+            offsets = list(premise_encoding.offsets)
+        else:
+            claim_tokens = tokenizer.tokenize(claim)
+            premise_tokens = tokenizer.tokenize(premise)
+            offsets = None
+        special = int(tokenizer.num_special_tokens_to_add(pair=True))
+        budget = limit - len(claim_tokens) - special
+        if budget < 1:
+            raise ValueError(
+                f"NLI claim requires {len(claim_tokens) + special} tokens, "
+                f"which leaves no premise capacity within model limit {limit}."
+            )
+
+        if len(premise_tokens) <= budget:
+            return [premise]
+
+        overlap = min(32, max(1, budget // 8))
+        step = max(1, budget - overlap)
+        windows = []
+        for start in range(0, len(premise_tokens), step):
+            tokens = premise_tokens[start : start + budget]
+            if not tokens:
+                break
+            if offsets:
+                first, last = offsets[start], offsets[start + len(tokens) - 1]
+                windows.append(premise[first[0] : last[1]])
+            else:
+                windows.append(tokenizer.convert_tokens_to_string(tokens))
+            if start + budget >= len(premise_tokens):
+                break
+        return windows
+
     def _nli_window(self, premise: str, claim: str) -> dict:
-        probabilities, shape = parse_nli_output(self.nli({"text": premise, "text_pair": claim}))
+        inputs = {"text": premise, "text_pair": claim}
+        token_count = None
+        if self.nli_tokenizer is not None and self.nli_max_length is not None:
+            encoded = self.nli_tokenizer(
+                premise,
+                claim,
+                add_special_tokens=True,
+                truncation=False,
+            )
+            token_count = len(encoded["input_ids"])
+            if token_count > self.nli_max_length:
+                raise AssertionError(
+                    f"NLI pair has {token_count} tokens; model limit is {self.nli_max_length}"
+                )
+        probabilities, shape = parse_nli_output(self.nli(inputs))
         return {
             "premise": premise,
             "nli_label": max(probabilities, key=probabilities.get),
             "probabilities": probabilities,
             "nli_output_shape": shape,
+            "token_count": token_count,
         }
 
     def _is_strong(self, window: dict, label: str) -> bool:
@@ -435,20 +513,59 @@ class EvidenceVerifier(BaseVerifier):
 
     @staticmethod
     def is_about_subject(evidence: dict, subject_terms: set[str]) -> bool:
-        """True unless the article title clearly identifies a different subject.
+        """True when one local passage establishes the question's subject.
 
-        A matching title is sufficient. When a title is absent or generic,
-        the body must itself cover a majority of the question/answer/claim
-        terms, with at least two matches. This keeps explicit controlled
-        claims eligible for NLI/conflict aggregation without admitting an
-        unrelated passage merely because it shares one common word.
+        A title must cover all subject terms to establish relevance alone.
+        Otherwise the supplied passage must cover a majority with at least
+        two matches. Callers pass individual premise windows, not the full
+        article, so unrelated sentences cannot jointly satisfy the relation.
         """
         title_terms = content_terms(evidence.get("title") or "")
-        if not title_terms or title_terms <= subject_terms:
+        if subject_terms and subject_terms <= title_terms:
             return True
         body_terms = content_terms(evidence.get("text") or "")
         shared = body_terms & subject_terms
         return len(shared) >= 2 and len(shared) / max(len(subject_terms), 1) > 0.5
+
+    @staticmethod
+    def relation_entity_terms(question: str, template: str) -> tuple[set[str], str | None]:
+        """Return relation terms and the requested entity for supported fact templates."""
+        cleaned = factual_question(question).strip().rstrip("?")
+        if template == "capital":
+            match = re.match(r"what is the capital of (.+)$", cleaned, re.IGNORECASE)
+            if match:
+                return {"capital"}, match.group(1).strip()
+        if template == "who":
+            match = re.match(r"who (.+)$", cleaned, re.IGNORECASE)
+            if match:
+                words = match.group(1).split()
+                relation = content_terms(words[0]) if words else set()
+                entity = " ".join(words[1:]).strip() if len(words) > 1 else None
+                return relation, entity
+        return set(), None
+
+    @staticmethod
+    def contains_unmodified_entity(text: str, entity: str | None) -> bool:
+        """Match an entity phrase without treating a longer proper name as identical."""
+        if not entity:
+            return True
+        pattern = re.compile(rf"\b{re.escape(entity)}\b", re.IGNORECASE)
+        for match in pattern.finditer(text):
+            prefix = text[: match.start()]
+            if prefix.endswith("-"):
+                continue
+            previous = re.findall(r"[^\W\d_]+", prefix)
+            if previous and entity[:1].isupper():
+                if previous[-1][:1].isupper():
+                    continue
+                if (
+                    previous[-1].lower() in {"de", "del", "la", "le", "of", "the"}
+                    and len(previous) > 1
+                    and previous[-2][:1].isupper()
+                ):
+                    continue
+            return True
+        return False
 
     # ------------------------------------------------------------------
     # Relevance and aggregation
@@ -527,6 +644,10 @@ class EvidenceVerifier(BaseVerifier):
         still reach NLI to be able to contradict it.
         """
         anchors = self.anchor_weights(question, claim, template)
+        subject_terms = content_terms(
+            claim if template == SENTENCE_TEMPLATE else factual_question(question)
+        )
+        relation_terms, entity = self.relation_entity_terms(question, template)
         required_numbers = {
             term for term in content_terms(factual_question(question)) if term.isdigit()
         } & set(anchors)
@@ -536,11 +657,54 @@ class EvidenceVerifier(BaseVerifier):
             topic = self.topic_coverage(
                 anchors, required_numbers, evidence, evidence.get("text", "")
             )
+            title = str(evidence.get("title") or "").strip()
+            prefix = f"{title}. " if title else ""
+            bare_windows = [
+                window[len(prefix) :] if prefix and window.startswith(prefix) else window
+                for window in premise
+            ]
+            local_sentences = [
+                sentence.strip()
+                for window in bare_windows
+                for sentence in _SENTENCE_BOUNDARY.split(window)
+                if sentence.strip()
+            ]
+            lexical_subject = any(
+                self.contains_unmodified_entity(sentence, entity)
+                and (
+                    (bool(relation_terms) and relation_terms <= content_terms(sentence))
+                    or self.is_about_subject(
+                        {**evidence, "title": "", "text": sentence}, subject_terms
+                    )
+                )
+                for sentence in local_sentences
+            )
+            local_terms = content_terms(" ".join(bare_windows))
+            entity_present = any(
+                re.search(rf"\b{re.escape(entity)}\b", window, re.IGNORECASE)
+                for window in bare_windows
+            ) if entity else True
+            semantic_subject = (
+                float(evidence["score"]) >= self.min_retrieval_score
+                and topic["topic_coverage"] >= self.min_topic_coverage
+                and entity_present
+                and not (relation_terms & local_terms)
+            )
+            topic["about_subject"] = lexical_subject or semantic_subject
+            topic["eligibility_basis"] = (
+                "lexical_subject" if lexical_subject
+                else "semantic_relevance" if semantic_subject
+                else None
+            )
             candidates.append((evidence, premise, topic))
 
         passing = [
             c for c in candidates
-            if not c[2]["missing_numbers"] and c[2]["topic_coverage"] >= self.min_topic_coverage
+            if (
+                not c[2]["missing_numbers"]
+                and c[2]["topic_coverage"] >= self.min_topic_coverage
+                and c[2]["about_subject"]
+            )
         ]
         best = max((c[2]["topic_coverage"] for c in passing), default=0.0)
         on_topic = [c for c in passing if c[2]["topic_coverage"] >= best - self.topic_margin]
@@ -565,6 +729,8 @@ class EvidenceVerifier(BaseVerifier):
             return f"missing number(s) from the question: {', '.join(topic['missing_numbers'])}"
         if topic["topic_coverage"] < self.min_topic_coverage:
             return f"topic coverage {topic['topic_coverage']:.2f} below {self.min_topic_coverage:.2f}"
+        if not topic.get("about_subject", True):
+            return OFF_SUBJECT_REASON
         return f"topic coverage {topic['topic_coverage']:.2f} more than {self.topic_margin:.2f} below best {best:.2f}"
 
     def _strong(self, rows: list[dict], label: str) -> list[dict]:
@@ -677,11 +843,14 @@ class EvidenceVerifier(BaseVerifier):
         claims = self.claim_generator.generate_claims(question, answer)
         claim_results: list[dict] = []
         any_retrieved = False
-        subject_terms = content_terms(factual_question(question)) | content_terms(answer)
 
         for position, item in enumerate(claims):
             claim = item.get("hypothesis") or item["claim"]
-            query = f"{factual_question(question)} {claim}"
+            query = (
+                f"{factual_question(question)} {claim}"
+                if item["template"] == SENTENCE_TEMPLATE
+                else factual_question(question)
+            )
 
             t0 = time.perf_counter()
             retrieved = self.retriever.retrieve(query, k=self.top_k)
@@ -719,7 +888,6 @@ class EvidenceVerifier(BaseVerifier):
                 {
                     **self.score_evidence(evidence, claim, premise),
                     **topic,
-                    "about_subject": self.is_about_subject(evidence, subject_terms | content_terms(claim)),
                 }
                 for evidence, premise, topic in on_topic
             ]
