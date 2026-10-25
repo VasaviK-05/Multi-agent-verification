@@ -1,4 +1,3 @@
-
 """PostgreSQL repository for validation-level audit records."""
 
 import json
@@ -23,6 +22,8 @@ def create_audit(
     execution_contract: dict | None = None,
     reputation_snapshot: dict | None = None,
     reputation_snapshot_id: str | None = None,
+    selection_plan: dict | None = None,
+    run_summary: dict | None = None,
 ) -> dict:
     """Create an audit for an existing validation record."""
     conn = get_connection()
@@ -40,11 +41,14 @@ def create_audit(
                     selected_strategy,
                     execution_contract,
                     reputation_snapshot,
-                    reputation_snapshot_id
+                    reputation_snapshot_id,
+                    selection_plan,
+                    run_summary
                 )
                 VALUES (
                     %s, %s, %s, 'started', %s, %s,
-                    %s::jsonb, %s::jsonb, %s
+                    %s::jsonb, %s::jsonb, %s,
+                    %s::jsonb, %s::jsonb
                 )
                 RETURNING audit_id, validation_id, run_status, started_at
                 """,
@@ -61,6 +65,8 @@ def create_audit(
                     str(UUID(reputation_snapshot_id))
                     if reputation_snapshot_id
                     else None,
+                    _json(selection_plan or {}),
+                    _json(run_summary or {}),
                 ),
             )
             row = cursor.fetchone()
@@ -89,6 +95,8 @@ def update_audit(
     coverage_outcomes: dict | None = None,
     execution_costs: dict | None = None,
     failure_details: list[dict] | None = None,
+    selection_plan: dict | None = None,
+    run_summary: dict | None = None,
 ) -> None:
     """Update the audit when the validation finishes or fails."""
     if run_status not in {"completed", "failed", "partial"}:
@@ -109,7 +117,9 @@ def update_audit(
                     decision_summary = %s::jsonb,
                     coverage_outcomes = %s::jsonb,
                     execution_costs = %s::jsonb,
-                    failure_details = %s::jsonb
+                    failure_details = %s::jsonb,
+                    selection_plan = COALESCE(%s::jsonb, selection_plan),
+                    run_summary = COALESCE(%s::jsonb, run_summary)
                 WHERE validation_id = %s
                 RETURNING audit_id
                 """,
@@ -121,6 +131,8 @@ def update_audit(
                     _json(coverage_outcomes or {}),
                     _json(execution_costs or {}),
                     _json(failure_details or []),
+                    _json(selection_plan) if selection_plan is not None else None,
+                    _json(run_summary) if run_summary is not None else None,
                     str(UUID(validation_id)),
                 ),
             )
@@ -150,6 +162,7 @@ def get_audit(validation_id: str) -> dict | None:
                        run_status, started_at, completed_at, policy_version,
                        selected_strategy, execution_contract,
                        reputation_snapshot, reputation_snapshot_id,
+                       selection_plan, run_summary,
                        selected_verifiers, ranking_explanations,
                        decision_summary, coverage_outcomes, execution_costs,
                        failure_details, created_at, updated_at
@@ -167,18 +180,28 @@ def get_audit(validation_id: str) -> dict | None:
             "audit_id", "validation_id", "question_id", "session_id",
             "run_status", "started_at", "completed_at", "policy_version",
             "selected_strategy", "execution_contract", "reputation_snapshot",
-            "reputation_snapshot_id", "selected_verifiers",
-            "ranking_explanations", "decision_summary", "coverage_outcomes",
-            "execution_costs", "failure_details", "created_at", "updated_at",
+            "reputation_snapshot_id", "selection_plan", "run_summary",
+            "selected_verifiers", "ranking_explanations",
+            "decision_summary", "coverage_outcomes", "execution_costs",
+            "failure_details", "created_at", "updated_at",
         )
         result = dict(zip(names, row))
 
-        for key in ("audit_id", "validation_id", "session_id",
-                    "reputation_snapshot_id"):
+        for key in (
+            "audit_id",
+            "validation_id",
+            "session_id",
+            "reputation_snapshot_id",
+        ):
             if result[key] is not None:
                 result[key] = str(result[key])
 
-        for key in ("started_at", "completed_at", "created_at", "updated_at"):
+        for key in (
+            "started_at",
+            "completed_at",
+            "created_at",
+            "updated_at",
+        ):
             if result[key] is not None:
                 result[key] = result[key].isoformat()
 

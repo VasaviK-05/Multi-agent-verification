@@ -182,6 +182,8 @@ def test_get_audit_returns_record(monkeypatch):
             {},  # execution_contract
             {"verifier_a": 0.9},  # reputation_snapshot
             None,  # reputation_snapshot_id
+            {"candidates": ["verifier_a"]},  # selection_plan
+            {"coverage": {"direct_fact": True}},  # run_summary
             ["verifier_a"],
             [{"verifier": "verifier_a", "utility": 0.9}],
             {"status": "accepted"},
@@ -206,6 +208,8 @@ def test_get_audit_returns_record(monkeypatch):
     assert connection.commits == 0
     assert connection.closed
     assert connection.fake_cursor.closed
+    assert result["selection_plan"] == {"candidates": ["verifier_a"]}
+    assert result["run_summary"] == {"coverage": {"direct_fact": True}}
 
 
 def test_get_audit_returns_none_when_missing(monkeypatch):
@@ -217,3 +221,27 @@ def test_get_audit_returns_none_when_missing(monkeypatch):
     assert result is None
     assert connection.closed
     assert connection.fake_cursor.closed
+
+def test_update_audit_persists_selection_plan_and_run_summary(monkeypatch):
+    connection = FakeConnection([("audit-1",)])
+    monkeypatch.setattr(repository, "get_connection", lambda: connection)
+
+    selection_plan = {"candidates": ["verifier_a"]}
+    run_summary = {"coverage": {"direct_fact": True}}
+
+    repository.update_audit(
+        VALIDATION_ID,
+        run_status="completed",
+        selection_plan=selection_plan,
+        run_summary=run_summary,
+    )
+
+    query, params = connection.fake_cursor.executed[0]
+
+    assert "selection_plan = COALESCE(%s::jsonb, selection_plan)" in query
+    assert "run_summary = COALESCE(%s::jsonb, run_summary)" in query
+    assert params[7] == '{"candidates": ["verifier_a"]}'
+    assert params[8] == '{"coverage": {"direct_fact": true}}'
+    assert params[9] == VALIDATION_ID
+    assert connection.commits == 1
+    assert connection.rollbacks == 0

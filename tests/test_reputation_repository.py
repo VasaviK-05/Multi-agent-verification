@@ -400,3 +400,39 @@ def test_save_reputation_state_and_rows_rolls_back_on_failure(monkeypatch):
     assert connection.commits == 0
     assert connection.rollbacks == 1
     assert connection.closed
+
+
+def test_load_feedback_events_preserves_correctness_labels(monkeypatch):
+    connection = FakeConnection([
+        (
+            "validation-true",
+            True,
+            "medical",
+            "semantic",
+            0.9,
+            True,
+            "Supported by evidence",
+            {},
+            1,
+        ),
+        (
+            "validation-false",
+            False,
+            "medical",
+            "semantic",
+            0.2,
+            False,
+            "Contradicted by evidence",
+            {},
+            1,
+        ),
+    ])
+    monkeypatch.setattr(repository, "get_connection", lambda: connection)
+
+    events = repository.load_feedback_events()
+
+    assert len(events) == 2
+    assert events[0]["answer_is_correct"] is True
+    assert events[1]["answer_is_correct"] is False
+    assert connection.closed
+    assert connection.fake_cursor.closed

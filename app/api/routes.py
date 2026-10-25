@@ -67,10 +67,14 @@ def validate(request: ValidationRequest):
     )
 
     # The validation record now exists, so its audit can be created.
+    initial_summary = getattr(result, "execution_audit", None) or {}
+    initial_plan = initial_summary.get("selection_plan") or {}
+
     create_audit(
         validation_id=result.validation_id,
         question_id=request.question_id,
         session_id=request.session_id,
+        policy_version=initial_plan.get("policy_version"),
     )
 
     try:
@@ -103,18 +107,18 @@ def validate(request: ValidationRequest):
             pass
 
         raise
-
-
     audit_context = _validation_service.get_validation_context(
         result.validation_id
     )
     run_summary = audit_context.run_summary or {}
+    selection_plan = run_summary.get("selection_plan") or {}
+    candidates = selection_plan.get("candidates") or []
 
     update_audit(
         result.validation_id,
         run_status="completed",
         selected_verifiers=result.selected_verifiers or [],
-        ranking_explanations=[],
+        ranking_explanations=candidates,
         coverage_outcomes={
             "coverage": run_summary.get("coverage", {}),
             "missing_coverage": run_summary.get("missing_coverage", []),
@@ -132,9 +136,30 @@ def validate(request: ValidationRequest):
             "minimum_contributors": run_summary.get("minimum_contributors"),
             "contributors": run_summary.get("contributors"),
             "numerical_decision": run_summary.get("numerical_decision", {}),
+            "selection_plan": selection_plan,
+            "attempted_verifiers": run_summary.get("attempted_verifiers", []),
+            "unavailable_verifiers": run_summary.get("unavailable_verifiers", []),
+            "runtime_availability": run_summary.get("runtime_availability", {}),
+            "stopping_policy_vetoes": run_summary.get(
+                "stopping_policy_vetoes", []
+            ),
         },
-    )
+        execution_costs={
+            "candidate_estimated_costs": {
+                candidate["verifier_name"]: candidate.get("cost")
+                for candidate in candidates
+                if candidate.get("verifier_name") is not None
+            },
+            "candidate_estimated_latencies": {
+                candidate["verifier_name"]: candidate.get("latency")
+                for candidate in candidates
+                if candidate.get("verifier_name") is not None
+            },
+        },
 
+        selection_plan=selection_plan,
+        run_summary=run_summary,
+    )
 
     return result
 
@@ -276,10 +301,14 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             signed_score=validation_result.signed_score,
         )
 
+        initial_summary = validation_result.execution_audit or {}
+        initial_plan = initial_summary.get("selection_plan") or {}
+
         create_audit(
             validation_id=validation_id,
             question_id=question_id,
             session_id=request.session_id,
+            policy_version=initial_plan.get("policy_version"),
         )
         audit_created = True
 
@@ -297,21 +326,21 @@ def generate_and_validate(request: GenerateAndValidateRequest):
                     label=validation_result.ground_truth.label,
                     source=validation_result.ground_truth.source,
                 )
-
             audit_context = _validation_service.get_validation_context(
-                validation_id
+                validation_result.validation_id
             )
             run_summary = audit_context.run_summary or {}
+            selection_plan = run_summary.get("selection_plan") or {}
+            candidates = selection_plan.get("candidates") or []
 
             update_audit(
                 validation_id,
                 run_status="completed",
                 selected_verifiers=validation_result.selected_verifiers or [],
+                ranking_explanations=candidates,
                 coverage_outcomes={
                     "coverage": run_summary.get("coverage", {}),
-                    "missing_coverage": run_summary.get(
-                        "missing_coverage", []
-                    ),
+                    "missing_coverage": run_summary.get("missing_coverage", []),
                 },
                 decision_summary={
                     "final_status": validation_result.final_status,
@@ -323,15 +352,34 @@ def generate_and_validate(request: GenerateAndValidateRequest):
                     "last_stopping_assessment": run_summary.get(
                         "last_stopping_assessment"
                     ),
-                    "minimum_contributors": run_summary.get(
-                        "minimum_contributors"
-                    ),
+                    "minimum_contributors": run_summary.get("minimum_contributors"),
                     "contributors": run_summary.get("contributors"),
-                    "numerical_decision": run_summary.get(
-                        "numerical_decision", {}
+                    "numerical_decision": run_summary.get("numerical_decision", {}),
+                    "selection_plan": selection_plan,
+                    "attempted_verifiers": run_summary.get("attempted_verifiers", []),
+                    "unavailable_verifiers": run_summary.get("unavailable_verifiers", []),
+                    "runtime_availability": run_summary.get("runtime_availability", {}),
+                    "stopping_policy_vetoes": run_summary.get(
+                        "stopping_policy_vetoes", []
                     ),
                 },
+                execution_costs={
+                    "candidate_estimated_costs": {
+                        candidate["verifier_name"]: candidate.get("cost")
+                        for candidate in candidates
+                        if candidate.get("verifier_name") is not None
+                    },
+                    "candidate_estimated_latencies": {
+                        candidate["verifier_name"]: candidate.get("latency")
+                        for candidate in candidates
+                        if candidate.get("verifier_name") is not None
+                    },
+                },
+
+                selection_plan=selection_plan,
+                run_summary=run_summary,
             )
+
 
         except Exception:
             # If audit creation succeeded, record the persistence failure.
