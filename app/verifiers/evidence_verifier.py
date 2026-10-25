@@ -223,6 +223,13 @@ _GENERIC_QUERY_TERMS = frozenset(
     which where when used use
     """.split()
 )
+# Terms that name the requested property, rather than the event or subject.
+_GENERIC_EVENT_TERMS = frozenset(
+    """
+    start starts ending ends date dates score scores record records vote
+    percentage percent elected election pope regular season
+    """.split()
+)
 # These identify the people or place, but are too broad to pair two dates as
 # the same property (for example, an election date and a consecration date).
 _GENERIC_PROPERTY_TERMS = frozenset({"bishop", "pope", "rome", "cardinal"})
@@ -254,6 +261,10 @@ _DATE_DMY = re.compile(
     rf"\b(\d{{1,2}})\s+({_MONTH_ALT})\s+(\d{{4}})\b",
     re.IGNORECASE,
 )
+_DATE_DMY_PARTIAL = re.compile(
+    rf"\b(\d{{1,2}})\s+({_MONTH_ALT})\b",
+    re.IGNORECASE,
+)
 _DATE_MDY = re.compile(
     rf"\b({_MONTH_ALT})\s+(\d{{1,2}})(?:st|nd|rd|th)?,?\s+(\d{{4}})\b",
     re.IGNORECASE,
@@ -282,6 +293,8 @@ _RECORD_CUES = frozenset(
     """.split()
 )
 _STREAK_CUES = frozenset({"straight", "consecutive", "streak"})
+_RUNNING_RECORD_CUES = frozenset({"began", "dropped", "improved", "reached", "rose"})
+_POSTSEASON_CUES = frozenset({"playoff", "playoffs", "divisional", "super", "bowl"})
 _WHO_AUXILIARIES = frozenset(
     {"was", "were", "is", "are", "did", "does", "do", "has", "have", "had"}
 )
@@ -294,11 +307,25 @@ _GENERIC_PROPER = frozenset(
 )
 
 
-def _context_terms(text: str, start: int, end: int, radius: int = 48) -> set[str]:
-    """Content terms near a span; used to pair a value with a property."""
-    left = max(0, start - radius)
-    right = min(len(text), end + radius)
-    return content_terms(text[left:right]) - _CONTEXT_GENERIC
+def _context_terms(text: str, start: int, end: int, radius: int = 96) -> set[str]:
+    """Content terms near a value, bounded to its sentence for property pairing."""
+    sentence_start = max(
+        (text.rfind(mark, 0, start) for mark in ".!;\n"),
+        default=-1,
+    ) + 1
+    stops = [position for mark in ".!;\n" if (position := text.find(mark, end)) >= 0]
+    sentence_end = min(stops, default=len(text))
+    left = max(sentence_start, start - radius)
+    right = min(sentence_end, end + radius)
+    excerpt = text[left:right]
+    terms = content_terms(excerpt) - _CONTEXT_GENERIC
+    # Preserve range connectors so two endpoints can be paired when the
+    # question explicitly asks for a start and end date.
+    terms.update(
+        term for term in ("from", "to")
+        if re.search(rf"\b{term}\b", excerpt, re.IGNORECASE)
+    )
+    return terms
 
 
 def extract_quantities(text: str) -> list[dict]:
@@ -333,6 +360,14 @@ def extract_quantities(text: str) -> list[dict]:
         add(
             "date",
             (int(match.group(3)), _MONTHS[match.group(2).lower()], int(match.group(1))),
+            match.group(0),
+            match.start(),
+            match.end(),
+        )
+    for match in _DATE_DMY_PARTIAL.finditer(source):
+        add(
+            "date",
+            (None, _MONTHS[match.group(2).lower()], int(match.group(1))),
             match.group(0),
             match.start(),
             match.end(),
@@ -430,6 +465,7 @@ def property_cues(question: str, claim: str = "") -> set[str]:
             and token not in STOPWORDS
             and token not in _GENERIC_QUERY_TERMS
             and token not in _GENERIC_PROPERTY_TERMS
+            and token not in _MONTHS
         ):
             cues.add(token)
     return cues
@@ -453,17 +489,38 @@ def same_property(left: dict, right: dict, question: str = "", claim: str = "") 
             return False
         if _STREAK_CUES & left["context"] or _STREAK_CUES & right["context"]:
             return False
+        if (
+            "regular" in left["context"]
+            and _POSTSEASON_CUES & right["context"]
+        ) or (
+            "regular" in right["context"]
+            and _POSTSEASON_CUES & left["context"]
+        ):
+            return False
     cues = property_cues(question, claim)
+    if (
+        left["kind"] == right["kind"] == "date"
+        and {"start", "dates"} <= cues
+        and "to" in left["context"]
+        and {"from", "to"} <= right["context"]
+    ):
+        return True
     if not cues:
         shared = {
             term
-            for term in (left["context"] & right["context"]) - _GENERIC_QUERY_TERMS
+            for term in (left["context"] & right["context"])
+            - _GENERIC_QUERY_TERMS
+            - _GENERIC_PROPERTY_TERMS
             if not term.isdigit()
+            and term not in _MONTHS
         }
         return bool(shared)
     if left["kind"] == "record" and "regular" in cues:
         # A running weekly record is not the final regular-season result.
-        if "regular" not in left["context"] or "regular" not in right["context"]:
+        if (
+            "regular" not in right["context"]
+            and _RUNNING_RECORD_CUES & right["context"]
+        ):
             return False
     return bool(cues & left["context"] and cues & right["context"] and (cues & left["context"] & right["context"]))
 
@@ -676,7 +733,14 @@ class EvidenceVerifier(BaseVerifier):
     ) -> list[str]:
         """NLI premises for one chunk: one for a short chunk, windows for a long one."""
         text = str(evidence.get("text", ""))
-        sentences = [s.strip() for s in _SENTENCE_BOUNDARY.split(text) if s.strip()]
+        # Corpus headings and paragraph breaks are meaningful event boundaries.
+        # Keeping them separate prevents an adjacent section's date or result
+        # from contaminating a premise about the preceding fact.
+        sentences = [
+            s.strip()
+            for s in re.split(r"(?<=[.!?])\s+|\n+", text)
+            if s.strip()
+        ]
         if len(sentences) <= self.LEGACY_PREMISE_SENTENCES:
             return [self.extract_relevant_sentences(text, claim, question=question)]
 
@@ -737,6 +801,7 @@ class EvidenceVerifier(BaseVerifier):
         claim: str,
         premise: str | list[str] | None = None,
         question: str | None = None,
+        template: str = "",
     ) -> dict:
         """Run NLI for one chunk/claim pair and return a flat evidence row.
 
@@ -771,6 +836,9 @@ class EvidenceVerifier(BaseVerifier):
             claim, [self._bare_premise(chosen["premise"], title)], asked
         )
         names = self._claim_added_names(claim, asked)
+        quantity_kinds = sorted(
+            {item["kind"] for item in asserted_quantities(claim, asked)}
+        )
         names_present = (not names) or any(
             re.search(rf"\b{re.escape(name)}\b", chosen["premise"], re.IGNORECASE)
             for name in names
@@ -779,6 +847,21 @@ class EvidenceVerifier(BaseVerifier):
         holder = self._office_holder(chosen["premise"], office) if office else None
         office_holder_consistent = holder is None or any(
             name.lower() in holder.lower() for name in names
+        )
+        relation_template = "who" if question and factual_question(question).lower().startswith("who ") else template
+        relation_terms, _ = self.relation_entity_terms(question or "", relation_template)
+        bare_terms = premise_terms(self._bare_premise(chosen["premise"], title))
+        # A relation word in the title only ("papal election") does not make a
+        # nearby sentence about succession evidence for the act of electing.
+        required_relation_terms = {
+            term for term in relation_terms if len(term) >= 4 and not term.isdigit()
+        }
+        relation_aligned = not required_relation_terms or required_relation_terms <= bare_terms
+        claim_property_terms = property_cues(asked, claim)
+        quantity_scope_aligned = not (
+            "record" in quantity_kinds
+            and "regular" in claim_property_terms
+            and _POSTSEASON_CUES & bare_terms
         )
         return {
             "title": evidence.get("title"),
@@ -790,8 +873,11 @@ class EvidenceVerifier(BaseVerifier):
             "match_score": self.match_score(claim, title, body),
             "fact_score": chosen.get("fact_score"),
             "value_relation": relation,
+            "quantity_kinds": quantity_kinds,
+            "quantity_scope_aligned": quantity_scope_aligned,
             "claim_names_in_premise": names_present,
             "office_holder_consistent": office_holder_consistent,
+            "relation_aligned": relation_aligned,
             "nli_label": label,
             "nli_score": chosen["probabilities"][label],
             "probabilities": chosen["probabilities"],
@@ -1040,7 +1126,21 @@ class EvidenceVerifier(BaseVerifier):
                 rest = match.group(1).strip()
                 of_split = re.match(r"(.+?) of (.+)$", rest, re.IGNORECASE)
                 if of_split:
-                    return content_terms(of_split.group(1)), of_split.group(2).strip()
+                    entity = of_split.group(2).strip()
+                    entity = re.sub(r"^(?:the\s+)", "", entity, flags=re.IGNORECASE)
+                    entity = entity.replace("’", "'")
+                    if "'s" in entity:
+                        entity = entity.split("'s", 1)[0].strip()
+                    elif re.search(r"s'\s", entity, re.IGNORECASE):
+                        entity = re.split(r"(?<=s)'\s", entity, maxsplit=1, flags=re.IGNORECASE)[0].strip()
+                    return content_terms(of_split.group(1)), entity
+                possessive = re.match(
+                    r"(?:the\s+)?(.+?)[’']s\s+(.+?)(?:\s+in\s+\d{4})?$",
+                    rest,
+                    re.IGNORECASE,
+                )
+                if possessive:
+                    return content_terms(possessive.group(2)), possessive.group(1).strip()
                 return content_terms(rest), None
         return set(), None
 
@@ -1089,7 +1189,10 @@ class EvidenceVerifier(BaseVerifier):
         terms = {
             term
             for term in content_terms(factual_question(question))
-            if not term.isdigit() and len(term) >= 4 and term not in _GENERIC_QUERY_TERMS
+            if not term.isdigit()
+            and len(term) >= 4
+            and term not in _GENERIC_QUERY_TERMS
+            and term not in _GENERIC_EVENT_TERMS
         }
         weigh = getattr(self.retriever, "term_weights", None)
         if weigh is None or not terms:
@@ -1151,6 +1254,8 @@ class EvidenceVerifier(BaseVerifier):
         title_years = EvidenceVerifier._year_terms(title)
         if title_years and title_years.isdisjoint(question_years):
             return True
+        if EvidenceVerifier._title_covers_event(title, question_years, event_terms):
+            return False
         extra = {
             term
             for term in content_terms(title) - content_terms(factual_question(question))
@@ -1317,6 +1422,11 @@ class EvidenceVerifier(BaseVerifier):
         """Claim-focused query used only when the first pass has no on-topic hit."""
         base = factual_question(question)
         extras = self._claim_focus_terms(claim, base)
+        # Preserve paired values such as 11-5 as one retrieval token; a
+        # split query for 11 5 loses the meaning of a win-loss record.
+        for quantity in extract_quantities(claim):
+            if quantity["kind"] == "record" and quantity["raw"] not in extras:
+                extras.append(quantity["raw"])
         # Month names in date claims are useful retrieval anchors but are not
         # capitalized names in every claim template (for example, "14 August").
         for month in re.findall(r"\b[A-Za-z]+\b", claim):
@@ -1799,11 +1909,24 @@ class EvidenceVerifier(BaseVerifier):
         """
         relation = row.get("value_relation")
         if relation == "mismatch":
+            if (
+                "record" in row.get("quantity_kinds", [])
+                and not row.get("quantity_scope_aligned", True)
+            ):
+                return None
             return "contradiction"
         if relation == "match":
             return "entailment"
+        # Numeric and temporal NLI labels are unsafe when the passage has no
+        # same-property value association. Leave those cases unresolved.
+        if {"date", "record"} & set(row.get("quantity_kinds", [])):
+            return None
         if row["nli_label"] == "entailment" and row["probabilities"].get("entailment", 0.0) >= self.min_nli_score:
-            if row.get("claim_names_in_premise", True) and row.get("office_holder_consistent", True):
+            if (
+                row.get("claim_names_in_premise", True)
+                and row.get("office_holder_consistent", True)
+                and row.get("relation_aligned", True)
+            ):
                 return "entailment"
             return None
         if row["nli_label"] == "contradiction" and row["probabilities"].get("contradiction", 0.0) >= self.min_nli_score:
@@ -1826,6 +1949,11 @@ class EvidenceVerifier(BaseVerifier):
         row_score = self._row_fact_score(row)
         for support in supporters:
             if support.get("value_relation") == "match":
+                return True
+            # When the NLI contradiction window does not express the asked
+            # relation, a relation-aligned supporting passage from that same
+            # article shows the contradiction concerned another fact.
+            if not row.get("relation_aligned", True) and support.get("relation_aligned", True):
                 return True
             # A window in the same article that states the claim's added
             # names while this contradiction omits them addresses the answer
@@ -1994,7 +2122,7 @@ class EvidenceVerifier(BaseVerifier):
                 and month.lower() not in content_terms(factual_question(question))
             )
             anchor_missing = bool(answer_anchors) and not any(
-                answer_anchors & premise_terms(" ".join(premises))
+                answer_anchors <= premise_terms(" ".join(premises))
                 for _, premises, _ in on_topic
             )
             needs_answer_focused_search = (
@@ -2046,7 +2174,9 @@ class EvidenceVerifier(BaseVerifier):
             t0 = time.perf_counter()
             rows = [
                 {
-                    **self.score_evidence(evidence, claim, premise, question=question),
+                    **self.score_evidence(
+                        evidence, claim, premise, question=question, template=item["template"]
+                    ),
                     **topic,
                 }
                 for evidence, premise, topic in on_topic
