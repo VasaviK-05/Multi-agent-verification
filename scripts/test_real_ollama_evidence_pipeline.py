@@ -11,10 +11,13 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
 import urllib.request
+from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
 from typing import Any
 
@@ -61,26 +64,94 @@ NEGATIVE_CASES = [
 ]
 
 
-def ollama_generate(question: str) -> tuple[str, dict[str, Any]]:
+class GenerationStatus(str, Enum):
+    ANSWERED = "ANSWERED"
+    ABSTAINED = "ABSTAINED"
+    GENERATION_ERROR = "GENERATION_ERROR"
+
+
+@dataclass
+class GenerationOutcome:
+    status: GenerationStatus
+    answer: str | None
+    metadata: dict[str, Any]
+    error: str | None = None
+
+
+_REFUSAL_ONLY = re.compile(
+    r"^(?:sorry[,!]?\s+)?(?:i\s+(?:do not|don't|dont)\s+know|i(?:'m| am)\s+not\s+sure|"
+    r"i\s+(?:cannot|can't|cant)\s+(?:answer(?:\s+reliably)?|determine(?:\s+reliably)?)|"
+    r"i(?:'m| am)\s+(?:unable|not able)\s+to\s+(?:answer|determine)|"
+    r"unable\s+to\s+(?:answer|determine)|i\s+cannot\s+provide\s+an?\s+answer)[.!\s]*$",
+    re.IGNORECASE,
+)
+
+
+def parse_generation_response(raw: str, metadata: dict[str, Any] | None = None) -> GenerationOutcome:
+    """Validate Ollama's structured response and separate abstention from errors."""
+    meta = metadata or {}
+    try:
+        value = json.loads(raw)
+    except (TypeError, json.JSONDecodeError):
+        text = str(raw).strip()
+        if _REFUSAL_ONLY.fullmatch(text):
+            return GenerationOutcome(GenerationStatus.ABSTAINED, None, meta)
+        return GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, meta,
+                                 "Ollama response was not valid status/answer JSON")
+    if not isinstance(value, dict) or value.get("status") not in {"ANSWERED", "ABSTAINED"}:
+        return GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, meta,
+                                 "Ollama response has an invalid status schema")
+    status = GenerationStatus(value["status"])
+    answer = value.get("answer")
+    if not isinstance(answer, str):
+        return GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, meta,
+                                 "Ollama response answer must be a string")
+    answer = answer.strip()
+    if status is GenerationStatus.ABSTAINED:
+        return GenerationOutcome(status, None, meta)
+    if not answer:
+        return GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, meta,
+                                 "Ollama returned ANSWERED with an empty answer")
+    # Be tolerant of a refusal-only answer even if the model ignored the status.
+    if _REFUSAL_ONLY.fullmatch(answer):
+        return GenerationOutcome(GenerationStatus.ABSTAINED, None, meta)
+    return GenerationOutcome(GenerationStatus.ANSWERED, answer, meta)
+
+
+def verify_generation(verifier: Any, question: str, outcome: GenerationOutcome) -> Any:
+    """Only factual answers enter evidence verification."""
+    if outcome.status is not GenerationStatus.ANSWERED:
+        return None
+    return verifier.verify(question=question, answer=outcome.answer, context=None)
+
+
+def ollama_generate(question: str) -> GenerationOutcome:
     prompt = (
-        "Answer the factual question in one concise sentence. "
-        "If you do not know, say you are not sure. Do not invent sources.\n\n"
-        f"Question: {question}\nAnswer:"
+        "Answer the factual question with a concise, direct answer. Do not guess or invent facts. "
+        "If you cannot answer reliably, explicitly abstain. Return only JSON with status and answer. "
+        'Use status "ANSWERED" when providing a factual answer, or "ABSTAINED" when abstaining. '
+        'For ABSTAINED, set answer to an empty string.\n\n'
+        f"Question: {question}"
     )
+    response_schema = {"type": "object", "properties": {
+        "status": {"type": "string", "enum": ["ANSWERED", "ABSTAINED"]},
+        "answer": {"type": "string"}}, "required": ["status", "answer"], "additionalProperties": False}
     payload = json.dumps({"model": OLLAMA_MODEL, "prompt": prompt, "stream": False,
-                          "options": {"temperature": 0}}).encode("utf-8")
+                          "format": response_schema, "options": {"temperature": 0}}).encode("utf-8")
     req = urllib.request.Request(OLLAMA_URL, data=payload, headers={"Content-Type":"application/json"}, method="POST")
     try:
         with urllib.request.urlopen(req, timeout=180) as response:
             data = json.loads(response.read().decode("utf-8"))
-    except urllib.error.URLError as exc:
-        raise RuntimeError(f"Cannot reach Ollama at {OLLAMA_URL}. Start Ollama and pull {OLLAMA_MODEL}. Details: {exc}") from exc
-    answer = str(data.get("response", "")).strip()
-    if not answer:
-        raise RuntimeError(f"Ollama returned an empty answer: {data}")
-    return answer, {"model": data.get("model", OLLAMA_MODEL), "done_reason": data.get("done_reason"),
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+        return GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, {},
+                                 f"Cannot obtain a valid Ollama response at {OLLAMA_URL}: {exc}")
+    if not isinstance(data, dict):
+        return GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, {},
+                                 "Ollama returned a non-object API response")
+    metadata = {"model": data.get("model", OLLAMA_MODEL), "done_reason": data.get("done_reason"),
                     "total_duration": data.get("total_duration"), "prompt_eval_count": data.get("prompt_eval_count"),
                     "eval_count": data.get("eval_count")}
+    return parse_generation_response(data.get("response", ""), metadata)
 
 
 def as_dict(value: Any) -> Any:
@@ -119,17 +190,28 @@ def main() -> int:
     for idx, case in enumerate(cases, 1):
         print(f"\n[{idx}/{len(cases)}] {case['id']} — {case['question']}")
         try:
-            answer, ollama_meta = ollama_generate(case["question"])
-            result = verifier.verify(question=case["question"], answer=answer, context=None)
-            result_data = as_dict(result)
-            record = {**case, "ollama_answer": answer, "ollama_metadata": ollama_meta,
-                      "verifier_result": result_data, "error": None}
-            print(f"  Ollama: {answer}")
-            print(f"  Verifier: {json.dumps(result_data, ensure_ascii=False, default=str)[:1200]}")
+            generation = ollama_generate(case["question"])
         except Exception as exc:
-            record = {**case, "ollama_answer": None, "ollama_metadata": None,
-                      "verifier_result": None, "error": f"{type(exc).__name__}: {exc}"}
-            print(f"  ERROR: {record['error']}")
+            generation = GenerationOutcome(GenerationStatus.GENERATION_ERROR, None, {},
+                                           f"{type(exc).__name__}: {exc}")
+        result_data = None
+        verification_error = None
+        if generation.status is GenerationStatus.ANSWERED:
+            try:
+                result_data = as_dict(verify_generation(verifier, case["question"], generation))
+            except Exception as exc:
+                verification_error = f"{type(exc).__name__}: {exc}"
+        record = {**case, "generation_status": generation.status.value,
+                  "ollama_answer": generation.answer, "ollama_metadata": generation.metadata,
+                  "verifier_result": result_data, "generation_error": generation.error,
+                  "verification_error": verification_error, "error": verification_error}
+        print(f"  Generation: {generation.status.value}" + (f" — {generation.answer}" if generation.answer else ""))
+        if result_data is not None:
+            print(f"  Verifier: {json.dumps(result_data, ensure_ascii=False, default=str)[:1200]}")
+        elif generation.error:
+            print(f"  Generation error: {generation.error}")
+        elif verification_error:
+            print(f"  Verification error: {verification_error}")
         records.append(record)
         time.sleep(0.1)
 
@@ -153,11 +235,39 @@ def main() -> int:
         "corpus_path": str(CORPUS_PATH), "ollama_url": OLLAMA_URL, "ollama_model": OLLAMA_MODEL,
         "nli_model": nli_name, "fake_nli_used": False, "fake_retrieval_used": False,
         "total_cases": len(records), "errors": sum(r.get("error") is not None for r in records),
+        "generation_counts": {status.value: sum(r.get("generation_status") == status.value for r in records)
+                              for status in GenerationStatus},
+        "verification_counts": {label: sum((r.get("verifier_result") or {}).get("metadata", {}).get("decision") == label
+                                            for r in records) for label in ("SUPPORT", "REJECT", "UNSURE")},
+        "verification_eligible": sum(r.get("generation_status") == GenerationStatus.ANSWERED.value and r.get("expected") in {"SUPPORT", "REJECT"} for r in records),
         "cases": records,
     }
+    denominator = len(cases)
+    generated = summary["generation_counts"][GenerationStatus.ANSWERED.value]
+    abstained = summary["generation_counts"][GenerationStatus.ABSTAINED.value]
+    generation_errors = summary["generation_counts"][GenerationStatus.GENERATION_ERROR.value]
+    eligible = [r for r in records if r.get("generation_status") == GenerationStatus.ANSWERED.value
+                and r.get("expected") in {"SUPPORT", "REJECT"} and r.get("verifier_result")]
+    correct = sum((r["verifier_result"].get("metadata", {}).get("decision") == r["expected"]) for r in eligible)
+    summary.update({
+        "generated_answers": generated,
+        "abstentions": abstained,
+        "generation_errors": generation_errors,
+        "generation_rates": {
+            "answered": generated / denominator if denominator else 0.0,
+            "abstained": abstained / denominator if denominator else 0.0,
+            "generation_error": generation_errors / denominator if denominator else 0.0,
+        },
+        "verification_accuracy": {"correct": correct, "eligible": len(eligible),
+                                  "rate": correct / len(eligible) if eligible else None},
+        "incorrect_rejections": sum(r["verifier_result"].get("metadata", {}).get("decision") == "REJECT"
+                                    and r.get("expected") == "SUPPORT" for r in eligible),
+        "insufficient_evidence": sum(r["verifier_result"].get("metadata", {}).get("decision") == "UNSURE"
+                                     for r in eligible),
+    })
     out = OUTPUT_PATH
     if out.exists():
-        stamp = time.strftime("%Y%m%d-%H%M%S")
+        stamp = f"{time.strftime('%Y%m%d-%H%M%S')}-{time.time_ns()}"
         out = out.with_name(f"{out.stem}_{stamp}{out.suffix}")
     out.write_text(json.dumps(summary, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
     print(f"\nSaved results: {out}")

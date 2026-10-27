@@ -195,6 +195,17 @@ class ClaimGenerator:
         """Return (claim, template name) for a single-claim answer."""
         question = factual_question(question)
         answer = spell_out_dates(answer.strip()).rstrip(".")
+        # Passive award wording matches common source prose ("the prize was
+        # awarded to X") and avoids a brittle active-voice NLI comparison.
+        award_question = re.match(r"who\s+received\s+(?:the\s+)?(.+?)\??$", question, re.IGNORECASE)
+        received_answer = re.match(r"(.+?)\s+received\s+(?:the\s+)?(.+)$", answer, re.IGNORECASE)
+        if award_question and received_answer and re.search(
+            r"\b(?:award|prize|medal|honou?r|trophy)\b", award_question.group(1), re.IGNORECASE
+        ):
+            requested = set(re.findall(r"[a-z0-9]+", award_question.group(1).lower()))
+            answered = set(re.findall(r"[a-z0-9]+", received_answer.group(2).lower()))
+            if requested and requested <= answered:
+                answer = f"{received_answer.group(2)} was awarded to {received_answer.group(1)}"
         if is_statement(answer):
             # "William Shakespeare wrote Romeo and Juliet." is already a claim;
             # a template would repeat the question inside it.
@@ -244,7 +255,7 @@ class ClaimGenerator:
         ``hypothesis`` is the text to retrieve and test with NLI: the claim,
         with a leading pronoun replaced by the first sentence's subject.
         """
-        sentences = [s.strip() for s in _SENTENCE_SPLIT.split(answer.strip()) if s.strip()]
+        sentences = self._split_sentences(answer)
         if len(sentences) <= 1:
             claim, template = self.generate_with_template(question, answer)
             clauses = split_coordinated(claim, subject_of(claim)) if template == STATEMENT_TEMPLATE else [claim]
@@ -264,6 +275,20 @@ class ClaimGenerator:
             for clause in clauses:
                 claims.append({"claim": clause, "template": SENTENCE_TEMPLATE, "hypothesis": clause})
         return claims
+
+    @staticmethod
+    def _split_sentences(answer: str) -> list[str]:
+        """Split sentences while keeping personal-name initials attached."""
+        parts = [part.strip() for part in _SENTENCE_SPLIT.split(answer.strip()) if part.strip()]
+        sentences: list[str] = []
+        for part in parts:
+            if sentences and re.search(r"(?:^|\s)[A-Z]\.$", sentences[-1]):
+                sentences[-1] += " " + part
+            elif sentences and re.search(r"(?:^|\s)(?:[A-Z]\.){1,2}$", sentences[-1]):
+                sentences[-1] += " " + part
+            else:
+                sentences.append(part)
+        return sentences
 
     @staticmethod
     def _answer_names_subject(answer: str, subject: str) -> bool:

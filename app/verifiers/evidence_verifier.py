@@ -857,6 +857,18 @@ class EvidenceVerifier(BaseVerifier):
             term for term in relation_terms if len(term) >= 4 and not term.isdigit()
         }
         relation_aligned = not required_relation_terms or required_relation_terms <= bare_terms
+        if (
+            not relation_aligned
+            and "received" in required_relation_terms
+            and re.search(r"\b(?:award|prize|medal|honou?r|trophy)\b", f"{asked} {claim}", re.IGNORECASE)
+        ):
+            # In award questions, "received" and "was awarded" express the
+            # same relation. Keep this synonym scoped to award-like objects so
+            # receiving a nomination, letter, or other item is not conflated.
+            relation_aligned = (
+                (required_relation_terms - {"received"}) <= bare_terms
+                and ("received" in bare_terms or "awarded" in bare_terms)
+            )
         claim_property_terms = property_cues(asked, claim)
         quantity_scope_aligned = not (
             "record" in quantity_kinds
@@ -1066,9 +1078,18 @@ class EvidenceVerifier(BaseVerifier):
         if entailing and contradicting:
             best_e = max(entailing, key=lambda w: w["fact_score"])
             best_c = max(contradicting, key=lambda w: w["fact_score"])
-            if best_e["fact_score"] != best_c["fact_score"]:
-                return best_e if best_e["fact_score"] > best_c["fact_score"] else best_c
-            return best_e
+            # Fact scores are a coarse lexical ranking. Within one point,
+            # prefer the window whose NLI result is more confident; a small
+            # overlap advantage should not let a nearby, differently framed
+            # fact suppress a direct supporting sentence.
+            if abs(best_e["fact_score"] - best_c["fact_score"]) <= 1:
+                return (
+                    best_e
+                    if best_e["probabilities"]["entailment"]
+                    >= best_c["probabilities"]["contradiction"]
+                    else best_c
+                )
+            return best_e if best_e["fact_score"] > best_c["fact_score"] else best_c
         return max(focused, key=lambda w: (w["fact_score"], w["probabilities"].get("entailment", 0.0)))
 
     @staticmethod
@@ -2241,6 +2262,12 @@ class EvidenceVerifier(BaseVerifier):
         deciding_row = deciding_claim["deciding"] if deciding_claim else None
         unchecked = [c["claim"] for c in claim_results if c["unsure_reason"] == "no_relevant_evidence"]
         reasoning = self._reasoning(decision, unsure_reason, deciding_claim, claim_results, any_retrieved)
+        diagnostic_code = {
+            "no_relevant_evidence": "LOW_RELEVANCE" if any_retrieved else "NO_RELEVANT_EVIDENCE",
+            "neutral": "NEUTRAL_NLI",
+            "conflict": "CONFLICTING_EVIDENCE",
+            "partial_support": "INCOMPLETE_CLAIM_COVERAGE",
+        }.get(unsure_reason)
 
         metadata = {
             "decision": decision,
@@ -2249,6 +2276,7 @@ class EvidenceVerifier(BaseVerifier):
             "nli_model": self.NLI_MODEL,
             "nli_output_shape": evaluated_evidence[0]["nli_output_shape"] if evaluated_evidence else None,
             "unsure_reason": unsure_reason,
+            "diagnostic_code": diagnostic_code,
             "top_k": self.top_k,
             "min_retrieval_score": self.min_retrieval_score,
             "retrieval_margin": self.retrieval_margin,

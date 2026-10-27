@@ -213,6 +213,7 @@ def test_best_hit_below_floor_abstains_without_running_nli():
     assert result.metadata["nli_label"] is None
     assert result.metadata["decision"] == "UNSURE"
     assert result.metadata["unsure_reason"] == "no_relevant_evidence"
+    assert result.metadata["diagnostic_code"] == "LOW_RELEVANCE"
     assert result.metadata["best_retrieval_score"] == pytest.approx(0.20)
     assert result.reasoning == NO_RELEVANT_EVIDENCE_REASON
 
@@ -222,6 +223,7 @@ def test_empty_retrieval_abstains():
     assert result.passed is False
     assert result.score == 0.0
     assert result.metadata["nli_label"] is None
+    assert result.metadata["diagnostic_code"] == "NO_RELEVANT_EVIDENCE"
     assert result.reasoning == "No evidence was retrieved."
 
 
@@ -485,6 +487,7 @@ def test_neutral_evidence_abstains():
     assert result.score == 0.0
     assert result.metadata["nli_label"] == "neutral"
     assert result.metadata["unsure_reason"] == "neutral"
+    assert result.metadata["diagnostic_code"] == "NEUTRAL_NLI"
 
 
 def test_weak_entailment_below_min_nli_score_is_not_support():
@@ -540,6 +543,7 @@ def test_partially_supported_answer_is_unsure_and_lists_unchecked_claims():
     assert result.metadata["decision"] == "UNSURE"
     assert result.metadata["nli_label"] == "neutral"
     assert result.metadata["unsure_reason"] == "partial_support"
+    assert result.metadata["diagnostic_code"] == "INCOMPLETE_CLAIM_COVERAGE"
     assert result.metadata["unchecked_claims"] == ["It lies on the Seine."]
     assert [c["decision"] for c in result.metadata["claim_decisions"]] == ["SUPPORT", "UNSURE"]
 
@@ -639,3 +643,28 @@ def test_multi_claim_answer_with_an_unsupported_sentence(verifier: EvidenceVerif
     assert result.metadata["claim_decisions"][0]["decision"] == "SUPPORT"
     assert result.passed is False
     assert result.metadata["decision"] in {"UNSURE", "REJECT"}
+
+
+def test_claim_generator_keeps_personal_initials_in_single_sentence():
+    from app.verifiers.claim_generator import ClaimGenerator
+
+    claims = ClaimGenerator().generate_claims(
+        "Who received the 1948 Nobel Prize in Literature?",
+        "T. S. Eliot received the 1948 Nobel Prize in Literature.",
+    )
+    assert len(claims) == 1
+    assert "T. S. Eliot" in claims[0]["claim"]
+    assert "was awarded" in claims[0]["claim"]
+
+
+def test_t_s_eliot_supported_by_real_corpus():
+    corpus = Path("data/articles_13083.json")
+    if not corpus.exists():
+        pytest.skip("The configured evidence corpus is unavailable")
+    real_verifier = EvidenceVerifier(corpus_path=str(corpus))
+    result = real_verifier.verify(
+        "Who received the 1948 Nobel Prize in Literature?",
+        "T. S. Eliot received the 1948 Nobel Prize in Literature.",
+    )
+    assert result.metadata["decision"] == "SUPPORT", result.metadata
+    assert any("awarded" in row["relevant_evidence"].lower() for row in result.metadata["evaluated_evidence"])
