@@ -133,15 +133,6 @@ def _content_counts(text: str) -> Counter[str]:
     )
 
 
-def content_terms(text: str) -> set[str]:
-    """Return normalized terms from text."""
-    return {
-        term
-        for term in text.lower().split()
-        if term
-    }
-
-
 class EvidenceRetriever:
     """Retrieve relevant evidence chunks from a FAISS index."""
 
@@ -174,7 +165,7 @@ class EvidenceRetriever:
         )[:12]
 
         if index_dir is None:
-            index_dir = self.corpus_path.parent / "articles_13083_index"
+            index_dir = self.corpus_path.parent / "evidence_index" / self.corpus_path.stem
 
         self.index_dir = Path(index_dir)
         self.index_path = self.index_dir / "faiss.index"
@@ -375,14 +366,15 @@ class EvidenceRetriever:
         self._avgdl = (sum(lengths) / len(lengths)) if lengths else 0.0
 
     def _lexical_top(self, query: str, k: int) -> list[tuple[int, float]]:
-        """Highest BM25 chunk ids for ``query``. Scores are positive only."""
+        """Highest BM25 hits, preferring compact coverage of all query terms."""
         self._ensure_lexical_index()
         if not self._postings or k <= 0:
             return []
         scores: dict[int, float] = {}
+        query_terms = content_terms(query)
         total = len(self.chunks)
         average = self._avgdl or 1.0
-        for term in content_terms(query):
+        for term in query_terms:
             hits = self._postings.get(term)
             if not hits:
                 continue
@@ -396,22 +388,83 @@ class EvidenceRetriever:
                 scores[index] = scores.get(index, 0.0) + idf * (
                     frequency * (self.BM25_K1 + 1) / denominator
                 )
-        ranked = sorted(scores.items(), key=lambda item: item[1], reverse=True)
+        ranked = sorted(
+            scores.items(),
+            key=lambda item: self._lexical_rank_key(item, query_terms),
+        )
         return [(index, score) for index, score in ranked[:k] if score > 0]
+
+    def _lexical_rank_key(
+        self, item: tuple[int, float], query_terms: set[str]
+    ) -> tuple[int, int, float]:
+        """Sort by term coverage, smallest covering span, then raw BM25."""
+        index, score = item
+        tokens = [
+            token
+            for token in _TOKEN.findall(
+                f"{self.chunks[index].get('title', '')} {self.chunks[index].get('text', '')}".lower()
+            )
+            if token.isdigit() or (len(token) >= 3 and token not in STOPWORDS)
+        ]
+        positions = {term: [] for term in query_terms}
+        for position, token in enumerate(tokens):
+            if token in positions:
+                positions[token].append(position)
+        covered = sum(bool(found) for found in positions.values())
+        if covered < len(query_terms) or not query_terms:
+            span = len(tokens) + 1
+        else:
+            events = sorted(
+                (position, term)
+                for term, found in positions.items()
+                for position in found
+            )
+            counts: Counter[str] = Counter()
+            left = 0
+            span = len(tokens) + 1
+            for right, (position, term) in enumerate(events):
+                counts[term] += 1
+                while len(counts) == len(query_terms):
+                    span = min(span, position - events[left][0])
+                    left_term = events[left][1]
+                    counts[left_term] -= 1
+                    if counts[left_term] == 0:
+                        del counts[left_term]
+                    left += 1
+        return -covered, span, -score
 
     def _cosine_at(self, query_embedding: np.ndarray, index_id: int) -> float:
         """Cosine of one stored chunk against an already normalised query."""
         vector = np.asarray(self.index.reconstruct(int(index_id)), dtype=np.float32)
         return float(np.dot(query_embedding[0], vector))
 
+    def _diverse_ids(self, ranked_ids: list[int], k: int) -> list[int]:
+        """Prefer different articles, then fill remaining slots with extra chunks."""
+        selected = []
+        deferred = []
+        seen_articles = set()
+        for index_id in ranked_ids:
+            chunk = self.chunks[index_id]
+            article = chunk.get("article_id") or chunk.get("url") or chunk.get("title")
+            if article in seen_articles:
+                deferred.append(index_id)
+                continue
+            seen_articles.add(article)
+            selected.append(index_id)
+            if len(selected) == k:
+                return selected
+        selected.extend(deferred[: max(0, k - len(selected))])
+        return selected
+
     def retrieve(self, query: str, k: int = 3) -> list[dict]:
         """Retrieve evidence chunks for a query, highest cosine first.
 
-        ``score`` is cosine similarity in [-1, 1]. The dense top-k are always
-        included. Up to ``k`` additional BM25 matches are included when they
-        were not already in that dense list, with ``lexical_hit`` set, so a
-        caller can admit a keyword match the embedding ranked lower. Fewer
-        than ``k`` dense results are returned when the index is smaller.
+        ``score`` is cosine similarity in [-1, 1]. Dense and BM25 scores are
+        not added because they are on different scales; BM25 expands the
+        candidate set and ``lexical_hit`` records that route. Each route
+        prefers one chunk per article before allowing another chunk from the
+        same article, preventing overlapping chunks from crowding out source
+        diversity while still filling all available result slots.
         """
         total = int(self.index.ntotal)
 
@@ -419,6 +472,7 @@ class EvidenceRetriever:
             return []
 
         k = min(k, total)
+        candidate_k = min(total, max(k, k * 4))
 
         query_embedding = self.model.encode(
             [query],
@@ -434,7 +488,7 @@ class EvidenceRetriever:
 
         scores, indices = self.index.search(
             query_embedding,
-            k,
+            candidate_k,
         )
 
         cosine_by_id: dict[int, float] = {}
@@ -442,8 +496,13 @@ class EvidenceRetriever:
             if index_id < 0:
                 continue
             cosine_by_id[int(index_id)] = float(score)
+        dense_ids = self._diverse_ids(list(cosine_by_id), k)
+        cosine_by_id = {index_id: cosine_by_id[index_id] for index_id in dense_ids}
 
-        lexical = self._lexical_top(query, k)
+        lexical_candidates = self._lexical_top(query, candidate_k)
+        lexical_ids = self._diverse_ids([index_id for index_id, _ in lexical_candidates], k)
+        lexical_scores = dict(lexical_candidates)
+        lexical = [(index_id, lexical_scores[index_id]) for index_id in lexical_ids]
         lexical_score_by_id = {index_id: score for index_id, score in lexical}
         for index_id in lexical_score_by_id:
             if index_id not in cosine_by_id:
