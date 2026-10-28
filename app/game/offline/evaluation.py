@@ -7,7 +7,7 @@ from app.game.models import PlanningContext, PayoffMatrix, content_id
 from app.game.policy import build_policy, validate_policy
 from app.game.strategies import enumerate_strategies
 from app.game.offline.attacks import AttackSpecification, enumerate_attacks
-from app.game.offline.records import DatasetManifest, history_reputation
+from app.game.offline.records import TrainingManifest, validate_manifest, history_reputation
 from app.game.offline.replay import ReplayContract, ReplayOutcome, replay
 
 
@@ -24,6 +24,15 @@ class Metrics(FrozenModel):
     estimated_resource_cost: float
     mean_loss: float
 
+    @property
+    def uncertainty_rate(self):
+        return self.uncertain / self.examples
+
+    def validation_loss(self, loss):
+        """Public decision loss, excluding the separately estimated attempt cost."""
+        return (self.false_accept * loss.false_accept + self.false_reject * loss.false_reject
+                + self.uncertain * loss.uncertain) / self.examples
+
 
 class Evaluation(FrozenModel):
     role: str
@@ -37,7 +46,8 @@ class Evaluation(FrozenModel):
 
 
 def evaluation_binding(manifest, contract, specification):
-    return content_id({"version": "offline_evaluation_binding_v1", "manifest": manifest.manifest_id,
+    return content_id({"version": ("offline_training_binding_v1" if isinstance(manifest, TrainingManifest)
+                                  else "offline_evaluation_binding_v1"), "manifest": manifest.manifest_id,
                        "contract": contract.model_dump(mode="json"),
                        "attacks": specification.model_dump(mode="json")})
 
@@ -45,9 +55,15 @@ def evaluation_binding(manifest, contract, specification):
 def bind_evaluation(context, manifest, contract, specification):
     """Check history-derived statistics, then bind all replay-affecting settings."""
     context = PlanningContext.model_validate(context)
-    manifest = DatasetManifest.model_validate(manifest)
+    manifest = validate_manifest(manifest)
     contract = ReplayContract.model_validate(contract)
     specification = AttackSpecification.model_validate(specification)
+    from app.game.resource_provenance import validate_recorded_resources
+    if contract.resource_manifest is not None:
+        contract.resource_manifest.require_candidates(c.verifier_name for c in context.plan.candidates)
+        for partition in manifest.partitions:
+            for example in partition.examples:
+                validate_recorded_resources(contract, example)
     provenance = context.provenance
     for role, dataset in (("history", provenance.history_dataset), ("development", provenance.development_dataset),
                           ("final_test", provenance.final_test_dataset)):
@@ -79,7 +95,7 @@ def bind_evaluation(context, manifest, contract, specification):
 
 def _inputs(context, manifest, contract, specification):
     context = PlanningContext.model_validate(context)
-    manifest = DatasetManifest.model_validate(manifest)
+    manifest = validate_manifest(manifest)
     contract = ReplayContract.model_validate(contract)
     specification = AttackSpecification.model_validate(specification)
     bound = bind_evaluation(context, manifest, contract, specification)
@@ -132,6 +148,8 @@ def summarize(weighted_outcomes, loss):
 def construct_payoffs(context, manifest, contract, specification):
     """Fit only on development, including every declared example in each cell."""
     context, manifest, contract, specification = _inputs(context, manifest, contract, specification)
+    if context.pooling_contract_json is not None:
+        raise ValueError("use fit_pooled_policies with original member contexts; a target-only matrix is not pooled evidence")
     strategies = enumerate_strategies(context).strategies
     if not strategies:
         raise ValueError("no_feasible_strategy")
@@ -153,9 +171,9 @@ def construct_payoffs(context, manifest, contract, specification):
         contract=contract, attacks=specification, matrix=matrix, outcomes=tuple(outcomes), metrics=tuple(metrics))
 
 
-def fit_policy(context, manifest, contract, specification):
+def fit_policy(context, manifest, contract, specification, *, tolerance=None):
     evaluation = construct_payoffs(context, manifest, contract, specification)
-    return build_policy(context, evaluation.matrix), evaluation
+    return build_policy(context, evaluation.matrix, tolerance=tolerance), evaluation
 
 
 class PolicyEvaluation(FrozenModel):
@@ -165,11 +183,29 @@ class PolicyEvaluation(FrozenModel):
     outcomes: tuple[ReplayOutcome, ...]
     probabilities: tuple[tuple[str, float], ...]
     attack_metrics: tuple[tuple[str, Metrics], ...]
+    reservation_id: str | None = None
+    final_payload_id: str | None = None
+    freeze_record: str | None = None
 
 
-def evaluate_final_test(policy, context, manifest, contract, specification):
+def evaluate_final_test(policy, context, manifest, contract, specification, *, final_partition=None):
     """No fitting or optimization: integrate each attack's outcomes over frozen x."""
     context, manifest, contract, specification = _inputs(context, manifest, contract, specification)
+    if isinstance(manifest, TrainingManifest):
+        if final_partition is None:
+            raise ValueError("evaluation requires the separately released final-test payload")
+        final = manifest.final_test_reservation.validate_payload(final_partition)
+        # Recheck all original split constraints against the now released records.
+        from app.game.offline.records import DatasetManifest
+        DatasetManifest(version="released_final_payload_v1", evidence_kind=manifest.evidence_kind,
+                        partitions=(*manifest.partitions, final))
+        reservation_id = manifest.final_test_reservation.reservation_id
+        final_payload_id = content_id(final.model_dump(mode="json"))
+    else:
+        if final_partition is not None:
+            raise ValueError("legacy manifest already binds its final-test payload")
+        final = manifest.partition("final_test")
+        reservation_id = final_payload_id = None
     policy = validate_policy(policy, context)
     actions = enumerate_attacks(context.dependencies, specification)
     if policy.matrix.attack_ids != tuple(a.attack_id for a in actions):
@@ -179,13 +215,46 @@ def evaluate_final_test(policy, context, manifest, contract, specification):
     for attack in actions:
         weighted = []
         for strategy in policy.strategies:
-            for example in manifest.partition("final_test").examples:
+            for example in final.examples:
                 outcome = replay(context, strategy, attack, specification, contract, example)
                 outcomes.append(outcome)
                 weighted.append((outcome, probabilities[strategy.strategy_id]))
         metrics.append((attack.attack_id, summarize(tuple(weighted), context.loss_configuration)))
     return PolicyEvaluation(role="final_test", policy_id=policy.policy_id, manifest_id=manifest.manifest_id,
-        outcomes=tuple(outcomes), probabilities=policy.solution.probabilities, attack_metrics=tuple(metrics))
+        outcomes=tuple(outcomes), probabilities=policy.solution.probabilities, attack_metrics=tuple(metrics),
+        reservation_id=reservation_id, final_payload_id=final_payload_id)
+
+
+def evaluate_reserved_final(artifact, specification, final_partition, *, actual_code_revision, freeze_record):
+    """Explicit post-freeze release; validate research metadata and full test records.
+
+    The custody witness is an external audit reference, not access control. This
+    entry never fits or changes the policy and records the released payload digest.
+    """
+    from app.game.artifacts import PolicyArtifact
+    from app.game.dependencies import identifier
+    from app.game.offline.records import DatasetManifest
+    from app.game.research.specification import PolicyBuildSpecification, ExperimentSpecification
+    from app.game.research.readiness import check_readiness
+    identifier(freeze_record)
+    artifact = PolicyArtifact.model_validate(artifact)
+    spec = PolicyBuildSpecification.model_validate(specification)
+    bound = bind_evaluation(spec.context, spec.manifest, spec.contract, spec.attacks)
+    if artifact.context != bound or artifact.contract != spec.contract:
+        raise ValueError("artifact differs from frozen fitting specification")
+    spec = PolicyBuildSpecification.model_validate({**spec.model_dump(), "context": bound})
+    readiness = check_readiness(spec, actual_code_revision=actual_code_revision)
+    if not readiness.ready:
+        raise ValueError("frozen specification not ready: " + "; ".join(readiness.blockers))
+    final = spec.manifest.final_test_reservation.validate_payload(final_partition)
+    full = DatasetManifest(version="released_final_payload_v1", evidence_kind=spec.manifest.evidence_kind,
+                           partitions=(*spec.manifest.partitions, final))
+    # In particular, require final label-source declarations and related-group
+    # consistency now, without ever routing this full manifest through fitting.
+    ExperimentSpecification.model_validate({**spec.model_dump(), "version": "game_research_v1", "manifest": full})
+    result = evaluate_final_test(artifact.policy, bound, spec.manifest, spec.contract, spec.attacks,
+                                 final_partition=final)
+    return PolicyEvaluation.model_validate({**result.model_dump(), "freeze_record": freeze_record})
 
 
 def export_artifact(policy, context, manifest, contract, specification, *, applicable_domain):

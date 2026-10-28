@@ -101,16 +101,26 @@ class PlanningContext(FrozenModel):
     # Optional, content-addressed offline replay contract; legacy contexts remain usable.
     offline_evaluation_id: str | None = None
     execution_contract_json: str | None = None
+    pooling_contract_json: str | None = None
 
     @model_serializer(mode="wrap")
     def serialize_context(self, handler):
         data = handler(self)
         if self.execution_contract_json is None:
             data.pop("execution_contract_json", None)
+        if self.pooling_contract_json is None:
+            data.pop("pooling_contract_json", None)
         return data
 
     @model_validator(mode="after")
     def validate_context(self):
+        if self.pooling_contract_json is not None:
+            from app.game.pooling_contract import PoolingContract, unpooled_context
+            pooling = PoolingContract.model_validate_json(self.pooling_contract_json, strict=True)
+            object.__setattr__(self, "pooling_contract_json", canonical_json(pooling.model_dump(mode="json")))
+            original = unpooled_context(self)
+            if dict(pooling.applicability).get(original.plan.domain) != original.compatibility_id:
+                raise ValueError("pool applicability differs from the exact target context")
         if self.execution_contract_json is not None:
             from app.game.execution_contract import ExecutionContract
             contract = ExecutionContract.model_validate_json(self.execution_contract_json, strict=True)

@@ -1,0 +1,49 @@
+{
+  "version": "offline_recording_request_v1",
+  "intended_use": "pilot",
+  "study_approval": null,
+  "preparation_authorization": null,
+  "cache_contract": null,
+  "randomness_control": null,
+  "execution_configuration_id": null,
+  "factory": null,
+  "expected_setup": null,
+  "final_test_reservation": null,
+  "permitted_datasets": [],
+  "candidates": [
+    {
+      "verifier_name": null,
+      "adapter": null,
+      "registered": null,
+      "capability_source": null,
+      "capabilities": {
+        "expected_capabilities": null,
+        "requires_reference": null,
+        "readiness": null,
+        "unavailable_reason": null,
+        "limitations": []
+      }
+    }
+  ],
+  "examples": [
+    {
+      "example_id": null,
+      "split_identity": null,
+      "question_id": null,
+      "run_id": null,
+      "dataset_id": null,
+      "role": null,
+      "purpose": null,
+      "question": null,
+      "answer": null,
+      "reference": null,
+      "analysis": null,
+      "label": {
+        "answer_is_correct": null,
+        "label_source": null,
+        "label_method": null,
+        "provenance": null
+      }
+    }
+  ]
+}

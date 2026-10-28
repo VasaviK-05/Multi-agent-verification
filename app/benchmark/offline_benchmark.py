@@ -147,28 +147,8 @@ class BenchmarkReport:
         }
 
 
-class _TimedVerifier(BaseVerifier):
-    """Records wall time around an existing verifier without changing its vote."""
-
-    def __init__(self, inner: BaseVerifier, durations_ms: list[float]) -> None:
-        self._inner = inner
-        self._durations_ms = durations_ms
-
-    @property
-    def name(self) -> str:
-        return self._inner.name
-
-    def verify(
-        self,
-        question: str,
-        answer: str,
-        context: str | None = None,
-    ) -> VerificationResult:
-        started = time.perf_counter()
-        try:
-            return self._inner.verify(question, answer, context)
-        finally:
-            self._durations_ms.append((time.perf_counter() - started) * 1000.0)
+# Preserve the public benchmark alias while sharing the exact instrumentation.
+from app.game.offline.timing import TimedVerifier as _TimedVerifier
 
 
 def examples_from_records(records: Sequence[dict[str, Any]]) -> list[LabeledExample]:

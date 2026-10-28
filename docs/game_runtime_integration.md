@@ -116,10 +116,12 @@ is trusted. Provider artifacts are revalidated and must match exactly. Strategie
 are never pruned, probabilities never renormalized, and no coverage/budget rule is
 relaxed to make lookup succeed.
 
-Explicit pooled provenance is supported through an explicitly registered applicable
-domain. It never relaxes captured domain or reputation bindings or infers mappings:
-register a compatible artifact per applicable domain/category. Cross-domain pooling
-and reputation sharing have no invented policy here.
+Explicit weighted cross-domain development pooling and sparse-domain routing are
+provided by `app.game.offline.pooling` and `DomainRoute`. They retain exact target
+domain/reputation bindings and require declared source weights/applicability.
+Resource-bound v2 contracts also validate adapter-supplied fingerprints before and
+after execution. See [pooling and provenance](game_pooling_and_provenance.md) for
+interfaces, ownership and the remaining empirical/integration responsibilities.
 
 Missing, invalid, incompatible, synthetic-disallowed, ambiguous and infeasible
 selection yields public uncertainty and a structured selection status/reason with

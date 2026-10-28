@@ -8,7 +8,7 @@ from pydantic import AfterValidator, Field, StrictFloat, StrictInt, model_valida
 from app.game.dependencies import FrozenModel, identifier
 from app.game.models import PlanningContext, content_id
 from app.game.offline.attacks import AttackSpecification
-from app.game.offline.records import DatasetManifest
+from app.game.offline.records import DatasetManifest, FinalTestReservation, TrainingManifest
 from app.game.execution_contract import ExecutionContract
 
 Text = Annotated[str, AfterValidator(identifier)]
@@ -93,6 +93,9 @@ class ExperimentSpecification(FrozenModel):
             part = self.manifest.partition(description.role)
             if part.dataset_id != description.dataset_id:
                 raise ValueError("dataset description differs from manifest")
+            if isinstance(part, FinalTestReservation):
+                # Labels/reports are released only in the separate final evaluator.
+                continue
             if not {e.label_source for e in part.examples} <= set(description.declared_label_sources):
                 raise ValueError("undeclared independent label source")
             known_groups = {}
@@ -119,3 +122,9 @@ class ExperimentSpecification(FrozenModel):
     @property
     def specification_id(self):
         return content_id(self.model_dump(mode="json"))
+
+
+class PolicyBuildSpecification(ExperimentSpecification):
+    """Dedicated fitting schema; research readiness CLI retains its full schema."""
+    version: Literal["offline_policy_build_v1"]
+    manifest: TrainingManifest
