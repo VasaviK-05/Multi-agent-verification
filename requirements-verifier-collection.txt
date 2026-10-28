@@ -1,0 +1,10 @@
+# Optional local collection runtime; metadata preflight checks installed versions.
+# Install separately from the API dependencies. Models are never downloaded by setup.
+-r requirements.txt
+numpy
+requests
+sentence-transformers
+transformers
+torch
+safetensors
+tokenizers
