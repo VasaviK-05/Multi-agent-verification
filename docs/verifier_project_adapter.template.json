@@ -1,0 +1,16 @@
+{
+  "version": "project_collection_adapter_v1",
+  "embedding_snapshot": null,
+  "nli_snapshot": null,
+  "corpus_path": "data/test_evidence_corpus.json",
+  "index_dir": "data/evidence_index/test_evidence_corpus",
+  "index_receipt": null,
+  "service_observation": null,
+  "ollama_url": "http://localhost:11434/api/generate",
+  "ollama_model": "llama3.2:3b",
+  "n_samples": 5,
+  "temperature": 0.8,
+  "timeout": 60.0,
+  "chunk_size": 500,
+  "device": "cpu"
+}

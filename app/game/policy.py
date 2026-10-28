@@ -36,7 +36,7 @@ class PolicyDecision(FrozenModel):
     explanation: str
 
 
-def build_policy(context: PlanningContext, matrix: PayoffMatrix, *, version="game_policy_v1") -> Policy:
+def build_policy(context: PlanningContext, matrix: PayoffMatrix, *, version="game_policy_v1", tolerance=None) -> Policy:
     context = PlanningContext.model_validate(context)
     matrix = PayoffMatrix.model_validate(matrix)
     identifier(version)
@@ -51,7 +51,8 @@ def build_policy(context: PlanningContext, matrix: PayoffMatrix, *, version="gam
         raise ValueError("matrix row definitions must bind the exact feasible strategies")
     from app.game.pooling_contract import check_pool_matrix
     check_pool_matrix(context, matrix)
-    solution = solve_minimax(matrix)
+    # Preserve the original default call protocol for existing callers/adapters.
+    solution = solve_minimax(matrix) if tolerance is None else solve_minimax(matrix, tolerance=tolerance)
     if solution.status != "optimal":
         raise ValueError("cannot build policy: " + solution.message)
     return Policy(version=version, compatibility_id=context.compatibility_id, provenance=context.provenance, matrix=matrix,

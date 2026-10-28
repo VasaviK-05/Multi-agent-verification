@@ -1,0 +1,151 @@
+{
+  "application_source_digest": "23f3a89528f61462bae2ce94ef333eb87df9a6c4555db836c263b3541ccf603f",
+  "calibration_id": "1a2abc5663193e025f9c7e62805dbad5e9d6b720a1a6895b7f40e91f779ab992",
+  "costs": [
+    {
+      "attempt_cost": 11831.109354651511,
+      "attempts": 86,
+      "failures": 0,
+      "mean_ms": 11831.109354651511,
+      "median_ms": 11469.350849976763,
+      "p95_nearest_rank_ms": 12696.48199994117,
+      "verifier_name": "confidence"
+    },
+    {
+      "attempt_cost": 42.12459068756204,
+      "attempts": 86,
+      "failures": 0,
+      "mean_ms": 42.12459068756204,
+      "median_ms": 23.43365002889186,
+      "p95_nearest_rank_ms": 147.83600019291043,
+      "verifier_name": "evidence"
+    },
+    {
+      "attempt_cost": 0.1322023115705612,
+      "attempts": 86,
+      "failures": 0,
+      "mean_ms": 0.1322023115705612,
+      "median_ms": 0.08204998448491096,
+      "p95_nearest_rank_ms": 0.16120006330311298,
+      "verifier_name": "rule"
+    },
+    {
+      "attempt_cost": 30.955616287280655,
+      "attempts": 86,
+      "failures": 0,
+      "mean_ms": 30.955616287280655,
+      "median_ms": 28.301849961280823,
+      "p95_nearest_rank_ms": 39.26979983225465,
+      "verifier_name": "semantic"
+    }
+  ],
+  "empirical_files_pushed": false,
+  "files": [
+    {
+      "bytes": 226147,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/attempt-journal.jsonl",
+      "sha256": "57f1225e7b7ee5c5e424a2ac568c003f1c1dfb0a88f94774172498597c0f0b42"
+    },
+    {
+      "bytes": 1132,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/authorization.json",
+      "sha256": "b2718421b9c2d77bcd68d771092b6b279476e5328f716d516cdebd0a0f6419ba"
+    },
+    {
+      "bytes": 325712,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration-v1.json",
+      "sha256": "87d0818b0684e4f7405c52e0a96502b70f500a8761d0efaf44480f7e45967b84"
+    },
+    {
+      "bytes": 2445,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration-validation.json",
+      "sha256": "6e8eb9b6c7443c68c7d450424fe416fd1e33c419bb0fbbdd0a4b0f84e12ffa02"
+    },
+    {
+      "bytes": 15589,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration.authorized.json",
+      "sha256": "98859590a1fcc80d8e4884480e48f7ce98538014ba45eb507f48f3292ee52b45"
+    },
+    {
+      "bytes": 15384,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration.before-measurements.json",
+      "sha256": "d9a7d407e54faabb72c57498d447a922e01785b0e29c804ee88537d76d8de3df"
+    },
+    {
+      "bytes": 64802,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/collection.authorized.json",
+      "sha256": "498e79d95d1ff7b9a86c3cf93701c9408bd02af4903960cde0fc1d30673210ec"
+    },
+    {
+      "bytes": 963,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/collection.log",
+      "sha256": "d78993e97b6575662f9930fa6dcad2331b2fb412df0f81bffbc1663a7115b8d9"
+    },
+    {
+      "bytes": 202,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/execution-result.json",
+      "sha256": "0a7feb693a2a64067b6b9d4ebc3e223f4376175e5b9884ce71c349b3795748e6"
+    },
+    {
+      "bytes": 137,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/execution-start.json",
+      "sha256": "7ffb43d063acb8ee98c309d34f0ee0b8c33c2693e2b1a46325e4fbc9359f28e4"
+    },
+    {
+      "bytes": 45229,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/freeze-receipt.json",
+      "sha256": "6d1e5903fd7cdce8af1931c5e3e95d00b8f0a11140cb03b8eb4c0e57763fd579"
+    },
+    {
+      "bytes": 933,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/independent-validation.json",
+      "sha256": "9e124cd38ac2ddbbd791483deafd2b1754b04c639976b560ea99c46f7ab9e5d6"
+    },
+    {
+      "bytes": 285293,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/measurements.json",
+      "sha256": "62b13ccdac1cdb9cfa28f7a23018b75f6b95aad6073ba52133112dc52d01c5a3"
+    },
+    {
+      "bytes": 113886,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/network-events.jsonl",
+      "sha256": "4715736dc89f08364515e084aef092780af40009bd469b68b637d41d66234cd0"
+    },
+    {
+      "bytes": 665,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/preparation-validation.json",
+      "sha256": "c54b10f78bfd0d220768b7fca4d8d985a3c1fbff54444477e1469dfe3a6c0fb5"
+    },
+    {
+      "bytes": 8466,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/resource-postcheck.json",
+      "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+    },
+    {
+      "bytes": 8466,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/resource-preflight.json",
+      "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+    },
+    {
+      "bytes": 4079,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/RESULTS.md",
+      "sha256": "30bd1df585463ba3ec721f22d3a57c411fb104b0b8bc3d96a7c3ba1b225a15d8"
+    },
+    {
+      "bytes": 431,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/timings.csv",
+      "sha256": "41f225c4077e7ffdd2a460d91d60006bf34eb83bf7d69814f0c945c61b223029"
+    },
+    {
+      "bytes": 3657,
+      "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/verify_result.py",
+      "sha256": "3f9478c001beda5de545e25de214f973c5db5bab2b33fc1703b31ce3f03d2e36"
+    }
+  ],
+  "input_digest": "4d927ec6749561b66742d4189f3b8353e489a778f27931ded75aa92108a687cc",
+  "measured_code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+  "reason": "build/ is ignored; no established tracked empirical-calibration bundle convention; preserve host-specific provenance and original byte identities locally",
+  "run_directory": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01",
+  "setup_fingerprint": "93029e22dfadd1babdfb360f70252113ede0ca17f58bf106ee18b44aea8a9750",
+  "validation": "Reload/recomputation passed with current validators; measurements and freeze hashes agree"
+}
