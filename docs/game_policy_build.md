@@ -2,7 +2,7 @@
 
 The builder now fits, validates, exports and reloads the existing PolicyArtifact
 format. Synthetic tests exercise the complete command and existing provider/runtime
-interfaces. This cost-calibration delivery fits no empirical policy. The separate
+interfaces. The arithmetic engineering pilot has since been fitted and diagnosed; no factual policy exists. The separate
 cost-only campaign and its local artifact availability are documented in
 [verifier_cost_results.md](verifier_cost_results.md); its timings are not report
 recordings or approval of policy settings.
@@ -202,3 +202,64 @@ category/binding is rewritten. Complete calibration measurements can come from
 the same verified bundle. This implementation does not supply the still-missing
 approved study dataset/settings or repair the evidence producer. A real rule-only
 smoke output is explicitly unlabelled and unsuitable for fitting.
+
+## Arithmetic pilot42 abstention investigation (2026-10-26)
+
+The approved arithmetic fit and subsequent investigation are documented in
+[the fit report](arithmetic_pilot42_fit.md) and
+[the abstention diagnosis](arithmetic_pilot42_abstention.md). The latter includes
+exact commands, worked correct/incorrect examples and before/after development
+metrics; all 80 clean strategy/example traces are in
+`build/arithmetic-pilot42/investigation/traces.json`.
+
+The zero-coverage fitted policy is compatible with its unchanged execution
+contract. Frozen Semantic reputation is 0.5, so its log-odds contribution is zero;
+Rule alone cannot satisfy the minimum-two contributor guard. Group aggregation
+uses the documented active-report contributor count and is decisive on clean
+recordings, but its worst-case validation loss is 0.5 versus the fitted policy's
+0.2 uncertainty loss. No scientific settings or decision semantics were changed,
+and no corrected artifact was produced. Original artifacts, recordings,
+calibration and approval remain preserved. Diagnosis uses only retained
+history/development records and metadata reservation, with final payload opens
+blocked; it does not collect, recalibrate or evaluate final test.
+
+Ownership handoff: the study owner must approve a genuinely informative second
+verifier/roster and the required recordings/resource calibration before attempting
+to demonstrate multiple informative contributors or team selection. A change to
+minimum-contributor semantics is a separate versioned scientific/runtime decision,
+not an abstention bug fix. The current two-candidate/minimum-two pilot has one
+feasible team and cannot demonstrate adaptive team selection or cost optimization.
+Its reference-assisted Semantic supports incorrect answers as well as correct
+ones; conclusions remain restricted to constructed arithmetic.
+
+## Next factual team-selection pilot (2026-10-28)
+
+The [review package](studies/factual-team-selection-v1/README.md) reuses the existing
+factual draft/index receipt, complete diagnostics, 344-attempt historical cost
+calibration and detached collector/builder. It proposes four independently
+source-grounded candidate answers: paired correct/constructed-incorrect alternatives
+for Germany/history and India/development, preserving related-question groups, plus
+the existing four outcome-free final metadata entries. Four other preparation rows
+remain in an explicit unknown-requirement exclusion audit. No analyzer requirement,
+threshold, contributor guard or verifier/retrieval algorithm was changed.
+
+Public prior-only planning enumerates seven teams and fourteen strategies. Historical
+cost sums differ, but Rule cannot provide useful capital-fact contributions, and new
+history must establish sufficient informative weights. The historical calibration's
+code/source setup and preparation identities differ from this new proposal: its
+numbers are for review, not silently rebound fitting inputs. The new 16-call/20-local-
+generation/68-metadata-GET run, source labels, custody/freeze and proposed 30,000-ms
+budget / 0.00001-loss-per-ms settings require explicit approval. Existing evidence
+contract failures and the readiness gate remain owned handoff blockers.
+
+No new collection/calibration/policy fit occurred. The package contains exact guarded
+preparation and later collector/calibration/builder commands, a digest-bound pending
+configuration, source-label review, exclusions, complete team/cost enumeration and
+validation results. The latter explicitly records a legacy test fixture's mixed-source
+benchmark read; it makes no claim of perfect process-wide final-input isolation or
+unseen holdout evidence. Subsequent affected tests use separated preparation/synthetic
+fixtures only and pass 214/214. Arithmetic artifacts and conclusions are preserved.
+The legacy draft test fixture has now been corrected to use separated preparation
+rows and synthetic reserved-position rows, with an explicit mixed-source read guard;
+its 11 tests pass. Combined with the 214 affected tests, 225 final tests pass. The
+initial mixed-source fixture read remains transparently recorded in the handoff.
