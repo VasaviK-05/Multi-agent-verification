@@ -1,5 +1,5 @@
 from database import get_connection
-
+import json
 
 def load_reputation():
     """
@@ -207,3 +207,133 @@ def build_reputation_state():
         manager.record_feedback_batch(events)
 
     return manager.export_state()
+
+def save_reputation_manager_state(state: dict) -> None:
+    """Persist the complete exported ReputationManager state."""
+    if not isinstance(state, dict):
+        raise TypeError("state must be a dictionary")
+
+    schema_version = state.get("schema_version")
+    if not isinstance(schema_version, int) or schema_version <= 0:
+        raise ValueError("state must have a positive schema_version")
+
+    serialized_state = json.dumps(state, allow_nan=False)
+
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                """
+                INSERT INTO reputation_manager_state (
+                    state_id, schema_version, state, updated_at
+                )
+                VALUES (1, %s, %s::jsonb, NOW())
+                ON CONFLICT (state_id)
+                DO UPDATE SET
+                    schema_version = EXCLUDED.schema_version,
+                    state = EXCLUDED.state,
+                    updated_at = NOW()
+                """,
+                (schema_version, serialized_state),
+            )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+def load_reputation_manager_state() -> dict | None:
+    """Load the complete exported state, or None if no snapshot exists."""
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT schema_version, state
+                FROM reputation_manager_state
+                WHERE state_id = 1
+                """
+            )
+            row = cursor.fetchone()
+
+        if row is None:
+            return None
+
+        schema_version, state = row
+        if isinstance(state, str):
+            state = json.loads(state)
+
+        if not isinstance(state, dict):
+            raise ValueError("Persisted reputation state must be a JSON object")
+
+        if state.get("schema_version") != schema_version:
+            raise ValueError("Persisted reputation state version does not match")
+
+        return state
+    finally:
+        conn.close()
+
+
+def save_reputation_state_and_rows(state: dict) -> None:
+    """Persist the manager snapshot and all reputation rows atomically."""
+    if not isinstance(state, dict):
+        raise TypeError("state must be a dictionary")
+
+    schema_version = state.get("schema_version")
+    if not isinstance(schema_version, int) or schema_version <= 0:
+        raise ValueError("state must have a positive schema_version")
+
+    pairs = state.get("pairs")
+    if not isinstance(pairs, list):
+        raise ValueError("state must contain a pairs list")
+
+    serialized_state = json.dumps(state, allow_nan=False)
+
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            # Save the complete manager state.
+            cursor.execute(
+                """
+                INSERT INTO reputation_manager_state (
+                    state_id, schema_version, state, updated_at
+                )
+                VALUES (1, %s, %s::jsonb, NOW())
+                ON CONFLICT (state_id)
+                DO UPDATE SET
+                    schema_version = EXCLUDED.schema_version,
+                    state = EXCLUDED.state,
+                    updated_at = NOW()
+                """,
+                (schema_version, serialized_state),
+            )
+
+            # Save every verifier/domain aggregate in the same transaction.
+            for pair in pairs:
+                cursor.execute(
+                    """
+                    INSERT INTO verifier_reputation (
+                        verifier_name, domain, alpha, beta, updated_at
+                    )
+                    VALUES (%s, %s, %s, %s, NOW())
+                    ON CONFLICT (verifier_name, domain)
+                    DO UPDATE SET
+                        alpha = EXCLUDED.alpha,
+                        beta = EXCLUDED.beta,
+                        updated_at = NOW()
+                    """,
+                    (
+                        pair["verifier_name"],
+                        pair["domain"],
+                        pair["successes"] + state["prior_alpha"],
+                        pair["failures"] + state["prior_beta"],
+                    ),
+                )
+
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()

@@ -41,8 +41,10 @@ def configuration(tmp_path, monkeypatch):
     (index_dir / 'chunks.json').write_text('[{"text":"SYNTHETIC chunk"}]')
     digest = adapter.file_digest(corpus)
     corpus_version = 'sha256:' + digest
-    model = adapter.source_constants('app/verifiers/evidence_retriever.py', {'EMBEDDING_MODEL'})['EMBEDDING_MODEL']
-    manifest = dict(version=1, corpus_path=str(corpus.resolve()), corpus_size=corpus.stat().st_size,
+    constants = adapter.source_constants('app/verifiers/evidence_retriever.py',
+                                        {'EMBEDDING_MODEL', 'MANIFEST_VERSION'})
+    model = constants['EMBEDDING_MODEL']
+    manifest = dict(version=constants['MANIFEST_VERSION'], corpus_path=str(corpus.resolve()), corpus_size=corpus.stat().st_size,
         corpus_mtime=corpus.stat().st_mtime, corpus_sha256=digest, corpus_version=corpus_version,
         index_version='idx-' + hashlib.sha256(json.dumps([corpus_version, 500, model]).encode()).hexdigest()[:12],
         chunk_size=500, embedding_model=model)
@@ -87,7 +89,7 @@ def test_inspection_no_loads_network_generation_or_state_writes(configuration, m
 
 
 @pytest.mark.parametrize('problem', ['missing_model', 'weights', 'tokenizer', 'index', 'receipt', 'stale_manifest',
-    'alias_only_manifest', 'changed_model', 'changed_corpus', 'service', 'service_mismatch', 'dependency'])
+    'alias_only_manifest', 'legacy_version', 'changed_model', 'changed_corpus', 'service', 'service_mismatch', 'dependency'])
 def test_missing_and_incompatible_resources_block(configuration, monkeypatch, problem):
     data = configuration.model_dump()
     if problem == 'missing_model':
@@ -100,11 +102,13 @@ def test_missing_and_incompatible_resources_block(configuration, monkeypatch, pr
         (Path(data['index_dir']) / 'faiss.index').unlink()
     elif problem == 'receipt':
         data['index_receipt'] = None
-    elif problem in {'stale_manifest', 'alias_only_manifest'}:
+    elif problem in {'stale_manifest', 'alias_only_manifest', 'legacy_version'}:
         path = Path(data['index_dir']) / 'manifest.json'
         manifest = json.loads(path.read_text())
         if problem == 'stale_manifest':
             manifest['chunk_size'] = 999
+        elif problem == 'legacy_version':
+            manifest['version'] = 1
         else:
             del manifest['corpus_sha256']
         path.write_text(json.dumps(manifest))
