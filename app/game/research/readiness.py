@@ -6,7 +6,7 @@ from app.game.offline.attacks import Attack, AdapterIncompatibility, adapter_inc
 from app.game.offline.evaluation import bind_evaluation
 from app.game.offline.replay import category_id
 from app.game.strategies import enumerate_strategies
-from app.game.research.specification import ExperimentSpecification
+from app.game.research.specification import ExperimentSpecification, PolicyBuildSpecification
 
 EVIDENCE_FAILURES = (
     "tests/test_adaptive_pipeline.py::test_actual_evidence_output_contract_is_consumed_without_models[probabilities0-passed]",
@@ -52,7 +52,9 @@ class ReadinessReport(FrozenModel):
 
 
 def check_readiness(spec, *, actual_code_revision):
-    spec = ExperimentSpecification.model_validate(spec)
+    fitting = isinstance(spec, PolicyBuildSpecification)
+    schema = PolicyBuildSpecification if fitting else ExperimentSpecification
+    spec = schema.model_validate(spec)
     context, manifest = spec.context, spec.manifest
     blockers = []
     adapter_blockers = []
@@ -113,7 +115,7 @@ def check_readiness(spec, *, actual_code_revision):
     if not enumeration.strategies:
         blockers.append("no_feasible_strategy:" + str(tuple(r.reasons for r in enumeration.rejected)))
     greedy = greedy_strategy(spec, enumeration.strategies)
-    if greedy is None:
+    if greedy is None and not fitting:
         blockers.append("captured_coverage_aware_greedy_team_is_not_feasible")
     if context.aggregation_versions != (("dependency_group", "groups_v1"), ("reputation_weighted", "log_odds_v1")):
         blockers.append("unsupported_aggregation_versions")
