@@ -1,6 +1,14 @@
 
 from fastapi.testclient import TestClient
 
+from app.reputation.reputation_manager import ReputationManager
+import app.orchestration.validation_orchestrator as orchestrator_module
+
+orchestrator_module.load_reputation_manager_state = lambda: None
+orchestrator_module.build_reputation_state = (
+    lambda: ReputationManager().export_state()
+)
+
 from app.main import app
 from app.api import routes
 
@@ -79,6 +87,9 @@ def test_validate_creates_and_updates_audit(monkeypatch):
     assert [call[0] for call in calls] == ["create", "update"]
 
     assert calls[0][1]["validation_id"] == FakeResult.validation_id
+
+    assert "selection_plan" in calls[0][1]
+    assert "run_summary" in calls[0][1]
 
     update_call = calls[1]
     audit_data = update_call[2]

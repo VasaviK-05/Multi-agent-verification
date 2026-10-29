@@ -71,6 +71,7 @@ def persistence_boundaries(monkeypatch):
     import app.orchestration.validation_orchestrator as module
     monkeypatch.setattr(module, 'build_reputation_state', lambda: ReputationManager().export_state())
     monkeypatch.setattr(module, 'save_reputation', lambda **kw: None)
+    monkeypatch.setattr(module, 'save_reputation_state_and_rows', lambda state: None)
     monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, 'evaluate', lambda *a, **kw: None)
 
 
@@ -237,6 +238,22 @@ def test_detached_audit_and_existing_external_feedback_identity_binding():
     assert run.record_ground_truth(response.results, False, validation_id=response.validation_id) == 0
     assert manager.observation_count('a', 'general') == 1
     assert snapshot.results[0].metadata['decision'] == 'SUPPORT'
+
+    assert manager.observation_count('a', 'general') == 1
+    assert snapshot.results[0].metadata['decision'] == 'SUPPORT'
+
+
+def test_effective_configuration_fingerprint_is_stable():
+    run, _, _, _ = runtime_fixture()
+
+    first = run.validate(ValidationRequest(question='q', answer='a'))
+    second = run.validate(ValidationRequest(question='q', answer='a'))
+
+    first_fingerprint = first.execution_audit['effective_configuration_fingerprint']
+    second_fingerprint = second.execution_audit['effective_configuration_fingerprint']
+
+    assert first_fingerprint
+    assert first_fingerprint == second_fingerprint
 
 
 @pytest.mark.parametrize('aggregation', ['reputation_weighted', 'dependency_group'])
@@ -432,3 +449,136 @@ def test_artifact_provider_detaches_caller_owned_serialized_inputs():
     data['contract']['threshold'] = .99
     assert provider.snapshot()[0].artifact_id == artifact.artifact_id
     assert provider.snapshot()[0].contract.threshold == .55
+
+def test_deployment_loader_rejects_baseline_mode(monkeypatch):
+    from app.game import deployment
+
+    monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "baseline")
+    with pytest.raises(ValueError, match="EXECUTION_MODE=game"):
+        deployment.create_game_runtime()
+
+
+def test_deployment_loader_requires_artifact_path(monkeypatch):
+    from app.game import deployment
+
+    monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+    monkeypatch.setattr(deployment.settings, "GAME_POLICY_ARTIFACT_PATH", "")
+    with pytest.raises(RuntimeError, match="GAME_POLICY_ARTIFACT_PATH"):
+        deployment.create_game_runtime()
+
+
+def test_deployment_loader_rejects_missing_artifact(monkeypatch, tmp_path):
+    from app.game import deployment
+
+    monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+    monkeypatch.setattr(
+        deployment.settings, "GAME_POLICY_ARTIFACT_PATH",
+        str(tmp_path / "missing-policy.json"),
+    )
+    with pytest.raises(FileNotFoundError, match="artifact does not exist"):
+        deployment.create_game_runtime()
+
+
+def test_deployment_loader_rejects_invalid_artifact(monkeypatch, tmp_path):
+    from app.game import deployment
+
+    artifact_path = tmp_path / "invalid-policy.json"
+    artifact_path.write_text('{"version": "invalid"}', encoding="utf-8")
+    monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+    monkeypatch.setattr(
+        deployment.settings, "GAME_POLICY_ARTIFACT_PATH", str(artifact_path)
+    )
+    with pytest.raises(ValueError, match="Invalid game deployment artifact"):
+        deployment.create_game_runtime()
+
+
+def test_validation_service_uses_baseline_mode(monkeypatch):
+    from app.services import validation_service
+
+    created = {}
+
+    class FakeOrchestrator:
+        def __init__(self, *args, **kwargs):
+            created["args"] = args
+            created["kwargs"] = kwargs
+
+    monkeypatch.setattr(
+        validation_service.settings, "EXECUTION_MODE", "baseline"
+    )
+    monkeypatch.setattr(
+        validation_service, "ValidationOrchestrator", FakeOrchestrator
+    )
+
+    service = validation_service.ValidationService()
+
+    assert isinstance(service._orchestrator, FakeOrchestrator)
+    assert created["kwargs"] == {}
+
+
+def test_validation_service_uses_game_mode(monkeypatch):
+    from app.services import validation_service
+    from app.game import deployment
+
+    fake_runtime = object()
+    created = {}
+
+    class FakeOrchestrator:
+        def __init__(self, *args, **kwargs):
+            created["kwargs"] = kwargs
+
+    monkeypatch.setattr(
+        validation_service.settings, "EXECUTION_MODE", "game"
+    )
+    monkeypatch.setattr(
+        deployment, "create_game_runtime", lambda: fake_runtime
+    )
+    monkeypatch.setattr(
+        validation_service, "ValidationOrchestrator", FakeOrchestrator
+    )
+
+    service = validation_service.ValidationService()
+
+    assert isinstance(service._orchestrator, FakeOrchestrator)
+    assert created["kwargs"]["execution_mode"] == "game"
+    assert created["kwargs"]["game_runtime"] is fake_runtime
+
+
+def test_validation_service_rejects_invalid_execution_mode(monkeypatch):
+    from app.services import validation_service
+
+    monkeypatch.setattr(
+        validation_service.settings, "EXECUTION_MODE", "invalid"
+    )
+
+    with pytest.raises(ValueError, match="EXECUTION_MODE"):
+        validation_service.ValidationService()
+
+
+def test_deployment_loader_loads_valid_artifact(monkeypatch, tmp_path):
+    from app.game import deployment
+
+    artifact, _, _ = artifact_fixture()
+    artifact_path = tmp_path / "valid-policy.json"
+    artifact_path.write_text(
+        artifact.model_dump_json(),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+    monkeypatch.setattr(
+        deployment.settings,
+        "GAME_POLICY_ARTIFACT_PATH",
+        str(artifact_path),
+    )
+    monkeypatch.setattr(
+        deployment.settings, "GAME_EPISODE_ID", "loader-test-episode"
+    )
+
+    runtime = deployment.create_game_runtime()
+
+    assert isinstance(runtime, GameRuntime)
+    assert runtime.episode.episode_id == "loader-test-episode"
+    assert runtime.episode.execution_configuration_id == artifact.execution_configuration_id
+    assert runtime.provider.snapshot()[0].policy.policy_id == artifact.policy.policy_id
+    assert runtime.allow_synthetic_for_tests is False
+

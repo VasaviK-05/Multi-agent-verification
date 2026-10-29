@@ -1,8 +1,17 @@
 
 from uuid import UUID
 
-from fastapi.testclient import TestClient
+import pytest
 
+from app.reputation.reputation_manager import ReputationManager
+import app.orchestration.validation_orchestrator as orchestrator_module
+
+orchestrator_module.load_reputation_manager_state = lambda: None
+orchestrator_module.build_reputation_state = (
+    lambda: ReputationManager().export_state()
+)
+
+from fastapi.testclient import TestClient
 from app.api import routes
 from app.main import app
 from app.models.schemas import GroundTruthEvaluation, ValidationResponse
@@ -70,7 +79,9 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
     monkeypatch.setattr(
         routes,
         "create_audit",
-        lambda **kwargs: events.append(("audit_create", kwargs["validation_id"])),
+        lambda **kwargs: events.append(
+            ("audit_create", kwargs.copy())
+        ),
     )
     monkeypatch.setattr(
         routes,
@@ -174,7 +185,7 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
         routes,
         "create_audit",
         lambda **kwargs: events.append(
-            ("audit_create", kwargs["validation_id"])
+            ("audit_create", kwargs.copy())
         ),
     )
     monkeypatch.setattr(
@@ -202,6 +213,12 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
         "audit_update",
     ]
     assert UUID(events[2][1]) == UUID(VALIDATION_ID)
+    audit_create = next(
+        event for event in events if event[0] == "audit_create"
+    )
+    assert audit_create[1]["validation_id"] == VALIDATION_ID
+    assert "selection_plan" in audit_create[1]
+    assert "run_summary" in audit_create[1]
 
     audit_update = events[-1]
     assert audit_update[2]["run_status"] == "completed"

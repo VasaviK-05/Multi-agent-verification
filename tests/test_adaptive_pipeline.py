@@ -22,7 +22,9 @@ def offline_pipeline_boundaries(monkeypatch):
     or Wikidata. Patch only those boundaries, never selector/decision math.
     """
     import app.orchestration.validation_orchestrator as module
+    monkeypatch.setattr(module, "load_reputation_manager_state", lambda: None)
     monkeypatch.setattr(module, "build_reputation_state", lambda: ReputationManager().export_state())
+    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
     monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
     monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
     # Import after replacing bootstrap I/O; service construction remains real.
@@ -167,6 +169,11 @@ def test_campaign_actual_api_serializes_approved_rule_snapshot(monkeypatch, answ
     from fastapi.testclient import TestClient
     from app.main import app
     from app.api import routes
+
+    monkeypatch.setattr(routes, "create_audit", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "update_audit", lambda *args, **kwargs: None)
+    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
+
     from app.services.validation_service import ValidationService
     from app.verifiers.rule_verifier import RuleVerifier
     run = connected([RuleVerifier(), MetadataChecker("generic", passed), MetadataChecker("later")],

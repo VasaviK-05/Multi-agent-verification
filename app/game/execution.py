@@ -12,7 +12,7 @@ from app.decision.vote_normalization import is_abstention
 from app.game.artifacts import DeploymentEpisode, PolicyArtifact
 from app.game.finalization import finalize_decision
 from app.game.frozen_planning import PlanningMismatch, frozen_selector
-from app.game.models import capture_context
+from app.game.models import capture_context, content_id
 from app.game.policy import sample_policy
 from app.game.strategies import enumerate_strategies
 from app.selection.models import VerifierUnavailable
@@ -76,8 +76,20 @@ class GameRuntime:
         episode = DeploymentEpisode.model_validate(self.episode)
         registered = tuple(self.provider.snapshot())
         context, contract = episode.context, episode.contract
+        artifact_ids = sorted(
+            str(getattr(artifact, "artifact_id", ""))
+            for artifact in registered
+        )
+        effective_configuration_fingerprint = content_id({
+            "episode_id": episode.episode_id,
+            "execution_configuration_id": episode.execution_configuration_id,
+            "execution_contract": contract.model_dump(mode="json"),
+            "registered_artifact_ids": artifact_ids,
+        })
         summary = dict(audit_version="game_execution_audit_v1", execution_mode="game",
-            episode_id=episode.episode_id, artifact_id=None, policy_id=None, matrix_id=None,
+            episode_id=episode.episode_id,
+            effective_configuration_fingerprint=effective_configuration_fingerprint,
+            artifact_id=None, policy_id=None, matrix_id=None,
             reputation_snapshot_id=context.reputation_snapshot_id,
             offline_evaluation_id=context.offline_evaluation_id, selected_strategy_id=None,
             team=[], aggregation=None, threshold=contract.threshold,

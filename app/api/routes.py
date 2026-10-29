@@ -75,6 +75,8 @@ def validate(request: ValidationRequest):
         question_id=request.question_id,
         session_id=request.session_id,
         policy_version=initial_plan.get("policy_version"),
+        selection_plan=initial_plan,
+        run_summary=initial_summary,
     )
 
     try:
@@ -309,6 +311,8 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             question_id=question_id,
             session_id=request.session_id,
             policy_version=initial_plan.get("policy_version"),
+            selection_plan=initial_plan,
+            run_summary=initial_summary,
         )
         audit_created = True
 
