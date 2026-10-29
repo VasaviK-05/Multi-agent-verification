@@ -1,8 +1,15 @@
 
 from fastapi.testclient import TestClient
 
-from app.main import app
-from app.api import routes
+from unittest.mock import patch
+from app.reputation.reputation_manager import ReputationManager
+
+# Import-time service bootstrap is not a live PostgreSQL integration test.
+# Restore the real loader immediately; individual repository tests keep their SQL.
+with patch("app.orchestration.validation_orchestrator.load_reputation_manager_state",
+           return_value=ReputationManager().export_state()):
+    from app.main import app
+    from app.api import routes
 
 
 client = TestClient(app)
