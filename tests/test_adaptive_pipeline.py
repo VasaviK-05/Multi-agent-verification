@@ -22,6 +22,10 @@ def offline_pipeline_boundaries(monkeypatch):
     or Wikidata. Patch only those boundaries, never selector/decision math.
     """
     import app.orchestration.validation_orchestrator as module
+    # Main now persists complete snapshots as well as aggregate rows. Keep the
+    # existing offline test boundary around both; decision/feedback logic is real.
+    monkeypatch.setattr(module, "load_reputation_manager_state", lambda: None)
+    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
     monkeypatch.setattr(module, "build_reputation_state", lambda: ReputationManager().export_state())
     monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
     monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
@@ -29,6 +33,8 @@ def offline_pipeline_boundaries(monkeypatch):
     from app.api import routes
     monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
     monkeypatch.setattr(routes, "save_verifier_outputs", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "create_audit", lambda *args, **kwargs: None)
+    monkeypatch.setattr(routes, "update_audit", lambda *args, **kwargs: None)
 
 
 @pytest.mark.parametrize("history", ["prior", "success", "failure", "balanced"])
@@ -1138,6 +1144,37 @@ def test_actual_arithmetic_rule_qualifies_after_malformed_generic_metadata(rule)
     assert summary(response)["termination"] == "approved_early_stop"
     assert later.calls == 0
 
+def test_failed_reputation_snapshot_save_does_not_silently_succeed(monkeypatch):
+    from app.orchestration import validation_orchestrator as orchestrator_module
+
+    manager = ReputationManager()
+    # Exercise real rollback logic with controlled votes, not model/provider I/O.
+    orchestrator = connected([MetadataChecker("first"), MetadataChecker("second")], manager=manager)
+
+    response = orchestrator.validate(
+        ValidationRequest(question="test question", answer="test answer")
+    )
+    before = manager.export_state()
+
+    def fail_snapshot_save(state):
+        raise RuntimeError("simulated database failure")
+
+    monkeypatch.setattr(
+        orchestrator_module,
+        "save_reputation_state_and_rows",
+        fail_snapshot_save,
+    )
+
+    with pytest.raises(RuntimeError, match="simulated database failure"):
+        orchestrator.record_ground_truth(
+            response.results,
+            answer_is_correct=True,
+            validation_id=response.validation_id,
+        )
+
+    # This captures the current behavior. We'll use the result
+    # to decide whether the manager needs rollback support.
+    assert manager.export_state() == before
 
 def test_live_plan_specialist_precedes_utility_order_and_is_built_once(monkeypatch):
     from app.selection.capabilities import CapabilityDescriptor

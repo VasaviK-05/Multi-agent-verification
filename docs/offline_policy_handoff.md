@@ -1,5 +1,10 @@
 # Offline policy workflow: publication handoff
 
+Update 2026-10-29: [main merge verification](offline_policy_main_merge.md) supersedes
+the historical evidence-probe failure status below: all four probes now pass. The
+conservative readiness gate remains; resource/study/data blockers are not cleared.
+
+
 The offline builder, report collector and millisecond cost calibration are implemented.
 They retain outcome-free final reservation contracts, independent history reputation,
 complete development attack replay, both aggregation methods/all feasible strategies,

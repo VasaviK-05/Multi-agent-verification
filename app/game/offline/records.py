@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import StrictBool, Field, model_serializer, model_validator
+from pydantic import Field, StrictBool, model_serializer, model_validator
 
 from app.decision.report_identity import canonical_reports
 from app.decision.vote_normalization import is_abstention

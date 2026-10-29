@@ -69,6 +69,10 @@ class Analyzer:
 @pytest.fixture(autouse=True)
 def persistence_boundaries(monkeypatch):
     import app.orchestration.validation_orchestrator as module
+    # Main now persists complete snapshots as well as aggregate rows. Keep the
+    # existing offline test boundary around both; decision/feedback logic is real.
+    monkeypatch.setattr(module, "load_reputation_manager_state", lambda: None)
+    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
     monkeypatch.setattr(module, 'build_reputation_state', lambda: ReputationManager().export_state())
     monkeypatch.setattr(module, 'save_reputation', lambda **kw: None)
     monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, 'evaluate', lambda *a, **kw: None)

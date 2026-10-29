@@ -6,8 +6,14 @@ milliseconds. The second part loads the real models once and checks the
 tiny ``data/test_evidence_corpus.json`` end to end.
 """
 
+import ast
+import inspect
+import json
+from pathlib import Path
+
 import pytest
 
+import app.verifiers.evidence_verifier as evidence_verifier
 from app.verifiers.evidence_verifier import (
     NO_RELEVANT_EVIDENCE_REASON,
     EvidenceVerifier,
@@ -62,6 +68,39 @@ class FakeNLI:
         raise AssertionError(self.shape)
 
 
+class FakeTokenizer:
+    model_max_length = 12
+
+    @staticmethod
+    def tokenize(text):
+        return str(text).split()
+
+    @staticmethod
+    def convert_tokens_to_string(tokens):
+        return " ".join(tokens)
+
+    @staticmethod
+    def num_special_tokens_to_add(pair=False):
+        return 3 if pair else 2
+
+    def __call__(self, text, text_pair, **kwargs):
+        tokens = self.tokenize(text) + self.tokenize(text_pair)
+        limit = kwargs.get("max_length")
+        if kwargs.get("truncation") and limit is not None:
+            tokens = tokens[: limit - 3]
+        return {"input_ids": [0] * (len(tokens) + 3)}
+
+
+class TokenAwareNLI:
+    def __init__(self):
+        self.tokenizer = FakeTokenizer()
+        self.calls = []
+
+    def __call__(self, inputs, **kwargs):
+        self.calls.append((inputs, kwargs))
+        return [{"label": label, "score": score} for label, score in NEUTRAL.items()]
+
+
 ENTAILS = {"entailment": 0.95, "neutral": 0.04, "contradiction": 0.01}
 CONTRADICTS = {"contradiction": 0.93, "neutral": 0.05, "entailment": 0.02}
 NEUTRAL = {"neutral": 0.90, "entailment": 0.06, "contradiction": 0.04}
@@ -103,9 +142,60 @@ def test_verifier_handles_every_pipeline_shape(shape):
     assert result.metadata["nli_output_shape"] == shape
 
 
+def test_short_nli_pair_is_not_split_and_stays_within_model_limit():
+    nli = TokenAwareNLI()
+    verifier = make_verifier(FakeRetriever(), nli)
+
+    row = verifier.score_evidence(
+        chunk("Short", "Paris is the capital of France.", 0.8),
+        "Paris claim",
+    )
+
+    assert len(nli.calls) == 1
+    assert nli.calls[0][0]["text"] == "Paris is the capital of France."
+    assert row["premise_windows"][0]["token_count"] <= nli.tokenizer.model_max_length
+
+
+def test_long_nli_pair_uses_overlapping_token_bounded_windows():
+    nli = TokenAwareNLI()
+    verifier = make_verifier(FakeRetriever(), nli)
+    premise = " ".join(f"word{i}" for i in range(25))
+
+    row = verifier.score_evidence(
+        chunk("Long", premise, 0.8),
+        "claim words",
+        premise=premise,
+    )
+
+    assert len(nli.calls) > 1
+    assert all(
+        len(nli.tokenizer(call["text"], call["text_pair"], **kwargs)["input_ids"])
+        <= nli.tokenizer.model_max_length
+        for call, kwargs in nli.calls
+    )
+    first = nli.calls[0][0]["text"].split()
+    second = nli.calls[1][0]["text"].split()
+    assert set(first) & set(second)
+    assert all(kwargs == {} for _, kwargs in nli.calls)
+
+
 # ----------------------------------------------------------------------
 # Relevance gate (issue 6)
 # ----------------------------------------------------------------------
+
+def test_topic_filter_methods_each_have_one_authoritative_definition():
+    tree = ast.parse(inspect.getsource(evidence_verifier))
+    verifier = next(
+        node for node in tree.body
+        if isinstance(node, ast.ClassDef) and node.name == "EvidenceVerifier"
+    )
+    names = [
+        node.name for node in verifier.body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    ]
+    for name in ("anchor_weights", "topic_coverage", "select_on_topic", "_discard_reason"):
+        assert names.count(name) == 1
+
 
 def test_best_hit_below_floor_abstains_without_running_nli():
     retriever = FakeRetriever([chunk("India", "New Delhi is the capital of India.", 0.20)])
@@ -123,6 +213,7 @@ def test_best_hit_below_floor_abstains_without_running_nli():
     assert result.metadata["nli_label"] is None
     assert result.metadata["decision"] == "UNSURE"
     assert result.metadata["unsure_reason"] == "no_relevant_evidence"
+    assert result.metadata["diagnostic_code"] == "LOW_RELEVANCE"
     assert result.metadata["best_retrieval_score"] == pytest.approx(0.20)
     assert result.reasoning == NO_RELEVANT_EVIDENCE_REASON
 
@@ -132,6 +223,7 @@ def test_empty_retrieval_abstains():
     assert result.passed is False
     assert result.score == 0.0
     assert result.metadata["nli_label"] is None
+    assert result.metadata["diagnostic_code"] == "NO_RELEVANT_EVIDENCE"
     assert result.reasoning == "No evidence was retrieved."
 
 
@@ -151,6 +243,92 @@ def test_distant_neighbour_cannot_create_a_false_contradiction():
     assert result.metadata["decision"] == "SUPPORT"
     assert [e["title"] for e in result.metadata["evaluated_evidence"]] == ["France", "Paris"]
     assert result.metadata["contradicting"] == []
+
+
+def test_answer_terms_do_not_bias_single_fact_retrieval_query():
+    retriever = FakeRetriever([chunk("Hamlet", "William Shakespeare wrote Hamlet.", 0.85)])
+
+    make_verifier(retriever, FakeNLI({"Shakespeare": CONTRADICTS})).verify(
+        "Who wrote Hamlet?", "Charles Dickens"
+    )
+
+    assert retriever.queries == ["Who wrote Hamlet?"]
+
+
+def test_low_semantic_keyword_collision_is_ineligible_before_nli():
+    corpus = json.loads(Path("data/articles_13083.json").read_text(encoding="utf-8"))
+    article = next(row for row in corpus if row["title"] == "16th Gemini Awards")
+    awards = chunk(article["title"], article["text"], 0.21)
+    awards["lexical_hit"] = True
+    calls = []
+
+    def nli(inputs):
+        calls.append(inputs)
+        return [[{"label": "contradiction", "score": 0.99}]]
+
+    result = make_verifier(FakeRetriever([awards]), nli).verify(
+        "What is the capital of Atlantis?", "Poseidon City"
+    )
+
+    assert calls == []
+    assert result.metadata["decision"] == "UNSURE"
+    assert result.metadata["unsure_reason"] == "no_relevant_evidence"
+    assert result.metadata["discarded_evidence"][0]["about_subject"] is False
+    assert result.metadata["discarded_evidence"][0]["reason"] == (
+        "article title is about a different subject than the question"
+    )
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "The governor served in the capital of New France.",
+        "The fort protected the capital Fort-de-France.",
+        "The governor of Île de France stayed in the capital.",
+    ],
+)
+def test_longer_named_entities_do_not_match_requested_entity(text):
+    calls = []
+
+    def nli(inputs):
+        calls.append(inputs)
+        return [[{"label": "contradiction", "score": 0.99}]]
+
+    result = make_verifier(
+        FakeRetriever([chunk("History", text, 0.30)]),
+        nli,
+        min_retrieval_score=0.20,
+    ).verify("What is the capital of France?", "Paris")
+
+    assert calls == []
+    assert result.metadata["decision"] == "UNSURE"
+
+
+def test_semantically_relevant_generic_title_can_reject_wrong_hamlet_author():
+    evidence = chunk(
+        "1601 in literature",
+        "Works included William Shakespeare: Hamlet.",
+        0.80,
+    )
+    result = make_verifier(
+        FakeRetriever([evidence]),
+        FakeNLI({"William Shakespeare": CONTRADICTS}),
+    ).verify("Who wrote Hamlet?", "Charles Dickens")
+
+    assert result.metadata["decision"] == "REJECT"
+    assert result.metadata["evaluated_evidence"][0]["about_subject"] is True
+    assert result.metadata["evaluated_evidence"][0]["eligibility_basis"] == "semantic_relevance"
+
+
+def test_relevant_hamlet_evidence_supports_correct_author():
+    evidence = chunk("Hamlet", "William Shakespeare wrote Hamlet.", 0.85)
+    result = make_verifier(
+        FakeRetriever([evidence]),
+        FakeNLI({"William Shakespeare": ENTAILS}),
+    ).verify("Who wrote Hamlet?", "William Shakespeare")
+
+    assert result.metadata["decision"] == "SUPPORT"
+    assert result.passed is True
 
 
 # ----------------------------------------------------------------------
@@ -274,6 +452,22 @@ def test_strong_contradiction_alongside_entailment_is_a_conflict_not_support():
     assert "conflict" in result.reasoning
 
 
+def test_duplicate_chunks_from_one_article_do_not_overwhelm_an_independent_conflict():
+    retriever = FakeRetriever(
+        [
+            chunk("A", "Source A says Person A discovered X.", 0.82, 1),
+            chunk("A", "Source A repeats that Person A discovered X.", 0.81, 2),
+            chunk("B", "Source B says Person B discovered X.", 0.80, 3),
+        ]
+    )
+    nli = FakeNLI({"Source A": ENTAILS, "Source B": CONTRADICTS})
+
+    result = make_verifier(retriever, nli).verify("Who discovered X?", "Person A")
+
+    assert result.metadata["decision"] == "UNSURE"
+    assert result.metadata["unsure_reason"] == "conflict"
+
+
 def test_only_contradiction_rejects_with_its_probability():
     retriever = FakeRetriever([chunk("France", "Paris is the capital of France.", 0.85)])
     result = make_verifier(retriever, FakeNLI({"Paris": CONTRADICTS})).verify("What is the capital of France?", "London")
@@ -293,6 +487,7 @@ def test_neutral_evidence_abstains():
     assert result.score == 0.0
     assert result.metadata["nli_label"] == "neutral"
     assert result.metadata["unsure_reason"] == "neutral"
+    assert result.metadata["diagnostic_code"] == "NEUTRAL_NLI"
 
 
 def test_weak_entailment_below_min_nli_score_is_not_support():
@@ -348,6 +543,7 @@ def test_partially_supported_answer_is_unsure_and_lists_unchecked_claims():
     assert result.metadata["decision"] == "UNSURE"
     assert result.metadata["nli_label"] == "neutral"
     assert result.metadata["unsure_reason"] == "partial_support"
+    assert result.metadata["diagnostic_code"] == "INCOMPLETE_CLAIM_COVERAGE"
     assert result.metadata["unchecked_claims"] == ["It lies on the Seine."]
     assert [c["decision"] for c in result.metadata["claim_decisions"]] == ["SUPPORT", "UNSURE"]
 
@@ -447,3 +643,28 @@ def test_multi_claim_answer_with_an_unsupported_sentence(verifier: EvidenceVerif
     assert result.metadata["claim_decisions"][0]["decision"] == "SUPPORT"
     assert result.passed is False
     assert result.metadata["decision"] in {"UNSURE", "REJECT"}
+
+
+def test_claim_generator_keeps_personal_initials_in_single_sentence():
+    from app.verifiers.claim_generator import ClaimGenerator
+
+    claims = ClaimGenerator().generate_claims(
+        "Who received the 1948 Nobel Prize in Literature?",
+        "T. S. Eliot received the 1948 Nobel Prize in Literature.",
+    )
+    assert len(claims) == 1
+    assert "T. S. Eliot" in claims[0]["claim"]
+    assert "was awarded" in claims[0]["claim"]
+
+
+def test_t_s_eliot_supported_by_real_corpus():
+    corpus = Path("data/articles_13083.json")
+    if not corpus.exists():
+        pytest.skip("The configured evidence corpus is unavailable")
+    real_verifier = EvidenceVerifier(corpus_path=str(corpus))
+    result = real_verifier.verify(
+        "Who received the 1948 Nobel Prize in Literature?",
+        "T. S. Eliot received the 1948 Nobel Prize in Literature.",
+    )
+    assert result.metadata["decision"] == "SUPPORT", result.metadata
+    assert any("awarded" in row["relevant_evidence"].lower() for row in result.metadata["evaluated_evidence"])

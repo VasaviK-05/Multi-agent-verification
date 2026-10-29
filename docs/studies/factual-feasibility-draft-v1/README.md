@@ -1,5 +1,15 @@
 # Draft factual feasibility study — not approved or executable
 
+**Merge verification, 2026-10-29:** incoming `origin/main` repairs now pass all four
+previous public evidence probe cases and 46 selected model-free evidence/retrieval
+checks. References below to three failing probes describe the historical revision.
+This is not empirical model validation: the large-corpus fixture is absent and its
+failure reproduces on unchanged main. The conservative evidence readiness gate is
+retained, study settings remain unapproved, and new source/index-v2 resource bindings
+and fresh authorized recordings are still required. See
+[the current merge handoff](../../offline_policy_main_merge.md).
+
+
 **Publication boundary:** the JSON requests, reservations, labels, preflight receipts
 and generated reports described here are local-only and excluded from Git. JSON
 links refer to those local outputs. Reusable source/tests and this handoff are

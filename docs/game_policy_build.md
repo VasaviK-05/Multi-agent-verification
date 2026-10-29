@@ -1,5 +1,11 @@
 # Offline policy building
 
+Latest integration status: [the 2026-10-29 main merge verification](offline_policy_main_merge.md)
+records the repaired controlled evidence probes, unchanged conservative readiness gate,
+new index-v2/fresh-recording requirements and remaining resource limitations. Historical
+results below are retained; no factual policy or new study approval exists.
+
+
 The builder now fits, validates, exports and reloads the existing PolicyArtifact
 format. Synthetic tests exercise the complete command and existing provider/runtime
 interfaces. The arithmetic engineering pilot has since been fitted and diagnosed; no factual policy exists. The separate
