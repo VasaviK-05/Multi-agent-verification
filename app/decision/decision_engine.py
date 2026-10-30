@@ -3,8 +3,8 @@
 This is a weighted vote. It does not solve a game, and the score is not
 a probability.
 
-For an informative verifier i, with domain reputation p_i, confidence
-s_i in [0, 1], and vote v_i = +1 on pass and -1 on reject:
+For a scoring verifier i, with domain reputation p_i, normalized confidence
+s_i in (0, 1], and vote v_i = +1 on pass and -1 on reject:
 
     w_i = log(p_i / (1 - p_i))     # Bernoulli log likelihood ratio
     mass_i = s_i * v_i             # in [-1, 1]
@@ -14,6 +14,11 @@ s_i is not always the raw ``score`` field. A supported rule stores score
 unsupported rule, a semantic check with no context, evidence with no
 directional NLI label, and confidence with no judgments are abstentions
 and contribute no mass. See app/decision/vote_normalization.py.
+
+All supplied results are validated first. Directional results with zero
+normalized confidence stay in explanations but are excluded from scoring,
+denominators, and the choice between log-odds and equal-weight aggregation.
+They remain directional for reputation learning.
 
 p_i is clamped into (EPS, 1 - EPS) so the log is finite.
 
@@ -30,16 +35,23 @@ sum would cancel that inversion.
 
     score = sum_i w_i * mass_i / sum_i |w_i|     when some |w_i| > 0
 
-Cold start, when every consulted reputation has w_i = 0 (the default
-prior is 0.5):
+Fallback, when every scoring verifier has w_i = 0 (including the default
+prior of 0.5 and experienced balanced reputations):
 
     score = sum_i mass_i / n
 
-The score is in [-1, 1]. +1 is a unanimous full-confidence pass after
-any inversions. -1 is the same for reject. Values between the UNCALIBRATED
+The score is in [-1, 1]. +1 means every result included in aggregation
+is a full-confidence pass after any negative-weight inversion. -1 means
+the same for reject. Zero-weight results are not included in log-odds
+aggregation. Values between the UNCALIBRATED
 cuts are "uncertain" (abstain). No verifier results yield status "unknown"
 and score 0; that 0 is an empty sentinel, not a calibrated chance and not
 the same claim as an "uncertain" 0 from cancelling votes.
+
+These are retained, uncalibrated policies: one observation can give a
+verifier sole influence over untouched verifiers, and one failure can
+invert its vote. Similarity, NLI confidence, and agreement fractions are
+not calibrated probabilities of answer correctness.
 
 Cuts, also UNCALIBRATED, applied to the bounded score before rounding.
 The band is symmetric about 0 because a positive score is net pass
@@ -61,11 +73,15 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 from app.decision.vote_normalization import is_abstention, signed_mass, vote_confidence
 from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import ReputationManager
+
+if TYPE_CHECKING:
+    from app.game.decision_inputs import FrozenReputationSnapshot
+    from app.game.dependencies import DependencyRegistry
 
 # Clamp so log(p / (1-p)) stays finite at reputations of 0 or 1.
 EPS = 1e-6
@@ -125,7 +141,8 @@ class VoteExplanation:
 
     ``contribution`` is ``weight * mass`` in log-odds mode and ``mass`` in
     equal-weight mode. An abstention and a zero-weight vote that was ignored
-    because another weight was nonzero both contribute 0.
+    because another scoring weight was nonzero both contribute 0. A
+    zero-confidence directional result also contributes 0 without abstaining.
     """
 
     verifier_name: str
@@ -143,7 +160,9 @@ class DecisionDetail:
 
     ``raw_score`` is the bounded score used for the status cut. ``score``
     is ``raw_score`` rounded to 6 decimals. ``aggregation`` is ``unknown``,
-    ``abstentions``, ``log_odds``, or ``equal_weight``.
+    ``abstentions``, ``zero_confidence``, ``log_odds``, or ``equal_weight``.
+    ``zero_confidence`` means no scoring result remains, but at least one
+    supplied result is directional; ``abstentions`` means all abstained.
     """
 
     domain: str
@@ -180,6 +199,12 @@ class DecisionEngine:
         self,
         results: list[VerificationResult],
         domain: str | None = None,
+        *,
+        snapshot: FrozenReputationSnapshot | None = None,
+        aggregation: str = "reputation_weighted",
+        dependencies: DependencyRegistry | None = None,
+        team: Sequence[str] | None = None,
+        validation_id: str | None = None,
     ) -> tuple[str, float]:
         """Return (status, score) for one domain.
 
@@ -188,18 +213,71 @@ class DecisionEngine:
         probability of correctness. Status is "passed", "failed",
         "uncertain", or "unknown", and it follows the unrounded score.
         """
-        detail = self.decide_detailed(results, domain=domain)
+        options = dict(snapshot=snapshot, aggregation=aggregation, dependencies=dependencies,
+                       team=team, validation_id=validation_id)
+        if (snapshot is None and aggregation == "reputation_weighted" and dependencies is None
+            and team is None and validation_id is None):
+            detail = self.decide_detailed(results, domain=domain)
+        else:
+            detail = self.decide_detailed(results, domain=domain, **options)
         return detail.status, detail.score
 
     def decide_detailed(
         self,
         results: list[VerificationResult],
         domain: str | None = None,
+        *,
+        snapshot: FrozenReputationSnapshot | None = None,
+        aggregation: str = "reputation_weighted",
+        dependencies: DependencyRegistry | None = None,
+        team: Sequence[str] | None = None,
+        validation_id: str | None = None,
+    ) -> DecisionDetail:
+        """Opt into frozen reputation or dependency aggregation; legacy calls retain their shape.
+
+        Dependency aggregation requires a PlanningContext-backed snapshot. Team/run
+        identity checks are additive on the baseline and automatic for dependency groups.
+        The returned status is numerical, not an achieved-coverage certificate.
+        """
+        domain_name = self._default_domain if domain is None else _require_domain(domain)
+        if aggregation == "dependency_group":
+            from app.decision.dependency_aggregation import aggregate_dependency_groups
+            return aggregate_dependency_groups(results, domain=domain_name, threshold=self._threshold,
+                snapshot=snapshot, dependencies=dependencies, team=team, validation_id=validation_id)
+        if aggregation != "reputation_weighted":
+            raise ValueError("unknown aggregation identifier")
+        if dependencies is not None:
+            raise ValueError("dependencies apply only to dependency_group aggregation")
+        identity_checks = team is not None or validation_id is not None
+        if identity_checks:
+            from app.decision.report_identity import canonical_reports
+            results, validation_id, team = canonical_reports(
+                results, team=team, validation_id=validation_id, deduplicate=False)
+        reputations = None
+        if snapshot is not None:
+            from app.game.decision_inputs import checked_snapshot
+            checked = _checked_results(results)
+            names = tuple(team) if team is not None else tuple(r.verifier_name for r in checked)
+            snapshot = checked_snapshot(snapshot, domain_name, names, aggregation)
+            reputations = snapshot.means(domain_name, names)
+        detail = self._decide_reputation_detailed(results, domain=domain_name, reputations=reputations)
+        if snapshot is not None or identity_checks:
+            from app.decision.dependency_aggregation import explain_reputation
+            return explain_reputation(detail, snapshot, validation_id=validation_id, team=team)
+        return detail
+
+    def _decide_reputation_detailed(
+        self,
+        results: Sequence[VerificationResult],
+        domain: str | None = None,
+        *,
+        reputations: dict[str, float] | None = None,
     ) -> DecisionDetail:
         """Return the same decision as ``decide``, with per-verifier terms.
 
-        Reputation is read once for every supplied verifier. This method
-        does not update the manager.
+        Without supplied reputations, one atomic batch provides the existing
+        rounded live means. Supplied means are consumed as captured, without a
+        live read or rounding. This method never updates the manager.
         """
         if domain is None:
             domain_name = self._default_domain
@@ -217,12 +295,13 @@ class DecisionEngine:
                 votes=(),
             )
 
-        statistics = self._reputation_manager.statistics_batch(
-            tuple((result.verifier_name, domain_name) for result in checked)
-        )
-        reputations = {
-            stats.verifier_name: round(stats.posterior_mean, 6) for stats in statistics
-        }
+        if reputations is None:
+            statistics = self._reputation_manager.statistics_batch(
+                tuple((result.verifier_name, domain_name) for result in checked)
+            )
+            reputations = {
+                stats.verifier_name: round(stats.posterior_mean, 6) for stats in statistics
+            }
         prepared: list[tuple[VerificationResult, bool, float, float, float]] = []
         informative: list[tuple[VerificationResult, float, float, float]] = []
         for result in checked:
@@ -231,7 +310,7 @@ class DecisionEngine:
             reputation = reputations[result.verifier_name]
             weight = log_odds_weight(reputation)
             prepared.append((result, abstained, confidence, reputation, weight))
-            if abstained:
+            if abstained or confidence == 0.0:
                 continue
             mass = signed_mass(result)
             if mass is None:
@@ -245,28 +324,30 @@ class DecisionEngine:
                 raw_score=0.0,
                 score=0.0,
                 threshold=self._threshold,
-                aggregation="abstentions",
+                aggregation=(
+                    "abstentions" if all(row[1] for row in prepared) else "zero_confidence"
+                ),
                 votes=tuple(
                     VoteExplanation(
                         verifier_name=result.verifier_name,
-                        abstained=True,
+                        abstained=abstained,
                         passed=result.passed,
                         confidence=0.0,
                         reputation=reputation,
                         weight=weight,
                         contribution=0.0,
                     )
-                    for result, _abstained, _confidence, reputation, weight in prepared
+                    for result, abstained, _confidence, reputation, weight in prepared
                 ),
             )
 
-        absolute_weight = sum(abs(weight) for _result, _mass, _reputation, weight in informative if weight != 0.0)
+        absolute_weight = math.fsum(abs(weight) for _result, _mass, _reputation, weight in informative if weight != 0.0)
         if absolute_weight == 0.0:
             aggregation = "equal_weight"
-            raw_score = sum(mass for _result, mass, _reputation, _weight in informative) / len(informative)
+            raw_score = math.fsum(mass for _result, mass, _reputation, _weight in informative) / len(informative)
         else:
             aggregation = "log_odds"
-            weighted_sum = sum(
+            weighted_sum = math.fsum(
                 weight * mass
                 for _result, mass, _reputation, weight in informative
                 if weight != 0.0
@@ -294,7 +375,7 @@ class DecisionEngine:
                     confidence=0.0 if abstained else confidence,
                     reputation=reputation,
                     weight=weight,
-                    contribution=0.0 if abstained else contributions[id(result)],
+                    contribution=contributions.get(id(result), 0.0),
                 )
                 for result, abstained, confidence, reputation, weight in prepared
             ),

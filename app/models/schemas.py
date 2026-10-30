@@ -1,6 +1,5 @@
 """Shared Pydantic models for validation requests and responses."""
-
-from typing import Any, Optional
+from typing import Any, List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -30,12 +29,14 @@ class GroundTruthEvaluation(BaseModel):
     source: str
     answer_is_correct: bool
 
-
 class ValidationResponse(BaseModel):
     """Aggregated validation response returned to the client.
 
     ``validation_id`` and ``domain`` identify the run for a later label.
     They are empty when a caller builds a response without the orchestrator.
+    ``execution_audit`` retains planning/execution diagnostics even without
+    result rows. Existing repositories persist it only via nonempty result
+    metadata; the response field itself is not a database persistence contract.
     """
 
     results: list[VerificationResult]
@@ -45,6 +46,11 @@ class ValidationResponse(BaseModel):
     domain: Optional[str] = None
     session_id: Optional[str] = None
     ground_truth: Optional[GroundTruthEvaluation] = None
+    difficulty: Optional[str] = None
+    selected_verifiers: Optional[List[str]] = None
+    early_stop_reason: Optional[str] = None
+    signed_score: Optional[float] = None
+    execution_audit: Optional[dict[str, Any]] = None
 
 class CreateSessionRequest(BaseModel):
     """Input payload for creating a session."""

@@ -8,14 +8,46 @@ def save_feedback(
     is_correct: bool,
     comment: str | None = None,
 ):
-    feedback_id = uuid4()
-
     connection = None
     cursor = None
 
     try:
         connection = get_connection()
         cursor = connection.cursor()
+
+        # Check whether feedback already exists for this validation.
+        cursor.execute(
+            """
+            SELECT id, validation_id, is_correct, comment, created_at
+            FROM feedback
+            WHERE validation_id = %s
+            """,
+            (validation_id,),
+        )
+
+        existing = cursor.fetchone()
+
+        if existing:
+            existing_feedback = {
+                "id": existing[0],
+                "validation_id": existing[1],
+                "is_correct": existing[2],
+                "comment": existing[3],
+                "created_at": existing[4],
+            }
+
+            # Same feedback = safe retry.
+            if existing[2] == is_correct:
+                connection.commit()
+                return existing_feedback
+
+            # Different feedback = conflict.
+            raise ValueError(
+                "Conflicting feedback already exists for this validation."
+            )
+
+        # No existing feedback: create it.
+        feedback_id = uuid4()
 
         cursor.execute(
             """
@@ -56,5 +88,6 @@ def save_feedback(
     finally:
         if cursor:
             cursor.close()
+
         if connection:
             connection.close()

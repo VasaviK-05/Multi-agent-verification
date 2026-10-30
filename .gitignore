@@ -46,3 +46,15 @@ Thumbs.db
 
 
 data/evidence_index/
+
+# Host-bound study snapshots (source, tests and Markdown handoffs are shareable).
+docs/studies/factual-feasibility-draft-v1/*.json
+docs/studies/factual-team-selection-v1/*.json
+docs/game_empirical_build_audit.json
+docs/verifier_collection_blockers.json
+docs/verifier_cost_missing_inputs.json
+
+# Generated diagnostics already present upstream: keep local outputs off this branch.
+corpus_evidence_test_results.json
+data/articles_13083_index/
+data/verification_traces/

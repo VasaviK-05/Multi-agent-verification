@@ -1,6 +1,7 @@
 """Offline benchmark accounting. These tests use stubs, not a published score."""
 
 import json
+import pytest
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.benchmark.offline_benchmark import (
@@ -12,6 +13,18 @@ from app.benchmark.offline_benchmark import (
 )
 from app.models.schemas import VerificationResult
 from app.verifiers.base_verifier import BaseVerifier
+
+
+@pytest.fixture(autouse=True)
+def offline_feedback_storage(monkeypatch):
+    # Benchmark tests exercise real feedback math, not the database/network.
+    import app.orchestration.validation_orchestrator as module
+    # Main now persists complete snapshots as well as aggregate rows. Keep the
+    # existing offline test boundary around both; decision/feedback logic is real.
+    monkeypatch.setattr(module, "load_reputation_manager_state", lambda: None)
+    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
+    monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
+    monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
 
 
 class StubVerifier(BaseVerifier):
@@ -67,6 +80,26 @@ def _assert_accounting(report) -> None:
             assert item.coverage == item.n_covered / item.n_examples
 
 
+def test_benchmark_feedback_propagates_source_without_replacing_learning(monkeypatch):
+    from app.reputation.reputation_manager import ReputationManager
+
+    unscoped_sources = []
+    original = ReputationManager.record_unscoped_ground_truth
+
+    def capture(self, *args, **kwargs):
+        unscoped_sources.append(kwargs.get("source"))
+        return original(self, *args, **kwargs)
+
+    monkeypatch.setattr(ReputationManager, "record_unscoped_ground_truth", capture)
+    report = run_benchmark([LabeledExample("q", "a", True)], verifiers=_stubs(.9),
+                           analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", .1)))
+    state = report.adaptive_reputation.export_state()
+    assert state["feedback"][0]["source"] == "benchmark_ground_truth"
+    assert unscoped_sources == ["benchmark_ground_truth"]
+    assert report.adaptive_reputation.observation_count("rule", "general") == 1
+    assert report.all_verifiers_reputation.observation_count("rule", "general") == 1
+
+
 def test_empty_input_does_not_invent_rates():
     report = run_benchmark([], verifiers=_stubs(0.5))
     _assert_accounting(report)
@@ -85,7 +118,7 @@ def test_empty_input_does_not_invent_rates():
         assert banned not in blob
 
 
-def test_early_stop_calls_fewer_verifiers_than_the_baselines():
+def test_unknown_requirements_exhaust_candidates_in_benchmark():
     example = LabeledExample("q", "a", answer_is_correct=False)
     report = run_benchmark(
         [example],
@@ -97,16 +130,16 @@ def test_early_stop_calls_fewer_verifiers_than_the_baselines():
     adaptive = report.method("adaptive")
     majority = report.method("majority")
     full = report.method("all_verifiers")
-    assert adaptive.verifier_calls == 1
+    assert adaptive.verifier_calls == 4
     assert majority.verifier_calls == 4
     assert full.verifier_calls == 4
-    assert adaptive.reputation_updates == 1
+    assert adaptive.reputation_updates == 4
     assert majority.reputation_updates == 0
     assert full.reputation_updates == 4
     assert adaptive.n_incorrect == 1
     assert adaptive.accuracy == 0.0
     assert report.adaptive_reputation.get_reputation("rule", "medical") < 0.5
-    assert report.adaptive_reputation.is_cold_start("semantic", "medical")
+    assert report.adaptive_reputation.observation_count("semantic", "medical") == 1
     assert report.adaptive_reputation.is_cold_start("rule", "general")
     assert not report.all_verifiers_reputation.is_cold_start("semantic", "medical")
     assert report.adaptive_reputation is not report.all_verifiers_reputation
@@ -125,7 +158,7 @@ def test_neutral_votes_abstain_and_majority_does_not():
     adaptive = report.method("adaptive")
     majority = report.method("majority")
     full = report.method("all_verifiers")
-    assert adaptive.verifier_calls == 1
+    assert adaptive.verifier_calls == 4
     assert adaptive.n_abstentions == 1
     assert adaptive.accuracy is None
     assert adaptive.coverage == 0.0
@@ -138,26 +171,39 @@ def test_neutral_votes_abstain_and_majority_does_not():
     assert adaptive.reputation_updates == 0
 
 
-def test_measured_latency_is_not_the_cost_table():
+def test_measured_latency_is_not_the_cost_table(monkeypatch):
+    from itertools import count
+
+    ticks = count()
+    monkeypatch.setattr("app.benchmark.offline_benchmark.time.perf_counter",
+                        lambda: next(ticks) * 0.125)
     profiles = {
-        name: {"cost": 0.0, "latency": 1e9}
-        for name in ("semantic", "evidence", "rule", "confidence")
+        name: {"cost": 0.0, "latency": (index + 1) / 4}
+        for index, name in enumerate(("semantic", "evidence", "rule", "confidence"))
     }
     report = run_benchmark(
         [LabeledExample("q", "a", True)],
-        verifiers=_stubs(0.5),
+        verifiers=_stubs(0.95),
         analyzer=FixedAnalyzer(QuestionAnalysis("general", "easy", 0.1)),
         verifier_profiles=profiles,
         update_reputation=False,
     )
     assert report.method("all_verifiers").latency_ms_total < 10_000
-    assert report.method("adaptive").verifier_calls < report.method("all_verifiers").verifier_calls
+    assert report.method("adaptive").latency_ms_total < 10_000
+    # Every timed stub takes 125 ms, regardless of its normalized estimate.
+    assert report.method("adaptive").mean_latency_ms == 125.0
+    assert report.method("all_verifiers").mean_latency_ms == 125.0
+    # This analysis has unknown requirements, so it exhausts all candidates.
+    assert report.method("adaptive").verifier_calls == report.method("all_verifiers").verifier_calls
 
 
 def test_real_analyzer_still_selects_a_subset():
+    from app.verifiers.rule_verifier import RuleVerifier
+
     report = run_benchmark(
         [LabeledExample("What is 2 + 2?", "4", True)],
-        verifiers=_stubs(0.5),
+        verifiers=[RuleVerifier(), StubVerifier("semantic", score=0.95),
+                   StubVerifier("evidence", score=0.95), StubVerifier("confidence", score=0.95)],
         update_reputation=False,
     )
     assert report.method("adaptive").verifier_calls < report.method("all_verifiers").verifier_calls

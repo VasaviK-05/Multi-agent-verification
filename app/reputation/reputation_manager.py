@@ -32,7 +32,7 @@ recorded is rejected and does not change state. Replacing a stored label
 needs a future correction workflow; this module does not provide one.
 
 ``source`` is caller-supplied metadata. It is not authentication and it is
-not proof that the boolean is true. The legacy methods still reject a source
+not proof that the boolean is true. ``update_reputation`` still rejects a source
 other than ``ground_truth`` so a prediction tag is not stored as evidence.
 That check does not establish that a ``ground_truth`` tag came from a
 trusted party.
@@ -304,6 +304,8 @@ class ReputationManager:
         domain: str,
         results: Sequence[VerificationResult],
         answer_is_correct: bool,
+        *,
+        source: str = GROUND_TRUTH_SOURCE,
     ) -> int:
         """Learn from executed results that have no validation identity.
 
@@ -311,14 +313,15 @@ class ReputationManager:
         changes. If a later pair cannot be represented, no count from this
         call is stored. A later call with the same results is new evidence,
         because this path has nothing to recognize a replay. Returns the
-        number of observations applied.
+        number of observations applied. ``source`` is validated metadata; this
+        unscoped path retains neither event identity nor provenance history.
         """
         record = _normalize_feedback(
             validation_id="unscoped",
             domain=domain,
             results=results,
             answer_is_correct=answer_is_correct,
-            source=self.GROUND_TRUTH_SOURCE,
+            source=source,
         )
         with self._lock:
             staged = {
@@ -770,8 +773,13 @@ def _belief(alpha: float, beta: float) -> tuple[float, float]:
         ratio = alpha / beta
         mean = ratio / (1.0 + ratio)
         scale = beta
-    inside = 1.0 + ratio + (1.0 / scale)
-    variance = mean * (1.0 - mean) / scale / inside
+    if scale <= 1.0:
+        # alpha + beta + 1 is safe here; reciprocal scaling can overflow.
+        variance = mean * (1.0 - mean) / (1.0 + scale * (1.0 + ratio))
+    else:
+        # Keep the scaled form so very large alpha + beta cannot overflow.
+        inside = 1.0 + ratio + (1.0 / scale)
+        variance = mean * (1.0 - mean) / scale / inside
     if not math.isfinite(mean) or not math.isfinite(variance):
         raise ValueError("reputation parameters cannot be represented safely")
     return mean, variance

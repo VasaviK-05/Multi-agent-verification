@@ -1,3 +1,5 @@
+import json
+
 from database import get_connection
 
 
@@ -11,7 +13,12 @@ def save_validation(
     final_score: float | None,
     session_id: str | None,
     domain: str | None = None,
+    difficulty: str | None = None,
+    selected_verifiers: list[str] | None = None,
+    early_stop_reason: str | None = None,
+    signed_score: float | None = None,
 ):
+
     connection = None
     cursor = None
 
@@ -31,11 +38,16 @@ def save_validation(
                 final_score,
                 session_id,
                 domain,
+                difficulty,
+                selected_verifiers,
+                early_stop_reason,
+                signed_score,
                 created_at
             )
             VALUES (
                 %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, NOW()
+                %s, %s, %s, %s, %s,
+                %s::jsonb, %s, %s, NOW()
             )
             """,
             (
@@ -48,6 +60,10 @@ def save_validation(
                 final_score,
                 session_id,
                 domain,
+                difficulty,
+                json.dumps(selected_verifiers or []),
+                early_stop_reason,
+                signed_score,
             ),
         )
 
