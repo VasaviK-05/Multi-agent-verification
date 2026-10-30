@@ -284,12 +284,52 @@ class ValidationOrchestrator:
         contributors = self._early_termination.contributor_count(detail, results)
         missing = [key for key, row in coverage.items() if not row["directional"]]
         final_status = detail.status
-        if contributors < minimum or missing or plan.requirements.status == "invalid":
+        uncertainty_reasons = []
+
+        if contributors < minimum:
+            uncertainty_reasons.append("insufficient_contributors")
+
+        if missing:
+            uncertainty_reasons.extend(
+                f"missing_coverage:{key}" for key in missing
+            )
+
+        if plan.requirements.status == "invalid":
+            uncertainty_reasons.append("invalid_coverage_requirements")
+
+        for verifier_result in results:
+            metadata = verifier_result.metadata or {}
+
+            unsure_reason = metadata.get("unsure_reason")
+            abstain_reason = metadata.get("abstain_reason")
+
+            if unsure_reason:
+                uncertainty_reasons.append(
+                    f"{verifier_result.verifier_name}:{unsure_reason}"
+                )
+
+            if abstain_reason:
+                uncertainty_reasons.append(
+                    f"{verifier_result.verifier_name}:{abstain_reason}"
+                )
+
+        if (
+            contributors < minimum
+            or missing
+            or plan.requirements.status == "invalid"
+        ):
             final_status = "uncertain"
+
+        if final_status == "uncertain" and not uncertainty_reasons:
+            uncertainty_reasons.append("decision_uncertain")
+
+        uncertainty_reasons = list(dict.fromkeys(uncertainty_reasons))
         final_score = detail.score
         summary = {
-            "audit_version": "execution_audit_v2",
-            "termination": reason, "last_stopping_assessment": last_assessment,
+           "audit_version": "execution_audit_v2",
+            "uncertainty_reasons": uncertainty_reasons,
+            "termination": reason,
+            "last_stopping_assessment": last_assessment,
             "minimum_contributors": minimum, "contributors": contributors,
             "missing_coverage": missing, "coverage": coverage,
             "numerical_decision": asdict(detail), "public_status": final_status,
@@ -342,6 +382,7 @@ class ValidationOrchestrator:
             difficulty=analysis.difficulty,
             selected_verifiers=[result.verifier_name for result in results],
             early_stop_reason=reason,
+            uncertainty_reasons=uncertainty_reasons,
             signed_score=signed_score,
             execution_audit=deepcopy(summary),
         )
@@ -367,6 +408,11 @@ class ValidationOrchestrator:
             validation_id=validation_id, domain=analysis.domain, session_id=request.session_id,
             difficulty=analysis.difficulty, selected_verifiers=summary["team"],
             early_stop_reason=summary.get("termination", "game_selection_failure"),
+            uncertainty_reasons=(
+                ["decision_uncertain"]
+                if run.public_status == "uncertain"
+                else []
+            ),
             execution_audit=deepcopy(summary))
 
     def validation_context(self, validation_id: str) -> ValidationContext:

@@ -16,9 +16,17 @@ from tests.test_adaptive_pipeline import FixedAnalyzer, MetadataChecker
 
 @pytest.fixture
 def make_run(monkeypatch):
-    monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *a, **kw: None)
+    monkeypatch.setattr(
+        module.AutomaticGroundTruthEvaluator,
+        "evaluate",
+        lambda *a, **kw: None,
+    )
     monkeypatch.setattr(module, "save_reputation", lambda **kw: None)
-    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
+    monkeypatch.setattr(
+        module,
+        "save_reputation_state_and_rows",
+        lambda state: None,
+    )
 
     def make(names=("a", "b"), decision="SUPPORT"):
         manager = ReputationManager()

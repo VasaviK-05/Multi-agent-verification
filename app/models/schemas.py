@@ -49,6 +49,7 @@ class ValidationResponse(BaseModel):
     difficulty: Optional[str] = None
     selected_verifiers: Optional[List[str]] = None
     early_stop_reason: Optional[str] = None
+    uncertainty_reasons: List[str] = Field(default_factory=list)
     signed_score: Optional[float] = None
     execution_audit: Optional[dict[str, Any]] = None
 

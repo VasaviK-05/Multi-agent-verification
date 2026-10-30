@@ -106,6 +106,13 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
         )
 
     assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["final_status"] == "passed"
+    assert body["final_score"] == 1.0
+    assert body["validation_id"] == VALIDATION_ID
+    assert "results" in body
     assert [event[0] for event in events] == [
         "validation",
         "audit_create",

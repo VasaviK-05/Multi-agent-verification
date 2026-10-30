@@ -254,13 +254,30 @@ def test_answer_terms_do_not_bias_single_fact_retrieval_query():
 
     assert retriever.queries == ["Who wrote Hamlet?"]
 
-
 def test_low_semantic_keyword_collision_is_ineligible_before_nli():
-    corpus = json.loads(Path("data/articles_13083.json").read_text(encoding="utf-8"))
-    article = next(row for row in corpus if row["title"] == "16th Gemini Awards")
-    awards = chunk(article["title"], article["text"], 0.21)
+    awards = chunk(
+        "16th Gemini Awards",
+        "The 16th Gemini Awards ceremony celebrated achievements in Canadian television.",
+        0.21,
+    )
     awards["lexical_hit"] = True
     calls = []
+
+    def nli(inputs):
+        calls.append(inputs)
+        return [[{"label": "contradiction", "score": 0.99}]]
+
+    result = make_verifier(FakeRetriever([awards]), nli).verify(
+        "What is the capital of Atlantis?", "Poseidon City"
+    )
+
+    assert calls == []
+    assert result.metadata["decision"] == "UNSURE"
+    assert result.metadata["unsure_reason"] == "no_relevant_evidence"
+    assert result.metadata["discarded_evidence"][0]["about_subject"] is False
+    assert result.metadata["discarded_evidence"][0]["reason"] == (
+        "article title is about a different subject than the question"
+    )
 
     def nli(inputs):
         calls.append(inputs)

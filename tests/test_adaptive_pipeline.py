@@ -22,19 +22,15 @@ def offline_pipeline_boundaries(monkeypatch):
     or Wikidata. Patch only those boundaries, never selector/decision math.
     """
     import app.orchestration.validation_orchestrator as module
-    # Main now persists complete snapshots as well as aggregate rows. Keep the
-    # existing offline test boundary around both; decision/feedback logic is real.
     monkeypatch.setattr(module, "load_reputation_manager_state", lambda: None)
-    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
     monkeypatch.setattr(module, "build_reputation_state", lambda: ReputationManager().export_state())
+    monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
     monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
     monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
     # Import after replacing bootstrap I/O; service construction remains real.
     from app.api import routes
     monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
     monkeypatch.setattr(routes, "save_verifier_outputs", lambda **kwargs: None)
-    monkeypatch.setattr(routes, "create_audit", lambda *args, **kwargs: None)
-    monkeypatch.setattr(routes, "update_audit", lambda *args, **kwargs: None)
 
 
 @pytest.mark.parametrize("history", ["prior", "success", "failure", "balanced"])
@@ -190,6 +186,18 @@ def test_campaign_actual_api_serializes_approved_rule_snapshot(monkeypatch, answ
     body = response.json()
     assert body["final_status"] == expected
     assert [r["verifier_name"] for r in body["results"]] == ["rule", "generic"]
+    assert "execution_audit" in body
+    assert "early_stop_reason" in body
+    assert "selected_verifiers" in body
+
+    assert body["execution_audit"] is not None
+    assert body["selected_verifiers"] is not None
+    assert "execution_audit" in body
+    assert "early_stop_reason" in body
+    assert "selected_verifiers" in body
+
+    assert body["execution_audit"] is not None
+    assert body["selected_verifiers"] is not None
     diagnostics = body["results"][-1]["metadata"]["multi_agent_verification.execution"]
     assert diagnostics["termination"] == "approved_early_stop"
     assert diagnostics["numerical_decision"]["score"] == body["final_score"]
@@ -1153,8 +1161,7 @@ def test_failed_reputation_snapshot_save_does_not_silently_succeed(monkeypatch):
     from app.orchestration import validation_orchestrator as orchestrator_module
 
     manager = ReputationManager()
-    # Exercise real rollback logic with controlled votes, not model/provider I/O.
-    orchestrator = connected([MetadataChecker("first"), MetadataChecker("second")], manager=manager)
+    orchestrator = ValidationOrchestrator(reputation_manager=manager)
 
     response = orchestrator.validate(
         ValidationRequest(question="test question", answer="test answer")
@@ -1293,6 +1300,41 @@ def test_empty_pool_audit_is_additive_detached_and_serializable():
     assert run.validation_context(response.validation_id).run_summary["selection_plan"]["domain"] == "general"
     assert ValidationResponse(results=[], final_status="uncertain").execution_audit is None
 
+def test_empty_pool_api_exposes_uncertainty_and_execution_audit(monkeypatch):
+    from fastapi.testclient import TestClient
+    from app.main import app
+    from app.api import routes
+    from app.services.validation_service import ValidationService
+
+    run = connected([], hints=["direct_fact"])
+    monkeypatch.setattr(routes, "_validation_service", ValidationService(run))
+    monkeypatch.setattr(routes, "create_audit", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "update_audit", lambda *args, **kwargs: None)
+    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "save_verifier_outputs", lambda *args, **kwargs: None)
+
+    with TestClient(app) as client:
+        response = client.post(
+            "/validate",
+            json={"question": "q", "answer": "a"},
+        )
+
+    assert response.status_code == 200
+    body = response.json()
+
+    assert body["results"] == []
+    assert body["final_status"] == "uncertain"
+    assert body["uncertainty_reasons"]
+    assert "direct_fact" in str(body["uncertainty_reasons"])
+    assert body["selected_verifiers"] == []
+    assert body["execution_audit"] is not None
+    assert body["execution_audit"]["uncertainty_reasons"] == body["uncertainty_reasons"]
+    assert body["execution_audit"]["attempted_verifiers"] == []
+    assert body["execution_audit"]["selection_plan"]["expected_uncovered"] == [
+        "direct_fact"
+    ]
+    assert "early_stop_reason" in body
+    assert body["validation_id"] is not None
 
 def test_execution_audit_reaches_existing_result_metadata_persistence(monkeypatch):
     import json

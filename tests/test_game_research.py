@@ -18,7 +18,10 @@ from app.game.research.comparison import (FrozenComparison, prepare_comparison, 
 from app.game.research.uncertainty import bootstrap_frozen_final
 from tests.test_game_offline import attempt, fixture, report, unbind
 
-REVISION = "9d21eba9d3ac823b0ebb6c90195cff524db55253"
+REVISION = subprocess.check_output(
+    ["git", "rev-parse", "HEAD"],
+    text=True,
+).strip()
 
 
 def study(*, labels=("arithmetic",), names=("a",), budget=None):
@@ -426,9 +429,7 @@ def test_cli_unresolved_template_is_read_only_and_reports_digests():
     assert result.returncode == 2, result.stderr
     report = json.loads(result.stdout)
     assert report["ready"] is False and report["command"] == "readiness_only"
-    actual_revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
-    assert report["input_digest"] and report["research_source_digest"]
-    assert report["code_revision"] == actual_revision
+    assert report["input_digest"] and report["research_source_digest"] and report["code_revision"] == REVISION
     assert subprocess.check_output(["git", "status", "--porcelain=v1"]) == before
 
 
