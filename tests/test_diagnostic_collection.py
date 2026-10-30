@@ -1,5 +1,6 @@
 """Synthetic diagnostics: no claims of labels, custody approval or calibrated costs."""
 import pytest
+import io
 import sys
 from types import SimpleNamespace
 
@@ -57,6 +58,27 @@ def test_diagnostic_cannot_supply_labels_or_study_approval():
         DiagnosticRecordingRequest.model_validate(data)
 
 
+def test_network_limits_and_external_denial_without_actual_network():
+    from scripts.run_factual_diagnostic import NetworkBudget
+    audit = io.StringIO()
+    budget = NetworkBudget('http://localhost:11434/api/generate', audit)
+    calls = []
+    def original(session, method, url, **kw):
+        assert kw.get("allow_redirects") is False
+        calls.append((method, url))
+        return SimpleNamespace(status_code=200)
+    for _ in range(30):
+        budget.call(original, None, 'POST', 'http://localhost:11434/api/generate')
+    with pytest.raises(RuntimeError, match='authorization'):
+        budget.call(original, None, 'POST', 'http://localhost:11434/api/generate')
+    for _ in range(100):
+        budget.call(original, None, 'GET', 'http://localhost:11434/api/tags')
+    with pytest.raises(RuntimeError):
+        budget.call(original, None, 'GET', 'http://localhost:11434/api/version')
+    with pytest.raises(RuntimeError):
+        budget.call(original, None, 'POST', 'https://example.org/paid')
+    assert len(calls) == 130
+    assert budget.counts == dict(generation=30, metadata=100, blocked=3)
 
 
 def test_existing_cli_diagnostic_collect_check_and_export_guard(tmp_path, monkeypatch):
@@ -76,3 +98,11 @@ def test_existing_cli_diagnostic_collect_check_and_export_guard(tmp_path, monkey
     assert not (output / 'measurements.json').exists()
     report = json.loads((output / 'collection-report.json').read_text())
     assert 'diagnostic-only' in report['measurement_export_blocker']
+
+
+@pytest.mark.parametrize('url', ['https://example.org/api/generate',
+    'http://user:password@localhost:11434/api/generate', 'http://localhost:11434/api/generate?token=fixture'])
+def test_network_budget_rejects_nonlocal_or_credentialed_configuration(url):
+    from scripts.run_factual_diagnostic import NetworkBudget
+    with pytest.raises(ValueError, match='loopback'):
+        NetworkBudget(url, io.StringIO())

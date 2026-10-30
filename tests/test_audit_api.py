@@ -1,9 +1,13 @@
 
 from fastapi.testclient import TestClient
 
-from app.reputation.reputation_manager import ReputationManager
-import app.orchestration.validation_orchestrator as orchestrator_module
+from unittest.mock import patch
 
+from app.reputation.reputation_manager import ReputationManager
+from app.orchestration import validation_orchestrator as orchestrator_module
+
+# Import-time service bootstrap is not a live PostgreSQL integration test.
+# Keep the test independent of database-backed reputation loading.
 orchestrator_module.load_reputation_manager_state = lambda: None
 orchestrator_module.build_reputation_state = (
     lambda: ReputationManager().export_state()

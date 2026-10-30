@@ -426,7 +426,9 @@ def test_cli_unresolved_template_is_read_only_and_reports_digests():
     assert result.returncode == 2, result.stderr
     report = json.loads(result.stdout)
     assert report["ready"] is False and report["command"] == "readiness_only"
-    assert report["input_digest"] and report["research_source_digest"] and report["code_revision"] == REVISION
+    actual_revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    assert report["input_digest"] and report["research_source_digest"]
+    assert report["code_revision"] == actual_revision
     assert subprocess.check_output(["git", "status", "--porcelain=v1"]) == before
 
 
