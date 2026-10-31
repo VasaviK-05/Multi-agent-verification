@@ -98,11 +98,37 @@ def main(argv=None):
                           help='Required for empirical inputs: existing ready clean PolicyBuildSpecification')
     assembly.add_argument('--scenario-evidence-validation', nargs=2, action='append', default=[],
                           metavar=('DECLARATION_JSON', 'VALIDATION_JSON'))
+    evaluation = sub.add_parser('evaluate', help='Evaluate a frozen policy; never fit or export a policy')
+    policy_source = evaluation.add_mutually_exclusive_group(required=True)
+    policy_source.add_argument('--policy', type=Path)
+    policy_source.add_argument('--prototype-bundle', type=Path, help='Extracted package; validates all original package hashes')
+    evaluation.add_argument('--task', choices=('arithmetic', 'factual'), help='Required with --prototype-bundle')
+    evaluation.add_argument('--clean-bundle', required=True, type=Path)
+    evaluation.add_argument('--report-attacks', required=True, type=Path)
+    evaluation.add_argument('--scenario', nargs=2, action='append', required=True,
+                            metavar=('DECLARATION_JSON', 'RECORDING_DIRECTORY'))
+    evaluation.add_argument('--scenario-evidence-validation', nargs=2, action='append', default=[],
+                            metavar=('DECLARATION_JSON', 'VALIDATION_JSON'))
+    evaluation.add_argument('--output', required=True, type=Path, help='New evaluation JSON file, never policy.json')
+    audit = sub.add_parser('audit-collector', help='Read-only source compatibility rehearsal; no model/resource initialization')
+    audit.add_argument('--clean-bundle', required=True, type=Path)
+    audit.add_argument('--collector-root', required=True, type=Path)
+    audit.add_argument('--output', required=True, type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == 'prepare':
             print(json.dumps(prepare(args.clean_adapter, args.alterations, args.output_dir)))
-        elif args.command == 'assemble':
+        elif args.command == 'audit-collector':
+            from app.game.offline.collect import load_bundle
+            from app.game.offline.upstream_evaluation import audit_collector_source
+            bundle = load_bundle(args.clean_bundle)
+            report = audit_collector_source(bundle.observed_setup, args.collector_root)
+            with args.output.open('x', encoding='utf-8') as handle:
+                json.dump(report, handle, indent=2)
+            print(json.dumps(dict(source_compatible=report['source_compatible'], gaps=report['gaps'],
+                ready_for_real_collection=False, factory_initialized=False)))
+            return 0 if report['source_compatible'] else 2
+        elif args.command in {'assemble', 'evaluate'}:
             from app.game.offline.collect import load_bundle
             from app.game.offline.upstream import UpstreamExperiment
             validations = {}
@@ -114,12 +140,53 @@ def main(argv=None):
             declarations = {str(Path(p).resolve()) for p, _ in args.scenario}
             if set(validations) - declarations:
                 raise ValueError('evidence validation provided for an undeclared scenario')
+            scenarios = tuple(dict(intervention=read_json(declaration), bundle=load_bundle(recordings),
+                                  evidence_validation=validations.get(str(Path(declaration).resolve())))
+                              for declaration, recordings in args.scenario)
+            if args.command == 'evaluate':
+                from app.game.artifacts import PolicyArtifact
+                from app.game.models import content_id
+                from app.game.offline.upstream_evaluation import FrozenUpstreamEvaluationInput, evaluate_frozen_upstream
+                bundle_id = None
+                if args.prototype_bundle is not None:
+                    if args.task is None:
+                        raise ValueError('--prototype-bundle requires --task')
+                    from app.game.prototype_bundle import load_prototype
+                    prototype = load_prototype(args.prototype_bundle)
+                    entry = next((e for e in prototype.manifest.entries if e.task == args.task), None)
+                    if entry is None:
+                        raise ValueError('task is unsupported by the original prototype package')
+                    source = args.prototype_bundle / entry.artifact_path
+                    bundle_id = prototype.manifest.bundle_id
+                else:
+                    if args.task is not None:
+                        raise ValueError('--task is only valid with --prototype-bundle')
+                    source = args.policy
+                raw = source.read_bytes()
+                artifact = PolicyArtifact.model_validate_json(raw)
+                clean = load_bundle(args.clean_bundle)
+                if bundle_id is not None:
+                    if artifact.artifact_id != entry.artifact_id:
+                        raise ValueError('artifact bytes changed since prototype validation')
+                    if any(content_id(e.question) not in entry.allowed_question_ids for e in clean.request.examples):
+                        raise ValueError('clean recording question is outside original prototype scope')
+                inputs = FrozenUpstreamEvaluationInput(artifact=artifact, clean=clean,
+                    report_attacks=read_json(args.report_attacks), scenarios=scenarios)
+                result = evaluate_frozen_upstream(inputs)
+                result = type(result).model_validate({**result.model_dump(),
+                    'original_artifact_sha256': hashlib.sha256(raw).hexdigest(), 'prototype_bundle_id': bundle_id})
+                if source.read_bytes() != raw:
+                    raise ValueError('original artifact changed during evaluation; no report published')
+                with args.output.open('x', encoding='utf-8') as handle:
+                    handle.write(result.model_dump_json(indent=2))
+                print(json.dumps(dict(evaluation_id=inputs.evaluation_input_id,
+                    original_artifact_id=artifact.artifact_id, new_policy_created=False,
+                    evidence_role=result.evidence_role, output=str(args.output))))
+                return 0
             experiment = UpstreamExperiment(version='upstream_evidence_experiment_v1',
                 clean=load_bundle(args.clean_bundle), context=read_json(args.context),
                 contract=read_json(args.contract), report_attacks=read_json(args.report_attacks),
-                scenarios=tuple(dict(intervention=read_json(declaration), bundle=load_bundle(recordings),
-                                     evidence_validation=validations.get(str(Path(declaration).resolve())))
-                                for declaration, recordings in args.scenario),
+                scenarios=scenarios,
                 clean_build_specification=None if args.clean_build_specification is None else read_json(args.clean_build_specification))
             with args.output.open('x', encoding='utf-8') as handle:
                 handle.write(experiment.model_dump_json(indent=2))

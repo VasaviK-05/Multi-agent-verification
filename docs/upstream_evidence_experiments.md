@@ -8,6 +8,11 @@ clean reports. Neither contract asserts evidence truth, source trust or independ
 corroboration. URLs, verifier names and model agreement do not establish those
 properties. No mandatory independent-source guard is introduced.
 
+For unchanged existing policies, use the separate
+[frozen development evaluation path](upstream_frozen_evaluation.md). It supports
+existing clean-coverage/reliability-first artifacts without fitting. The objective
+limitations below apply to the **fitter**, not that evaluation-only path.
+
 ## What is implemented
 
 `scripts.upstream_evidence_experiment prepare` takes an explicit complete adapter

@@ -184,6 +184,51 @@ class ScenarioRecording(FrozenModel):
         return self
 
 
+def validate_scenario_links(clean, context, contract, scenarios):
+    """Shared identity/resource validation, independent of any fitting objective."""
+    if contract.resource_manifest is None:
+        raise ValueError('upstream experiments require resource-bound execution')
+    if len({s.intervention.scenario_id for s in scenarios}) != len(scenarios):
+        raise ValueError('duplicate scenario')
+    clean_request = clean.request
+    expected = {e.example_id: e for e in clean_request.examples if e.role == 'development'}
+    used_runs = {e.run_id for e in clean_request.examples}
+    for scenario in scenarios:
+        intervention, bundle = scenario.intervention, scenario.bundle
+        request = bundle.request
+        if intervention.clean_resources != contract.resource_manifest:
+            raise ValueError('scenario clean resources differ from deployment resources')
+        evidence_required = bool(set(context.plan.requirements.requirements) & {'direct_fact', 'evidence_retrieval'}) or any(
+            c.adapter == 'evidence_v1' for c in request.candidates)
+        if clean.observed_setup.evidence_kind == 'empirical' and evidence_required:
+            if scenario.evidence_validation is None:
+                raise ValueError('empirical scenario requires existing resource-bound EvidenceValidation probes')
+            scenario.evidence_validation.require_resources(intervention.altered_resources)
+        if (request.candidates != clean_request.candidates
+                or request.factory != clean_request.factory
+                or request.final_test_reservation != clean_request.final_test_reservation
+                or request.permitted_datasets != clean_request.permitted_datasets
+                or request.randomness_control != clean_request.randomness_control):
+            raise ValueError('scenario roster/reservation/dataset/randomness mismatch')
+        if (bundle.observed_setup.evidence_kind != clean.observed_setup.evidence_kind
+                or bundle.observed_setup.code_revision != clean.observed_setup.code_revision
+                or bundle.observed_setup.application_source_digest != clean.observed_setup.application_source_digest
+                or bundle.observed_setup.dependency_versions != clean.observed_setup.dependency_versions
+                or bundle.observed_setup.environment != clean.observed_setup.environment):
+            raise ValueError('scenario environment/code differs; not an isolated resource intervention')
+        if {e.example_id for e in request.examples} != set(expected):
+            raise ValueError('scenario must cover exactly every clean development example')
+        for example in request.examples:
+            baseline = expected[example.example_id]
+            left, right = example.model_dump(), baseline.model_dump()
+            left.pop('run_id'); right.pop('run_id')
+            if left != right:
+                raise ValueError('scenario example/split/independent label differs from clean input')
+            if example.run_id in used_runs:
+                raise ValueError('scenario requires distinct execution IDs, not reused clean reports')
+            used_runs.add(example.run_id)
+
+
 class UpstreamExperiment(FrozenModel):
     version: Literal['upstream_evidence_experiment_v1']
     clean: RecordingBundle
@@ -217,43 +262,7 @@ class UpstreamExperiment(FrozenModel):
             readiness = check_readiness(spec, actual_code_revision=self.clean.observed_setup.code_revision)
             if not readiness.ready:
                 raise ValueError('empirical clean readiness blocked: ' + '; '.join(readiness.blockers))
-        clean_request = self.clean.request
-        expected = {e.example_id: e for e in clean_request.examples if e.role == 'development'}
-        used_runs = {e.run_id for e in clean_request.examples}
-        for scenario in self.scenarios:
-            intervention, bundle = scenario.intervention, scenario.bundle
-            request = bundle.request
-            if intervention.clean_resources != self.contract.resource_manifest:
-                raise ValueError('scenario clean resources differ from deployment resources')
-            evidence_required = bool(set(self.context.plan.requirements.requirements) & {'direct_fact', 'evidence_retrieval'}) or any(
-                c.adapter == 'evidence_v1' for c in request.candidates)
-            if manifest.evidence_kind == 'empirical' and evidence_required:
-                if scenario.evidence_validation is None:
-                    raise ValueError('empirical scenario requires existing resource-bound EvidenceValidation probes')
-                scenario.evidence_validation.require_resources(intervention.altered_resources)
-            if (request.candidates != clean_request.candidates
-                    or request.factory != clean_request.factory
-                    or request.final_test_reservation != clean_request.final_test_reservation
-                    or request.permitted_datasets != clean_request.permitted_datasets
-                    or request.randomness_control != clean_request.randomness_control):
-                raise ValueError('scenario roster/reservation/dataset/randomness mismatch')
-            if (bundle.observed_setup.evidence_kind != self.clean.observed_setup.evidence_kind
-                    or bundle.observed_setup.code_revision != self.clean.observed_setup.code_revision
-                    or bundle.observed_setup.application_source_digest != self.clean.observed_setup.application_source_digest
-                    or bundle.observed_setup.dependency_versions != self.clean.observed_setup.dependency_versions
-                    or bundle.observed_setup.environment != self.clean.observed_setup.environment):
-                raise ValueError('scenario environment/code differs; not an isolated resource intervention')
-            if {e.example_id for e in request.examples} != set(expected):
-                raise ValueError('scenario must cover exactly every clean development example')
-            for example in request.examples:
-                baseline = expected[example.example_id]
-                left, right = example.model_dump(), baseline.model_dump()
-                left.pop('run_id'); right.pop('run_id')
-                if left != right:
-                    raise ValueError('scenario example/split/independent label differs from clean input')
-                if example.run_id in used_runs:
-                    raise ValueError('scenario requires distinct execution IDs, not reused clean reports')
-                used_runs.add(example.run_id)
+        validate_scenario_links(self.clean, self.context, self.contract, self.scenarios)
         return self
 
     @property
