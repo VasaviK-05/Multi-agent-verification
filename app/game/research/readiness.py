@@ -49,6 +49,7 @@ class ReadinessReport(FrozenModel):
     greedy_strategy_id: str | None
     evidence_failures: tuple[str, ...]
     resource_blockers: tuple[ResourceReadinessBlocker, ...] = ()
+    evidence_validation_id: str | None = None
 
 
 def check_readiness(spec, *, actual_code_revision):
@@ -72,15 +73,25 @@ def check_readiness(spec, *, actual_code_revision):
     except ValueError as exc:
         blockers.append("history_or_evaluation_binding_incompatible:" + str(exc))
     required = set(context.plan.requirements.requirements) | set(context.plan.requirements.unsupported)
-    unsupported = tuple(sorted(required - SUPPORTED_ACHIEVED))
+    supported=SUPPORTED_ACHIEVED | ({'semantic_comparison'} if spec.contract.coverage_version=='task_output_contract_v2' else set())
+    unsupported = tuple(sorted(required - supported))
     if unsupported:
         blockers.append("unsupported_achieved_coverage:" + ",".join(unsupported))
     # Conservative gate: evidence-bearing studies need a separately reviewed repair.
     # A user-provided boolean cannot attest that these known defects are fixed.
     evidence = bool(required & {"direct_fact", "evidence_retrieval"}) or any(
         a.adapter == "evidence_v1" for p in manifest.partitions for e in p.examples for a in e.attempts)
+    evidence_validation_id = None
     if evidence:
-        blockers.append("known_evidence_contract_failures_require_repair_or_explicit_scope_revision")
+        proof = spec.recording.evidence_validation
+        if proof is None:
+            blockers.append("known_evidence_contract_failures_require_repair_or_explicit_scope_revision")
+        else:
+            try:
+                proof.require_resources(spec.contract.resource_manifest)
+                evidence_validation_id = proof.validation_id
+            except ValueError as exc:
+                blockers.append("evidence_validation_resource_mismatch:" + str(exc))
     names = {c.verifier_name for c in context.plan.candidates}
     category = category_id(context)
     for part in manifest.partitions:
@@ -125,7 +136,7 @@ def check_readiness(spec, *, actual_code_revision):
         unsupported_achieved=unsupported, strategies=enumeration.strategies,
         attacks=enumerate_attacks(context.dependencies, spec.attacks),
         greedy_strategy_id=greedy.strategy_id if greedy else None, evidence_failures=EVIDENCE_FAILURES,
-        resource_blockers=tuple(resource_blockers))
+        resource_blockers=tuple(resource_blockers), evidence_validation_id=evidence_validation_id)
 
 
 def require_ready(spec, *, actual_code_revision):

@@ -58,6 +58,10 @@ def bind_evaluation(context, manifest, contract, specification):
     manifest = validate_manifest(manifest)
     contract = ReplayContract.model_validate(contract)
     specification = AttackSpecification.model_validate(specification)
+    if contract.version=='offline_public_decision_v4' and context.task_conditioning_json is None:
+        raise ValueError('task-aware fitting requires task-isolated history binding')
+    from app.game.task_conditioning import validate_task_history
+    validate_task_history(context,manifest)
     from app.game.resource_provenance import validate_recorded_resources
     if contract.resource_manifest is not None:
         contract.resource_manifest.require_candidates(c.verifier_name for c in context.plan.candidates)
@@ -259,7 +263,7 @@ def evaluate_reserved_final(artifact, specification, final_partition, *, actual_
 
 def export_artifact(policy, context, manifest, contract, specification, *, applicable_domain):
     """Offline deployment export: verify training provenance before constructing artifact."""
-    from app.game.artifacts import PolicyArtifact
+    from app.game.artifacts import PolicyArtifact, artifact_version
     context, manifest, contract, specification = _inputs(context, manifest, contract, specification)
-    return PolicyArtifact(policy=policy, context=context, contract=contract,
+    return PolicyArtifact(version=artifact_version(context,policy),policy=policy, context=context, contract=contract,
         execution_configuration_id=contract.execution_configuration_id, applicable_domain=applicable_domain)
