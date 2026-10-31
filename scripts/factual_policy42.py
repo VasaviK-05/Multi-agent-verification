@@ -28,7 +28,9 @@ def save(path,value):
 
 def norm(s):return unicodedata.normalize('NFKC',s).casefold().strip()
 
-def prepare(root):
+def prepare(root,*,adapter_config):
+    from scripts.preparation_config import preparation_adapter
+    adapter=preparation_adapter(adapter_config,root).model_dump(mode='json')
     from app.analysis.question_analyzer import QuestionAnalyzer
     from app.game.offline.collection import Candidate
     from app.game.offline.records import FinalTestReservation
@@ -89,8 +91,6 @@ def prepare(root):
         licences=['GeoNames CC-BY; see source header','mledoze ODbL-1.0; retained LICENSE'],rows=audit,eligible=len(eligible),groups=60,training_candidates=len(training),reserved_candidates=len(reserved),
         protocol='Sort ISO, shuffle seed42, first60, twenty groups per role; negatives rotate capital names only within their role; all alternatives grouped by country',
         corpus_scope='Known-corpus, reference-assisted facts for all sixty countries; background corpus is not a final outcome payload',custody='procedural; public sources and deterministic preparation are not independent blinding'))
-    adapter=read(Path('docs/studies/factual-feasibility-draft-v1/adapter.draft.json'))
-    adapter.update(corpus_path=str(root/'corpus.json'),index_dir=str(root/'index-v2'),index_receipt=str(root/'index-receipt.json'),service_observation=str(root/'service-observation.json'))
     save(root/'adapter.json',adapter)
     save(root/'authority.json',dict(source=AUTHORITY,max_candidates=200,max_attempts=800,actual_candidates=80,actual_attempts=320,max_generations=400,
         approved_losses=[1.,1.,.2],prior=[1.,1.],threshold=.55,budget='sum of all eligible measured costs',resource_weight='0.1/B',no_final_evaluation=True))
@@ -335,16 +335,23 @@ def report_phase(root):
 
 
 def main(argv=None):
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=['prepare','collect','fit','report']);p.add_argument('--root',type=Path,required=True);a=p.parse_args(argv)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=['prepare','collect','fit','report']);p.add_argument('--root',type=Path,required=True)
+    p.add_argument('--adapter-config',type=Path,help='Required for prepare: explicit reviewed project_collection_adapter_v1 JSON; no resource inspection or inference')
+    a=p.parse_args(argv)
+    if a.phase=='prepare' and a.adapter_config is None:p.error('prepare requires --adapter-config PATH; no local draft is selected automatically')
     root=a.root
     os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',HF_HUB_DISABLE_TELEMETRY='1')
     if a.phase!='prepare':
         def audit(event,args):
             if event=='open' and isinstance(args[0],str) and 'custody' in Path(args[0]).parts:raise AssertionError('final payload open forbidden')
         sys.addaudithook(audit)
-    if a.phase=='prepare':prepare(root)
+    if a.phase=='prepare':
+        try:prepare(root,adapter_config=a.adapter_config)
+        except (ValueError,OSError) as exc:
+            print(json.dumps(dict(status='preparation_input_error',message=str(exc),new_policy_created=False)));return 2
     elif a.phase=='collect':collect_phase(root)
     elif a.phase=='fit':fit_phase(root)
     else:report_phase(root)
+    return 0
 
-if __name__=='__main__':main()
+if __name__=='__main__':raise SystemExit(main())

@@ -120,14 +120,19 @@ Original journals and incomplete observations are preserved. No silent recovery
 can manufacture a timing/report for an interrupted call.
 
 ```powershell
-.venv/Scripts/python.exe -m scripts.multitask_policy42 prepare
+.venv/Scripts/python.exe -m scripts.multitask_policy42 prepare --adapter-config PATH_TO_REVIEWED_ADAPTER.json
 .venv/Scripts/python.exe -m app.benchmark.project_adapter prepare-index build/multitask-policy42/adapter.json --output build/multitask-policy42/index-receipt.json
 .venv/Scripts/python.exe -m scripts.multitask_policy42 collect --cohort arithmetic
 .venv/Scripts/python.exe -m scripts.multitask_policy42 collect --cohort semantic
 .venv/Scripts/python.exe -m scripts.multitask_policy42 collect --cohort factual
 ```
 
-These exclusive producer commands document this run; do not rerun them over
+The preparation command reflects the current explicit configuration interface;
+the historical run copied its earlier campaign's reviewed adapter. That implicit
+configuration dependency has been removed; see
+[preparation configuration](preparation_configuration.md). Other historical data
+inputs remain external and no campaign outputs have been regenerated.
+These exclusive producer commands document the workflow; do not rerun them over
 existing output directories. Supported recovery, only after inspecting ledgers:
 
 ```powershell

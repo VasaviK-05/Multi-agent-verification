@@ -30,7 +30,9 @@ def source_number(value):
         raise ValueError('finite positive published numeric value required')
     return str(value)
 
-def prepare():
+def prepare(*,adapter_config):
+    from scripts.preparation_config import preparation_adapter
+    config=preparation_adapter(adapter_config,ROOT).model_dump(mode='json')
     from app.analysis.task_analyzer import TaskQuestionAnalyzer
     from app.game.models import content_id
     from app.game.offline.collection import Candidate
@@ -117,7 +119,6 @@ def prepare():
         audit.append(dict(cohort=cohort,groups=n,groups_per_split=n//3,candidates_to_collect=len(training),attempts=len(training)*4,task_id=next(iter(identities)),planning_signature=list(next(iter(analysis_signatures)))))
     corpus=[dict(id=f['group'],title=f['group'],text=f['reference'],url='https://www.geonames.org/countries/'+f['group']+'/') for f in frames['factual'] if f['index_included']]
     save(ROOT/'corpus.json',corpus)
-    config=read(old/'adapter.json');config.update(corpus_path=str(ROOT/'corpus.json'),index_dir=str(ROOT/'index-v2'),index_receipt=str(ROOT/'index-receipt.json'),service_observation=str(ROOT/'service-observation.json'))
     save(ROOT/'adapter.json',config)
     save(ROOT/'study-audit.json',dict(authority=AUTHORITY,cohorts=audit,source_hashes=sources,factual_exclusions=exclusions,
         preparation_version='multitask_frames_v2_exact_source_numbers',
@@ -579,15 +580,21 @@ def report_phase():
         source_digest=content_id([(p.as_posix(),hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(Path('app').rglob('*.py'))])))
     print('Cross-context report complete.',flush=True)
 
-def main():
-    p=argparse.ArgumentParser();p.add_argument('phase',choices=['prepare','collect','validate-resources','fit','runtime','report']);p.add_argument('--cohort',choices=COHORTS);a=p.parse_args()
+def main(argv=None):
+    p=argparse.ArgumentParser();p.add_argument('phase',choices=['prepare','collect','validate-resources','fit','runtime','report']);p.add_argument('--cohort',choices=COHORTS)
+    p.add_argument('--adapter-config',type=Path,help='Required for prepare: explicit reviewed adapter JSON')
+    a=p.parse_args(argv)
+    if a.phase=='prepare' and a.adapter_config is None:p.error('prepare requires --adapter-config PATH; no historical adapter is selected automatically')
     os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',HF_HUB_DISABLE_TELEMETRY='1')
     if a.phase!='prepare':
         def guard(event,args):
             if event=='open' and isinstance(args[0],str) and 'custody' in Path(args[0]).parts:raise AssertionError('final payload access forbidden')
         sys.addaudithook(guard)
     try:
-        if a.phase=='prepare':prepare()
+        if a.phase=='prepare':
+            try:prepare(adapter_config=a.adapter_config)
+            except (ValueError,OSError) as exc:
+                print(json.dumps(dict(status='preparation_input_error',message=str(exc),new_policy_created=False)));return 2
         elif a.phase=='collect':collect_phase(a.cohort)
         elif a.phase=='validate-resources':validate_resources_phase()
         elif a.phase=='fit':fit_phase(a.cohort)

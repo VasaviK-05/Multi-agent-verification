@@ -91,6 +91,8 @@ def test_seeded_preparation_groups_variants_and_preserves_holdout(tmp_path):
     from scripts.factual_policy42 import prepare
     from app.game.offline.collection import RecordingRequest
     from app.game.offline.records import FinalTestReservation
+    from tests.preparation_fixtures import synthetic_adapter_file
+    adapter_config,_=synthetic_adapter_file(tmp_path)
     roots=[tmp_path/'one',tmp_path/'two']
     # Explicit synthetic source files; no real reserved payload is loaded by tests.
     for root in roots:
@@ -102,7 +104,7 @@ def test_seeded_preparation_groups_variants_and_preserves_holdout(tmp_path):
             lines.append('\t'.join([token,'','','','Country'+token,'City'+token]))
         (root/'sources/countries.json').write_text(json.dumps(countries),encoding='utf-8')
         (root/'sources/geonames-countryInfo.txt').write_text('\n'.join(lines),encoding='utf-8')
-        prepare(root)
+        prepare(root,adapter_config=adapter_config)
     a=json.loads((roots[0]/'preparation.json').read_text(encoding='utf-8'))
     b=json.loads((roots[1]/'preparation.json').read_text(encoding='utf-8'))
     assert a==b and len(a['examples'])==80

@@ -91,8 +91,14 @@ No development-driven setting change is authorized or applied.
 
 ## Commands and local producer outputs
 
+The preparation command below uses the current explicit configuration interface;
+the historical run used a reviewed local draft through the earlier interface.
+That hidden dependency was removed without regenerating this campaign. See
+[preparation configuration](preparation_configuration.md). Do not replay these
+commands over preserved outputs.
+
 ```powershell
-.venv/Scripts/python.exe -m scripts.factual_policy42 prepare --root build/factual-policy42-20261029
+.venv/Scripts/python.exe -m scripts.factual_policy42 prepare --root build/factual-policy42-20261029 --adapter-config PATH_TO_REVIEWED_ADAPTER.json
 .venv/Scripts/python.exe -m app.benchmark.project_adapter prepare-index build/factual-policy42-20261029/adapter.json --output build/factual-policy42-20261029/index-receipt.json
 .venv/Scripts/python.exe -m scripts.factual_policy42 collect --root build/factual-policy42-20261029
 .venv/Scripts/python.exe -m app.game.offline.collect check build/factual-policy42-20261029/collection
