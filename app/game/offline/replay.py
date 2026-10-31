@@ -36,6 +36,10 @@ def category_id(context):
     data["offline_evaluation_id"] = None
     data["execution_contract_json"] = None
     data["pooling_contract_json"] = None
+    # The additive fitting obligation does not change an example's planning inputs.
+    data['clean_coverage_json'] = None
+    data['reliability_first_json'] = None
+    data['task_conditioning_json'] = None
     return PlanningContext(**data).compatibility_id
 
 

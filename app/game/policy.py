@@ -6,6 +6,31 @@ from app.game.dependencies import FrozenModel, identifier
 from app.game.models import PlanningContext, PayoffMatrix, PayoffProvenance, SolverResult, Strategy, content_id
 from app.game.solver import solve_minimax, validate_solution
 from app.game.strategies import enumerate_strategies
+from app.game.coverage_contract import check_coverage_matrix
+from app.game.reliability_contract import check_reliability_matrix
+
+COVERAGE_POLICY_VERSION='game_policy_clean_coverage_v1'
+INFORMATIVE_POLICY_VERSION='game_policy_informative_v1'
+RELIABILITY_POLICY_VERSION='game_policy_reliability_first_v1'
+
+
+def semantics_version(context,matrix):
+    if matrix.reliability_first is not None:return RELIABILITY_POLICY_VERSION
+    if matrix.clean_coverage is not None:return COVERAGE_POLICY_VERSION
+    if context.execution_contract_json is not None:
+        from app.game.execution_contract import ExecutionContract
+        if ExecutionContract.model_validate_json(context.execution_contract_json).contributor_version=='informative_history_influence_v1':
+            return INFORMATIVE_POLICY_VERSION
+    return 'game_policy_v1'
+
+
+def check_semantics(context,matrix,version):
+    base,parent=check_reliability_matrix(context,matrix)
+    check_coverage_matrix(base,parent)
+    expected=semantics_version(context,matrix)
+    reserved={COVERAGE_POLICY_VERSION,INFORMATIVE_POLICY_VERSION,RELIABILITY_POLICY_VERSION}
+    if (expected!='game_policy_v1' and version!=expected) or (expected=='game_policy_v1' and version in reserved):
+        raise ValueError('policy version does not match execution/optimization semantics')
 
 
 class Policy(FrozenModel):
@@ -36,10 +61,13 @@ class PolicyDecision(FrozenModel):
     explanation: str
 
 
-def build_policy(context: PlanningContext, matrix: PayoffMatrix, *, version="game_policy_v1", tolerance=None) -> Policy:
+def build_policy(context: PlanningContext, matrix: PayoffMatrix, *, version=None, tolerance=None) -> Policy:
     context = PlanningContext.model_validate(context)
     matrix = PayoffMatrix.model_validate(matrix)
+    if version is None:
+        version=semantics_version(context,matrix)
     identifier(version)
+    check_semantics(context,matrix,version)
     if matrix.compatibility_id != context.compatibility_id:
         raise ValueError("incompatible payoff matrix")
     strategies = enumerate_strategies(context).strategies
@@ -63,6 +91,7 @@ def validate_policy(policy: Policy, context: PlanningContext) -> Policy:
     context = PlanningContext.model_validate(context)
     policy = Policy.model_validate(policy)
     identifier(policy.version)
+    check_semantics(context,policy.matrix,policy.version)
     if (policy.compatibility_id != context.compatibility_id or policy.matrix.compatibility_id != context.compatibility_id
         or policy.provenance != context.provenance):
         raise ValueError("incompatible policy; rebuild or retrieve a compatible policy")
