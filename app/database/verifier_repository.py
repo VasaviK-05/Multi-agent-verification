@@ -63,3 +63,53 @@ def save_verifier_outputs(
             cursor.close()
         if connection:
             connection.close()
+
+
+def get_verifier_outputs(validation_id: str) -> list[dict]:
+    """Retrieve persisted verifier outputs in execution order."""
+    connection = None
+    cursor = None
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            SELECT
+                verifier_result_id,
+                verifier_name,
+                score,
+                passed,
+                reasoning,
+                metadata,
+                latency_ms,
+                execution_order
+            FROM verifier_outputs
+            WHERE validation_id = %s
+            ORDER BY execution_order ASC, created_at ASC
+            """,
+            (validation_id,),
+        )
+
+        rows = cursor.fetchall()
+
+        return [
+            {
+                "verifier_result_id": str(row[0]),
+                "verifier_name": row[1],
+                "score": row[2],
+                "passed": row[3],
+                "reasoning": row[4],
+                "metadata": row[5] or {},
+                "latency_ms": row[6],
+                "execution_order": row[7],
+            }
+            for row in rows
+        ]
+
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()

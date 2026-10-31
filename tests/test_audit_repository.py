@@ -245,3 +245,33 @@ def test_update_audit_persists_selection_plan_and_run_summary(monkeypatch):
     assert params[9] == VALIDATION_ID
     assert connection.commits == 1
     assert connection.rollbacks == 0
+
+
+def test_update_audit_preserves_omitted_metadata(monkeypatch):
+    connection = FakeConnection([("audit-1",)])
+    monkeypatch.setattr(repository, "get_connection", lambda: connection)
+
+    repository.update_audit(
+        VALIDATION_ID,
+        run_status="failed",
+        failure_details=[
+            {"stage": "persistence", "reason": "Verifier save failed"}
+        ],
+    )
+
+    query, params = connection.fake_cursor.executed[0]
+
+    assert "selected_verifiers = COALESCE(%s::jsonb, selected_verifiers)" in query
+    assert "ranking_explanations = COALESCE(%s::jsonb, ranking_explanations)" in query
+    assert "decision_summary = COALESCE(%s::jsonb, decision_summary)" in query
+    assert "coverage_outcomes = COALESCE(%s::jsonb, coverage_outcomes)" in query
+    assert "execution_costs = COALESCE(%s::jsonb, execution_costs)" in query
+
+    assert params[0] == "failed"
+    assert params[1:6] == (None, None, None, None, None)
+    assert params[6] == (
+        '[{"stage": "persistence", "reason": "Verifier save failed"}]'
+    )
+
+    assert connection.commits == 1
+    assert connection.rollbacks == 0

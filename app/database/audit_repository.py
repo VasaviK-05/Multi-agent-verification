@@ -85,6 +85,7 @@ def create_audit(
         conn.close()
 
 
+
 def update_audit(
     validation_id: str,
     *,
@@ -98,7 +99,7 @@ def update_audit(
     selection_plan: dict | None = None,
     run_summary: dict | None = None,
 ) -> None:
-    """Update the audit when the validation finishes or fails."""
+    """Update supplied audit fields without erasing omitted metadata."""
     if run_status not in {"completed", "failed", "partial"}:
         raise ValueError("run_status must be completed, failed, or partial")
 
@@ -112,12 +113,12 @@ def update_audit(
                 SET run_status = %s,
                     completed_at = NOW(),
                     updated_at = NOW(),
-                    selected_verifiers = %s::jsonb,
-                    ranking_explanations = %s::jsonb,
-                    decision_summary = %s::jsonb,
-                    coverage_outcomes = %s::jsonb,
-                    execution_costs = %s::jsonb,
-                    failure_details = %s::jsonb,
+                    selected_verifiers = COALESCE(%s::jsonb, selected_verifiers),
+                    ranking_explanations = COALESCE(%s::jsonb, ranking_explanations),
+                    decision_summary = COALESCE(%s::jsonb, decision_summary),
+                    coverage_outcomes = COALESCE(%s::jsonb, coverage_outcomes),
+                    execution_costs = COALESCE(%s::jsonb, execution_costs),
+                    failure_details = COALESCE(%s::jsonb, failure_details),
                     selection_plan = COALESCE(%s::jsonb, selection_plan),
                     run_summary = COALESCE(%s::jsonb, run_summary)
                 WHERE validation_id = %s
@@ -125,27 +126,31 @@ def update_audit(
                 """,
                 (
                     run_status,
-                    _json(selected_verifiers or []),
-                    _json(ranking_explanations or []),
-                    _json(decision_summary or {}),
-                    _json(coverage_outcomes or {}),
-                    _json(execution_costs or {}),
-                    _json(failure_details or []),
+                    _json(selected_verifiers) if selected_verifiers is not None else None,
+                    _json(ranking_explanations) if ranking_explanations is not None else None,
+                    _json(decision_summary) if decision_summary is not None else None,
+                    _json(coverage_outcomes) if coverage_outcomes is not None else None,
+                    _json(execution_costs) if execution_costs is not None else None,
+                    _json(failure_details) if failure_details is not None else None,
                     _json(selection_plan) if selection_plan is not None else None,
                     _json(run_summary) if run_summary is not None else None,
                     str(UUID(validation_id)),
                 ),
             )
+
             row = cursor.fetchone()
+
             if row is None:
                 raise ValueError(
                     f"No audit exists for validation {validation_id!r}"
                 )
 
         conn.commit()
+
     except Exception:
         conn.rollback()
         raise
+
     finally:
         conn.close()
 

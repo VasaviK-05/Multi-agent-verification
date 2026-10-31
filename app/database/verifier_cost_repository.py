@@ -107,8 +107,12 @@ def save_verifier_attempt(
         raise ValueError(f"Invalid measurement purpose: {measurement_purpose}")
     if data_role not in VALID_ROLES:
         raise ValueError(f"Invalid data role: {data_role}")
-    if duration_ms is not None and duration_ms < 0:
-        raise ValueError("duration_ms cannot be negative")
+    if duration_ms is not None and (
+        not math.isfinite(duration_ms) or duration_ms < 0
+    ):
+        raise ValueError(
+            "duration_ms must be finite and nonnegative"
+        )
 
     sql = """
         INSERT INTO verifier_cost_attempts (
@@ -132,6 +136,7 @@ def save_verifier_attempt(
     return _save_one(sql, params, "attempt_id")
 
 
+
 def save_cost_estimate(
     *,
     calibration_id: str,
@@ -149,35 +154,98 @@ def save_cost_estimate(
     include_warmups: bool = False,
     estimate_id: str | None = None,
 ) -> str:
-    """Persist an estimate with the IDs of its source attempts."""
+    """Persist an estimate, reusing an existing identical calculation."""
     if attempt_count < 0 or failure_count < 0 or failure_count > attempt_count:
         raise ValueError("Invalid attempt_count/failure_count")
 
-    for value in (mean_attempt_cost_ms, median_duration_ms, p95_duration_ms):
-        if value is not None and value < 0:
-            raise ValueError("Cost and duration values cannot be negative")
+    for value in (
+        mean_attempt_cost_ms,
+        median_duration_ms,
+        p95_duration_ms,
+    ):
+        if value is not None and (
+            not math.isfinite(value) or value < 0
+        ):
+            raise ValueError("Cost and duration values must be finite and nonnegative")
 
-    sql = """
-        INSERT INTO verifier_cost_estimates (
-            estimate_id, calibration_id, verifier_name, setup_id,
-            dataset_id, mean_attempt_cost_ms, median_duration_ms,
-            p95_duration_ms, attempt_count, failure_count,
-            include_warmups, estimator_version, input_digest,
-            source_attempt_ids
+    connection = None
+    cursor = None
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            INSERT INTO verifier_cost_estimates (
+                estimate_id, calibration_id, verifier_name, setup_id,
+                dataset_id, mean_attempt_cost_ms, median_duration_ms,
+                p95_duration_ms, attempt_count, failure_count,
+                include_warmups, estimator_version, input_digest,
+                source_attempt_ids
+            )
+            VALUES (
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                %s, %s, %s, %s::uuid[]
+            )
+            ON CONFLICT (calibration_id, input_digest)
+            DO NOTHING
+            RETURNING estimate_id
+            """,
+            (
+                estimate_id or str(uuid4()),
+                calibration_id,
+                verifier_name,
+                setup_id,
+                dataset_id,
+                mean_attempt_cost_ms,
+                median_duration_ms,
+                p95_duration_ms,
+                attempt_count,
+                failure_count,
+                include_warmups,
+                estimator_version,
+                input_digest,
+                source_attempt_ids,
+            ),
         )
-        VALUES (
-            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-            %s, %s, %s, %s::uuid[]
-        )
-        RETURNING estimate_id
-    """
-    params = (
-        estimate_id or str(uuid4()), calibration_id, verifier_name, setup_id,
-        dataset_id, mean_attempt_cost_ms, median_duration_ms, p95_duration_ms,
-        attempt_count, failure_count, include_warmups, estimator_version,
-        input_digest, source_attempt_ids,
-    )
-    return _save_one(sql, params, "estimate_id")
+
+        row = cursor.fetchone()
+
+        if row is not None:
+            saved_id = str(row[0])
+        else:
+            cursor.execute(
+                """
+                SELECT estimate_id
+                FROM verifier_cost_estimates
+                WHERE calibration_id = %s
+                  AND input_digest = %s
+                """,
+                (calibration_id, input_digest),
+            )
+            existing = cursor.fetchone()
+
+            if existing is None:
+                raise RuntimeError(
+                    "Estimate conflict occurred but the existing record "
+                    "could not be retrieved."
+                )
+
+            saved_id = str(existing[0])
+
+        connection.commit()
+        return saved_id
+
+    except Exception:
+        if connection:
+            connection.rollback()
+        raise
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
 
 
 def calculate_and_save_cost_estimate(
