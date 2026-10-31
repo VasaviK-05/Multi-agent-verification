@@ -1,0 +1,15 @@
+{
+  "version": "isolated_corpus_replacements_v1",
+  "clean_corpus_sha256": "<SHA256_OF_REVIEWED_CLEAN_CORPUS_BYTES>",
+  "scope": "<PREDECLARED_DEVELOPMENT_SCOPE_AND_RECORD_IDS>",
+  "provenance": "<EXTERNAL_AUTHORIZATION_AND_ALTERATION_PROVENANCE_RECORD>",
+  "timing": "committed_before_collection_and_team_sampling",
+  "knowledge": "public_questions_references_and_clean_resources_no_labels_no_sampled_team",
+  "replacements": [
+    {
+      "record_id": "<EXISTING_CORPUS_RECORD_ID>",
+      "expected_text_sha256": "<SHA256_OF_ORIGINAL_UTF8_TEXT>",
+      "replacement_text": "<REVIEWED_PREDECLARED_ALTERED_TEXT>"
+    }
+  ]
+}
