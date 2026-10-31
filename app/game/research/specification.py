@@ -3,13 +3,14 @@
 from typing import Annotated, Literal
 import re
 
-from pydantic import AfterValidator, Field, StrictFloat, StrictInt, model_validator
+from pydantic import AfterValidator, Field, StrictFloat, StrictInt, model_serializer, model_validator
 
 from app.game.dependencies import FrozenModel, identifier
 from app.game.models import PlanningContext, content_id
 from app.game.offline.attacks import AttackSpecification
 from app.game.offline.records import DatasetManifest, FinalTestReservation, TrainingManifest
 from app.game.execution_contract import ExecutionContract
+from app.game.research.evidence_validation import EvidenceValidation
 
 Text = Annotated[str, AfterValidator(identifier)]
 Role = Literal["history", "development", "final_test"]
@@ -38,6 +39,14 @@ class RecordingConfiguration(FrozenModel):
     corpus_fingerprints: tuple[tuple[Text, Text], ...] = Field(min_length=1)
     prompt_and_adapter_fingerprints: tuple[tuple[Text, Text], ...] = Field(min_length=1)
     collection_protocol: Literal["complete_team_independent_v1"]
+    evidence_validation: EvidenceValidation | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize_recording(self, handler):
+        data = handler(self)
+        if self.evidence_validation is None:
+            data.pop("evidence_validation", None)
+        return data
 
     @model_validator(mode="after")
     def canonicalize(self):

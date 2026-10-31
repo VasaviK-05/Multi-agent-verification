@@ -29,6 +29,25 @@ def load_bundle(path):
     return RecordingBundle(request=request, observed_setup=setup, attempts=tuple(rows))
 
 
+def validate_factory_prerequisites(request):
+    """Known eager adapters must fail before loading a prerequisite-less Semantic.
+
+    This is a factory limitation, not an Evidence eligibility rule. Other factories
+    retain their existing zero-argument API and construction responsibilities.
+    """
+    if request.factory not in {
+        'app.game.offline.recording_adapters:project_factory',
+        'app.game.offline.recording_adapters:arithmetic_factory',
+    }:return
+    from app.selection.capabilities import BUILTIN_CAPABILITIES,prerequisite_status
+    missing=[e.example_id for e in request.examples
+        if prerequisite_status(BUILTIN_CAPABILITIES['semantic'],e.reference)[1] is not None]
+    if missing:
+        raise ValueError('eager reference-assisted factory cannot omit Semantic before construction; '
+            'use a prerequisite-aware partial-roster factory. Evidence does not require user reference. '
+            'Unavailable reference examples: '+', '.join(missing))
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=('validate', 'collect', 'check', 'export'))
@@ -36,11 +55,22 @@ def main(argv=None):
     parser.add_argument('--output-dir', type=Path)
     parser.add_argument('--context', type=Path)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--resume-from',type=Path,help='Prior journal; preserve it and use a fresh output directory')
     args = parser.parse_args(argv)
     destination = None
     try:
         if args.command in {'validate', 'collect'}:
             request = validate_recording_request(read_json(args.input))
+            validate_factory_prerequisites(request)
+            prior=None
+            if args.resume_from is not None:
+                prior=load_bundle(args.resume_from)
+                if prior.request!=request:raise ValueError('resume request identity changed')
+                ledger=args.resume_from/'started.jsonl'
+                if not ledger.exists():raise ValueError('no start ledger: cannot safely infer unattempted work')
+                started={json.loads(line)['attempt_id'] for line in ledger.read_text(encoding='utf-8').splitlines() if line.strip()}
+                recorded={a.attempt_id for a in prior.attempts if a.executed}
+                if started-recorded:raise ValueError('in-flight attempt lacks completion; do not retry: '+str(sorted(started-recorded)))
             if args.command == 'validate':
                 print(json.dumps(dict(valid=True, request_id=request.request_id,
                     intended_use=request.intended_use, examples=len(request.examples),
@@ -59,15 +89,28 @@ def main(argv=None):
             if len(loaded) not in {2, 3}:
                 raise ValueError('factory returns (verifiers, observed_setup[, resource_observer])')
             verifiers, setup = loaded[:2]
+            if prior is not None:
+                from app.game.offline.calibration import MeasurementSetup
+                if setup is None or prior.observed_setup!=MeasurementSetup.model_validate(setup):
+                    raise ValueError('resume resource/setup fingerprint changed')
             observer = loaded[2] if len(loaded) == 3 else None
             (destination / 'observed-setup.json').write_text(
                 'null' if setup is None else json.dumps(setup.model_dump(mode='json')
                     if hasattr(setup, 'model_dump') else setup, indent=2), encoding='utf-8')
-            with (destination / 'attempts.jsonl').open('x', encoding='utf-8') as journal:
+            with (destination / 'attempts.jsonl').open('x', encoding='utf-8') as journal, (destination/'started.jsonl').open('x',encoding='utf-8') as starts:
+                import os
+                if prior is not None:
+                    (destination/'resume-provenance.json').write_text(json.dumps(dict(prior_path=str(args.resume_from),prior_bundle_id=prior.bundle_id)),encoding='utf-8')
+                    for a in prior.attempts:
+                        if a.executed:starts.write(json.dumps(dict(attempt_id=a.attempt_id))+'\n')
+                    starts.flush();os.fsync(starts.fileno())
+                def begin(identity):
+                    starts.write(json.dumps(dict(attempt_id=identity))+'\n');starts.flush();os.fsync(starts.fileno())
                 def save(row):
                     journal.write(row.model_dump_json() + '\n')
                     journal.flush()
-                bundle = collect(request, list(verifiers), setup, observer, sink=save)
+                bundle = collect(request, list(verifiers), setup, observer, sink=save,
+                    completed=() if prior is None else prior.attempts,on_start=begin)
             (destination / 'recordings.json').write_text(bundle.model_dump_json(indent=2), encoding='utf-8')
             report = completeness(bundle)
             report['request_id'], report['bundle_id'] = request.request_id, bundle.bundle_id

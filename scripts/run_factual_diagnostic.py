@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 
 class NetworkBudget:
     """Transparent request audit with hard local-only generation/metadata ceilings."""
-    def __init__(self, generate_url, handle):
+    def __init__(self, generate_url, handle, *, generation_limit=30, metadata_limit=100):
         target = urlsplit(generate_url)
         if (target.scheme not in {'http', 'https'} or target.hostname not in {'localhost', '127.0.0.1', '::1'}
                 or target.username or target.password or target.query or target.fragment or target.path != '/api/generate'):
@@ -18,13 +18,16 @@ class NetworkBudget:
         self.generate_url = generate_url
         self.base = generate_url.rsplit('/api/generate', 1)[0]
         self.handle = handle
+        if any(type(v) is not int or v < 0 for v in (generation_limit, metadata_limit)):
+            raise ValueError('network ceilings must be nonnegative integers')
+        self.limits = {'generation': generation_limit, 'metadata': metadata_limit}
         self.counts = {'generation': 0, 'metadata': 0, 'blocked': 0}
 
     def call(self, original, session, method, url, *args, **kwargs):
         method = method.upper()
         kind = ('generation' if method == 'POST' and url == self.generate_url else
                 'metadata' if method == 'GET' and url in {self.base+'/api/version', self.base+'/api/tags'} else None)
-        limit = 30 if kind == 'generation' else 100
+        limit = self.limits.get(kind, 0)
         if kind is None or self.counts[kind] >= limit:
             self.counts['blocked'] += 1
             self.handle.write(json.dumps(dict(state='blocked', method=method, path=urlsplit(url).path))+'\n')

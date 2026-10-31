@@ -299,7 +299,7 @@ def completeness(bundle):
         note='Complete collection is not approval of scientific settings or evidence of improvement.')
 
 
-def collect(request, verifiers, observed_setup, observer, *, sink=None):
+def collect(request, verifiers, observed_setup, observer, *, sink=None, completed=(), on_start=None):
     """Execute every eligible candidate once; retain failures and continue offline."""
     request = validate_recording_request(request)
     request_id = request.request_id
@@ -315,6 +315,8 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None):
     if len(pool) != len(verifiers) or set(pool) - {c.verifier_name for c in request.candidates if c.registered}:
         raise ValueError('factory returned duplicate or undeclared candidates')
     results, interrupted = [], False
+    previous=RecordingBundle(request=request,observed_setup=setup,attempts=tuple(completed))
+    retained={a.attempt_id:a for a in previous.attempts if a.executed or a.attempt.state!='missing'}
     def observe(name):
         if observer is None or setup is None:
             raise ValueError('resource observer/setup unavailable; resources unknown')
@@ -328,6 +330,11 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None):
     for e in request.examples:
         plan = collection_plan(request, e)
         for c, planned in zip(request.candidates, plan['candidates']):
+            identity=attempt_identity(request,e,c,request_id=request_id)
+            if identity in retained:
+                result=retained[identity];results.append(result)
+                if sink is not None:sink(result)
+                continue
             issues, pre, post, payload, row = [], None, None, None, None
             pre_issue = post_issue = None
             state, executed, achieved = 'missing', False, ()
@@ -347,6 +354,7 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None):
                 elif c.verifier_name not in pool:
                     state, reason = 'unavailable', 'registered adapter unavailable from factory'
                 else:
+                    if on_start is not None:on_start(identity)
                     executed = True
                     metadata = dict(run_id=e.run_id, example_id=e.example_id, split_identity=e.split_identity,
                         question_id=e.question_id, content_identity=e.content_identity, dataset_id=e.dataset_id,

@@ -2,6 +2,7 @@
 
 from app.models.schemas import VerificationResult
 from app.decision.vote_normalization import is_abstention, vote_confidence
+import math
 
 ARITHMETIC_RULES = frozenset({
     "arithmetic_addition", "arithmetic_subtraction",
@@ -42,3 +43,25 @@ def factual_capabilities(result: VerificationResult) -> set[str]:
                 or (decision == "REJECT" and "REJECT" in directions)):
             capabilities.add("direct_fact")
     return capabilities
+
+
+def task_capabilities(result,*,requirements,reference_available):
+    """V2: a completed reference-similarity measurement, never a truth certificate.
+
+    Only explicitly requested semantic-comparison tasks may consume the existing
+    Semantic report. Directional judgment still needs empirical task reliability
+    and all public guards. Factual coverage remains exactly the v1 interpretation.
+    """
+    achieved=factual_capabilities(result)
+    if ('semantic_comparison' not in requirements or not reference_available
+        or is_abstention(result) or vote_confidence(result)<=0):return achieved
+    m=result.metadata or {};raw=m.get('raw_similarity')
+    if (result.verifier_name=='semantic' and m.get('comparison_method') in {
+        'question_answer_vs_context','answer_vs_context','claim_vs_context'}
+        and isinstance(m.get('compared_text'),str) and m['compared_text'].strip()
+        and isinstance(m.get('model'),str) and m['model'].strip()
+        and not isinstance(raw,bool) and isinstance(raw,(float,int)) and math.isfinite(raw) and -1<=raw<=1
+        and m.get('thresholds_calibrated') is False
+        and m.get('score_meaning')=='Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.'):
+        achieved.add('semantic_comparison')
+    return achieved

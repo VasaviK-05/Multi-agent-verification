@@ -10,6 +10,8 @@ from pydantic import Field, StrictFloat, TypeAdapter, model_validator, model_ser
 from app.game.dependencies import DependencyRegistry, FrozenModel, identifier
 from app.selection.models import SelectionPlan
 from app.selection.capabilities import CapabilityDescriptor
+from app.game.coverage_contract import CleanCoverageConstraint, CoverageCertificate
+from app.game.reliability_contract import ReliabilityFirst, ReliabilityCertificate
 
 
 # Strategy labels, not decision callables; execution integration remains separate.
@@ -102,6 +104,9 @@ class PlanningContext(FrozenModel):
     offline_evaluation_id: str | None = None
     execution_contract_json: str | None = None
     pooling_contract_json: str | None = None
+    clean_coverage_json: str | None = None
+    reliability_first_json: str | None = None
+    task_conditioning_json: str | None = None
 
     @model_serializer(mode="wrap")
     def serialize_context(self, handler):
@@ -110,10 +115,30 @@ class PlanningContext(FrozenModel):
             data.pop("execution_contract_json", None)
         if self.pooling_contract_json is None:
             data.pop("pooling_contract_json", None)
+        if self.clean_coverage_json is None:
+            data.pop('clean_coverage_json',None)
+        if self.reliability_first_json is None:
+            data.pop('reliability_first_json',None)
+        if self.task_conditioning_json is None:
+            data.pop('task_conditioning_json',None)
         return data
 
     @model_validator(mode="after")
     def validate_context(self):
+        if self.reliability_first_json is not None:
+            from app.game.execution_contract import ExecutionContract
+            contract=ExecutionContract.model_validate_json(self.execution_contract_json or '{}')
+            if self.clean_coverage_json is None or contract.contributor_version!='informative_history_influence_v1':
+                raise ValueError('reliability-first requires clean coverage and informative execution semantics')
+            objective=ReliabilityFirst.model_validate_json(self.reliability_first_json,strict=True)
+            object.__setattr__(self,'reliability_first_json',canonical_json(objective.model_dump(mode='json')))
+        if self.clean_coverage_json is not None:
+            if self.pooling_contract_json is not None:
+                raise ValueError('clean coverage with pooling requires a separately defined contract')
+            constraint=CleanCoverageConstraint.model_validate_json(self.clean_coverage_json,strict=True)
+            object.__setattr__(self,'clean_coverage_json',canonical_json(constraint.model_dump(mode='json')))
+            if constraint.training_binding_id!=self.offline_evaluation_id:
+                raise ValueError('clean coverage requires its exact training binding')
         if self.pooling_contract_json is not None:
             from app.game.pooling_contract import PoolingContract, unpooled_context
             pooling = PoolingContract.model_validate_json(self.pooling_contract_json, strict=True)
@@ -228,6 +253,13 @@ class PlanningContext(FrozenModel):
                 or candidate.cold_start != stats.cold_start):
                 raise ValueError("candidate statistics differ from captured reputation snapshot")
         self.dependencies.groups(names)
+        if self.task_conditioning_json is not None:
+            from app.game.task_conditioning import TaskSnapshotBinding, context_task
+            binding=TaskSnapshotBinding.model_validate_json(self.task_conditioning_json,strict=True)
+            if self.pooling_contract_json is not None:raise ValueError('task-isolated history cannot be pooled')
+            if binding.identity!=context_task(self):raise ValueError('task identity differs from captured requirements/domain')
+            if binding.history_dataset_id!=self.provenance.history_dataset:raise ValueError('task history dataset differs from declared provenance')
+            object.__setattr__(self,'task_conditioning_json',canonical_json(binding.model_dump(mode='json')))
         if self.provenance.category_kind == "domain" and self.provenance.category != plan.domain:
             raise ValueError("policy category must match domain or explicitly declare pooling")
         object.__setattr__(self, "attempt_costs", tuple(sorted(self.attempt_costs)))
@@ -337,9 +369,25 @@ class PayoffMatrix(FrozenModel):
     compatibility_id: str
     # Generic labelled games may omit row definitions. Policy construction may not.
     strategy_definitions: tuple[Strategy, ...] = ()
+    clean_coverage: CleanCoverageConstraint | None = None
+    reliability_first: ReliabilityFirst | None = None
+
+    @model_serializer(mode='wrap')
+    def serialize_matrix(self,handler):
+        data=handler(self)
+        if self.clean_coverage is None:data.pop('clean_coverage',None)
+        if self.reliability_first is None:data.pop('reliability_first',None)
+        return data
 
     @model_validator(mode="after")
     def validate_matrix(self):
+        if self.reliability_first is not None:
+            v=self.reliability_first.validation_values
+            if (self.clean_coverage is None or not self.strategy_definitions
+                or len(v)!=len(self.strategy_ids) or any(len(r)!=len(self.attack_ids) for r in v)):
+                raise ValueError('reliability-first objective dimensions/coverage/cost definitions invalid')
+        if self.clean_coverage is not None and tuple(s for s,q in self.clean_coverage.strategy_coverage)!=self.strategy_ids:
+            raise ValueError('clean coverage axes differ from matrix')
         identifier(self.compatibility_id)
         for labels in (self.strategy_ids, self.attack_ids):
             if not labels or len(labels) != len(set(labels)):
@@ -375,3 +423,12 @@ class SolverResult(FrozenModel):
     dual_lower_bound: float | None = None
     primal_dual_gap: float | None = None
     optimality_basis: str = "not_verified"
+    coverage_certificate: CoverageCertificate | None = None
+    reliability_certificate: ReliabilityCertificate | None = None
+
+    @model_serializer(mode='wrap')
+    def serialize_solution(self,handler):
+        data=handler(self)
+        if self.coverage_certificate is None:data.pop('coverage_certificate',None)
+        if self.reliability_certificate is None:data.pop('reliability_certificate',None)
+        return data

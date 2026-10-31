@@ -1,14 +1,40 @@
 # Offline policy building
 
-Latest integration status: [the 2026-10-29 main merge verification](offline_policy_main_merge.md)
-records the repaired controlled evidence probes, unchanged conservative readiness gate,
-new index-v2/fresh-recording requirements and remaining resource limitations. Historical
-results below are retained; no factual policy or new study approval exists.
+The [approved prototype bundle](multitask_prototype_bundle.md) packages the existing
+arithmetic50% and experimental factual25% artifacts unchanged, with a validated
+manifest, deployment episodes and explicit reference/scope/resource requirements.
+It performs no fit or activation; Semantic equivalence has no deployed entry.
+
+The [three-outcome prototype review](multitask_uncertainty_tradeoffs.md) treats
+uncertainty as valuable and compares optional development coverage targets
+0/25/50/75/90%. The historical 90% target remains exploratory, not a universal
+acceptance condition. No prototype is automatically activated.
+
+The [task-conditioned multi-cohort workflow](multitask_policy_workflow.md) documents
+the opt-in task/history and semantic-measurement coverage contracts, bounded local
+collection, safe resume, retained-report routing checks and budget sensitivities.
+The [completed multi-cohort results](multitask_policy_results.md) record 960 study
+attempts, infeasible 90%-coverage primary policies and separately validated
+unconstrained diagnostics; no qualifying multi-task policy is claimed.
+
+The [informative-contributor reliability-first exploration](factual_reliability_first.md)
+adds opt-in execution semantics and validation-first/cost-second optimization with
+90% expected clean coverage. Legacy artifacts and coverage variants remain unchanged.
+
+The [2026-10-30 clean-coverage exploration](factual_coverage_exploration.md) adds
+an explicitly versioned development coverage constraint. Its three exploratory
+variants preserve the original unconstrained policy and primary settings.
+
+The current factual engineering workflow is documented in
+[the factual campaign handoff](factual_policy42_results.md). Historical results
+below retain their original scope and approval status. The
+[2026-10-29 main merge verification](offline_policy_main_merge.md) remains the
+record of that merge, rather than the status of subsequent empirical work.
 
 
 The builder now fits, validates, exports and reloads the existing PolicyArtifact
 format. Synthetic tests exercise the complete command and existing provider/runtime
-interfaces. The arithmetic engineering pilot has since been fitted and diagnosed; no factual policy exists. The separate
+interfaces. The arithmetic engineering pilot has since been fitted and diagnosed. The separate
 cost-only campaign and its local artifact availability are documented in
 [verifier_cost_results.md](verifier_cost_results.md); its timings are not report
 recordings or approval of policy settings.
@@ -142,12 +168,13 @@ relative tolerance zero. Reputation records are compared exactly, stronger than
 metadata are excluded. IDs remain exact hashes and may differ for numerically
 equivalent floats; equivalence does not promise identical bytes across environments.
 
-## Remaining empirical inputs and ownership handoff
+## Initial empirical input audit and ownership handoff (historical)
 
 Available data/test_benchmark.jsonl provides questions, answers and correctness flags,
 not complete verifier attempts, audited splits/groups, independent label provenance
-or resource fingerprints. Corpus/index files do not fill those gaps. No completed
-recording manifest/build specification exists among available project inputs.
+or resource fingerprints. Corpus/index files do not fill those gaps. At this
+initial audit no completed recording manifest/build specification existed.
+Subsequent arithmetic and factual engineering campaigns are documented separately.
 
 - Collection/integration owners: actual outputs or explicit failures/unavailability
   for every candidate, execution IDs, actual model/corpus/index/prompt/adapter and
@@ -158,8 +185,10 @@ recording manifest/build specification exists among available project inputs.
 - Study owner: approved population/category, dependency pathways/unknown treatment,
   calibrated cost units/estimates, budget, error/uncertainty/resource penalties,
   thresholds/failure semantics, priors, seeds, uncertainty and sensitivity plans.
-- Evidence owner: existing direct-fact/evidence producer gates remain blocked by
-  previously documented contract defects. This work changes no verifier algorithms.
+- Historical evidence handoff: the producer defects listed here were later repaired
+  upstream. The factual campaign verifies current controlled/installed-NLI probes
+  and uses a resource-bound readiness receipt; see the current handoff linked above.
+  No verifier algorithms were changed in this workflow.
 
 Integration owners load PolicyArtifact.model_validate_json(path.read_text()), register
 it with InMemoryPolicyProvider((artifact,)), and use existing DeploymentEpisode and

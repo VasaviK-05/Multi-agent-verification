@@ -9,7 +9,14 @@ from app.game.dependencies import FrozenModel, identifier
 from app.game.decision_inputs import DEPENDENCY_VERSION, REPUTATION_VERSION
 from app.game.execution_contract import ExecutionContract
 from app.game.models import PlanningContext, canonical_json, content_id
-from app.game.policy import Policy, validate_policy
+from app.game.policy import Policy, validate_policy, semantics_version
+
+
+def artifact_version(context,policy):
+    return {'game_policy_clean_coverage_v1':'deployable_game_policy_clean_coverage_v1',
+        'game_policy_informative_v1':'deployable_game_policy_informative_v1',
+        'game_policy_reliability_first_v1':'deployable_game_policy_reliability_first_v1'}.get(
+            semantics_version(context,policy.matrix),'deployable_game_policy_v1')
 
 
 class DeploymentEpisode(FrozenModel):
@@ -20,6 +27,8 @@ class DeploymentEpisode(FrozenModel):
 
     @model_validator(mode="after")
     def validate_episode(self):
+        if self.contract.version=='offline_public_decision_v4' and self.context.task_conditioning_json is None:
+            raise ValueError('task-aware execution requires task-isolated history binding')
         identifier(self.episode_id)
         if self.context.offline_evaluation_id is None or self.context.execution_contract_json is None:
             raise ValueError("deployment requires offline provenance and an explicit evaluated execution contract")
@@ -36,7 +45,7 @@ class DeploymentEpisode(FrozenModel):
 
 
 class PolicyArtifact(FrozenModel):
-    version: Literal["deployable_game_policy_v1"] = "deployable_game_policy_v1"
+    version: Literal["deployable_game_policy_v1",'deployable_game_policy_clean_coverage_v1','deployable_game_policy_informative_v1','deployable_game_policy_reliability_first_v1'] = "deployable_game_policy_v1"
     policy: Policy
     context: PlanningContext
     contract: ExecutionContract
@@ -46,6 +55,8 @@ class PolicyArtifact(FrozenModel):
 
     @model_validator(mode="after")
     def validate_artifact(self):
+        if self.version!=artifact_version(self.context,self.policy):
+            raise ValueError('artifact version does not match execution/optimization semantics')
         identifier(self.applicable_domain)
         if self.applicable_domain != self.context.plan.domain:
             raise ValueError("applicability must explicitly match the captured domain, including pooled artifacts")
