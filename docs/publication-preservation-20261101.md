@@ -23,6 +23,10 @@ The pre-existing empirical audit Markdown and its JSON are included unchanged.
 - Authentic configuration: `build/multitask-policy42/adapter.json`. The corpus,
   `index-v2/`, `index-receipt.json` and `service-observation.json` are in that
   same directory. They are original observations, not attestations of a new host.
+  The earlier recording adapter's original small test index is also supplied at
+  `data/evidence_index/test_evidence_corpus/`; its exact hashes are in the
+  supplemental manifest. Large unrelated corpus indexes remain local archival
+  inputs because their redistribution basis was not established by this work.
 - A supported history question, answer and required reference context are in
   [prototype-history-request.example.json](prototype-history-request.example.json),
   copied from the arithmetic history/development request. This is a request example,
@@ -157,3 +161,10 @@ Historical unique archive members were verified by reading their ZIP entries.
 Prior implementation-test results in the existing handoffs are reused; no
 implementation changed. Commit/tree and remote-byte verification records are
 kept beside the local migration archives.
+
+The original large, unrelated corpus indexes are additionally preserved locally
+in `unrelated-corpus-indexes-LOCAL-ONLY.zip`; upload it and
+`unrelated-corpus-index-manifest.json` to the approved private external destination
+as well. `remaining-external-upload-files.json` enumerates every archived file,
+its hash and its remaining upload action. Historical whitespace in ten original
+files is retained intentionally; new handoff files pass whitespace checks.

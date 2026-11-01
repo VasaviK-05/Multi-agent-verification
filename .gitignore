@@ -609,3 +609,11 @@ data/verification_traces/
 !/docs/studies/factual-team-selection-v1/validation-results.json
 !/docs/verifier_collection_blockers.json
 !/docs/verifier_cost_missing_inputs.json
+
+# Original small index used by the historical recording adapter.
+!/data/evidence_index/
+/data/evidence_index/*
+!/data/evidence_index/test_evidence_corpus/
+!/data/evidence_index/test_evidence_corpus/chunks.json
+!/data/evidence_index/test_evidence_corpus/faiss.index
+!/data/evidence_index/test_evidence_corpus/manifest.json
