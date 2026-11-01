@@ -82,6 +82,29 @@ def unbound_replay_context(artifact, contract):
         'execution_contract_json': canonical_json(contract.model_dump(mode='json'))})
 
 
+def validate_original_recordings(artifact, clean, report_attacks):
+    """Reconstruct the original training binding without optimizing or altering it."""
+    if artifact.context.pooling_contract_json is not None:
+        raise ValueError('pooled frozen evaluation requires an explicit multi-context evaluation contract')
+    if artifact.contract.resource_manifest is None:
+        raise ValueError('frozen upstream evaluation requires resource-bound execution')
+    base = unbound_replay_context(artifact, artifact.contract)
+    manifest = export_training(clean, base)
+    require_execution_records(clean)
+    try:
+        bound = bind_evaluation(base, manifest, artifact.contract, report_attacks)
+    except ValueError as exc:
+        raise ValueError('clean recordings differ from the original frozen training binding: ' + str(exc)) from exc
+    expected = PlanningContext.model_validate({**artifact.context.model_dump(),
+        'clean_coverage_json': None, 'reliability_first_json': None})
+    if bound != expected:
+        raise ValueError('clean recordings differ from the original frozen training binding; scope cannot expand')
+    actions = enumerate_attacks(base.dependencies, report_attacks)
+    if artifact.policy.matrix.attack_ids != tuple(a.attack_id for a in actions):
+        raise ValueError('original report-attack specification differs from frozen artifact')
+    return manifest
+
+
 class FrozenUpstreamEvaluationInput(FrozenModel):
     version: Literal['frozen_upstream_development_input_v1'] = 'frozen_upstream_development_input_v1'
     artifact: PolicyArtifact
@@ -91,25 +114,8 @@ class FrozenUpstreamEvaluationInput(FrozenModel):
 
     @model_validator(mode='after')
     def check(self):
-        artifact = self.artifact  # PolicyArtifact already checked the original objective/certificate.
-        if artifact.context.pooling_contract_json is not None:
-            raise ValueError('pooled frozen evaluation requires an explicit multi-context evaluation contract')
-        if artifact.contract.resource_manifest is None:
-            raise ValueError('frozen upstream evaluation requires resource-bound execution')
-        base = unbound_replay_context(artifact, artifact.contract)
-        manifest = export_training(self.clean, base)
-        require_execution_records(self.clean)
-        try:
-            bound = bind_evaluation(base, manifest, artifact.contract, self.report_attacks)
-        except ValueError as exc:
-            raise ValueError('clean recordings differ from the original frozen training binding: ' + str(exc)) from exc
-        expected = PlanningContext.model_validate({**artifact.context.model_dump(),
-            'clean_coverage_json': None, 'reliability_first_json': None})
-        if bound != expected:
-            raise ValueError('clean recordings differ from the original frozen training binding; scope cannot expand')
-        actions = enumerate_attacks(base.dependencies, self.report_attacks)
-        if artifact.policy.matrix.attack_ids != tuple(a.attack_id for a in actions):
-            raise ValueError('original report-attack specification differs from frozen artifact')
+        validate_original_recordings(self.artifact, self.clean, self.report_attacks)
+        artifact = self.artifact
         validate_scenario_links(self.clean, artifact.context, artifact.contract, self.scenarios)
         return self
 
@@ -167,20 +173,11 @@ class FrozenUpstreamEvaluation(FrozenModel):
     outcomes: tuple[ReplayOutcome, ...]
 
 
-def evaluate_frozen_upstream(inputs):
-    """Exact expectation over all frozen strategies; no sampling or optimization."""
-    inputs = FrozenUpstreamEvaluationInput.model_validate(inputs)
-    artifact = inputs.artifact
+def evaluate_configurations(artifact, manifest, report_attacks, configurations):
+    """Shared pure replay; callers validate condition identity/provenance first."""
     probabilities = dict(artifact.policy.solution.probabilities)
     base = unbound_replay_context(artifact, artifact.contract)
-    manifest = export_training(inputs.clean, base)
-    clean_action = enumerate_attacks(base.dependencies, inputs.report_attacks)[0]
-    configurations = [('clean', inputs.clean, artifact.contract)]
-    for scenario in inputs.scenarios:
-        resources = scenario.intervention.altered_resources
-        contract = ExecutionContract.model_validate({**artifact.contract.model_dump(),
-            'resource_manifest': resources, 'execution_configuration_id': resources.manifest_id})
-        configurations.append((scenario.intervention.scenario_id, scenario.bundle, contract))
+    clean_action = enumerate_attacks(base.dependencies, report_attacks)[0]
     summaries, outcomes = [], []
     for scenario_id, bundle, contract in configurations:
         # No evaluated offline binding: DeploymentEpisode explicitly rejects this
@@ -199,7 +196,7 @@ def evaluate_frozen_upstream(inputs):
                     'validation_id': examples[original.example_id].run_id,
                     'execution_configuration_id': contract.execution_configuration_id,
                     'attempts': attempts[original.example_id]})
-                outcome = replay(context, strategy, clean_action, inputs.report_attacks, contract, example)
+                outcome = replay(context, strategy, clean_action, report_attacks, contract, example)
                 outcome = ReplayOutcome.model_validate({**outcome.model_dump(), 'attack_id': scenario_id, 'audit': ()})
                 cell.append(outcome)
             outcomes.extend(cell)
@@ -222,6 +219,24 @@ def evaluate_frozen_upstream(inputs):
             per_strategy_metrics=tuple(per_strategy),
             per_strategy_validation_loss=tuple((sid, m.validation_loss(artifact.context.loss_configuration)) for sid, m in per_strategy),
             per_strategy_reason_counts=tuple(per_reasons)))
+    return tuple(summaries), tuple(outcomes)
+
+
+def evaluate_frozen_upstream(inputs):
+    """Exact expectation over all frozen strategies; no sampling or optimization."""
+    inputs = FrozenUpstreamEvaluationInput.model_validate(inputs)
+    artifact = inputs.artifact
+    probabilities = dict(artifact.policy.solution.probabilities)
+    base = unbound_replay_context(artifact, artifact.contract)
+    manifest = export_training(inputs.clean, base)
+    clean_action = enumerate_attacks(base.dependencies, inputs.report_attacks)[0]
+    configurations = [('clean', inputs.clean, artifact.contract)]
+    for scenario in inputs.scenarios:
+        resources = scenario.intervention.altered_resources
+        contract = ExecutionContract.model_validate({**artifact.contract.model_dump(),
+            'resource_manifest': resources, 'execution_configuration_id': resources.manifest_id})
+        configurations.append((scenario.intervention.scenario_id, scenario.bundle, contract))
+    summaries, outcomes = evaluate_configurations(artifact, manifest, inputs.report_attacks, configurations)
     floor = None
     if artifact.policy.matrix.clean_coverage is not None:
         floor = artifact.policy.matrix.clean_coverage.minimum
