@@ -1,5 +1,10 @@
 # Evaluate a frozen policy against altered evidence
 
+For explicitly new collectors when the historical source cannot be recovered,
+use the separate [frozen-policy transfer contract](upstream_transfer_evaluation.md).
+It requires fresh clean **and** altered reports and explicitly makes no collector
+equivalence claim. The strict workflow on this page remains unchanged in meaning.
+
 This is **evaluation only**, separate from the upstream minimax fitter. It accepts
 the original `PolicyArtifact`, including existing clean-coverage-constrained and
 reliability-first artifacts. It validates their original objective/version bindings

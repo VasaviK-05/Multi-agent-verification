@@ -4,6 +4,8 @@ Run with that checkout's Python. This file stays OUTSIDE its app/ tree. The defa
 operation is seven software probes. Optional bounded collection forwards to the
 existing collector CLI/journals, never a new collector. Both require new authority.
 No fitting, calibration, artifact export or activation is provided.
+Strict mode requires the historical setup. An explicit evaluation-transfer
+declaration instead requires its identified current setup, without equivalence.
 """
 import argparse
 import hashlib
@@ -62,6 +64,8 @@ def main(argv=None):
     parser.add_argument('--source-audit', required=True, type=Path)
     parser.add_argument('--output-dir', required=True, type=Path)
     parser.add_argument('--authorization-record', required=True)
+    parser.add_argument('--evaluation-transfer', type=Path,
+                        help='Explicit frozen_policy_evaluation_transfer_v1 declaration; never a strict-mode bypass')
     parser.add_argument('--operation', choices=('evidence-probes', 'collect'), default='evidence-probes')
     parser.add_argument('--request', type=Path)
     parser.add_argument('--resume-from', type=Path)
@@ -87,9 +91,18 @@ def main(argv=None):
                 or args.stop_after is not None or args.generation_limit not in (None, 0)):
             raise ValueError('evidence probes cannot collect study records or authorize generation')
         root = args.collector_root.resolve()
-        clean = json.loads(args.clean_bundle.read_text(encoding='utf-8'))['observed_setup']
+        historical_document = json.loads(args.clean_bundle.read_text(encoding='utf-8'))
+        clean = historical_document['observed_setup']
+        transfer_payload = None
+        if args.evaluation_transfer is not None:
+            transfer_payload = json.loads(args.evaluation_transfer.read_text(encoding='utf-8'))
+            if transfer_payload.get('version') != 'frozen_policy_evaluation_transfer_v1':
+                raise ValueError('unsupported evaluation-transfer contract')
+            clean = transfer_payload['current_clean_setup']
         audit = json.loads(args.source_audit.read_text(encoding='utf-8'))
         if not audit.get('source_compatible'): raise ValueError('source audit is blocked; do not initialize models')
+        if (transfer_payload is None) != (audit.get('version') != 'frozen_transfer_collector_source_audit_v1'):
+            raise ValueError('strict and transfer source-audit modes cannot be mixed')
         if any(os.environ.get(k) for k in ('GIT_DIR', 'GIT_WORK_TREE', 'GIT_INDEX_FILE')):
             raise ValueError('unset Git source overrides')
         revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
@@ -98,11 +111,24 @@ def main(argv=None):
         digest = hashlib.sha256(json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
         if (revision != clean['code_revision'] or digest != clean['application_source_digest']
                 or digest != audit.get('actual_application_source_digest')):
-            raise ValueError('restored source no longer matches actual clean recordings/source audit')
+            raise ValueError('collector source no longer matches the explicitly required setup/source audit')
         os.chdir(root); sys.path.insert(0, str(root))
         import app
         if Path(app.__file__).resolve().parent != root/'app':
             raise ValueError('wrong app imported; use a fresh original-environment Python process')
+        transfer_id = None
+        if transfer_payload is not None:
+            from app.game.offline.upstream_transfer import EvaluationTransferDeclaration
+            from app.game.offline.collection import RecordingBundle
+            from app.game.offline.upstream import scientific_bundle_id
+            declaration = EvaluationTransferDeclaration.model_validate(transfer_payload)
+            historical = RecordingBundle.model_validate(historical_document)
+            if (declaration.historical_recording_id != scientific_bundle_id(historical)
+                    or declaration.historical_setup_fingerprint != historical.observed_setup.fingerprint):
+                raise ValueError('transfer historical provenance differs from the actual retained bundle')
+            transfer_id = declaration.declaration_id
+            if audit.get('transfer_declaration_id') != transfer_id:
+                raise ValueError('transfer audit/declaration identity mismatch')
         os.environ.update(HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1', HF_HUB_DISABLE_TELEMETRY='1',
                           VERIFIER_COLLECTION_ADAPTER_CONFIG=str(adapter))
         # External helpers are versioned/audited separately; never copy them into app/.
@@ -121,6 +147,7 @@ def main(argv=None):
         if output.exists(): raise ValueError('output must be a new directory')
         audit_output.mkdir(parents=True, exist_ok=False); destination_created = True
         (audit_output/'authorization.json').write_text(json.dumps(dict(record=args.authorization_record, operation=args.operation,
+            evaluation_mode='strict_historical' if transfer_id is None else 'frozen_rule_transfer', transfer_declaration_id=transfer_id,
             scope=('seven fixed software cases; three local NLI calls; no study candidates/generation'
                    if args.operation == 'evidence-probes' else 'existing full-request collector; retained failures; no fitting'),
             external_sources={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in
@@ -135,11 +162,19 @@ def main(argv=None):
                 if not preflight['ready']: raise ValueError('original-environment resource preflight is blocked')
                 for field in ('code_revision', 'application_source_digest', 'dependency_versions', 'environment', 'evidence_kind'):
                     if preflight['observed_setup'][field] != clean[field]:
-                        raise ValueError('original collector preflight mismatch: '+field)
+                        raise ValueError('approved collector preflight mismatch: '+field)
                 if args.operation == 'collect':
                     request = json.loads(request_path.read_text(encoding='utf-8'))
                     if request['expected_setup'] != preflight['observed_setup']:
                         raise ValueError('request differs from actual original-environment preflight')
+                    if transfer_payload is not None:
+                        from app.game.offline.collection import RecordingRequest
+                        from app.game.offline.upstream_transfer import validate_collection_scope
+                        checked_request = RecordingRequest.model_validate(request)
+                        validate_collection_scope(historical, checked_request)
+                        if (checked_request.expected_setup.resources == declaration.current_clean_setup.resources
+                                and checked_request.request_id != declaration.current_clean_request_id):
+                            raise ValueError('clean collection request differs from transfer declaration')
                     import app.game.offline.collect as cli
                     import inspect
                     if 'on_start' not in inspect.signature(cli.collect).parameters:

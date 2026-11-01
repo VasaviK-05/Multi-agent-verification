@@ -98,37 +98,81 @@ def main(argv=None):
                           help='Required for empirical inputs: existing ready clean PolicyBuildSpecification')
     assembly.add_argument('--scenario-evidence-validation', nargs=2, action='append', default=[],
                           metavar=('DECLARATION_JSON', 'VALIDATION_JSON'))
-    evaluation = sub.add_parser('evaluate', help='Evaluate a frozen policy; never fit or export a policy')
-    policy_source = evaluation.add_mutually_exclusive_group(required=True)
-    policy_source.add_argument('--policy', type=Path)
-    policy_source.add_argument('--prototype-bundle', type=Path, help='Extracted package; validates all original package hashes')
-    evaluation.add_argument('--task', choices=('arithmetic', 'factual'), help='Required with --prototype-bundle')
-    evaluation.add_argument('--clean-bundle', required=True, type=Path)
-    evaluation.add_argument('--report-attacks', required=True, type=Path)
-    evaluation.add_argument('--scenario', nargs=2, action='append', required=True,
-                            metavar=('DECLARATION_JSON', 'RECORDING_DIRECTORY'))
-    evaluation.add_argument('--scenario-evidence-validation', nargs=2, action='append', default=[],
-                            metavar=('DECLARATION_JSON', 'VALIDATION_JSON'))
-    evaluation.add_argument('--output', required=True, type=Path, help='New evaluation JSON file, never policy.json')
+    for command in ('evaluate', 'evaluate-transfer', 'assemble-transfer'):
+        evaluation = sub.add_parser(command, help='Evaluate frozen probabilities; never fit or export a policy')
+        policy_source = evaluation.add_mutually_exclusive_group(required=True)
+        policy_source.add_argument('--policy', type=Path)
+        policy_source.add_argument('--prototype-bundle', type=Path, help='Extracted package; validates all original package hashes')
+        evaluation.add_argument('--task', choices=('arithmetic', 'factual'), help='Required with --prototype-bundle')
+        if command == 'evaluate':
+            evaluation.add_argument('--clean-bundle', required=True, type=Path)
+        else:
+            evaluation.add_argument('--historical-clean', required=True, type=Path)
+            evaluation.add_argument('--fresh-clean', required=True, type=Path)
+            evaluation.add_argument('--transfer-declaration', required=True, type=Path)
+            evaluation.add_argument('--clean-evidence-validation', type=Path)
+        evaluation.add_argument('--report-attacks', required=True, type=Path)
+        evaluation.add_argument('--scenario', nargs=2, action='append', required=True,
+                                metavar=('DECLARATION_JSON', 'RECORDING_DIRECTORY'))
+        evaluation.add_argument('--scenario-evidence-validation', nargs=2, action='append', default=[],
+                                metavar=('DECLARATION_JSON', 'VALIDATION_JSON'))
+        evaluation.add_argument('--output', required=True, type=Path, help='New evaluation JSON file, never policy.json')
     audit = sub.add_parser('audit-collector', help='Read-only source compatibility rehearsal; no model/resource initialization')
     audit.add_argument('--clean-bundle', required=True, type=Path)
     audit.add_argument('--collector-root', required=True, type=Path)
     audit.add_argument('--output', required=True, type=Path)
+    transfer = sub.add_parser('prepare-transfer', help='Prepare new clean request and explicit transfer declaration, no calls')
+    for name in ('policy','historical-clean','report-attacks','current-preflight','source-manifest'):
+        transfer.add_argument('--'+name, required=True, type=Path)
+    for name in ('authorization-record','implementation-change-record','report-compatibility-record','source-snapshot-record'):
+        transfer.add_argument('--'+name, required=True)
+    transfer.add_argument('--output-dir', required=True, type=Path)
+    transfer_audit = sub.add_parser('audit-transfer-collector')
+    transfer_audit.add_argument('--transfer-declaration', required=True, type=Path)
+    transfer_audit.add_argument('--collector-root', required=True, type=Path)
+    transfer_audit.add_argument('--output', required=True, type=Path)
+    snapshot = sub.add_parser('snapshot-collector', help='Preserve actual application bytes; no inference or resource initialization')
+    snapshot.add_argument('--collector-root', required=True, type=Path)
+    snapshot.add_argument('--output-dir', required=True, type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == 'prepare':
             print(json.dumps(prepare(args.clean_adapter, args.alterations, args.output_dir)))
-        elif args.command == 'audit-collector':
+        elif args.command == 'snapshot-collector':
+            from app.game.offline.upstream_transfer import snapshot_collector
+            print(json.dumps(snapshot_collector(args.collector_root, args.output_dir)))
+            return 0
+        elif args.command == 'prepare-transfer':
+            from app.game.offline.collect import load_bundle
+            from app.game.offline.upstream_transfer import prepare_transfer
+            from app.game.artifacts import PolicyArtifact
+            declaration, request = prepare_transfer(PolicyArtifact.model_validate_json(args.policy.read_bytes()),
+                load_bundle(args.historical_clean), read_json(args.report_attacks),
+                read_json(args.current_preflight)['observed_setup'], read_json(args.source_manifest),
+                authorization_record=args.authorization_record, implementation_change_record=args.implementation_change_record,
+                report_compatibility_record=args.report_compatibility_record, source_snapshot_record=args.source_snapshot_record)
+            args.output_dir.mkdir(parents=True, exist_ok=False)
+            (args.output_dir/'transfer-declaration.json').write_text(declaration.model_dump_json(indent=2), encoding='utf-8')
+            (args.output_dir/'clean-request.json').write_text(request.model_dump_json(indent=2), encoding='utf-8')
+            print(json.dumps(dict(declaration_id=declaration.declaration_id, new_policy_created=False)))
+            return 0
+        elif args.command in {'audit-collector', 'audit-transfer-collector'}:
             from app.game.offline.collect import load_bundle
             from app.game.offline.upstream_evaluation import audit_collector_source
-            bundle = load_bundle(args.clean_bundle)
-            report = audit_collector_source(bundle.observed_setup, args.collector_root)
+            if args.command == 'audit-collector':
+                bundle = load_bundle(args.clean_bundle)
+                report = audit_collector_source(bundle.observed_setup, args.collector_root)
+            else:
+                from app.game.offline.upstream_transfer import EvaluationTransferDeclaration
+                declaration = EvaluationTransferDeclaration.model_validate(read_json(args.transfer_declaration))
+                report = audit_collector_source(declaration.current_clean_setup, args.collector_root)
+                report.update(version='frozen_transfer_collector_source_audit_v1', transfer_declaration_id=declaration.declaration_id)
             with args.output.open('x', encoding='utf-8') as handle:
                 json.dump(report, handle, indent=2)
             print(json.dumps(dict(source_compatible=report['source_compatible'], gaps=report['gaps'],
                 ready_for_real_collection=False, factory_initialized=False)))
             return 0 if report['source_compatible'] else 2
-        elif args.command in {'assemble', 'evaluate'}:
+        elif args.command in {'assemble', 'evaluate', 'evaluate-transfer', 'assemble-transfer'}:
             from app.game.offline.collect import load_bundle
             from app.game.offline.upstream import UpstreamExperiment
             validations = {}
@@ -143,7 +187,7 @@ def main(argv=None):
             scenarios = tuple(dict(intervention=read_json(declaration), bundle=load_bundle(recordings),
                                   evidence_validation=validations.get(str(Path(declaration).resolve())))
                               for declaration, recordings in args.scenario)
-            if args.command == 'evaluate':
+            if args.command in {'evaluate', 'evaluate-transfer', 'assemble-transfer'}:
                 from app.game.artifacts import PolicyArtifact
                 from app.game.models import content_id
                 from app.game.offline.upstream_evaluation import FrozenUpstreamEvaluationInput, evaluate_frozen_upstream
@@ -164,22 +208,38 @@ def main(argv=None):
                     source = args.policy
                 raw = source.read_bytes()
                 artifact = PolicyArtifact.model_validate_json(raw)
-                clean = load_bundle(args.clean_bundle)
+                clean = load_bundle(args.clean_bundle if args.command == 'evaluate' else args.historical_clean)
                 if bundle_id is not None:
                     if artifact.artifact_id != entry.artifact_id:
                         raise ValueError('artifact bytes changed since prototype validation')
                     if any(content_id(e.question) not in entry.allowed_question_ids for e in clean.request.examples):
                         raise ValueError('clean recording question is outside original prototype scope')
-                inputs = FrozenUpstreamEvaluationInput(artifact=artifact, clean=clean,
-                    report_attacks=read_json(args.report_attacks), scenarios=scenarios)
-                result = evaluate_frozen_upstream(inputs)
+                if args.command == 'evaluate':
+                    inputs = FrozenUpstreamEvaluationInput(artifact=artifact, clean=clean,
+                        report_attacks=read_json(args.report_attacks), scenarios=scenarios)
+                    result = evaluate_frozen_upstream(inputs)
+                else:
+                    from app.game.offline.upstream_transfer import FrozenPolicyTransferInput, evaluate_frozen_transfer
+                    inputs = FrozenPolicyTransferInput(artifact=artifact, historical_clean=clean,
+                        declaration=read_json(args.transfer_declaration), report_attacks=read_json(args.report_attacks),
+                        current_clean=dict(bundle=load_bundle(args.fresh_clean), evidence_validation=None if
+                            args.clean_evidence_validation is None else read_json(args.clean_evidence_validation)), scenarios=scenarios)
+                    if args.command == 'assemble-transfer':
+                        if source.read_bytes() != raw:
+                            raise ValueError('original artifact changed during assembly')
+                        with args.output.open('x', encoding='utf-8') as handle:
+                            handle.write(inputs.model_dump_json(indent=2))
+                        print(json.dumps(dict(valid=True, declaration_id=inputs.declaration.declaration_id,
+                            new_policy_created=False, output=str(args.output))))
+                        return 0
+                    result = evaluate_frozen_transfer(inputs)
                 result = type(result).model_validate({**result.model_dump(),
                     'original_artifact_sha256': hashlib.sha256(raw).hexdigest(), 'prototype_bundle_id': bundle_id})
                 if source.read_bytes() != raw:
                     raise ValueError('original artifact changed during evaluation; no report published')
                 with args.output.open('x', encoding='utf-8') as handle:
                     handle.write(result.model_dump_json(indent=2))
-                print(json.dumps(dict(evaluation_id=inputs.evaluation_input_id,
+                print(json.dumps(dict(evaluation_id=result.evaluation_input_id,
                     original_artifact_id=artifact.artifact_id, new_policy_created=False,
                     evidence_role=result.evidence_role, output=str(args.output))))
                 return 0
