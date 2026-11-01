@@ -16,13 +16,11 @@ from app.database.session_repository import (
 from app.database.validation_repository import save_validation
 from app.database.verifier_repository import save_verifier_outputs
 from app.database.audit_repository import create_audit, update_audit
-from app.database.feedback_repository import save_feedback
 from app.models.schemas import (
     CreateSessionRequest,
     SessionResponse,
     ValidationRequest,
     ValidationResponse,
-    FeedbackRequest,
 )
 from app.services.validation_service import ValidationService
 from database import get_connection
@@ -41,6 +39,7 @@ def health() -> dict[str, str]:
 
 
 
+
 @router.post("/validate", response_model=ValidationResponse)
 def validate(request: ValidationRequest):
     result = _validation_service.validate(request)
@@ -48,7 +47,7 @@ def validate(request: ValidationRequest):
     if result.validation_id is None:
         return result
 
-    # Persist the validation first because the audit has a foreign key
+    # Persist validation first because the audit has a foreign key
     # referencing validation_records.
     save_validation(
         validation_id=result.validation_id,
@@ -66,7 +65,7 @@ def validate(request: ValidationRequest):
         signed_score=result.signed_score,
     )
 
-    # The validation record now exists, so its audit can be created.
+    # Create the initial audit record.
     initial_summary = getattr(result, "execution_audit", None) or {}
     initial_plan = initial_summary.get("selection_plan") or {}
 
@@ -75,10 +74,14 @@ def validate(request: ValidationRequest):
         question_id=request.question_id,
         session_id=request.session_id,
         policy_version=initial_plan.get("policy_version"),
+        selected_strategy=initial_summary.get("selected_strategy_id"),
+        execution_contract=initial_summary.get("execution_contract"),
+        reputation_snapshot_id=initial_summary.get("reputation_snapshot_id"),
         selection_plan=initial_plan,
         run_summary=initial_summary,
     )
 
+    # Persist verifier outputs and ground truth.
     try:
         save_verifier_outputs(
             validation_id=result.validation_id,
@@ -95,76 +98,108 @@ def validate(request: ValidationRequest):
             )
 
     except Exception:
-        # Preserve the original persistence error even if updating the
-        # audit fails as well.
         try:
             update_audit(
                 result.validation_id,
                 run_status="failed",
                 failure_details=[
-                    {"stage": "persistence", "reason": "Persistence failed"}
+                    {
+                        "stage": "persistence",
+                        "reason": "Verifier or ground-truth persistence failed",
+                    }
                 ],
             )
         except Exception:
             pass
 
         raise
-    audit_context = _validation_service.get_validation_context(
-        result.validation_id
-    )
-    run_summary = audit_context.run_summary or {}
-    selection_plan = run_summary.get("selection_plan") or {}
-    candidates = selection_plan.get("candidates") or []
 
-    update_audit(
-        result.validation_id,
-        run_status="completed",
-        selected_verifiers=result.selected_verifiers or [],
-        ranking_explanations=candidates,
-        coverage_outcomes={
-            "coverage": run_summary.get("coverage", {}),
-            "missing_coverage": run_summary.get("missing_coverage", []),
-        },
-        decision_summary={
-            "final_status": result.final_status,
-            "final_score": result.final_score,
-            "domain": result.domain,
-            "early_stop_reason": result.early_stop_reason,
-            "signed_score": result.signed_score,
-            "termination": run_summary.get("termination"),
-            "last_stopping_assessment": run_summary.get(
-                "last_stopping_assessment"
-            ),
-            "minimum_contributors": run_summary.get("minimum_contributors"),
-            "contributors": run_summary.get("contributors"),
-            "numerical_decision": run_summary.get("numerical_decision", {}),
-            "selection_plan": selection_plan,
-            "attempted_verifiers": run_summary.get("attempted_verifiers", []),
-            "unavailable_verifiers": run_summary.get("unavailable_verifiers", []),
-            "runtime_availability": run_summary.get("runtime_availability", {}),
-            "stopping_policy_vetoes": run_summary.get(
-                "stopping_policy_vetoes", []
-            ),
-        },
-        execution_costs={
-            "candidate_estimated_costs": {
-                candidate["verifier_name"]: candidate.get("cost")
-                for candidate in candidates
-                if candidate.get("verifier_name") is not None
-            },
-            "candidate_estimated_latencies": {
-                candidate["verifier_name"]: candidate.get("latency")
-                for candidate in candidates
-                if candidate.get("verifier_name") is not None
-            },
-        },
+    # Build and persist the completed audit.
+    try:
+        audit_context = _validation_service.get_validation_context(
+            result.validation_id
+        )
+        run_summary = audit_context.run_summary or {}
+        selection_plan = run_summary.get("selection_plan") or {}
+        candidates = selection_plan.get("candidates") or []
 
-        selection_plan=selection_plan,
-        run_summary=run_summary,
-    )
+        update_audit(
+            result.validation_id,
+            run_status="completed",
+            selected_verifiers=result.selected_verifiers or [],
+            ranking_explanations=candidates,
+            coverage_outcomes={
+                "coverage": run_summary.get("coverage", {}),
+                "missing_coverage": run_summary.get("missing_coverage", []),
+            },
+            decision_summary={
+                "final_status": result.final_status,
+                "final_score": result.final_score,
+                "domain": result.domain,
+                "early_stop_reason": result.early_stop_reason,
+                "signed_score": result.signed_score,
+                "termination": run_summary.get("termination"),
+                "last_stopping_assessment": run_summary.get(
+                    "last_stopping_assessment"
+                ),
+                "minimum_contributors": run_summary.get("minimum_contributors"),
+                "contributors": run_summary.get("contributors"),
+                "numerical_decision": run_summary.get("numerical_decision", {}),
+                "selection_plan": selection_plan,
+                "attempted_verifiers": run_summary.get("attempted_verifiers", []),
+                "unavailable_verifiers": run_summary.get("unavailable_verifiers", []),
+                "runtime_availability": run_summary.get("runtime_availability", {}),
+                "stopping_policy_vetoes": run_summary.get(
+                    "stopping_policy_vetoes", []
+                ),
+            },
+            execution_costs={
+                "candidate_estimated_costs": {
+                    candidate["verifier_name"]: candidate.get("cost")
+                    for candidate in candidates
+                    if candidate.get("verifier_name") is not None
+                },
+                "candidate_estimated_latencies": {
+                    candidate["verifier_name"]: candidate.get("latency")
+                    for candidate in candidates
+                    if candidate.get("verifier_name") is not None
+                },
+                "game_estimated_attempt_costs": {
+                    attempt["verifier_name"]: attempt.get("estimated_attempt_cost")
+                    for attempt in run_summary.get("attempts", [])
+                    if attempt.get("verifier_name") is not None
+                },
+                "game_estimated_selected_cost": run_summary.get(
+                    "estimated_selected_cost"
+                ),
+                "game_estimated_attempted_cost": run_summary.get(
+                    "estimated_attempted_cost"
+                ),
+            },
+            selection_plan=selection_plan,
+            run_summary=run_summary,
+        )
+
+    except Exception:
+        # If audit completion fails, make a best-effort attempt
+        # to mark the audit as failed.
+        try:
+            update_audit(
+                result.validation_id,
+                run_status="failed",
+                failure_details=[
+                    {
+                        "stage": "audit_completion",
+                        "reason": "Audit completion update failed",
+                    }
+                ],
+            )
+        except Exception:
+            pass
+
+        raise
 
     return result
-
 
 
 class QuestionRequest(BaseModel):
@@ -236,9 +271,6 @@ def generate(request: QuestionRequest):
 @router.post("/generate-and-validate")
 def generate_and_validate(request: GenerateAndValidateRequest):
     """Generate an answer and validate it through the verification pipeline."""
-    validation_id = None
-    audit_created = False
-
     try:
         answer = generate_answer(request.question)
 
@@ -285,8 +317,7 @@ def generate_and_validate(request: GenerateAndValidateRequest):
         if not validation_id:
             raise ValueError("Validation did not return a validation ID")
 
-        # Save the validation record before creating its audit
-        # because validation_audits references validation_records.
+        # Persist validation before creating its audit.
         save_validation(
             validation_id=validation_id,
             question_id=question_id,
@@ -306,16 +337,20 @@ def generate_and_validate(request: GenerateAndValidateRequest):
         initial_summary = validation_result.execution_audit or {}
         initial_plan = initial_summary.get("selection_plan") or {}
 
+        # Audit creation has its own failure boundary.
         create_audit(
             validation_id=validation_id,
             question_id=question_id,
             session_id=request.session_id,
             policy_version=initial_plan.get("policy_version"),
+            selected_strategy=initial_summary.get("selected_strategy_id"),
+            execution_contract=initial_summary.get("execution_contract"),
+            reputation_snapshot_id=initial_summary.get("reputation_snapshot_id"),
             selection_plan=initial_plan,
             run_summary=initial_summary,
         )
-        audit_created = True
 
+        # Persist verifier outputs and ground truth.
         try:
             save_verifier_outputs(
                 validation_id=validation_id,
@@ -330,8 +365,28 @@ def generate_and_validate(request: GenerateAndValidateRequest):
                     label=validation_result.ground_truth.label,
                     source=validation_result.ground_truth.source,
                 )
+
+        except Exception:
+            try:
+                update_audit(
+                    validation_id,
+                    run_status="failed",
+                    failure_details=[
+                        {
+                            "stage": "persistence",
+                            "reason": "Verifier or ground-truth persistence failed",
+                        }
+                    ],
+                )
+            except Exception:
+                pass
+
+            raise
+
+        # Build and persist the completed audit.
+        try:
             audit_context = _validation_service.get_validation_context(
-                validation_result.validation_id
+                validation_id
             )
             run_summary = audit_context.run_summary or {}
             selection_plan = run_summary.get("selection_plan") or {}
@@ -378,23 +433,31 @@ def generate_and_validate(request: GenerateAndValidateRequest):
                         for candidate in candidates
                         if candidate.get("verifier_name") is not None
                     },
+                    "game_estimated_attempt_costs": {
+                        attempt["verifier_name"]: attempt.get("estimated_attempt_cost")
+                        for attempt in run_summary.get("attempts", [])
+                        if attempt.get("verifier_name") is not None
+                    },
+                    "game_estimated_selected_cost": run_summary.get(
+                        "estimated_selected_cost"
+                    ),
+                    "game_estimated_attempted_cost": run_summary.get(
+                        "estimated_attempted_cost"
+                    ),
                 },
-
                 selection_plan=selection_plan,
                 run_summary=run_summary,
             )
 
-
         except Exception:
-            # If audit creation succeeded, record the persistence failure.
             try:
                 update_audit(
                     validation_id,
                     run_status="failed",
                     failure_details=[
                         {
-                            "stage": "persistence",
-                            "reason": "Verifier, ground-truth, or audit completion failed",
+                            "stage": "audit_completion",
+                            "reason": "Audit completion update failed",
                         }
                     ],
                 )
@@ -411,12 +474,10 @@ def generate_and_validate(request: GenerateAndValidateRequest):
         }
 
     except Exception as exc:
-        # Do not create a failed audit if no audit record exists.
         raise HTTPException(
             status_code=503,
             detail=f"Generation or validation failed: {exc}",
         )
-
 
 
 @router.post("/sessions", response_model=SessionResponse)
@@ -434,34 +495,6 @@ def list_sessions() -> list[SessionResponse]:
 def list_session_questions(session_id: str):
     """Return all questions asked in a validation session."""
     return get_session_questions(session_id)
-
-@router.post("/feedback")
-def submit_feedback(request: FeedbackRequest):
-    """Store user feedback for a validation result."""
-
-    try:
-        feedback = save_feedback(
-            validation_id=request.validation_id,
-            is_correct=request.is_correct,
-            comment=request.comment,
-        )
-
-        return {
-            "status": "success",
-            "feedback": feedback,
-        }
-
-    except ValueError as e:
-        raise HTTPException(
-            status_code=409,
-            detail=str(e),
-        )
-
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Failed to save feedback: {str(e)}",
-        )
 
 @router.get("/reputation")
 def get_reputation():

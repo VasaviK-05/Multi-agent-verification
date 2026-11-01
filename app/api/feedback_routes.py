@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from app.database.feedback_repository import save_feedback
 
+from app.database.feedback_repository import save_feedback
 from app.api.routes import _validation_service
 
 router = APIRouter()
@@ -21,27 +21,27 @@ def submit_feedback(request: FeedbackRequest):
             is_correct=request.is_correct,
             comment=request.comment,
         )
-        
+
         orchestrator = _validation_service._orchestrator
 
-        context = orchestrator.validation_context(request.validation_id)
-
-        observations_applied = orchestrator.record_ground_truth(
-            results=context.results,
-            answer_is_correct=request.is_correct,
-            domain=context.domain,
+        observations_applied = orchestrator.record_persisted_ground_truth(
             validation_id=request.validation_id,
+            answer_is_correct=request.is_correct,
         )
 
         return {
             "status": "success",
+            "feedback": feedback,
             "validation_id": request.validation_id,
             "is_correct": request.is_correct,
             "observations_applied": observations_applied,
         }
 
     except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc))
+
+    except Exception as exc:
         raise HTTPException(
-            status_code=409,
-            detail=str(exc),
+            status_code=500,
+            detail=f"Failed to process feedback: {str(exc)}",
         )

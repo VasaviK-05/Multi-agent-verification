@@ -27,6 +27,8 @@ from app.decision.vote_normalization import (
     is_abstention,
     vote_confidence,
 )
+from app.database.validation_repository import get_validation
+from app.database.verifier_repository import get_verifier_outputs
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
@@ -459,6 +461,76 @@ class ValidationOrchestrator:
                 results, answer_is_correct, domain,
                 validation_id=validation_id, source=source,
             )
+
+    def record_persisted_ground_truth(
+        self,
+        validation_id: str,
+        answer_is_correct: bool,
+        source: str = "ground_truth",
+    ) -> int:
+        """Apply feedback using validation and verifier results stored in PostgreSQL."""
+
+        if not isinstance(validation_id, str) or not validation_id.strip():
+            raise ValueError("validation_id must be provided.")
+
+        with self._feedback_lock:
+            validation = get_validation(validation_id)
+
+            if validation is None:
+                raise ValueError(f"Unknown validation: {validation_id}")
+
+            domain = validation.get("domain")
+            if not domain:
+                raise ValueError("Persisted validation has no domain.")
+
+            stored_results = get_verifier_outputs(validation_id)
+
+            if not stored_results:
+                raise ValueError(
+                    "No persisted verifier outputs found for this validation."
+                )
+
+            results = tuple(
+                VerificationResult(
+                    verifier_name=row["verifier_name"],
+                    score=row["score"],
+                    passed=row["passed"],
+                    reasoning=row["reasoning"],
+                    metadata=row["metadata"] or {},
+                )
+                for row in stored_results
+            )
+
+            previous_state = self._reputation_manager.export_state()
+
+            receipt = self._reputation_manager.record_feedback(
+                FeedbackEvent(
+                    validation_id=validation_id,
+                    domain=domain,
+                    answer_is_correct=answer_is_correct,
+                    results=results,
+                    source=source,
+                )
+            )
+
+            if receipt.applied:
+                state = self._reputation_manager.export_state()
+
+                try:
+                    save_reputation_state_and_rows(state)
+                except Exception:
+                    self._reputation_manager.restore_state(previous_state)
+                    raise
+
+                self._pending_posterior_pairs.update(
+                    (result.verifier_name, domain)
+                    for result in results
+                    if not is_abstention(result)
+                )
+
+            self._flush_pending_posteriors()
+
+            return receipt.observations_applied
 
     def _record_ground_truth_locked(
         self,
