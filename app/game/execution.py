@@ -122,6 +122,8 @@ class GameRuntime:
         feasible = enumerate_strategies(current)
         if not feasible.strategies:
             return failed("no_feasible_strategy", "; ".join(reason for row in feasible.rejected for reason in row.reasons))
+        print("DEBUG current compatibility:", current.compatibility_id)
+        print("DEBUG episode compatibility:", context.compatibility_id)
         if current.compatibility_id != context.compatibility_id:
             return failed("incompatible", "current analyzer/requirements/candidates/prerequisites/configuration differ from episode")
         matching, rejected = [], []
@@ -207,3 +209,6 @@ class GameRuntime:
             summary["override_reasons"].append("resource_provenance_changed_during_execution")
             summary["public_status"] = "uncertain"
         return GameRun(tuple(results), finalized.detail, summary["public_status"], deepcopy(summary))
+
+
+

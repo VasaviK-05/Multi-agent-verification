@@ -62,7 +62,7 @@ def create_audit(
                     _json(reputation_snapshot)
                     if reputation_snapshot is not None
                     else None,
-                    str(UUID(reputation_snapshot_id))
+                    reputation_snapshot_id
                     if reputation_snapshot_id
                     else None,
                     _json(selection_plan or {}),

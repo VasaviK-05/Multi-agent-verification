@@ -17,6 +17,12 @@ class Settings:
         "GAME_POLICY_ARTIFACT_PATH", ""
     ).strip()
 
+
+    # Optional validated prototype bundle for game-mode task routing.
+    GAME_POLICY_BUNDLE_PATH: str = os.getenv(
+        "GAME_POLICY_BUNDLE_PATH", ""
+    ).strip()
+
     GAME_EPISODE_ID: str = os.getenv("GAME_EPISODE_ID", "production-episode").strip()
 
 

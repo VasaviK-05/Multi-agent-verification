@@ -72,17 +72,36 @@ class ValidationOrchestrator:
         execution_mode: str = "baseline",
         game_runtime=None,
     ) -> None:
+        
         if execution_mode not in {"baseline", "game"}:
             raise ValueError("execution_mode must be baseline or game")
+
         if execution_mode == "game":
             from app.game.execution import GameRuntime
-            if not isinstance(game_runtime, GameRuntime):
-                raise ValueError("game mode requires a server-configured GameRuntime")
+            from app.game.deployment import PrototypeGameRuntime
+
+            if not isinstance(
+                game_runtime,
+                (GameRuntime, PrototypeGameRuntime),
+            ):
+                raise ValueError(
+                    "game mode requires a server-configured GameRuntime"
+                )
+
         elif game_runtime is not None:
             raise ValueError("game runtime requires explicit game mode")
+
         self._execution_mode = execution_mode
         self._game_runtime = game_runtime
-        self._question_analyzer = question_analyzer or QuestionAnalyzer()
+
+        if question_analyzer is not None:
+            self._question_analyzer = question_analyzer
+        elif execution_mode == "game":
+            from app.analysis.task_analyzer import TaskQuestionAnalyzer
+            self._question_analyzer = TaskQuestionAnalyzer()
+        else:
+            self._question_analyzer = QuestionAnalyzer()
+
         self._early_termination = early_termination or AdaptiveEarlyTermination()
         self._automatic_ground_truth = AutomaticGroundTruthEvaluator() if execution_mode == "baseline" else None
         self._last_analysis: QuestionAnalysis | None = None
@@ -408,7 +427,7 @@ class ValidationOrchestrator:
         return ValidationResponse(results=results, final_status=run.public_status,
             final_score=run.detail.score, signed_score=run.detail.raw_score,
             validation_id=validation_id, domain=analysis.domain, session_id=request.session_id,
-            difficulty=analysis.difficulty, selected_verifiers=summary["team"],
+            difficulty=analysis.difficulty, selected_verifiers=summary.get("team", []),
             early_stop_reason=summary.get("termination", "game_selection_failure"),
             uncertainty_reasons=(
                 ["decision_uncertain"]

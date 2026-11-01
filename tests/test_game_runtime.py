@@ -466,6 +466,13 @@ def test_deployment_loader_requires_artifact_path(monkeypatch):
     from app.game import deployment
 
     monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+
+    monkeypatch.setattr(
+        deployment.settings,
+        "GAME_POLICY_BUNDLE_PATH",
+        None,
+    )
+
     monkeypatch.setattr(deployment.settings, "GAME_POLICY_ARTIFACT_PATH", "")
     with pytest.raises(RuntimeError, match="GAME_POLICY_ARTIFACT_PATH"):
         deployment.create_game_runtime()
@@ -475,6 +482,13 @@ def test_deployment_loader_rejects_missing_artifact(monkeypatch, tmp_path):
     from app.game import deployment
 
     monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+
+    monkeypatch.setattr(
+        deployment.settings,
+        "GAME_POLICY_BUNDLE_PATH",
+        None,
+    )
+
     monkeypatch.setattr(
         deployment.settings, "GAME_POLICY_ARTIFACT_PATH",
         str(tmp_path / "missing-policy.json"),
@@ -489,6 +503,13 @@ def test_deployment_loader_rejects_invalid_artifact(monkeypatch, tmp_path):
     artifact_path = tmp_path / "invalid-policy.json"
     artifact_path.write_text('{"version": "invalid"}', encoding="utf-8")
     monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+
+    monkeypatch.setattr(
+        deployment.settings,
+        "GAME_POLICY_BUNDLE_PATH",
+        None,
+    )
+
     monkeypatch.setattr(
         deployment.settings, "GAME_POLICY_ARTIFACT_PATH", str(artifact_path)
     )
@@ -569,6 +590,13 @@ def test_deployment_loader_loads_valid_artifact(monkeypatch, tmp_path):
     )
 
     monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
+
+    monkeypatch.setattr(
+        deployment.settings,
+        "GAME_POLICY_BUNDLE_PATH",
+        None,
+    )
+
     monkeypatch.setattr(
         deployment.settings,
         "GAME_POLICY_ARTIFACT_PATH",

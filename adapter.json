@@ -1,0 +1,16 @@
+{
+  "chunk_size": 500,
+  "corpus_path": "build\\multitask-policy42\\corpus.json",
+  "device": "cpu",
+  "embedding_snapshot": "C:/Users/User/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "index_dir": "build\\multitask-policy42\\index-v2",
+  "index_receipt": "build\\multitask-policy42\\index-receipt.json",
+  "n_samples": 5,
+  "nli_snapshot": "C:/Users/User/.cache/huggingface/hub/models--cross-encoder--nli-deberta-v3-small/snapshots/fa2804872c3b4bd748f38c0185cc85775361e735",
+  "ollama_model": "llama3.2:3b",
+  "ollama_url": "http://localhost:11434/api/generate",
+  "service_observation": "build\\multitask-policy42\\service-observation.json",
+  "temperature": 0.8,
+  "timeout": 60.0,
+  "version": "project_collection_adapter_v1"
+}
