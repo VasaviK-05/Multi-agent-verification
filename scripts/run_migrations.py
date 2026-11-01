@@ -1,10 +1,7 @@
-
 import os
 from pathlib import Path
-
 import psycopg2
 from dotenv import load_dotenv
-
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_FILE = ROOT / "db" / "schema.sql"
 MIGRATIONS_DIR = ROOT / "db" / "migrations"
@@ -15,9 +12,17 @@ MIGRATIONS = [
     "003_validation_audit.sql",
     "004_audit_execution_metadata.sql",
     "005_verifier_cost_measurements.sql",
+    "006_ground_truth_idempotency.sql",
+    "007_verifier_cost_estimate_idempotency.sql",
 ]
 
+APPLYABLE_MIGRATIONS = {
+    "006_ground_truth_idempotency.sql",
+    "007_verifier_cost_estimate_idempotency.sql",
+}
+
 # Required schema evidence for adopting migrations on an existing database.
+
 REQUIRED_COLUMNS = {
     "001_review_updates.sql": {
         "validation_records": {
@@ -116,6 +121,12 @@ REQUIRED_CONSTRAINTS = {
         "verifier_cost_estimate_counts_valid",
         "verifier_cost_estimate_durations_nonnegative",
     },
+    "006_ground_truth_idempotency.sql": {
+        "ground_truth_validation_id_unique",
+    },
+    "007_verifier_cost_estimate_idempotency.sql": {
+        "verifier_cost_estimates_calibration_digest_unique",
+    },
 }
 
 REQUIRED_INDEXES = {
@@ -133,7 +144,6 @@ REQUIRED_INDEXES = {
     },
 }
 
-
 def get_existing_columns(cursor):
     cursor.execute("""
         SELECT table_name, column_name
@@ -145,7 +155,6 @@ def get_existing_columns(cursor):
         columns.setdefault(table_name, set()).add(column_name)
     return columns
 
-
 def get_existing_constraints(cursor):
     cursor.execute("""
         SELECT conname
@@ -153,7 +162,6 @@ def get_existing_constraints(cursor):
         WHERE connamespace = 'public'::regnamespace
     """)
     return {row[0] for row in cursor.fetchall()}
-
 
 def get_existing_indexes(cursor):
     cursor.execute("""
@@ -163,46 +171,79 @@ def get_existing_indexes(cursor):
     """)
     return {row[0] for row in cursor.fetchall()}
 
-
 def verify_migration_schema(cursor, filename):
     columns = get_existing_columns(cursor)
     constraints = get_existing_constraints(cursor)
     indexes = get_existing_indexes(cursor)
-
     missing = []
-
     for table, expected in REQUIRED_COLUMNS.get(filename, {}).items():
         absent = expected - columns.get(table, set())
         if absent:
             missing.append(f"{table} columns: {sorted(absent)}")
-
     absent_constraints = (
         REQUIRED_CONSTRAINTS.get(filename, set()) - constraints
     )
     if absent_constraints:
         missing.append(f"constraints: {sorted(absent_constraints)}")
-
     absent_indexes = REQUIRED_INDEXES.get(filename, set()) - indexes
     if absent_indexes:
         missing.append(f"indexes: {sorted(absent_indexes)}")
-
     if missing:
         raise RuntimeError(
             f"Cannot safely adopt {filename}; schema checks failed: "
             + "; ".join(missing)
         )
 
+def process_migration(cursor, filename, recorded, allow_apply=False):
+    """
+    Verify recorded migrations, adopt existing schema changes,
+    or apply explicitly permitted new migrations.
+    """
+    if filename in recorded:
+        verify_migration_schema(cursor, filename)
+        print(f"Already recorded and verified: {filename}")
+        return
+    try:
+        verify_migration_schema(cursor, filename)
+    except RuntimeError:
+        if not allow_apply:
+            raise RuntimeError(
+                f"{filename} is missing from migration history and "
+                "its schema is incomplete. Refusing to rerun a "
+                "historical migration."
+            )
+        sql_path = MIGRATIONS_DIR / filename
+        print(f"Applying pending migration: {filename}")
+        cursor.execute(sql_path.read_text(encoding="utf-8"))
+        verify_migration_schema(cursor, filename)
+        cursor.execute(
+            """
+            INSERT INTO schema_migrations (migration_name)
+            VALUES (%s)
+            """,
+            (filename,),
+        )
+        recorded.add(filename)
+        print(f"Applied and recorded: {filename}")
+    else:
+        cursor.execute(
+            """
+            INSERT INTO schema_migrations (migration_name)
+            VALUES (%s)
+            """,
+            (filename,),
+        )
+        recorded.add(filename)
+        print(f"Adopted existing migration: {filename}")
 
 def main():
     load_dotenv(ROOT / ".env")
-
     required = ["DB_HOST", "DB_NAME", "DB_USER", "DB_PASSWORD"]
     missing = [key for key in required if not os.getenv(key)]
     if missing:
         raise RuntimeError(
             f"Missing database settings in .env: {', '.join(missing)}"
         )
-
     connection = psycopg2.connect(
         host=os.getenv("DB_HOST"),
         dbname=os.getenv("DB_NAME"),
@@ -210,7 +251,6 @@ def main():
         password=os.getenv("DB_PASSWORD"),
         port=os.getenv("DB_PORT", "5432"),
     )
-
     try:
         with connection:
             with connection.cursor() as cursor:
@@ -218,25 +258,26 @@ def main():
                     SELECT to_regclass('public.questions_answers')
                 """)
                 is_initialized = cursor.fetchone()[0] is not None
-
                 if not is_initialized:
                     cursor.execute(
                         SCHEMA_FILE.read_text(encoding="utf-8")
                     )
                     print("Applied base schema: db/schema.sql")
-
                     cursor.execute("""
                         CREATE TABLE IF NOT EXISTS schema_migrations (
                             migration_name TEXT PRIMARY KEY,
                             applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
                         )
                     """)
-
                     for filename in MIGRATIONS:
                         sql_path = MIGRATIONS_DIR / filename
                         cursor.execute(
                             sql_path.read_text(encoding="utf-8")
                         )
+
+                        # Verify the migration before recording it as applied.
+                        verify_migration_schema(cursor, filename)
+
                         cursor.execute(
                             """
                             INSERT INTO schema_migrations (migration_name)
@@ -244,18 +285,15 @@ def main():
                             """,
                             (filename,),
                         )
-                        print(f"Applied: {filename}")
-
+                        print(f"Applied and verified: {filename}")
                 else:
                     print(
                         "Existing database detected; checking migration history."
                     )
-
                     cursor.execute("""
                         SELECT to_regclass('public.schema_migrations')
                     """)
                     history_exists = cursor.fetchone()[0] is not None
-
                     if not history_exists:
                         cursor.execute("""
                             CREATE TABLE schema_migrations (
@@ -264,48 +302,29 @@ def main():
                             )
                         """)
                         print("Created schema_migrations table.")
-
                 cursor.execute(
                     "SELECT migration_name FROM schema_migrations"
                 )
                 recorded = {row[0] for row in cursor.fetchall()}
-
                 unknown = recorded - set(MIGRATIONS)
                 if unknown:
                     raise RuntimeError(
                         "Unknown migration records found; refusing to "
                         f"change history: {sorted(unknown)}"
                     )
-
-                # Verify every migration before changing migration history.
+                # Process migrations in order. Only explicitly approved new
+                # migrations may execute on an existing database.
                 for filename in MIGRATIONS:
-                    verify_migration_schema(cursor, filename)
-                    print(f"Schema verified: {filename}")
-
-                # Only after all checks pass, record missing migrations.
-                for filename in MIGRATIONS:
-                    if filename in recorded:
-                        print(f"Already recorded: {filename}")
-                        continue
-
-                    cursor.execute(
-                        """
-                        INSERT INTO schema_migrations (migration_name)
-                        VALUES (%s)
-                        """,
-                        (filename,),
+                    process_migration(
+                        cursor=cursor,
+                        filename=filename,
+                        recorded=recorded,
+                        allow_apply=filename in APPLYABLE_MIGRATIONS,
                     )
-                    print(f"Adopted existing migration: {filename}")
-
-                print(
-                    "Existing schema verified; no migrations were rerun."
-                )
-
+                print("Existing schema verified and migration history reconciled.")
         print("Database migration history reconciled successfully.")
-
     finally:
         connection.close()
-
 
 if __name__ == "__main__":
     main()

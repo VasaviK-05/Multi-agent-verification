@@ -2,6 +2,7 @@
 import pytest
 
 from app.database import verifier_cost_repository as repository
+from unittest.mock import Mock
 
 
 SETUP_ID = "11111111-1111-4111-8111-111111111111"
@@ -110,18 +111,35 @@ def test_save_verifier_attempt_accepts_valid_outcomes(
     assert connection.commits == 1
     assert connection.closed
 
-
 @pytest.mark.parametrize(
     "kwargs, message",
     [
         ({"outcome": "success"}, "Invalid outcome"),
         ({"outcome": "error"}, "Invalid outcome"),
-        ({"outcome": "returned", "duration_ms": -1},
-         "duration_ms cannot be negative"),
-        ({"outcome": "returned", "measurement_purpose": "unknown"},
-         "Invalid measurement purpose"),
-        ({"outcome": "returned", "data_role": "unknown"},
-         "Invalid data role"),
+        (
+            {"outcome": "returned", "duration_ms": -1},
+            "duration_ms must be finite and nonnegative",
+        ),
+        (
+            {"outcome": "returned", "duration_ms": float("nan")},
+            "duration_ms must be finite and nonnegative",
+        ),
+        (
+            {"outcome": "returned", "duration_ms": float("inf")},
+            "duration_ms must be finite and nonnegative",
+        ),
+        (
+            {"outcome": "returned", "duration_ms": float("-inf")},
+            "duration_ms must be finite and nonnegative",
+        ),
+        (
+            {"outcome": "returned", "measurement_purpose": "unknown"},
+            "Invalid measurement purpose",
+        ),
+        (
+            {"outcome": "returned", "data_role": "unknown"},
+            "Invalid data role",
+        ),
     ],
 )
 def test_save_verifier_attempt_rejects_invalid_values(kwargs, message):
@@ -189,10 +207,39 @@ def test_save_cost_estimate(monkeypatch):
     assert connection.closed
 
 
+def test_save_cost_estimate_returns_existing_id_on_retry(monkeypatch):
+    connection = FakeConnection()
+    connection.fake_cursor.fetchone = Mock(
+        side_effect=[None, (ESTIMATE_ID,)]
+    )
+    patch_connection(monkeypatch, connection)
+
+    result = repository.save_cost_estimate(
+        calibration_id=RUN_ID,
+        verifier_name="test-verifier",
+        setup_id=SETUP_ID,
+        attempt_count=1,
+        failure_count=0,
+        estimator_version="v1",
+        input_digest="same-input-digest",
+        source_attempt_ids=[ATTEMPT_ID],
+    )
+
+    assert result == ESTIMATE_ID
+    assert len(connection.fake_cursor.executed) == 2
+    assert "ON CONFLICT (calibration_id, input_digest)" in (
+        connection.fake_cursor.executed[0][0]
+    )
+    assert "SELECT estimate_id" in connection.fake_cursor.executed[1][0]
+    assert connection.commits == 1
+    assert connection.rollbacks == 0
+    assert connection.closed
+
 @pytest.mark.parametrize(
     "attempt_count, failure_count",
     [( -1, 0), (2, -1), (2, 3)],
 )
+
 def test_save_cost_estimate_rejects_invalid_counts(
     attempt_count, failure_count
 ):
@@ -208,6 +255,31 @@ def test_save_cost_estimate_rejects_invalid_counts(
             source_attempt_ids=[],
         )
 
+@pytest.mark.parametrize(
+    "field, value",
+    [
+        ("mean_attempt_cost_ms", float("nan")),
+        ("median_duration_ms", float("inf")),
+        ("p95_duration_ms", float("-inf")),
+        ("mean_attempt_cost_ms", -1),
+    ],
+)
+def test_save_cost_estimate_rejects_invalid_durations(field, value):
+    with pytest.raises(
+        ValueError,
+        match="finite and nonnegative",
+    ):
+        repository.save_cost_estimate(
+            calibration_id=RUN_ID,
+            verifier_name="test-verifier",
+            setup_id=SETUP_ID,
+            attempt_count=1,
+            failure_count=0,
+            estimator_version="v1",
+            input_digest="digest",
+            source_attempt_ids=[ATTEMPT_ID],
+            **{field: value},
+        )
 
 def test_calculate_and_save_cost_estimate(monkeypatch):
     attempt_rows = [
