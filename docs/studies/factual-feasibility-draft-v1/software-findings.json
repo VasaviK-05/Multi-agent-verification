@@ -1,0 +1,85 @@
+{
+  "analyzer_and_export_constraints": {
+    "arithmetic_alternative": "A different population and separate work already present in the tree; not substituted into this proposal",
+    "full_six_row_fit": "not representable as one current export_training context without changing captured requirements/analysis; no row was removed or relabeled",
+    "known_requirements": 2,
+    "matching_known_cohort": {
+      "development": "factual-feasibility-draft-v1-e03",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "history": "factual-feasibility-draft-v1-e02",
+      "requirements": [
+        "direct_fact"
+      ]
+    },
+    "narrower_factual_cohort": "Technically homogeneous, but only two positive examples; still evidence-gated and requires an explicit approved scope amendment",
+    "owner": "study owner and analyzer/offline context-contract owner",
+    "preparation_examples": 6,
+    "producer": "QuestionAnalyzer(mode='heuristic', environ={}); actual collection_plan and builtin descriptors",
+    "unknown_requirements": 4
+  },
+  "evidence_contract_probe": {
+    "baseline_reference": "docs/game_empirical_build_audit.json records earlier reproduction at HEAD; this turn changed no verifier or retrieval code",
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_adaptive_pipeline.py -q -k 'test_actual_evidence_output_contract_is_consumed_without_models or test_actual_conflicting_evidence_cannot_cover_factual_request'",
+    "deselected": 88,
+    "failed": 3,
+    "failures": [
+      {
+        "expected": "passed",
+        "observed": "uncertain",
+        "test": "test_actual_evidence_output_contract_is_consumed_without_models[probabilities0-passed]"
+      },
+      {
+        "expected": "failed",
+        "observed": "uncertain",
+        "test": "test_actual_evidence_output_contract_is_consumed_without_models[probabilities1-failed]"
+      },
+      {
+        "expected": "conflict",
+        "observed": "no_relevant_evidence",
+        "test": "test_actual_conflicting_evidence_cannot_cover_factual_request"
+      }
+    ],
+    "fitting_gate": "known_evidence_contract_failures_require_repair_or_explicit_scope_revision",
+    "measurement_kind": "controlled model/retriever test doubles; not empirical model accuracy",
+    "owner": "evidence/retrieval/public-coverage integration owner",
+    "passed": 1,
+    "source_observations": "evidence_retriever.py contains a later content_terms override using plain whitespace splitting; evidence_verifier.py contains later duplicate topic-gate methods overriding earlier implementations. Punctuation and stopwords can survive in active anchor tokens. These observations require separate repair/review, not a fabricated empirical diagnosis."
+  },
+  "missing_data": [
+    {
+      "detail": "Confirm internal permitted use; no repository license or explicit study permission found",
+      "field": "preparation_authorization",
+      "owner": "dataset owner"
+    },
+    {
+      "detail": "Witness the four metadata entries and role separation; no final payload or labels were created",
+      "field": "final_test_reservation.custody_record",
+      "owner": "dataset custodian"
+    },
+    {
+      "detail": "No four-verifier factual attempts exist yet; freeze measured inputs before calibration",
+      "field": "calibration.measurements, freeze_record",
+      "owner": "measurement producer and custodian"
+    },
+    {
+      "detail": "Derive from real history attempts and independently sourced labels using public in-memory manager/selector capture; do not invent counts",
+      "field": "PlanningContext captured reputation snapshot",
+      "owner": "offline fitting/context producer"
+    }
+  ],
+  "native_import_environment": "One sandbox test invocation hit FAISS DLL initialization failure (Windows 0xc0000008). The focused outside-sandbox rerun passed; no application import or verifier algorithm was changed to bypass it.",
+  "resolved_resource_inputs": {
+    "new_index_receipt": "build/factual-feasibility-draft-v1/index-receipt.json",
+    "old_index_unchanged": true,
+    "resource_only_ready": true,
+    "resource_preflight": "build/factual-feasibility-draft-v1/resource-preflight.json"
+  },
+  "status": "observed_software_constraints_not_bypassed",
+  "unresolved_scientific_choices": [
+    "Approve the draft grouped allocation and six external-source proposed labels; all six are positive and do not estimate false-accept behavior",
+    "Approve one measured pass/no warmups, source use, loss/prior/threshold and conservative shared_unknown dependency/attack assumptions",
+    "Decide whether to authorize diagnostic collection before the evidence and cohort blockers are resolved",
+    "Choose millisecond budget/resource weight only after reviewing actual costs"
+  ]
+}

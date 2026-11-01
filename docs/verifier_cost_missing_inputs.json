@@ -1,0 +1,20 @@
+{
+  "status": "blocked",
+  "empirical_calibration_created": false,
+  "policy_created": false,
+  "method": "mean_attempt_wall_time_ms_v1",
+  "cost_units": "ms",
+  "costs": null,
+  "missing_inputs": [
+    {"input": "Real per-attempt durations including failures for all captured candidates", "owner": "benchmark recording producer"},
+    {"input": "Preparation dataset permission, role/split/content identities and outcome-free final-test reservation", "owner": "dataset custodian"},
+    {"input": "Observed index-build receipt tying actual embedding weights to vectors/chunks; models and corpus are present and Ollama metadata was observed", "owner": "resource/collection owner"},
+    {"input": "Warm-up inclusion rule and pre-final-evaluation freeze witness", "owner": "study owner and dataset custodian"},
+    {"input": "Approved budget_ms, resource_weight_per_ms and expected evaluated setup fingerprint", "owner": "study owner"},
+    {"input": "Complete history/development recordings with matching calibrated planning categories, labels, resources, execution contract and remaining policy settings", "owner": "policy recording producer and study owner"}
+  ],
+  "templates": ["docs/verifier_cost_collection.template.json", "docs/verifier_cost_calibration.template.json", "docs/verifier_cost_build_settings.template.json"],
+  "commands_and_interfaces": "docs/verifier_collection_adapter.md",
+  "concrete_factory": "app.benchmark.project_adapter:create_verifiers",
+  "current_local_blocker_report": "docs/verifier_collection_blockers.json"
+}

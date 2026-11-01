@@ -1,0 +1,477 @@
+{
+  "cache_contract": "complete_team_independent_v1",
+  "candidates": [
+    {
+      "adapter": "semantic_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ],
+        "readiness": "unknown",
+        "requires_reference": true,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "semantic"
+    },
+    {
+      "adapter": "evidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "evidence"
+    },
+    {
+      "adapter": "rule_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "rule"
+    },
+    {
+      "adapter": "confidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "confidence"
+    }
+  ],
+  "examples": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The capital of Germany is Berlin.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e02-positive",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "factual-team-selection-v1-official-germany",
+        "provenance": "{\"accessed_date\": \"2026-10-28\", \"answer\": \"The capital of Germany is Berlin.\", \"basis\": \"Unique current capital named by official source; alternate city is a constructed incorrect candidate.\", \"constructed_candidate\": false, \"example_id\": \"factual-feasibility-draft-v1-e02-positive\", \"framework_outcomes_used\": false, \"human_approval\": null, \"method\": \"independent_ground_truth\", \"proposed_correct\": true, \"source_excerpt\": \"Capital of Germany\", \"source_url\": \"https://www.berlin.de/en/\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the capital of Germany?",
+      "question_id": "a33fae3349c0b9b60a15815c59fec3ea66473e9a609b47a05b99cf83e3ec36a6",
+      "reference": "Germany is a country in Central Europe. Berlin is the capital and largest city of Germany.",
+      "role": "history",
+      "run_id": "factual-team-selection-v1-factual-feasibility-draft-v1-e02-positive",
+      "split_identity": "factual-feasibility-draft-v1-group-germany"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The capital of Germany is Hamburg.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e02-negative",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "factual-team-selection-v1-official-germany",
+        "provenance": "{\"accessed_date\": \"2026-10-28\", \"answer\": \"The capital of Germany is Hamburg.\", \"basis\": \"Unique current capital named by official source; alternate city is a constructed incorrect candidate.\", \"constructed_candidate\": true, \"example_id\": \"factual-feasibility-draft-v1-e02-negative\", \"framework_outcomes_used\": false, \"human_approval\": null, \"method\": \"independent_ground_truth\", \"proposed_correct\": false, \"source_excerpt\": \"Capital of Germany\", \"source_url\": \"https://www.berlin.de/en/\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the capital of Germany?",
+      "question_id": "a33fae3349c0b9b60a15815c59fec3ea66473e9a609b47a05b99cf83e3ec36a6",
+      "reference": "Germany is a country in Central Europe. Berlin is the capital and largest city of Germany.",
+      "role": "history",
+      "run_id": "factual-team-selection-v1-factual-feasibility-draft-v1-e02-negative",
+      "split_identity": "factual-feasibility-draft-v1-group-germany"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The capital of India is New Delhi.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e03-positive",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "factual-team-selection-v1-official-india",
+        "provenance": "{\"accessed_date\": \"2026-10-28\", \"answer\": \"The capital of India is New Delhi.\", \"basis\": \"Unique current capital named by official source; alternate city is a constructed incorrect candidate.\", \"constructed_candidate\": false, \"example_id\": \"factual-feasibility-draft-v1-e03-positive\", \"framework_outcomes_used\": false, \"human_approval\": null, \"method\": \"independent_ground_truth\", \"proposed_correct\": true, \"source_excerpt\": \"New Delhi is the capital of India.\", \"source_url\": \"https://www.cgibrisbane.gov.in/page/know-your-india/\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the capital of India?",
+      "question_id": "470a1f7830a248378db6f3bb016b215c418e9695149313c5e9d4d7037c317dfe",
+      "reference": "India is a country in South Asia. New Delhi is the capital of India.",
+      "role": "development",
+      "run_id": "factual-team-selection-v1-factual-feasibility-draft-v1-e03-positive",
+      "split_identity": "factual-feasibility-draft-v1-group-india"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The capital of India is Mumbai.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e03-negative",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "factual-team-selection-v1-official-india",
+        "provenance": "{\"accessed_date\": \"2026-10-28\", \"answer\": \"The capital of India is Mumbai.\", \"basis\": \"Unique current capital named by official source; alternate city is a constructed incorrect candidate.\", \"constructed_candidate\": true, \"example_id\": \"factual-feasibility-draft-v1-e03-negative\", \"framework_outcomes_used\": false, \"human_approval\": null, \"method\": \"independent_ground_truth\", \"proposed_correct\": false, \"source_excerpt\": \"New Delhi is the capital of India.\", \"source_url\": \"https://www.cgibrisbane.gov.in/page/know-your-india/\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the capital of India?",
+      "question_id": "470a1f7830a248378db6f3bb016b215c418e9695149313c5e9d4d7037c317dfe",
+      "reference": "India is a country in South Asia. New Delhi is the capital of India.",
+      "role": "development",
+      "run_id": "factual-team-selection-v1-factual-feasibility-draft-v1-e03-negative",
+      "split_identity": "factual-feasibility-draft-v1-group-india"
+    }
+  ],
+  "execution_configuration_id": "474005c1055120a957c6aad86eaf5f5ae2df8ee4d3cd7aefda35445d680d7ce7",
+  "expected_setup": {
+    "application_source_digest": "7367dae3df07acb262bd991132d2543f587b7d719fac37d87f52992cfdd2f409",
+    "code_revision": "268289fdb4a616142ec7d5c62e7bc7ad66af94bf",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "81df95721c085a358874a207f518f3dccfae645a7af6c7c5d8ae7c25afb9b075"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "696113ec363eacfe8478528bcc1bab1d69c59ee58e344836107b39e12adc33e0"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "360dfb21c7040f02c791a24d418e294b32940eff20c76e50d2df0a6ea48da88c"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "c7e3cc25b27ffd6c42f8471f0fb2140db10cde0ad9e070f98b44d84fb2b74ea1"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "factory": "app.game.offline.recording_adapters:project_factory",
+  "final_test_reservation": {
+    "custody_record": null,
+    "dataset_id": "factual-feasibility-draft-v1-final_test",
+    "examples": [
+      {
+        "content_identity": "fdc529bed570da76a46f1076e294988f36373d927d686f24a30093c571d780f7",
+        "example_id": "factual-feasibility-draft-v1-e01",
+        "question_id": "32ac15f48ca574f0200f9d6fa34fd23beae6654aea5203507d9648ee47a78bd8",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e01-r1"
+      },
+      {
+        "content_identity": "0dce29dfa7919d0291dd41071c0d75de5b6f4e62d72b6396af0531c1f6163b6a",
+        "example_id": "factual-feasibility-draft-v1-e08",
+        "question_id": "220f5e85f6ba7589740350322717b1dba45c9b26954182e3d919e92c244f4501",
+        "split_identity": "factual-feasibility-draft-v1-group-wwii",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e08-r1"
+      },
+      {
+        "content_identity": "f3273e282e0567f281c043d2ce53bb7c6d87fdb1070b33024b44d307c4c7ff0c",
+        "example_id": "factual-feasibility-draft-v1-e09",
+        "question_id": "9b956bebb1501337b743a09d0c25cda61fe0d27b91a923aa388c259260e58bf2",
+        "split_identity": "factual-feasibility-draft-v1-group-usa",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e09-r1"
+      },
+      {
+        "content_identity": "97d269fdb9eb5a1b4791daec4bc736158b994f78b3eee8d46e62552cc52ee586",
+        "example_id": "factual-feasibility-draft-v1-e10",
+        "question_id": "8412e078fa45b8e8a028985b76f449bf0ec83e6036be4d3097da545937725b3a",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e10-r1"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "intended_use": "pilot",
+  "permitted_datasets": [
+    [
+      "history",
+      "factual-feasibility-draft-v1-history"
+    ],
+    [
+      "development",
+      "factual-feasibility-draft-v1-development"
+    ]
+  ],
+  "preparation_authorization": null,
+  "randomness_control": "One pass; zero warmups/retries; fixed candidate order from draft; confidence seeds 0..4, n=5, temperature .8, timeout 60s. No global determinism claim.",
+  "study_approval": null,
+  "version": "offline_recording_request_v1"
+}

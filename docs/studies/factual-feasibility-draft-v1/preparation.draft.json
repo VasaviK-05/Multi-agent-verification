@@ -1,0 +1,124 @@
+{
+  "examples": [
+    {
+      "answer": "The capital of Germany is Berlin.",
+      "context": "Germany is a country in Central Europe. Berlin is the capital and largest city of Germany.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "purpose": "calibration",
+      "question": "What is the capital of Germany?",
+      "question_id": "a33fae3349c0b9b60a15815c59fec3ea66473e9a609b47a05b99cf83e3ec36a6",
+      "role": "history",
+      "run_id": "factual-feasibility-draft-v1-history-e02-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-germany"
+    },
+    {
+      "answer": "The capital of India is New Delhi.",
+      "context": "India is a country in South Asia. New Delhi is the capital of India.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "purpose": "calibration",
+      "question": "What is the capital of India?",
+      "question_id": "470a1f7830a248378db6f3bb016b215c418e9695149313c5e9d4d7037c317dfe",
+      "role": "development",
+      "run_id": "factual-feasibility-draft-v1-development-e03-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-india"
+    },
+    {
+      "answer": "Python is a high-level, general-purpose programming language.",
+      "context": "Python is a high-level, general-purpose programming language. It is widely used for web development, data analysis, artificial intelligence, and scientific computing.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "purpose": "calibration",
+      "question": "What is Python?",
+      "question_id": "3ad0cf9a38e48e84dfa410bf2e2d0386159c97ce2c11eb333c1878d52b8fe418",
+      "role": "development",
+      "run_id": "factual-feasibility-draft-v1-development-e04-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-python"
+    },
+    {
+      "answer": "Artificial intelligence is a field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence.",
+      "context": "Artificial intelligence is a field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence, such as reasoning, learning, and perception.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "purpose": "calibration",
+      "question": "What is artificial intelligence?",
+      "question_id": "e9a38a18a39d0016d19b062dab737dded9a784351718ae8329de9c7cb7dcc053",
+      "role": "history",
+      "run_id": "factual-feasibility-draft-v1-history-e05-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml"
+    },
+    {
+      "answer": "Machine learning is a branch of artificial intelligence that enables computer systems to learn patterns from data and make predictions or decisions without being explicitly programmed for every task.",
+      "context": "Machine learning is a branch of artificial intelligence that enables computer systems to learn patterns from data and make predictions or decisions without being explicitly programmed for every task.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "purpose": "calibration",
+      "question": "What is machine learning?",
+      "question_id": "69a6f1d3f0c509faca46c666043ff2b5db8844cdabfaffb83b32b790444d662f",
+      "role": "history",
+      "run_id": "factual-feasibility-draft-v1-history-e06-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml"
+    },
+    {
+      "answer": "Albert Einstein developed the theory of relativity.",
+      "context": "Albert Einstein was a German-born theoretical physicist. He developed the theory of relativity and received the Nobel Prize in Physics in 1921.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "purpose": "calibration",
+      "question": "Who developed the theory of relativity?",
+      "question_id": "41e6e799ee95403ac906b64a837c43560af5d266d9d18f79293efca926be77b1",
+      "role": "development",
+      "run_id": "factual-feasibility-draft-v1-development-e07-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-relativity"
+    }
+  ],
+  "final_test_reservation": {
+    "custody_record": null,
+    "dataset_id": "factual-feasibility-draft-v1-final_test",
+    "examples": [
+      {
+        "content_identity": "fdc529bed570da76a46f1076e294988f36373d927d686f24a30093c571d780f7",
+        "example_id": "factual-feasibility-draft-v1-e01",
+        "question_id": "32ac15f48ca574f0200f9d6fa34fd23beae6654aea5203507d9648ee47a78bd8",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e01-r1"
+      },
+      {
+        "content_identity": "0dce29dfa7919d0291dd41071c0d75de5b6f4e62d72b6396af0531c1f6163b6a",
+        "example_id": "factual-feasibility-draft-v1-e08",
+        "question_id": "220f5e85f6ba7589740350322717b1dba45c9b26954182e3d919e92c244f4501",
+        "split_identity": "factual-feasibility-draft-v1-group-wwii",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e08-r1"
+      },
+      {
+        "content_identity": "f3273e282e0567f281c043d2ce53bb7c6d87fdb1070b33024b44d307c4c7ff0c",
+        "example_id": "factual-feasibility-draft-v1-e09",
+        "question_id": "9b956bebb1501337b743a09d0c25cda61fe0d27b91a923aa388c259260e58bf2",
+        "split_identity": "factual-feasibility-draft-v1-group-usa",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e09-r1"
+      },
+      {
+        "content_identity": "97d269fdb9eb5a1b4791daec4bc736158b994f78b3eee8d46e62552cc52ee586",
+        "example_id": "factual-feasibility-draft-v1-e10",
+        "question_id": "8412e078fa45b8e8a028985b76f449bf0ec83e6036be4d3097da545937725b3a",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e10-r1"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "permitted_datasets": [
+    [
+      "history",
+      "factual-feasibility-draft-v1-history"
+    ],
+    [
+      "development",
+      "factual-feasibility-draft-v1-development"
+    ]
+  ],
+  "preparation_authorization": null,
+  "version": "approved_collection_preparation_v1"
+}

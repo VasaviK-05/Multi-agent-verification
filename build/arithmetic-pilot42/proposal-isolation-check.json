@@ -1,0 +1,27 @@
+{
+  "final_payload_access_guard": "passed",
+  "optimizer_call_guard": "passed",
+  "policy_created": false,
+  "result": {
+    "policy_created": false,
+    "approval_required": true,
+    "calibration_id": "c32267151f0fdf265ca502652f11f6828d967b985ab1efbd7a33fdd69d117398",
+    "proposed_values": {
+      "false_accept": 1.0,
+      "false_reject": 1.0,
+      "uncertain": 0.2,
+      "resource_weight_per_ms": 0.007723147560077727,
+      "budget_ms": 12.94808874517912,
+      "threshold": 0.55,
+      "history_prior_alpha": 1.0,
+      "history_prior_beta": 1.0,
+      "minimum_participants": 2,
+      "attack_version": "report_corruption_v1",
+      "suppression": "unavailable",
+      "unknown_treatment": "shared_unknown"
+    },
+    "readiness": true,
+    "blockers": [],
+    "output": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\arithmetic-pilot42\\proposed\\fitting-proposal.UNAPPROVED.json"
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "outcome": "Empirical policy remains blocked",
+  "audit_date": "2026-10-26",
+  "branch": "codex/game-pooling-resource-provenance",
+  "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+  "empirical_policy_created": false,
+  "real_collection_launched": false,
+  "final_test_payloads_read": false,
+  "benchmark": {
+    "path": "data/test_benchmark.jsonl",
+    "examples": 10,
+    "boolean_labels": 10,
+    "label_provenance_present": false,
+    "partitions_present": false,
+    "verifier_recordings_present": false,
+    "digest": "97a44b2cb38b7f287588a9b48bab7078a0fe3f6816f31e2b3104d931d4baf70f"
+  },
+  "complete_empirical_recording_manifests_found": 0,
+  "empirical_cost_artifacts_found": 0,
+  "inventory": [
+    {
+      "path": "data/evidence_corpus.json",
+      "bytes": 12875871
+    },
+    {
+      "path": "data/evidence_index/chunks.json",
+      "bytes": 13319155
+    },
+    {
+      "path": "data/evidence_index/evidence_corpus/chunks.json",
+      "bytes": 13319155
+    },
+    {
+      "path": "data/evidence_index/evidence_corpus/faiss.index",
+      "bytes": 6480429
+    },
+    {
+      "path": "data/evidence_index/evidence_corpus/manifest.json",
+      "bytes": 243
+    },
+    {
+      "path": "data/evidence_index/faiss.index",
+      "bytes": 6480429
+    },
+    {
+      "path": "data/evidence_index/test_evidence_corpus/chunks.json",
+      "bytes": 2942
+    },
+    {
+      "path": "data/evidence_index/test_evidence_corpus/faiss.index",
+      "bytes": 15405
+    },
+    {
+      "path": "data/evidence_index/test_evidence_corpus/manifest.json",
+      "bytes": 243
+    },
+    {
+      "path": "data/test_benchmark.jsonl",
+      "bytes": 3005
+    },
+    {
+      "path": "data/test_evidence_corpus.json",
+      "bytes": 2664
+    },
+    {
+      "path": "data/test_evidence_index/chunks.json",
+      "bytes": 2942
+    },
+    {
+      "path": "data/test_evidence_index/faiss.index",
+      "bytes": 15405
+    },
+    {
+      "path": "build/empirical-policy-attempt/audit_inputs.py",
+      "bytes": 10801
+    },
+    {
+      "path": "build/empirical-policy-attempt/evidence-baseline.json",
+      "bytes": 10865
+    },
+    {
+      "path": "build/empirical-policy-attempt/missing-inputs.json",
+      "bytes": 7434
+    },
+    {
+      "path": "build/empirical-policy-attempt/summary.txt",
+      "bytes": 3648
+    },
+    {
+      "path": "build/policy/missing-inputs.json",
+      "bytes": 7434
+    },
+    {
+      "path": "build/policy/summary.txt",
+      "bytes": 3648
+    },
+    {
+      "path": "build/policy-build-baseline.json",
+      "bytes": 1725
+    },
+    {
+      "path": "build/reproduce_policy_build_baseline.py",
+      "bytes": 1214
+    }
+  ],
+  "missing_input_table": [
+    {
+      "category": "Missing recordings",
+      "input": "Complete history/development attempts",
+      "fields": "TrainingManifest: partitions[history,development]; each Example has attempts for every captured candidate; Attempt has verifier_name, state, report_json (returned states only), execution_id, configuration_id, report_provenance, adapter, observed_resources_json.",
+      "producer": "No complete project recording/export command found. Produce app.game.offline.records.Partition/Example/Attempt; offline_benchmark.run_benchmark exports aggregate metrics only.",
+      "owner": "Verifier recording/integration owner",
+      "blocks": "Replay requires every candidate, including explicit failures/unavailability. Questions/answers and timing rows cannot substitute."
+    },
+    {
+      "category": "Missing recordings",
+      "input": "Independent labels and provenance",
+      "fields": "Example.answer_is_correct strict boolean; label_method independent_human or independent_ground_truth; label_source; DatasetDescription source/version, independent_label_provenance and declared_label_sources.",
+      "producer": "Independent adjudication or approved external ground truth. AutomaticGroundTruthEvaluator.evaluate returns Wikidata source/label for supported questions but supplies no frozen dataset provenance or split permission.",
+      "owner": "Independent adjudicator / dataset owner",
+      "blocks": "The 10 benchmark flags have no provenance. They cannot be promoted to independent empirical labels or replaced with framework decisions."
+    },
+    {
+      "category": "Missing recordings",
+      "input": "Preparation splits and final-test reservation",
+      "fields": "Distinct history/development dataset IDs and example_id/split_identity/question_id/content_identity/validation_id; FinalTestReservation version, role=final_test, dataset_id, custody_record, nonempty ReservedExample roster.",
+      "producer": "Dataset custodian supplies TrainingManifest and FinalTestReservation. ReservedExample.from_example is a custodian-side helper; never call on held-out payloads during fitting.",
+      "owner": "Dataset custodian",
+      "blocks": "No approved partition/group membership, permission or reservation exists. Collection could otherwise touch held-out examples or leak related questions."
+    },
+    {
+      "category": "Missing recordings",
+      "input": "Observed resources and collection factory",
+      "fields": "ResourceManifest per-candidate implementation/configuration SHA-256 and applicable model/corpus/index/prompt/service identities; matching Attempt observations. MeasurementSetup has environment, dependency_versions, code_revision and application_source_digest.",
+      "producer": "CollectionRequest.factory module:function -> (verifier instances, actually observed MeasurementSetup). No concrete production factory found. collect_costs requires this adapter before any attempt.",
+      "owner": "Verifier/resource adapter owners",
+      "blocks": "No actual snapshots or factory exist. Hashing a model alias or copying a fixture would fabricate provenance."
+    },
+    {
+      "category": "Missing scientific decisions",
+      "input": "Population, planning and eligibility configuration",
+      "fields": "Approved scientific_scope; captured PlanningContext/selection_json with domain/category, requirements, candidates, registration/eligibility, capabilities, prerequisites, minimum_count and complete history statistics.",
+      "producer": "Study owner approves scope; capture_context(selector, analysis, ...) and history_reputation(history, prior_alpha=..., prior_beta=...) construct/validate the snapshot.",
+      "owner": "Study owner / selector configuration owner",
+      "blocks": "The available examples are factual QA. No arithmetic-only population or category is approved, and evidence-bearing studies remain gated."
+    },
+    {
+      "category": "Missing scientific decisions",
+      "input": "Dependency model and attacks",
+      "fields": "DependencyRegistry version, dependencies(resource_id, compromise_pathway, verifiers), unresolved candidates and explicit shared_unknown; AttackSpecification version=report_corruption_v1 and suppression unavailable or abstention.",
+      "producer": "Resource/security and study owners supply registry and attack declaration; enumerate_attacks is executable after approval.",
+      "owner": "Resource/security owner / study owner",
+      "blocks": "There is no approved registry or threat specification. Sharing resources is not grounds to invent independence or exclude verifiers."
+    },
+    {
+      "category": "Missing recordings",
+      "input": "Measured compatible cost calibration",
+      "fields": "MeasurementInput setup, permitted_datasets, preparation_authorization, complete AttemptMeasurement rows including duration_ms/status for each candidate; CalibrationRequest reservation, required_verifiers, include_warmups and freeze_record.",
+      "producer": ".venv/Scripts/python.exe -m app.benchmark.collect_costs build/collection.json --output build/verifier-attempts.json; then -m app.game.offline.calibration build/calibration-settings.json --measurements build/verifier-attempts.json --output build/verifier-costs.json",
+      "owner": "Benchmark measurement producer / dataset custodian",
+      "blocks": "No measured bundle or compatible calibration artifact exists. docs/verifier_cost_missing_inputs.json and build reports are not cost measurements."
+    },
+    {
+      "category": "Missing scientific decisions",
+      "input": "Budget, losses, execution and study settings",
+      "fields": "Explicit attempt costs/units and budget, false_accept/false_reject/uncertain/resource_weight; calibrated budget_ms/resource_weight_per_ms/approved setup fingerprint if using ms; v2 ExecutionContract threshold/failure semantics/history priors; seeds/repetitions/optimizer tolerance, primary outcomes, sensitivity/coverage/uncertainty plans and freeze protocol.",
+      "producer": "Complete PolicyBuildSpecification from docs/game_policy_build.template.json; optional calibrated settings from docs/verifier_cost_build_settings.template.json. Then -m app.game.offline.build build/policy-input.json --output-dir build/empirical-policy.",
+      "owner": "Study owner",
+      "blocks": "Only deliberately invalid null templates exist. There is no defensible objective, feasible set, threshold or reputation prior to fit without these choices."
+    },
+    {
+      "category": "Software/interface blocker",
+      "input": "Replay-ready collection export is not implemented by available CLIs",
+      "fields": "A recording producer must persist canonical VerificationResult plus explicit states, independent metadata and observed_resources_json into the existing Attempt/Example contracts.",
+      "producer": "offline_benchmark CLI emits aggregate MethodReport; collect_costs emits duration/status measurements and propagates failure after preserving attempted rows, without serializing reports or continuing unattempted candidates.",
+      "owner": "Offline recording/integration owner",
+      "blocks": "Even a successful timing collection would not produce the full input needed by the fitter. Later unattempted candidates must remain explicitly incomplete, never invented failures."
+    },
+    {
+      "category": "Software defect",
+      "input": "Existing evidence/public-coverage contract failures",
+      "fields": "tests/test_adaptive_pipeline.py: test_actual_evidence_output_contract_is_consumed_without_models (support/rejection cases), test_actual_conflicting_evidence_cannot_cover_factual_request.",
+      "producer": "Separately reviewed evidence producer repair; readiness.py EVIDENCE_FAILURES gate cannot be bypassed. An independently approved arithmetic-only study is a different population, not a repair.",
+      "owner": "Evidence verifier/integration owner",
+      "blocks": "Current tests return uncertainty for directional evidence and no_relevant_evidence instead of conflict. The existing readiness gate blocks evidence-bearing empirical fitting."
+    }
+  ],
+  "scope": {
+    "db_api_touched_this_turn": false,
+    "production_state_writes": false,
+    "code_changes_this_turn": false
+  },
+  "attempts": {
+    "policy_build": {
+      "main_return_status": 2,
+      "arguments": [
+        "docs/game_policy_build.template.json",
+        "--output-dir",
+        "C:\\Users\\jhaan\\Multi-agent-verification\\build\\empirical-policy-attempt"
+      ],
+      "stdout_log": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\empirical-policy-attempt\\policy_build.log"
+    },
+    "cost_calibration": {
+      "main_return_status": 2,
+      "arguments": [
+        "docs/verifier_cost_calibration.template.json",
+        "--output",
+        "C:\\Users\\jhaan\\Multi-agent-verification\\build\\empirical-policy-attempt\\verifier-costs.json"
+      ],
+      "stdout_log": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\empirical-policy-attempt\\cost_calibration.log"
+    },
+    "collection_request_validation": {
+      "ready": false,
+      "factory_initialized": false,
+      "errors": [
+        {
+          "location": [
+            "setup",
+            "resources"
+          ],
+          "message": "Input should be a valid dictionary or instance of ResourceManifest"
+        },
+        {
+          "location": [
+            "setup",
+            "environment"
+          ],
+          "message": "Dictionary should have at least 1 item after validation, not 0"
+        },
+        {
+          "location": [
+            "setup",
+            "dependency_versions"
+          ],
+          "message": "Dictionary should have at least 1 item after validation, not 0"
+        },
+        {
+          "location": [
+            "setup",
+            "code_revision"
+          ],
+          "message": "Input should be a valid string"
+        },
+        {
+          "location": [
+            "setup",
+            "application_source_digest"
+          ],
+          "message": "Input should be a valid string"
+        },
+        {
+          "location": [
+            "final_test_reservation"
+          ],
+          "message": "Input should be a valid dictionary or instance of FinalTestReservation"
+        },
+        {
+          "location": [
+            "permitted_datasets"
+          ],
+          "message": "Tuple should have at least 1 item after validation, not 0"
+        },
+        {
+          "location": [
+            "preparation_authorization"
+          ],
+          "message": "Input should be a valid string"
+        },
+        {
+          "location": [
+            "factory"
+          ],
+          "message": "Input should be a valid string"
+        },
+        {
+          "location": [
+            "examples"
+          ],
+          "message": "Tuple should have at least 1 item after validation, not 0"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pydantic": "2.13.5",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "python_implementation": "CPython",
+    "highs": "1.12.0",
+    "solver_method": "scipy.optimize.linprog:highs",
+    "linprog_options": "SciPy defaults; no custom LP options"
+  },
+  "validation": {
+    "working_tree": {
+      "passed": 49,
+      "failed": 3,
+      "deselected": 88,
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_game_build.py tests/test_cost_calibration.py tests/test_adaptive_pipeline.py -k \"test_game_build or test_cost_calibration or test_actual_evidence_output_contract_is_consumed_without_models or test_actual_conflicting_evidence_cannot_cover_factual_request\" -q -p no:cacheprovider"
+    },
+    "pristine_head_evidence": {
+      "passed": 1,
+      "failed": 3,
+      "deselected": 88,
+      "evidence": "build/empirical-policy-attempt/evidence-baseline.json"
+    },
+    "new_failures": 0
+  },
+  "external_inputs": "User confirms no external approved settings or labelled recording bundles were supplied.",
+  "proposed_settings_for_review": {
+    "status": "unapproved proposals only; not used for collection, calibration or fitting",
+    "scope_options": [
+      {
+        "id": "arithmetic_pilot",
+        "population": "Independent arithmetic-answer corpus; addition/subtraction/multiplication/division only",
+        "tradeoff": "Supported achieved-coverage contract; needs a new independently labelled, grouped dataset. Existing factual benchmark rows do not qualify."
+      },
+      {
+        "id": "evidence_study",
+        "population": "Independently labelled direct-fact QA with audited evidence resources",
+        "tradeoff": "Closer to current benchmark topics; requires a reviewed evidence/public-coverage repair before fitting, plus complete real recordings."
+      }
+    ],
+    "loss_and_threshold_options": [
+      {
+        "id": "balanced",
+        "false_accept": 1.0,
+        "false_reject": 1.0,
+        "uncertain": 0.2,
+        "threshold": 0.55,
+        "meaning": "Equal directional error penalties; uncertainty costs one fifth of an error."
+      },
+      {
+        "id": "false_accept_emphasis",
+        "false_accept": 5.0,
+        "false_reject": 1.0,
+        "uncertain": 0.2,
+        "threshold": 0.75,
+        "meaning": "False acceptance costs five times false rejection; stronger directional threshold. No benefit is assumed."
+      }
+    ],
+    "shared_candidate_settings": {
+      "minimum_participants": 2,
+      "history_prior_alpha": 1.0,
+      "history_prior_beta": 1.0,
+      "failure_contract": "all_selected_returned",
+      "unknown_dependency_treatment": "shared_unknown",
+      "attack_version": "report_corruption_v1",
+      "suppression": "unavailable",
+      "cost_units": "ms, conditional on compatible measured calibration",
+      "budget_formula": "B_ms = sum of measured mean attempt costs for every eligible candidate; require B_ms > 0",
+      "resource_weight_formula": "0.1 / B_ms loss per ms; a full-budget team adds 0.1 loss. Actual ms values remain unknown.",
+      "warmup_rule": "exclude explicitly marked warmup attempts from cost estimates; retain every calibration failure",
+      "split_proposal": "Assign whole audited related-example groups: 20% history, 40% development, 40% final; group counts and achievable allocation require approval before collection.",
+      "seed": 20261026,
+      "policy_sampling_repetitions": 1,
+      "optimizer_tolerance": 1e-08,
+      "reproducibility_absolute_tolerance": 1e-12,
+      "uncertainty": {
+        "method": "paired_split_identity_cluster_percentile_v1",
+        "resamples": 2000,
+        "confidence_level": 0.95,
+        "seed": 20261027
+      },
+      "sensitivity_proposal": "Development-only resource multipliers 0, 0.05/B_ms, 0.1/B_ms and 0.2/B_ms; threshold candidates 0.55 and 0.75. Final outcomes stay sealed; freeze the selected specification before release.",
+      "not_supplied": "Independent corpus/label provenance, exact group roster/counts, resource observations/pathways, measurement setup, producer factory/exporter, freeze witness and primary/confirmatory analysis approval."
+    },
+    "interpretation": "Normative engineering candidates for user review, not scientific calibration or evidence of improvement. Scope and loss profile may be reviewed independently. Templates remain invalid."
+  },
+  "changed_files_this_turn": [
+    "docs/game_empirical_build_audit.json",
+    "docs/game_empirical_build_audit.md"
+  ],
+  "managed_artifact": "C:/Users/jhaan/.cursor/projects/c-Users-jhaan-Multi-agent-verification/canvases/empirical-policy-inputs.canvas.tsx",
+  "final_git_status": [
+    " M app/benchmark/offline_benchmark.py",
+    " M app/game/offline/evaluation.py",
+    " M app/game/offline/records.py",
+    " M app/game/policy.py",
+    " M app/game/research/readiness.py",
+    " M app/game/research/specification.py",
+    "?? app/benchmark/collect_costs.py",
+    "?? app/game/offline/build.py",
+    "?? app/game/offline/calibration.py",
+    "?? docs/game_empirical_build_audit.json",
+    "?? docs/game_empirical_build_audit.md",
+    "?? docs/game_policy_build.md",
+    "?? docs/game_policy_build.template.json",
+    "?? docs/verifier_cost_build_settings.template.json",
+    "?? docs/verifier_cost_calibration.md",
+    "?? docs/verifier_cost_calibration.template.json",
+    "?? docs/verifier_cost_collection.template.json",
+    "?? docs/verifier_cost_missing_inputs.json",
+    "?? tests/test_cost_calibration.py",
+    "?? tests/test_game_build.py"
+  ],
+  "protected_path_diff": []
+}

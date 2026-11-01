@@ -1,0 +1,108 @@
+{
+  "ready": true,
+  "specification_id": "a461049800efb9f864a5fb0e096b229fe643c2cf36559c11ca5e5f18311fddd2",
+  "code_revision": "17b695373f935dc1f5fd09c37cf8917969367f7a",
+  "evidence_kind": "empirical",
+  "planning_category": "bac38d3c85526772e2838da801e0e4ca6af9fb7e7a683ccdfdcda00289b92b51",
+  "blockers": [],
+  "adapter_blockers": [],
+  "unsupported_achieved": [],
+  "strategies": [
+    {
+      "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 74.17498749564402
+    },
+    {
+      "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 74.17498749564402
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 42.43273748434149
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 42.43273748434149
+    }
+  ],
+  "attacks": [
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "clean",
+      "group_id": null,
+      "members": []
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "forced_support",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "forced_rejection",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "confidence_inflation",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "suppression",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    }
+  ],
+  "greedy_strategy_id": null,
+  "evidence_failures": [
+    "tests/test_adaptive_pipeline.py::test_actual_evidence_output_contract_is_consumed_without_models[probabilities0-passed]",
+    "tests/test_adaptive_pipeline.py::test_actual_evidence_output_contract_is_consumed_without_models[probabilities1-failed]",
+    "tests/test_adaptive_pipeline.py::test_actual_conflicting_evidence_cannot_cover_factual_request"
+  ],
+  "resource_blockers": [],
+  "evidence_validation_id": "6383d422923925cee53deb34388554a8998307bee0647afce358379406cc88de"
+}

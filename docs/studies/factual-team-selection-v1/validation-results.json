@@ -1,0 +1,48 @@
+{
+  "status": "passed_with_separate_baseline_and_isolation_limitations",
+  "proposal_digest": "54d4d5f37bfc51d0a2c6cbfea8788721a2739954c9e786e4621005749b8d9df3",
+  "proposal_digest_verified": true,
+  "original_arithmetic_hashes_preserved": true,
+  "original_proposal_and_calibration_hashes_preserved": true,
+  "affected_tests": {
+    "passed": 214,
+    "failed": 0,
+    "seconds": 85.26,
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_factual_team_pilot.py tests/test_game_collection.py tests/test_cost_calibration.py tests/test_game_foundation.py tests/test_game_build.py tests/test_diagnostic_collection.py tests/test_project_collection_adapter.py -q",
+    "outside_sandbox": true
+  },
+  "baseline_probe": {
+    "passed": 1,
+    "failed": 3,
+    "deselected": 88,
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_adaptive_pipeline.py -q -k 'test_actual_evidence_output_contract_is_consumed_without_models or test_actual_conflicting_evidence_cannot_cover_factual_request'"
+  },
+  "first_run": {
+    "passed": 190,
+    "failed": 2,
+    "failures": "WinError 5 synthetic atomic publication; outside-sandbox rerun passed",
+    "mixed_source_fixture_read": true,
+    "note": "Legacy factual-study draft fixture reads original mixed benchmark including reserved candidate rows/flags; stopped only after run completed. Not used in labels, selection, fitting or evaluation. Subsequent run excludes it."
+  },
+  "new_real_collection": false,
+  "new_calibration": false,
+  "new_fit": false,
+  "final_evaluation": false,
+  "custody_artifacts_opened": false,
+  "scoped_preparation_guard_passed": true,
+  "changed_this_task": [
+    "scripts/prepare_factual_team_pilot.py",
+    "tests/test_factual_team_pilot.py",
+    "docs/studies/factual-team-selection-v1/",
+    "docs/game_policy_build.md",
+    "tests/test_factual_study_draft.py"
+  ],
+  "isolated_draft_tests": {
+    "passed": 11,
+    "failed": 0,
+    "seconds": 24.62,
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_factual_study_draft.py -q",
+    "mixed_source_read_guard": true
+  },
+  "total_final_passing_tests": 225
+}

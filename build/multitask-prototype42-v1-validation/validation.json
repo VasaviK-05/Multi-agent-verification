@@ -1,0 +1,872 @@
+{
+  "bundle_id": "98b8f2654163fe95e84a1b916a94174ddc37aa399429bba94f99890573168d34",
+  "acceptance_rejection_uncertainty": true,
+  "negative_checks": [
+    {
+      "task": "arithmetic",
+      "case": "missing_reference",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "arithmetic",
+      "case": "blank_reference",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "arithmetic",
+      "case": "judgment_reference",
+      "summary": {
+        "audit_version": "game_execution_audit_v1",
+        "execution_mode": "game",
+        "episode_id": "prototype42-v1-arithmetic",
+        "artifact_id": null,
+        "policy_id": null,
+        "matrix_id": null,
+        "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+        "offline_evaluation_id": "129430c93f2e06407ac36bd360771c718a82ea131bc62caa54cc2b6199520d63",
+        "selected_strategy_id": null,
+        "team": [],
+        "aggregation": null,
+        "threshold": 0.55,
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "coverage_version": "task_output_contract_v2",
+          "contributor_version": "informative_history_influence_v1",
+          "threshold": 0.55,
+          "failure_contract": "all_selected_returned",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "history_prior_alpha": 1.0,
+          "history_prior_beta": 1.0,
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "verifier_name": "confidence",
+                "resources": [
+                  {
+                    "resource_id": "confidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "confidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  },
+                  {
+                    "resource_id": "ollama-model",
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                  },
+                  {
+                    "resource_id": "self-consistency-short-answer",
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                  },
+                  {
+                    "resource_id": "ollama-service",
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "resources": [
+                  {
+                    "resource_id": "evidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "evidence-corpus",
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                  },
+                  {
+                    "resource_id": "evidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                  },
+                  {
+                    "resource_id": "evidence-index",
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "resources": [
+                  {
+                    "resource_id": "rule-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "rule-implementation",
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "semantic",
+                "resources": [
+                  {
+                    "resource_id": "semantic-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "semantic-implementation",
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "budget": 21258.33526502247,
+        "cost_units": "ms",
+        "estimated_selected_cost": 0.0,
+        "estimated_attempted_cost": 0.0,
+        "attempted_verifiers": [],
+        "attempts": [],
+        "selection_status": "incompatible",
+        "selection_reasons": [
+          "current analyzer/requirements/candidates/prerequisites/configuration differ from episode"
+        ],
+        "numerical_decision": {
+          "domain": "general",
+          "status": "unknown",
+          "raw_score": 0.0,
+          "score": 0.0,
+          "threshold": 0.55,
+          "aggregation": "unknown",
+          "votes": []
+        },
+        "public_status": "uncertain",
+        "override_reasons": [
+          "selection_failure"
+        ],
+        "contributors": 0,
+        "minimum_contributors": 2,
+        "pooling_contract_json": null,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": null,
+        "required": [
+          "arithmetic"
+        ],
+        "achieved": [],
+        "unresolved": [
+          "arithmetic"
+        ],
+        "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+        "task_route": "domain_requirements_task_v1"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "arithmetic",
+      "case": "changed_resources",
+      "summary": {
+        "audit_version": "game_execution_audit_v1",
+        "execution_mode": "game",
+        "episode_id": "prototype42-v1-arithmetic",
+        "artifact_id": null,
+        "policy_id": null,
+        "matrix_id": null,
+        "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+        "offline_evaluation_id": "129430c93f2e06407ac36bd360771c718a82ea131bc62caa54cc2b6199520d63",
+        "selected_strategy_id": null,
+        "team": [],
+        "aggregation": null,
+        "threshold": 0.55,
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "coverage_version": "task_output_contract_v2",
+          "contributor_version": "informative_history_influence_v1",
+          "threshold": 0.55,
+          "failure_contract": "all_selected_returned",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "history_prior_alpha": 1.0,
+          "history_prior_beta": 1.0,
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "verifier_name": "confidence",
+                "resources": [
+                  {
+                    "resource_id": "confidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "confidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  },
+                  {
+                    "resource_id": "ollama-model",
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                  },
+                  {
+                    "resource_id": "self-consistency-short-answer",
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                  },
+                  {
+                    "resource_id": "ollama-service",
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "resources": [
+                  {
+                    "resource_id": "evidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "evidence-corpus",
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                  },
+                  {
+                    "resource_id": "evidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                  },
+                  {
+                    "resource_id": "evidence-index",
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "resources": [
+                  {
+                    "resource_id": "rule-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "rule-implementation",
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "semantic",
+                "resources": [
+                  {
+                    "resource_id": "semantic-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "semantic-implementation",
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "budget": 21258.33526502247,
+        "cost_units": "ms",
+        "estimated_selected_cost": 0.0,
+        "estimated_attempted_cost": 0.0,
+        "attempted_verifiers": [],
+        "attempts": [],
+        "selection_status": "provenance_incompatible",
+        "selection_reasons": [
+          "observed resources differ from evaluated resources"
+        ],
+        "numerical_decision": {
+          "domain": "general",
+          "status": "unknown",
+          "raw_score": 0.0,
+          "score": 0.0,
+          "threshold": 0.55,
+          "aggregation": "unknown",
+          "votes": []
+        },
+        "public_status": "uncertain",
+        "override_reasons": [
+          "selection_failure"
+        ],
+        "contributors": 0,
+        "minimum_contributors": 2,
+        "pooling_contract_json": null,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": "9f9628f64265fc9ad691e99b93ad46870c98a408f2824a9284c083e1990b7eb4",
+        "required": [
+          "arithmetic"
+        ],
+        "achieved": [],
+        "unresolved": [
+          "arithmetic"
+        ],
+        "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+        "task_route": "domain_requirements_task_v1"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "arithmetic",
+      "case": "insufficient_budget",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "arithmetic",
+      "case": "outside_scope",
+      "summary": {
+        "selection_status": "study_scope_mismatch",
+        "public_status": "uncertain",
+        "selection_reasons": [
+          "outside declared prototype question scope"
+        ]
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "factual",
+      "case": "missing_reference",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "factual",
+      "case": "blank_reference",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "factual",
+      "case": "judgment_reference",
+      "summary": {
+        "audit_version": "game_execution_audit_v1",
+        "execution_mode": "game",
+        "episode_id": "prototype42-v1-factual",
+        "artifact_id": null,
+        "policy_id": null,
+        "matrix_id": null,
+        "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+        "offline_evaluation_id": "bf7af2f946fdbfc6fc84b2d322e60e2c8e860a726641f05f7e2f75b10468eb96",
+        "selected_strategy_id": null,
+        "team": [],
+        "aggregation": null,
+        "threshold": 0.55,
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "coverage_version": "task_output_contract_v2",
+          "contributor_version": "informative_history_influence_v1",
+          "threshold": 0.55,
+          "failure_contract": "all_selected_returned",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "history_prior_alpha": 1.0,
+          "history_prior_beta": 1.0,
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "verifier_name": "confidence",
+                "resources": [
+                  {
+                    "resource_id": "confidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "confidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  },
+                  {
+                    "resource_id": "ollama-model",
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                  },
+                  {
+                    "resource_id": "self-consistency-short-answer",
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                  },
+                  {
+                    "resource_id": "ollama-service",
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "resources": [
+                  {
+                    "resource_id": "evidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "evidence-corpus",
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                  },
+                  {
+                    "resource_id": "evidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                  },
+                  {
+                    "resource_id": "evidence-index",
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "resources": [
+                  {
+                    "resource_id": "rule-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "rule-implementation",
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "semantic",
+                "resources": [
+                  {
+                    "resource_id": "semantic-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "semantic-implementation",
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "budget": 15965.046464995248,
+        "cost_units": "ms",
+        "estimated_selected_cost": 0.0,
+        "estimated_attempted_cost": 0.0,
+        "attempted_verifiers": [],
+        "attempts": [],
+        "selection_status": "incompatible",
+        "selection_reasons": [
+          "current analyzer/requirements/candidates/prerequisites/configuration differ from episode"
+        ],
+        "numerical_decision": {
+          "domain": "general",
+          "status": "unknown",
+          "raw_score": 0.0,
+          "score": 0.0,
+          "threshold": 0.55,
+          "aggregation": "unknown",
+          "votes": []
+        },
+        "public_status": "uncertain",
+        "override_reasons": [
+          "selection_failure"
+        ],
+        "contributors": 0,
+        "minimum_contributors": 2,
+        "pooling_contract_json": null,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": null,
+        "required": [
+          "direct_fact"
+        ],
+        "achieved": [],
+        "unresolved": [
+          "direct_fact"
+        ],
+        "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+        "task_route": "domain_requirements_task_v1"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "factual",
+      "case": "changed_resources",
+      "summary": {
+        "audit_version": "game_execution_audit_v1",
+        "execution_mode": "game",
+        "episode_id": "prototype42-v1-factual",
+        "artifact_id": null,
+        "policy_id": null,
+        "matrix_id": null,
+        "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+        "offline_evaluation_id": "bf7af2f946fdbfc6fc84b2d322e60e2c8e860a726641f05f7e2f75b10468eb96",
+        "selected_strategy_id": null,
+        "team": [],
+        "aggregation": null,
+        "threshold": 0.55,
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "coverage_version": "task_output_contract_v2",
+          "contributor_version": "informative_history_influence_v1",
+          "threshold": 0.55,
+          "failure_contract": "all_selected_returned",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "history_prior_alpha": 1.0,
+          "history_prior_beta": 1.0,
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "verifier_name": "confidence",
+                "resources": [
+                  {
+                    "resource_id": "confidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "confidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  },
+                  {
+                    "resource_id": "ollama-model",
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                  },
+                  {
+                    "resource_id": "self-consistency-short-answer",
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                  },
+                  {
+                    "resource_id": "ollama-service",
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "resources": [
+                  {
+                    "resource_id": "evidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "evidence-corpus",
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                  },
+                  {
+                    "resource_id": "evidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                  },
+                  {
+                    "resource_id": "evidence-index",
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "resources": [
+                  {
+                    "resource_id": "rule-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "rule-implementation",
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "semantic",
+                "resources": [
+                  {
+                    "resource_id": "semantic-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "semantic-implementation",
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "budget": 15965.046464995248,
+        "cost_units": "ms",
+        "estimated_selected_cost": 0.0,
+        "estimated_attempted_cost": 0.0,
+        "attempted_verifiers": [],
+        "attempts": [],
+        "selection_status": "provenance_incompatible",
+        "selection_reasons": [
+          "observed resources differ from evaluated resources"
+        ],
+        "numerical_decision": {
+          "domain": "general",
+          "status": "unknown",
+          "raw_score": 0.0,
+          "score": 0.0,
+          "threshold": 0.55,
+          "aggregation": "unknown",
+          "votes": []
+        },
+        "public_status": "uncertain",
+        "override_reasons": [
+          "selection_failure"
+        ],
+        "contributors": 0,
+        "minimum_contributors": 2,
+        "pooling_contract_json": null,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": "9f9628f64265fc9ad691e99b93ad46870c98a408f2824a9284c083e1990b7eb4",
+        "required": [
+          "direct_fact"
+        ],
+        "achieved": [],
+        "unresolved": [
+          "direct_fact"
+        ],
+        "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+        "task_route": "domain_requirements_task_v1"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "factual",
+      "case": "insufficient_budget",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      },
+      "retained_dispatches": []
+    },
+    {
+      "task": "factual",
+      "case": "outside_scope",
+      "summary": {
+        "selection_status": "study_scope_mismatch",
+        "public_status": "uncertain",
+        "selection_reasons": [
+          "outside declared prototype question scope"
+        ]
+      },
+      "retained_dispatches": []
+    },
+    {
+      "case": "unsupported_task",
+      "summary": {
+        "selection_status": "task_out_of_scope",
+        "selection_reasons": [
+          "no unique explicit task/context/budget route"
+        ],
+        "public_status": "uncertain"
+      }
+    },
+    {
+      "case": "unsupported_task",
+      "summary": {
+        "selection_status": "task_unknown",
+        "selection_reasons": [
+          "task routing requires supported known question requirements"
+        ],
+        "public_status": "uncertain"
+      }
+    }
+  ],
+  "trace_count": 11,
+  "marginal_selection": {
+    "arithmetic": {
+      "rule": 1.0000000000000002,
+      "confidence": 0.6060604653198649,
+      "evidence": 0.3939392902356899,
+      "semantic": 2.444444452815835e-07
+    },
+    "factual": {
+      "rule": 0.33333333333333337,
+      "confidence": 0.6666666666666666,
+      "evidence": 1.0,
+      "semantic": 0.0
+    }
+  },
+  "original_policy_hashes": {
+    "build\\multitask-uncertainty-sweep42\\arithmetic\\coverage-50\\policy.json": "ec1be5b69766948bbb444557806a6895cddf573f37c97e03472531685dde282c",
+    "build\\multitask-uncertainty-sweep42\\factual\\coverage-25\\policy.json": "df1bef32fa422cadb29cc6034b9968ea9fd01d3dcea847e6d7e96382c0889d87"
+  },
+  "network_calls": 0,
+  "generation_calls": 0,
+  "final_payload_access": false
+}

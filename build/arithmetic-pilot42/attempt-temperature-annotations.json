@@ -1,0 +1,1446 @@
+{
+  "model_initialization_in_attempt_timer": false,
+  "warmups_excluded": 0,
+  "attempts": [
+    {
+      "attempt_id": "77558fbe7357060fe9da4db594c72c302f614adde94eca3a8bad30122a9efa3b",
+      "run_id": "pilot42-history-arith-multiply-09-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 1,
+      "thermal_state": "first_measured_call_after_eager_initialization",
+      "included_in_calibration": true,
+      "duration_ms": 0.3505999920889735
+    },
+    {
+      "attempt_id": "7f49cd848b00224f222735647331f84cb9df0f78d7c8957c0413ac09bf791c30",
+      "run_id": "pilot42-history-arith-multiply-09-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 1,
+      "thermal_state": "first_measured_call_after_eager_initialization",
+      "included_in_calibration": true,
+      "duration_ms": 98.36209996137768
+    },
+    {
+      "attempt_id": "3974d4ee676746732f4e2860c1e0f48617617c9921b5d315e31581b944c40201",
+      "run_id": "pilot42-history-arith-multiply-09-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 2,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05740008782595396
+    },
+    {
+      "attempt_id": "ccbe839217372abcdb95ef6dedd374671a26db323e2c6b66f57915daaf637353",
+      "run_id": "pilot42-history-arith-multiply-09-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 2,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.5254000518471
+    },
+    {
+      "attempt_id": "dbd70244dbd0f4957fa1df50e6d17bc227cee2406ff36ef5558d1b35c65b6789",
+      "run_id": "pilot42-history-arith-subtract-09-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 3,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 5.502600106410682
+    },
+    {
+      "attempt_id": "9264a09aeebcb52e4bb1d713f0cef148366d35031ac0034cc9e927b42ac2c49a",
+      "run_id": "pilot42-history-arith-subtract-09-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 3,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.538699920289218
+    },
+    {
+      "attempt_id": "c5d918504ccc4084dd5fa8a5b7abf28ca0a77bac0e9541ded37886d3d6594b10",
+      "run_id": "pilot42-history-arith-subtract-09-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 4,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05430006422102451
+    },
+    {
+      "attempt_id": "2504293e90bd04a745cba930902c992f88fba37e7c03a8c306061d9daeb09039",
+      "run_id": "pilot42-history-arith-subtract-09-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 4,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 15.442200005054474
+    },
+    {
+      "attempt_id": "3cea52c46493abb589f53e04b9d182e0f68c2702d0e365a2095c67af947d6903",
+      "run_id": "pilot42-history-arith-divide-10-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 5,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.30529999639838934
+    },
+    {
+      "attempt_id": "8f03abe54d97971026719e34c886190e83f4b0531c29b15cca7f892bad79e7a2",
+      "run_id": "pilot42-history-arith-divide-10-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 5,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.773500009439886
+    },
+    {
+      "attempt_id": "bfaedb7bf107711d54a9fa1039c758c71c3aa7193f0e833150074625c254daad",
+      "run_id": "pilot42-history-arith-divide-10-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 6,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.07650000043213367
+    },
+    {
+      "attempt_id": "0f80871705dff20fbb00572cb15ca9b9dadebbdd1f816b9b46c63667a31532aa",
+      "run_id": "pilot42-history-arith-divide-10-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 6,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.326399981044233
+    },
+    {
+      "attempt_id": "29d20bdc48f8e9098dc75c34be36ddc51b344602d9a7bfd55f34b2aa95f291cb",
+      "run_id": "pilot42-history-arith-add-12-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 7,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.053699943237006664
+    },
+    {
+      "attempt_id": "3e4156f1e5390092eed0679cea803339ac05fc656cc04960709dca47c9510055",
+      "run_id": "pilot42-history-arith-add-12-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 7,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.775299975648522
+    },
+    {
+      "attempt_id": "ca7f74cb227478c25f655631c5f65256ef1ae923ecb99c4d2e5f79a443edfaaa",
+      "run_id": "pilot42-history-arith-add-12-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 8,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.061700004152953625
+    },
+    {
+      "attempt_id": "48ca1324d5d27a3617a410b71dd470bfe3336d8efa93fb13487acb108e1f78f2",
+      "run_id": "pilot42-history-arith-add-12-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 8,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.011799913831055
+    },
+    {
+      "attempt_id": "ece559f52da48f7579c330c47c9409f53dfa408aac0339bf7c6842351a0cfb9a",
+      "run_id": "pilot42-history-arith-subtract-02-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 9,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05389994475990534
+    },
+    {
+      "attempt_id": "d2af5ebd549c794383a84215d088bcd7a71a8144cce5ff6ba34a26cfbf76d22e",
+      "run_id": "pilot42-history-arith-subtract-02-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 9,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.51370007917285
+    },
+    {
+      "attempt_id": "e78c75c9239d992e0d30537f9dd5cd53aa705137def5e543f18d7c877d77ca65",
+      "run_id": "pilot42-history-arith-subtract-02-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 10,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05180004518479109
+    },
+    {
+      "attempt_id": "a1182745813886d3c343e131fb79126618bcf5bed3a384592fcce0e4529d318b",
+      "run_id": "pilot42-history-arith-subtract-02-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 10,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.159199919551611
+    },
+    {
+      "attempt_id": "50f631cd2c89664105a93de73f7da29fdfddc3c859bf39ff2fccb3662185093a",
+      "run_id": "pilot42-history-arith-subtract-06-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 11,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05559995770454407
+    },
+    {
+      "attempt_id": "a993c03906a58921468e864b36b0a3fe724cd73d9c33104084cfa46ec4ae464a",
+      "run_id": "pilot42-history-arith-subtract-06-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 11,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.051899986341596
+    },
+    {
+      "attempt_id": "53ac5e7274d0d0f0c17ba818a7cb00ce5ee7c6a362080fd2e7dd0cfee84baf60",
+      "run_id": "pilot42-history-arith-subtract-06-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 12,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.057999975979328156
+    },
+    {
+      "attempt_id": "eb35a9f94b36b32528fd912dd7907d006beef2dc4f15e1244f45410e04231e69",
+      "run_id": "pilot42-history-arith-subtract-06-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 12,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 16.188699984923005
+    },
+    {
+      "attempt_id": "d0b9b79fbc77f40dc43ec7f81f262eb166c21c4834cd590988b204f3493d480f",
+      "run_id": "pilot42-history-arith-divide-11-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 13,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.057999975979328156
+    },
+    {
+      "attempt_id": "f55f9f5d62579a7cb605d4d766e353234b8d718432092fe54d5e6c8863a0a799",
+      "run_id": "pilot42-history-arith-divide-11-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 13,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.678599985316396
+    },
+    {
+      "attempt_id": "276ffa94c6b0b99528f101633c4d213d01562b4062cb891ddadfb80b33600fee",
+      "run_id": "pilot42-history-arith-divide-11-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 14,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.059200101532042027
+    },
+    {
+      "attempt_id": "3c1c81b563f382fd38d75187357021f3ffc4fff9e49628bfe1dfb9695c5fe42f",
+      "run_id": "pilot42-history-arith-divide-11-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 14,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.425600037910044
+    },
+    {
+      "attempt_id": "d0bb565b2c96c3d7fe65813c7d006825af32bbf47f9873d9fff6ffdb23041569",
+      "run_id": "pilot42-history-arith-divide-14-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 15,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05709996912628412
+    },
+    {
+      "attempt_id": "0b2cea376e0d098b4d52b806bfa836e6f509f55b92d6747384d4cf089fbb06d0",
+      "run_id": "pilot42-history-arith-divide-14-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 15,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.412200052291155
+    },
+    {
+      "attempt_id": "0170a95331b961bddf7394240b0b8c51829abaa5f527811c483b9a6e8d3c6814",
+      "run_id": "pilot42-history-arith-divide-14-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 16,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06010010838508606
+    },
+    {
+      "attempt_id": "c10712abc69c857475b8c34ab67f761bb4a586b59e2c17fcda1985dd94725ab4",
+      "run_id": "pilot42-history-arith-divide-14-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 16,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.847100056707859
+    },
+    {
+      "attempt_id": "28821b0ca63d797df68d681a37d7ba24088ab007c67f5b433b5677812ceadadc",
+      "run_id": "pilot42-history-arith-multiply-04-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 17,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05039991810917854
+    },
+    {
+      "attempt_id": "c17c34da589a01b0b43ff516461a3851e3444eed50b539bc5b8e90618ad5cb8e",
+      "run_id": "pilot42-history-arith-multiply-04-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 17,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.662700002081692
+    },
+    {
+      "attempt_id": "eacc3de48e2d16463522bae95556298189a5603c06a056e1f9b4eb90695e39ca",
+      "run_id": "pilot42-history-arith-multiply-04-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 18,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.056699966080486774
+    },
+    {
+      "attempt_id": "9e4c5a87247c60fc04e1a56c6cfb17671fac4f39413558fdba0f160c20c14274",
+      "run_id": "pilot42-history-arith-multiply-04-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 18,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.487799998372793
+    },
+    {
+      "attempt_id": "73c96ceff0bbdfaa2a19463c8a9b93e2ad7ec8cae2d63cbdf52a04a578a2f97f",
+      "run_id": "pilot42-history-arith-subtract-05-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 19,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.053200055845081806
+    },
+    {
+      "attempt_id": "2230d9e09ff7162deab0571b3ffc8f18cbd2e863387acc40fd32386d51385395",
+      "run_id": "pilot42-history-arith-subtract-05-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 19,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.24690002668649
+    },
+    {
+      "attempt_id": "2b9e690d3a1d73c86fcfe66d7d2511073d8a039eb28efa317569e74a1465a42f",
+      "run_id": "pilot42-history-arith-subtract-05-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 20,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.053799943998456
+    },
+    {
+      "attempt_id": "34306a2eaae49328fe5c5ba00fceb05d1200f066dd66326242d63475857d0306",
+      "run_id": "pilot42-history-arith-subtract-05-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 20,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.004899977706373
+    },
+    {
+      "attempt_id": "57683d919c27672d7019ff35100ac9a7e1e22377eca451a7b6c97f83841acf27",
+      "run_id": "pilot42-history-arith-add-10-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 21,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05149992648512125
+    },
+    {
+      "attempt_id": "fc7f86082fd83ba4c0e0ebb649b1ca6c4eba2d1fe2aac1dda8d65534e1a2059a",
+      "run_id": "pilot42-history-arith-add-10-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 21,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.132000083103776
+    },
+    {
+      "attempt_id": "ec92e8025b2c2e6ae7a206e56abb2001ae0e71f2267492734a6e1f8784494013",
+      "run_id": "pilot42-history-arith-add-10-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 22,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.052600051276385784
+    },
+    {
+      "attempt_id": "6f6d2a1b36e1ac61f82424740a7195b29224a2af7cbe5cf9e69aa207ea0d6115",
+      "run_id": "pilot42-history-arith-add-10-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 22,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.171900016255677
+    },
+    {
+      "attempt_id": "6a9f80c4549178bb87799b2e7a37bfa578e1a4867971a98e69c155915cc93f9e",
+      "run_id": "pilot42-history-arith-multiply-07-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 23,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04880002234131098
+    },
+    {
+      "attempt_id": "94c90ce3c05219ebcfb744f2e8af9b9c26a291dbcf5837f64048202aecd8dbb8",
+      "run_id": "pilot42-history-arith-multiply-07-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 23,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.775999980978668
+    },
+    {
+      "attempt_id": "172817cf22ac808350759744c5d6dec977ba106d29cc629b1f40eb7801ef1aa0",
+      "run_id": "pilot42-history-arith-multiply-07-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 24,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04880002234131098
+    },
+    {
+      "attempt_id": "8508a741d66b5a75f3a7a47d973e2dd25c8afb3a303f4e8ff1c468056ddecda1",
+      "run_id": "pilot42-history-arith-multiply-07-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 24,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.600700043141842
+    },
+    {
+      "attempt_id": "eeb4754b1f73fac46d74c838b57a238cd8bc39f01fc4d3be4a124f9d786e02b7",
+      "run_id": "pilot42-history-arith-multiply-02-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 25,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05030003376305103
+    },
+    {
+      "attempt_id": "d6723b0d54df188bdc7ea55644c8036814d92acefd2224da739183aa5f385370",
+      "run_id": "pilot42-history-arith-multiply-02-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 25,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.121700004674494
+    },
+    {
+      "attempt_id": "f2e076a99adb9925a1d9cc31cbe69a11c6682e82f58fcce5abf558f7a99b6eae",
+      "run_id": "pilot42-history-arith-multiply-02-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 26,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05239993333816528
+    },
+    {
+      "attempt_id": "cdc9fc5ba2ea4cc11a5adf4426cb4968b2d243ffa3d2ce19760ce9f42d75755e",
+      "run_id": "pilot42-history-arith-multiply-02-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 26,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.221500066109002
+    },
+    {
+      "attempt_id": "8ac825e185fa3a1bd64aace1f0e1a0d91f3561bcd8029b079b5fe2b6fab0e6b8",
+      "run_id": "pilot42-history-arith-divide-01-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 27,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.058999983593821526
+    },
+    {
+      "attempt_id": "0ff4ee0fd809cea96b52e9c55d73b646d5f582bbafdc9f5fc3212acfd7a52c46",
+      "run_id": "pilot42-history-arith-divide-01-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 27,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.806599981151521
+    },
+    {
+      "attempt_id": "79d2d582a64477e11a8ac6e8a701a3c0ab6b49006bc0313c40dc652d896370b8",
+      "run_id": "pilot42-history-arith-divide-01-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 28,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.07129996083676815
+    },
+    {
+      "attempt_id": "b7bafe06180a52ac50635f3b719f0dc79beada1f4bd263a55d37e1bae8ff6099",
+      "run_id": "pilot42-history-arith-divide-01-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 28,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.407800018787384
+    },
+    {
+      "attempt_id": "f60b6f36bb3fb168b030016d9acaf88f973b204e0e73d7d8870560b8b128335c",
+      "run_id": "pilot42-history-arith-multiply-01-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 29,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.0475000124424696
+    },
+    {
+      "attempt_id": "cccc1ca79401628481f72b5526a131cb7abd10294feb4d62ce37937a39df5e65",
+      "run_id": "pilot42-history-arith-multiply-01-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 29,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.822199983522296
+    },
+    {
+      "attempt_id": "d3e0abd95a99071d862ca9ff0cc3a1066de3cb2cd91a3d88c2ab06dc9c4d28e5",
+      "run_id": "pilot42-history-arith-multiply-01-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 30,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.053600058890879154
+    },
+    {
+      "attempt_id": "f5c883d7b1993976d9c86d03bef64a3d1bf5ee60cac011f715a440117b51af32",
+      "run_id": "pilot42-history-arith-multiply-01-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 30,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.681000025011599
+    },
+    {
+      "attempt_id": "f989e895dffab39d772d8e41495e99b9f73b1b0f4d8481bc17d7f29839e52dd2",
+      "run_id": "pilot42-history-arith-divide-05-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 31,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06220000796020031
+    },
+    {
+      "attempt_id": "904efde67a9d7d34cf92c1f3916855cca8a00f8b4d4653ecf1abf5c670fabd99",
+      "run_id": "pilot42-history-arith-divide-05-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 31,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.956099955365062
+    },
+    {
+      "attempt_id": "f22b72232b7b60cbfedfc126e5e4720182480f6017b4bd55a8eadeb970444e59",
+      "run_id": "pilot42-history-arith-divide-05-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 32,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06349990144371986
+    },
+    {
+      "attempt_id": "cb329062bf42926411c08121a26fa677b2388be4c962a6a2f7a50daf077543e0",
+      "run_id": "pilot42-history-arith-divide-05-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 32,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.18640007916838
+    },
+    {
+      "attempt_id": "5abab41484dd628b3e620b2c693dd09acdc937a3973d2b9171385368ff0b1438",
+      "run_id": "pilot42-history-arith-add-04-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 33,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05139992572367191
+    },
+    {
+      "attempt_id": "77c9b6b823733439625349ab1f8129f03d89cd8ded86d1af00db6ebac35a2da9",
+      "run_id": "pilot42-history-arith-add-04-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 33,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 13.27060000039637
+    },
+    {
+      "attempt_id": "762b742c16d65678f8a2a2e2b2f53d4546650bfc6d03ab8ade0a140d83572498",
+      "run_id": "pilot42-history-arith-add-04-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 34,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05439994856715202
+    },
+    {
+      "attempt_id": "9eb70d4d6027376b5c291492703a1516d4f161a56995487f81c28b9b438b06ff",
+      "run_id": "pilot42-history-arith-add-04-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 34,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.963600012473762
+    },
+    {
+      "attempt_id": "c993cbca5009bc67803b7bc76d300089dbbaa6753a46757c53b9667c08d91807",
+      "run_id": "pilot42-history-arith-subtract-07-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 35,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05110003985464573
+    },
+    {
+      "attempt_id": "01931a3dc4447687eca37ed78b4fff391e49fa9edde3a2d9c0499210c882a93f",
+      "run_id": "pilot42-history-arith-subtract-07-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 35,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.228499934077263
+    },
+    {
+      "attempt_id": "de7b57ee0f4b1ace7412d67b1b6aea50c48ce6bcf18ef799d693a8fb0b17dff6",
+      "run_id": "pilot42-history-arith-subtract-07-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 36,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04850002005696297
+    },
+    {
+      "attempt_id": "8c7774e484af928e51346ea332fbd4d9953371ba7dba94937543e72fd7553910",
+      "run_id": "pilot42-history-arith-subtract-07-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 36,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.314399937167764
+    },
+    {
+      "attempt_id": "d6740127fb22658a22765768a7134be81d11832d63612cc5b9a23d6d54668c61",
+      "run_id": "pilot42-history-arith-divide-06-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 37,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06360001862049103
+    },
+    {
+      "attempt_id": "1117c3f5c6c68c349dd39693f54c0345444d36a85d619c4f21d28fe2f561ddf4",
+      "run_id": "pilot42-history-arith-divide-06-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 37,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.392799904569983
+    },
+    {
+      "attempt_id": "c76cd22125afd39e66d7705a9ceda30b1aa9b6fe2285a9e10c8ac0a713dedfa8",
+      "run_id": "pilot42-history-arith-divide-06-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 38,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.057299970649182796
+    },
+    {
+      "attempt_id": "35b5bd11eec076ccb9f7558408d04f3a6d98595673be8bd45938e02ced7a6c2a",
+      "run_id": "pilot42-history-arith-divide-06-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 38,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.27940004132688
+    },
+    {
+      "attempt_id": "50d6d330ea6c60b82da043cc8910288b126527c6d1491b9d31592cb234f31b03",
+      "run_id": "pilot42-history-arith-add-05-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 39,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06250001024454832
+    },
+    {
+      "attempt_id": "3e44c50d0dcbcc04cb9f28c37202e316698e3a8c2a36fd99149311d96e894bbd",
+      "run_id": "pilot42-history-arith-add-05-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 39,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.956200025044382
+    },
+    {
+      "attempt_id": "88b88e467003c9517027b071e12242d950cf2858d847d0f17e2395d3bc2d42a5",
+      "run_id": "pilot42-history-arith-add-05-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 40,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05010003224015236
+    },
+    {
+      "attempt_id": "7be98b7cc878641ff1cbb144a80c53e79f60c7cde88c8782a3e530cdd7f68736",
+      "run_id": "pilot42-history-arith-add-05-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 40,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.088000028394163
+    },
+    {
+      "attempt_id": "a4deb2d2947404780972c8bcb28a3e2c6d449b2804c888620e2bd679526296a6",
+      "run_id": "pilot42-development-arith-subtract-15-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 41,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05540007259696722
+    },
+    {
+      "attempt_id": "88b73a33d4f79ba19b1077f8050d996c1bd718026817b29e68ac57f761b08ff9",
+      "run_id": "pilot42-development-arith-subtract-15-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 41,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.020299931056798
+    },
+    {
+      "attempt_id": "410fc14bf7ed353c58addf9d1046dba25f2dd08a78fc3b5befd4a28991413121",
+      "run_id": "pilot42-development-arith-subtract-15-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 42,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04870002157986164
+    },
+    {
+      "attempt_id": "de6b6b40089938f73d4e91131b34651419f4708696b56ab81f116c06a3ce0b69",
+      "run_id": "pilot42-development-arith-subtract-15-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 42,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.90589999128133
+    },
+    {
+      "attempt_id": "e9fbbabf1bdd25ab6553ff6aba4a686a5f657809d282267d9fa46038d74be1ed",
+      "run_id": "pilot42-development-arith-add-11-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 43,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05040003452450037
+    },
+    {
+      "attempt_id": "a4b0480f558eba2f58d7d4b613d656044770764c391e00a06c1a41f5f6f80842",
+      "run_id": "pilot42-development-arith-add-11-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 43,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.46889997087419
+    },
+    {
+      "attempt_id": "34fba678c4aebf3b1a1b80fe5a584fe30568c467af903f0f435830689978b21f",
+      "run_id": "pilot42-development-arith-add-11-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 44,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05159992724657059
+    },
+    {
+      "attempt_id": "8f0c4e10e32eb4e0192e97720e1382d29b07313992bf2f2b56e05c9c3dd50844",
+      "run_id": "pilot42-development-arith-add-11-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 44,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.176600004546344
+    },
+    {
+      "attempt_id": "df033b2b16d1292c2a59d814ad0128665a93cf6c9d27278adb0338b63dd0bddc",
+      "run_id": "pilot42-development-arith-divide-15-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 45,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.11200003791600466
+    },
+    {
+      "attempt_id": "d356fbfd5fede68eeb0cba1805333d108748ea59587f5dd26fc47ec47cc48082",
+      "run_id": "pilot42-development-arith-divide-15-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 45,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.976099991239607
+    },
+    {
+      "attempt_id": "fbf8ceaf8407c939319c6804a3d617d95effa2bc65b9211cb2d16247f25c3c2f",
+      "run_id": "pilot42-development-arith-divide-15-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 46,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.0619000056758523
+    },
+    {
+      "attempt_id": "c3a995789efb863de639669719736dc7ef349f9ad0ed049633c0b3c769f74a57",
+      "run_id": "pilot42-development-arith-divide-15-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 46,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.401199899613857
+    },
+    {
+      "attempt_id": "a69d76bc68cbe0260b62a7341d6bd61a7a54550e15592c512db124e40a6c9acb",
+      "run_id": "pilot42-development-arith-subtract-08-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 47,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05439994856715202
+    },
+    {
+      "attempt_id": "c0f86e7526e0d25d040c201f04535c73caa5893a0c56e01028d45924c1bb1292",
+      "run_id": "pilot42-development-arith-subtract-08-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 47,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.29399991966784
+    },
+    {
+      "attempt_id": "448fe08086047a73c3a1d0fea259f07fc4f107363e11581edc94fc862bc2ed18",
+      "run_id": "pilot42-development-arith-subtract-08-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 48,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06290001329034567
+    },
+    {
+      "attempt_id": "376aad8153a1cb2f529689c524d5eda225c9bc87e6745f00f5e1328f0ba99c43",
+      "run_id": "pilot42-development-arith-subtract-08-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 48,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.443000006489456
+    },
+    {
+      "attempt_id": "9f2ef14dfb33ee153c31f954a6bb21709263cefa5c2d2c9df8a8acfd6c1423ca",
+      "run_id": "pilot42-development-arith-multiply-12-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 49,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05019991658627987
+    },
+    {
+      "attempt_id": "b906516b989d5f528c2c392697fef53b6b2780298b847616b4acac69019f34ff",
+      "run_id": "pilot42-development-arith-multiply-12-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 49,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 28.623800026252866
+    },
+    {
+      "attempt_id": "eb318f03cf7a6e5fe628c94f8e05eda77bbffad8f8dc193a5079459dbc57f125",
+      "run_id": "pilot42-development-arith-multiply-12-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 50,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.046600005589425564
+    },
+    {
+      "attempt_id": "410ce9b0b1bd79ef4d1a8dd96e0b575772dfc83796c9c5f637148bb40ca04156",
+      "run_id": "pilot42-development-arith-multiply-12-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 50,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 31.746699940413237
+    },
+    {
+      "attempt_id": "aa1319cd0b2700e94a4b584277834d4f04ca8034021116e3a240b9d9b4f3a8bf",
+      "run_id": "pilot42-development-arith-subtract-10-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 51,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.08290004916489124
+    },
+    {
+      "attempt_id": "8ed0fb7f0e9dc3b0dc743f3cc8df03a2658590de89966d1d64e97fd35f61df66",
+      "run_id": "pilot42-development-arith-subtract-10-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 51,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 26.201699976809323
+    },
+    {
+      "attempt_id": "deaec991ced4589328ed464ceb53ce02de3fe6be5dc69311e1325274145b7cb5",
+      "run_id": "pilot42-development-arith-subtract-10-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 52,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04910002462565899
+    },
+    {
+      "attempt_id": "cb7f9e685af4da30eeb180451474279e23497d98623c456e6acca1cab9ff1f2a",
+      "run_id": "pilot42-development-arith-subtract-10-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 52,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.93850000668317
+    },
+    {
+      "attempt_id": "d701d22f82a246605f46a3bac3b0153d683862d39a2be2c3fef30875a7c9e1d2",
+      "run_id": "pilot42-development-arith-add-01-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 53,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05170004442334175
+    },
+    {
+      "attempt_id": "2ff3e9cafbe4531f41e56f174ddac12b7ad6eedb41ebe9afb13f4f1986c2fb82",
+      "run_id": "pilot42-development-arith-add-01-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 53,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.251800063997507
+    },
+    {
+      "attempt_id": "3d6bd1b3b8b87eb52bedd9fc36a13524745e7f0376222095afc87e17d5f7ecce",
+      "run_id": "pilot42-development-arith-add-01-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 54,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04900002386420965
+    },
+    {
+      "attempt_id": "bb193b0210cfa0513d7d8147291f076a938813c96bba328e8237debd3a66e11d",
+      "run_id": "pilot42-development-arith-add-01-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 54,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.02030004747212
+    },
+    {
+      "attempt_id": "cc2f2461cf6c0ea573d66262bcfcde16155b6ac2094c2c0b2cfa2b277fdd0ced",
+      "run_id": "pilot42-development-arith-multiply-15-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 55,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.050600036047399044
+    },
+    {
+      "attempt_id": "3300ff8ef57e129754f434ed9fdddb5b71f237ff5b7860057490f1da2c186e0e",
+      "run_id": "pilot42-development-arith-multiply-15-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 55,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.850599966943264
+    },
+    {
+      "attempt_id": "21248836e975a48816c72e703d639d86608841959844fd03a61b2f9b3e9b9238",
+      "run_id": "pilot42-development-arith-multiply-15-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 56,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04870002157986164
+    },
+    {
+      "attempt_id": "e0bdefb7cb0fb3cc129bbb018307d635c6cfe609704066cfceb89f968d73b0fd",
+      "run_id": "pilot42-development-arith-multiply-15-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 56,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.815999936312437
+    },
+    {
+      "attempt_id": "df1bf753fa88dac866845e5f8123f961a66691a977a6df66387acda4679c7d0a",
+      "run_id": "pilot42-development-arith-subtract-11-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 57,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04900002386420965
+    },
+    {
+      "attempt_id": "6c06ebf3a5131742b9156bfac728723b872c8df29b68968a8e0f043672f04d31",
+      "run_id": "pilot42-development-arith-subtract-11-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 57,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.439599980600178
+    },
+    {
+      "attempt_id": "a65a43054555c846a2f64630f683361bac8ed5eb5a7d3f903fb54d67357322a1",
+      "run_id": "pilot42-development-arith-subtract-11-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 58,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.057399971410632133
+    },
+    {
+      "attempt_id": "6ee36e89e8b383b128f42de54b5213eb4d22c2d4b24f60e0199cb84c84f23f96",
+      "run_id": "pilot42-development-arith-subtract-11-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 58,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.735899977385998
+    },
+    {
+      "attempt_id": "d3cf7a8459618fb9d877ac2ba0c9fd47b67ed527af0c9ada5f0fa11e92c10f83",
+      "run_id": "pilot42-development-arith-divide-08-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 59,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06009999196976423
+    },
+    {
+      "attempt_id": "2061191a83d328bb80e5f9f8da626668bacb29461a890c1490b0639bd7665c5d",
+      "run_id": "pilot42-development-arith-divide-08-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 59,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.861199978739023
+    },
+    {
+      "attempt_id": "74cb3d7f92b938a1ec85d7f06c4d249d9694991ba56381074a0352a2aa550023",
+      "run_id": "pilot42-development-arith-divide-08-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 60,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06089999806135893
+    },
+    {
+      "attempt_id": "16f366deb9a03f470d27a84262b29c7eee81996d13e30c068fc11b449f04ce73",
+      "run_id": "pilot42-development-arith-divide-08-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 60,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.596999993547797
+    },
+    {
+      "attempt_id": "6e503e326f55c5d75ef3aa961ddd18c2246b9f3c80598571de442a6dc6063034",
+      "run_id": "pilot42-development-arith-subtract-04-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 61,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.052699935622513294
+    },
+    {
+      "attempt_id": "f56f47a3fa602d1258882555c0cd728088c64e0587f7de726b99a224fea09c4f",
+      "run_id": "pilot42-development-arith-subtract-04-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 61,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.172999929636717
+    },
+    {
+      "attempt_id": "1a0e2cb3c6b4c6089b5c6b6061a13de2fd317afaf5bce217e9e9bc321bccc96b",
+      "run_id": "pilot42-development-arith-subtract-04-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 62,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04970002919435501
+    },
+    {
+      "attempt_id": "5c8e0f0b5bbd866c6d29cee54470347b3b4355bc9d63f753285c5aaf755edb51",
+      "run_id": "pilot42-development-arith-subtract-04-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 62,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.267999954521656
+    },
+    {
+      "attempt_id": "94e9e6ce10b43be0e9d1c098f037e400ab674e88606d365d959538027952435a",
+      "run_id": "pilot42-development-arith-subtract-14-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 63,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04710000939667225
+    },
+    {
+      "attempt_id": "ed979ef1085827e971cea7d6e7db5f0fc96028c4326c2946d2d5e68875229f3e",
+      "run_id": "pilot42-development-arith-subtract-14-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 63,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.241399915888906
+    },
+    {
+      "attempt_id": "229fa4f0afbd5c3898ef9533baae51bae789ee7deddb4e1342930976e1da9f81",
+      "run_id": "pilot42-development-arith-subtract-14-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 64,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04710000939667225
+    },
+    {
+      "attempt_id": "ccf67d8b938cf160a6ab63720931b1f573ca83aeece34f1056ed0892c936f52b",
+      "run_id": "pilot42-development-arith-subtract-14-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 64,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.909900021739304
+    },
+    {
+      "attempt_id": "e67f090e22bfad4c5c2ad237cff53ce1fbcd8893e01b78f54e66458ecf2540e7",
+      "run_id": "pilot42-development-arith-multiply-10-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 65,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05159992724657059
+    },
+    {
+      "attempt_id": "468c5053104ba2fdf0ce4ba7e5d3c14b72c20f88031b9c8299ed743b97f7863c",
+      "run_id": "pilot42-development-arith-multiply-10-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 65,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.482100002467632
+    },
+    {
+      "attempt_id": "f26e0f5de5b64d9125fc69da55a8f501ec33572d24764f0d91fbbeb39ee7fd74",
+      "run_id": "pilot42-development-arith-multiply-10-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 66,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.049699912779033184
+    },
+    {
+      "attempt_id": "f5d996456728a49ba1878e7b5750d1c83be47a112c5f39690439702133a3e337",
+      "run_id": "pilot42-development-arith-multiply-10-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 66,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.18470001872629
+    },
+    {
+      "attempt_id": "d22625b3dee34141c78ac6f4a4b9dc152cb3a3f9d26233904892d3d313533104",
+      "run_id": "pilot42-development-arith-subtract-12-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 67,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05159992724657059
+    },
+    {
+      "attempt_id": "820f4313bf325f3244a59c139c917c2bc420787846c313268657a1ff45dfdd9a",
+      "run_id": "pilot42-development-arith-subtract-12-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 67,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 9.675899986177683
+    },
+    {
+      "attempt_id": "fe689f495a18a1e01680eb4098f1cee42e4ab5bd02033b739b1ccfb12555c6c3",
+      "run_id": "pilot42-development-arith-subtract-12-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 68,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.052999937906861305
+    },
+    {
+      "attempt_id": "4cb3fab1e742d972d6292ae325af6333727f0358318cc3d11d124f16414f4223",
+      "run_id": "pilot42-development-arith-subtract-12-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 68,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.458300054073334
+    },
+    {
+      "attempt_id": "b46a1024dc861b51e52a758af47fea2da13ba1e76da480e78068e3c6ab19d2b7",
+      "run_id": "pilot42-development-arith-divide-04-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 69,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06280001252889633
+    },
+    {
+      "attempt_id": "c11304002d956d67346c8ee3ee55fc2e89cd3ffed0ed78f0c2cea62214e1a61a",
+      "run_id": "pilot42-development-arith-divide-04-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 69,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 13.54050007648766
+    },
+    {
+      "attempt_id": "abefa3c48b1342d13f39d5eedc3e4d841e0eaf27a015eb32380c18eae376e4ed",
+      "run_id": "pilot42-development-arith-divide-04-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 70,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05849997978657484
+    },
+    {
+      "attempt_id": "809732976f3f0e415c62ebe937983599c64982e40bca16a91352048cae975965",
+      "run_id": "pilot42-development-arith-divide-04-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 70,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.319799999706447
+    },
+    {
+      "attempt_id": "2f1d81985a7913767812a40a0773ef4b971190e90b32e42a7d8b2ed92614581b",
+      "run_id": "pilot42-development-arith-add-13-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 71,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04950002767145634
+    },
+    {
+      "attempt_id": "df7a6e13a6d167551bc3a63a7d996ef831169ba44f516017f886bb748e9b424c",
+      "run_id": "pilot42-development-arith-add-13-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 71,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.268299956806004
+    },
+    {
+      "attempt_id": "5a2ebcf34da2c68dd97d65c3dd019b4dd34022a9d781058ab822ff3b8f810b76",
+      "run_id": "pilot42-development-arith-add-13-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 72,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05200004670768976
+    },
+    {
+      "attempt_id": "3cf6b9ddf2f6ebdc38ecbf238da05fe7fdd715a422bcfd397fdd4af838ffbf42",
+      "run_id": "pilot42-development-arith-add-13-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 72,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.416700039058924
+    },
+    {
+      "attempt_id": "69dab4dfaab4a14645c1ee9afe4c9f8fb6fef4864d2e1d1d7315ee664ee1ef4e",
+      "run_id": "pilot42-development-arith-multiply-06-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 73,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05139992572367191
+    },
+    {
+      "attempt_id": "186b98428fa5a7c122468148bc3079d5369a42fe9b709e1ee3371a7e0c9ccc50",
+      "run_id": "pilot42-development-arith-multiply-06-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 73,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.169499997980893
+    },
+    {
+      "attempt_id": "1d5cc718d7ecb1c1e37c3da5845dbeb8278ce80c23489a3f02c5609ccb5cac99",
+      "run_id": "pilot42-development-arith-multiply-06-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 74,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.049400026910007
+    },
+    {
+      "attempt_id": "8f4ecc065ed10a74973b15c594abeba6041f462519b0aae032ddb0f8ac49c4d9",
+      "run_id": "pilot42-development-arith-multiply-06-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 74,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 11.389799998141825
+    },
+    {
+      "attempt_id": "d75a0aa85fb05e1bd605dae88c2d6a02d8e05831c8cd39480df9174cdb3138e5",
+      "run_id": "pilot42-development-arith-multiply-13-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 75,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04979991354048252
+    },
+    {
+      "attempt_id": "695365f49f90ed481083ad596fa4f7eebef372436c86c511fd1af54bc927a3b9",
+      "run_id": "pilot42-development-arith-multiply-13-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 75,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.870900005102158
+    },
+    {
+      "attempt_id": "70ab1634d77d06ecd9658803122392e619b4e0562acae65e8d63f9035a354541",
+      "run_id": "pilot42-development-arith-multiply-13-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 76,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.04910002462565899
+    },
+    {
+      "attempt_id": "0e8920dcc0f2fac469124ae5985218f7c3b418e40d6889b84c251ca903a015e5",
+      "run_id": "pilot42-development-arith-multiply-13-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 76,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 12.026799959130585
+    },
+    {
+      "attempt_id": "d72dad9b95c5dc4802f7a2cd083714371829f7caedac5f582d1cb83dfb5153e6",
+      "run_id": "pilot42-development-arith-multiply-03-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 77,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.049400026910007
+    },
+    {
+      "attempt_id": "6357c46c6bd91dc91470b1b9aa82248e0028795c9c3c1a837e27bf4a662d2505",
+      "run_id": "pilot42-development-arith-multiply-03-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 77,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.276000015437603
+    },
+    {
+      "attempt_id": "06822d68d26a5a42ac641bdd646278613a4616d7c7866873a1edd939bedc26d0",
+      "run_id": "pilot42-development-arith-multiply-03-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 78,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.047600013203918934
+    },
+    {
+      "attempt_id": "509a59e8fc3f7979247c5987da6df8d67bad39cd32ee9c4173e350753bb2a9ff",
+      "run_id": "pilot42-development-arith-multiply-03-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 78,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.725900065153837
+    },
+    {
+      "attempt_id": "001450000d8cee620e93a123723438b24d6fcf7e1d9c7260a1e17b2a9732d641",
+      "run_id": "pilot42-development-arith-divide-09-correct",
+      "verifier_name": "rule",
+      "invocation_ordinal": 79,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.05730008706450462
+    },
+    {
+      "attempt_id": "9f26869b9f57aaed5139db51959d2a8f073e0ce77bb95473e66a11d2c9a7cab5",
+      "run_id": "pilot42-development-arith-divide-09-correct",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 79,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 13.462499948218465
+    },
+    {
+      "attempt_id": "841524ea0f9a9d10029c17cde3cab278948d5cf1ac1cc7513ad7a44bf1daaf71",
+      "run_id": "pilot42-development-arith-divide-09-incorrect",
+      "verifier_name": "rule",
+      "invocation_ordinal": 80,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 0.06230000872164965
+    },
+    {
+      "attempt_id": "2a76cea2713184c9411dfeb23871eab12af4175b75782f6e60e3c952c9b0fd43",
+      "run_id": "pilot42-development-arith-divide-09-incorrect",
+      "verifier_name": "semantic",
+      "invocation_ordinal": 80,
+      "thermal_state": "subsequent_measured_call_cache_temperature_not_measured",
+      "included_in_calibration": true,
+      "duration_ms": 10.980500024743378
+    }
+  ]
+}

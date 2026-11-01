@@ -1,0 +1,69 @@
+Policy build complete (empirical).
+Artifact: 6b52c2cc954d461a9a1d34d4ffcf23b048a77f494104fbca7a7f038271167a94
+Feasible strategies: 2
+Domain: general; budget: 12.94808874517912 ms.
+Positive strategies: [{"strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95", "verifiers": ["rule", "semantic"], "aggregation": "reputation_weighted", "estimated_cost": 12.94808874517912, "probability": 1.0}]
+Probability by team size: {"2": 1.0}
+one strategy has probability one. This is the fitted solution; no causal explanation is inferred.
+All metrics below are development results, not held-out evidence.
+{
+  "clean_scenario": {
+    "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+    "decision_coverage": 0.0,
+    "development_game_objective": 0.30000000000000004,
+    "development_validation_loss": 0.2,
+    "expected_estimated_cost": 12.94808874517912,
+    "uncertainty_rate": 1.0
+  },
+  "evidence_role": "development",
+  "scenarios": [
+    {
+      "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "decision_coverage": 0.0,
+      "development_game_objective": 0.30000000000000004,
+      "development_validation_loss": 0.2,
+      "expected_estimated_cost": 12.94808874517912,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack_id": "56b0f18eb25be4e148a0595de8be2b02d335d524206db3602c12bf74de0510dd",
+      "decision_coverage": 0.0,
+      "development_game_objective": 0.30000000000000004,
+      "development_validation_loss": 0.2,
+      "expected_estimated_cost": 12.94808874517912,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack_id": "7b745089ad127b0186a9ccbed8f192b45fa84f02e0da5e03cea587481eb9874c",
+      "decision_coverage": 0.0,
+      "development_game_objective": 0.30000000000000004,
+      "development_validation_loss": 0.2,
+      "expected_estimated_cost": 12.94808874517912,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack_id": "c89a17d0ed0f383a5fd3b4c4d0c01b899e7233d30af34cd8bc8129fb6aac5ecf",
+      "decision_coverage": 0.0,
+      "development_game_objective": 0.30000000000000004,
+      "development_validation_loss": 0.2,
+      "expected_estimated_cost": 12.94808874517912,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack_id": "fa5f47b3a737cf87554c7dd297aaca1ff13cd5d327d492e1ed42d41cfe5c964f",
+      "decision_coverage": 0.0,
+      "development_game_objective": 0.30000000000000004,
+      "development_validation_loss": 0.2,
+      "expected_estimated_cost": 12.94808874517912,
+      "uncertainty_rate": 1.0
+    }
+  ],
+  "worst_case_scenarios": [
+    "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+    "56b0f18eb25be4e148a0595de8be2b02d335d524206db3602c12bf74de0510dd",
+    "7b745089ad127b0186a9ccbed8f192b45fa84f02e0da5e03cea587481eb9874c",
+    "c89a17d0ed0f383a5fd3b4c4d0c01b899e7233d30af34cd8bc8129fb6aac5ecf",
+    "fa5f47b3a737cf87554c7dd297aaca1ff13cd5d327d492e1ed42d41cfe5c964f"
+  ],
+  "worst_validation_loss": 0.2
+}

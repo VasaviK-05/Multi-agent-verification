@@ -1,0 +1,222 @@
+{
+  "application_source_digest": "23f3a89528f61462bae2ce94ef333eb87df9a6c4555db836c263b3541ccf603f",
+  "artifacts": [
+    {
+      "path": "authorization.json",
+      "sha256": "b70259e75ca909b045e79d24bdaad17eaf42d8d0c692a92fa5509f3c11d10203"
+    },
+    {
+      "path": "request.json",
+      "sha256": "4fa660d55569265d1271018f69c7d196de17398df5b09c21d83b2ab82e3a13dc"
+    },
+    {
+      "path": "resource-preflight.json",
+      "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+    },
+    {
+      "path": "preparation-validation.json",
+      "sha256": "c4901ea87bade4aacd6ac5708cb13957bd121c76f2676931db5c27342a40c69a"
+    },
+    {
+      "path": "network-counts.json",
+      "sha256": "aab344dd9963adb729dc63943fafac28a5add3bc7f8f18df9651caddc8e9b7af"
+    },
+    {
+      "path": "network-events.jsonl",
+      "sha256": "95b64d5c642ec79f64b54058454d6cd870258ad3e37c0b8aa0d9ba0f7a730ef4"
+    },
+    {
+      "path": "collection/request.json",
+      "sha256": "fcc4a9d97b66d5375fd1d3a52628a83b0e122efab8cc6bcc4426d8bd222d0811"
+    },
+    {
+      "path": "collection/observed-setup.json",
+      "sha256": "e98c372313b1a0d301c43fc813c39a4a9e03627f0c77da08adf061ad03fc5ce5"
+    },
+    {
+      "path": "collection/recordings.json",
+      "sha256": "b132ed2e5b4c42850402b8ab9a0c6e21a6221262171f8b3d386ed10932d36afd"
+    },
+    {
+      "path": "collection/attempts.jsonl",
+      "sha256": "64572a403a2551da85124f54d4888e4b383dc275024f52c3faeaa6e5081b3189"
+    },
+    {
+      "path": "collection/collection-report.json",
+      "sha256": "2247f7bae073b1a244d62f2323281fa6cddd4c4982b25e7c5ca38c94ff548617"
+    },
+    {
+      "path": "collection.log",
+      "sha256": "8817aba4eb0ae9d1057cf55c9fd2676115de394479def395d4cb73c2078f4ffa"
+    }
+  ],
+  "bundle_id": "026afd2721646dd7f0bd908f6ea6fb9c57084c1eab9d0f4a73d2af864f6fb378",
+  "calibration_blocker": "Diagnostic request has no scientific custody or calibration freeze approval; linked measurements retained without calibration export",
+  "calibration_created": false,
+  "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+  "completeness": {
+    "complete": true,
+    "executed_calls": 24,
+    "expected_attempts": 24,
+    "gaps": [],
+    "intended_use": "smoke",
+    "note": "Complete collection is not approval of scientific settings or evidence of improvement.",
+    "recorded_outcomes": 24,
+    "study_approval": null
+  },
+  "estimator": "Arithmetic mean and median of all executed measured attempts, including raised failures/timeouts; no exclusions",
+  "execution_configuration_id": "474005c1055120a957c6aad86eaf5f5ae2df8ee4d3cd7aefda35445d680d7ce7",
+  "final_outcomes_accessed": false,
+  "initialization_and_resource_observation": "outside verify timer",
+  "interpretation": "Provisional diagnostic timings from six examples; not representative project-wide costs",
+  "labels_used": false,
+  "network": {
+    "blocked": 0,
+    "generation": 30,
+    "metadata": 100
+  },
+  "policy_fitted": false,
+  "quantity": "per-verifier attempt wall time; not CPU time, money or elapsed request latency",
+  "repeats": 1,
+  "request_id": "c47061d9343eaa9990b5e54960c1a127e85efb12efb38dc9149877d67b08bc16",
+  "rows": [
+    {
+      "abstentions": 0,
+      "attempted": 6,
+      "durations_ms": [
+        29.85399996396154,
+        38.97939994931221,
+        52.535500028170645,
+        57.8445999417454,
+        60.08680001832545,
+        203.98049999494106
+      ],
+      "failures": 0,
+      "included_attempt_ids": [
+        "9ec097a7e5a2006e5a9b4f0e6c368972b5ad6ee8daac49e3f8ab55cc2120c88c",
+        "9570dfa7f9202c207d8ddb3bf55dc870b51198a04052a5550dfc9e7103ca892f",
+        "e547917b1d93fbbab143be03481c02189e73c80dd7c2ccd5efa100ae129ab452",
+        "af6d441cd20b4aa241fa6f516ed3345b0deec05ddd6bdd9bfee0e5f77ac879c8",
+        "209da64700988632560df949b0d0524555545f999f5ca6cefbbc62c70caf7550",
+        "819aa83ea763e530679b6818835612d2e99dac353e57d76a81d6d62c529f52d7"
+      ],
+      "intended": 6,
+      "interruptions": 0,
+      "mean_ms": 73.88013331607605,
+      "median_ms": 55.19004998495802,
+      "missing_measurements": 0,
+      "p95_nearest_rank_ms": 203.98049999494106,
+      "returned": 6,
+      "timeouts": 0,
+      "unverified_measured_attempts": 0,
+      "verifier": "semantic"
+    },
+    {
+      "abstentions": 0,
+      "attempted": 6,
+      "durations_ms": [
+        113.05479996372014,
+        178.65190003067255,
+        181.009600055404,
+        372.4123000865802,
+        492.88749997504056,
+        576.0336000239477
+      ],
+      "failures": 0,
+      "included_attempt_ids": [
+        "cb9f8bd71cc26b1e0a52e5b00fa959b9e1e816d74d39bad858beb1e07e88a183",
+        "0fc41f61fa40fddea3934d939f6c631457f7f008f3c32041e80627ad8721a4b4",
+        "92acd37b28d32ffbebed599b43aaba17f13a5f9f9f1837771b69cd4e1d5b6649",
+        "52c808b4d5eac0b8ba61e7da19b205b0d010f993c5891208be31e79608ec16b9",
+        "2a5ea044cb86f09afd01eedba50c16212913bf7a806869cf0de56d1cf5e84ec1",
+        "accb183b5115a205356c06e838d53a8db7216132de489ded9ae487bfb5099591"
+      ],
+      "intended": 6,
+      "interruptions": 0,
+      "mean_ms": 319.0082833558942,
+      "median_ms": 276.7109500709921,
+      "missing_measurements": 0,
+      "p95_nearest_rank_ms": 576.0336000239477,
+      "returned": 6,
+      "timeouts": 0,
+      "unverified_measured_attempts": 0,
+      "verifier": "evidence"
+    },
+    {
+      "abstentions": 6,
+      "attempted": 6,
+      "durations_ms": [
+        0.06500002928078175,
+        0.06939994636923075,
+        0.13240007683634758,
+        0.14410004951059818,
+        0.17300003673881292,
+        0.24829991161823273
+      ],
+      "failures": 0,
+      "included_attempt_ids": [
+        "9790053331353e9bbbf8dc51424c84f8a1548414697b742c736fb187739b4217",
+        "02ba2deeb81246df034132c59e64e48d7328c2ef07d37192bffb1ad1f09a8870",
+        "44c2f1502aaa7a5e0a2a29dd98d2808266bf37beadce2cae219425ecfbc82302",
+        "6df354c4dc39c96eec353dc4d8ea5d8d0381cc2b3964681f5a25c6a1c80645cc",
+        "6963c336a84c7de58521b4a4a24cb3754ce6f4e1451d785e51a00977e908fcf2",
+        "8e2ec08048741701911c946b94cf09d3918eb757a4a39c7fe469475cff7a3124"
+      ],
+      "intended": 6,
+      "interruptions": 0,
+      "mean_ms": 0.13870000839233398,
+      "median_ms": 0.13825006317347288,
+      "missing_measurements": 0,
+      "p95_nearest_rank_ms": 0.24829991161823273,
+      "returned": 6,
+      "timeouts": 0,
+      "unverified_measured_attempts": 0,
+      "verifier": "rule"
+    },
+    {
+      "abstentions": 2,
+      "attempted": 6,
+      "durations_ms": [
+        12620.27479999233,
+        13266.919400077313,
+        13819.277800037526,
+        15186.082599917427,
+        18897.26359990891,
+        21430.31290010549
+      ],
+      "failures": 0,
+      "included_attempt_ids": [
+        "ce77d2312a248bd9279159642fbdaf4e24343dfea22e1026108d7b6d61b2dcd5",
+        "10404d1cb6b15eece1ad9466399d14ac2a4f5e81c6d8c6240895c2a6c8745e43",
+        "69cec9cdf8067e4069d348b8df1a8cd483ca47a5eabcf940a6a77baf1cbde34b",
+        "fa69b3979ef3b3949eb419307b65ab8a44a4660df66ca5679a7003c6f95f03e0",
+        "7e197c24d7f10d8a2ff8f4e12116e3886fc3bcc25e508b59cacab98a81beecdc",
+        "ab3c92839ee16fb58a595671b091a6f4d01d81a45c4223956baa2dc8641eeb80"
+      ],
+      "intended": 6,
+      "interruptions": 0,
+      "mean_ms": 15870.0218500065,
+      "median_ms": 14502.680199977476,
+      "missing_measurements": 0,
+      "p95_nearest_rank_ms": 21430.31290010549,
+      "returned": 6,
+      "timeouts": 0,
+      "unverified_measured_attempts": 0,
+      "verifier": "confidence"
+    }
+  ],
+  "scientific_reservation_created": false,
+  "settings_chosen": false,
+  "setup_fingerprint": "93029e22dfadd1babdfb360f70252113ede0ca17f58bf106ee18b44aea8a9750",
+  "training_export_allowed": false,
+  "units": "ms",
+  "unknown_requirement_examples": [
+    "factual-feasibility-draft-v1-e04",
+    "factual-feasibility-draft-v1-e05",
+    "factual-feasibility-draft-v1-e06",
+    "factual-feasibility-draft-v1-e07"
+  ],
+  "upper_percentile": "nearest rank p95: sorted duration at one-based ceil(.95*n); n=6 makes this the sample maximum",
+  "version": "provisional_diagnostic_timings_v1",
+  "warmups": 0
+}

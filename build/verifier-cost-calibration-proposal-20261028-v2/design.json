@@ -1,0 +1,55 @@
+{
+  "automatic_retries": 0,
+  "candidate_order": [
+    "semantic",
+    "evidence",
+    "rule",
+    "confidence"
+  ],
+  "categories": {
+    "add": 14,
+    "divide": 20,
+    "factual": 6,
+    "multiply": 22,
+    "subtract": 24
+  },
+  "confidence": {
+    "samples": 5,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "temperature": 0.8,
+    "timeout_seconds": 60
+  },
+  "downloads": 0,
+  "estimator": "mean_attempt_wall_time_ms_v1",
+  "example_order_seed": 20261028,
+  "execution": "sequential CPU; existing caches; factory initialization outside timer",
+  "failure_behavior": "First raised exception stops existing cost collector after preserving measured partial rows; later attempts are absent; missing required verifiers block calibration",
+  "freeze_procedure": "Approve design and outcome-free exclusion roster before collection; record immutable input/setup/request digests after collection and before calibration; retain all measured failures and all scheduled first calls; never inspect final outcomes",
+  "include_all_measured_failures": true,
+  "include_warmups": true,
+  "maximum_attempts": 344,
+  "maximum_local_generations": 430,
+  "maximum_metadata_requests": 4,
+  "metadata_scope": "two tags/version pairs in factory; no per-attempt live observer",
+  "paid_services": 0,
+  "population": "Convenience sample: 80 reference-assisted constructed arithmetic plus six short factual preparation examples; not representative project-wide",
+  "repetitions": 1,
+  "retain_first_calls": true,
+  "retained": "MeasurementInput, attempt statuses, monotonic durations, factory-observed setup and input identities; no returned report payloads",
+  "roles": {
+    "development": 43,
+    "history": 43
+  },
+  "runs": 86,
+  "scientific_scope": "Cost estimation only. No correctness adjudication, policy fitting, final evaluation or publication claims",
+  "setup_fingerprint": "93029e22dfadd1babdfb360f70252113ede0ca17f58bf106ee18b44aea8a9750",
+  "units": "ms",
+  "version": "verifier_cost_measurement_design_v2",
+  "warmups": 0
+}

@@ -1,0 +1,107 @@
+{
+  "context": {
+    "aggregation_versions": [
+      [
+        "dependency_group",
+        "groups_v1"
+      ],
+      [
+        "reputation_weighted",
+        "log_odds_v1"
+      ]
+    ],
+    "analyzer_provenance": [
+      [
+        "analysis_method",
+        "heuristic"
+      ],
+      [
+        "context_version",
+        "question_context_v1"
+      ],
+      [
+        "domain_status",
+        "unknown"
+      ],
+      [
+        "research_context_presence",
+        "present"
+      ],
+      [
+        "scoring_version",
+        "heuristic_surface_features_v1"
+      ]
+    ],
+    "attempt_costs": [
+      [
+        "confidence",
+        11831.109354651511
+      ],
+      [
+        "evidence",
+        42.12459068756204
+      ],
+      [
+        "rule",
+        0.1322023115705612
+      ],
+      [
+        "semantic",
+        30.955616287280655
+      ]
+    ],
+    "budget": 30000.0,
+    "cost_units": "ms",
+    "dependencies": {
+      "dependencies": [
+        {
+          "compromise_pathway": "Proposed report-level shared-model compromise assumption, not measured independence.",
+          "resource_id": "local-embedding-snapshot:23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "Proposed report-level shared-model compromise assumption, not measured independence.",
+          "resource_id": "local-nli-snapshot:a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "factual-team-selection-v1-proposed-v1"
+    },
+    "loss_configuration": {
+      "cost_units": "ms",
+      "false_accept": 1.0,
+      "false_reject": 1.0,
+      "resource_weight": 1e-05,
+      "uncertain": 0.2,
+      "version": "factual-team-selection-v1-proposed-loss-v1"
+    },
+    "offline_evaluation_id": null,
+    "provenance": {
+      "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "category": "general",
+      "category_kind": "domain",
+      "development_dataset": "factual-feasibility-draft-v1-development",
+      "evidence_kind": "empirical",
+      "final_test_dataset": "factual-feasibility-draft-v1-final_test",
+      "history_dataset": "factual-feasibility-draft-v1-history",
+      "loss_configuration": "factual-team-selection-v1-proposed-loss-v1",
+      "matrix_version": "factual-team-selection-v1-matrix-v1"
+    },
+    "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"builtin\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.3,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"semantic_comparison\"],\"latency\":0.4,\"limitations\":[\"Reference similarity is not factual correctness.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.5,\"requires_reference\":true,\"resource_penalty\":0.085,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.415,\"verifier_name\":\"semantic\"},{\"capability_source\":\"builtin\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":0.49,\"verifier_name\":\"evidence\"},{\"capability_source\":\"builtin\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":2,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.45,\"verifier_name\":\"rule\"},{\"capability_source\":\"builtin\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.9,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"consistency\"],\"latency\":1.0,\"limitations\":[\"Generation/judgment agreement is not factual evidence or independence.\",\"Provider readiness is unknown until execution.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":3,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.23500000000000001,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.265,\"verifier_name\":\"confidence\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.13,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"direct_fact\"],\"expected_uncovered\":[],\"fallback\":[\"semantic\",\"confidence\"],\"initial_selected\":[\"evidence\",\"rule\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":true,\"reputation_statistics\":[{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"semantic\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"evidence\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"rule\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"confidence\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"direct_fact\"],\"legacy_unrecognized\":[],\"requirements\":[\"direct_fact\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"direct_fact\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"heuristic_surface_features_v1\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+    "version": "game_context_v1"
+  },
+  "status": "not_fit_context; prior-only enumeration with historical sample-specific costs; replace with history snapshot and approved fresh calibration"
+}

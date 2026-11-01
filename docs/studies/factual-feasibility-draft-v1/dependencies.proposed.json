@@ -1,0 +1,28 @@
+{
+  "dependencies": [
+    {
+      "compromise_pathway": "shared embedding weights",
+      "resource_id": "local-embedding-snapshot",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ]
+    },
+    {
+      "compromise_pathway": "shared NLI weights",
+      "resource_id": "local-nli-snapshot",
+      "verifiers": [
+        "confidence",
+        "evidence"
+      ]
+    }
+  ],
+  "unknown_treatment": "shared_unknown",
+  "unresolved": [
+    "confidence",
+    "evidence",
+    "rule",
+    "semantic"
+  ],
+  "version": "factual-feasibility-draft-v1-dependencies-proposed"
+}

@@ -1,0 +1,847 @@
+{
+  "approvals_invented": false,
+  "calibration_errors": [
+    {
+      "message": "Input should be a valid dictionary or instance of MeasurementInput",
+      "path": [
+        "measurements"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid string",
+      "path": [
+        "final_test_reservation",
+        "custody_record"
+      ],
+      "type": "string_type"
+    },
+    {
+      "message": "Input should be a valid string",
+      "path": [
+        "freeze_record"
+      ],
+      "type": "string_type"
+    }
+  ],
+  "collection_errors": [
+    {
+      "message": "Input should be a valid string",
+      "path": [
+        "final_test_reservation",
+        "custody_record"
+      ],
+      "type": "string_type"
+    },
+    {
+      "message": "Input should be a valid string",
+      "path": [
+        "preparation_authorization"
+      ],
+      "type": "string_type"
+    }
+  ],
+  "final_metadata_entries": 44,
+  "new_generations": 0,
+  "new_live_metadata_requests": 0,
+  "new_verifier_attempts": 0,
+  "report_preserving_path_errors": [
+    {
+      "message": "Input should be a valid string",
+      "path": [
+        "preparation_authorization"
+      ],
+      "type": "string_type"
+    },
+    {
+      "message": "Input should be a valid string",
+      "path": [
+        "final_test_reservation",
+        "custody_record"
+      ],
+      "type": "string_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        0,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        1,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        2,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        3,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        4,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        5,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        6,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        7,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        8,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        9,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        10,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        11,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        12,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        13,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        14,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        15,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        16,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        17,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        18,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        19,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        20,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        21,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        22,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        23,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        24,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        25,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        26,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        27,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        28,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        29,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        30,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        31,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        32,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        33,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        34,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        35,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        36,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        37,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        38,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        39,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        40,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        41,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        42,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        43,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        44,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        45,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        46,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        47,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        48,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        49,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        50,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        51,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        52,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        53,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        54,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        55,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        56,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        57,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        58,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        59,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        60,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        61,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        62,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        63,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        64,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        65,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        66,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        67,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        68,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        69,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        70,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        71,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        72,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        73,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        74,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        75,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        76,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        77,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        78,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        79,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        80,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        81,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        82,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        83,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        84,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Input should be a valid dictionary or instance of IndependentLabel",
+      "path": [
+        "examples",
+        85,
+        "label"
+      ],
+      "type": "model_type"
+    },
+    {
+      "message": "Tuple should have at least 1 item after validation, not 0",
+      "path": [
+        "examples"
+      ],
+      "type": "too_short"
+    }
+  ],
+  "split_validation_passed": true
+}

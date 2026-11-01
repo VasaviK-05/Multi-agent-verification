@@ -1,0 +1,247 @@
+{
+  "scope": "Retained reports and recorded-resource observer simulation. Not live resource revalidation, inference or final evaluation. Each variant is an explicitly chosen episode, not per-request coverage routing.",
+  "checks": [
+    {
+      "cohort": "arithmetic",
+      "target": 0.0,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.0,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.0,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.0,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.25,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.25,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "example": "addition-307-503-incorrect",
+      "public_status": "failed",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.25,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.25,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.25,
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.25,
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.5,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.5,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "example": "addition-307-503-incorrect",
+      "public_status": "failed",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.5,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.5,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.5,
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.5,
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.75,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.75,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "example": "addition-307-503-incorrect",
+      "public_status": "failed",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.75,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.75,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.75,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "example": "addition-307-503-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "arithmetic",
+      "target": 0.75,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "example": "addition-307-503-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "semantic",
+      "target": 0.0,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "example": "frame-Alex-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "semantic",
+      "target": 0.0,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "example": "frame-Alex-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "factual",
+      "target": 0.0,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "AO-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "factual",
+      "target": 0.0,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "AO-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "factual",
+      "target": 0.25,
+      "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+      "example": "AO-correct",
+      "public_status": "passed",
+      "parity": true
+    },
+    {
+      "cohort": "factual",
+      "target": 0.25,
+      "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+      "example": "AO-incorrect",
+      "public_status": "failed",
+      "parity": true
+    },
+    {
+      "cohort": "factual",
+      "target": 0.25,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "AO-correct",
+      "public_status": "uncertain",
+      "parity": true
+    },
+    {
+      "cohort": "factual",
+      "target": 0.25,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "example": "AO-incorrect",
+      "public_status": "uncertain",
+      "parity": true
+    }
+  ],
+  "network_calls": 0,
+  "generation_calls": 0
+}

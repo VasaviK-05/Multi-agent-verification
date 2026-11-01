@@ -1,0 +1,59 @@
+{
+  "aggregations": [
+    "reputation_weighted",
+    "dependency_group"
+  ],
+  "attacks": {
+    "suppression": "unavailable",
+    "version": "report_corruption_v1"
+  },
+  "budget_ms": 30000.0,
+  "dependencies": {
+    "dependencies": [
+      {
+        "compromise_pathway": "Proposed report-level shared-model compromise assumption, not measured independence.",
+        "resource_id": "local-embedding-snapshot:23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ]
+      },
+      {
+        "compromise_pathway": "Proposed report-level shared-model compromise assumption, not measured independence.",
+        "resource_id": "local-nli-snapshot:a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ]
+      }
+    ],
+    "unknown_treatment": "shared_unknown",
+    "unresolved": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "version": "factual-team-selection-v1-proposed-v1"
+  },
+  "failure_contract": "all_selected_returned",
+  "fit_authorized": false,
+  "freeze_record": null,
+  "history_prior_alpha": 1.0,
+  "history_prior_beta": 1.0,
+  "loss": {
+    "cost_units": "ms",
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "resource_weight": 1e-05,
+    "uncertain": 0.2,
+    "version": "factual-team-selection-v1-proposed-loss-v1"
+  },
+  "minimum_participants": 2,
+  "optimizer_tolerance": 1e-08,
+  "resource_weight_per_ms": 1e-05,
+  "sampling_seed": 20261028,
+  "scientific_reproducibility_atol": 1e-12,
+  "status": "unapproved",
+  "threshold": 0.55
+}

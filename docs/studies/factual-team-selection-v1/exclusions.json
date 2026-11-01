@@ -1,0 +1,255 @@
+{
+  "cohorts": {
+    "be8f70e50548cc8e2fae0a31409f57d854eb1c98a47af4fdee42644e02341d34": [
+      "factual-feasibility-draft-v1-e02",
+      "factual-feasibility-draft-v1-e03"
+    ],
+    "d8b8b838ec70e66b447ee810a41cdaadfef8e4dbdd68f38a4819ecb60d8b98f6": [
+      "factual-feasibility-draft-v1-e04",
+      "factual-feasibility-draft-v1-e05",
+      "factual-feasibility-draft-v1-e06"
+    ],
+    "f4c9e634f9c48c9148eda4798e1b84761612cedc0e6cdbd4ae9be382048c7e3f": [
+      "factual-feasibility-draft-v1-e07"
+    ]
+  },
+  "rows": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "cohort_key": "be8f70e50548cc8e2fae0a31409f57d854eb1c98a47af4fdee42644e02341d34",
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "predicate_inputs": "question, actual analyzer output; no report, correctness flag or timing",
+      "reason": "known_direct_fact_capital_cohort",
+      "retained_in_original_draft": true,
+      "role": "history",
+      "selected": true
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "cohort_key": "be8f70e50548cc8e2fae0a31409f57d854eb1c98a47af4fdee42644e02341d34",
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "predicate_inputs": "question, actual analyzer output; no report, correctness flag or timing",
+      "reason": "known_direct_fact_capital_cohort",
+      "retained_in_original_draft": true,
+      "role": "development",
+      "selected": true
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "cohort_key": "d8b8b838ec70e66b447ee810a41cdaadfef8e4dbdd68f38a4819ecb60d8b98f6",
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "predicate_inputs": "question, actual analyzer output; no report, correctness flag or timing",
+      "reason": "requirements_unknown",
+      "retained_in_original_draft": true,
+      "role": "development",
+      "selected": false
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "cohort_key": "d8b8b838ec70e66b447ee810a41cdaadfef8e4dbdd68f38a4819ecb60d8b98f6",
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "predicate_inputs": "question, actual analyzer output; no report, correctness flag or timing",
+      "reason": "requirements_unknown",
+      "retained_in_original_draft": true,
+      "role": "history",
+      "selected": false
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "cohort_key": "d8b8b838ec70e66b447ee810a41cdaadfef8e4dbdd68f38a4819ecb60d8b98f6",
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "predicate_inputs": "question, actual analyzer output; no report, correctness flag or timing",
+      "reason": "requirements_unknown",
+      "retained_in_original_draft": true,
+      "role": "history",
+      "selected": false
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "cohort_key": "f4c9e634f9c48c9148eda4798e1b84761612cedc0e6cdbd4ae9be382048c7e3f",
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "predicate_inputs": "question, actual analyzer output; no report, correctness flag or timing",
+      "reason": "requirements_unknown",
+      "retained_in_original_draft": true,
+      "role": "development",
+      "selected": false
+    }
+  ],
+  "rule": "known direct_fact analyzer cohort, fixed before new verifier execution; no observed accuracy predicate"
+}

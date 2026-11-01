@@ -1,0 +1,28 @@
+Policy build blocked. No PolicyArtifact created.
+
+- study_id: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- configuration_version: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- code_revision: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- setting_role: Input should be 'primary' or 'sensitivity' Producer: dataset custodian / recording producer / study configuration owner.
+- scientific_scope: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- primary_outcomes: Input should be a valid tuple Producer: dataset custodian / recording producer / study configuration owner.
+- sensitivity_plan: Input should be a valid tuple Producer: dataset custodian / recording producer / study configuration owner.
+- matched_coverage_plan: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- final_test_custody_and_freeze_protocol: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- datasets: Input should be a valid tuple Producer: dataset custodian / recording producer / study configuration owner.
+- recording: Input should be a valid dictionary or instance of RecordingConfiguration Producer: dataset custodian / recording producer / study configuration owner.
+- context: Input should be a valid dictionary or instance of PlanningContext Producer: dataset custodian / recording producer / study configuration owner.
+- manifest.evidence_kind: Input should be 'empirical' or 'synthetic_test_fixture' Producer: dataset custodian / recording producer / study configuration owner.
+- manifest.partitions: Input should be a valid tuple Producer: dataset custodian / recording producer / study configuration owner.
+- manifest.final_test_reservation.dataset_id: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- manifest.final_test_reservation.custody_record: Input should be a valid string Producer: dataset custodian / recording producer / study configuration owner.
+- manifest.final_test_reservation.examples: Input should be a valid tuple Producer: dataset custodian / recording producer / study configuration owner.
+- contract: Input should be a valid dictionary or instance of ExecutionContract Producer: dataset custodian / recording producer / study configuration owner.
+- attacks: Input should be a valid dictionary or instance of AttackSpecification Producer: dataset custodian / recording producer / study configuration owner.
+- unknown_dependency_treatment: Input should be 'shared_unknown' Producer: dataset custodian / recording producer / study configuration owner.
+- greedy_aggregation: Input should be 'reputation_weighted' or 'dependency_group' Producer: dataset custodian / recording producer / study configuration owner.
+- policy_sampling_seeds: Input should be a valid tuple Producer: dataset custodian / recording producer / study configuration owner.
+- policy_sampling_repetitions: Input should be a valid integer Producer: dataset custodian / recording producer / study configuration owner.
+- uncertainty: Input should be a valid dictionary or instance of UncertaintyDesign Producer: dataset custodian / recording producer / study configuration owner.
+- optimizer_tolerance: Input should be a valid number Producer: dataset custodian / recording producer / study configuration owner.
+

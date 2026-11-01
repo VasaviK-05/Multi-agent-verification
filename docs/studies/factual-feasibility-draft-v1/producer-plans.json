@@ -1,0 +1,817 @@
+{
+  "examples": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "candidates": [
+        {
+          "adapter": "semantic_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "readiness": "unknown",
+            "requires_reference": true,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "semantic"
+        },
+        {
+          "adapter": "evidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "evidence"
+        },
+        {
+          "adapter": "rule_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "rule"
+        },
+        {
+          "adapter": "confidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "confidence"
+        }
+      ],
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "requirements": {
+        "disagreements": [],
+        "errors": [],
+        "legacy_hints": [
+          "direct_fact"
+        ],
+        "legacy_unrecognized": [],
+        "requirements": [
+          "direct_fact"
+        ],
+        "requirements_known": true,
+        "source": "research_context",
+        "status": "known",
+        "unsupported": [],
+        "weight_discrepancies": [],
+        "weights": [
+          [
+            "direct_fact",
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "candidates": [
+        {
+          "adapter": "semantic_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "readiness": "unknown",
+            "requires_reference": true,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "semantic"
+        },
+        {
+          "adapter": "evidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "evidence"
+        },
+        {
+          "adapter": "rule_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "rule"
+        },
+        {
+          "adapter": "confidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "confidence"
+        }
+      ],
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "requirements": {
+        "disagreements": [],
+        "errors": [],
+        "legacy_hints": [
+          "direct_fact"
+        ],
+        "legacy_unrecognized": [],
+        "requirements": [
+          "direct_fact"
+        ],
+        "requirements_known": true,
+        "source": "research_context",
+        "status": "known",
+        "unsupported": [],
+        "weight_discrepancies": [],
+        "weights": [
+          [
+            "direct_fact",
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "candidates": [
+        {
+          "adapter": "semantic_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "readiness": "unknown",
+            "requires_reference": true,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "semantic"
+        },
+        {
+          "adapter": "evidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "evidence"
+        },
+        {
+          "adapter": "rule_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "rule"
+        },
+        {
+          "adapter": "confidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "confidence"
+        }
+      ],
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "requirements": {
+        "disagreements": [],
+        "errors": [],
+        "legacy_hints": [],
+        "legacy_unrecognized": [],
+        "requirements": [],
+        "requirements_known": false,
+        "source": "research_context",
+        "status": "unknown",
+        "unsupported": [],
+        "weight_discrepancies": [],
+        "weights": []
+      }
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "candidates": [
+        {
+          "adapter": "semantic_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "readiness": "unknown",
+            "requires_reference": true,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "semantic"
+        },
+        {
+          "adapter": "evidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "evidence"
+        },
+        {
+          "adapter": "rule_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "rule"
+        },
+        {
+          "adapter": "confidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "confidence"
+        }
+      ],
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "requirements": {
+        "disagreements": [],
+        "errors": [],
+        "legacy_hints": [],
+        "legacy_unrecognized": [],
+        "requirements": [],
+        "requirements_known": false,
+        "source": "research_context",
+        "status": "unknown",
+        "unsupported": [],
+        "weight_discrepancies": [],
+        "weights": []
+      }
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "candidates": [
+        {
+          "adapter": "semantic_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "readiness": "unknown",
+            "requires_reference": true,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "semantic"
+        },
+        {
+          "adapter": "evidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "evidence"
+        },
+        {
+          "adapter": "rule_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "rule"
+        },
+        {
+          "adapter": "confidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "confidence"
+        }
+      ],
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "requirements": {
+        "disagreements": [],
+        "errors": [],
+        "legacy_hints": [],
+        "legacy_unrecognized": [],
+        "requirements": [],
+        "requirements_known": false,
+        "source": "research_context",
+        "status": "unknown",
+        "unsupported": [],
+        "weight_discrepancies": [],
+        "weights": []
+      }
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "scoring_version": "heuristic_surface_features_v1",
+          "verification_requirements": []
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": []
+      },
+      "candidates": [
+        {
+          "adapter": "semantic_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "readiness": "unknown",
+            "requires_reference": true,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "semantic"
+        },
+        {
+          "adapter": "evidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "evidence"
+        },
+        {
+          "adapter": "rule_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "rule"
+        },
+        {
+          "adapter": "confidence_v1",
+          "capabilities": {
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "readiness": "unknown",
+            "requires_reference": false,
+            "unavailable_reason": null
+          },
+          "capability_source": "builtin",
+          "eligible": true,
+          "exclusion_reason": null,
+          "prerequisite_status": "unknown",
+          "registered": true,
+          "verifier_name": "confidence"
+        }
+      ],
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "requirements": {
+        "disagreements": [],
+        "errors": [],
+        "legacy_hints": [],
+        "legacy_unrecognized": [],
+        "requirements": [],
+        "requirements_known": false,
+        "source": "research_context",
+        "status": "unknown",
+        "unsupported": [],
+        "weight_discrepancies": [],
+        "weights": []
+      }
+    }
+  ],
+  "status": "observed_heuristic_outputs_and_builtin_descriptors_not_handwritten"
+}

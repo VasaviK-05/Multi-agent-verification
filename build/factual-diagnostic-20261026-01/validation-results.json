@@ -1,0 +1,20 @@
+{
+  "affected_tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_diagnostic_collection.py tests/test_game_collection.py tests/test_cost_calibration.py tests/test_project_collection_adapter.py -q",
+    "passed": 81,
+    "failed": 0
+  },
+  "existing_evidence_probes": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_adaptive_pipeline.py -q -k 'test_actual_evidence_output_contract_is_consumed_without_models or test_actual_conflicting_evidence_cannot_cover_factual_request'",
+    "passed": 1,
+    "failed": 3,
+    "deselected": 88,
+    "classification": "Previously documented evidence/retrieval contract failures; production algorithms unchanged"
+  },
+  "new_test_failures": 0,
+  "calibration_created": false,
+  "policy_fitted_for_diagnostic": false,
+  "scientific_labels_approved": false,
+  "scientific_custody_or_freeze_created": false,
+  "final_outcomes_accessed": false
+}

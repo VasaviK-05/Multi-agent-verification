@@ -1,0 +1,75 @@
+{
+  "calibration_id": "1a2abc5663193e025f9c7e62805dbad5e9d6b720a1a6895b7f40e91f779ab992",
+  "calibration_sha256": "87d0818b0684e4f7405c52e0a96502b70f500a8761d0efaf44480f7e45967b84",
+  "complete": true,
+  "counts": 344,
+  "input_digest": "4d927ec6749561b66742d4189f3b8353e489a778f27931ded75aa92108a687cc",
+  "measurements_sha256": "62b13ccdac1cdb9cfa28f7a23018b75f6b95aad6073ba52133112dc52d01c5a3",
+  "network": {
+    "blocked": 0,
+    "generation": 430,
+    "metadata": 4
+  },
+  "note": "Applies to this arithmetic-heavy preparation sample and observed setup, not universal costs; no reports or abstention counts retained",
+  "reload_valid": true,
+  "rows": [
+    {
+      "abstentions": null,
+      "attempt_cost": 11831.109354651511,
+      "attempts": 86,
+      "failures": 0,
+      "interruptions": 0,
+      "mean_ms": 11831.109354651511,
+      "median_ms": 11469.350849976763,
+      "p95_nearest_rank_ms": 12696.48199994117,
+      "report_payloads_retained": false,
+      "returned": 86,
+      "timeouts": 0,
+      "verifier_name": "confidence"
+    },
+    {
+      "abstentions": null,
+      "attempt_cost": 42.12459068756204,
+      "attempts": 86,
+      "failures": 0,
+      "interruptions": 0,
+      "mean_ms": 42.12459068756204,
+      "median_ms": 23.43365002889186,
+      "p95_nearest_rank_ms": 147.83600019291043,
+      "report_payloads_retained": false,
+      "returned": 86,
+      "timeouts": 0,
+      "verifier_name": "evidence"
+    },
+    {
+      "abstentions": null,
+      "attempt_cost": 0.1322023115705612,
+      "attempts": 86,
+      "failures": 0,
+      "interruptions": 0,
+      "mean_ms": 0.1322023115705612,
+      "median_ms": 0.08204998448491096,
+      "p95_nearest_rank_ms": 0.16120006330311298,
+      "report_payloads_retained": false,
+      "returned": 86,
+      "timeouts": 0,
+      "verifier_name": "rule"
+    },
+    {
+      "abstentions": null,
+      "attempt_cost": 30.955616287280655,
+      "attempts": 86,
+      "failures": 0,
+      "interruptions": 0,
+      "mean_ms": 30.955616287280655,
+      "median_ms": 28.301849961280823,
+      "p95_nearest_rank_ms": 39.26979983225465,
+      "report_payloads_retained": false,
+      "returned": 86,
+      "timeouts": 0,
+      "verifier_name": "semantic"
+    }
+  ],
+  "setup_fingerprint": "93029e22dfadd1babdfb360f70252113ede0ca17f58bf106ee18b44aea8a9750",
+  "utc": "2026-10-28T16:44:06.948197+00:00"
+}

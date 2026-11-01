@@ -1,0 +1,992 @@
+{
+  "version": "deployable_game_policy_reliability_first_v1",
+  "policy": {
+    "version": "game_policy_reliability_first_v1",
+    "compatibility_id": "dc073deddebe594fae9363959c4fbf1844760234528814531d34a66bb57b85ab",
+    "provenance": {
+      "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "history_dataset": "factual-capitals42-v1-history",
+      "development_dataset": "factual-capitals42-v1-development",
+      "final_test_dataset": "factual-capitals42-v1-final_test",
+      "matrix_version": "factual-capitals-development-v1",
+      "loss_configuration": "approved-factual-engineering-v1",
+      "category": "general",
+      "category_kind": "domain",
+      "evidence_kind": "empirical"
+    },
+    "matrix": {
+      "strategy_ids": [
+        "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+        "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+        "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+        "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+        "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80"
+      ],
+      "attack_ids": [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+      ],
+      "values": [
+        [
+          0.10960059064410971,
+          0.6046005906441098,
+          0.5796005906441097,
+          0.10960059064410971,
+          0.2996005906441097
+        ],
+        [
+          0.10960059064410971,
+          0.6046005906441098,
+          0.5796005906441097,
+          0.10960059064410971,
+          0.2996005906441097
+        ],
+        [
+          0.2014024096918393,
+          0.2014024096918393,
+          0.2014024096918393,
+          0.2014024096918393,
+          0.2014024096918393
+        ],
+        [
+          0.2014024096918393,
+          0.2014024096918393,
+          0.2014024096918393,
+          0.2014024096918393,
+          0.2014024096918393
+        ],
+        [
+          0.20179985780391402,
+          0.20179985780391402,
+          0.20179985780391402,
+          0.20179985780391402,
+          0.20179985780391402
+        ],
+        [
+          0.20179985780391402,
+          0.20179985780391402,
+          0.20179985780391402,
+          0.20179985780391402,
+          0.20179985780391402
+        ],
+        [
+          0.1096015712660175,
+          0.6046015712660175,
+          0.5796015712660175,
+          0.1096015712660175,
+          0.2996015712660175
+        ],
+        [
+          0.1096015712660175,
+          0.6046015712660175,
+          0.5796015712660175,
+          0.1096015712660175,
+          0.2996015712660175
+        ],
+        [
+          0.10999901937809221,
+          0.6049990193780922,
+          0.5799990193780922,
+          0.10999901937809221,
+          0.29999901937809226
+        ],
+        [
+          0.10999901937809221,
+          0.6049990193780922,
+          0.5799990193780922,
+          0.10999901937809221,
+          0.29999901937809226
+        ],
+        [
+          0.2018008384258218,
+          0.2018008384258218,
+          0.2018008384258218,
+          0.2018008384258218,
+          0.2018008384258218
+        ],
+        [
+          0.2018008384258218,
+          0.2018008384258218,
+          0.2018008384258218,
+          0.2018008384258218,
+          0.2018008384258218
+        ],
+        [
+          0.11,
+          0.605,
+          0.58,
+          0.11,
+          0.30000000000000004
+        ],
+        [
+          0.11,
+          0.605,
+          0.58,
+          0.11,
+          0.30000000000000004
+        ]
+      ],
+      "compatibility_id": "dc073deddebe594fae9363959c4fbf1844760234528814531d34a66bb57b85ab",
+      "strategy_definitions": [
+        {
+          "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 12903.80804373417
+        },
+        {
+          "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 12903.80804373417
+        },
+        {
+          "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          "verifiers": [
+            "evidence",
+            "rule"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 181.68994124571327
+        },
+        {
+          "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          "verifiers": [
+            "evidence",
+            "rule"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 181.68994124571327
+        },
+        {
+          "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 233.18154498410877
+        },
+        {
+          "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 233.18154498410877
+        },
+        {
+          "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 12903.935088732396
+        },
+        {
+          "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 12903.935088732396
+        },
+        {
+          "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 12955.426692470792
+        },
+        {
+          "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 12955.426692470792
+        },
+        {
+          "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 233.30858998233452
+        },
+        {
+          "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 233.30858998233452
+        },
+        {
+          "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 12955.553737469018
+        },
+        {
+          "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "aggregation": "dependency_group",
+          "estimated_cost": 12955.553737469018
+        }
+      ],
+      "clean_coverage": {
+        "version": "finalized_clean_development_coverage_v1",
+        "minimum": 0.9,
+        "strategy_coverage": [
+          [
+            "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+            0.95
+          ],
+          [
+            "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+            0.95
+          ],
+          [
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            0.0
+          ],
+          [
+            "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            0.0
+          ],
+          [
+            "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+            0.0
+          ],
+          [
+            "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+            0.0
+          ],
+          [
+            "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            0.95
+          ],
+          [
+            "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            0.95
+          ],
+          [
+            "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+            0.95
+          ],
+          [
+            "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+            0.95
+          ],
+          [
+            "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            0.0
+          ],
+          [
+            "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            0.0
+          ],
+          [
+            "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            0.95
+          ],
+          [
+            "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+            0.95
+          ]
+        ],
+        "parent_matrix_id": "62ced519acd2e11bcc3b503f0a510ec1539bed497f451c784ebac0680a8cead2",
+        "training_binding_id": "d3b39a174d132f41160bd5e049eaab7b8b25f5e999e676629f9f292007126a3a",
+        "source_evaluation_id": "e4a48696febbabb956fef055ffd2e945d9cece88036a1b6b5262bba181e7f8a9"
+      },
+      "reliability_first": {
+        "version": "validation_then_attempt_cost_v1",
+        "epsilon": 1e-8,
+        "cost_tolerance": 1e-8,
+        "parent_matrix_id": "bdd7cb20b2d856ffa624f7638cb8c7bd127729b6b590da348600716e2738b42f",
+        "validation_values": [
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ],
+          [
+            0.01,
+            0.505,
+            0.48,
+            0.01,
+            0.2
+          ]
+        ]
+      }
+    },
+    "solution": {
+      "status": "optimal",
+      "message": "Stage A and Stage B: Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "tolerance": 1e-8,
+      "probabilities": [
+        [
+          "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+          0.9473684210526316
+        ],
+        [
+          "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+          0.0
+        ],
+        [
+          "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          0.052631578947368474
+        ],
+        [
+          "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          0.0
+        ],
+        [
+          "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          0.0
+        ],
+        [
+          "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          0.0
+        ],
+        [
+          "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          0.0
+        ],
+        [
+          "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          0.0
+        ],
+        [
+          "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          0.0
+        ],
+        [
+          "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          0.0
+        ],
+        [
+          "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          0.0
+        ],
+        [
+          "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          0.0
+        ],
+        [
+          "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          0.0
+        ],
+        [
+          "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          0.0
+        ]
+      ],
+      "game_value": 0.4889473684210527,
+      "constraint_residuals": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.46894737842105266
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          9.999999994736442e-9
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.023684220526315802
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.46894737842105266
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.28894737842105267
+        ]
+      ],
+      "attack_losses": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.02000000000000001
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.4889473684210527
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.4652631578947369
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.02000000000000001
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.20000000000000004
+        ]
+      ],
+      "worst_case_attacks": [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245"
+      ],
+      "normalization_residual": 0.0,
+      "minimum_probability": 0.0,
+      "matrix_id": "46d08e01ad61a347119b5b403cb3af35de83fe0e1a07844bf483ae1e6ea93d03",
+      "attack_probabilities": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.0
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          1.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.0
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "dual_lower_bound": 0.48894736842105263,
+      "primal_dual_gap": 5.551115123125783e-17,
+      "optimality_basis": "highs_validation_then_cost_two_stage_certificate_v1",
+      "reliability_certificate": {
+        "version": "validation_then_cost_certificate_v1",
+        "stage_a_json": "{\"status\":\"optimal\",\"message\":\"Optimization terminated successfully. (HiGHS Status 7: Optimal)\",\"tolerance\":1e-8,\"probabilities\":[[\"521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be\",0.9473684210526316],[\"3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109\",0.0],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",0.052631578947368474],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",0.0],[\"ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a\",0.0],[\"6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8\",0.0],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.0],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.0],[\"9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a\",0.0],[\"fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9\",0.0],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.0],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.0]],\"game_value\":0.4889473684210527,\"constraint_residuals\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.46894736842105267],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.023684210526315808],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.46894736842105267],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.2889473684210526]],\"attack_losses\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.02000000000000001],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.4889473684210527],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.4652631578947369],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.02000000000000001],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.20000000000000004]],\"worst_case_attacks\":[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\"],\"normalization_residual\":0.0,\"minimum_probability\":0.0,\"matrix_id\":\"599f8541c2da9900065ab1b6b8f1e194a4da84873e9a4d3f42e0947bb92f7264\",\"attack_probabilities\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.0],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",1.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.0],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.0]],\"dual_lower_bound\":0.48894736842105263,\"primal_dual_gap\":5.551115123125783e-17,\"optimality_basis\":\"highs_status_0_and_clean_coverage_primal_dual_certificate_v1\",\"coverage_certificate\":{\"version\":\"clean_coverage_dual_v1\",\"multiplier\":0.32105263157894737,\"achieved\":0.9,\"residual\":0.0}}",
+        "reliability_cap": 0.4889473784210527,
+        "attack_multipliers": [
+          [
+            "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+            0.0
+          ],
+          [
+            "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+            0.0
+          ],
+          [
+            "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+            0.0
+          ],
+          [
+            "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+            0.0
+          ],
+          [
+            "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+            0.0
+          ]
+        ],
+        "coverage_multiplier": 13391.703265777325,
+        "achieved_coverage": 0.9,
+        "coverage_residual": 0.0,
+        "expected_cost": 12234.222880445304,
+        "cost_dual_lower_bound": 12234.222880445304,
+        "cost_primal_dual_gap": 0.0
+      }
+    },
+    "strategies": [
+      {
+        "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 12903.80804373417
+      },
+      {
+        "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 12903.80804373417
+      },
+      {
+        "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 181.68994124571327
+      },
+      {
+        "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 181.68994124571327
+      },
+      {
+        "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 233.18154498410877
+      },
+      {
+        "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 233.18154498410877
+      },
+      {
+        "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "rule"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 12903.935088732396
+      },
+      {
+        "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "rule"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 12903.935088732396
+      },
+      {
+        "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 12955.426692470792
+      },
+      {
+        "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 12955.426692470792
+      },
+      {
+        "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        "verifiers": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 233.30858998233452
+      },
+      {
+        "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        "verifiers": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 233.30858998233452
+      },
+      {
+        "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 12955.553737469018
+      },
+      {
+        "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "aggregation": "dependency_group",
+        "estimated_cost": 12955.553737469018
+      }
+    ]
+  },
+  "context": {
+    "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.3,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"semantic_comparison\"],\"latency\":0.4,\"limitations\":[\"Reference similarity is not factual correctness.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.5,\"requires_reference\":true,\"resource_penalty\":0.085,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.415,\"verifier_name\":\"semantic\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.97619,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":0.9661899999999999,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":2,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.45,\"verifier_name\":\"rule\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.9,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"consistency\"],\"latency\":1.0,\"limitations\":[\"Generation/judgment agreement is not factual evidence or independence.\",\"Provider readiness is unknown until execution.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":3,\"reputation\":0.97619,\"requires_reference\":false,\"resource_penalty\":0.23500000000000001,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.74119,\"verifier_name\":\"confidence\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.13,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"direct_fact\"],\"expected_uncovered\":[],\"fallback\":[\"rule\",\"semantic\"],\"initial_selected\":[\"evidence\",\"confidence\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":true,\"reputation_statistics\":[{\"alpha\":21.0,\"beta\":21.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":20,\"observation_count\":40,\"posterior_mean\":0.5,\"posterior_variance\":0.005813953488372093,\"successes\":20,\"verifier_name\":\"semantic\"},{\"alpha\":41.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":40,\"posterior_mean\":0.9761904761904762,\"posterior_variance\":0.0005405262880345942,\"successes\":40,\"verifier_name\":\"evidence\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"rule\"},{\"alpha\":41.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":40,\"posterior_mean\":0.9761904761904762,\"posterior_variance\":0.0005405262880345942,\"successes\":40,\"verifier_name\":\"confidence\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"direct_fact\"],\"legacy_unrecognized\":[],\"requirements\":[\"direct_fact\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"direct_fact\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"heuristic_surface_features_v1\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+    "attempt_costs": [
+      [
+        "confidence",
+        12722.245147486683
+      ],
+      [
+        "evidence",
+        181.56289624748752
+      ],
+      [
+        "rule",
+        0.127044998225756
+      ],
+      [
+        "semantic",
+        51.61864873662125
+      ]
+    ],
+    "budget": 12955.553737469018,
+    "cost_units": "ms",
+    "loss_configuration": {
+      "version": "approved-factual-engineering-v1",
+      "false_accept": 1.0,
+      "false_reject": 1.0,
+      "uncertain": 0.2,
+      "resource_weight": 7.718697481126415e-6,
+      "cost_units": "ms"
+    },
+    "analyzer_provenance": [
+      [
+        "analysis_method",
+        "heuristic"
+      ],
+      [
+        "context_version",
+        "question_context_v1"
+      ],
+      [
+        "domain_status",
+        "unknown"
+      ],
+      [
+        "research_context_presence",
+        "present"
+      ],
+      [
+        "scoring_version",
+        "heuristic_surface_features_v1"
+      ]
+    ],
+    "dependencies": {
+      "version": "observed-shared-models-and-unresolved-v1",
+      "dependencies": [
+        {
+          "resource_id": "local-embedding-snapshot",
+          "compromise_pathway": "shared installed model snapshot 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "resource_id": "local-nli-snapshot",
+          "compromise_pathway": "shared installed model snapshot a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "unknown_treatment": "shared_unknown"
+    },
+    "aggregation_versions": [
+      [
+        "dependency_group",
+        "groups_v1"
+      ],
+      [
+        "reputation_weighted",
+        "log_odds_v1"
+      ]
+    ],
+    "provenance": {
+      "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "history_dataset": "factual-capitals42-v1-history",
+      "development_dataset": "factual-capitals42-v1-development",
+      "final_test_dataset": "factual-capitals42-v1-final_test",
+      "matrix_version": "factual-capitals-development-v1",
+      "loss_configuration": "approved-factual-engineering-v1",
+      "category": "general",
+      "category_kind": "domain",
+      "evidence_kind": "empirical"
+    },
+    "version": "game_context_v1",
+    "offline_evaluation_id": "d3b39a174d132f41160bd5e049eaab7b8b25f5e999e676629f9f292007126a3a",
+    "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"factual_output_contract_v1\",\"execution_configuration_id\":\"9c81e66b3356176f658d99dba6d862174d5a99f40d825ba1811dcc0f8b5717ad\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"confidence-adapter-configuration\",\"sha256\":\"166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9\"},{\"kind\":\"implementation\",\"resource_id\":\"confidence-implementation\",\"sha256\":\"9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"},{\"kind\":\"model\",\"resource_id\":\"ollama-model\",\"sha256\":\"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72\"},{\"kind\":\"prompt\",\"resource_id\":\"self-consistency-short-answer\",\"sha256\":\"dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b\"},{\"kind\":\"service\",\"resource_id\":\"ollama-service\",\"sha256\":\"5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895\"}],\"verifier_name\":\"confidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"e7f747f05bcc5d46e401e3f6e1c89edc4b7b171db5b509c73621504253000630\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"0c6907412bd6930111bc5e9fcce4b542e0bad26b48576070e64b51c03ffcedab\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"semantic-adapter-configuration\",\"sha256\":\"166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9\"},{\"kind\":\"implementation\",\"resource_id\":\"semantic-implementation\",\"sha256\":\"9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"}],\"verifier_name\":\"semantic\"}],\"version\":\"game_resource_manifest_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v3\"}",
+    "clean_coverage_json": "{\"minimum\":0.9,\"parent_matrix_id\":\"62ced519acd2e11bcc3b503f0a510ec1539bed497f451c784ebac0680a8cead2\",\"source_evaluation_id\":\"e4a48696febbabb956fef055ffd2e945d9cece88036a1b6b5262bba181e7f8a9\",\"strategy_coverage\":[[\"521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be\",0.95],[\"3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109\",0.95],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",0.0],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",0.0],[\"ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a\",0.0],[\"6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8\",0.0],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.95],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.95],[\"9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a\",0.95],[\"fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9\",0.95],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.95],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.95]],\"training_binding_id\":\"d3b39a174d132f41160bd5e049eaab7b8b25f5e999e676629f9f292007126a3a\",\"version\":\"finalized_clean_development_coverage_v1\"}",
+    "reliability_first_json": "{\"cost_tolerance\":1e-08,\"epsilon\":1e-08,\"parent_matrix_id\":\"bdd7cb20b2d856ffa624f7638cb8c7bd127729b6b590da348600716e2738b42f\",\"validation_values\":[[0.01,0.505,0.48,0.01,0.2],[0.01,0.505,0.48,0.01,0.2],[0.2,0.2,0.2,0.2,0.2],[0.2,0.2,0.2,0.2,0.2],[0.2,0.2,0.2,0.2,0.2],[0.2,0.2,0.2,0.2,0.2],[0.01,0.505,0.48,0.01,0.2],[0.01,0.505,0.48,0.01,0.2],[0.01,0.505,0.48,0.01,0.2],[0.01,0.505,0.48,0.01,0.2],[0.2,0.2,0.2,0.2,0.2],[0.2,0.2,0.2,0.2,0.2],[0.01,0.505,0.48,0.01,0.2],[0.01,0.505,0.48,0.01,0.2]],\"version\":\"validation_then_attempt_cost_v1\"}"
+  },
+  "contract": {
+    "version": "offline_public_decision_v3",
+    "coverage_version": "factual_output_contract_v1",
+    "contributor_version": "informative_history_influence_v1",
+    "threshold": 0.55,
+    "failure_contract": "all_selected_returned",
+    "execution_configuration_id": "9c81e66b3356176f658d99dba6d862174d5a99f40d825ba1811dcc0f8b5717ad",
+    "history_prior_alpha": 1.0,
+    "history_prior_beta": 1.0,
+    "resource_manifest": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "confidence",
+          "resources": [
+            {
+              "resource_id": "confidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "confidence-implementation",
+              "kind": "implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "resource_id": "ollama-model",
+              "kind": "model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "resource_id": "self-consistency-short-answer",
+              "kind": "prompt",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "resource_id": "ollama-service",
+              "kind": "service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "e7f747f05bcc5d46e401e3f6e1c89edc4b7b171db5b509c73621504253000630"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "0c6907412bd6930111bc5e9fcce4b542e0bad26b48576070e64b51c03ffcedab"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        },
+        {
+          "verifier_name": "semantic",
+          "resources": [
+            {
+              "resource_id": "semantic-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "semantic-implementation",
+              "kind": "implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "execution_configuration_id": "9c81e66b3356176f658d99dba6d862174d5a99f40d825ba1811dcc0f8b5717ad",
+  "applicable_domain": "general"
+}

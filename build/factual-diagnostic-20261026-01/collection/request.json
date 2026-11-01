@@ -1,0 +1,532 @@
+{
+  "version": "offline_diagnostic_recording_v1",
+  "intended_use": "smoke",
+  "study_approval": null,
+  "preparation_authorization": "User diagnostic authorization; see authorization.json; no label/study/freeze approval",
+  "cache_contract": "diagnostic_observation_only",
+  "randomness_control": "Proposed one pass, no warmups/repeats. Split seed 20261026 only. Existing OllamaSampler uses generation seeds 0..4 per call, n_samples=5, temperature=0.8; provider/runtime determinism is not claimed.",
+  "execution_configuration_id": "474005c1055120a957c6aad86eaf5f5ae2df8ee4d3cd7aefda35445d680d7ce7",
+  "factory": "app.game.offline.recording_adapters:project_factory",
+  "expected_setup": {
+    "resources": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "confidence",
+          "resources": [
+            {
+              "resource_id": "confidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "resource_id": "confidence-implementation",
+              "kind": "implementation",
+              "sha256": "81df95721c085a358874a207f518f3dccfae645a7af6c7c5d8ae7c25afb9b075"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "resource_id": "ollama-model",
+              "kind": "model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "resource_id": "self-consistency-short-answer",
+              "kind": "prompt",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "resource_id": "ollama-service",
+              "kind": "service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "696113ec363eacfe8478528bcc1bab1d69c59ee58e344836107b39e12adc33e0"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "360dfb21c7040f02c791a24d418e294b32940eff20c76e50d2df0a6ea48da88c"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        },
+        {
+          "verifier_name": "semantic",
+          "resources": [
+            {
+              "resource_id": "semantic-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "resource_id": "semantic-implementation",
+              "kind": "implementation",
+              "sha256": "c7e3cc25b27ffd6c42f8471f0fb2140db10cde0ad9e070f98b44d84fb2b74ea1"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ]
+        }
+      ]
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+    "application_source_digest": "23f3a89528f61462bae2ce94ef333eb87df9a6c4555db836c263b3541ccf603f",
+    "evidence_kind": "empirical"
+  },
+  "final_test_reservation": {
+    "version": "diagnostic_exclusion_roster_v1",
+    "role": "final_test",
+    "dataset_id": "factual-feasibility-draft-v1-final_test",
+    "examples": [
+      {
+        "example_id": "factual-feasibility-draft-v1-e01",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "question_id": "32ac15f48ca574f0200f9d6fa34fd23beae6654aea5203507d9648ee47a78bd8",
+        "content_identity": "fdc529bed570da76a46f1076e294988f36373d927d686f24a30093c571d780f7",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e01-r1"
+      },
+      {
+        "example_id": "factual-feasibility-draft-v1-e08",
+        "split_identity": "factual-feasibility-draft-v1-group-wwii",
+        "question_id": "220f5e85f6ba7589740350322717b1dba45c9b26954182e3d919e92c244f4501",
+        "content_identity": "0dce29dfa7919d0291dd41071c0d75de5b6f4e62d72b6396af0531c1f6163b6a",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e08-r1"
+      },
+      {
+        "example_id": "factual-feasibility-draft-v1-e09",
+        "split_identity": "factual-feasibility-draft-v1-group-usa",
+        "question_id": "9b956bebb1501337b743a09d0c25cda61fe0d27b91a923aa388c259260e58bf2",
+        "content_identity": "f3273e282e0567f281c043d2ce53bb7c6d87fdb1070b33024b44d307c4c7ff0c",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e09-r1"
+      },
+      {
+        "example_id": "factual-feasibility-draft-v1-e10",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "question_id": "8412e078fa45b8e8a028985b76f449bf0ec83e6036be4d3097da545937725b3a",
+        "content_identity": "97d269fdb9eb5a1b4791daec4bc736158b994f78b3eee8d46e62552cc52ee586",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e10-r1"
+      }
+    ]
+  },
+  "permitted_datasets": [
+    [
+      "history",
+      "factual-feasibility-draft-v1-history"
+    ],
+    [
+      "development",
+      "factual-feasibility-draft-v1-development"
+    ]
+  ],
+  "candidates": [
+    {
+      "verifier_name": "semantic",
+      "adapter": "semantic_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "requires_reference": true,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ]
+      }
+    },
+    {
+      "verifier_name": "evidence",
+      "adapter": "evidence_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ]
+      }
+    },
+    {
+      "verifier_name": "rule",
+      "adapter": "rule_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ]
+      }
+    },
+    {
+      "verifier_name": "confidence",
+      "adapter": "confidence_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "split_identity": "factual-feasibility-draft-v1-group-germany",
+      "question_id": "a33fae3349c0b9b60a15815c59fec3ea66473e9a609b47a05b99cf83e3ec36a6",
+      "run_id": "factual-feasibility-draft-v1-history-e02-r1",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the capital of Germany?",
+      "answer": "The capital of Germany is Berlin.",
+      "reference": "Germany is a country in Central Europe. Berlin is the capital and largest city of Germany.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": null
+    },
+    {
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "split_identity": "factual-feasibility-draft-v1-group-india",
+      "question_id": "470a1f7830a248378db6f3bb016b215c418e9695149313c5e9d4d7037c317dfe",
+      "run_id": "factual-feasibility-draft-v1-development-e03-r1",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the capital of India?",
+      "answer": "The capital of India is New Delhi.",
+      "reference": "India is a country in South Asia. New Delhi is the capital of India.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": null
+    },
+    {
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "split_identity": "factual-feasibility-draft-v1-group-python",
+      "question_id": "3ad0cf9a38e48e84dfa410bf2e2d0386159c97ce2c11eb333c1878d52b8fe418",
+      "run_id": "factual-feasibility-draft-v1-development-e04-r1",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is Python?",
+      "answer": "Python is a high-level, general-purpose programming language.",
+      "reference": "Python is a high-level, general-purpose programming language. It is widely used for web development, data analysis, artificial intelligence, and scientific computing.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [],
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": null
+    },
+    {
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml",
+      "question_id": "e9a38a18a39d0016d19b062dab737dded9a784351718ae8329de9c7cb7dcc053",
+      "run_id": "factual-feasibility-draft-v1-history-e05-r1",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is artificial intelligence?",
+      "answer": "Artificial intelligence is a field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence.",
+      "reference": "Artificial intelligence is a field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence, such as reasoning, learning, and perception.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [],
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": null
+    },
+    {
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml",
+      "question_id": "69a6f1d3f0c509faca46c666043ff2b5db8844cdabfaffb83b32b790444d662f",
+      "run_id": "factual-feasibility-draft-v1-history-e06-r1",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is machine learning?",
+      "answer": "Machine learning is a branch of artificial intelligence that enables computer systems to learn patterns from data and make predictions or decisions without being explicitly programmed for every task.",
+      "reference": "Machine learning is a branch of artificial intelligence that enables computer systems to learn patterns from data and make predictions or decisions without being explicitly programmed for every task.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.11,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [],
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": null
+    },
+    {
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "split_identity": "factual-feasibility-draft-v1-group-relativity",
+      "question_id": "41e6e799ee95403ac906b64a837c43560af5d266d9d18f79293efca926be77b1",
+      "run_id": "factual-feasibility-draft-v1-development-e07-r1",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "Who developed the theory of relativity?",
+      "answer": "Albert Einstein developed the theory of relativity.",
+      "reference": "Albert Einstein was a German-born theoretical physicist. He developed the theory of relativity and received the Nobel Prize in Physics in 1921.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [],
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": false,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": null
+    }
+  ]
+}

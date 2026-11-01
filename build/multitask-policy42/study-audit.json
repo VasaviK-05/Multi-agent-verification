@@ -1,0 +1,1746 @@
+{
+  "authority": "User request 40cf4c15-2260-48ef-b3a1-7154d0d47554: task-conditioned exploratory collection and reliability-first fits",
+  "cohorts": [
+    {
+      "cohort": "arithmetic",
+      "groups": 60,
+      "groups_per_split": 20,
+      "candidates_to_collect": 80,
+      "attempts": 320,
+      "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+      "planning_signature": [
+        "general",
+        "unknown",
+        "easy",
+        0.12,
+        [
+          "arithmetic"
+        ]
+      ]
+    },
+    {
+      "cohort": "semantic",
+      "groups": 60,
+      "groups_per_split": 20,
+      "candidates_to_collect": 80,
+      "attempts": 320,
+      "task_id": "439feaaf8e6c4ead28e424b4c5cb11ad3b63c0da12d39c92bc944975bf5368ca",
+      "planning_signature": [
+        "general",
+        "unknown",
+        "easy",
+        0.07,
+        [
+          "semantic_comparison"
+        ]
+      ]
+    },
+    {
+      "cohort": "factual",
+      "groups": 60,
+      "groups_per_split": 20,
+      "candidates_to_collect": 80,
+      "attempts": 320,
+      "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+      "planning_signature": [
+        "general",
+        "unknown",
+        "easy",
+        0.13,
+        [
+          "direct_fact"
+        ]
+      ]
+    }
+  ],
+  "source_hashes": {
+    "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+    "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671",
+    "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+    "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7"
+  },
+  "factual_exclusions": [
+    {
+      "iso": "AW",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AF",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AO",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "AI",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AX",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AL",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AD",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "AE",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AR",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AM",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "AS",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AQ",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AG",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AU",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AT",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AZ",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BI",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BE",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BJ",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BD",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BG",
+      "reasons": [
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BH",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BS",
+      "reasons": [
+        "previous_capital_study_group",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BA",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BL",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SH",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BY",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BZ",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BM",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BO",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BQ",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BR",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BB",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BN",
+      "reasons": [
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BT",
+      "reasons": [
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BV",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BW",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CA",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CC",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CH",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CL",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CN",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CI",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CM",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CD",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CG",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CK",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CO",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KM",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CV",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CR",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CU",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CW",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CX",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KY",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CY",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CZ",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "DE",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DJ",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "DM",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DK",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DO",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DZ",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "EC",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "EG",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "ER",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "EH",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ES",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "EE",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ET",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FI",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FJ",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "FK",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FR",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FO",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FM",
+      "reasons": [
+        "previous_capital_study_group",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GA",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GB",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GE",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GG",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GH",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GI",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GN",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GP",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GM",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GW",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GQ",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GR",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GD",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GL",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GT",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GU",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GY",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HK",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HM",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HN",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HR",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HT",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "HU",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ID",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IM",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IN",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "IO",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IE",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IR",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IQ",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IS",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IL",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IT",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "JM",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "JE",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "JO",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "JP",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "KZ",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KE",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "KG",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KH",
+      "reasons": [
+        "previous_capital_study_group",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KI",
+      "reasons": [
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KN",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KR",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "XK",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KW",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LA",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LB",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LR",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LY",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LC",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LI",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LK",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LS",
+      "reasons": [
+        "previous_capital_study_group",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LT",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LU",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LV",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MO",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MA",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MC",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MD",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MG",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MV",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MX",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MH",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MK",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ML",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MT",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MM",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ME",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MN",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MP",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MZ",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MR",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MS",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MQ",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MU",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MW",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MY",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "YT",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NA",
+      "reasons": [
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NC",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NE",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NG",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "NI",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NU",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NL",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NO",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "NP",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "NR",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NZ",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "OM",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PK",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PA",
+      "reasons": [
+        "previous_capital_study_group",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PN",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PE",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PH",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PW",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PG",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PL",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PR",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KP",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PT",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PY",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PS",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "QA",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RE",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RO",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "RU",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RW",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SA",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SD",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SN",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SG",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GS",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SJ",
+      "reasons": [
+        "outside_single_token_country_scope",
+        "missing_area"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SB",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SL",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SV",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SM",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SO",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PM",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RS",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SS",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ST",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SR",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SK",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SI",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SE",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SZ",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SX",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SC",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SY",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TC",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TD",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TG",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TH",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TJ",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TK",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TM",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TL",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TO",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TT",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TN",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TR",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TV",
+      "reasons": [
+        "previous_capital_study_group",
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TW",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TZ",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UG",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "UA",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UM",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UY",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "US",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UZ",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "VA",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VC",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VE",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "VG",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VI",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VN",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VU",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "WF",
+      "reasons": [
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "WS",
+      "reasons": [
+        "outside_seed42_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "YE",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ZA",
+      "reasons": [
+        "predeclared_transition_or_disputed_scope_exclusion",
+        "outside_single_token_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ZM",
+      "reasons": [
+        "previous_capital_study_group"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ZW",
+      "reasons": [
+        "currency_sources_disagree_or_multiple"
+      ],
+      "selected": false
+    }
+  ],
+  "preparation_version": "multitask_frames_v2_exact_source_numbers",
+  "pre_outcome_rule": "Uniform n=min(60,3*floor(eligible-factual-groups/3)); seed42; no outcome-based exclusions",
+  "corpus_missing_evidence_rule": "Omit first factual group of each split from retrieval index; keep independent labels and trusted reference",
+  "label_scope": "Population/area/currency are source-snapshot facts, not claims of current census values; equivalence is constructed predicate-frame preservation, not truth verification",
+  "prior_overlap": "Exclude all previous capital-study ISO groups. Public source files previously inspected, so reserved facts are not independently blinded unseen knowledge. Arithmetic uses distinct 3-digit operands; semantic frames are new.",
+  "final_custody": "Procedural; final candidates prepared once, no later payload access",
+  "settings": {
+    "q_min": 0.9,
+    "epsilon": 1e-08,
+    "losses": [
+      1.0,
+      1.0,
+      0.2
+    ],
+    "priors": [
+      1.0,
+      1.0
+    ],
+    "threshold": 0.55,
+    "seed": 42
+  },
+  "planned_candidates": 240,
+  "planned_attempts": 960,
+  "max_generations": 1200
+}

@@ -1,0 +1,19 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1093.60it/s]
+C:\Users\jhaan\Multi-agent-verification\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights:   9%|▉         | 10/106 [00:00<00:01, 88.51it/s]Loading weights:  19%|█▉        | 20/106 [00:00<00:01, 80.28it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 385.06it/s]
+C:\Users\jhaan\Multi-agent-verification\app\benchmark\project_adapter.py:365: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  if retriever.index.ntotal != len(retriever.chunks) or retriever.index.d != embedding.get_sentence_embedding_dimension():
+{
+  "complete": true,
+  "intended_use": "smoke",
+  "study_approval": null,
+  "gaps": [],
+  "expected_attempts": 24,
+  "recorded_outcomes": 24,
+  "executed_calls": 24,
+  "note": "Complete collection is not approval of scientific settings or evidence of improvement.",
+  "request_id": "c47061d9343eaa9990b5e54960c1a127e85efb12efb38dc9149877d67b08bc16",
+  "bundle_id": "026afd2721646dd7f0bd908f6ea6fb9c57084c1eab9d0f4a73d2af864f6fb378",
+  "measurement_export_blocker": "diagnostic-only timings remain in linked attempts; study custody and calibration freeze are not approved"
+}

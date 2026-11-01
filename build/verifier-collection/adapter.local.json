@@ -1,0 +1,16 @@
+{
+  "version": "project_collection_adapter_v1",
+  "embedding_snapshot": "C:/Users/jhaan/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "nli_snapshot": "C:/Users/jhaan/.cache/huggingface/hub/models--cross-encoder--nli-deberta-v3-small/snapshots/fa2804872c3b4bd748f38c0185cc85775361e735",
+  "corpus_path": "data/test_evidence_corpus.json",
+  "index_dir": "data/evidence_index/test_evidence_corpus",
+  "index_receipt": null,
+  "service_observation": "build/verifier-collection/ollama-observed.json",
+  "ollama_url": "http://localhost:11434/api/generate",
+  "ollama_model": "llama3.2:3b",
+  "n_samples": 5,
+  "temperature": 0.8,
+  "timeout": 60.0,
+  "chunk_size": 500,
+  "device": "cpu"
+}

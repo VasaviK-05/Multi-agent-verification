@@ -1,0 +1,305 @@
+{
+  "authority": "Explicit user reliability-first engineering request f4904742-e3fc-4d1c-b294-c1c1738f2488",
+  "request_sha256": "3a3ef0efc694397037da7e317dfd8a9f26d221523d8243d236cbbf17fa3edf02",
+  "status": "exploratory development only; not a primary paper setting",
+  "q_min": 0.9,
+  "epsilon_loss": 1e-08,
+  "loss_certificate_tolerance": 1e-08,
+  "cost_certificate_tolerance_ms": 1e-08,
+  "execution_contract": {
+    "version": "offline_public_decision_v3",
+    "coverage_version": "factual_output_contract_v1",
+    "contributor_version": "informative_history_influence_v1",
+    "threshold": 0.55,
+    "failure_contract": "all_selected_returned",
+    "execution_configuration_id": "9c81e66b3356176f658d99dba6d862174d5a99f40d825ba1811dcc0f8b5717ad",
+    "history_prior_alpha": 1.0,
+    "history_prior_beta": 1.0,
+    "resource_manifest": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "confidence",
+          "resources": [
+            {
+              "resource_id": "confidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "confidence-implementation",
+              "kind": "implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "resource_id": "ollama-model",
+              "kind": "model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "resource_id": "self-consistency-short-answer",
+              "kind": "prompt",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "resource_id": "ollama-service",
+              "kind": "service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "e7f747f05bcc5d46e401e3f6e1c89edc4b7b171db5b509c73621504253000630"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "0c6907412bd6930111bc5e9fcce4b542e0bad26b48576070e64b51c03ffcedab"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        },
+        {
+          "verifier_name": "semantic",
+          "resources": [
+            {
+              "resource_id": "semantic-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "166cbb6b9106e5eabb5f8249da7170878d9153d760ff594fd580c8a92671b6e9"
+            },
+            {
+              "resource_id": "semantic-implementation",
+              "kind": "implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "constraint": {
+    "minimum": 0.9,
+    "parent_matrix_id": "62ced519acd2e11bcc3b503f0a510ec1539bed497f451c784ebac0680a8cead2",
+    "source_evaluation_id": "e4a48696febbabb956fef055ffd2e945d9cece88036a1b6b5262bba181e7f8a9",
+    "strategy_coverage": [
+      [
+        "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+        0.95
+      ],
+      [
+        "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+        0.95
+      ],
+      [
+        "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        0.0
+      ],
+      [
+        "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        0.0
+      ],
+      [
+        "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        0.0
+      ],
+      [
+        "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        0.0
+      ],
+      [
+        "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        0.95
+      ],
+      [
+        "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        0.95
+      ],
+      [
+        "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+        0.95
+      ],
+      [
+        "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+        0.95
+      ],
+      [
+        "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        0.0
+      ],
+      [
+        "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        0.0
+      ],
+      [
+        "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        0.95
+      ],
+      [
+        "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+        0.95
+      ]
+    ],
+    "training_binding_id": "d3b39a174d132f41160bd5e049eaab7b8b25f5e999e676629f9f292007126a3a",
+    "version": "finalized_clean_development_coverage_v1"
+  },
+  "reliability_objective": {
+    "cost_tolerance": 1e-08,
+    "epsilon": 1e-08,
+    "parent_matrix_id": "bdd7cb20b2d856ffa624f7638cb8c7bd127729b6b590da348600716e2738b42f",
+    "validation_values": [
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ],
+      [
+        0.01,
+        0.505,
+        0.48,
+        0.01,
+        0.2
+      ]
+    ],
+    "version": "validation_then_attempt_cost_v1"
+  },
+  "configuration_digest": "75b02c3b07ec7115761684d902ca0417eca961aabe6a59144e3a1664f24003ce",
+  "artifact_id": "7163d5c448504374081be9133b9b9977a8d873cd36e30ea8e25985c86ab98550",
+  "scientific_scope": "Existing independently labelled, constructed reference-assisted capital-fact history/development; no new inference or calibration; no final-test access",
+  "sampling_seed": 42,
+  "original_approval_preserved": true
+}

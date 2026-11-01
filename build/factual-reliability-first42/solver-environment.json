@@ -1,0 +1,18 @@
+{
+  "stage_a": {
+    "method": "highs",
+    "options": "SciPy defaults",
+    "certificate_loss_tolerance": 1e-08
+  },
+  "stage_b": {
+    "method": "highs",
+    "options": {
+      "primal_feasibility_tolerance": 1e-10,
+      "dual_feasibility_tolerance": 1e-10
+    },
+    "cost_certificate_tolerance_ms": 1e-08,
+    "reliability_cap_epsilon_loss": 1e-08,
+    "recomputed_loss_feasibility_tolerance": 1e-12
+  },
+  "note": "This stage-specific metadata supersedes the generic environment helper defaults entry in the preserved initial fit report. Actual solver options and all scientific outputs are unchanged."
+}

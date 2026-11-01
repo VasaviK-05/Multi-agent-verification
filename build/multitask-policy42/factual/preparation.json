@@ -1,0 +1,4158 @@
+{
+  "examples": [
+    {
+      "example_id": "JP-correct",
+      "split_identity": "multitask42-factual-JP",
+      "question_id": "89a61d44be2138822f8af5416270c0a4d83912ad699bbca6ac3b1a1a4849d18e",
+      "run_id": "multitask42-factual-history-JP-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Japan?",
+      "answer": "The population of Japan is 123366734.",
+      "reference": "The population of Japan is 123366734.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"JP\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 123366734}"
+      }
+    },
+    {
+      "example_id": "JP-incorrect",
+      "split_identity": "multitask42-factual-JP",
+      "question_id": "89a61d44be2138822f8af5416270c0a4d83912ad699bbca6ac3b1a1a4849d18e",
+      "run_id": "multitask42-factual-history-JP-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Japan?",
+      "answer": "The population of Japan is 123379079.",
+      "reference": "The population of Japan is 123366734.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"JP\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 123366734}"
+      }
+    },
+    {
+      "example_id": "MR-correct",
+      "split_identity": "multitask42-factual-MR",
+      "question_id": "ad309a47d2cacfacd81387c797fcbe65cdc2ef14c3a0e7b3140637e27e0e5b63",
+      "run_id": "multitask42-factual-history-MR-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Mauritania?",
+      "answer": "The currency of Mauritania is the Mauritanian ouguiya.",
+      "reference": "The currency of Mauritania is the Mauritanian ouguiya.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MR\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Mauritanian ouguiya\"}"
+      }
+    },
+    {
+      "example_id": "MR-incorrect",
+      "split_identity": "multitask42-factual-MR",
+      "question_id": "ad309a47d2cacfacd81387c797fcbe65cdc2ef14c3a0e7b3140637e27e0e5b63",
+      "run_id": "multitask42-factual-history-MR-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Mauritania?",
+      "answer": "The currency of Mauritania is the United States dollar.",
+      "reference": "The currency of Mauritania is the Mauritanian ouguiya.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MR\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Mauritanian ouguiya\"}"
+      }
+    },
+    {
+      "example_id": "BH-correct",
+      "split_identity": "multitask42-factual-BH",
+      "question_id": "f0f8755d01ac21a223b884c37d843410c3490cdc3b589562b50da263b81f8ba0",
+      "run_id": "multitask42-factual-history-BH-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Bahrain?",
+      "answer": "The area of Bahrain is 765 square kilometres.",
+      "reference": "The area of Bahrain is 765 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"BH\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 765}"
+      }
+    },
+    {
+      "example_id": "BH-incorrect",
+      "split_identity": "multitask42-factual-BH",
+      "question_id": "f0f8755d01ac21a223b884c37d843410c3490cdc3b589562b50da263b81f8ba0",
+      "run_id": "multitask42-factual-history-BH-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Bahrain?",
+      "answer": "The area of Bahrain is 1765 square kilometres.",
+      "reference": "The area of Bahrain is 765 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"BH\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 765}"
+      }
+    },
+    {
+      "example_id": "IN-correct",
+      "split_identity": "multitask42-factual-IN",
+      "question_id": "5d2971ff30eb36e1c82dc597b7efe1f5c0bebf90b39c8bb379cd121aebe4f043",
+      "run_id": "multitask42-factual-history-IN-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of India?",
+      "answer": "The population of India is 1463865525.",
+      "reference": "The population of India is 1463865525.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"IN\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 1463865525}"
+      }
+    },
+    {
+      "example_id": "IN-incorrect",
+      "split_identity": "multitask42-factual-IN",
+      "question_id": "5d2971ff30eb36e1c82dc597b7efe1f5c0bebf90b39c8bb379cd121aebe4f043",
+      "run_id": "multitask42-factual-history-IN-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of India?",
+      "answer": "The population of India is 1463877870.",
+      "reference": "The population of India is 1463865525.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"IN\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 1463865525}"
+      }
+    },
+    {
+      "example_id": "MN-correct",
+      "split_identity": "multitask42-factual-MN",
+      "question_id": "f248391bb0dfb3ec2d4aa9af64100e03e82523958fbd6b261666360956c312fa",
+      "run_id": "multitask42-factual-history-MN-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Mongolia?",
+      "answer": "The currency of Mongolia is the Mongolian tögrög.",
+      "reference": "The currency of Mongolia is the Mongolian tögrög.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MN\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Mongolian t\\u00f6gr\\u00f6g\"}"
+      }
+    },
+    {
+      "example_id": "MN-incorrect",
+      "split_identity": "multitask42-factual-MN",
+      "question_id": "f248391bb0dfb3ec2d4aa9af64100e03e82523958fbd6b261666360956c312fa",
+      "run_id": "multitask42-factual-history-MN-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Mongolia?",
+      "answer": "The currency of Mongolia is the United States dollar.",
+      "reference": "The currency of Mongolia is the Mongolian tögrög.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MN\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Mongolian t\\u00f6gr\\u00f6g\"}"
+      }
+    },
+    {
+      "example_id": "KW-correct",
+      "split_identity": "multitask42-factual-KW",
+      "question_id": "28b58f9d65d1b7288ec7ddaa5dce29ac06bc55ade58f379857408712df42efcd",
+      "run_id": "multitask42-factual-history-KW-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Kuwait?",
+      "answer": "The area of Kuwait is 17818 square kilometres.",
+      "reference": "The area of Kuwait is 17818 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"KW\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 17818}"
+      }
+    },
+    {
+      "example_id": "KW-incorrect",
+      "split_identity": "multitask42-factual-KW",
+      "question_id": "28b58f9d65d1b7288ec7ddaa5dce29ac06bc55ade58f379857408712df42efcd",
+      "run_id": "multitask42-factual-history-KW-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Kuwait?",
+      "answer": "The area of Kuwait is 18818 square kilometres.",
+      "reference": "The area of Kuwait is 17818 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"KW\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 17818}"
+      }
+    },
+    {
+      "example_id": "MV-correct",
+      "split_identity": "multitask42-factual-MV",
+      "question_id": "0d33f71f1223e137ad71bad96c13a7fefd85f07918591b384c77a5b4c841b15a",
+      "run_id": "multitask42-factual-history-MV-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Maldives?",
+      "answer": "The population of Maldives is 529676.",
+      "reference": "The population of Maldives is 529676.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MV\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 529676}"
+      }
+    },
+    {
+      "example_id": "MV-incorrect",
+      "split_identity": "multitask42-factual-MV",
+      "question_id": "0d33f71f1223e137ad71bad96c13a7fefd85f07918591b384c77a5b4c841b15a",
+      "run_id": "multitask42-factual-history-MV-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Maldives?",
+      "answer": "The population of Maldives is 542021.",
+      "reference": "The population of Maldives is 529676.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MV\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 529676}"
+      }
+    },
+    {
+      "example_id": "CU-correct",
+      "split_identity": "multitask42-factual-CU",
+      "question_id": "025fbe8f16640abd40c62a5c02e177464a727548bed2e25800a8ad1d37fcdb7a",
+      "run_id": "multitask42-factual-history-CU-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Cuba?",
+      "answer": "The currency of Cuba is the Cuban peso.",
+      "reference": "The currency of Cuba is the Cuban peso.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"CU\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Cuban peso\"}"
+      }
+    },
+    {
+      "example_id": "CU-incorrect",
+      "split_identity": "multitask42-factual-CU",
+      "question_id": "025fbe8f16640abd40c62a5c02e177464a727548bed2e25800a8ad1d37fcdb7a",
+      "run_id": "multitask42-factual-history-CU-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Cuba?",
+      "answer": "The currency of Cuba is the United States dollar.",
+      "reference": "The currency of Cuba is the Cuban peso.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"CU\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Cuban peso\"}"
+      }
+    },
+    {
+      "example_id": "LT-correct",
+      "split_identity": "multitask42-factual-LT",
+      "question_id": "9bb208c8728184f2bdb4d1e1f41c517e73d40ed6738cdd4d31c72b3aaa84028c",
+      "run_id": "multitask42-factual-history-LT-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Lithuania?",
+      "answer": "The area of Lithuania is 65300 square kilometres.",
+      "reference": "The area of Lithuania is 65300 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"LT\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 65300}"
+      }
+    },
+    {
+      "example_id": "LT-incorrect",
+      "split_identity": "multitask42-factual-LT",
+      "question_id": "9bb208c8728184f2bdb4d1e1f41c517e73d40ed6738cdd4d31c72b3aaa84028c",
+      "run_id": "multitask42-factual-history-LT-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Lithuania?",
+      "answer": "The area of Lithuania is 66300 square kilometres.",
+      "reference": "The area of Lithuania is 65300 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"LT\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 65300}"
+      }
+    },
+    {
+      "example_id": "LR-correct",
+      "split_identity": "multitask42-factual-LR",
+      "question_id": "b0d134bddfccfe8e4dcd47f5e69dd9ce3bb7d3d4cacc3201a14c26ba49d5bea8",
+      "run_id": "multitask42-factual-history-LR-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Liberia?",
+      "answer": "The population of Liberia is 5731206.",
+      "reference": "The population of Liberia is 5731206.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"LR\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 5731206}"
+      }
+    },
+    {
+      "example_id": "LR-incorrect",
+      "split_identity": "multitask42-factual-LR",
+      "question_id": "b0d134bddfccfe8e4dcd47f5e69dd9ce3bb7d3d4cacc3201a14c26ba49d5bea8",
+      "run_id": "multitask42-factual-history-LR-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Liberia?",
+      "answer": "The population of Liberia is 5743551.",
+      "reference": "The population of Liberia is 5731206.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"LR\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 5731206}"
+      }
+    },
+    {
+      "example_id": "HT-correct",
+      "split_identity": "multitask42-factual-HT",
+      "question_id": "825df6f37b225cbef545f7a5851268125e01d85d2a6e67418db230b5b28d22d6",
+      "run_id": "multitask42-factual-history-HT-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Haiti?",
+      "answer": "The currency of Haiti is the Haitian gourde.",
+      "reference": "The currency of Haiti is the Haitian gourde.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"HT\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Haitian gourde\"}"
+      }
+    },
+    {
+      "example_id": "HT-incorrect",
+      "split_identity": "multitask42-factual-HT",
+      "question_id": "825df6f37b225cbef545f7a5851268125e01d85d2a6e67418db230b5b28d22d6",
+      "run_id": "multitask42-factual-history-HT-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Haiti?",
+      "answer": "The currency of Haiti is the United States dollar.",
+      "reference": "The currency of Haiti is the Haitian gourde.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"HT\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Haitian gourde\"}"
+      }
+    },
+    {
+      "example_id": "PW-correct",
+      "split_identity": "multitask42-factual-PW",
+      "question_id": "e45ceff3065f6faeca9c9b11ea5905b38fb62e76eb296ee475ce64fd7bb00b7b",
+      "run_id": "multitask42-factual-history-PW-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Palau?",
+      "answer": "The area of Palau is 459 square kilometres.",
+      "reference": "The area of Palau is 459 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"PW\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 459}"
+      }
+    },
+    {
+      "example_id": "PW-incorrect",
+      "split_identity": "multitask42-factual-PW",
+      "question_id": "e45ceff3065f6faeca9c9b11ea5905b38fb62e76eb296ee475ce64fd7bb00b7b",
+      "run_id": "multitask42-factual-history-PW-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Palau?",
+      "answer": "The area of Palau is 1459 square kilometres.",
+      "reference": "The area of Palau is 459 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"PW\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 459}"
+      }
+    },
+    {
+      "example_id": "SO-correct",
+      "split_identity": "multitask42-factual-SO",
+      "question_id": "d62d621b6ca2c870156ce9aef656b1656ed1182105ee06f7fea71efe3f4199a3",
+      "run_id": "multitask42-factual-history-SO-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Somalia?",
+      "answer": "The population of Somalia is 19654739.",
+      "reference": "The population of Somalia is 19654739.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"SO\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 19654739}"
+      }
+    },
+    {
+      "example_id": "SO-incorrect",
+      "split_identity": "multitask42-factual-SO",
+      "question_id": "d62d621b6ca2c870156ce9aef656b1656ed1182105ee06f7fea71efe3f4199a3",
+      "run_id": "multitask42-factual-history-SO-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Somalia?",
+      "answer": "The population of Somalia is 19667084.",
+      "reference": "The population of Somalia is 19654739.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"SO\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 19654739}"
+      }
+    },
+    {
+      "example_id": "TJ-correct",
+      "split_identity": "multitask42-factual-TJ",
+      "question_id": "8033b74f00a85506bda392b305938c1e7f229054e540611259dec9ac587948a1",
+      "run_id": "multitask42-factual-history-TJ-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Tajikistan?",
+      "answer": "The currency of Tajikistan is the Tajikistani somoni.",
+      "reference": "The currency of Tajikistan is the Tajikistani somoni.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"TJ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Tajikistani somoni\"}"
+      }
+    },
+    {
+      "example_id": "TJ-incorrect",
+      "split_identity": "multitask42-factual-TJ",
+      "question_id": "8033b74f00a85506bda392b305938c1e7f229054e540611259dec9ac587948a1",
+      "run_id": "multitask42-factual-history-TJ-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Tajikistan?",
+      "answer": "The currency of Tajikistan is the United States dollar.",
+      "reference": "The currency of Tajikistan is the Tajikistani somoni.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"TJ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Tajikistani somoni\"}"
+      }
+    },
+    {
+      "example_id": "NO-correct",
+      "split_identity": "multitask42-factual-NO",
+      "question_id": "c36a78dab08954f43951faceb8b0a9f2df4d2bc8313323e57751531a1adf3593",
+      "run_id": "multitask42-factual-history-NO-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Norway?",
+      "answer": "The area of Norway is 323802 square kilometres.",
+      "reference": "The area of Norway is 323802 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"NO\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 323802}"
+      }
+    },
+    {
+      "example_id": "NO-incorrect",
+      "split_identity": "multitask42-factual-NO",
+      "question_id": "c36a78dab08954f43951faceb8b0a9f2df4d2bc8313323e57751531a1adf3593",
+      "run_id": "multitask42-factual-history-NO-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Norway?",
+      "answer": "The area of Norway is 324802 square kilometres.",
+      "reference": "The area of Norway is 323802 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"NO\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 323802}"
+      }
+    },
+    {
+      "example_id": "BE-correct",
+      "split_identity": "multitask42-factual-BE",
+      "question_id": "a8997a8fa7814380053797b498507a1fbbb60e70137a10058b6d7813909922ea",
+      "run_id": "multitask42-factual-history-BE-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Belgium?",
+      "answer": "The population of Belgium is 11941781.",
+      "reference": "The population of Belgium is 11941781.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"BE\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 11941781}"
+      }
+    },
+    {
+      "example_id": "BE-incorrect",
+      "split_identity": "multitask42-factual-BE",
+      "question_id": "a8997a8fa7814380053797b498507a1fbbb60e70137a10058b6d7813909922ea",
+      "run_id": "multitask42-factual-history-BE-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Belgium?",
+      "answer": "The population of Belgium is 11954126.",
+      "reference": "The population of Belgium is 11941781.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"BE\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 11941781}"
+      }
+    },
+    {
+      "example_id": "SI-correct",
+      "split_identity": "multitask42-factual-SI",
+      "question_id": "06a1ca51b03a921c6430d5b634cad2c76cc9eefcded98674a759fc36a346ec75",
+      "run_id": "multitask42-factual-history-SI-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Slovenia?",
+      "answer": "The currency of Slovenia is the Euro.",
+      "reference": "The currency of Slovenia is the Euro.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"SI\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      }
+    },
+    {
+      "example_id": "SI-incorrect",
+      "split_identity": "multitask42-factual-SI",
+      "question_id": "06a1ca51b03a921c6430d5b634cad2c76cc9eefcded98674a759fc36a346ec75",
+      "run_id": "multitask42-factual-history-SI-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Slovenia?",
+      "answer": "The currency of Slovenia is the United States dollar.",
+      "reference": "The currency of Slovenia is the Euro.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"SI\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      }
+    },
+    {
+      "example_id": "GE-correct",
+      "split_identity": "multitask42-factual-GE",
+      "question_id": "f689ce150f8d5f1a11bac8a2a4eeaaab0a006083e695741048a710bd1e90d266",
+      "run_id": "multitask42-factual-history-GE-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Georgia?",
+      "answer": "The area of Georgia is 69700 square kilometres.",
+      "reference": "The area of Georgia is 69700 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"GE\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 69700}"
+      }
+    },
+    {
+      "example_id": "GE-incorrect",
+      "split_identity": "multitask42-factual-GE",
+      "question_id": "f689ce150f8d5f1a11bac8a2a4eeaaab0a006083e695741048a710bd1e90d266",
+      "run_id": "multitask42-factual-history-GE-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the area of Georgia?",
+      "answer": "The area of Georgia is 70700 square kilometres.",
+      "reference": "The area of Georgia is 69700 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"GE\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 69700}"
+      }
+    },
+    {
+      "example_id": "RO-correct",
+      "split_identity": "multitask42-factual-RO",
+      "question_id": "a9ba02843e496795f42faaf82908a931cabde3238c1be18d20713c6d915fc9fc",
+      "run_id": "multitask42-factual-history-RO-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Romania?",
+      "answer": "The population of Romania is 19020271.",
+      "reference": "The population of Romania is 19020271.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"RO\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 19020271}"
+      }
+    },
+    {
+      "example_id": "RO-incorrect",
+      "split_identity": "multitask42-factual-RO",
+      "question_id": "a9ba02843e496795f42faaf82908a931cabde3238c1be18d20713c6d915fc9fc",
+      "run_id": "multitask42-factual-history-RO-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the population of Romania?",
+      "answer": "The population of Romania is 19032616.",
+      "reference": "The population of Romania is 19020271.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"RO\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 19020271}"
+      }
+    },
+    {
+      "example_id": "DJ-correct",
+      "split_identity": "multitask42-factual-DJ",
+      "question_id": "304eba504c64302116b36b232e5e9a477e9f5fd357d7731752fbe31533255aec",
+      "run_id": "multitask42-factual-history-DJ-correct",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Djibouti?",
+      "answer": "The currency of Djibouti is the Djiboutian franc.",
+      "reference": "The currency of Djibouti is the Djiboutian franc.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"DJ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Djiboutian franc\"}"
+      }
+    },
+    {
+      "example_id": "DJ-incorrect",
+      "split_identity": "multitask42-factual-DJ",
+      "question_id": "304eba504c64302116b36b232e5e9a477e9f5fd357d7731752fbe31533255aec",
+      "run_id": "multitask42-factual-history-DJ-incorrect",
+      "dataset_id": "multitask42-factual-history",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is the currency of Djibouti?",
+      "answer": "The currency of Djibouti is the United States dollar.",
+      "reference": "The currency of Djibouti is the Djiboutian franc.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"DJ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Djiboutian franc\"}"
+      }
+    },
+    {
+      "example_id": "TG-correct",
+      "split_identity": "multitask42-factual-TG",
+      "question_id": "355d06ab4441c7274ec3f28ff0a9779a1a2ca6e8708f8b4bedd4b84cb7095c00",
+      "run_id": "multitask42-factual-development-TG-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Togo?",
+      "answer": "The area of Togo is 56785 square kilometres.",
+      "reference": "The area of Togo is 56785 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"TG\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 56785}"
+      }
+    },
+    {
+      "example_id": "TG-incorrect",
+      "split_identity": "multitask42-factual-TG",
+      "question_id": "355d06ab4441c7274ec3f28ff0a9779a1a2ca6e8708f8b4bedd4b84cb7095c00",
+      "run_id": "multitask42-factual-development-TG-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Togo?",
+      "answer": "The area of Togo is 57785 square kilometres.",
+      "reference": "The area of Togo is 56785 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"TG\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 56785}"
+      }
+    },
+    {
+      "example_id": "EC-correct",
+      "split_identity": "multitask42-factual-EC",
+      "question_id": "6d8fd2a835347f41468a2a23e199f0a7cc56b565b29488b6e94ec7fa49c28d0e",
+      "run_id": "multitask42-factual-development-EC-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Ecuador?",
+      "answer": "The population of Ecuador is 18289896.",
+      "reference": "The population of Ecuador is 18289896.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"EC\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 18289896}"
+      }
+    },
+    {
+      "example_id": "EC-incorrect",
+      "split_identity": "multitask42-factual-EC",
+      "question_id": "6d8fd2a835347f41468a2a23e199f0a7cc56b565b29488b6e94ec7fa49c28d0e",
+      "run_id": "multitask42-factual-development-EC-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Ecuador?",
+      "answer": "The population of Ecuador is 18302241.",
+      "reference": "The population of Ecuador is 18289896.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"EC\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 18289896}"
+      }
+    },
+    {
+      "example_id": "EG-correct",
+      "split_identity": "multitask42-factual-EG",
+      "question_id": "0ee592c897698b78bab3ebc1fa9e0148dda93cfd28d190418aab706fa2c3aa86",
+      "run_id": "multitask42-factual-development-EG-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Egypt?",
+      "answer": "The currency of Egypt is the Egyptian pound.",
+      "reference": "The currency of Egypt is the Egyptian pound.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"EG\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Egyptian pound\"}"
+      }
+    },
+    {
+      "example_id": "EG-incorrect",
+      "split_identity": "multitask42-factual-EG",
+      "question_id": "0ee592c897698b78bab3ebc1fa9e0148dda93cfd28d190418aab706fa2c3aa86",
+      "run_id": "multitask42-factual-development-EG-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Egypt?",
+      "answer": "The currency of Egypt is the United States dollar.",
+      "reference": "The currency of Egypt is the Egyptian pound.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"EG\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Egyptian pound\"}"
+      }
+    },
+    {
+      "example_id": "PH-correct",
+      "split_identity": "multitask42-factual-PH",
+      "question_id": "994f8a4fc547bfe9f3e8bffb76dc1afcc7faebcea3812df2999208a5ee039d07",
+      "run_id": "multitask42-factual-development-PH-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Philippines?",
+      "answer": "The area of Philippines is 342353 square kilometres.",
+      "reference": "The area of Philippines is 342353 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"PH\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 342353}"
+      }
+    },
+    {
+      "example_id": "PH-incorrect",
+      "split_identity": "multitask42-factual-PH",
+      "question_id": "994f8a4fc547bfe9f3e8bffb76dc1afcc7faebcea3812df2999208a5ee039d07",
+      "run_id": "multitask42-factual-development-PH-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Philippines?",
+      "answer": "The area of Philippines is 343353 square kilometres.",
+      "reference": "The area of Philippines is 342353 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"PH\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 342353}"
+      }
+    },
+    {
+      "example_id": "MW-correct",
+      "split_identity": "multitask42-factual-MW",
+      "question_id": "a5c325174b4507a065833c9d724950522ae26857ab2d7c60611a59f108c8790e",
+      "run_id": "multitask42-factual-development-MW-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Malawi?",
+      "answer": "The population of Malawi is 22216120.",
+      "reference": "The population of Malawi is 22216120.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MW\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 22216120}"
+      }
+    },
+    {
+      "example_id": "MW-incorrect",
+      "split_identity": "multitask42-factual-MW",
+      "question_id": "a5c325174b4507a065833c9d724950522ae26857ab2d7c60611a59f108c8790e",
+      "run_id": "multitask42-factual-development-MW-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Malawi?",
+      "answer": "The population of Malawi is 22228465.",
+      "reference": "The population of Malawi is 22216120.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MW\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 22216120}"
+      }
+    },
+    {
+      "example_id": "UZ-correct",
+      "split_identity": "multitask42-factual-UZ",
+      "question_id": "2a85b981aa75d47e75b49a8a528b4c68822a19554a971385752eb7d7c82f4855",
+      "run_id": "multitask42-factual-development-UZ-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Uzbekistan?",
+      "answer": "The currency of Uzbekistan is the Uzbekistani soʻm.",
+      "reference": "The currency of Uzbekistan is the Uzbekistani soʻm.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"UZ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Uzbekistani so\\u02bbm\"}"
+      }
+    },
+    {
+      "example_id": "UZ-incorrect",
+      "split_identity": "multitask42-factual-UZ",
+      "question_id": "2a85b981aa75d47e75b49a8a528b4c68822a19554a971385752eb7d7c82f4855",
+      "run_id": "multitask42-factual-development-UZ-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Uzbekistan?",
+      "answer": "The currency of Uzbekistan is the United States dollar.",
+      "reference": "The currency of Uzbekistan is the Uzbekistani soʻm.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"UZ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Uzbekistani so\\u02bbm\"}"
+      }
+    },
+    {
+      "example_id": "PY-correct",
+      "split_identity": "multitask42-factual-PY",
+      "question_id": "e2abf65410edb4b5c85301424cfd74e0c2654fdcdd85ec702c7187285f416102",
+      "run_id": "multitask42-factual-development-PY-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Paraguay?",
+      "answer": "The area of Paraguay is 406752 square kilometres.",
+      "reference": "The area of Paraguay is 406752 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"PY\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 406752}"
+      }
+    },
+    {
+      "example_id": "PY-incorrect",
+      "split_identity": "multitask42-factual-PY",
+      "question_id": "e2abf65410edb4b5c85301424cfd74e0c2654fdcdd85ec702c7187285f416102",
+      "run_id": "multitask42-factual-development-PY-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Paraguay?",
+      "answer": "The area of Paraguay is 407752 square kilometres.",
+      "reference": "The area of Paraguay is 406752 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"PY\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 406752}"
+      }
+    },
+    {
+      "example_id": "TH-correct",
+      "split_identity": "multitask42-factual-TH",
+      "question_id": "9b9aacb53fa26e2121d61cc1fec6a7600856dcb14f93ce7b944f5dd4ec6a5d78",
+      "run_id": "multitask42-factual-development-TH-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Thailand?",
+      "answer": "The population of Thailand is 71619863.",
+      "reference": "The population of Thailand is 71619863.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"TH\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 71619863}"
+      }
+    },
+    {
+      "example_id": "TH-incorrect",
+      "split_identity": "multitask42-factual-TH",
+      "question_id": "9b9aacb53fa26e2121d61cc1fec6a7600856dcb14f93ce7b944f5dd4ec6a5d78",
+      "run_id": "multitask42-factual-development-TH-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Thailand?",
+      "answer": "The population of Thailand is 71632208.",
+      "reference": "The population of Thailand is 71619863.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"TH\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 71619863}"
+      }
+    },
+    {
+      "example_id": "LV-correct",
+      "split_identity": "multitask42-factual-LV",
+      "question_id": "ab225b9c81fe1f05d5662fe2117d9edbad74a13c8d7f164c4963272018748620",
+      "run_id": "multitask42-factual-development-LV-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Latvia?",
+      "answer": "The currency of Latvia is the Euro.",
+      "reference": "The currency of Latvia is the Euro.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"LV\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      }
+    },
+    {
+      "example_id": "LV-incorrect",
+      "split_identity": "multitask42-factual-LV",
+      "question_id": "ab225b9c81fe1f05d5662fe2117d9edbad74a13c8d7f164c4963272018748620",
+      "run_id": "multitask42-factual-development-LV-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Latvia?",
+      "answer": "The currency of Latvia is the United States dollar.",
+      "reference": "The currency of Latvia is the Euro.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"LV\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      }
+    },
+    {
+      "example_id": "NG-correct",
+      "split_identity": "multitask42-factual-NG",
+      "question_id": "89e07db2ba7df9fa3c43184874f8ad3d153f8beab365a06270ada5b4d91ad90b",
+      "run_id": "multitask42-factual-development-NG-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Nigeria?",
+      "answer": "The area of Nigeria is 923768 square kilometres.",
+      "reference": "The area of Nigeria is 923768 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"NG\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 923768}"
+      }
+    },
+    {
+      "example_id": "NG-incorrect",
+      "split_identity": "multitask42-factual-NG",
+      "question_id": "89e07db2ba7df9fa3c43184874f8ad3d153f8beab365a06270ada5b4d91ad90b",
+      "run_id": "multitask42-factual-development-NG-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Nigeria?",
+      "answer": "The area of Nigeria is 924768 square kilometres.",
+      "reference": "The area of Nigeria is 923768 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"NG\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 923768}"
+      }
+    },
+    {
+      "example_id": "GA-correct",
+      "split_identity": "multitask42-factual-GA",
+      "question_id": "2e0271d0937f0b7517d89670d352679bbd0ddea9cf6edba6431cb2d452c11ef8",
+      "run_id": "multitask42-factual-development-GA-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Gabon?",
+      "answer": "The population of Gabon is 2593130.",
+      "reference": "The population of Gabon is 2593130.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"GA\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 2593130}"
+      }
+    },
+    {
+      "example_id": "GA-incorrect",
+      "split_identity": "multitask42-factual-GA",
+      "question_id": "2e0271d0937f0b7517d89670d352679bbd0ddea9cf6edba6431cb2d452c11ef8",
+      "run_id": "multitask42-factual-development-GA-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Gabon?",
+      "answer": "The population of Gabon is 2605475.",
+      "reference": "The population of Gabon is 2593130.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"GA\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 2593130}"
+      }
+    },
+    {
+      "example_id": "AO-correct",
+      "split_identity": "multitask42-factual-AO",
+      "question_id": "4329c0fa588dadc9a0794b918954f8ea82aec803114cbfdeff54c0ffdd5fa793",
+      "run_id": "multitask42-factual-development-AO-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Angola?",
+      "answer": "The currency of Angola is the Angolan kwanza.",
+      "reference": "The currency of Angola is the Angolan kwanza.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"AO\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Angolan kwanza\"}"
+      }
+    },
+    {
+      "example_id": "AO-incorrect",
+      "split_identity": "multitask42-factual-AO",
+      "question_id": "4329c0fa588dadc9a0794b918954f8ea82aec803114cbfdeff54c0ffdd5fa793",
+      "run_id": "multitask42-factual-development-AO-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Angola?",
+      "answer": "The currency of Angola is the United States dollar.",
+      "reference": "The currency of Angola is the Angolan kwanza.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"AO\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Angolan kwanza\"}"
+      }
+    },
+    {
+      "example_id": "CZ-correct",
+      "split_identity": "multitask42-factual-CZ",
+      "question_id": "462e2c4af2d0f80f6c0e99abecf8cb3bb8a5ac7b959a2f31ea37fa5c23e89f29",
+      "run_id": "multitask42-factual-development-CZ-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Czechia?",
+      "answer": "The area of Czechia is 78865 square kilometres.",
+      "reference": "The area of Czechia is 78865 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"CZ\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 78865}"
+      }
+    },
+    {
+      "example_id": "CZ-incorrect",
+      "split_identity": "multitask42-factual-CZ",
+      "question_id": "462e2c4af2d0f80f6c0e99abecf8cb3bb8a5ac7b959a2f31ea37fa5c23e89f29",
+      "run_id": "multitask42-factual-development-CZ-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Czechia?",
+      "answer": "The area of Czechia is 79865 square kilometres.",
+      "reference": "The area of Czechia is 78865 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"CZ\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 78865}"
+      }
+    },
+    {
+      "example_id": "NP-correct",
+      "split_identity": "multitask42-factual-NP",
+      "question_id": "f41e3fd1eb92a32c357575a73961a5c3e76a4580ec0db1842f77c7154b631ea7",
+      "run_id": "multitask42-factual-development-NP-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Nepal?",
+      "answer": "The population of Nepal is 29618118.",
+      "reference": "The population of Nepal is 29618118.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"NP\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 29618118}"
+      }
+    },
+    {
+      "example_id": "NP-incorrect",
+      "split_identity": "multitask42-factual-NP",
+      "question_id": "f41e3fd1eb92a32c357575a73961a5c3e76a4580ec0db1842f77c7154b631ea7",
+      "run_id": "multitask42-factual-development-NP-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Nepal?",
+      "answer": "The population of Nepal is 29630463.",
+      "reference": "The population of Nepal is 29618118.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"NP\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 29618118}"
+      }
+    },
+    {
+      "example_id": "FJ-correct",
+      "split_identity": "multitask42-factual-FJ",
+      "question_id": "6266060b8d6822726c041a53b4a2d579b80333126aaa899a8736012b08376d6f",
+      "run_id": "multitask42-factual-development-FJ-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Fiji?",
+      "answer": "The currency of Fiji is the Fijian dollar.",
+      "reference": "The currency of Fiji is the Fijian dollar.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"FJ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Fijian dollar\"}"
+      }
+    },
+    {
+      "example_id": "FJ-incorrect",
+      "split_identity": "multitask42-factual-FJ",
+      "question_id": "6266060b8d6822726c041a53b4a2d579b80333126aaa899a8736012b08376d6f",
+      "run_id": "multitask42-factual-development-FJ-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Fiji?",
+      "answer": "The currency of Fiji is the United States dollar.",
+      "reference": "The currency of Fiji is the Fijian dollar.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"FJ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Fijian dollar\"}"
+      }
+    },
+    {
+      "example_id": "SN-correct",
+      "split_identity": "multitask42-factual-SN",
+      "question_id": "476ca92a6ad506c33b15b13989947c9f8b9890c7b5395364b2264cbad0cb69a5",
+      "run_id": "multitask42-factual-development-SN-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Senegal?",
+      "answer": "The area of Senegal is 196722 square kilometres.",
+      "reference": "The area of Senegal is 196722 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"SN\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 196722}"
+      }
+    },
+    {
+      "example_id": "SN-incorrect",
+      "split_identity": "multitask42-factual-SN",
+      "question_id": "476ca92a6ad506c33b15b13989947c9f8b9890c7b5395364b2264cbad0cb69a5",
+      "run_id": "multitask42-factual-development-SN-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Senegal?",
+      "answer": "The area of Senegal is 197722 square kilometres.",
+      "reference": "The area of Senegal is 196722 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"SN\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 196722}"
+      }
+    },
+    {
+      "example_id": "GD-correct",
+      "split_identity": "multitask42-factual-GD",
+      "question_id": "d97d4d7ed1f8cfe98570a7b49911c41de4e119a0f31d2559bc88cd04bf929de7",
+      "run_id": "multitask42-factual-development-GD-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Grenada?",
+      "answer": "The population of Grenada is 117303.",
+      "reference": "The population of Grenada is 117303.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"GD\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 117303}"
+      }
+    },
+    {
+      "example_id": "GD-incorrect",
+      "split_identity": "multitask42-factual-GD",
+      "question_id": "d97d4d7ed1f8cfe98570a7b49911c41de4e119a0f31d2559bc88cd04bf929de7",
+      "run_id": "multitask42-factual-development-GD-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Grenada?",
+      "answer": "The population of Grenada is 129648.",
+      "reference": "The population of Grenada is 117303.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"GD\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 117303}"
+      }
+    },
+    {
+      "example_id": "AZ-correct",
+      "split_identity": "multitask42-factual-AZ",
+      "question_id": "0fd4a8d193ad06f3b26a5bd416511012d33b2b25aaa38a0de8cb0b94717f7d22",
+      "run_id": "multitask42-factual-development-AZ-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Azerbaijan?",
+      "answer": "The currency of Azerbaijan is the Azerbaijani manat.",
+      "reference": "The currency of Azerbaijan is the Azerbaijani manat.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"AZ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Azerbaijani manat\"}"
+      }
+    },
+    {
+      "example_id": "AZ-incorrect",
+      "split_identity": "multitask42-factual-AZ",
+      "question_id": "0fd4a8d193ad06f3b26a5bd416511012d33b2b25aaa38a0de8cb0b94717f7d22",
+      "run_id": "multitask42-factual-development-AZ-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the currency of Azerbaijan?",
+      "answer": "The currency of Azerbaijan is the United States dollar.",
+      "reference": "The currency of Azerbaijan is the Azerbaijani manat.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"AZ\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Azerbaijani manat\"}"
+      }
+    },
+    {
+      "example_id": "BD-correct",
+      "split_identity": "multitask42-factual-BD",
+      "question_id": "804a728a8ad12d189911a0ab38cc703164eaa8b72a2b979634c717f08d39ee7a",
+      "run_id": "multitask42-factual-development-BD-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Bangladesh?",
+      "answer": "The area of Bangladesh is 147570 square kilometres.",
+      "reference": "The area of Bangladesh is 147570 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"BD\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 147570}"
+      }
+    },
+    {
+      "example_id": "BD-incorrect",
+      "split_identity": "multitask42-factual-BD",
+      "question_id": "804a728a8ad12d189911a0ab38cc703164eaa8b72a2b979634c717f08d39ee7a",
+      "run_id": "multitask42-factual-development-BD-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the area of Bangladesh?",
+      "answer": "The area of Bangladesh is 148570 square kilometres.",
+      "reference": "The area of Bangladesh is 147570 square kilometres.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"BD\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 147570}"
+      }
+    },
+    {
+      "example_id": "MA-correct",
+      "split_identity": "multitask42-factual-MA",
+      "question_id": "35a845cd7f86703ea458bae93c3ffc224db196b95f1a1c48886fa3c41d6acfa6",
+      "run_id": "multitask42-factual-development-MA-correct",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Morocco?",
+      "answer": "The population of Morocco is 38430770.",
+      "reference": "The population of Morocco is 38430770.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MA\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 38430770}"
+      }
+    },
+    {
+      "example_id": "MA-incorrect",
+      "split_identity": "multitask42-factual-MA",
+      "question_id": "35a845cd7f86703ea458bae93c3ffc224db196b95f1a1c48886fa3c41d6acfa6",
+      "run_id": "multitask42-factual-development-MA-incorrect",
+      "dataset_id": "multitask42-factual-development",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is the population of Morocco?",
+      "answer": "The population of Morocco is 38443115.",
+      "reference": "The population of Morocco is 38430770.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "direct_fact"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ],
+          "requirement_weights": {
+            "direct_fact": 1.0,
+            "arithmetic": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "explicit_task_questions_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-factual-frames-v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"iso\": \"MA\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 38430770}"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "verifier_name": "semantic",
+      "adapter": "semantic_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "requires_reference": true,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ]
+      }
+    },
+    {
+      "verifier_name": "evidence",
+      "adapter": "evidence_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ]
+      }
+    },
+    {
+      "verifier_name": "rule",
+      "adapter": "rule_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ]
+      }
+    },
+    {
+      "verifier_name": "confidence",
+      "adapter": "confidence_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ]
+      }
+    }
+  ]
+}

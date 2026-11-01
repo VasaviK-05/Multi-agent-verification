@@ -1,0 +1,462 @@
+{
+  "cohort": "arithmetic",
+  "target": 0.75,
+  "maximum_clean_coverage": 0.825,
+  "budget": 21258.33526502247,
+  "status": "complete",
+  "artifact_created": true,
+  "provenance": "User clarification ae37b9f0-5320-46b2-9e31-20e345f18f96; exploratory development, no activation",
+  "context_id": "6870db4ad9ecc3595694887b993228633d170c44656f30a0ef2394e6c6bbe8b4",
+  "source_manifest_id": "3a0e3dae9e7ca6652178656942442495e076f9dc48f9d34f82f95c5971c39db3",
+  "artifact_id": "202b675a7332e3aea7fd043f202efebc0cbab329a6576a157d03c06c2b7d1b5a",
+  "probabilities": [
+    {
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "verifiers": [
+        "confidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21137.283848738298,
+      "probability": 0.9090907683501677
+    },
+    {
+      "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+      "verifiers": [
+        "confidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21137.283848738298,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 91.13092127081472,
+      "probability": 0.09090898720538672
+    },
+    {
+      "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 91.13092127081472,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 49.27691500342917,
+      "probability": 2.444444456065268e-07
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 49.27691500342917,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21218.736560014077,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21218.736560014077,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+      "verifiers": [
+        "confidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21176.88255374669,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+      "verifiers": [
+        "confidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21176.88255374669,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 130.72962627920788,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 130.72962627920788,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21258.33526502247,
+      "probability": 0.0
+    },
+    {
+      "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21258.33526502247,
+      "probability": 0.0
+    }
+  ],
+  "zero_coverage_mass": 0.09090898720538672,
+  "scenarios": [
+    {
+      "attack": "clean",
+      "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 12.727273690235691,
+        "correct_reject": 17.27272630976432,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 9.999999999999982,
+        "unresolved": 0.0,
+        "decision_coverage": 0.7500000000000002,
+        "selective_risk": 0.0,
+        "estimated_resource_cost": 19223.99424668638,
+        "mean_loss": 0.14043038416237935
+      },
+      "validation_loss": 0.04999999999999991,
+      "uncertainty_rate": 0.24999999999999956,
+      "uncertainty_reasons": {
+        "minimum_contributors": 5.454546158249164,
+        "weak_or_conflicting_signal": 4.545453841750838
+      }
+    },
+    {
+      "attack": "forced_support",
+      "attack_id": "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 17.272727531986554,
+        "correct_reject": 0.0,
+        "false_accept": 17.27272630976432,
+        "false_reject": 0.0,
+        "uncertain": 5.454546158249164,
+        "unresolved": 0.0,
+        "decision_coverage": 0.8636363460437717,
+        "selective_risk": 0.499999982309941,
+        "estimated_resource_cost": 19223.99424668638,
+        "mean_loss": 0.5495212726977328
+      },
+      "validation_loss": 0.4590908885353538,
+      "uncertainty_rate": 0.1363636539562291,
+      "uncertainty_reasons": {
+        "minimum_contributors": 5.454546158249164
+      }
+    },
+    {
+      "attack": "forced_rejection",
+      "attack_id": "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 17.27272630976432,
+        "false_accept": 0.0,
+        "false_reject": 17.272727531986554,
+        "uncertain": 5.454546158249164,
+        "unresolved": 0.0,
+        "decision_coverage": 0.8636363460437717,
+        "selective_risk": 0.5000000176900591,
+        "estimated_resource_cost": 19223.99424668638,
+        "mean_loss": 0.5495213032532884
+      },
+      "validation_loss": 0.45909091909090965,
+      "uncertainty_rate": 0.1363636539562291,
+      "uncertainty_reasons": {
+        "minimum_contributors": 5.454546158249164
+      }
+    },
+    {
+      "attack": "confidence_inflation",
+      "attack_id": "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 12.727273690235691,
+        "correct_reject": 17.27272630976432,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 9.999999999999982,
+        "unresolved": 0.0,
+        "decision_coverage": 0.7500000000000002,
+        "selective_risk": 0.0,
+        "estimated_resource_cost": 19223.99424668638,
+        "mean_loss": 0.14043038416237935
+      },
+      "validation_loss": 0.04999999999999991,
+      "uncertainty_rate": 0.24999999999999956,
+      "uncertainty_reasons": {
+        "minimum_contributors": 5.454546158249164,
+        "weak_or_conflicting_signal": 4.545453841750838
+      }
+    },
+    {
+      "attack": "suppression",
+      "attack_id": "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 39.99999999999999,
+        "unresolved": 39.99999999999999,
+        "decision_coverage": 0.0,
+        "selective_risk": null,
+        "estimated_resource_cost": 19223.99424668638,
+        "mean_loss": 0.2904303841623793
+      },
+      "validation_loss": 0.19999999999999998,
+      "uncertainty_rate": 0.9999999999999998,
+      "uncertainty_reasons": {
+        "minimum_contributors": 39.99999999999999,
+        "missing_achieved_coverage": 39.99999999999999,
+        "selected_execution_incomplete": 39.99999999999999
+      }
+    }
+  ],
+  "worst_validation_loss": 0.45909091909090965,
+  "certificate": {
+    "status": "optimal",
+    "message": "Stage A and Stage B: Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "tolerance": 1e-08,
+    "probabilities": [
+      [
+        "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+        0.9090907683501677
+      ],
+      [
+        "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+        0.0
+      ],
+      [
+        "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        0.09090898720538672
+      ],
+      [
+        "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        0.0
+      ],
+      [
+        "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+        2.444444456065268e-07
+      ],
+      [
+        "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+        0.0
+      ],
+      [
+        "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        0.0
+      ],
+      [
+        "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        0.0
+      ],
+      [
+        "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+        0.0
+      ],
+      [
+        "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+        0.0
+      ],
+      [
+        "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        0.0
+      ],
+      [
+        "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        0.0
+      ],
+      [
+        "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        0.0
+      ],
+      [
+        "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+        0.0
+      ]
+    ],
+    "game_value": 0.4590909190909091,
+    "constraint_residuals": [
+      [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        0.4090909190909091
+      ],
+      [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        3.0555555696754055e-08
+      ],
+      [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        0.0
+      ],
+      [
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        0.4090909190909091
+      ],
+      [
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+        0.2590909190909091
+      ]
+    ],
+    "attack_losses": [
+      [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        0.05
+      ],
+      [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        0.4590908885353534
+      ],
+      [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        0.4590909190909091
+      ],
+      [
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        0.05
+      ],
+      [
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+        0.2
+      ]
+    ],
+    "worst_case_attacks": [
+      "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469"
+    ],
+    "normalization_residual": 0.0,
+    "minimum_probability": 0.0,
+    "matrix_id": "fbb5b7abaa31a58799d7f4251267af6f30eb0bf41d43a5cf87c946dc72b8aabe",
+    "attack_probabilities": [
+      [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        0.0
+      ],
+      [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        0.32727272727272694
+      ],
+      [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        0.6727272727272731
+      ],
+      [
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        0.0
+      ],
+      [
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+        0.0
+      ]
+    ],
+    "dual_lower_bound": 0.4590909090909091,
+    "primal_dual_gap": 9.999999994736442e-09,
+    "optimality_basis": "highs_validation_then_cost_two_stage_certificate_v1",
+    "reliability_certificate": {
+      "version": "validation_then_cost_certificate_v1",
+      "stage_a_json": "{\"status\":\"optimal\",\"message\":\"Optimization terminated successfully. (HiGHS Status 7: Optimal)\",\"tolerance\":1e-8,\"probabilities\":[[\"d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af\",0.9090909090909092],[\"64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e\",0.0],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",0.09090909090909083],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",0.0],[\"4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95\",0.0],[\"a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f\",0.0],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.0],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.0],[\"af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd\",0.0],[\"e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad\",0.0],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.0],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.0]],\"game_value\":0.4590909090909091,\"constraint_residuals\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.4090909090909091],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.4090909090909091],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.2590909090909091]],\"attack_losses\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.04999999999999999],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.4590909090909091],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.4590909090909091],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.04999999999999999],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.2]],\"worst_case_attacks\":[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\"],\"normalization_residual\":0.0,\"minimum_probability\":0.0,\"matrix_id\":\"ecae0e0523f071ca93b05f26394aae548845f14d4bfec1de0b99c469e7296fcf\",\"attack_probabilities\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.0],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.32727272727272694],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.6727272727272731],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.0],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.0]],\"dual_lower_bound\":0.4590909090909091,\"primal_dual_gap\":0.0,\"optimality_basis\":\"highs_status_0_and_clean_coverage_primal_dual_certificate_v1\",\"coverage_certificate\":{\"version\":\"clean_coverage_dual_v1\",\"multiplier\":0.34545454545454546,\"achieved\":0.75,\"residual\":0.0}}",
+      "reliability_cap": 0.4590909190909091,
+      "attack_multipliers": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.0
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          297228.21320644877
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "coverage_multiplier": 128189.32568643075,
+      "achieved_coverage": 0.7499999999999999,
+      "coverage_residual": -1.1102230246251565e-16,
+      "expected_cost": 19223.99424668638,
+      "cost_dual_lower_bound": 19223.994246686387,
+      "cost_primal_dual_gap": -7.275957614183426e-12
+    }
+  },
+  "reproducibility": {
+    "equivalent": true,
+    "matrix_atol": 1e-12,
+    "reputation_atol": 1e-12,
+    "probability_atol": 1e-12,
+    "relative_tolerance": 0.0
+  },
+  "artifact_path": "build\\multitask-uncertainty-sweep42\\arithmetic\\coverage-75\\policy.json"
+}

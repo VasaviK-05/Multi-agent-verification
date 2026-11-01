@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "approved_configuration_digest": "af723595edffe54fbd8cd6f1d3c082bd718c53edfddd2d063bdda8aa6094ad41",
+  "original_proposal_recordings_calibration_unchanged": true,
+  "settings_unchanged": true,
+  "certificate_validated": true,
+  "repeat_build_equivalent": true,
+  "provider_runtime_parity": true,
+  "final_payloads_opened": false,
+  "final_evaluation_run": false,
+  "recalibrated": false,
+  "protected_path_diffs": [],
+  "production_state_writes": false,
+  "focused_test_command": ".venv/Scripts/python.exe -m pytest tests/test_game_build.py tests/test_game_runtime.py -q -p no:cacheprovider",
+  "tests_passed": 85,
+  "tests_failed": 0,
+  "changed_this_turn": [
+    "docs/arithmetic_pilot42_fit.md",
+    "docs/arithmetic_pilot42.md"
+  ],
+  "generated_artifacts": "build/arithmetic-pilot42/approval.json, approved-policy-input.json and fitted-policy/*",
+  "artifact_id": "6b52c2cc954d461a9a1d34d4ffcf23b048a77f494104fbca7a7f038271167a94"
+}

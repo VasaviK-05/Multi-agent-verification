@@ -1,0 +1,2322 @@
+[
+  {
+    "strategy": {
+      "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+      "verifiers": [
+        "confidence",
+        "evidence"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 12903.80804373417
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9980629384517669,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128723,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+      "verifiers": [
+        "confidence",
+        "evidence"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 12903.80804373417
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence"
+            ],
+            "contribution": 0.9505361318588257,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": 0.998062938451767
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.998062938451767,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence"
+            ],
+            "contribution": -0.9523285570598783,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": -0.9999449849128722
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128722,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 181.68994124571327
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9961258769035339,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.996126,
+        "status": "passed",
+        "team": [
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9998899698257446,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.99989,
+        "status": "failed",
+        "team": [
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 181.68994124571327
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "evidence"
+            ],
+            "contribution": 0.9486913113366989,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 0.9523809523809523,
+            "score": 0.9961258769035339
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9961258769035339,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.996126,
+        "status": "passed",
+        "team": [
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "evidence"
+            ],
+            "contribution": -0.9522761617388044,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 0.9523809523809523,
+            "score": -0.9998899698257446
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9998899698257446,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.99989,
+        "status": "failed",
+        "team": [
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 233.18154498410877
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9961258769035339,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.996126,
+        "status": "passed",
+        "team": [
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9998899698257446,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.99989,
+        "status": "failed",
+        "team": [
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 233.18154498410877
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "evidence",
+              "semantic"
+            ],
+            "contribution": 0.9486913113366989,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 0.9523809523809523,
+            "score": 0.9961258769035339
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9961258769035339,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.996126,
+        "status": "passed",
+        "team": [
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "evidence",
+              "semantic"
+            ],
+            "contribution": -0.9522761617388044,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 0.9523809523809523,
+            "score": -0.9998899698257446
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9998899698257446,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.99989,
+        "status": "failed",
+        "team": [
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 12903.935088732396
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9980629384517669,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128723,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 12903.935088732396
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence"
+            ],
+            "contribution": 0.9505361318588257,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": 0.998062938451767
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.998062938451767,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence"
+            ],
+            "contribution": -0.9523285570598783,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": -0.9999449849128722
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128722,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 12955.426692470792
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9980629384517669,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128723,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 12955.426692470792
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "contribution": 0.9505361318588257,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": 0.998062938451767
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.998062938451767,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "contribution": -0.9523285570598783,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": -0.9999449849128722
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128722,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 233.30858998233452
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9961258769035339,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.996126,
+        "status": "passed",
+        "team": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9998899698257446,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.99989,
+        "status": "failed",
+        "team": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 233.30858998233452
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "evidence",
+              "semantic"
+            ],
+            "contribution": 0.9486913113366989,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 0.9523809523809523,
+            "score": 0.9961258769035339
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9961258769035339,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.996126,
+        "status": "passed",
+        "team": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "evidence",
+              "semantic"
+            ],
+            "contribution": -0.9522761617388044,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 0.9523809523809523,
+            "score": -0.9998899698257446
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9998899698257446,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.99989,
+        "status": "failed",
+        "team": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 12955.553737469018
+    },
+    "decisions": [
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.9980629384517669,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 3.699185231390296,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "log_odds",
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "dependency_assumptions": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "domain": "general",
+        "fallback": null,
+        "groups": [],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128723,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -3.7135720667043066,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -3.713163461722697,
+            "failure_group_id": null,
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 3.7135720667043066
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": null,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "strategy": {
+      "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 12955.553737469018
+    },
+    "decisions": [
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "contribution": 0.9505361318588257,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": 0.998062938451767
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": 0.998062938451767,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": 0.998063,
+        "status": "passed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-correct",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": 0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 1.0,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9961258769035339,
+            "contribution": 0.9486913113366989,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9961258769035339,
+            "passed": true,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9357280066075385,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.9357280066075385,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-correct",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      },
+      {
+        "aggregation": "dependency_group",
+        "aggregation_id": "dependency_group",
+        "aggregation_version": "groups_v1",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "dependency_configuration_id": "4ca2f113fd7b9ae042812ec16b0d5acc33eb4949018596936e66e652e3b13a1d",
+        "dependency_version": "observed-shared-models-and-unresolved-v1",
+        "domain": "general",
+        "fallback": null,
+        "groups": [
+          {
+            "active_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "contribution": -0.9523285570598783,
+            "fallback": null,
+            "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "influence": 0.9523809523809523,
+            "reliability_sum": 1.9047619047619047,
+            "score": -0.9999449849128722
+          }
+        ],
+        "lower_cut": -0.55,
+        "missing_reports": [],
+        "raw_score": -0.9999449849128722,
+        "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+        "score": -0.999945,
+        "status": "failed",
+        "team": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "threshold": 0.55,
+        "upper_cut": 0.55,
+        "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+        "votes": [
+          {
+            "abstained": false,
+            "confidence": 1.0,
+            "contribution": -0.9523809523809523,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -1.0,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "confidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": false,
+            "confidence": 0.9998899698257446,
+            "contribution": -0.9522761617388044,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": -0.9998899698257446,
+            "passed": false,
+            "reliability_strength": 0.9523809523809523,
+            "reputation": 0.9761904761904762,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "evidence",
+            "weight": 0.9523809523809523
+          },
+          {
+            "abstained": true,
+            "confidence": 0.0,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": false,
+            "inclusion_reason": "abstention",
+            "normalized_strength": null,
+            "passed": false,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "rule",
+            "weight": 0.0
+          },
+          {
+            "abstained": false,
+            "confidence": 0.7771412281518978,
+            "contribution": 0.0,
+            "failure_group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+            "included": true,
+            "inclusion_reason": "included",
+            "normalized_strength": 0.7771412281518978,
+            "passed": true,
+            "reliability_strength": 0.0,
+            "reputation": 0.5,
+            "validation_id": "factual-capitals42-v1-development-AL-incorrect",
+            "verifier_name": "semantic",
+            "weight": 0.0
+          }
+        ]
+      }
+    ]
+  }
+]

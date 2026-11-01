@@ -1,0 +1,44 @@
+{
+  "status": "complete_for_review_not_activated",
+  "policies": 7,
+  "infeasible": 8,
+  "targets": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "tests": {
+    "focused_passed": 188,
+    "broader_passed": 220,
+    "remaining_failures": []
+  },
+  "retained_runtime_checks": 30,
+  "network_calls": 0,
+  "fresh_inference": false,
+  "recalibration": false,
+  "final_payload_access": false,
+  "owned_fix": "Offline known eager factories fail before construction on missing Semantic prerequisite; Evidence eligibility unchanged; partial-roster factory is owner handoff",
+  "recommendations": {
+    "arithmetic": "coverage-50; bounded constructed-addition prototype review",
+    "factual": "coverage-25; shadow/human-reviewed source-snapshot prototype only",
+    "semantic": "no useful supported prototype"
+  },
+  "changed_files": [
+    "app/game/offline/collect.py",
+    "scripts/multitask_uncertainty_sweep.py",
+    "scripts/multitask_uncertainty_report.py",
+    "scripts/validate_uncertainty_sweep.py",
+    "tests/test_game_three_outcomes.py",
+    "docs/game_policy_build.md",
+    "docs/multitask_uncertainty_tradeoffs.md"
+  ],
+  "final_checks": [
+    "git diff --check passed",
+    "no conflict markers/trailing whitespace in new files",
+    "no forbidden ownership path changes",
+    "data remains Git-ignored"
+  ],
+  "no_production_writes_commits_pushes_merges_or_activation": true
+}

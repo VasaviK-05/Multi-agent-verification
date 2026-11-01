@@ -1,0 +1,207 @@
+{
+  "blockers": [],
+  "downloads_performed": false,
+  "hardware": {
+    "architecture": "AMD64",
+    "concurrency": "sequential",
+    "device": "cpu",
+    "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+    "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+    "logical_cpus": "16",
+    "os": "Windows-10-10.0.26200-SP0",
+    "physical_memory_bytes": "16876888064",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "runtime": "3.11.5",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+  },
+  "inventory": {
+    "corpus": {
+      "bytes": 2664,
+      "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+    },
+    "embedding_snapshot": {
+      "bytes": 91578415,
+      "files": 11,
+      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+    },
+    "index": {
+      "chunks.json": "0868e6ff434c0008536f3c2ba6dc2e7a17e4b4f34a06577a47cdaa684cd278fa",
+      "faiss.index": "ccfff19cc1b55432969fbc01b4727735c727d8a303be9af54eff10f2518740f5",
+      "manifest.json": "eb50a79260e0b82b3dca858015c72230529c5d1ddefdc10b045f8ac47aab8e98"
+    },
+    "index_provenance": {
+      "chunk_size": 500,
+      "chunks_sha256": "0868e6ff434c0008536f3c2ba6dc2e7a17e4b4f34a06577a47cdaa684cd278fa",
+      "corpus_sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795",
+      "embedding_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+      "index_sha256": "ccfff19cc1b55432969fbc01b4727735c727d8a303be9af54eff10f2518740f5",
+      "version": "observed_index_build_v1"
+    },
+    "nli_snapshot": {
+      "bytes": 578729785,
+      "files": 7,
+      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+    },
+    "service": {
+      "model": "llama3.2:3b",
+      "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "server_version": "0.40.5",
+      "url": "http://localhost:11434/api/generate",
+      "version": "ollama_metadata_observation_v1"
+    }
+  },
+  "observed_setup": {
+    "application_source_digest": "4ebd1cabd8bd9d69993b5f990e78ca77acf79fc6cbd9bb184165c34d4f6fef8d",
+    "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "81df95721c085a358874a207f518f3dccfae645a7af6c7c5d8ae7c25afb9b075"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "696113ec363eacfe8478528bcc1bab1d69c59ee58e344836107b39e12adc33e0"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "360dfb21c7040f02c791a24d418e294b32940eff20c76e50d2df0a6ea48da88c"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "c7e3cc25b27ffd6c42f8471f0fb2140db10cde0ad9e070f98b44d84fb2b74ea1"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "observed_setup_fingerprint": "74a751ca3b49985b4de9ff6f0beaab8c79e2e3440af93f9e321658a6a6d13b50",
+  "provider_requests_performed": 0,
+  "ready": true,
+  "ready_scope": "local inputs only; saved service observation is revalidated live by factory",
+  "requirements": {
+    "downloads": "none allowed; missing snapshots require separately authorized provisioning",
+    "external_service": "http://localhost:11434/api/generate",
+    "factory_metadata_get_requests": 4,
+    "memory": "CPU mode; model file sizes reported; peak RAM and service memory are not estimated",
+    "model": "llama3.2:3b",
+    "pricing": null,
+    "pricing_reason": "no approved monetary pricing inputs supplied"
+  }
+}

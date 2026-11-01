@@ -1,0 +1,6 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1425.06it/s]
+C:\Users\jhaan\Multi-agent-verification\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 17/106 [00:00<00:00, 161.56it/s]Loading weights:  32%|███▏      | 34/106 [00:00<00:00, 133.43it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 336.30it/s]
+C:\Users\jhaan\Multi-agent-verification\app\benchmark\project_adapter.py:365: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  if retriever.index.ntotal != len(retriever.chunks) or retriever.index.d != embedding.get_sentence_embedding_dimension():

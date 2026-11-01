@@ -1,0 +1,128 @@
+{
+  "ready": true,
+  "specification_id": "259668b05284d439899031b3abce76db20bfd37af064dbbe2e7e3730357051df",
+  "code_revision": "17b695373f935dc1f5fd09c37cf8917969367f7a",
+  "evidence_kind": "empirical",
+  "planning_category": "5e5a7ce3dde9c5eb0b32ddd071d3152751cb5a55612c3a3677ffe4f6138557dc",
+  "blockers": [],
+  "adapter_blockers": [],
+  "unsupported_achieved": [],
+  "strategies": [
+    {
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 91.13092127081472
+    },
+    {
+      "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 91.13092127081472
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 49.27691500342917
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 49.27691500342917
+    },
+    {
+      "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 130.72962627920788
+    },
+    {
+      "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 130.72962627920788
+    }
+  ],
+  "attacks": [
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "clean",
+      "group_id": null,
+      "members": []
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "forced_support",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "forced_rejection",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "confidence_inflation",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "kind": "suppression",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    }
+  ],
+  "greedy_strategy_id": null,
+  "evidence_failures": [
+    "tests/test_adaptive_pipeline.py::test_actual_evidence_output_contract_is_consumed_without_models[probabilities0-passed]",
+    "tests/test_adaptive_pipeline.py::test_actual_evidence_output_contract_is_consumed_without_models[probabilities1-failed]",
+    "tests/test_adaptive_pipeline.py::test_actual_conflicting_evidence_cannot_cover_factual_request"
+  ],
+  "resource_blockers": [],
+  "evidence_validation_id": "6383d422923925cee53deb34388554a8998307bee0647afce358379406cc88de"
+}

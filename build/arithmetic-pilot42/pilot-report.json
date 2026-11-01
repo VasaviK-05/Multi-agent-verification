@@ -1,0 +1,223 @@
+{
+  "outcome": "Labelled constructed pilot collected and calibrated; fitting awaits approval",
+  "origin": "constructed_arithmetic_fraction_v1; not an external benchmark",
+  "seed": 42,
+  "groups": {
+    "history": 20,
+    "development": 20,
+    "final_test": 20
+  },
+  "examples": {
+    "history": 40,
+    "development": 40,
+    "final_test": 40
+  },
+  "reference_scope": "Correct-result arithmetic reference shared by variants; reference-assisted task, not factual QA robustness",
+  "custody": "Procedural holdout generated in this workflow; not independent third-party custody",
+  "final_test_collected": false,
+  "final_test_evaluated": false,
+  "policy_created": false,
+  "collection": {
+    "request_digest": "46c0375d35a5801f059a8824b6170697ac4c7a6776f584182125dcbbde5acb7b",
+    "source_bundle_id": "96a88bd532dfee725d18dd48bda2aa1ebb342fdf0fc56f74c3e9649ec9a1e591",
+    "executed_calls": 160,
+    "returned_reports": 160,
+    "exceptions": 0,
+    "timeouts": 0,
+    "unavailable": 0,
+    "incomplete": 0,
+    "selected_verifiers": [
+      "rule",
+      "semantic"
+    ]
+  },
+  "calibration_id": "c32267151f0fdf265ca502652f11f6828d967b985ab1efbd7a33fdd69d117398",
+  "cost_units": "measured attempt wall-time ms",
+  "cost_interpretation": "Sum of selected attempt means is an estimate; not parallel latency or money; model initialization/resource observation overhead excluded.",
+  "cost_estimates": [
+    {
+      "verifier_name": "rule",
+      "attempt_cost": 0.13031749986112118,
+      "attempts": 80,
+      "failures": 0,
+      "mean_ms": 0.13031749986112118,
+      "median_ms": 0.053099996875971556,
+      "p95_nearest_rank_ms": 0.08290004916489124,
+      "returned_reports": 80,
+      "decisions": {
+        "SUPPORT": 40,
+        "REJECT": 40
+      },
+      "first_measured_ms": 0.3505999920889735,
+      "subsequent_calls": 79,
+      "unknown_resources": 0
+    },
+    {
+      "verifier_name": "semantic",
+      "attempt_cost": 12.817771245318,
+      "attempts": 80,
+      "failures": 0,
+      "mean_ms": 12.817771245318,
+      "median_ms": 10.86074998602271,
+      "p95_nearest_rank_ms": 16.188699984923005,
+      "returned_reports": 80,
+      "decisions": {
+        "SUPPORT": 80
+      },
+      "first_measured_ms": 98.36209996137768,
+      "subsequent_calls": 79,
+      "unknown_resources": 0
+    }
+  ],
+  "warmups_excluded": 0,
+  "initial_calls_retained": 2,
+  "subsequent_calls_retained": 158,
+  "proposed_settings": {
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "uncertain": 0.2,
+    "resource_weight_per_ms": 0.007723147560077727,
+    "budget_ms": 12.94808874517912,
+    "threshold": 0.55,
+    "history_prior_alpha": 1.0,
+    "history_prior_beta": 1.0,
+    "minimum_participants": 2,
+    "attack_version": "report_corruption_v1",
+    "suppression": "unavailable",
+    "unknown_treatment": "shared_unknown"
+  },
+  "proposal_approved": false,
+  "schema_and_binding_readiness": true,
+  "feasible_strategy_definitions": [
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 12.94808874517912
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 12.94808874517912
+    }
+  ],
+  "proposal_isolation_guards": {
+    "final_payload_access_guard": "passed",
+    "optimizer_call_guard": "passed"
+  },
+  "resource_manifest": {
+    "version": "game_resource_manifest_v1",
+    "verifiers": [
+      {
+        "verifier_name": "rule",
+        "resources": [
+          {
+            "resource_id": "arithmetic-local-runtime",
+            "kind": "configuration",
+            "sha256": "9e84fa12c1fdc7290228424abd21247e0431149d44015abc6376443463885ab5"
+          },
+          {
+            "resource_id": "rule-constructor",
+            "kind": "configuration",
+            "sha256": "71b5de09009cf9cdbe074397f42f5c21fee85736073c30e490c80217d47952e9"
+          },
+          {
+            "resource_id": "rule-source",
+            "kind": "implementation",
+            "sha256": "09d697e6c733026643611086e0998a266c7103c5c70c989aac8fda7d6dfd3d69"
+          }
+        ]
+      },
+      {
+        "verifier_name": "semantic",
+        "resources": [
+          {
+            "resource_id": "arithmetic-local-runtime",
+            "kind": "configuration",
+            "sha256": "9e84fa12c1fdc7290228424abd21247e0431149d44015abc6376443463885ab5"
+          },
+          {
+            "resource_id": "semantic-constructor",
+            "kind": "configuration",
+            "sha256": "d5dce771c16228f947f7feb1374cbaae771c69dce7d07a46ff4aa6ba5d6bbfe3"
+          },
+          {
+            "resource_id": "semantic-source",
+            "kind": "implementation",
+            "sha256": "ac1c00037fdc4bc5eff3982b6efeaf6513bbef49dae82b40e8470054ed97ab19"
+          },
+          {
+            "resource_id": "local-embedding-snapshot",
+            "kind": "model",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          }
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "logical_cpus": "16",
+    "device": "cpu",
+    "concurrency": "sequential",
+    "runtime": "3.11.5",
+    "initialization": "eager local embedding; excluded from measured attempt time",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+    "physical_memory_bytes": "16876888064",
+    "torch_intraop_threads": "2",
+    "collection_scope": "rule and semantic only; no NLI/index/corpus/provider"
+  },
+  "dependencies": {
+    "numpy": "2.4.6",
+    "pydantic": "2.13.5",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "faiss-cpu": "1.15.1",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.2"
+  },
+  "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+  "application_source_digest": "4ebd1cabd8bd9d69993b5f990e78ca77acf79fc6cbd9bb184165c34d4f6fef8d",
+  "full_project_blockers": [
+    {
+      "resource": "index_provenance",
+      "reason": "missing index build receipt linking actual embedding bytes to vectors; alias-only manifest is insufficient",
+      "owner": "resource/collection owner"
+    }
+  ],
+  "tests": {
+    "initial_preparation_and_collector_passed": 26,
+    "affected_regression_passed": 106,
+    "failed": 0,
+    "runs_overlap": true
+  },
+  "paths": {
+    "recordings": "collection/recordings.json",
+    "timings": "collection/measurements.json",
+    "calibration": "calibration.json",
+    "reservation": "inputs/reservation.json",
+    "training": "proposed/training-manifest.json",
+    "proposal": "proposed/fitting-proposal.UNAPPROVED.json"
+  },
+  "application_source_unchanged_since_collection": true,
+  "changed_files_this_turn": [
+    "app/game/offline/arithmetic_pilot.py",
+    "app/game/offline/pilot_proposal.py",
+    "app/game/offline/recording_adapters.py",
+    "tests/test_arithmetic_pilot.py",
+    "docs/arithmetic_pilot42.md"
+  ],
+  "protected_path_diffs": []
+}

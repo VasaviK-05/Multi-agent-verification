@@ -1,0 +1,16 @@
+{
+  "original_inputs_unchanged": true,
+  "provider_reload": true,
+  "two_stage_certificates": true,
+  "repeat_equivalence": {
+    "equivalent": true,
+    "matrix_atol": 1e-12,
+    "reputation_atol": 1e-12,
+    "probability_atol": 1e-12,
+    "relative_tolerance": 0.0
+  },
+  "runtime_checks": 4,
+  "final_payload_access_guard": true,
+  "new_inference": 0,
+  "new_calibration": false
+}

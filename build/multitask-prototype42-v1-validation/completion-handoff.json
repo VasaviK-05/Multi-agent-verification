@@ -1,0 +1,52 @@
+{
+  "status": "complete_not_activated",
+  "bundle_id": "98b8f2654163fe95e84a1b916a94174ddc37aa399429bba94f99890573168d34",
+  "bundle_path": "build\\multitask-prototype42-v1",
+  "archive": "build\\multitask-prototype42-v1.zip",
+  "archive_sha256": "99516fbe460e816c68601509ca7e202cbcd3880d8d4250ec655f422244ec657c",
+  "artifacts": [
+    {
+      "task": "arithmetic",
+      "artifact_id": "e4981bb78a278f216efb0ece9b79eca8381fbaacdf6315e8bcb4cbc6bbb638f2",
+      "compatibility_id": "377f7cd11628734774e81fed0b383e85c764cae08585b035e3b4398a2a1c8ca9",
+      "path": "arithmetic/policy.json"
+    },
+    {
+      "task": "factual",
+      "artifact_id": "c66e137fd64f61222e4a69cf0e025b91bc1d3ae075166743f2c795acd9d7cd79",
+      "compatibility_id": "3c5ee90716ad592089eb9be8c77da9b54af255d26d8bafba3561c4e8c38d73e8",
+      "path": "factual/policy.json"
+    }
+  ],
+  "validation": {
+    "focused_tests_passed": 130,
+    "retained_execution_traces": 11,
+    "safe_failure_checks": 14,
+    "extracted_zip_load": "passed in completed session 5954",
+    "certificates_and_runtime": "passed in completed session 75880",
+    "historical_artifact_ids": "three reloaded unchanged",
+    "historical_hash_proofs_unchanged": 7,
+    "whitespace_check": "passed",
+    "conflict_markers": "none",
+    "forbidden_ownership_diffs": "none",
+    "network_calls": 0,
+    "generation_calls": 0
+  },
+  "changed_files": [
+    "app/game/prototype_bundle.py",
+    "app/game/offline/prototype.py",
+    "scripts/package_multitask_prototype.py",
+    "scripts/validate_multitask_prototype.py",
+    "tests/test_game_prototype_bundle.py",
+    "docs/multitask_prototype_bundle.md",
+    "docs/game_policy_build.md"
+  ],
+  "external_blockers": [
+    "Exact compatible model/corpus/index/service/implementation resources must be supplied and observed before live execution; none bundled.",
+    "No reference-absent policy; unsupported requests fail safely.",
+    "Integration/activation and scope expansion require separate authorization."
+  ],
+  "no_final_test_access": true,
+  "no_refit_recalibration_or_collection": true,
+  "no_production_writes_or_git_publication": true
+}

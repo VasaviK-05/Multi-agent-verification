@@ -1,0 +1,341 @@
+{
+  "kind": "unconstrained cost-inclusive diagnostic; not the 90%-coverage primary",
+  "artifact_id": "c8cfc79ba39cebe2aa963209f259b03ac5769952237c7f38b4a57ef0cf6a3e65",
+  "probabilities": [
+    [
+      "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+      0.0
+    ],
+    [
+      "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+      0.0
+    ],
+    [
+      "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      1.0
+    ],
+    [
+      "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      0.0
+    ],
+    [
+      "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+      0.0
+    ],
+    [
+      "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+      0.0
+    ],
+    [
+      "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      0.0
+    ],
+    [
+      "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      0.0
+    ],
+    [
+      "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+      0.0
+    ],
+    [
+      "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+      0.0
+    ],
+    [
+      "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      0.0
+    ],
+    [
+      "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      0.0
+    ],
+    [
+      "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      0.0
+    ],
+    [
+      "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      0.0
+    ]
+  ],
+  "scenarios": [
+    {
+      "attack": "clean",
+      "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "group_id": null,
+      "members": [],
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 40.0,
+        "unresolved": 1.0,
+        "decision_coverage": 0.0,
+        "selective_risk": null,
+        "estimated_resource_cost": 188.90355375187937,
+        "mean_loss": 0.2011832320949774
+      },
+      "validation_loss": 0.2,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack": "forced_support",
+      "attack_id": "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 40.0,
+        "unresolved": 0.0,
+        "decision_coverage": 0.0,
+        "selective_risk": null,
+        "estimated_resource_cost": 188.90355375187937,
+        "mean_loss": 0.2011832320949774
+      },
+      "validation_loss": 0.2,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack": "forced_rejection",
+      "attack_id": "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 40.0,
+        "unresolved": 0.0,
+        "decision_coverage": 0.0,
+        "selective_risk": null,
+        "estimated_resource_cost": 188.90355375187937,
+        "mean_loss": 0.2011832320949774
+      },
+      "validation_loss": 0.2,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack": "confidence_inflation",
+      "attack_id": "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 40.0,
+        "unresolved": 1.0,
+        "decision_coverage": 0.0,
+        "selective_risk": null,
+        "estimated_resource_cost": 188.90355375187937,
+        "mean_loss": 0.2011832320949774
+      },
+      "validation_loss": 0.2,
+      "uncertainty_rate": 1.0
+    },
+    {
+      "attack": "suppression",
+      "attack_id": "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+      "group_id": "cd406da454f8dbac024fd3ded624db5b0b9cb47a6297882e75553de387c5f374",
+      "members": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "metrics": {
+        "examples": 40,
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "uncertain": 40.0,
+        "unresolved": 40.0,
+        "decision_coverage": 0.0,
+        "selective_risk": null,
+        "estimated_resource_cost": 188.90355375187937,
+        "mean_loss": 0.2011832320949774
+      },
+      "validation_loss": 0.2,
+      "uncertainty_rate": 1.0
+    }
+  ],
+  "worst_case_validation_loss": 0.2,
+  "worst_case_cost_inclusive_objective": 0.2011832320949774,
+  "certificate": {
+    "status": "optimal",
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "tolerance": 1e-08,
+    "probabilities": [
+      [
+        "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+        0.0
+      ],
+      [
+        "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+        0.0
+      ],
+      [
+        "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        1.0
+      ],
+      [
+        "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        0.0
+      ],
+      [
+        "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        0.0
+      ],
+      [
+        "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        0.0
+      ],
+      [
+        "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        0.0
+      ],
+      [
+        "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        0.0
+      ],
+      [
+        "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+        0.0
+      ],
+      [
+        "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+        0.0
+      ],
+      [
+        "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        0.0
+      ],
+      [
+        "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        0.0
+      ],
+      [
+        "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        0.0
+      ],
+      [
+        "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+        0.0
+      ]
+    ],
+    "game_value": 0.2011832320949774,
+    "constraint_residuals": [
+      [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        0.0
+      ],
+      [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        0.0
+      ],
+      [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        0.0
+      ],
+      [
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        0.0
+      ],
+      [
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+        0.0
+      ]
+    ],
+    "attack_losses": [
+      [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        0.2011832320949774
+      ],
+      [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        0.2011832320949774
+      ],
+      [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        0.2011832320949774
+      ],
+      [
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        0.2011832320949774
+      ],
+      [
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+        0.2011832320949774
+      ]
+    ],
+    "worst_case_attacks": [
+      "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+      "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+      "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+      "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+    ],
+    "normalization_residual": 0.0,
+    "minimum_probability": 0.0,
+    "matrix_id": "08e2408f20b136c61b1b4bed3eee479d714d451ad003e0b72e54ba425eea543c",
+    "attack_probabilities": [
+      [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        1.0
+      ],
+      [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        0.0
+      ],
+      [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        0.0
+      ],
+      [
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        0.0
+      ],
+      [
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+        0.0
+      ]
+    ],
+    "dual_lower_bound": 0.2011832320949774,
+    "primal_dual_gap": 0.0,
+    "optimality_basis": "highs_status_0_and_recomputed_primal_dual_certificate"
+  },
+  "reproducibility": {
+    "equivalent": true,
+    "matrix_atol": 1e-12,
+    "reputation_atol": 1e-12,
+    "probability_atol": 1e-12,
+    "relative_tolerance": 0.0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "phase": "collection-active source freeze",
+  "checks": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_game_task_conditioning.py tests/test_game_collection.py tests/test_game_reliability_first.py tests/test_game_clean_coverage.py tests/test_game_build.py tests/test_game_offline.py tests/test_game_runtime.py -q",
+      "result": "212 passed; two sandbox temporary-file rename permission failures"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_game_build.py::test_cli_end_to_end_never_opens_final_outcomes -q",
+      "execution": "outside filesystem sandbox after permission failure",
+      "result": "2 passed"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_adaptive_pipeline.py::test_actual_evidence_output_contract_is_consumed_without_models tests/test_adaptive_pipeline.py::test_actual_conflicting_evidence_cannot_cover_factual_request tests/test_game_evidence_validation.py -q",
+      "result": "14 passed; historical evidence failures remain fixed"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_game_foundation.py tests/test_game_completion.py tests/test_game_research.py tests/test_question_analyzer.py tests/test_question_analyzer_ollama.py tests/test_analyzer_evaluation.py tests/test_reputation_manager.py tests/test_reputation_integration_upgrade.py -q",
+      "result": "438 passed"
+    }
+  ],
+  "pending_post_collection_review": [
+    "Require full bound execution contract equality at the public finalization boundary, including coverage semantics",
+    "Reject missing v4 task binding before fitting rather than only at artifact export",
+    "Bind task history dataset to declared provenance and explicitly reject task-isolated pooling",
+    "Make semantic reference-source validation agree with analyzer case and whitespace handling"
+  ],
+  "warning": "Do not edit application source until all three collection workers have finished; preserve supported resume setup"
+}

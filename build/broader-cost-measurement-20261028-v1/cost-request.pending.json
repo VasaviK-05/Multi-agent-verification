@@ -1,0 +1,1513 @@
+{
+  "examples": [
+    {
+      "answer": "279",
+      "context": "Exact arithmetic reference: 9 * 31 = 279.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-07-correct",
+      "purpose": "calibration",
+      "question": "What is 9 * 31?",
+      "question_id": "arith-multiply-07",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-correct",
+      "split_identity": "arith-multiply-07"
+    },
+    {
+      "answer": "71",
+      "context": "Exact arithmetic reference: 47 + 24 = 71.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-add-11-correct",
+      "purpose": "calibration",
+      "question": "What is 47 + 24?",
+      "question_id": "arith-add-11",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-correct",
+      "split_identity": "arith-add-11"
+    },
+    {
+      "answer": "5.25",
+      "context": "Exact arithmetic reference: 21 / 4 = 5.25.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-06-correct",
+      "purpose": "calibration",
+      "question": "What is 21 / 4?",
+      "question_id": "arith-divide-06",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-correct",
+      "split_identity": "arith-divide-06"
+    },
+    {
+      "answer": "58",
+      "context": "Exact arithmetic reference: 3 * 19 = 57.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-01-incorrect",
+      "purpose": "calibration",
+      "question": "What is 3 * 19?",
+      "question_id": "arith-multiply-01",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-incorrect",
+      "split_identity": "arith-multiply-01"
+    },
+    {
+      "answer": "10.5",
+      "context": "Exact arithmetic reference: 19 / 2 = 9.5.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-05-incorrect",
+      "purpose": "calibration",
+      "question": "What is 19 / 2?",
+      "question_id": "arith-divide-05",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-incorrect",
+      "split_identity": "arith-divide-05"
+    },
+    {
+      "answer": "386",
+      "context": "Exact arithmetic reference: 11 * 35 = 385.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-09-incorrect",
+      "purpose": "calibration",
+      "question": "What is 11 * 35?",
+      "question_id": "arith-multiply-09",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-incorrect",
+      "split_identity": "arith-multiply-09"
+    },
+    {
+      "answer": "385",
+      "context": "Exact arithmetic reference: 11 * 35 = 385.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-09-correct",
+      "purpose": "calibration",
+      "question": "What is 11 * 35?",
+      "question_id": "arith-multiply-09",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-correct",
+      "split_identity": "arith-multiply-09"
+    },
+    {
+      "answer": "10.25",
+      "context": "Exact arithmetic reference: 37 / 4 = 9.25.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-14-incorrect",
+      "purpose": "calibration",
+      "question": "What is 37 / 4?",
+      "question_id": "arith-divide-14",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-incorrect",
+      "split_identity": "arith-divide-14"
+    },
+    {
+      "answer": "574",
+      "context": "Exact arithmetic reference: 14 * 41 = 574.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-12-correct",
+      "purpose": "calibration",
+      "question": "What is 14 * 41?",
+      "question_id": "arith-multiply-12",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-correct",
+      "split_identity": "arith-multiply-12"
+    },
+    {
+      "answer": "113",
+      "context": "Exact arithmetic reference: 142 - 29 = 113.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-07-correct",
+      "purpose": "calibration",
+      "question": "What is 142 - 29?",
+      "question_id": "arith-subtract-07",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-correct",
+      "split_identity": "arith-subtract-07"
+    },
+    {
+      "answer": "102",
+      "context": "Exact arithmetic reference: 121 - 20 = 101.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-04-incorrect",
+      "purpose": "calibration",
+      "question": "What is 121 - 20?",
+      "question_id": "arith-subtract-04",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-incorrect",
+      "split_identity": "arith-subtract-04"
+    },
+    {
+      "answer": "121",
+      "context": "Exact arithmetic reference: 156 - 35 = 121.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-09-correct",
+      "purpose": "calibration",
+      "question": "What is 156 - 35?",
+      "question_id": "arith-subtract-09",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-correct",
+      "split_identity": "arith-subtract-09"
+    },
+    {
+      "answer": "146",
+      "context": "Exact arithmetic reference: 198 - 53 = 145.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-15-incorrect",
+      "purpose": "calibration",
+      "question": "What is 198 - 53?",
+      "question_id": "arith-subtract-15",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-incorrect",
+      "split_identity": "arith-subtract-15"
+    },
+    {
+      "answer": "110",
+      "context": "Exact arithmetic reference: 135 - 26 = 109.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-06-incorrect",
+      "purpose": "calibration",
+      "question": "What is 135 - 26?",
+      "question_id": "arith-subtract-06",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-incorrect",
+      "split_identity": "arith-subtract-06"
+    },
+    {
+      "answer": "125",
+      "context": "Exact arithmetic reference: 163 - 38 = 125.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-10-correct",
+      "purpose": "calibration",
+      "question": "What is 163 - 38?",
+      "question_id": "arith-subtract-10",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-correct",
+      "split_identity": "arith-subtract-10"
+    },
+    {
+      "answer": "82",
+      "context": "Exact arithmetic reference: 53 + 28 = 81.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-add-13-incorrect",
+      "purpose": "calibration",
+      "question": "What is 53 + 28?",
+      "question_id": "arith-add-13",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-incorrect",
+      "split_identity": "arith-add-13"
+    },
+    {
+      "answer": "The capital of India is New Delhi.",
+      "context": "India is a country in South Asia. New Delhi is the capital of India.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "purpose": "calibration",
+      "question": "What is the capital of India?",
+      "question_id": "470a1f7830a248378db6f3bb016b215c418e9695149313c5e9d4d7037c317dfe",
+      "role": "development",
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e03-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-india"
+    },
+    {
+      "answer": "444",
+      "context": "Exact arithmetic reference: 12 * 37 = 444.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-10-correct",
+      "purpose": "calibration",
+      "question": "What is 12 * 37?",
+      "question_id": "arith-multiply-10",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-correct",
+      "split_identity": "arith-multiply-10"
+    },
+    {
+      "answer": "41",
+      "context": "Exact arithmetic reference: 29 + 12 = 41.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-05-correct",
+      "purpose": "calibration",
+      "question": "What is 29 + 12?",
+      "question_id": "arith-add-05",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-correct",
+      "split_identity": "arith-add-05"
+    },
+    {
+      "answer": "9.25",
+      "context": "Exact arithmetic reference: 37 / 4 = 9.25.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-14-correct",
+      "purpose": "calibration",
+      "question": "What is 37 / 4?",
+      "question_id": "arith-divide-14",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-correct",
+      "split_identity": "arith-divide-14"
+    },
+    {
+      "answer": "109",
+      "context": "Exact arithmetic reference: 135 - 26 = 109.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-06-correct",
+      "purpose": "calibration",
+      "question": "What is 135 - 26?",
+      "question_id": "arith-subtract-06",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-correct",
+      "split_identity": "arith-subtract-06"
+    },
+    {
+      "answer": "232",
+      "context": "Exact arithmetic reference: 8 * 29 = 232.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-06-correct",
+      "purpose": "calibration",
+      "question": "What is 8 * 29?",
+      "question_id": "arith-multiply-06",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-correct",
+      "split_identity": "arith-multiply-06"
+    },
+    {
+      "answer": "575",
+      "context": "Exact arithmetic reference: 14 * 41 = 574.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-12-incorrect",
+      "purpose": "calibration",
+      "question": "What is 14 * 41?",
+      "question_id": "arith-multiply-12",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-incorrect",
+      "split_identity": "arith-multiply-12"
+    },
+    {
+      "answer": "129",
+      "context": "Exact arithmetic reference: 170 - 41 = 129.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-11-correct",
+      "purpose": "calibration",
+      "question": "What is 170 - 41?",
+      "question_id": "arith-subtract-11",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-correct",
+      "split_identity": "arith-subtract-11"
+    },
+    {
+      "answer": "3.125",
+      "context": "Exact arithmetic reference: 17 / 8 = 2.125.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-04-incorrect",
+      "purpose": "calibration",
+      "question": "What is 17 / 8?",
+      "question_id": "arith-divide-04",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-incorrect",
+      "split_identity": "arith-divide-04"
+    },
+    {
+      "answer": "22",
+      "context": "Exact arithmetic reference: 17 + 4 = 21.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-add-01-incorrect",
+      "purpose": "calibration",
+      "question": "What is 17 + 4?",
+      "question_id": "arith-add-01",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-incorrect",
+      "split_identity": "arith-add-01"
+    },
+    {
+      "answer": "9.5",
+      "context": "Exact arithmetic reference: 19 / 2 = 9.5.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-05-correct",
+      "purpose": "calibration",
+      "question": "What is 19 / 2?",
+      "question_id": "arith-divide-05",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-correct",
+      "split_identity": "arith-divide-05"
+    },
+    {
+      "answer": "36",
+      "context": "Exact arithmetic reference: 26 + 10 = 36.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-04-correct",
+      "purpose": "calibration",
+      "question": "What is 26 + 10?",
+      "question_id": "arith-add-04",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-correct",
+      "split_identity": "arith-add-04"
+    },
+    {
+      "answer": "84",
+      "context": "Exact arithmetic reference: 4 * 21 = 84.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-02-correct",
+      "purpose": "calibration",
+      "question": "What is 4 * 21?",
+      "question_id": "arith-multiply-02",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-correct",
+      "split_identity": "arith-multiply-02"
+    },
+    {
+      "answer": "7.8",
+      "context": "Exact arithmetic reference: 39 / 5 = 7.8.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-15-correct",
+      "purpose": "calibration",
+      "question": "What is 39 / 5?",
+      "question_id": "arith-divide-15",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-correct",
+      "split_identity": "arith-divide-15"
+    },
+    {
+      "answer": "5.5",
+      "context": "Exact arithmetic reference: 11 / 2 = 5.5.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-01-correct",
+      "purpose": "calibration",
+      "question": "What is 11 / 2?",
+      "question_id": "arith-divide-01",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-correct",
+      "split_identity": "arith-divide-01"
+    },
+    {
+      "answer": "93",
+      "context": "Exact arithmetic reference: 107 - 14 = 93.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-02-correct",
+      "purpose": "calibration",
+      "question": "What is 107 - 14?",
+      "question_id": "arith-subtract-02",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-correct",
+      "split_identity": "arith-subtract-02"
+    },
+    {
+      "answer": "799",
+      "context": "Exact arithmetic reference: 17 * 47 = 799.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-15-correct",
+      "purpose": "calibration",
+      "question": "What is 17 * 47?",
+      "question_id": "arith-multiply-15",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-correct",
+      "split_identity": "arith-multiply-15"
+    },
+    {
+      "answer": "151",
+      "context": "Exact arithmetic reference: 6 * 25 = 150.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-04-incorrect",
+      "purpose": "calibration",
+      "question": "What is 6 * 25?",
+      "question_id": "arith-multiply-04",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-incorrect",
+      "split_identity": "arith-multiply-04"
+    },
+    {
+      "answer": "7.2",
+      "context": "Exact arithmetic reference: 31 / 5 = 6.2.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-11-incorrect",
+      "purpose": "calibration",
+      "question": "What is 31 / 5?",
+      "question_id": "arith-divide-11",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-incorrect",
+      "split_identity": "arith-divide-11"
+    },
+    {
+      "answer": "3.125",
+      "context": "Exact arithmetic reference: 25 / 8 = 3.125.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-08-correct",
+      "purpose": "calibration",
+      "question": "What is 25 / 8?",
+      "question_id": "arith-divide-08",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-correct",
+      "split_identity": "arith-divide-08"
+    },
+    {
+      "answer": "105",
+      "context": "Exact arithmetic reference: 128 - 23 = 105.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-05-correct",
+      "purpose": "calibration",
+      "question": "What is 128 - 23?",
+      "question_id": "arith-subtract-05",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-correct",
+      "split_identity": "arith-subtract-05"
+    },
+    {
+      "answer": "81",
+      "context": "Exact arithmetic reference: 53 + 28 = 81.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-add-13-correct",
+      "purpose": "calibration",
+      "question": "What is 53 + 28?",
+      "question_id": "arith-add-13",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-correct",
+      "split_identity": "arith-add-13"
+    },
+    {
+      "answer": "72",
+      "context": "Exact arithmetic reference: 47 + 24 = 71.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-add-11-incorrect",
+      "purpose": "calibration",
+      "question": "What is 47 + 24?",
+      "question_id": "arith-add-11",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-incorrect",
+      "split_identity": "arith-add-11"
+    },
+    {
+      "answer": "7.25",
+      "context": "Exact arithmetic reference: 29 / 4 = 7.25.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-10-correct",
+      "purpose": "calibration",
+      "question": "What is 29 / 4?",
+      "question_id": "arith-divide-10",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-correct",
+      "split_identity": "arith-divide-10"
+    },
+    {
+      "answer": "8.8",
+      "context": "Exact arithmetic reference: 39 / 5 = 7.8.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-15-incorrect",
+      "purpose": "calibration",
+      "question": "What is 39 / 5?",
+      "question_id": "arith-divide-15",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-incorrect",
+      "split_identity": "arith-divide-15"
+    },
+    {
+      "answer": "94",
+      "context": "Exact arithmetic reference: 107 - 14 = 93.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-02-incorrect",
+      "purpose": "calibration",
+      "question": "What is 107 - 14?",
+      "question_id": "arith-subtract-02",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-incorrect",
+      "split_identity": "arith-subtract-02"
+    },
+    {
+      "answer": "8.25",
+      "context": "Exact arithmetic reference: 29 / 4 = 7.25.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-10-incorrect",
+      "purpose": "calibration",
+      "question": "What is 29 / 4?",
+      "question_id": "arith-divide-10",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-incorrect",
+      "split_identity": "arith-divide-10"
+    },
+    {
+      "answer": "106",
+      "context": "Exact arithmetic reference: 128 - 23 = 105.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-05-incorrect",
+      "purpose": "calibration",
+      "question": "What is 128 - 23?",
+      "question_id": "arith-subtract-05",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-incorrect",
+      "split_identity": "arith-subtract-05"
+    },
+    {
+      "answer": "4.125",
+      "context": "Exact arithmetic reference: 25 / 8 = 3.125.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-08-incorrect",
+      "purpose": "calibration",
+      "question": "What is 25 / 8?",
+      "question_id": "arith-divide-08",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-incorrect",
+      "split_identity": "arith-divide-08"
+    },
+    {
+      "answer": "145",
+      "context": "Exact arithmetic reference: 198 - 53 = 145.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-15-correct",
+      "purpose": "calibration",
+      "question": "What is 198 - 53?",
+      "question_id": "arith-subtract-15",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-correct",
+      "split_identity": "arith-subtract-15"
+    },
+    {
+      "answer": "122",
+      "context": "Exact arithmetic reference: 156 - 35 = 121.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-09-incorrect",
+      "purpose": "calibration",
+      "question": "What is 156 - 35?",
+      "question_id": "arith-subtract-09",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-incorrect",
+      "split_identity": "arith-subtract-09"
+    },
+    {
+      "answer": "150",
+      "context": "Exact arithmetic reference: 6 * 25 = 150.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-04-correct",
+      "purpose": "calibration",
+      "question": "What is 6 * 25?",
+      "question_id": "arith-multiply-04",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-correct",
+      "split_identity": "arith-multiply-04"
+    },
+    {
+      "answer": "57",
+      "context": "Exact arithmetic reference: 3 * 19 = 57.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-01-correct",
+      "purpose": "calibration",
+      "question": "What is 3 * 19?",
+      "question_id": "arith-multiply-01",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-correct",
+      "split_identity": "arith-multiply-01"
+    },
+    {
+      "answer": "114",
+      "context": "Exact arithmetic reference: 142 - 29 = 113.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-subtract-07-incorrect",
+      "purpose": "calibration",
+      "question": "What is 142 - 29?",
+      "question_id": "arith-subtract-07",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-incorrect",
+      "split_identity": "arith-subtract-07"
+    },
+    {
+      "answer": "Artificial intelligence is a field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence.",
+      "context": "Artificial intelligence is a field of computer science concerned with creating systems capable of performing tasks that normally require human intelligence, such as reasoning, learning, and perception.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "purpose": "calibration",
+      "question": "What is artificial intelligence?",
+      "question_id": "e9a38a18a39d0016d19b062dab737dded9a784351718ae8329de9c7cb7dcc053",
+      "role": "history",
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e05-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml"
+    },
+    {
+      "answer": "85",
+      "context": "Exact arithmetic reference: 4 * 21 = 84.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-02-incorrect",
+      "purpose": "calibration",
+      "question": "What is 4 * 21?",
+      "question_id": "arith-multiply-02",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-incorrect",
+      "split_identity": "arith-multiply-02"
+    },
+    {
+      "answer": "76",
+      "context": "Exact arithmetic reference: 50 + 26 = 76.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-12-correct",
+      "purpose": "calibration",
+      "question": "What is 50 + 26?",
+      "question_id": "arith-add-12",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-correct",
+      "split_identity": "arith-add-12"
+    },
+    {
+      "answer": "800",
+      "context": "Exact arithmetic reference: 17 * 47 = 799.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-15-incorrect",
+      "purpose": "calibration",
+      "question": "What is 17 * 47?",
+      "question_id": "arith-multiply-15",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-incorrect",
+      "split_identity": "arith-multiply-15"
+    },
+    {
+      "answer": "6.25",
+      "context": "Exact arithmetic reference: 21 / 4 = 5.25.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-06-incorrect",
+      "purpose": "calibration",
+      "question": "What is 21 / 4?",
+      "question_id": "arith-divide-06",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-incorrect",
+      "split_identity": "arith-divide-06"
+    },
+    {
+      "answer": "Python is a high-level, general-purpose programming language.",
+      "context": "Python is a high-level, general-purpose programming language. It is widely used for web development, data analysis, artificial intelligence, and scientific computing.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "purpose": "calibration",
+      "question": "What is Python?",
+      "question_id": "3ad0cf9a38e48e84dfa410bf2e2d0386159c97ce2c11eb333c1878d52b8fe418",
+      "role": "development",
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e04-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-python"
+    },
+    {
+      "answer": "101",
+      "context": "Exact arithmetic reference: 121 - 20 = 101.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-04-correct",
+      "purpose": "calibration",
+      "question": "What is 121 - 20?",
+      "question_id": "arith-subtract-04",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-correct",
+      "split_identity": "arith-subtract-04"
+    },
+    {
+      "answer": "77",
+      "context": "Exact arithmetic reference: 50 + 26 = 76.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-12-incorrect",
+      "purpose": "calibration",
+      "question": "What is 50 + 26?",
+      "question_id": "arith-add-12",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-incorrect",
+      "split_identity": "arith-add-12"
+    },
+    {
+      "answer": "118",
+      "context": "Exact arithmetic reference: 149 - 32 = 117.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-08-incorrect",
+      "purpose": "calibration",
+      "question": "What is 149 - 32?",
+      "question_id": "arith-subtract-08",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-incorrect",
+      "split_identity": "arith-subtract-08"
+    },
+    {
+      "answer": "126",
+      "context": "Exact arithmetic reference: 163 - 38 = 125.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-10-incorrect",
+      "purpose": "calibration",
+      "question": "What is 163 - 38?",
+      "question_id": "arith-subtract-10",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-incorrect",
+      "split_identity": "arith-subtract-10"
+    },
+    {
+      "answer": "37",
+      "context": "Exact arithmetic reference: 26 + 10 = 36.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-04-incorrect",
+      "purpose": "calibration",
+      "question": "What is 26 + 10?",
+      "question_id": "arith-add-04",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-incorrect",
+      "split_identity": "arith-add-04"
+    },
+    {
+      "answer": "115",
+      "context": "Exact arithmetic reference: 5 * 23 = 115.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-03-correct",
+      "purpose": "calibration",
+      "question": "What is 5 * 23?",
+      "question_id": "arith-multiply-03",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-correct",
+      "split_identity": "arith-multiply-03"
+    },
+    {
+      "answer": "133",
+      "context": "Exact arithmetic reference: 177 - 44 = 133.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-12-correct",
+      "purpose": "calibration",
+      "question": "What is 177 - 44?",
+      "question_id": "arith-subtract-12",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-correct",
+      "split_identity": "arith-subtract-12"
+    },
+    {
+      "answer": "141",
+      "context": "Exact arithmetic reference: 191 - 50 = 141.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-14-correct",
+      "purpose": "calibration",
+      "question": "What is 191 - 50?",
+      "question_id": "arith-subtract-14",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-correct",
+      "split_identity": "arith-subtract-14"
+    },
+    {
+      "answer": "66",
+      "context": "Exact arithmetic reference: 44 + 22 = 66.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-10-correct",
+      "purpose": "calibration",
+      "question": "What is 44 + 22?",
+      "question_id": "arith-add-10",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-correct",
+      "split_identity": "arith-add-10"
+    },
+    {
+      "answer": "42",
+      "context": "Exact arithmetic reference: 29 + 12 = 41.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-05-incorrect",
+      "purpose": "calibration",
+      "question": "What is 29 + 12?",
+      "question_id": "arith-add-05",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-incorrect",
+      "split_identity": "arith-add-05"
+    },
+    {
+      "answer": "117",
+      "context": "Exact arithmetic reference: 149 - 32 = 117.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-08-correct",
+      "purpose": "calibration",
+      "question": "What is 149 - 32?",
+      "question_id": "arith-subtract-08",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-correct",
+      "split_identity": "arith-subtract-08"
+    },
+    {
+      "answer": "134",
+      "context": "Exact arithmetic reference: 177 - 44 = 133.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-12-incorrect",
+      "purpose": "calibration",
+      "question": "What is 177 - 44?",
+      "question_id": "arith-subtract-12",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-incorrect",
+      "split_identity": "arith-subtract-12"
+    },
+    {
+      "answer": "13.5",
+      "context": "Exact arithmetic reference: 27 / 2 = 13.5.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-09-correct",
+      "purpose": "calibration",
+      "question": "What is 27 / 2?",
+      "question_id": "arith-divide-09",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-correct",
+      "split_identity": "arith-divide-09"
+    },
+    {
+      "answer": "646",
+      "context": "Exact arithmetic reference: 15 * 43 = 645.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-13-incorrect",
+      "purpose": "calibration",
+      "question": "What is 15 * 43?",
+      "question_id": "arith-multiply-13",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-incorrect",
+      "split_identity": "arith-multiply-13"
+    },
+    {
+      "answer": "14.5",
+      "context": "Exact arithmetic reference: 27 / 2 = 13.5.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-09-incorrect",
+      "purpose": "calibration",
+      "question": "What is 27 / 2?",
+      "question_id": "arith-divide-09",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-incorrect",
+      "split_identity": "arith-divide-09"
+    },
+    {
+      "answer": "645",
+      "context": "Exact arithmetic reference: 15 * 43 = 645.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-13-correct",
+      "purpose": "calibration",
+      "question": "What is 15 * 43?",
+      "question_id": "arith-multiply-13",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-correct",
+      "split_identity": "arith-multiply-13"
+    },
+    {
+      "answer": "280",
+      "context": "Exact arithmetic reference: 9 * 31 = 279.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-multiply-07-incorrect",
+      "purpose": "calibration",
+      "question": "What is 9 * 31?",
+      "question_id": "arith-multiply-07",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-incorrect",
+      "split_identity": "arith-multiply-07"
+    },
+    {
+      "answer": "21",
+      "context": "Exact arithmetic reference: 17 + 4 = 21.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-add-01-correct",
+      "purpose": "calibration",
+      "question": "What is 17 + 4?",
+      "question_id": "arith-add-01",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-correct",
+      "split_identity": "arith-add-01"
+    },
+    {
+      "answer": "The capital of Germany is Berlin.",
+      "context": "Germany is a country in Central Europe. Berlin is the capital and largest city of Germany.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "purpose": "calibration",
+      "question": "What is the capital of Germany?",
+      "question_id": "a33fae3349c0b9b60a15815c59fec3ea66473e9a609b47a05b99cf83e3ec36a6",
+      "role": "history",
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e02-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-germany"
+    },
+    {
+      "answer": "6.5",
+      "context": "Exact arithmetic reference: 11 / 2 = 5.5.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-01-incorrect",
+      "purpose": "calibration",
+      "question": "What is 11 / 2?",
+      "question_id": "arith-divide-01",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-incorrect",
+      "split_identity": "arith-divide-01"
+    },
+    {
+      "answer": "6.2",
+      "context": "Exact arithmetic reference: 31 / 5 = 6.2.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-divide-11-correct",
+      "purpose": "calibration",
+      "question": "What is 31 / 5?",
+      "question_id": "arith-divide-11",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-correct",
+      "split_identity": "arith-divide-11"
+    },
+    {
+      "answer": "142",
+      "context": "Exact arithmetic reference: 191 - 50 = 141.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-14-incorrect",
+      "purpose": "calibration",
+      "question": "What is 191 - 50?",
+      "question_id": "arith-subtract-14",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-incorrect",
+      "split_identity": "arith-subtract-14"
+    },
+    {
+      "answer": "130",
+      "context": "Exact arithmetic reference: 170 - 41 = 129.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-subtract-11-incorrect",
+      "purpose": "calibration",
+      "question": "What is 170 - 41?",
+      "question_id": "arith-subtract-11",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-incorrect",
+      "split_identity": "arith-subtract-11"
+    },
+    {
+      "answer": "Machine learning is a branch of artificial intelligence that enables computer systems to learn patterns from data and make predictions or decisions without being explicitly programmed for every task.",
+      "context": "Machine learning is a branch of artificial intelligence that enables computer systems to learn patterns from data and make predictions or decisions without being explicitly programmed for every task.",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "purpose": "calibration",
+      "question": "What is machine learning?",
+      "question_id": "69a6f1d3f0c509faca46c666043ff2b5db8844cdabfaffb83b32b790444d662f",
+      "role": "history",
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e06-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml"
+    },
+    {
+      "answer": "67",
+      "context": "Exact arithmetic reference: 44 + 22 = 66.",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "example_id": "arith-add-10-incorrect",
+      "purpose": "calibration",
+      "question": "What is 44 + 22?",
+      "question_id": "arith-add-10",
+      "role": "history",
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-incorrect",
+      "split_identity": "arith-add-10"
+    },
+    {
+      "answer": "116",
+      "context": "Exact arithmetic reference: 5 * 23 = 115.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-03-incorrect",
+      "purpose": "calibration",
+      "question": "What is 5 * 23?",
+      "question_id": "arith-multiply-03",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-incorrect",
+      "split_identity": "arith-multiply-03"
+    },
+    {
+      "answer": "Albert Einstein developed the theory of relativity.",
+      "context": "Albert Einstein was a German-born theoretical physicist. He developed the theory of relativity and received the Nobel Prize in Physics in 1921.",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "purpose": "calibration",
+      "question": "Who developed the theory of relativity?",
+      "question_id": "41e6e799ee95403ac906b64a837c43560af5d266d9d18f79293efca926be77b1",
+      "role": "development",
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e07-r1",
+      "split_identity": "factual-feasibility-draft-v1-group-relativity"
+    },
+    {
+      "answer": "2.125",
+      "context": "Exact arithmetic reference: 17 / 8 = 2.125.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-divide-04-correct",
+      "purpose": "calibration",
+      "question": "What is 17 / 8?",
+      "question_id": "arith-divide-04",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-correct",
+      "split_identity": "arith-divide-04"
+    },
+    {
+      "answer": "445",
+      "context": "Exact arithmetic reference: 12 * 37 = 444.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-10-incorrect",
+      "purpose": "calibration",
+      "question": "What is 12 * 37?",
+      "question_id": "arith-multiply-10",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-incorrect",
+      "split_identity": "arith-multiply-10"
+    },
+    {
+      "answer": "233",
+      "context": "Exact arithmetic reference: 8 * 29 = 232.",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "example_id": "arith-multiply-06-incorrect",
+      "purpose": "calibration",
+      "question": "What is 8 * 29?",
+      "question_id": "arith-multiply-06",
+      "role": "development",
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-incorrect",
+      "split_identity": "arith-multiply-06"
+    }
+  ],
+  "factory": "app.benchmark.project_adapter:create_verifiers",
+  "final_test_reservation": {
+    "custody_record": null,
+    "dataset_id": "broader-cost-v1-combined-final-exclusions",
+    "examples": [
+      {
+        "content_identity": "fdc529bed570da76a46f1076e294988f36373d927d686f24a30093c571d780f7",
+        "example_id": "factual-feasibility-draft-v1-e01",
+        "question_id": "32ac15f48ca574f0200f9d6fa34fd23beae6654aea5203507d9648ee47a78bd8",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e01-r1"
+      },
+      {
+        "content_identity": "0dce29dfa7919d0291dd41071c0d75de5b6f4e62d72b6396af0531c1f6163b6a",
+        "example_id": "factual-feasibility-draft-v1-e08",
+        "question_id": "220f5e85f6ba7589740350322717b1dba45c9b26954182e3d919e92c244f4501",
+        "split_identity": "factual-feasibility-draft-v1-group-wwii",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e08-r1"
+      },
+      {
+        "content_identity": "f3273e282e0567f281c043d2ce53bb7c6d87fdb1070b33024b44d307c4c7ff0c",
+        "example_id": "factual-feasibility-draft-v1-e09",
+        "question_id": "9b956bebb1501337b743a09d0c25cda61fe0d27b91a923aa388c259260e58bf2",
+        "split_identity": "factual-feasibility-draft-v1-group-usa",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e09-r1"
+      },
+      {
+        "content_identity": "97d269fdb9eb5a1b4791daec4bc736158b994f78b3eee8d46e62552cc52ee586",
+        "example_id": "factual-feasibility-draft-v1-e10",
+        "question_id": "8412e078fa45b8e8a028985b76f449bf0ec83e6036be4d3097da545937725b3a",
+        "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+        "validation_id": "factual-feasibility-draft-v1-final_test-e10-r1"
+      },
+      {
+        "content_identity": "f0b3ea61569185395878e8c3c433ae6f5bf697f8fd8fe2200b831d62a2ea3bca",
+        "example_id": "arith-add-02-correct",
+        "question_id": "arith-add-02",
+        "split_identity": "arith-add-02",
+        "validation_id": "pilot42-final_test-arith-add-02-correct"
+      },
+      {
+        "content_identity": "94c72c5f97eb38d905f6a01b2dcf1e606de1ec9982236639b34cba013ca6e2ae",
+        "example_id": "arith-add-02-incorrect",
+        "question_id": "arith-add-02",
+        "split_identity": "arith-add-02",
+        "validation_id": "pilot42-final_test-arith-add-02-incorrect"
+      },
+      {
+        "content_identity": "c026a07ae60bc90131df94e20c036f88ce1b34d6dcb5b1d430d14b06d79dcf30",
+        "example_id": "arith-add-03-correct",
+        "question_id": "arith-add-03",
+        "split_identity": "arith-add-03",
+        "validation_id": "pilot42-final_test-arith-add-03-correct"
+      },
+      {
+        "content_identity": "deaae3f83ea9e4c84e701cf8fb97514607d59a7afd9e7d7054bfa3c1a0c76182",
+        "example_id": "arith-add-03-incorrect",
+        "question_id": "arith-add-03",
+        "split_identity": "arith-add-03",
+        "validation_id": "pilot42-final_test-arith-add-03-incorrect"
+      },
+      {
+        "content_identity": "adebaee389ba43fd1fd1f607dd413ead43e280a8937f268629522161e8f2f572",
+        "example_id": "arith-add-06-correct",
+        "question_id": "arith-add-06",
+        "split_identity": "arith-add-06",
+        "validation_id": "pilot42-final_test-arith-add-06-correct"
+      },
+      {
+        "content_identity": "6bb7a4f53fab8f504057d4e2f98a3415718cad64bff4d9bb55b237a6978d998d",
+        "example_id": "arith-add-06-incorrect",
+        "question_id": "arith-add-06",
+        "split_identity": "arith-add-06",
+        "validation_id": "pilot42-final_test-arith-add-06-incorrect"
+      },
+      {
+        "content_identity": "1dec6ff1d63a3e9c53529e779b7c5954bddc71db99e9c19523d77c7a880f62df",
+        "example_id": "arith-add-07-correct",
+        "question_id": "arith-add-07",
+        "split_identity": "arith-add-07",
+        "validation_id": "pilot42-final_test-arith-add-07-correct"
+      },
+      {
+        "content_identity": "94771e06227bf61cf26325546237de1e6e87d0b5c95b92973298008f7f3df6d5",
+        "example_id": "arith-add-07-incorrect",
+        "question_id": "arith-add-07",
+        "split_identity": "arith-add-07",
+        "validation_id": "pilot42-final_test-arith-add-07-incorrect"
+      },
+      {
+        "content_identity": "24ac1f58344bf19b72f38ea2420f992f6b33256402a1742ce0662e5a7e1eef87",
+        "example_id": "arith-add-08-correct",
+        "question_id": "arith-add-08",
+        "split_identity": "arith-add-08",
+        "validation_id": "pilot42-final_test-arith-add-08-correct"
+      },
+      {
+        "content_identity": "71d3348b5ae7668628fcda37613a316280a8e00bd21d560fd1c78f3377f4aa0b",
+        "example_id": "arith-add-08-incorrect",
+        "question_id": "arith-add-08",
+        "split_identity": "arith-add-08",
+        "validation_id": "pilot42-final_test-arith-add-08-incorrect"
+      },
+      {
+        "content_identity": "81486f571b0e28f3025f52efc800acd990a8cdd2c9df8684efa10e1742235cc7",
+        "example_id": "arith-add-09-correct",
+        "question_id": "arith-add-09",
+        "split_identity": "arith-add-09",
+        "validation_id": "pilot42-final_test-arith-add-09-correct"
+      },
+      {
+        "content_identity": "f86bf9ca1f4565eaf8d6d416e358a1f563e2bc3dfcb475dfebee796c1d059f41",
+        "example_id": "arith-add-09-incorrect",
+        "question_id": "arith-add-09",
+        "split_identity": "arith-add-09",
+        "validation_id": "pilot42-final_test-arith-add-09-incorrect"
+      },
+      {
+        "content_identity": "a7c21649641a81f3694c7ecca65c4523b876e0330ad502e7db02275c2174bb45",
+        "example_id": "arith-add-14-correct",
+        "question_id": "arith-add-14",
+        "split_identity": "arith-add-14",
+        "validation_id": "pilot42-final_test-arith-add-14-correct"
+      },
+      {
+        "content_identity": "33f3d2f503188d3fc909ce4f8e1fd800d2182888ff0a82259c5f082289295595",
+        "example_id": "arith-add-14-incorrect",
+        "question_id": "arith-add-14",
+        "split_identity": "arith-add-14",
+        "validation_id": "pilot42-final_test-arith-add-14-incorrect"
+      },
+      {
+        "content_identity": "78eac93051a0fe5c13ccc2241763333b77abd6c09835669032046eeda50ada0d",
+        "example_id": "arith-add-15-correct",
+        "question_id": "arith-add-15",
+        "split_identity": "arith-add-15",
+        "validation_id": "pilot42-final_test-arith-add-15-correct"
+      },
+      {
+        "content_identity": "8f68c7fd0cf51780a61784f32f026656ad7811d8b314c4c76f75dab7d6436b02",
+        "example_id": "arith-add-15-incorrect",
+        "question_id": "arith-add-15",
+        "split_identity": "arith-add-15",
+        "validation_id": "pilot42-final_test-arith-add-15-incorrect"
+      },
+      {
+        "content_identity": "c278943f8c432c2c6658eeee2da63c40070121a9d9aeb643d2473585e1dd9528",
+        "example_id": "arith-divide-02-correct",
+        "question_id": "arith-divide-02",
+        "split_identity": "arith-divide-02",
+        "validation_id": "pilot42-final_test-arith-divide-02-correct"
+      },
+      {
+        "content_identity": "c3b5094567883ee941296cfa91d2643569fbf15ab9f64259e12ec04c17dff774",
+        "example_id": "arith-divide-02-incorrect",
+        "question_id": "arith-divide-02",
+        "split_identity": "arith-divide-02",
+        "validation_id": "pilot42-final_test-arith-divide-02-incorrect"
+      },
+      {
+        "content_identity": "dfcefe1cb0e8f55d65db10badbefb5e7900474f3c8c4aa18982ddd6d7d81740b",
+        "example_id": "arith-divide-03-correct",
+        "question_id": "arith-divide-03",
+        "split_identity": "arith-divide-03",
+        "validation_id": "pilot42-final_test-arith-divide-03-correct"
+      },
+      {
+        "content_identity": "52add7b8a607bfb46a04ad714c9742252cb1bcca54026adb4f52d58884bbff22",
+        "example_id": "arith-divide-03-incorrect",
+        "question_id": "arith-divide-03",
+        "split_identity": "arith-divide-03",
+        "validation_id": "pilot42-final_test-arith-divide-03-incorrect"
+      },
+      {
+        "content_identity": "91b43ca20b24798f4914d312c91d94b8afe281bcea9379196eaf1d7ccd04f090",
+        "example_id": "arith-divide-07-correct",
+        "question_id": "arith-divide-07",
+        "split_identity": "arith-divide-07",
+        "validation_id": "pilot42-final_test-arith-divide-07-correct"
+      },
+      {
+        "content_identity": "d081991ccd86a39064ad32f5bc899ab94328cc510e2992ca571258c5932a0aa5",
+        "example_id": "arith-divide-07-incorrect",
+        "question_id": "arith-divide-07",
+        "split_identity": "arith-divide-07",
+        "validation_id": "pilot42-final_test-arith-divide-07-incorrect"
+      },
+      {
+        "content_identity": "34689e53f18725930da6ed4437e7dc850ee7e8c2580ada82061b2eda17f805eb",
+        "example_id": "arith-divide-12-correct",
+        "question_id": "arith-divide-12",
+        "split_identity": "arith-divide-12",
+        "validation_id": "pilot42-final_test-arith-divide-12-correct"
+      },
+      {
+        "content_identity": "b4f4d06f8f604bb402f52c79c8fc98c733659831c54a8f52780b42214ab778f3",
+        "example_id": "arith-divide-12-incorrect",
+        "question_id": "arith-divide-12",
+        "split_identity": "arith-divide-12",
+        "validation_id": "pilot42-final_test-arith-divide-12-incorrect"
+      },
+      {
+        "content_identity": "8d941e8e54aa78d158210f3acc01a2430eee154b5f05e1ad959ac37ea35d56b3",
+        "example_id": "arith-divide-13-correct",
+        "question_id": "arith-divide-13",
+        "split_identity": "arith-divide-13",
+        "validation_id": "pilot42-final_test-arith-divide-13-correct"
+      },
+      {
+        "content_identity": "33c502a88d6aa346efb001293d8c5a20bacbd5757e1200dff15ca56695d6b909",
+        "example_id": "arith-divide-13-incorrect",
+        "question_id": "arith-divide-13",
+        "split_identity": "arith-divide-13",
+        "validation_id": "pilot42-final_test-arith-divide-13-incorrect"
+      },
+      {
+        "content_identity": "248bba44ce7fae638dbec44f94176d03a1f139e950c2b8e5fadfdcae1a983ae8",
+        "example_id": "arith-multiply-05-correct",
+        "question_id": "arith-multiply-05",
+        "split_identity": "arith-multiply-05",
+        "validation_id": "pilot42-final_test-arith-multiply-05-correct"
+      },
+      {
+        "content_identity": "e75ac707f10c55d24ff5a27aa34992e85c400d6a10e74df9033c4d27f9028de7",
+        "example_id": "arith-multiply-05-incorrect",
+        "question_id": "arith-multiply-05",
+        "split_identity": "arith-multiply-05",
+        "validation_id": "pilot42-final_test-arith-multiply-05-incorrect"
+      },
+      {
+        "content_identity": "0f6a5df9a02402426caded93a17837636a9b8a970d9dc43bd3d41c51318b79a3",
+        "example_id": "arith-multiply-08-correct",
+        "question_id": "arith-multiply-08",
+        "split_identity": "arith-multiply-08",
+        "validation_id": "pilot42-final_test-arith-multiply-08-correct"
+      },
+      {
+        "content_identity": "a45947a17cef25497fe1332bf135c4042939654f89476b8eb4f8b8d2915a2daa",
+        "example_id": "arith-multiply-08-incorrect",
+        "question_id": "arith-multiply-08",
+        "split_identity": "arith-multiply-08",
+        "validation_id": "pilot42-final_test-arith-multiply-08-incorrect"
+      },
+      {
+        "content_identity": "75d55ef85e41a99507227168d81dbd5f450e7f5c889d39e20f11ca5189573ce8",
+        "example_id": "arith-multiply-11-correct",
+        "question_id": "arith-multiply-11",
+        "split_identity": "arith-multiply-11",
+        "validation_id": "pilot42-final_test-arith-multiply-11-correct"
+      },
+      {
+        "content_identity": "7d690d0bc23f5a42f48adf3de6e9b58eed00c0e85b0b8d5ca8a78e43353c3802",
+        "example_id": "arith-multiply-11-incorrect",
+        "question_id": "arith-multiply-11",
+        "split_identity": "arith-multiply-11",
+        "validation_id": "pilot42-final_test-arith-multiply-11-incorrect"
+      },
+      {
+        "content_identity": "64f2325afb06ce9096d8199f9968335fa8d41fe592378a24c6907d60f37cf6d5",
+        "example_id": "arith-multiply-14-correct",
+        "question_id": "arith-multiply-14",
+        "split_identity": "arith-multiply-14",
+        "validation_id": "pilot42-final_test-arith-multiply-14-correct"
+      },
+      {
+        "content_identity": "6511582ba2f897aeff4c86684528dccba68ee996a937d80f96cfee8010644474",
+        "example_id": "arith-multiply-14-incorrect",
+        "question_id": "arith-multiply-14",
+        "split_identity": "arith-multiply-14",
+        "validation_id": "pilot42-final_test-arith-multiply-14-incorrect"
+      },
+      {
+        "content_identity": "290aa5b866e5ab1ef491199411739c99919739c54185aff329238afcab3ddce6",
+        "example_id": "arith-subtract-01-correct",
+        "question_id": "arith-subtract-01",
+        "split_identity": "arith-subtract-01",
+        "validation_id": "pilot42-final_test-arith-subtract-01-correct"
+      },
+      {
+        "content_identity": "0ecbb2fc6c6fa3955a2f489b7ad94eb269f31e04e50393bd4fb779b1859558ed",
+        "example_id": "arith-subtract-01-incorrect",
+        "question_id": "arith-subtract-01",
+        "split_identity": "arith-subtract-01",
+        "validation_id": "pilot42-final_test-arith-subtract-01-incorrect"
+      },
+      {
+        "content_identity": "2a12f1391e43dbca2266ad8ad556a6028158bcaadeef604967c3f6975c639f75",
+        "example_id": "arith-subtract-03-correct",
+        "question_id": "arith-subtract-03",
+        "split_identity": "arith-subtract-03",
+        "validation_id": "pilot42-final_test-arith-subtract-03-correct"
+      },
+      {
+        "content_identity": "bc874ea1ab95a53c03f6a3697d3e3a37ec03c12b92c8284c7439c970ed7c2074",
+        "example_id": "arith-subtract-03-incorrect",
+        "question_id": "arith-subtract-03",
+        "split_identity": "arith-subtract-03",
+        "validation_id": "pilot42-final_test-arith-subtract-03-incorrect"
+      },
+      {
+        "content_identity": "971a44e339c7e0fae20fc52e62bbf0b85679b2a3f797afeab1247c48c21d7a7b",
+        "example_id": "arith-subtract-13-correct",
+        "question_id": "arith-subtract-13",
+        "split_identity": "arith-subtract-13",
+        "validation_id": "pilot42-final_test-arith-subtract-13-correct"
+      },
+      {
+        "content_identity": "63d10318914e79e9cee86fdee9e7f3225f4b01af380455f94000c3de2718a89c",
+        "example_id": "arith-subtract-13-incorrect",
+        "question_id": "arith-subtract-13",
+        "split_identity": "arith-subtract-13",
+        "validation_id": "pilot42-final_test-arith-subtract-13-incorrect"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "permitted_datasets": [
+    [
+      "history",
+      "factual-feasibility-draft-v1-history"
+    ],
+    [
+      "development",
+      "factual-feasibility-draft-v1-development"
+    ],
+    [
+      "history",
+      "constructed-arithmetic-pilot42-history-v1"
+    ],
+    [
+      "development",
+      "constructed-arithmetic-pilot42-development-v1"
+    ]
+  ],
+  "preparation_authorization": null,
+  "setup": {
+    "application_source_digest": "23f3a89528f61462bae2ce94ef333eb87df9a6c4555db836c263b3541ccf603f",
+    "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "81df95721c085a358874a207f518f3dccfae645a7af6c7c5d8ae7c25afb9b075"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "696113ec363eacfe8478528bcc1bab1d69c59ee58e344836107b39e12adc33e0"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "360dfb21c7040f02c791a24d418e294b32940eff20c76e50d2df0a6ea48da88c"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "71249da7eb78a6df412c8ce105accf5143d785192f2bedf74f835d2af8b52d59"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "c7e3cc25b27ffd6c42f8471f0fb2140db10cde0ad9e070f98b44d84fb2b74ea1"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  }
+}

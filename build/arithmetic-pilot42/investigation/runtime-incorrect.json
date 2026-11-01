@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "approved_configuration_digest": "af723595edffe54fbd8cd6f1d3c082bd718c53edfddd2d063bdda8aa6094ad41",
+  "source_bundle_and_manifest_match": true,
+  "certificate_reloaded_by_artifact": true,
+  "historical_runtime_replay_matches_offline_replay": true,
+  "recorded_reports_replayed": 2,
+  "new_verifier_inference_calls": 0,
+  "runtime_resource_snapshots": "Actual retained pre/post observations replayed for compatibility only; no new live resource claim.",
+  "final_payload_guard": "passed",
+  "no_optimizer_guard": "passed",
+  "no_recalibration_guard": "passed",
+  "semantic_supports": 80,
+  "semantic_incorrect_answers_supported": 40,
+  "per_strategy_replay_reasons": [
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "examples": 40,
+      "reason_counts": {
+        "minimum_contributors": 40
+      }
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "attack_id": "56b0f18eb25be4e148a0595de8be2b02d335d524206db3602c12bf74de0510dd",
+      "examples": 40,
+      "reason_counts": {
+        "minimum_contributors": 40
+      }
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "attack_id": "7b745089ad127b0186a9ccbed8f192b45fa84f02e0da5e03cea587481eb9874c",
+      "examples": 40,
+      "reason_counts": {
+        "minimum_contributors": 40
+      }
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "attack_id": "c89a17d0ed0f383a5fd3b4c4d0c01b899e7233d30af34cd8bc8129fb6aac5ecf",
+      "examples": 40,
+      "reason_counts": {
+        "minimum_contributors": 40
+      }
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "attack_id": "fa5f47b3a737cf87554c7dd297aaca1ff13cd5d327d492e1ed42d41cfe5c964f",
+      "examples": 40,
+      "reason_counts": {
+        "minimum_contributors": 40,
+        "missing_achieved_coverage": 40,
+        "selected_execution_incomplete": 40
+      }
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "examples": 40,
+      "reason_counts": {}
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "attack_id": "56b0f18eb25be4e148a0595de8be2b02d335d524206db3602c12bf74de0510dd",
+      "examples": 40,
+      "reason_counts": {}
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "attack_id": "7b745089ad127b0186a9ccbed8f192b45fa84f02e0da5e03cea587481eb9874c",
+      "examples": 40,
+      "reason_counts": {}
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "attack_id": "c89a17d0ed0f383a5fd3b4c4d0c01b899e7233d30af34cd8bc8129fb6aac5ecf",
+      "examples": 40,
+      "reason_counts": {}
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "attack_id": "fa5f47b3a737cf87554c7dd297aaca1ff13cd5d327d492e1ed42d41cfe5c964f",
+      "examples": 40,
+      "reason_counts": {
+        "minimum_contributors": 40,
+        "missing_achieved_coverage": 40,
+        "selected_execution_incomplete": 40
+      }
+    }
+  ]
+}

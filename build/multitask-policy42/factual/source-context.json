@@ -1,0 +1,106 @@
+{
+  "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.3,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"semantic_comparison\"],\"latency\":0.4,\"limitations\":[\"Reference similarity is not factual correctness.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.5,\"requires_reference\":true,\"resource_penalty\":0.085,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.415,\"verifier_name\":\"semantic\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":38,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.95,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":0.94,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":2,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.45,\"verifier_name\":\"rule\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.9,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"consistency\"],\"latency\":1.0,\"limitations\":[\"Generation/judgment agreement is not factual evidence or independence.\",\"Provider readiness is unknown until execution.\"],\"observation_count\":13,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":3,\"reputation\":0.733333,\"requires_reference\":false,\"resource_penalty\":0.23500000000000001,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.498333,\"verifier_name\":\"confidence\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.13,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"direct_fact\"],\"expected_uncovered\":[],\"fallback\":[\"rule\",\"semantic\"],\"initial_selected\":[\"evidence\",\"confidence\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":true,\"reputation_statistics\":[{\"alpha\":21.0,\"beta\":21.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":20,\"observation_count\":40,\"posterior_mean\":0.5,\"posterior_variance\":0.005813953488372093,\"successes\":20,\"verifier_name\":\"semantic\"},{\"alpha\":38.0,\"beta\":2.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":1,\"observation_count\":38,\"posterior_mean\":0.9500000000000001,\"posterior_variance\":0.001158536585365852,\"successes\":37,\"verifier_name\":\"evidence\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"rule\"},{\"alpha\":11.0,\"beta\":4.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":3,\"observation_count\":13,\"posterior_mean\":0.7333333333333333,\"posterior_variance\":0.012222222222222225,\"successes\":10,\"verifier_name\":\"confidence\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"direct_fact\"],\"legacy_unrecognized\":[],\"requirements\":[\"direct_fact\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"direct_fact\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"explicit_task_questions_v1\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+  "attempt_costs": [
+    [
+      "confidence",
+      15732.45631873142
+    ],
+    [
+      "evidence",
+      188.79894875281025
+    ],
+    [
+      "rule",
+      0.10460499906912446
+    ],
+    [
+      "semantic",
+      43.68659251194913
+    ]
+  ],
+  "budget": 15965.046464995248,
+  "cost_units": "ms",
+  "loss_configuration": {
+    "version": "multitask-exploratory-loss-v1",
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "uncertain": 0.2,
+    "resource_weight": 6.263683617787064e-06,
+    "cost_units": "ms"
+  },
+  "analyzer_provenance": [
+    [
+      "analysis_method",
+      "heuristic"
+    ],
+    [
+      "context_version",
+      "question_context_v1"
+    ],
+    [
+      "domain_status",
+      "unknown"
+    ],
+    [
+      "research_context_presence",
+      "present"
+    ],
+    [
+      "scoring_version",
+      "explicit_task_questions_v1"
+    ]
+  ],
+  "dependencies": {
+    "version": "multitask-observed-dependencies-v1",
+    "dependencies": [
+      {
+        "resource_id": "local-embedding-snapshot",
+        "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ]
+      },
+      {
+        "resource_id": "local-nli-snapshot",
+        "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ]
+      }
+    ],
+    "unresolved": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "unknown_treatment": "shared_unknown"
+  },
+  "aggregation_versions": [
+    [
+      "dependency_group",
+      "groups_v1"
+    ],
+    [
+      "reputation_weighted",
+      "log_odds_v1"
+    ]
+  ],
+  "provenance": {
+    "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+    "history_dataset": "multitask42-factual-history",
+    "development_dataset": "multitask42-factual-development",
+    "final_test_dataset": "multitask42-factual-final_test",
+    "matrix_version": "multitask-finalized-development-v1",
+    "loss_configuration": "multitask-exploratory-loss-v1",
+    "category": "general",
+    "category_kind": "domain",
+    "evidence_kind": "empirical"
+  },
+  "version": "game_context_v1",
+  "offline_evaluation_id": "bf7af2f946fdbfc6fc84b2d322e60e2c8e860a726641f05f7e2f75b10468eb96",
+  "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"confidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"confidence-implementation\",\"sha256\":\"9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"},{\"kind\":\"model\",\"resource_id\":\"ollama-model\",\"sha256\":\"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72\"},{\"kind\":\"prompt\",\"resource_id\":\"self-consistency-short-answer\",\"sha256\":\"dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b\"},{\"kind\":\"service\",\"resource_id\":\"ollama-service\",\"sha256\":\"5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895\"}],\"verifier_name\":\"confidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"semantic-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"semantic-implementation\",\"sha256\":\"9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"}],\"verifier_name\":\"semantic\"}],\"version\":\"game_resource_manifest_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}",
+  "task_conditioning_json": "{\"history_dataset_id\":\"multitask42-factual-history\",\"history_partition_digest\":\"99eb2ffd2d0d481eb3f23303ede787877b0622a39227bbf838c4ef65df4856ed\",\"identity\":{\"domain_status\":\"unknown\",\"question_rules_version\":\"explicit_task_questions_v1\",\"requirements\":[\"direct_fact\"],\"subject_domain\":\"general\",\"version\":\"domain_requirements_task_v1\"},\"sparse_history\":\"isolated_beta_prior_no_pooling\",\"version\":\"task_isolated_history_v1\"}"
+}

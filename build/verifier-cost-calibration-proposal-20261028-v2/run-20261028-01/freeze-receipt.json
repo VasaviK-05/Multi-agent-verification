@@ -1,0 +1,1412 @@
+{
+  "application_source_digest": "23f3a89528f61462bae2ce94ef333eb87df9a6c4555db836c263b3541ccf603f",
+  "authority": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\verifier-cost-calibration-proposal-20261028-v2\\run-20261028-01\\authorization.json",
+  "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+  "custody": "User-approved procedural project reservation, no third-party custody",
+  "exclusions": [],
+  "files": {
+    "attempt-journal.jsonl": "57f1225e7b7ee5c5e424a2ac568c003f1c1dfb0a88f94774172498597c0f0b42",
+    "authorization.json": "b2718421b9c2d77bcd68d771092b6b279476e5328f716d516cdebd0a0f6419ba",
+    "collection.authorized.json": "498e79d95d1ff7b9a86c3cf93701c9408bd02af4903960cde0fc1d30673210ec",
+    "execution-result.json": "0a7feb693a2a64067b6b9d4ebc3e223f4376175e5b9884ce71c349b3795748e6",
+    "measurements.json": "62b13ccdac1cdb9cfa28f7a23018b75f6b95aad6073ba52133112dc52d01c5a3",
+    "network-events.jsonl": "4715736dc89f08364515e084aef092780af40009bd469b68b637d41d66234cd0",
+    "preparation-validation.json": "c54b10f78bfd0d220768b7fca4d8d985a3c1fbff54444477e1469dfe3a6c0fb5",
+    "resource-postcheck.json": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229",
+    "resource-preflight.json": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+  },
+  "include_warmups": true,
+  "included_attempts": [
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-09-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e03-r1",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e03-r1",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e03-r1",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e03-r1",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-14-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-06-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-12-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-05-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-13-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-11-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-15-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-02-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-10-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-05-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-08-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-15-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-09-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-04-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-01-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-subtract-07-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e05-r1",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e05-r1",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e05-r1",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e05-r1",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-02-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-15-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-06-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e04-r1",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e04-r1",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e04-r1",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e04-r1",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-04-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-12-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-10-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-04-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-05-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-08-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-12-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-09-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-13-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-multiply-07-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-add-01-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e02-r1",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e02-r1",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e02-r1",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e02-r1",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-01-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-divide-11-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-14-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-subtract-11-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e06-r1",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e06-r1",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e06-r1",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-history-e06-r1",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-history-arith-add-10-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-03-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e07-r1",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e07-r1",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e07-r1",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-factual-feasibility-draft-v1-development-e07-r1",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-correct",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-correct",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-correct",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-divide-04-correct",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-10-incorrect",
+      "verifier": "confidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-incorrect",
+      "verifier": "semantic"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-incorrect",
+      "verifier": "evidence"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-incorrect",
+      "verifier": "rule"
+    },
+    {
+      "run_id": "broader-cost-v1-pilot42-development-arith-multiply-06-incorrect",
+      "verifier": "confidence"
+    }
+  ],
+  "measurement_digest": "413580a7d9ad059bb3f7957e4532157924a5461d06038371c5da52678ac364cc",
+  "note": "Freeze of actual measurement inputs before calibration; first calls and failures retained; no policy or final outcomes",
+  "proposal_files": {
+    "adapter.json": "58b3d0fb7a46e594d648f027c3fe3e57e05f498daf9325f7a12a30c6340be447",
+    "approval-binding.json": "1b369aeb82cae65cca588390a94841243fc35b1ca5bdb3469590dcdaddc06a4f",
+    "design.json": "a69c12a517f637d6b0d480936a5337810aadbc782ccb9d56f52401cd816a322a",
+    "roster.json": "12bf064a5d19b48b3fec4b4826320f5c4c38a141058b92b105697f3e6fcaf68e"
+  },
+  "proposal_id": "50b2f7523422fb868eaecf1e6fc8cd2d1ef1df90f0679fc02d901c37bcb769fb",
+  "recorded_at_utc": "2026-10-28T16:44:06.285772+00:00",
+  "request_digest": "88f5de81407ad4291e32d1c30d0d365b351ecaa5ea470eefab79980820e82e5d",
+  "runner_sha256": "e0230c64096d46565b09250641cf26ebd4d92fec5e79b412a4c7fe41e4ab4507",
+  "setup_fingerprint": "93029e22dfadd1babdfb360f70252113ede0ca17f58bf106ee18b44aea8a9750",
+  "uncollected_attempts": [],
+  "warmups": 0
+}

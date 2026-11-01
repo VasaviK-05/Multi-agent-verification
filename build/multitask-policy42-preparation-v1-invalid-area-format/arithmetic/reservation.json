@@ -1,0 +1,288 @@
+{
+  "version": "final_test_reservation_v1",
+  "role": "final_test",
+  "dataset_id": "multitask42-arithmetic-final_test",
+  "custody_record": "User request 40cf4c15-2260-48ef-b3a1-7154d0d47554: task-conditioned exploratory collection and reliability-first fits; procedural source-known reservation",
+  "examples": [
+    {
+      "example_id": "addition-314-514-correct",
+      "split_identity": "multitask42-arithmetic-addition-314-514",
+      "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+      "content_identity": "0aef7f2c601bb89d497a81e0a832e9befcc66da0f9be2ea43686dcfa290bfa85",
+      "validation_id": "multitask42-arithmetic-final_test-addition-314-514-correct"
+    },
+    {
+      "example_id": "addition-314-514-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-314-514",
+      "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+      "content_identity": "8d64e4b80b53fd43ecebc3eb24c27983dde2c4efe699cf6f5302751256461e78",
+      "validation_id": "multitask42-arithmetic-final_test-addition-314-514-incorrect"
+    },
+    {
+      "example_id": "addition-321-525-correct",
+      "split_identity": "multitask42-arithmetic-addition-321-525",
+      "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+      "content_identity": "3b3c2937cf2a2d98ad76d4639411435c8e67976c5393f646fa05e08c1b0b3d13",
+      "validation_id": "multitask42-arithmetic-final_test-addition-321-525-correct"
+    },
+    {
+      "example_id": "addition-321-525-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-321-525",
+      "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+      "content_identity": "698e36f78a0bba54fec7f27582a5f3b90e1f084e6242da81f829218d256f79a4",
+      "validation_id": "multitask42-arithmetic-final_test-addition-321-525-incorrect"
+    },
+    {
+      "example_id": "addition-342-558-correct",
+      "split_identity": "multitask42-arithmetic-addition-342-558",
+      "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+      "content_identity": "c37b9e3359da33465cd39676e0de31b12cec01928cc604a6195acbfa36054f56",
+      "validation_id": "multitask42-arithmetic-final_test-addition-342-558-correct"
+    },
+    {
+      "example_id": "addition-342-558-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-342-558",
+      "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+      "content_identity": "0569aaee26ea3a2cbad3abe0c88f356e306741058345836845b9eb0ca4a211b7",
+      "validation_id": "multitask42-arithmetic-final_test-addition-342-558-incorrect"
+    },
+    {
+      "example_id": "addition-349-569-correct",
+      "split_identity": "multitask42-arithmetic-addition-349-569",
+      "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+      "content_identity": "3c28edded8ce2c9031aca251dae0a8c263cfa9cf32716e449800103ec36c34cf",
+      "validation_id": "multitask42-arithmetic-final_test-addition-349-569-correct"
+    },
+    {
+      "example_id": "addition-349-569-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-349-569",
+      "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+      "content_identity": "947c24afac67f3233b26772565f1989d03db4b457f6291679a0b8ef9edd43bdc",
+      "validation_id": "multitask42-arithmetic-final_test-addition-349-569-incorrect"
+    },
+    {
+      "example_id": "addition-356-580-correct",
+      "split_identity": "multitask42-arithmetic-addition-356-580",
+      "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+      "content_identity": "8a7a7df44641a3db1eaccd2fb4218d67af7218cc84630e88441bdd3238c67ab0",
+      "validation_id": "multitask42-arithmetic-final_test-addition-356-580-correct"
+    },
+    {
+      "example_id": "addition-356-580-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-356-580",
+      "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+      "content_identity": "8bef68b764a6c42cd4c2b4cfaf9d12fa47fd5d17deb52a74d17aa645ed6a1e19",
+      "validation_id": "multitask42-arithmetic-final_test-addition-356-580-incorrect"
+    },
+    {
+      "example_id": "addition-363-591-correct",
+      "split_identity": "multitask42-arithmetic-addition-363-591",
+      "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+      "content_identity": "e09b4548d0552dae049f04bab1f8478d436befd0bc5d5fe6800fc316ecd56e6b",
+      "validation_id": "multitask42-arithmetic-final_test-addition-363-591-correct"
+    },
+    {
+      "example_id": "addition-363-591-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-363-591",
+      "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+      "content_identity": "27e6dba0703f27ed5c0c4099a6896ebf32ae21689f67e3444f520006ff1e9c04",
+      "validation_id": "multitask42-arithmetic-final_test-addition-363-591-incorrect"
+    },
+    {
+      "example_id": "addition-398-646-correct",
+      "split_identity": "multitask42-arithmetic-addition-398-646",
+      "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+      "content_identity": "a11bb5a6ca1cb37da306637d3805b76056447ddf03bf4321cd9fd9a723a8957e",
+      "validation_id": "multitask42-arithmetic-final_test-addition-398-646-correct"
+    },
+    {
+      "example_id": "addition-398-646-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-398-646",
+      "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+      "content_identity": "20200df5d4bbda7fa6a15cc87bbdb2433f516e9af1825c578761f0b69f0ac092",
+      "validation_id": "multitask42-arithmetic-final_test-addition-398-646-incorrect"
+    },
+    {
+      "example_id": "addition-405-657-correct",
+      "split_identity": "multitask42-arithmetic-addition-405-657",
+      "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+      "content_identity": "69290cfe34014c38557f97beeabe198f8ad9025d50ebb541c03887ae0219d752",
+      "validation_id": "multitask42-arithmetic-final_test-addition-405-657-correct"
+    },
+    {
+      "example_id": "addition-405-657-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-405-657",
+      "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+      "content_identity": "4d234bd7092f4384e8b5ef3442219bc7674d16f59493a7135fc8ea37ddcf1114",
+      "validation_id": "multitask42-arithmetic-final_test-addition-405-657-incorrect"
+    },
+    {
+      "example_id": "addition-412-668-correct",
+      "split_identity": "multitask42-arithmetic-addition-412-668",
+      "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+      "content_identity": "9e2a5be3083ffd4c40b2eabeb2913e125ec25f908cd56339ab28d6251cd6c4ff",
+      "validation_id": "multitask42-arithmetic-final_test-addition-412-668-correct"
+    },
+    {
+      "example_id": "addition-412-668-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-412-668",
+      "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+      "content_identity": "171eb0c163f2d7d80f9692b6a8d043e5f36b6eae9ddd63126f56df1493ec4060",
+      "validation_id": "multitask42-arithmetic-final_test-addition-412-668-incorrect"
+    },
+    {
+      "example_id": "addition-426-690-correct",
+      "split_identity": "multitask42-arithmetic-addition-426-690",
+      "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+      "content_identity": "846eb6e976d09e78040fafe947d735703f8ae4a865ac4719d78d45e5308845fc",
+      "validation_id": "multitask42-arithmetic-final_test-addition-426-690-correct"
+    },
+    {
+      "example_id": "addition-426-690-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-426-690",
+      "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+      "content_identity": "a478b98bb765a6c276191ec6ed7840d9920ff2f467d49971a40c6fae9ca6590e",
+      "validation_id": "multitask42-arithmetic-final_test-addition-426-690-incorrect"
+    },
+    {
+      "example_id": "addition-496-800-correct",
+      "split_identity": "multitask42-arithmetic-addition-496-800",
+      "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+      "content_identity": "9f020e32a69f0b5adf8c95f162df895851e2eef3102b2158907f3a1c0155fc0a",
+      "validation_id": "multitask42-arithmetic-final_test-addition-496-800-correct"
+    },
+    {
+      "example_id": "addition-496-800-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-496-800",
+      "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+      "content_identity": "11a71ca490df21f87b4c6359ac12090fc93e28f2e1119b9dcf904d5eafc15dac",
+      "validation_id": "multitask42-arithmetic-final_test-addition-496-800-incorrect"
+    },
+    {
+      "example_id": "addition-545-877-correct",
+      "split_identity": "multitask42-arithmetic-addition-545-877",
+      "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+      "content_identity": "cb67e77b2cab2808074ad652bbb7b2adb7d6e92e3392f05f3b420f8e347c1b78",
+      "validation_id": "multitask42-arithmetic-final_test-addition-545-877-correct"
+    },
+    {
+      "example_id": "addition-545-877-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-545-877",
+      "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+      "content_identity": "a3623a3880c1a12207a7277e606c3c85c912d56fcab2bb5cfebbf2c7a0a10d13",
+      "validation_id": "multitask42-arithmetic-final_test-addition-545-877-incorrect"
+    },
+    {
+      "example_id": "addition-566-910-correct",
+      "split_identity": "multitask42-arithmetic-addition-566-910",
+      "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+      "content_identity": "8fe24e09fca843dcecb5382b9b71fd915d559402c6310b47e60d7c778cbfab43",
+      "validation_id": "multitask42-arithmetic-final_test-addition-566-910-correct"
+    },
+    {
+      "example_id": "addition-566-910-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-566-910",
+      "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+      "content_identity": "e40c4425c323eb4e23683bb7d9fd00772f800179a4ec7f78af61e79c32baa169",
+      "validation_id": "multitask42-arithmetic-final_test-addition-566-910-incorrect"
+    },
+    {
+      "example_id": "addition-587-943-correct",
+      "split_identity": "multitask42-arithmetic-addition-587-943",
+      "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+      "content_identity": "d233341dd7f25c5008538728e5178c990b763c5548561c0568aa0b3a86879110",
+      "validation_id": "multitask42-arithmetic-final_test-addition-587-943-correct"
+    },
+    {
+      "example_id": "addition-587-943-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-587-943",
+      "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+      "content_identity": "071b66100854caca2a9b222df781ca379287cec8d6dd7e7a799dfce006f902e6",
+      "validation_id": "multitask42-arithmetic-final_test-addition-587-943-incorrect"
+    },
+    {
+      "example_id": "addition-608-976-correct",
+      "split_identity": "multitask42-arithmetic-addition-608-976",
+      "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+      "content_identity": "c36827a1ace9e6966f836486d578f9b591420dfc6bfa82c258954badc01ea728",
+      "validation_id": "multitask42-arithmetic-final_test-addition-608-976-correct"
+    },
+    {
+      "example_id": "addition-608-976-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-608-976",
+      "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+      "content_identity": "5c3003eae6384283259ab85cdba99a78c6e42625b64c950873f803b95c05ed9c",
+      "validation_id": "multitask42-arithmetic-final_test-addition-608-976-incorrect"
+    },
+    {
+      "example_id": "addition-629-1009-correct",
+      "split_identity": "multitask42-arithmetic-addition-629-1009",
+      "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+      "content_identity": "671e642c3945a6a7f32e58de1074f19b6d166bcf24ce6dea76236bb90851219c",
+      "validation_id": "multitask42-arithmetic-final_test-addition-629-1009-correct"
+    },
+    {
+      "example_id": "addition-629-1009-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-629-1009",
+      "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+      "content_identity": "c3cbeeeea15bd9c2cde59551dffe1594b2902e6c7ea33cfb4f05f1c0e665bd06",
+      "validation_id": "multitask42-arithmetic-final_test-addition-629-1009-incorrect"
+    },
+    {
+      "example_id": "addition-636-1020-correct",
+      "split_identity": "multitask42-arithmetic-addition-636-1020",
+      "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+      "content_identity": "966aed767b066c41561ed931b9aa86d4a5336780caf7fb3d6df78b3177a4dc84",
+      "validation_id": "multitask42-arithmetic-final_test-addition-636-1020-correct"
+    },
+    {
+      "example_id": "addition-636-1020-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-636-1020",
+      "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+      "content_identity": "70d98bfcc38d8fe9babd10ae5f43c6e166c7adb900b85a56e1efa28c1652a063",
+      "validation_id": "multitask42-arithmetic-final_test-addition-636-1020-incorrect"
+    },
+    {
+      "example_id": "addition-664-1064-correct",
+      "split_identity": "multitask42-arithmetic-addition-664-1064",
+      "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+      "content_identity": "de59ec06b0123170093f78313c953bd2c21100169d8b3b217fc0f8fdd0c92704",
+      "validation_id": "multitask42-arithmetic-final_test-addition-664-1064-correct"
+    },
+    {
+      "example_id": "addition-664-1064-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-664-1064",
+      "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+      "content_identity": "a999f52a2a023e038015fb5bd8be2202f348760dbfb9e3d8675ef345eb0e4752",
+      "validation_id": "multitask42-arithmetic-final_test-addition-664-1064-incorrect"
+    },
+    {
+      "example_id": "addition-699-1119-correct",
+      "split_identity": "multitask42-arithmetic-addition-699-1119",
+      "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+      "content_identity": "c123fb2c16fde24ff4d25bf830c23694ec3dae9df674175afeffe2172ec454d9",
+      "validation_id": "multitask42-arithmetic-final_test-addition-699-1119-correct"
+    },
+    {
+      "example_id": "addition-699-1119-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-699-1119",
+      "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+      "content_identity": "ecc93eb8e5aa208f20aeccdc58e2d22a51b815d682d5a9517582235a0dd1b28b",
+      "validation_id": "multitask42-arithmetic-final_test-addition-699-1119-incorrect"
+    },
+    {
+      "example_id": "addition-706-1130-correct",
+      "split_identity": "multitask42-arithmetic-addition-706-1130",
+      "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+      "content_identity": "58cb2f9295d8a0f3db29551b556d74f2cddef0bcd8f0086f93854978359bd7cb",
+      "validation_id": "multitask42-arithmetic-final_test-addition-706-1130-correct"
+    },
+    {
+      "example_id": "addition-706-1130-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-706-1130",
+      "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+      "content_identity": "0accedc1fa56e29fd57b7b98599b4062404fccb24663f5548e4332967044553b",
+      "validation_id": "multitask42-arithmetic-final_test-addition-706-1130-incorrect"
+    }
+  ]
+}

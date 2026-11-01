@@ -1,0 +1,68 @@
+{
+  "blockers": [
+    {
+      "owner": "resource/collection owner",
+      "reason": "missing index build receipt linking actual embedding bytes to vectors; alias-only manifest is insufficient",
+      "resource": "index_provenance"
+    },
+    {
+      "owner": "resource/collection owner",
+      "reason": "missing saved Ollama metadata; run observe-service explicitly (no generation)",
+      "resource": "service"
+    },
+    {
+      "owner": "dataset custodian",
+      "reason": "[{\"location\": [\"final_test_reservation\"], \"message\": \"Input should be a valid dictionary or instance of FinalTestReservation\"}, {\"location\": [\"permitted_datasets\"], \"message\": \"Tuple should have at least 1 item after validation, not 0\"}, {\"location\": [\"preparation_authorization\"], \"message\": \"Input should be a valid string\"}, {\"location\": [\"examples\"], \"message\": \"Tuple should have at least 1 item after validation, not 0\"}]",
+      "resource": "preparation"
+    }
+  ],
+  "counts": null,
+  "downloads_performed": false,
+  "hardware": {
+    "architecture": "AMD64",
+    "concurrency": "sequential",
+    "device": "cpu",
+    "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+    "logical_cpus": "16",
+    "os": "Windows-10-10.0.26200-SP0",
+    "physical_memory_bytes": "16876888064",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "runtime": "3.11.5",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+  },
+  "inventory": {
+    "corpus": {
+      "bytes": 2664,
+      "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+    },
+    "embedding_snapshot": {
+      "bytes": 91578415,
+      "files": 11,
+      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+    },
+    "index": {
+      "chunks.json": "030bc6a6ec6601481e6fd9d29d5b7c0035bc5ab7a2060fcbbefcaf626dc57fe9",
+      "faiss.index": "6c4459483e2a424f74b4f06d1624bf4b680fcd31c70c7ddc55f0cff2283e2560",
+      "manifest.json": "a29310f03759c23e3dd8f550bb91eaae5cfa06a106fb62aa201c4689674be492"
+    },
+    "nli_snapshot": {
+      "bytes": 578729785,
+      "files": 7,
+      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+    }
+  },
+  "observed_setup": null,
+  "observed_setup_fingerprint": null,
+  "provider_requests_performed": 0,
+  "ready": false,
+  "ready_scope": "local inputs only; saved service observation is revalidated live by factory",
+  "requirements": {
+    "downloads": "none allowed; missing snapshots require separately authorized provisioning",
+    "external_service": "http://localhost:11434/api/generate",
+    "factory_metadata_get_requests": 4,
+    "memory": "CPU mode; model file sizes reported; peak RAM and service memory are not estimated",
+    "model": "llama3.2:3b",
+    "pricing": null,
+    "pricing_reason": "no approved monetary pricing inputs supplied"
+  }
+}

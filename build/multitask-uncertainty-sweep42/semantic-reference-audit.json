@@ -1,0 +1,650 @@
+[
+  {
+    "cohort": "arithmetic",
+    "role": "development",
+    "example_id": "addition-307-503-correct",
+    "question": "What is 307 + 503?",
+    "answer": "810",
+    "reference": "810",
+    "answer_is_correct": true,
+    "label_source": "independent-arithmetic-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.36212500721067314,
+      "passed": false,
+      "reasoning": "Semantic similarity score: 0.3621. Support threshold: 0.50; reject threshold: 0.30. Similarity falls between the reject and support thresholds.",
+      "metadata": {
+        "compared_text": "What is 307 + 503? 810",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "UNSURE",
+        "latency_ms": 32.75,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.36212500721067314,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": true,
+    "vote_confidence": 0.0,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.64,
+        "n": 23
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.9761904761904762,
+        "n": 40
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.8717948717948718,
+        "n": 37
+      }
+    ]
+  },
+  {
+    "cohort": "arithmetic",
+    "role": "development",
+    "example_id": "addition-307-503-incorrect",
+    "question": "What is 307 + 503?",
+    "answer": "811",
+    "reference": "810",
+    "answer_is_correct": false,
+    "label_source": "independent-arithmetic-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.33843897010680235,
+      "passed": false,
+      "reasoning": "Semantic similarity score: 0.3384. Support threshold: 0.50; reject threshold: 0.30. Similarity falls between the reject and support thresholds.",
+      "metadata": {
+        "compared_text": "What is 307 + 503? 811",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "UNSURE",
+        "latency_ms": 65.09,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.33843897010680235,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": true,
+    "vote_confidence": 0.0,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.64,
+        "n": 23
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.9761904761904762,
+        "n": 40
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.8717948717948718,
+        "n": 37
+      }
+    ]
+  },
+  {
+    "cohort": "arithmetic",
+    "role": "history",
+    "example_id": "addition-328-536-correct",
+    "question": "What is 328 + 536?",
+    "answer": "864",
+    "reference": "864",
+    "answer_is_correct": true,
+    "label_source": "independent-arithmetic-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.5308779495661211,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.5309. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "What is 328 + 536? 864",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 25.87,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.5308779495661211,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.5308779495661211,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.64,
+        "n": 23
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.9761904761904762,
+        "n": 40
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.8717948717948718,
+        "n": 37
+      }
+    ]
+  },
+  {
+    "cohort": "arithmetic",
+    "role": "history",
+    "example_id": "addition-328-536-incorrect",
+    "question": "What is 328 + 536?",
+    "answer": "865",
+    "reference": "864",
+    "answer_is_correct": false,
+    "label_source": "independent-arithmetic-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.5128555365415963,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.5129. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "What is 328 + 536? 865",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 27.39,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.5128555365415963,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.5128555365415963,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.64,
+        "n": 23
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.9761904761904762,
+        "n": 40
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.8717948717948718,
+        "n": 37
+      }
+    ]
+  },
+  {
+    "cohort": "semantic",
+    "role": "development",
+    "example_id": "frame-Alex-correct",
+    "question": "Paraphrase this reference: Alex carried a parcel to the library.",
+    "answer": "A parcel was carried to the library by Alex.",
+    "reference": "Alex carried a parcel to the library.",
+    "answer_is_correct": true,
+    "label_source": "independent-semantic-frames-v1",
+    "label_meaning": "semantic frame preservation",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.8843091327843677,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.8843. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "Paraphrase this reference: Alex carried a parcel to the library. A parcel was carried to the library by Alex.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 35.81,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.8843091327843677,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.8843091327843677,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.9629629629629629,
+        "n": 25
+      }
+    ]
+  },
+  {
+    "cohort": "semantic",
+    "role": "development",
+    "example_id": "frame-Alex-incorrect",
+    "question": "Paraphrase this reference: Alex carried a parcel to the library.",
+    "answer": "Alex repaired a bicycle near the harbour.",
+    "reference": "Alex carried a parcel to the library.",
+    "answer_is_correct": false,
+    "label_source": "independent-semantic-frames-v1",
+    "label_meaning": "semantic frame preservation",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.7635674845846382,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.7636. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "Paraphrase this reference: Alex carried a parcel to the library. Alex repaired a bicycle near the harbour.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 33.61,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.7635674845846382,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.7635674845846382,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.9629629629629629,
+        "n": 25
+      }
+    ]
+  },
+  {
+    "cohort": "semantic",
+    "role": "history",
+    "example_id": "frame-Bailey-correct",
+    "question": "Paraphrase this reference: Bailey brought a basket to the station.",
+    "answer": "A basket was brought to the station by Bailey.",
+    "reference": "Bailey brought a basket to the station.",
+    "answer_is_correct": true,
+    "label_source": "independent-semantic-frames-v1",
+    "label_meaning": "semantic frame preservation",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.8966010864224735,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.8966. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "Paraphrase this reference: Bailey brought a basket to the station. A basket was brought to the station by Bailey.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 35.98,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.8966010864224735,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.8966010864224735,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.9629629629629629,
+        "n": 25
+      }
+    ]
+  },
+  {
+    "cohort": "semantic",
+    "role": "history",
+    "example_id": "frame-Bailey-incorrect",
+    "question": "Paraphrase this reference: Bailey brought a basket to the station.",
+    "answer": "Bailey repaired a bicycle near the harbour.",
+    "reference": "Bailey brought a basket to the station.",
+    "answer_is_correct": false,
+    "label_source": "independent-semantic-frames-v1",
+    "label_meaning": "semantic frame preservation",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.8171922839349361,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.8172. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "Paraphrase this reference: Bailey brought a basket to the station. Bailey repaired a bicycle near the harbour.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 39.87,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.8171922839349361,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.8171922839349361,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.9629629629629629,
+        "n": 25
+      }
+    ]
+  },
+  {
+    "cohort": "factual",
+    "role": "development",
+    "example_id": "AO-correct",
+    "question": "What is the currency of Angola?",
+    "answer": "The currency of Angola is the Angolan kwanza.",
+    "reference": "The currency of Angola is the Angolan kwanza.",
+    "answer_is_correct": true,
+    "label_source": "independent-factual-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.9408068684505791,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.9408. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "What is the currency of Angola? The currency of Angola is the Angolan kwanza.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 36.4,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.9408068684505791,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.9408068684505791,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.9500000000000001,
+        "n": 38
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.7333333333333333,
+        "n": 13
+      }
+    ]
+  },
+  {
+    "cohort": "factual",
+    "role": "development",
+    "example_id": "AO-incorrect",
+    "question": "What is the currency of Angola?",
+    "answer": "The currency of Angola is the United States dollar.",
+    "reference": "The currency of Angola is the Angolan kwanza.",
+    "answer_is_correct": false,
+    "label_source": "independent-factual-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.8342057536290283,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.8342. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "What is the currency of Angola? The currency of Angola is the United States dollar.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 46.87,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.8342057536290283,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.8342057536290283,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.9500000000000001,
+        "n": 38
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.7333333333333333,
+        "n": 13
+      }
+    ]
+  },
+  {
+    "cohort": "factual",
+    "role": "history",
+    "example_id": "BE-correct",
+    "question": "What is the population of Belgium?",
+    "answer": "The population of Belgium is 11941781.",
+    "reference": "The population of Belgium is 11941781.",
+    "answer_is_correct": true,
+    "label_source": "independent-factual-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.9616148877440465,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.9616. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "What is the population of Belgium? The population of Belgium is 11941781.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 38.57,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.9616148877440465,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.9616148877440465,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.9500000000000001,
+        "n": 38
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.7333333333333333,
+        "n": 13
+      }
+    ]
+  },
+  {
+    "cohort": "factual",
+    "role": "history",
+    "example_id": "BE-incorrect",
+    "question": "What is the population of Belgium?",
+    "answer": "The population of Belgium is 11954126.",
+    "reference": "The population of Belgium is 11941781.",
+    "answer_is_correct": false,
+    "label_source": "independent-factual-frames-v1",
+    "label_meaning": "independent arithmetic/source-snapshot answer correctness",
+    "report": {
+      "verifier_name": "semantic",
+      "score": 0.9497761764055327,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.9498. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "compared_text": "What is the population of Belgium? The population of Belgium is 11954126.",
+        "comparison_method": "question_answer_vs_context",
+        "decision": "SUPPORT",
+        "latency_ms": 52.91,
+        "model": "all-MiniLM-L6-v2",
+        "raw_similarity": 0.9497761764055327,
+        "reject_threshold": 0.3,
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "support_threshold": 0.5,
+        "threshold": 0.5,
+        "thresholds_calibrated": false
+      }
+    },
+    "abstained": false,
+    "vote_confidence": 0.9497761764055327,
+    "history_snapshot": [
+      {
+        "verifier_name": "semantic",
+        "mean": 0.5,
+        "n": 40
+      },
+      {
+        "verifier_name": "evidence",
+        "mean": 0.9500000000000001,
+        "n": 38
+      },
+      {
+        "verifier_name": "rule",
+        "mean": 0.5,
+        "n": 0
+      },
+      {
+        "verifier_name": "confidence",
+        "mean": 0.7333333333333333,
+        "n": 13
+      }
+    ]
+  }
+]

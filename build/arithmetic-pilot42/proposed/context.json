@@ -1,0 +1,78 @@
+{
+  "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.97619,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":1.12619,\"verifier_name\":\"rule\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.3,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"semantic_comparison\"],\"latency\":0.4,\"limitations\":[\"Reference similarity is not factual correctness.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.5,\"requires_reference\":true,\"resource_penalty\":0.085,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.415,\"verifier_name\":\"semantic\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.12,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"arithmetic\"],\"expected_uncovered\":[],\"fallback\":[],\"initial_selected\":[\"rule\",\"semantic\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":true,\"reputation_statistics\":[{\"alpha\":41.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":40,\"posterior_mean\":0.9761904761904762,\"posterior_variance\":0.0005405262880345942,\"successes\":40,\"verifier_name\":\"rule\"},{\"alpha\":21.0,\"beta\":21.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":20,\"observation_count\":40,\"posterior_mean\":0.5,\"posterior_variance\":0.005813953488372093,\"successes\":20,\"verifier_name\":\"semantic\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"arithmetic\"],\"legacy_unrecognized\":[],\"requirements\":[\"arithmetic\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"arithmetic\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"heuristic_surface_features_v1\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+  "attempt_costs": [
+    [
+      "rule",
+      0.13031749986112118
+    ],
+    [
+      "semantic",
+      12.817771245318
+    ]
+  ],
+  "budget": 12.94808874517912,
+  "cost_units": "ms",
+  "loss_configuration": {
+    "version": "proposed-pilot-loss-v1",
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "uncertain": 0.2,
+    "resource_weight": 0.007723147560077727,
+    "cost_units": "ms"
+  },
+  "analyzer_provenance": [
+    [
+      "analysis_method",
+      "heuristic"
+    ],
+    [
+      "context_version",
+      "question_context_v1"
+    ],
+    [
+      "domain_status",
+      "unknown"
+    ],
+    [
+      "research_context_presence",
+      "present"
+    ],
+    [
+      "scoring_version",
+      "heuristic_surface_features_v1"
+    ]
+  ],
+  "dependencies": {
+    "version": "proposed-pilot-dependencies-v1",
+    "dependencies": [],
+    "unresolved": [
+      "rule",
+      "semantic"
+    ],
+    "unknown_treatment": "shared_unknown"
+  },
+  "aggregation_versions": [
+    [
+      "dependency_group",
+      "groups_v1"
+    ],
+    [
+      "reputation_weighted",
+      "log_odds_v1"
+    ]
+  ],
+  "provenance": {
+    "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+    "history_dataset": "constructed-arithmetic-pilot42-history-v1",
+    "development_dataset": "constructed-arithmetic-pilot42-development-v1",
+    "final_test_dataset": "constructed-arithmetic-pilot42-final_test-v1",
+    "matrix_version": "constructed-pilot-development-v1",
+    "loss_configuration": "proposed-pilot-loss-v1",
+    "category": "general",
+    "category_kind": "domain",
+    "evidence_kind": "empirical"
+  },
+  "version": "game_context_v1",
+  "offline_evaluation_id": "4890ce17c37100104bf8086c3dbddbbe289c11d943ec854784c8a91adf36a4a0",
+  "execution_contract_json": "{\"contributor_version\":\"baseline_log_odds_active_group_v1\",\"coverage_version\":\"factual_output_contract_v1\",\"execution_configuration_id\":\"87ce2958bb86d4bdd8a38c0460a5e608a55437465855ce66f410b636e7bd3b59\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"arithmetic-local-runtime\",\"sha256\":\"9e84fa12c1fdc7290228424abd21247e0431149d44015abc6376443463885ab5\"},{\"kind\":\"configuration\",\"resource_id\":\"rule-constructor\",\"sha256\":\"71b5de09009cf9cdbe074397f42f5c21fee85736073c30e490c80217d47952e9\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-source\",\"sha256\":\"09d697e6c733026643611086e0998a266c7103c5c70c989aac8fda7d6dfd3d69\"}],\"verifier_name\":\"rule\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"arithmetic-local-runtime\",\"sha256\":\"9e84fa12c1fdc7290228424abd21247e0431149d44015abc6376443463885ab5\"},{\"kind\":\"configuration\",\"resource_id\":\"semantic-constructor\",\"sha256\":\"d5dce771c16228f947f7feb1374cbaae771c69dce7d07a46ff4aa6ba5d6bbfe3\"},{\"kind\":\"implementation\",\"resource_id\":\"semantic-source\",\"sha256\":\"ac1c00037fdc4bc5eff3982b6efeaf6513bbef49dae82b40e8470054ed97ab19\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"}],\"verifier_name\":\"semantic\"}],\"version\":\"game_resource_manifest_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v2\"}"
+}

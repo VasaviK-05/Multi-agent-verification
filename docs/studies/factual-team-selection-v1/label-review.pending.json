@@ -1,0 +1,57 @@
+{
+  "labels": [
+    {
+      "accessed_date": "2026-10-28",
+      "answer": "The capital of Germany is Berlin.",
+      "basis": "Unique current capital named by official source; alternate city is a constructed incorrect candidate.",
+      "constructed_candidate": false,
+      "example_id": "factual-feasibility-draft-v1-e02-positive",
+      "framework_outcomes_used": false,
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_correct": true,
+      "source_excerpt": "Capital of Germany",
+      "source_url": "https://www.berlin.de/en/"
+    },
+    {
+      "accessed_date": "2026-10-28",
+      "answer": "The capital of Germany is Hamburg.",
+      "basis": "Unique current capital named by official source; alternate city is a constructed incorrect candidate.",
+      "constructed_candidate": true,
+      "example_id": "factual-feasibility-draft-v1-e02-negative",
+      "framework_outcomes_used": false,
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_correct": false,
+      "source_excerpt": "Capital of Germany",
+      "source_url": "https://www.berlin.de/en/"
+    },
+    {
+      "accessed_date": "2026-10-28",
+      "answer": "The capital of India is New Delhi.",
+      "basis": "Unique current capital named by official source; alternate city is a constructed incorrect candidate.",
+      "constructed_candidate": false,
+      "example_id": "factual-feasibility-draft-v1-e03-positive",
+      "framework_outcomes_used": false,
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_correct": true,
+      "source_excerpt": "New Delhi is the capital of India.",
+      "source_url": "https://www.cgibrisbane.gov.in/page/know-your-india/"
+    },
+    {
+      "accessed_date": "2026-10-28",
+      "answer": "The capital of India is Mumbai.",
+      "basis": "Unique current capital named by official source; alternate city is a constructed incorrect candidate.",
+      "constructed_candidate": true,
+      "example_id": "factual-feasibility-draft-v1-e03-negative",
+      "framework_outcomes_used": false,
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_correct": false,
+      "source_excerpt": "New Delhi is the capital of India.",
+      "source_url": "https://www.cgibrisbane.gov.in/page/know-your-india/"
+    }
+  ],
+  "status": "source_grounded_proposals_not_human_approved"
+}

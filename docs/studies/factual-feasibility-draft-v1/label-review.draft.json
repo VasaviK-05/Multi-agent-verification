@@ -1,0 +1,103 @@
+{
+  "final_labels_created": false,
+  "preparation_labels": [
+    {
+      "accessed_date": "2026-10-26",
+      "adjudicator": "assistant source comparison, independent of framework verdicts",
+      "benchmark_flags_used": false,
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "excerpt_sha256": "3f0b24fcf0b83efb00911d3f6a1955e8b562319e53e731477f376cd057ef64cc",
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_answer_is_correct": true,
+      "source_evidence": {
+        "excerpt": "Capital of Germany",
+        "rationale": "The city government identifies Berlin as Germany's capital.",
+        "url": "https://www.berlin.de/en/"
+      },
+      "status": "draft_source_grounded_not_approved"
+    },
+    {
+      "accessed_date": "2026-10-26",
+      "adjudicator": "assistant source comparison, independent of framework verdicts",
+      "benchmark_flags_used": false,
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "excerpt_sha256": "aa73cfd498644dfa42843ce7812d8fe7915a1dc9cbe91c8d96799b89c75d333b",
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_answer_is_correct": true,
+      "source_evidence": {
+        "excerpt": "New Delhi was officially declared as the Capital of India",
+        "rationale": "The government tourism page directly supports the candidate's capital claim.",
+        "url": "https://delhitourism.gov.in/aboutus/history_of_delhi.html"
+      },
+      "status": "draft_source_grounded_not_approved"
+    },
+    {
+      "accessed_date": "2026-10-26",
+      "adjudicator": "assistant source comparison, independent of framework verdicts",
+      "benchmark_flags_used": false,
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "excerpt_sha256": "c8ff1495286f52a590d1afdd5cca6d52a42fc45b6f523ab6839eadd366359363",
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_answer_is_correct": true,
+      "source_evidence": {
+        "additional_source": "https://www.python.org/about/",
+        "excerpt": "high-level programming language with dynamic semantics",
+        "rationale": "The PSF identifies a high-level language; its diverse application list independently supports general-purpose use.",
+        "url": "https://www.python.org/doc/essays/blurb/"
+      },
+      "status": "draft_source_grounded_not_approved"
+    },
+    {
+      "accessed_date": "2026-10-26",
+      "adjudicator": "assistant source comparison, independent of framework verdicts",
+      "benchmark_flags_used": false,
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "excerpt_sha256": "c5739f9694dbd167d84a646383a972e698c55a58f9327c34a8be23c25929428b",
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_answer_is_correct": true,
+      "source_evidence": {
+        "excerpt": "simulate human learning, comprehension, problem solving, decision making",
+        "rationale": "The candidate is a broad paraphrase of the source definition of AI; approve the definitional correctness rubric.",
+        "url": "https://www.ibm.com/think/topics/artificial-intelligence"
+      },
+      "status": "draft_source_grounded_not_approved"
+    },
+    {
+      "accessed_date": "2026-10-26",
+      "adjudicator": "assistant source comparison, independent of framework verdicts",
+      "benchmark_flags_used": false,
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "excerpt_sha256": "fb774c2f7a06b260588b43f07b51977ce79e866fade8b303d361e0d4cc7ac273",
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_answer_is_correct": true,
+      "source_evidence": {
+        "excerpt": "make decisions or predictions without explicit, hard-coded instructions.",
+        "rationale": "The source describes ML as a subset of AI learning patterns from data to predict without explicit instructions.",
+        "url": "https://www.ibm.com/think/topics/machine-learning"
+      },
+      "status": "draft_source_grounded_not_approved"
+    },
+    {
+      "accessed_date": "2026-10-26",
+      "adjudicator": "assistant source comparison, independent of framework verdicts",
+      "benchmark_flags_used": false,
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "excerpt_sha256": "6924521f0a5bcd5ca0d4591b0e9feea631f10210f89dd5a22b4f10c08d992c01",
+      "human_approval": null,
+      "method": "independent_ground_truth",
+      "proposed_answer_is_correct": true,
+      "source_evidence": {
+        "excerpt": "Albert Einstein published his world-changing special relativity theory",
+        "rationale": "NIST attributes both special and general relativity to Einstein; the candidate makes only that attribution.",
+        "url": "https://www.nist.gov/atomic-clocks/a-powerful-tool-for-science/putting-einstein-test"
+      },
+      "status": "draft_source_grounded_not_approved"
+    }
+  ],
+  "status": "draft_not_approved"
+}

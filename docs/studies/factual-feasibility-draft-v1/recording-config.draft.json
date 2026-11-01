@@ -1,0 +1,38 @@
+{
+  "collection_protocol": "complete_team_independent_v1",
+  "corpus_fingerprints": [
+    [
+      "evidence_corpus",
+      "sha256:0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"
+    ]
+  ],
+  "execution_configuration_id": "474005c1055120a957c6aad86eaf5f5ae2df8ee4d3cd7aefda35445d680d7ce7",
+  "model_fingerprints": [
+    [
+      "embedding_snapshot",
+      "sha256:23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+    ],
+    [
+      "nli_snapshot",
+      "sha256:a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+    ],
+    [
+      "ollama_model",
+      "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+    ]
+  ],
+  "prompt_and_adapter_fingerprints": [
+    [
+      "self-consistency-short-answer",
+      "sha256:dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+    ],
+    [
+      "project-adapter-source",
+      "sha256:d6f7179d833f29851c5cfb1fe4b4c3a027695de2bff93b702eccf29f6ca6fd62"
+    ],
+    [
+      "recording-producer-source",
+      "sha256:9e402ca1700279a320eb9c8c13d22f4c6c0c603cb78818f18eecb204b2856269"
+    ]
+  ]
+}

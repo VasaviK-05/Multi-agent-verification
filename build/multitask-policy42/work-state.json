@@ -1,0 +1,25 @@
+{
+  "phase": "bounded collection running; no fitting yet",
+  "sessions": {
+    "arithmetic": 59842,
+    "semantic": 92485,
+    "factual": 57070
+  },
+  "authoritative_files": "per-cohort collection/attempts.jsonl, started.jsonl and collection-report.json",
+  "limits": {
+    "candidates": 240,
+    "attempts": 960,
+    "retries": 0
+  },
+  "completed_preparation": "60 groups per cohort; seed42; exact source numbers; isolated index-v2; task/resume tests pass",
+  "source_policy": "Keep app source frozen while collection is active so supported resume retains exact setup fingerprint. Scripts/docs may evolve outside verifier resource bindings.",
+  "remaining": [
+    "Finish all cohort collections without repeating attempts",
+    "Review any genuine collection issues; use safe resume only for unattempted IDs if needed",
+    "Tighten invalid-input task-boundary validation after collection if needed; preserve valid semantics",
+    "Run fit for each cohort, every feasible budget breakpoint; never relax 90%",
+    "Run scoped analyzer/task router/provider retained-report parity, including infeasible primary routes and diagnostic comparisons",
+    "Produce cross-context report, exact artifacts/certificates/marginals/limitations; run final focused/affected tests",
+    "Preserve all old artifacts/data; no final payload access or Git publication"
+  ]
+}

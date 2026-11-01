@@ -1,0 +1,1985 @@
+{
+  "source_hashes": {
+    "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+    "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+    "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671",
+    "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc"
+  },
+  "sources": [
+    "https://download.geonames.org/export/dump/countryInfo.txt",
+    "https://github.com/mledoze/countries"
+  ],
+  "licences": [
+    "GeoNames CC-BY; see source header",
+    "mledoze ODbL-1.0; retained LICENSE"
+  ],
+  "rows": [
+    {
+      "iso": "AW",
+      "country": "Aruba",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AF",
+      "country": "Afghanistan",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "AO",
+      "country": "Angola",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AI",
+      "country": "Anguilla",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AX",
+      "country": "Åland Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AL",
+      "country": "Albania",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "AD",
+      "country": "Andorra",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AE",
+      "country": "United Arab Emirates",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AR",
+      "country": "Argentina",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AM",
+      "country": "Armenia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AS",
+      "country": "American Samoa",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AQ",
+      "country": "Antarctica",
+      "reasons": [
+        "not_declared_UN_member",
+        "multiple_or_missing_capitals",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TF",
+      "country": "French Southern and Antarctic Lands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AG",
+      "country": "Antigua and Barbuda",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AU",
+      "country": "Australia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "AT",
+      "country": "Austria",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "AZ",
+      "country": "Azerbaijan",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BI",
+      "country": "Burundi",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BE",
+      "country": "Belgium",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BJ",
+      "country": "Benin",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BF",
+      "country": "Burkina Faso",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BD",
+      "country": "Bangladesh",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BG",
+      "country": "Bulgaria",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BH",
+      "country": "Bahrain",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BS",
+      "country": "Bahamas",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BA",
+      "country": "Bosnia and Herzegovina",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BL",
+      "country": "Saint Barthélemy",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SH",
+      "country": "Saint Helena, Ascension and Tristan da Cunha",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BY",
+      "country": "Belarus",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BZ",
+      "country": "Belize",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BM",
+      "country": "Bermuda",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BO",
+      "country": "Bolivia",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BQ",
+      "country": "Caribbean Netherlands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "multiple_or_missing_capitals",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BR",
+      "country": "Brazil",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BB",
+      "country": "Barbados",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "BN",
+      "country": "Brunei",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BT",
+      "country": "Bhutan",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BV",
+      "country": "Bouvet Island",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "multiple_or_missing_capitals",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "BW",
+      "country": "Botswana",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CF",
+      "country": "Central African Republic",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CA",
+      "country": "Canada",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CC",
+      "country": "Cocos (Keeling) Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CH",
+      "country": "Switzerland",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CL",
+      "country": "Chile",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CN",
+      "country": "China",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CI",
+      "country": "Ivory Coast",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CM",
+      "country": "Cameroon",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CD",
+      "country": "DR Congo",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CG",
+      "country": "Congo",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CK",
+      "country": "Cook Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CO",
+      "country": "Colombia",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KM",
+      "country": "Comoros",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CV",
+      "country": "Cape Verde",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CR",
+      "country": "Costa Rica",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CU",
+      "country": "Cuba",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CW",
+      "country": "Curaçao",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CX",
+      "country": "Christmas Island",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KY",
+      "country": "Cayman Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "CY",
+      "country": "Cyprus",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "CZ",
+      "country": "Czechia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DE",
+      "country": "Germany",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DJ",
+      "country": "Djibouti",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DM",
+      "country": "Dominica",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "DK",
+      "country": "Denmark",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "DO",
+      "country": "Dominican Republic",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "DZ",
+      "country": "Algeria",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "EC",
+      "country": "Ecuador",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "EG",
+      "country": "Egypt",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ER",
+      "country": "Eritrea",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "EH",
+      "country": "Western Sahara",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ES",
+      "country": "Spain",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "EE",
+      "country": "Estonia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "ET",
+      "country": "Ethiopia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "FI",
+      "country": "Finland",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "FJ",
+      "country": "Fiji",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FK",
+      "country": "Falkland Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FR",
+      "country": "France",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "FO",
+      "country": "Faroe Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "FM",
+      "country": "Micronesia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GA",
+      "country": "Gabon",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GB",
+      "country": "United Kingdom",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GE",
+      "country": "Georgia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GG",
+      "country": "Guernsey",
+      "reasons": [
+        "not_declared_UN_member",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GH",
+      "country": "Ghana",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GI",
+      "country": "Gibraltar",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GN",
+      "country": "Guinea",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GP",
+      "country": "Guadeloupe",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GM",
+      "country": "Gambia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GW",
+      "country": "Guinea-Bissau",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GQ",
+      "country": "Equatorial Guinea",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GR",
+      "country": "Greece",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GD",
+      "country": "Grenada",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GL",
+      "country": "Greenland",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GT",
+      "country": "Guatemala",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GF",
+      "country": "French Guiana",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GU",
+      "country": "Guam",
+      "reasons": [
+        "not_declared_UN_member",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "GY",
+      "country": "Guyana",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "HK",
+      "country": "Hong Kong",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HM",
+      "country": "Heard Island and McDonald Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "multiple_or_missing_capitals",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HN",
+      "country": "Honduras",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "HR",
+      "country": "Croatia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HT",
+      "country": "Haiti",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "HU",
+      "country": "Hungary",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "ID",
+      "country": "Indonesia",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IM",
+      "country": "Isle of Man",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IN",
+      "country": "India",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IO",
+      "country": "British Indian Ocean Territory",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IE",
+      "country": "Ireland",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "IR",
+      "country": "Iran",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "IQ",
+      "country": "Iraq",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IS",
+      "country": "Iceland",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "IL",
+      "country": "Israel",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "IT",
+      "country": "Italy",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "JM",
+      "country": "Jamaica",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "JE",
+      "country": "Jersey",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "JO",
+      "country": "Jordan",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "JP",
+      "country": "Japan",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KZ",
+      "country": "Kazakhstan",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KE",
+      "country": "Kenya",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KG",
+      "country": "Kyrgyzstan",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "KH",
+      "country": "Cambodia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "KI",
+      "country": "Kiribati",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KN",
+      "country": "Saint Kitts and Nevis",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KR",
+      "country": "South Korea",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "XK",
+      "country": "Kosovo",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KW",
+      "country": "Kuwait",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LA",
+      "country": "Laos",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LB",
+      "country": "Lebanon",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LR",
+      "country": "Liberia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LY",
+      "country": "Libya",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LC",
+      "country": "Saint Lucia",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LI",
+      "country": "Liechtenstein",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LK",
+      "country": "Sri Lanka",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LS",
+      "country": "Lesotho",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "LT",
+      "country": "Lithuania",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LU",
+      "country": "Luxembourg",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "LV",
+      "country": "Latvia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MO",
+      "country": "Macau",
+      "reasons": [
+        "not_declared_UN_member",
+        "multiple_or_missing_capitals",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MF",
+      "country": "Saint Martin",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MA",
+      "country": "Morocco",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MC",
+      "country": "Monaco",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MD",
+      "country": "Moldova",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MG",
+      "country": "Madagascar",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MV",
+      "country": "Maldives",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MX",
+      "country": "Mexico",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MH",
+      "country": "Marshall Islands",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MK",
+      "country": "North Macedonia",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ML",
+      "country": "Mali",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MT",
+      "country": "Malta",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MM",
+      "country": "Myanmar",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ME",
+      "country": "Montenegro",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MN",
+      "country": "Mongolia",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MP",
+      "country": "Northern Mariana Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MZ",
+      "country": "Mozambique",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "MR",
+      "country": "Mauritania",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MS",
+      "country": "Montserrat",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MQ",
+      "country": "Martinique",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MU",
+      "country": "Mauritius",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MW",
+      "country": "Malawi",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "MY",
+      "country": "Malaysia",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "YT",
+      "country": "Mayotte",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NA",
+      "country": "Namibia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NC",
+      "country": "New Caledonia",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NE",
+      "country": "Niger",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "NF",
+      "country": "Norfolk Island",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NG",
+      "country": "Nigeria",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NI",
+      "country": "Nicaragua",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "NU",
+      "country": "Niue",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NL",
+      "country": "Netherlands",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NO",
+      "country": "Norway",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NP",
+      "country": "Nepal",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "NR",
+      "country": "Nauru",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "NZ",
+      "country": "New Zealand",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "OM",
+      "country": "Oman",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PK",
+      "country": "Pakistan",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PA",
+      "country": "Panama",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PN",
+      "country": "Pitcairn Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PE",
+      "country": "Peru",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PH",
+      "country": "Philippines",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PW",
+      "country": "Palau",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PG",
+      "country": "Papua New Guinea",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PL",
+      "country": "Poland",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PR",
+      "country": "Puerto Rico",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "KP",
+      "country": "North Korea",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PT",
+      "country": "Portugal",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "PY",
+      "country": "Paraguay",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PS",
+      "country": "Palestine",
+      "reasons": [
+        "not_declared_UN_member",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PF",
+      "country": "French Polynesia",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "QA",
+      "country": "Qatar",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "RE",
+      "country": "Réunion",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RO",
+      "country": "Romania",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RU",
+      "country": "Russia",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RW",
+      "country": "Rwanda",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SA",
+      "country": "Saudi Arabia",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SD",
+      "country": "Sudan",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SN",
+      "country": "Senegal",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SG",
+      "country": "Singapore",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "GS",
+      "country": "South Georgia",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SJ",
+      "country": "Svalbard and Jan Mayen",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SB",
+      "country": "Solomon Islands",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SL",
+      "country": "Sierra Leone",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SV",
+      "country": "El Salvador",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SM",
+      "country": "San Marino",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SO",
+      "country": "Somalia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "PM",
+      "country": "Saint Pierre and Miquelon",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "RS",
+      "country": "Serbia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SS",
+      "country": "South Sudan",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ST",
+      "country": "São Tomé and Príncipe",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SR",
+      "country": "Suriname",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SK",
+      "country": "Slovakia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SI",
+      "country": "Slovenia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SE",
+      "country": "Sweden",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SZ",
+      "country": "Eswatini",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SX",
+      "country": "Sint Maarten",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "SC",
+      "country": "Seychelles",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "SY",
+      "country": "Syria",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TC",
+      "country": "Turks and Caicos Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TD",
+      "country": "Chad",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TG",
+      "country": "Togo",
+      "reasons": [
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TH",
+      "country": "Thailand",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TJ",
+      "country": "Tajikistan",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TK",
+      "country": "Tokelau",
+      "reasons": [
+        "not_declared_UN_member",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TM",
+      "country": "Turkmenistan",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TL",
+      "country": "Timor-Leste",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TO",
+      "country": "Tonga",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TT",
+      "country": "Trinidad and Tobago",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TN",
+      "country": "Tunisia",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TR",
+      "country": "Türkiye",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TV",
+      "country": "Tuvalu",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "TW",
+      "country": "Taiwan",
+      "reasons": [
+        "not_declared_UN_member"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "TZ",
+      "country": "Tanzania",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UG",
+      "country": "Uganda",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UA",
+      "country": "Ukraine",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UM",
+      "country": "United States Minor Outlying Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "multiple_or_missing_capitals",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UY",
+      "country": "Uruguay",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "US",
+      "country": "United States",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "UZ",
+      "country": "Uzbekistan",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VA",
+      "country": "Vatican City",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VC",
+      "country": "Saint Vincent and the Grenadines",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VE",
+      "country": "Venezuela",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VG",
+      "country": "British Virgin Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VI",
+      "country": "United States Virgin Islands",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VN",
+      "country": "Vietnam",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "VU",
+      "country": "Vanuatu",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "WF",
+      "country": "Wallis and Futuna",
+      "reasons": [
+        "not_declared_UN_member",
+        "outside_single_token_ASCII_country_scope",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "WS",
+      "country": "Samoa",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "YE",
+      "country": "Yemen",
+      "reasons": [
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ZA",
+      "country": "South Africa",
+      "reasons": [
+        "outside_single_token_ASCII_country_scope",
+        "multiple_or_missing_capitals",
+        "predeclared_ambiguous_disputed_or_transition_scope_exclusion",
+        "sources_do_not_agree_exactly_after_NFKC_casefold"
+      ],
+      "selected": false
+    },
+    {
+      "iso": "ZM",
+      "country": "Zambia",
+      "reasons": [],
+      "selected": true
+    },
+    {
+      "iso": "ZW",
+      "country": "Zimbabwe",
+      "reasons": [
+        "not_in_seed42_first60_prespecified_sample"
+      ],
+      "selected": false
+    }
+  ],
+  "eligible": 132,
+  "groups": 60,
+  "training_candidates": 80,
+  "reserved_candidates": 40,
+  "protocol": "Sort ISO, shuffle seed42, first60, twenty groups per role; negatives rotate capital names only within their role; all alternatives grouped by country",
+  "corpus_scope": "Known-corpus, reference-assisted facts for all sixty countries; background corpus is not a final outcome payload",
+  "custody": "procedural; public sources and deterministic preparation are not independent blinding"
+}

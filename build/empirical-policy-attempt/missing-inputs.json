@@ -1,0 +1,233 @@
+{
+  "artifact_created": false,
+  "build_metadata": {
+    "application_source_digest": "fff4f0e561e9fea3e346d990b4db4d2ccef63834589b978822bd21c8ad8da359",
+    "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+    "environment": {
+      "architecture": "AMD64",
+      "highs": "1.12.0",
+      "linprog_options": "SciPy defaults; no custom LP options",
+      "numpy": "2.4.6",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "python_implementation": "CPython",
+      "scipy": "1.17.1",
+      "solver_method": "scipy.optimize.linprog:highs"
+    },
+    "input_digest": "952153fba37527ab86e28c64b39da25d988e5f652235afe779ec5730b93e87d8",
+    "working_tree_clean": false
+  },
+  "missing_inputs": [
+    {
+      "code": "invalid_input",
+      "location": [
+        "study_id"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "configuration_version"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "code_revision"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "setting_role"
+      ],
+      "message": "Input should be 'primary' or 'sensitivity'",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "scientific_scope"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "primary_outcomes"
+      ],
+      "message": "Input should be a valid tuple",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "sensitivity_plan"
+      ],
+      "message": "Input should be a valid tuple",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "matched_coverage_plan"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "final_test_custody_and_freeze_protocol"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "datasets"
+      ],
+      "message": "Input should be a valid tuple",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "recording"
+      ],
+      "message": "Input should be a valid dictionary or instance of RecordingConfiguration",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "context"
+      ],
+      "message": "Input should be a valid dictionary or instance of PlanningContext",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "manifest",
+        "evidence_kind"
+      ],
+      "message": "Input should be 'empirical' or 'synthetic_test_fixture'",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "manifest",
+        "partitions"
+      ],
+      "message": "Input should be a valid tuple",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "manifest",
+        "final_test_reservation",
+        "dataset_id"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "manifest",
+        "final_test_reservation",
+        "custody_record"
+      ],
+      "message": "Input should be a valid string",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "manifest",
+        "final_test_reservation",
+        "examples"
+      ],
+      "message": "Input should be a valid tuple",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "contract"
+      ],
+      "message": "Input should be a valid dictionary or instance of ExecutionContract",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "attacks"
+      ],
+      "message": "Input should be a valid dictionary or instance of AttackSpecification",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "unknown_dependency_treatment"
+      ],
+      "message": "Input should be 'shared_unknown'",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "greedy_aggregation"
+      ],
+      "message": "Input should be 'reputation_weighted' or 'dependency_group'",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "policy_sampling_seeds"
+      ],
+      "message": "Input should be a valid tuple",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "policy_sampling_repetitions"
+      ],
+      "message": "Input should be a valid integer",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "uncertainty"
+      ],
+      "message": "Input should be a valid dictionary or instance of UncertaintyDesign",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    },
+    {
+      "code": "invalid_input",
+      "location": [
+        "optimizer_tolerance"
+      ],
+      "message": "Input should be a valid number",
+      "producer": "dataset custodian / recording producer / study configuration owner"
+    }
+  ],
+  "scientific_outputs": null,
+  "status": "blocked"
+}

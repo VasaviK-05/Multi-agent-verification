@@ -1,0 +1,81 @@
+{
+  "resources": {
+    "version": "game_resource_manifest_v1",
+    "verifiers": [
+      {
+        "verifier_name": "rule",
+        "resources": [
+          {
+            "resource_id": "arithmetic-local-runtime",
+            "kind": "configuration",
+            "sha256": "9e84fa12c1fdc7290228424abd21247e0431149d44015abc6376443463885ab5"
+          },
+          {
+            "resource_id": "rule-constructor",
+            "kind": "configuration",
+            "sha256": "71b5de09009cf9cdbe074397f42f5c21fee85736073c30e490c80217d47952e9"
+          },
+          {
+            "resource_id": "rule-source",
+            "kind": "implementation",
+            "sha256": "09d697e6c733026643611086e0998a266c7103c5c70c989aac8fda7d6dfd3d69"
+          }
+        ]
+      },
+      {
+        "verifier_name": "semantic",
+        "resources": [
+          {
+            "resource_id": "arithmetic-local-runtime",
+            "kind": "configuration",
+            "sha256": "9e84fa12c1fdc7290228424abd21247e0431149d44015abc6376443463885ab5"
+          },
+          {
+            "resource_id": "semantic-constructor",
+            "kind": "configuration",
+            "sha256": "d5dce771c16228f947f7feb1374cbaae771c69dce7d07a46ff4aa6ba5d6bbfe3"
+          },
+          {
+            "resource_id": "semantic-source",
+            "kind": "implementation",
+            "sha256": "ac1c00037fdc4bc5eff3982b6efeaf6513bbef49dae82b40e8470054ed97ab19"
+          },
+          {
+            "resource_id": "local-embedding-snapshot",
+            "kind": "model",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          }
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "logical_cpus": "16",
+    "device": "cpu",
+    "concurrency": "sequential",
+    "runtime": "3.11.5",
+    "initialization": "eager local embedding; excluded from measured attempt time",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+    "physical_memory_bytes": "16876888064",
+    "torch_intraop_threads": "2",
+    "collection_scope": "rule and semantic only; no NLI/index/corpus/provider"
+  },
+  "dependency_versions": {
+    "numpy": "2.4.6",
+    "pydantic": "2.13.5",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "faiss-cpu": "1.15.1",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.2"
+  },
+  "code_revision": "224a2e59792b7ee0183bfa64aed0481dcad57d78",
+  "application_source_digest": "4ebd1cabd8bd9d69993b5f990e78ca77acf79fc6cbd9bb184165c34d4f6fef8d",
+  "evidence_kind": "empirical"
+}

@@ -1,0 +1,18 @@
+{
+  "phase": "all collections and resource validation complete; three pure fit workers active",
+  "collection": {"candidates": 240, "attempts": 960, "retries": 0, "integrity": "collection-integrity.json"},
+  "resource_validation": "evidence-validation.json and resource-validation-scope.json",
+  "fit_sessions": {"arithmetic": 21185, "semantic": 36638, "factual": 12120},
+  "post_collection_test_session": "14069 completed: 144 passed",
+  "source_state": "Boundary fixes applied after all collections: full v4 finalizer binding, v4 required task history before fit, history dataset provenance binding, explicit no-pooling, semantic reference case/whitespace. Preserve old v1/v2/v3 diagnostic replay semantics.",
+  "known_provider_failure": "One arithmetic development Confidence timeout returned provider_unavailable abstention. Report and measured duration retained, not retried.",
+  "pre_fit_tests": "666 passed across distinct command selections after two sandbox atomic-rename failures passed outside sandbox; five additional boundary regressions were reproduced then fixed. Post-change relevant 144 passed.",
+  "remaining": [
+    "Wait for all fit sessions; inspect actual budget-results.json and fit-provenance.json",
+    "Run runtime phase with loopback metadata permission only, no generation",
+    "Run report phase; fix only producer bugs, never settings/outcomes; fit writes verify existing equality if resumed",
+    "Update docs with actual numerical results, limitations and exact owner handoffs",
+    "Validate legacy artifact IDs, final focused tests/checks and final handoff"
+  ],
+  "constraints": "No final payload access, new study inference, production writes, Git publication or teammate algorithm changes"
+}

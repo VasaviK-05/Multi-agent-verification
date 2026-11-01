@@ -1,0 +1,77 @@
+{
+  "original_artifact_unchanged": true,
+  "original_artifact_id": "238adc94fa3d6d81f60740d4cb585c52befa1748ea2ca1ee7aa2e169cf464236",
+  "variants": [
+    {
+      "target": 0.25,
+      "artifact_id": "d4e0b039891c011cddbc535d0a522328f862baa9f5cba3bc82fee2e454526829",
+      "policy_id": "e9bde5556b7332a33110716205155671c39096b3de24787ddeaa9126f5e927e1",
+      "matrix_id": "c32ee1a3e0ed6e21388e0aa0e41ca4ee52990c4242f0e23ad06e4d5720bcd1e8",
+      "certificate": {
+        "version": "clean_coverage_dual_v1",
+        "multiplier": 0.3003974481120747,
+        "achieved": 0.25,
+        "residual": 0.0
+      },
+      "clean_source_replay_verified": true,
+      "provider_reload": true,
+      "runtime_checks": 4,
+      "reproducibility": {
+        "equivalent": true,
+        "matrix_atol": 1e-12,
+        "reputation_atol": 1e-12,
+        "probability_atol": 1e-12,
+        "relative_tolerance": 0.0
+      }
+    },
+    {
+      "target": 0.5,
+      "artifact_id": "44f89c998f2652b7885a3cfd40f2b9fae7cbfb1ae7709556a1f141f4b91ae022",
+      "policy_id": "d3be1a6b726e5c5288d98299104b0fe741eaee848513e43b0984f63f5ccb9d2c",
+      "matrix_id": "a4b892fb115a4f77256faaba95e48db12f36bf78c91f92c490fa65e56ab9d55a",
+      "certificate": {
+        "version": "clean_coverage_dual_v1",
+        "multiplier": 0.3003974481120747,
+        "achieved": 0.5,
+        "residual": 0.0
+      },
+      "clean_source_replay_verified": true,
+      "provider_reload": true,
+      "runtime_checks": 4,
+      "reproducibility": {
+        "equivalent": true,
+        "matrix_atol": 1e-12,
+        "reputation_atol": 1e-12,
+        "probability_atol": 1e-12,
+        "relative_tolerance": 0.0
+      }
+    },
+    {
+      "target": 0.75,
+      "artifact_id": "b3592bc1bab2c49abcd8c18ac52f95d005ccb2efa75363a2418809fa23de98d0",
+      "policy_id": "295cbdd85e3dbf6b25e7d3d5f3495d45e0b3a3628a28cda9c81e769858fed7fd",
+      "matrix_id": "338c91a0bba54590aa42b2bb09d4ef8e0a5de86a4ac5f83b1c07399e4ed7c245",
+      "certificate": {
+        "version": "clean_coverage_dual_v1",
+        "multiplier": 0.3003974481120747,
+        "achieved": 0.75,
+        "residual": 0.0
+      },
+      "clean_source_replay_verified": true,
+      "provider_reload": true,
+      "runtime_checks": 4,
+      "reproducibility": {
+        "equivalent": true,
+        "matrix_atol": 1e-12,
+        "reputation_atol": 1e-12,
+        "probability_atol": 1e-12,
+        "relative_tolerance": 0.0
+      }
+    }
+  ],
+  "final_payload_access_guard": true,
+  "final_evaluation": false,
+  "additional_inference": 0,
+  "additional_calibration": false,
+  "source_validation": "Recomputed finalized clean replay from source records; exact original matrices and source evaluation bindings checked"
+}

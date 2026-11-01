@@ -1,0 +1,18 @@
+{
+  "approved": false,
+  "bound_files": [
+    "calibration-settings.pending.json",
+    "exclusions.json",
+    "final-reservation.pending.json",
+    "label-review.pending.json",
+    "planning-context.review-only.json",
+    "provenance.json",
+    "readiness.json",
+    "recording-request.pending.json",
+    "resource-preflight.json",
+    "settings.pending.json",
+    "teams.json"
+  ],
+  "digest_definition": "content_id of {name: parsed JSON for name in bound_files}; pending nulls intentionally included",
+  "proposal_digest": "54d4d5f37bfc51d0a2c6cbfea8788721a2739954c9e786e4621005749b8d9df3"
+}

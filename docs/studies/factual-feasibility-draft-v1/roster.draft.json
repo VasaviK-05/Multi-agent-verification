@@ -1,0 +1,110 @@
+{
+  "allocation": {
+    "ai_ml": "history",
+    "france_paris": "final_test",
+    "germany": "history",
+    "india": "development",
+    "python": "development",
+    "relativity": "development",
+    "usa": "final_test",
+    "wwii": "final_test"
+  },
+  "benchmark_flags_used": false,
+  "grouping_rationale": "Group France/Paris and AI/ML together; all paraphrases/alternative answers must stay with their topic group. Custodian reviews broader overlap.",
+  "rows": [
+    {
+      "content_identity": "fdc529bed570da76a46f1076e294988f36373d927d686f24a30093c571d780f7",
+      "dataset_id": "factual-feasibility-draft-v1-final_test",
+      "example_id": "factual-feasibility-draft-v1-e01",
+      "question_id": "32ac15f48ca574f0200f9d6fa34fd23beae6654aea5203507d9648ee47a78bd8",
+      "role": "final_test",
+      "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+      "validation_id": "factual-feasibility-draft-v1-final_test-e01-r1"
+    },
+    {
+      "content_identity": "8c4285598e4e811f2a4e81c76b6700737fed6edc1e9368e9df4a6ad5f5835f70",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e02",
+      "question_id": "a33fae3349c0b9b60a15815c59fec3ea66473e9a609b47a05b99cf83e3ec36a6",
+      "role": "history",
+      "split_identity": "factual-feasibility-draft-v1-group-germany",
+      "validation_id": "factual-feasibility-draft-v1-history-e02-r1"
+    },
+    {
+      "content_identity": "cb62820602703285a888895ce202218ed87b4876ef9d0a7fbfc2ea074ddf0646",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e03",
+      "question_id": "470a1f7830a248378db6f3bb016b215c418e9695149313c5e9d4d7037c317dfe",
+      "role": "development",
+      "split_identity": "factual-feasibility-draft-v1-group-india",
+      "validation_id": "factual-feasibility-draft-v1-development-e03-r1"
+    },
+    {
+      "content_identity": "50ee7082dad9665ee768e1018e59828253f78b5d2feca77d20bc2190c49b9eb3",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e04",
+      "question_id": "3ad0cf9a38e48e84dfa410bf2e2d0386159c97ce2c11eb333c1878d52b8fe418",
+      "role": "development",
+      "split_identity": "factual-feasibility-draft-v1-group-python",
+      "validation_id": "factual-feasibility-draft-v1-development-e04-r1"
+    },
+    {
+      "content_identity": "855fe38dcef2bf0299bfeb13a5bc11aafe22be5efc3e1ed1c1661051aaf71f77",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e05",
+      "question_id": "e9a38a18a39d0016d19b062dab737dded9a784351718ae8329de9c7cb7dcc053",
+      "role": "history",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml",
+      "validation_id": "factual-feasibility-draft-v1-history-e05-r1"
+    },
+    {
+      "content_identity": "9273cc1932fa852d1b8a19dcfd25a38a37e735785846180ed7ba49bd09118e82",
+      "dataset_id": "factual-feasibility-draft-v1-history",
+      "example_id": "factual-feasibility-draft-v1-e06",
+      "question_id": "69a6f1d3f0c509faca46c666043ff2b5db8844cdabfaffb83b32b790444d662f",
+      "role": "history",
+      "split_identity": "factual-feasibility-draft-v1-group-ai_ml",
+      "validation_id": "factual-feasibility-draft-v1-history-e06-r1"
+    },
+    {
+      "content_identity": "2f253dcffc2588d838c1e0714a7ba5f98dd2b613ef8e5c1b0c23a43cff549222",
+      "dataset_id": "factual-feasibility-draft-v1-development",
+      "example_id": "factual-feasibility-draft-v1-e07",
+      "question_id": "41e6e799ee95403ac906b64a837c43560af5d266d9d18f79293efca926be77b1",
+      "role": "development",
+      "split_identity": "factual-feasibility-draft-v1-group-relativity",
+      "validation_id": "factual-feasibility-draft-v1-development-e07-r1"
+    },
+    {
+      "content_identity": "0dce29dfa7919d0291dd41071c0d75de5b6f4e62d72b6396af0531c1f6163b6a",
+      "dataset_id": "factual-feasibility-draft-v1-final_test",
+      "example_id": "factual-feasibility-draft-v1-e08",
+      "question_id": "220f5e85f6ba7589740350322717b1dba45c9b26954182e3d919e92c244f4501",
+      "role": "final_test",
+      "split_identity": "factual-feasibility-draft-v1-group-wwii",
+      "validation_id": "factual-feasibility-draft-v1-final_test-e08-r1"
+    },
+    {
+      "content_identity": "f3273e282e0567f281c043d2ce53bb7c6d87fdb1070b33024b44d307c4c7ff0c",
+      "dataset_id": "factual-feasibility-draft-v1-final_test",
+      "example_id": "factual-feasibility-draft-v1-e09",
+      "question_id": "9b956bebb1501337b743a09d0c25cda61fe0d27b91a923aa388c259260e58bf2",
+      "role": "final_test",
+      "split_identity": "factual-feasibility-draft-v1-group-usa",
+      "validation_id": "factual-feasibility-draft-v1-final_test-e09-r1"
+    },
+    {
+      "content_identity": "97d269fdb9eb5a1b4791daec4bc736158b994f78b3eee8d46e62552cc52ee586",
+      "dataset_id": "factual-feasibility-draft-v1-final_test",
+      "example_id": "factual-feasibility-draft-v1-e10",
+      "question_id": "8412e078fa45b8e8a028985b76f449bf0ec83e6036be4d3097da545937725b3a",
+      "role": "final_test",
+      "split_identity": "factual-feasibility-draft-v1-group-france_paris",
+      "validation_id": "factual-feasibility-draft-v1-final_test-e10-r1"
+    }
+  ],
+  "seed": 20261026,
+  "source_input_digest": "97a44b2cb38b7f287588a9b48bab7078a0fe3f6816f31e2b3104d931d4baf70f",
+  "status": "draft_not_approved",
+  "study_id": "factual-feasibility-draft-v1"
+}

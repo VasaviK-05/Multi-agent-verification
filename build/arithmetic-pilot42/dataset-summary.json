@@ -1,0 +1,37 @@
+{
+  "origin": "constructed_arithmetic_fraction_v1; not an external benchmark",
+  "seed": 42,
+  "groups": {
+    "history": 20,
+    "development": 20,
+    "final_test": 20
+  },
+  "examples": {
+    "history": 40,
+    "development": 40,
+    "final_test": 40
+  },
+  "labelled_preparation_examples": 80,
+  "held_out_examples": 40,
+  "reservation_id": "a4b582931905305695d3b64a435e978fa8e7b28b766e682786d144b9e720915c",
+  "label_method": "Exact rational arithmetic via Fraction; independent of RuleVerifier Decimal and all framework decisions",
+  "reference": "Correct-result arithmetic reference shared by variants; reference-assisted task, not factual QA robustness",
+  "custody": "Procedural holdout generated in this workflow; not independent third-party custody",
+  "fitting_inputs_contain_final_labels": false,
+  "full_project_ready": false,
+  "selected_verifiers": [
+    "rule",
+    "semantic"
+  ],
+  "excluded_verifiers": {
+    "evidence": "No genuine index-build receipt; no index used",
+    "confidence": "No generation/NLI needed for this narrower local pilot"
+  },
+  "authorized_attempt_bound": 160,
+  "provider_requests": 0,
+  "model_downloads": 0,
+  "torch_num_threads": 2,
+  "fitting_settings_approved": false,
+  "policy_created": false,
+  "source_digest": "cbe102120273f9a07d567f4884d3bfafa215f846930ef500221dc884922ce0b6"
+}

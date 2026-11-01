@@ -1,0 +1,141 @@
+{
+  "resources": {
+    "version": "game_resource_manifest_v1",
+    "verifiers": [
+      {
+        "verifier_name": "confidence",
+        "resources": [
+          {
+            "resource_id": "confidence-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+          },
+          {
+            "resource_id": "confidence-implementation",
+            "kind": "implementation",
+            "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+          },
+          {
+            "resource_id": "local-nli-snapshot",
+            "kind": "model",
+            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+          },
+          {
+            "resource_id": "ollama-model",
+            "kind": "model",
+            "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+          },
+          {
+            "resource_id": "self-consistency-short-answer",
+            "kind": "prompt",
+            "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+          },
+          {
+            "resource_id": "ollama-service",
+            "kind": "service",
+            "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+          }
+        ]
+      },
+      {
+        "verifier_name": "evidence",
+        "resources": [
+          {
+            "resource_id": "evidence-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+          },
+          {
+            "resource_id": "evidence-corpus",
+            "kind": "corpus",
+            "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+          },
+          {
+            "resource_id": "evidence-implementation",
+            "kind": "implementation",
+            "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+          },
+          {
+            "resource_id": "evidence-index",
+            "kind": "index",
+            "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+          },
+          {
+            "resource_id": "local-embedding-snapshot",
+            "kind": "model",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          },
+          {
+            "resource_id": "local-nli-snapshot",
+            "kind": "model",
+            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+          }
+        ]
+      },
+      {
+        "verifier_name": "rule",
+        "resources": [
+          {
+            "resource_id": "rule-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+          },
+          {
+            "resource_id": "rule-implementation",
+            "kind": "implementation",
+            "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+          }
+        ]
+      },
+      {
+        "verifier_name": "semantic",
+        "resources": [
+          {
+            "resource_id": "semantic-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+          },
+          {
+            "resource_id": "semantic-implementation",
+            "kind": "implementation",
+            "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+          },
+          {
+            "resource_id": "local-embedding-snapshot",
+            "kind": "model",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          }
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "logical_cpus": "16",
+    "device": "cpu",
+    "concurrency": "sequential",
+    "runtime": "3.11.5",
+    "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+    "physical_memory_bytes": "16876888064"
+  },
+  "dependency_versions": {
+    "numpy": "2.4.6",
+    "pydantic": "2.13.5",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "faiss-cpu": "1.15.1",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.2",
+    "python": "3.11.5",
+    "sentencepiece": "not installed; local tokenizer.json avoids conversion"
+  },
+  "code_revision": "17b695373f935dc1f5fd09c37cf8917969367f7a",
+  "application_source_digest": "47597967da7d8f05aa56ef1ed6fbd544eb70e607aaf8804e5163e650cea35e4d",
+  "evidence_kind": "empirical"
+}

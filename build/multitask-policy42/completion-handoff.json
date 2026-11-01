@@ -1,0 +1,70 @@
+{
+  "status": "complete_with_explicit_primary_infeasibility",
+  "summary": {
+    "attempts": 960,
+    "primary": [
+      {
+        "cohort": "arithmetic",
+        "status": "infeasible_coverage",
+        "artifact_created": false,
+        "maximum_achievable_clean_coverage": 0.825,
+        "budget_ms": 21258.33526502247
+      },
+      {
+        "cohort": "semantic",
+        "status": "infeasible_coverage",
+        "artifact_created": false,
+        "maximum_achievable_clean_coverage": 0.0,
+        "budget_ms": 15852.424223729759
+      },
+      {
+        "cohort": "factual",
+        "status": "infeasible_coverage",
+        "artifact_created": false,
+        "maximum_achievable_clean_coverage": 0.375,
+        "budget_ms": 15965.046464995248
+      }
+    ],
+    "runtime_generation_calls": 0,
+    "final_test_evaluation": false,
+    "source_digest": "2926e0513be4c929d33bbcfa15787ee76fd96328a509821d91c71ff0467dc238"
+  },
+  "primary_policies_created": 0,
+  "diagnostic_policies_created": 3,
+  "all_original_pilots_preserved": true,
+  "final_test_payloads_opened": false,
+  "final_test_evaluation": false,
+  "test_results": {
+    "final_focused_passed": 219,
+    "broader_affected_passed": 438,
+    "evidence_passed": 14,
+    "total_selected_passed": 671,
+    "remaining_failures": [],
+    "temporary_findings": "Two sandbox atomic-rename failures passed outside sandbox; an overbroad v4-boundary fix initially broke two legacy replay diagnostics and was narrowed to preserve legacy semantics; final suite passes."
+  },
+  "source_transition": {
+    "collection": "47597967da7d8f05aa56ef1ed6fbd544eb70e607aaf8804e5163e650cea35e4d",
+    "fitting": "2926e0513be4c929d33bbcfa15787ee76fd96328a509821d91c71ff0467dc238",
+    "reason": "Owned validation-boundary changes after collection; valid output semantics/settings unchanged; source setups preserved, not rebound."
+  },
+  "final_checks": [
+    "git diff --check passed",
+    "conflict-marker/trailing-whitespace scans clean",
+    "no verifier/retrieval/generation/DB/API/frontend diff",
+    "generated study files Git-ignored"
+  ],
+  "authoritative_results": [
+    "cross-context-results.json",
+    "cross-context-results.md",
+    "decision-diagnostics.json",
+    "aggregation-equivalence.json",
+    "runtime-validation.json",
+    "collection-integrity.json"
+  ],
+  "documents": [
+    "docs/multitask_policy_workflow.md",
+    "docs/multitask_policy_results.md"
+  ],
+  "remaining_blocker": "No roster strategy reaches approved finalized clean coverage 0.90 in any cohort. New upstream/configuration study choices and fresh recordings are needed; no guard/target relaxation applied.",
+  "no_commits_pushes_merges_or_production_writes": true
+}

@@ -1,0 +1,203 @@
+{
+  "scope": "Same-team finalized scenario metrics; raw aggregate scores need not be identical. Solver tie allocation is not superiority evidence.",
+  "cohorts": [
+    {
+      "cohort": "arithmetic",
+      "teams": [
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "rule"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "rule"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "rule"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": false,
+          "max_loss_delta": 0.035
+        },
+        {
+          "team": [
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": false,
+          "max_loss_delta": 0.035
+        }
+      ]
+    },
+    {
+      "cohort": "semantic",
+      "teams": [
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        }
+      ]
+    },
+    {
+      "cohort": "factual",
+      "teams": [
+        {
+          "team": [
+            "confidence",
+            "evidence"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "rule"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "rule"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        },
+        {
+          "team": [
+            "evidence",
+            "semantic"
+          ],
+          "all_scenario_metrics_equal": true,
+          "max_loss_delta": 0.0
+        }
+      ]
+    }
+  ]
+}

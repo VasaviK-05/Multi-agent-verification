@@ -1,0 +1,2282 @@
+[
+  {
+    "path": "build/arithmetic-pilot42/approval.json",
+    "size": 1401,
+    "sha256": "a29e371a90e2803ec4f8afe97d9ec0f0e849b8cc00cf16d10fc7f841893af4d1"
+  },
+  {
+    "path": "build/arithmetic-pilot42/approved-policy-input.json",
+    "size": 407010,
+    "sha256": "59b8857ee39c7f880e441b137226aba268b026db62adf96593a7013a74a5264e"
+  },
+  {
+    "path": "build/arithmetic-pilot42/attempt-temperature-annotations.json",
+    "size": 63910,
+    "sha256": "73f2daf7c7c572182948fb385ba13444802d14b3aa7f93b76385a6fd73190ef5"
+  },
+  {
+    "path": "build/arithmetic-pilot42/calibration.json",
+    "size": 155561,
+    "sha256": "cb3b3799dc391a81aed4f378fd7382ab5d56da3f78f9f096568bd550c326036a"
+  },
+  {
+    "path": "build/arithmetic-pilot42/collection/attempts.jsonl",
+    "size": 967484,
+    "sha256": "5b1e740953a28df7fb435de1bf4f629c609f5a6f36674fa8703b2df4594595f2"
+  },
+  {
+    "path": "build/arithmetic-pilot42/collection/collection-report.json",
+    "size": 448,
+    "sha256": "ea79c8fecbcf302fc6fade3c8db94d2a985b58dcb732f75a7db9ac7236e5ad2e"
+  },
+  {
+    "path": "build/arithmetic-pilot42/collection/measurements.json",
+    "size": 129778,
+    "sha256": "e34bc2d702ccf711c3c7b4814fab7faa333ba5b716f6d54ad450f55181324473"
+  },
+  {
+    "path": "build/arithmetic-pilot42/collection/observed-setup.json",
+    "size": 2975,
+    "sha256": "e73a0ef5f4923a9b6435437bc58b77dd4504f1d98213fe3e14cd73bc00a6e756"
+  },
+  {
+    "path": "build/arithmetic-pilot42/collection/recordings.json",
+    "size": 1233101,
+    "sha256": "ed0c2aed1c8e96c1ba1b0706e2cc20f0bb1f82b802b1103a7744c03ef863f890"
+  },
+  {
+    "path": "build/arithmetic-pilot42/collection/request.json",
+    "size": 188879,
+    "sha256": "65e29bb70362fc81b3050c7be1491b4e785b77b41c5cde96a082a3b0d2a77a16"
+  },
+  {
+    "path": "build/arithmetic-pilot42/dataset-summary.json",
+    "size": 1369,
+    "sha256": "ec627ed766056717468027f32dc335e6fc1fd0baefecdf938bda7f12a49d2a80"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fit_approved.py",
+    "size": 12287,
+    "sha256": "e0f5fe5a4ebdda66eeeb5be128002a1a56f0a151b4dbb2412359ce920a4255fe"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fitted-policy/approval-and-validation.json",
+    "size": 14359,
+    "sha256": "08ab4ee606e3a56fa372135fc098db5f3ec2b38e1c3474fc2f9e55d099c14187"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fitted-policy/build-report.json",
+    "size": 9642,
+    "sha256": "c553af9968b81a63d3a62f6134b09ac1fa28a5c2c53cddcedb82fc616be3ae6e"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fitted-policy/final-verification.json",
+    "size": 985,
+    "sha256": "d2c4b19a680b056f7e41d494ffd52001c71d1cc511c04571fcc6270f367c0eea"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fitted-policy/policy.json",
+    "size": 15224,
+    "sha256": "3eba13c177ae1c761e0583c9a068e5f27fc220ba08f80f372714f6e31b79dd61"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fitted-policy/runtime-replay-verification.json",
+    "size": 3585,
+    "sha256": "e87dd67df28d089b97adb5a35584f9a40c600535947d77a91da30096caeeb7e5"
+  },
+  {
+    "path": "build/arithmetic-pilot42/fitted-policy/summary.txt",
+    "size": 3049,
+    "sha256": "b1b2b7d56af6ce82ba4e5144aff422014d2254e4a301889e7ced53bcaa4f7652"
+  },
+  {
+    "path": "build/arithmetic-pilot42/full-project-preflight.json",
+    "size": 2680,
+    "sha256": "4113b94f2e982df3c091c4a2a6a1ae28524866c5e642d8e1c3e279a8231973fd"
+  },
+  {
+    "path": "build/arithmetic-pilot42/inputs/adapter.json",
+    "size": 195,
+    "sha256": "7d561e9a74ebaa726d623244162203ada2fa4f1bee59388e931386c7c3031854"
+  },
+  {
+    "path": "build/arithmetic-pilot42/inputs/calibration-settings.json",
+    "size": 13630,
+    "sha256": "0ab77e78a979c3cadd9f5c47e78bbcf0c2ea5b04fab54d9590f400d5fcb7e61a"
+  },
+  {
+    "path": "build/arithmetic-pilot42/inputs/recording-request.json",
+    "size": 188879,
+    "sha256": "65e29bb70362fc81b3050c7be1491b4e785b77b41c5cde96a082a3b0d2a77a16"
+  },
+  {
+    "path": "build/arithmetic-pilot42/inputs/reservation.json",
+    "size": 12747,
+    "sha256": "7c30863c79dc4ec9c23d790a08a46c745c316286e2eb993034d759c353f597cc"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/diagnose.py",
+    "size": 5679,
+    "sha256": "baf102af5aadb00258f1510cdc9284aa8ea98bc7c71b443631cf2420348fd469"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/fidelity.json",
+    "size": 557482,
+    "sha256": "2358b8ef0e2c615cc4a802d351003b1a4200f7de31798a6d3f5d224408ae68fd"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/fidelity.py",
+    "size": 1619,
+    "sha256": "9be74e14af1287dbf4c6a462088a3151b3cfb628882af4a44aeecfd8d2f1d55b"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/runtime-correct.json",
+    "size": 3585,
+    "sha256": "e87dd67df28d089b97adb5a35584f9a40c600535947d77a91da30096caeeb7e5"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/runtime-correct.py",
+    "size": 7408,
+    "sha256": "d6087c558c382a12aac63e0f5788bf7c763b006afccddf251795286b047e1ebe"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/runtime-incorrect.json",
+    "size": 3585,
+    "sha256": "e87dd67df28d089b97adb5a35584f9a40c600535947d77a91da30096caeeb7e5"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/runtime-incorrect.py",
+    "size": 7414,
+    "sha256": "b4c0b20203d3cecf460decd647d854daabd3e08bcb75b147b69e9a6c0918bc39"
+  },
+  {
+    "path": "build/arithmetic-pilot42/investigation/traces.json",
+    "size": 804782,
+    "sha256": "3e7b90d6a03e5de431ce2edd806236167ebbb857369388fc8344c0ca6ccff538"
+  },
+  {
+    "path": "build/arithmetic-pilot42/pilot-report.json",
+    "size": 7697,
+    "sha256": "ae041fa13a1647cab54a9f2308f03862100c6981f94dd9309b6d49607b2117b0"
+  },
+  {
+    "path": "build/arithmetic-pilot42/proposal-isolation-check.json",
+    "size": 930,
+    "sha256": "16960141f847202c33891a37ee9260c7c900867a7084651a392ce8b6ca8020ad"
+  },
+  {
+    "path": "build/arithmetic-pilot42/propose_guarded.py",
+    "size": 983,
+    "sha256": "089a126cf80ea5f82eb1eddf67a3e2d52dc4287121831a7322678bd8b7544dae"
+  },
+  {
+    "path": "build/arithmetic-pilot42/proposed/context.json",
+    "size": 6455,
+    "sha256": "95aeed842aafc3fa69f1fa02d341688d5e6deefbeeb370e5e5c6e5fc14c2cc1c"
+  },
+  {
+    "path": "build/arithmetic-pilot42/proposed/fitting-proposal.UNAPPROVED.json",
+    "size": 417962,
+    "sha256": "788fe19c11f9a06a3014eb337b246d359802c85a9ad2ef9ba779a5ef3529901e"
+  },
+  {
+    "path": "build/arithmetic-pilot42/proposed/training-manifest.json",
+    "size": 386737,
+    "sha256": "0bfd71e2bae8bece660ba6056280dcd63204e7996c4813b745e88d9ff736e5ec"
+  },
+  {
+    "path": "build/arithmetic-pilot42/verify_approved.py",
+    "size": 7276,
+    "sha256": "9271da3147f09435008711b4f955810753aa3e8d20a8198867e8288b32fff1ae"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/adapter.json",
+    "size": 829,
+    "sha256": "58b3d0fb7a46e594d648f027c3fe3e57e05f498daf9325f7a12a30c6340be447"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/calibration-settings.pending.json",
+    "size": 15110,
+    "sha256": "342d981a764a3a5baa28ae1a19994f8f89c1fa9f9f214e47907e821b5be765cf"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/cost-request.pending.json",
+    "size": 64333,
+    "sha256": "df3bf3a6cb830fec9b57e86ac8606f1a1c2b0eb0740b07e22850edf6298813af"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/existing-calibration-validation.json",
+    "size": 1294,
+    "sha256": "287b88bce7a22fc26aeb6fe6d8484a219ebdb0f3c0f38eeeeb39294fb9cd71fe"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/prepare_calibration_proposal.py",
+    "size": 5107,
+    "sha256": "84d2ce244937f8bb2e6a8e511dc3bf27ee608ff3a5f2f28a0bcef84227f0db03"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/README.md",
+    "size": 8656,
+    "sha256": "360a673097669ea34005c8f6faebe5a4b8404f5271aa0a195d60d18f484bbeb7"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/recording-request.pending.json",
+    "size": 159863,
+    "sha256": "3347beaad5f877c2ae64648ceceb82d085d09501c0525e33b0306b9ca3a9baf4"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/resource-preflight.json",
+    "size": 8466,
+    "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/roster.json",
+    "size": 529812,
+    "sha256": "12bf064a5d19b48b3fec4b4826320f5c4c38a141058b92b105697f3e6fcaf68e"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/validate_preparation.py",
+    "size": 1987,
+    "sha256": "b2119d51fb8a959c2b4e68e1ca037ddac3d589fe296913ac32cfe46f4ae3318c"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/validation.json",
+    "size": 665,
+    "sha256": "c6a163dbeac237d704ce31395994892c03561ccef7bb2c457553e31bd34411d4"
+  },
+  {
+    "path": "build/broader-cost-measurement-20261028-v1/workload.json",
+    "size": 1338,
+    "sha256": "15ae513bb4cd602d96106d7f9809f39d2dd5decdbfd77a921344f68880466464"
+  },
+  {
+    "path": "build/empirical-policy-attempt/audit_inputs.py",
+    "size": 10801,
+    "sha256": "7bb18edfc77ad32b179aaed369edac08be6894bf043f4c7de29388345b6425ff"
+  },
+  {
+    "path": "build/empirical-policy-attempt/cost_calibration.log",
+    "size": 761,
+    "sha256": "6b854e20c458c6c836c84465dd64c5c9d9eff9423d55d0ef335ca58af41bc9bd"
+  },
+  {
+    "path": "build/empirical-policy-attempt/evidence-baseline.json",
+    "size": 5397,
+    "sha256": "7f5601ea630c12fa82cf39dcc5f2512588ed10380457f344d8528f4d75922f11"
+  },
+  {
+    "path": "build/empirical-policy-attempt/finalize_audit.py",
+    "size": 2562,
+    "sha256": "4581b8199d87b8938e641c8f5d1da48178d419cc75a51ca8ac385c69449c653e"
+  },
+  {
+    "path": "build/empirical-policy-attempt/missing-inputs.json",
+    "size": 7434,
+    "sha256": "2c32837ecb46c96921511a5f84bfdcb52cc100810de9522b23e502746273b2f3"
+  },
+  {
+    "path": "build/empirical-policy-attempt/policy_build.log",
+    "size": 3650,
+    "sha256": "41a97b1b865eb58d5f22ed7be3857a10cb4b2fdee4d6e2f7d6ed28d476c6a702"
+  },
+  {
+    "path": "build/empirical-policy-attempt/summary.txt",
+    "size": 3648,
+    "sha256": "6aa4c205bb1270a5f9d24f44c33c1baad5680bcecba12505a8f271ff6833f6d1"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/all-strategies.json",
+    "size": 70451,
+    "sha256": "7a79d1ef7aafa0aa7b512bfded6555eceda5c9678d99f317c4580917be37be1a"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/all-strategies.md",
+    "size": 16221,
+    "sha256": "170ae69a42591a99cdcef14021819ef5b49ae55add2a626a586304756b721229"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/coverage-25/policy.json",
+    "size": 37445,
+    "sha256": "82f5b15440d89068cd86acc05cc3227e5cef7d90ddc5566429ca12ae4ec6f545"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/coverage-25/report.json",
+    "size": 91919,
+    "sha256": "72a38b1b575cf2084465d9e360214247503887ca7dd0c1ad6422be480d82675d"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/coverage-50/policy.json",
+    "size": 37405,
+    "sha256": "010dcf9766c1c6352370cab8ad0db0dd815c40fa05141f8226ab78f4b3190b34"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/coverage-50/report.json",
+    "size": 91879,
+    "sha256": "51d5ca3681df5f1c751d0821c035df10abcd12ac76c252df5a6e0798778bf45f"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/coverage-75/policy.json",
+    "size": 37423,
+    "sha256": "329415b71fec32a25ef377165bac97ae2364a8e6e3a7938290f797777573d541"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/coverage-75/report.json",
+    "size": 91905,
+    "sha256": "4437367a1ab8fed81eba2810e66305b9cfc72a6c70d189826e44468655c93191"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/effective-weight-examples.json",
+    "size": 87178,
+    "sha256": "189d1087389f6cd239b5d74a2feac407f9725973fcbbc066f136191cdd8289b9"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/exploratory-results.md",
+    "size": 10034,
+    "sha256": "8a0da0a49028a1f5b885a65d68e1d0b25591a6e26a686e8d256886696ea8e5a6"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/final-verification.json",
+    "size": 2799,
+    "sha256": "967a3a9cd776fdf76665d95dff45ad089d6a4f41ba041934185736dc779546f4"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/legacy-reload-verification.json",
+    "size": 46,
+    "sha256": "b72eacc565ca469407a6dd702253e77d9ea182c2fa4087b18d4f9d0e8360956d"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/original-evaluation.json",
+    "size": 13363225,
+    "sha256": "a16e4dafb4c9c2990f35cbd4c57c8a924c14f13cdb01e759dc7754f9c8db3190"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/runtime-network.jsonl",
+    "size": 10254,
+    "sha256": "41f6a5445f5efcfac26477fbc125284d87feecc0d3fe0b6212d50b21b5fe7333"
+  },
+  {
+    "path": "build/factual-coverage-exploration42/variants-summary.json",
+    "size": 290547,
+    "sha256": "f6c00873bdf7b6d14beda08c24fedf2a395f489c053143a25188be95ab2be90b"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/authorization.json",
+    "size": 453,
+    "sha256": "b70259e75ca909b045e79d24bdaad17eaf42d8d0c692a92fa5509f3c11d10203"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/collection/attempts.jsonl",
+    "size": 258926,
+    "sha256": "64572a403a2551da85124f54d4888e4b383dc275024f52c3faeaa6e5081b3189"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/collection/collection-report.json",
+    "size": 586,
+    "sha256": "2247f7bae073b1a244d62f2323281fa6cddd4c4982b25e7c5ca38c94ff548617"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/collection/observed-setup.json",
+    "size": 5202,
+    "sha256": "e98c372313b1a0d301c43fc813c39a4a9e03627f0c77da08adf061ad03fc5ce5"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/collection/recordings.json",
+    "size": 296384,
+    "sha256": "b132ed2e5b4c42850402b8ab9a0c6e21a6221262171f8b3d386ed10932d36afd"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/collection/request.json",
+    "size": 21217,
+    "sha256": "fcc4a9d97b66d5375fd1d3a52628a83b0e122efab8cc6bcc4426d8bd222d0811"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/collection.log",
+    "size": 1543,
+    "sha256": "8817aba4eb0ae9d1057cf55c9fd2676115de394479def395d4cb73c2078f4ffa"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/diagnostic-summary.json",
+    "size": 8372,
+    "sha256": "33459d7b9b669e0d706c87fededd4e5910840dd74ba2c4f6c3ca61e0cbf14c94"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/HANDOFF.md",
+    "size": 6822,
+    "sha256": "93edd3d02b24c5732ec9ff9d1cf333272b933dc9031b34a3369b29c3b95030f5"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/network-counts.json",
+    "size": 61,
+    "sha256": "aab344dd9963adb729dc63943fafac28a5add3bc7f8f18df9651caddc8e9b7af"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/network-events.jsonl",
+    "size": 28116,
+    "sha256": "95b64d5c642ec79f64b54058454d6cd870258ad3e37c0b8aa0d9ba0f7a730ef4"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/preparation-validation.json",
+    "size": 419,
+    "sha256": "c4901ea87bade4aacd6ac5708cb13957bd121c76f2676931db5c27342a40c69a"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/request.json",
+    "size": 21217,
+    "sha256": "4fa660d55569265d1271018f69c7d196de17398df5b09c21d83b2ab82e3a13dc"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/resource-preflight.json",
+    "size": 8466,
+    "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/summarize.py",
+    "size": 4780,
+    "sha256": "194fae318ae91369b3447c6546991e77a79b44ca83dc970baa307c6411ee84b2"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/timings.csv",
+    "size": 503,
+    "sha256": "bbd3dcfe8895ac43915a43c03ccdd68502cfd11a337e017a8df057e9a52a0bba"
+  },
+  {
+    "path": "build/factual-diagnostic-20261026-01/validation-results.json",
+    "size": 912,
+    "sha256": "4fcb9ed5fb0af6e02e80545556d3937b5d207dfc79a4335cf4f697aa20ce06da"
+  },
+  {
+    "path": "build/factual-feasibility-draft-v1/index/chunks.json",
+    "size": 2942,
+    "sha256": "0868e6ff434c0008536f3c2ba6dc2e7a17e4b4f34a06577a47cdaa684cd278fa"
+  },
+  {
+    "path": "build/factual-feasibility-draft-v1/index/faiss.index",
+    "size": 15405,
+    "sha256": "ccfff19cc1b55432969fbc01b4727735c727d8a303be9af54eff10f2518740f5"
+  },
+  {
+    "path": "build/factual-feasibility-draft-v1/index/manifest.json",
+    "size": 467,
+    "sha256": "eb50a79260e0b82b3dca858015c72230529c5d1ddefdc10b045f8ac47aab8e98"
+  },
+  {
+    "path": "build/factual-feasibility-draft-v1/index-receipt.json",
+    "size": 420,
+    "sha256": "7e18734159da1e17b9bafba43b2d5fe9df4161f2d3cc2ca522103f30987d5ffd"
+  },
+  {
+    "path": "build/factual-feasibility-draft-v1/resource-preflight.json",
+    "size": 8466,
+    "sha256": "9cb53633d534d6289330ea1dae41b250cbd587843a82eabb302e0504133d251f"
+  },
+  {
+    "path": "build/factual-policy42-20261029/adapter.json",
+    "size": 857,
+    "sha256": "fe3d379f7227a9391d1c655e615361b485ca42ab3a19eced2703e7dee4f5965b"
+  },
+  {
+    "path": "build/factual-policy42-20261029/approval-binding.json",
+    "size": 631,
+    "sha256": "def254afe0209c0e9328f37b985a0804dfec464cf3df7187ee1bc552e2be710c"
+  },
+  {
+    "path": "build/factual-policy42-20261029/authority.json",
+    "size": 550,
+    "sha256": "da9c8226d80c588ea1aeb38181481ef69d3b892c2a8447fa0e581c89c3645190"
+  },
+  {
+    "path": "build/factual-policy42-20261029/calibration.json",
+    "size": 307816,
+    "sha256": "a23c727517cc9ff48c3a1038c7192822f344ac409ae7cc986de827eb3aad97f0"
+  },
+  {
+    "path": "build/factual-policy42-20261029/collection/attempts.jsonl",
+    "size": 3925618,
+    "sha256": "3e5c7b0607171e9ed4f5ce59bc86c7dfee014eb1f666b7c20f656fb0b3b88064"
+  },
+  {
+    "path": "build/factual-policy42-20261029/collection/collection-report.json",
+    "size": 610,
+    "sha256": "15ee0885a4d8d72e8b5f998663794585b68424f1e236c4f4a3ead34e9211ab5e"
+  },
+  {
+    "path": "build/factual-policy42-20261029/collection/measurements.json",
+    "size": 268780,
+    "sha256": "b79f74d6d3469f367de85a4d6ba9d94d104a0988da3dfa539e54d4cf4e8a24fd"
+  },
+  {
+    "path": "build/factual-policy42-20261029/collection/observed-setup.json",
+    "size": 5202,
+    "sha256": "84579b3b81981de32c444472c4ce7710df1c511422bd112daa3d174a9b780714"
+  },
+  {
+    "path": "build/factual-policy42-20261029/collection/recordings.json",
+    "size": 4291631,
+    "sha256": "fee445f1624e139d1a605e497bba86e1b8fb02674a0bdd3376fa3d368d881451"
+  },
+  {
+    "path": "build/factual-policy42-20261029/collection/request.json",
+    "size": 223374,
+    "sha256": "2d3dab1ac77058de612dfcbd9fd72e1ef3fe7ab97b9eff448f4948d55af9c3a7"
+  },
+  {
+    "path": "build/factual-policy42-20261029/corpus.json",
+    "size": 9460,
+    "sha256": "e7f747f05bcc5d46e401e3f6e1c89edc4b7b171db5b509c73621504253000630"
+  },
+  {
+    "path": "build/factual-policy42-20261029/dataset-audit.json",
+    "size": 44959,
+    "sha256": "b689fa586329947e55b375cab5b99fd79bad7591c7491210367781988534c27a"
+  },
+  {
+    "path": "build/factual-policy42-20261029/development-report.json",
+    "size": 290705,
+    "sha256": "de207e041fab2459ad984518e337f4e63de93ee2619ab035fa6195ac4305f52a"
+  },
+  {
+    "path": "build/factual-policy42-20261029/development-summary.md",
+    "size": 57195,
+    "sha256": "418df99f156635174adc434370845ceb5eb6411fc877c703d15a4527eeab058c"
+  },
+  {
+    "path": "build/factual-policy42-20261029/evidence-validation.json",
+    "size": 32333,
+    "sha256": "c5995634e9975cd918d4f7038c19755a6a6c47a98409cd23df8179b10a506504"
+  },
+  {
+    "path": "build/factual-policy42-20261029/final-verification.json",
+    "size": 1237,
+    "sha256": "98bc445fdbc8d03425c5dd443f6d8e43ada61b5852c27b7c9ee38da0b799691c"
+  },
+  {
+    "path": "build/factual-policy42-20261029/finish_report.py",
+    "size": 5640,
+    "sha256": "ea6242b9a80fb8749f70df116a87acbb35ce9b198f1fe718bc67eb1432d446a6"
+  },
+  {
+    "path": "build/factual-policy42-20261029/fit-driver.original.py",
+    "size": 28998,
+    "sha256": "230271faafc6b37861a2d772f0949ebac4bc5faed33513cecb9e4f444e9182f9"
+  },
+  {
+    "path": "build/factual-policy42-20261029/fitted-policy/build-report.json",
+    "size": 13699,
+    "sha256": "0e59d1e6bc0224fc90f73453912f0549a2c946ec6bdbd3c4b87eab9b271749d1"
+  },
+  {
+    "path": "build/factual-policy42-20261029/fitted-policy/policy.json",
+    "size": 33745,
+    "sha256": "a48d77194955fa39d30c6217c9d250b325431c131ddc73812c6f6d9823e364f2"
+  },
+  {
+    "path": "build/factual-policy42-20261029/fitted-policy/summary.txt",
+    "size": 3072,
+    "sha256": "b6b99e07cafe7649c84683e78a8f355c0328b9be738b8ea66a84d55d7b8b843d"
+  },
+  {
+    "path": "build/factual-policy42-20261029/index-receipt.json",
+    "size": 420,
+    "sha256": "06a56507aa4c877e871e9472e28ef3bc1ec081b37d54b7a39018c247273c54b1"
+  },
+  {
+    "path": "build/factual-policy42-20261029/index-v2/chunks.json",
+    "size": 11190,
+    "sha256": "fc0715633ff1e5aaf864281d897c56256a215f23436b15d163b80f9dcc890434"
+  },
+  {
+    "path": "build/factual-policy42-20261029/index-v2/faiss.index",
+    "size": 92205,
+    "sha256": "5cd9f59b052f68dac8f93b04ef5003b00aac46a1d95403a7841c0c8136d59444"
+  },
+  {
+    "path": "build/factual-policy42-20261029/index-v2/manifest.json",
+    "size": 482,
+    "sha256": "359e7a41716d4f7d84bc881c8e66d3ec6a76089bd8566415fd5028a4f1153f70"
+  },
+  {
+    "path": "build/factual-policy42-20261029/network-audit-preflight-1.jsonl",
+    "size": 369590,
+    "sha256": "2a49f36ec949bfe72e0a3aa8533ab3914e34f8df0dd56343e6328df0eb89ad29"
+  },
+  {
+    "path": "build/factual-policy42-20261029/network-audit.jsonl",
+    "size": 226,
+    "sha256": "d328c4eafa7805df36e85dc8a46eba397104555e973f8bdda6c55f6508aca6fc"
+  },
+  {
+    "path": "build/factual-policy42-20261029/policy-input.json",
+    "size": 1586112,
+    "sha256": "8bd454404c2a7937eb26bd50e5e77592e3ca6d236fc4c751ea5a54990edd591c"
+  },
+  {
+    "path": "build/factual-policy42-20261029/preparation.json",
+    "size": 201465,
+    "sha256": "b1908e83c35bd11ce8120c7d05337410fab461b457ae708528fbdcec6c5e5557"
+  },
+  {
+    "path": "build/factual-policy42-20261029/recording-request.json",
+    "size": 223374,
+    "sha256": "2d3dab1ac77058de612dfcbd9fd72e1ef3fe7ab97b9eff448f4948d55af9c3a7"
+  },
+  {
+    "path": "build/factual-policy42-20261029/reservation.json",
+    "size": 14787,
+    "sha256": "62eb9b63ba148f5d2314b3cc95d41068dced4e89daf2bbd49b8eaeec99c3eb04"
+  },
+  {
+    "path": "build/factual-policy42-20261029/resource-preflight.json",
+    "size": 8466,
+    "sha256": "f03d113fd71f602b9228b2d91370619ffff19087ecaf84be453fd3ba0f44664c"
+  },
+  {
+    "path": "build/factual-policy42-20261029/service-observation.json",
+    "size": 252,
+    "sha256": "3f2c8fcda879d219ce1112c0945278051102e6cbc6b83f4e8037d9b4a5258841"
+  },
+  {
+    "path": "build/factual-policy42-20261029/sources/countries-revision.json",
+    "size": 99,
+    "sha256": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7"
+  },
+  {
+    "path": "build/factual-policy42-20261029/sources/countries.json",
+    "size": 1398004,
+    "sha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd"
+  },
+  {
+    "path": "build/factual-policy42-20261029/sources/geonames-countryInfo.txt",
+    "size": 32115,
+    "sha256": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+  },
+  {
+    "path": "build/factual-policy42-20261029/sources/LICENSE",
+    "size": 25313,
+    "sha256": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc"
+  },
+  {
+    "path": "build/factual-reliability-first42/approval-binding.json",
+    "size": 8936,
+    "sha256": "af46adc31ae2477c922a0ed7fa1043a1c222ef81f7c4e8999b6ac44979b6a39a"
+  },
+  {
+    "path": "build/factual-reliability-first42/comparison-verification.json",
+    "size": 385,
+    "sha256": "5f50ccf2a66cfb7e7d6e0e585d30d1742111f41cf9384ae779f5660e7af8d8bb"
+  },
+  {
+    "path": "build/factual-reliability-first42/comparison.json",
+    "size": 49632,
+    "sha256": "311f9a3ac66af08cb446669389cb9e590fc489d09b15b98ce96e5d628fa5582f"
+  },
+  {
+    "path": "build/factual-reliability-first42/comparison.md",
+    "size": 36256,
+    "sha256": "46c8020e7ad47dc3f906ce8926dc4a70bb1cb7d095f20bd097d5cdd6015ba5a0"
+  },
+  {
+    "path": "build/factual-reliability-first42/final-verification.json",
+    "size": 398,
+    "sha256": "d86157babbeca02aeb5dbe0b0cdaa14ee1425f307622ab9be00f0919417dd4f9"
+  },
+  {
+    "path": "build/factual-reliability-first42/fit-driver.original.py",
+    "size": 14800,
+    "sha256": "b37ab55b5d0c51813a0834dbf9f9ddc65979a90443b85612dd8cd6d06e9e2391"
+  },
+  {
+    "path": "build/factual-reliability-first42/informative-all-strategies.json",
+    "size": 51998,
+    "sha256": "1008949ce2bee3e667d593d62183e4d1f9a535fad94f9afcd8e3ebc6746670b4"
+  },
+  {
+    "path": "build/factual-reliability-first42/informative-context.json",
+    "size": 10638,
+    "sha256": "8349e96947049677ab398e16a4def675d6ea909123e1a5f9aef47beb77527b35"
+  },
+  {
+    "path": "build/factual-reliability-first42/informative-contract.json",
+    "size": 4350,
+    "sha256": "09d2052dbbfac2d15fc50ddb0d7533f7960104c6d61fe5bb0e9ec3e603e7816b"
+  },
+  {
+    "path": "build/factual-reliability-first42/informative-coverage90-old-objective/policy.json",
+    "size": 37400,
+    "sha256": "c847e17a9f2f9fd50d8bf27fec0f649d094cfb0fb62834beaf0d7e424d2408d6"
+  },
+  {
+    "path": "build/factual-reliability-first42/informative-evaluation.json",
+    "size": 13377336,
+    "sha256": "ffafd904240ec58171b381a714f1fc307f2114d5032467693da6e96a43007985"
+  },
+  {
+    "path": "build/factual-reliability-first42/informative-old-objective/policy.json",
+    "size": 33739,
+    "sha256": "3c8b9d1540d0c5ad47867b0c41180c5a5bec95dc58b770da048884c515d74e3f"
+  },
+  {
+    "path": "build/factual-reliability-first42/legacy-reproduced-evaluation.json",
+    "size": 13363225,
+    "sha256": "a16e4dafb4c9c2990f35cbd4c57c8a924c14f13cdb01e759dc7754f9c8db3190"
+  },
+  {
+    "path": "build/factual-reliability-first42/optimization-isolation.json",
+    "size": 12074,
+    "sha256": "750cbe2c4275c4b15465cc2abcdce30c7132b6be9dd689583106b766df84fd30"
+  },
+  {
+    "path": "build/factual-reliability-first42/post-validation.json",
+    "size": 691,
+    "sha256": "4f28e49fd24098766c6db61ec3a3ce39cc6fa9e6c8e772a86113123bd5d72fa3"
+  },
+  {
+    "path": "build/factual-reliability-first42/preserved-input-hashes.json",
+    "size": 943,
+    "sha256": "bb7c98e900711f7afecb794e89f8a3bdb51cae44d8b2fd54b72624b691252e86"
+  },
+  {
+    "path": "build/factual-reliability-first42/reliability-first/policy.json",
+    "size": 44050,
+    "sha256": "5bcb21bef89c9df46286fedd24bad3afa2c1a9b3a8b24dc754f20c64565f0454"
+  },
+  {
+    "path": "build/factual-reliability-first42/reliability-first/report.json",
+    "size": 416218,
+    "sha256": "4af8c7632caf760a97ec2491b1f7aa81084d1a77fbd360b39dfe0377213c6f4b"
+  },
+  {
+    "path": "build/factual-reliability-first42/replay-provenance.json",
+    "size": 4944,
+    "sha256": "f03d48f62af2c1cd0568e688f9c4295fdff3ee37068b2a940588956c21690ed6"
+  },
+  {
+    "path": "build/factual-reliability-first42/runtime-network.jsonl",
+    "size": 3406,
+    "sha256": "5ffae62a9dc1619887c511ea23e10367536965b0a0e1743881af9ebde91fe762"
+  },
+  {
+    "path": "build/factual-reliability-first42/solver-environment.json",
+    "size": 627,
+    "sha256": "21f511127a39a806e2aa9e71553e31cdfa90027de4fe03df39bea0940eb08144"
+  },
+  {
+    "path": "build/multitask-policy42/adapter.json",
+    "size": 829,
+    "sha256": "bb7f188a93f341829ae5e119ffb592efeac82405b641617295ab0f1b5bad043b"
+  },
+  {
+    "path": "build/multitask-policy42/aggregation-equivalence.json",
+    "size": 4655,
+    "sha256": "1668a3595a0eddee32becaaf0f808d820bef4b0cc0fb59b5e0dbe1c3c49163aa"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-00/readiness.json",
+    "size": 3035,
+    "sha256": "6d6e9ea02b7fc14f581d349c1fff96136fe507e4d247cf26de518f258faa346e"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-00/report.json",
+    "size": 19450,
+    "sha256": "5d598f8ed4a4dfbadb4384379ae81823f38a9c11d730cc0b8e25874fc2477cdf"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-00/summary.txt",
+    "size": 114,
+    "sha256": "498b7dc66418a10e970a95bc05726cba9b231e84fbe0586efd9529004fc51483"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-01/readiness.json",
+    "size": 3556,
+    "sha256": "ef4eab348fbeaef210b70684902745919fb516ada2365886348c7212a060f6f9"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-01/report.json",
+    "size": 30145,
+    "sha256": "b05d1d36048a8a75e16df3e43bd019efc7ed3263b498eec36a5511d6f6abffb5"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-01/summary.txt",
+    "size": 114,
+    "sha256": "498b7dc66418a10e970a95bc05726cba9b231e84fbe0586efd9529004fc51483"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-02/readiness.json",
+    "size": 4121,
+    "sha256": "3e86d7e7583fe7546abf08a60cb5ee3f55e6e307998c80bf38544309af065f35"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-02/report.json",
+    "size": 41263,
+    "sha256": "259ca4c766a67f3de1d1e0c6db46fab1cb147518ec1ef7b342f03be5490d40d6"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-02/summary.txt",
+    "size": 114,
+    "sha256": "498b7dc66418a10e970a95bc05726cba9b231e84fbe0586efd9529004fc51483"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-03/readiness.json",
+    "size": 4710,
+    "sha256": "0b1db3e7c5ca4359fe427fb9fc8cc88138b5de724efbb9f46dc820f3fed66955"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-03/report.json",
+    "size": 52156,
+    "sha256": "63829216173bbf7524865b1bc4ddeb663b0f4f9594d4098578f79c90358eed72"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-03/summary.txt",
+    "size": 114,
+    "sha256": "93d75ec9cb9b49af81fa147d9a40d56ab04d51cb6d1245adeb4982f5d5ab7b23"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-04/readiness.json",
+    "size": 5277,
+    "sha256": "6c3bc479eccb3a19b2f2ab6df35863d2ce70ffa6f2f169337ca962101377b857"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-04/report.json",
+    "size": 63235,
+    "sha256": "16fdff70d404c7676822d97138bff3c08ff683d5077dd2b068387bde4be1bd0b"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-04/summary.txt",
+    "size": 114,
+    "sha256": "93d75ec9cb9b49af81fa147d9a40d56ab04d51cb6d1245adeb4982f5d5ab7b23"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-05/readiness.json",
+    "size": 5846,
+    "sha256": "7bfc235efaab4850effd70545384d03b3e64df10ef981cef9ad266e2b329edb8"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-05/report.json",
+    "size": 74150,
+    "sha256": "20bf05df8624a0289cbcd6bfe17ce684348f30dfd5ddcbe82de3fe7de84d27a5"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-05/summary.txt",
+    "size": 114,
+    "sha256": "93d75ec9cb9b49af81fa147d9a40d56ab04d51cb6d1245adeb4982f5d5ab7b23"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-06/readiness.json",
+    "size": 6455,
+    "sha256": "bd7ed0aaa1767b86d4eb3f76e67ca79543e1e2bee8e3fbef527e509487e533b2"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-06/report.json",
+    "size": 85115,
+    "sha256": "37fe9e3d9ff150efd711e1db764e1638caffc6cd3183d9c2d71f57a3e2a9f6d9"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-06/summary.txt",
+    "size": 114,
+    "sha256": "93d75ec9cb9b49af81fa147d9a40d56ab04d51cb6d1245adeb4982f5d5ab7b23"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/budget-results.json",
+    "size": 389218,
+    "sha256": "af06986071375ae38a031d6093d3886fd153302551265c58ba3c80b3dc45210f"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/calibration.json",
+    "size": 324026,
+    "sha256": "3e9a9c5c68ffc8976f172b465a414c3a4748b8cc762149c8500cec1557a99770"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/attempts.jsonl",
+    "size": 2960729,
+    "sha256": "e4fd9e13e2894ee2b36261db960906822efc8201e87d07a25c3efebfc223f129"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/collection-report.json",
+    "size": 563,
+    "sha256": "dd1d75b918f50618942cc37eae0be427777c7726049e0c6939a75fafd4ab5763"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/measurements.json",
+    "size": 283323,
+    "sha256": "40db2d53c80dd25de78c78dd7ee378bb88b937b30959a65439a80d968c256924"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/observed-setup.json",
+    "size": 5202,
+    "sha256": "ed99fecc014d9314de90122ace7cb4596ccd08e3da9970c8f10fc321c0fbb88a"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/recordings.json",
+    "size": 3279495,
+    "sha256": "7f1a08d0e1b8d42ff8cb81e2b01580e5d308e1ed89e8c61d8bd0f472eae40eed"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/request.json",
+    "size": 176127,
+    "sha256": "82cf3df823b84bfffe411576f200ef358e44153b017d2753d0c119628dde70c4"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/collection/started.jsonl",
+    "size": 26880,
+    "sha256": "8fc9c995dd5b6d1198f43e558c22a2ff3847ff67fb25f76dd2d400335fe6408b"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/contract.json",
+    "size": 4347,
+    "sha256": "6e6c25030650327596585f47b81a713172621e2a848df9ec60a3e7625553b704"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/development-evaluation.json",
+    "size": 13561968,
+    "sha256": "e146f2adafe5cfde34395aa4478e2f584d68c597f96a7f8e4efbd7c7c9c87a97"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/fit-provenance.json",
+    "size": 7578,
+    "sha256": "f10cb29249ef7f0694ae0e5605e2532e23603d1ac250f8ea294745966b134151"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/network-audit.jsonl",
+    "size": 368498,
+    "sha256": "88493c6b20d8336d3505ae2a3aa6232007536e6984b877fd7f970c3e4695dfad"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/policy-input.json",
+    "size": 1098129,
+    "sha256": "fc72a0f99cc1485cd693780839afd35057bd3a7ff5b4e39528e2f2da5a1deb75"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/preparation.json",
+    "size": 152601,
+    "sha256": "063f194a8fdb8be56793b5f5e0d9ff00a7cb522be29792d479f6fd91d43e3ad0"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/readiness.json",
+    "size": 6455,
+    "sha256": "bd7ed0aaa1767b86d4eb3f76e67ca79543e1e2bee8e3fbef527e509487e533b2"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/request.json",
+    "size": 176127,
+    "sha256": "82cf3df823b84bfffe411576f200ef358e44153b017d2753d0c119628dde70c4"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/reservation.json",
+    "size": 16516,
+    "sha256": "eeffe619e4e703d0987e929fd58954bce63bc94bafc51d6b70e4c8ce2816d883"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/resource-preflight.json",
+    "size": 8466,
+    "sha256": "7dd0d675b1480aebc389d087010f1c4dd8dce22da7d2d4827a42764d6ec015de"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/source-context.json",
+    "size": 11101,
+    "sha256": "ec06dc8437694131ec5c18de88352226e849d5861354a2459f3fb4c48343513d"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/training-manifest.json",
+    "size": 1033648,
+    "sha256": "c87d65246015919c02d86c4c83f39e0ded6ede02d25aa551a034b66a738ed485"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/unconstrained-comparison/policy.json",
+    "size": 34199,
+    "sha256": "56f757e09a53fde2cca15f03ed20a3d4e50457e2d593e8dfaed1f68532f32b88"
+  },
+  {
+    "path": "build/multitask-policy42/arithmetic/unconstrained-comparison/report.json",
+    "size": 10101,
+    "sha256": "50d55fe240f7142dcf4cff0a32d2b96cbcd3d43ff407d5d3a06d37e964f3941f"
+  },
+  {
+    "path": "build/multitask-policy42/campaign-execution.json",
+    "size": 464,
+    "sha256": "4978d480f3b9f857d87bb6a912c9889ce996eccc0d446eb208f6d7ed4c6ad8e4"
+  },
+  {
+    "path": "build/multitask-policy42/collection-integrity.json",
+    "size": 2437,
+    "sha256": "313093fa402337da3c0a26001084205688fec84f3700d577a0587325859db0a3"
+  },
+  {
+    "path": "build/multitask-policy42/collection-source-freeze.json",
+    "size": 308,
+    "sha256": "9b7b391e22ad252377de1390e615d5be437351d238e73da9f3cd2ae8ce1c5609"
+  },
+  {
+    "path": "build/multitask-policy42/completion-handoff.json",
+    "size": 2762,
+    "sha256": "f424fb326382be79efb9da8eb8b5edcc5bceddfa1f1bfbfd0b99762c0154a44c"
+  },
+  {
+    "path": "build/multitask-policy42/corpus.json",
+    "size": 9206,
+    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+  },
+  {
+    "path": "build/multitask-policy42/cross-context-results.json",
+    "size": 1573315,
+    "sha256": "0c175e5088656cb662ba1872dc4e040c3473a8ff0bd380341589678f66af29e3"
+  },
+  {
+    "path": "build/multitask-policy42/cross-context-results.md",
+    "size": 231414,
+    "sha256": "142d71bbf58e4cafa94fbccdb67f13d172dfc4a34264f61d86f6fd99979749cf"
+  },
+  {
+    "path": "build/multitask-policy42/decision-diagnostics.json",
+    "size": 2317023,
+    "sha256": "2ff5fd6b064ebfbfc4d3b064edf44bb5fb442005e2d389b98f87d2856d4ba552"
+  },
+  {
+    "path": "build/multitask-policy42/evidence-validation.json",
+    "size": 32324,
+    "sha256": "1eeacd8292da05b7feae7c46abea5d99878d77cfe36e3245696312145cae7ce9"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-00/readiness.json",
+    "size": 3037,
+    "sha256": "27ffc55cc53e4095b5e15909ba5494ec22ff4b28857957514c8d0e573040b782"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-00/report.json",
+    "size": 19175,
+    "sha256": "1409cb1134a9a031e6cb564d38465457dd702243dd9afa95e8536301e2d91dae"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-00/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-01/readiness.json",
+    "size": 3568,
+    "sha256": "9f672dd828fb7fd339d22d6be0f65a33950dace59005cec4cd41c874ad373962"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-01/report.json",
+    "size": 30085,
+    "sha256": "aede5bc483df2311935f1f62be578f6f8f66180b9bd3ebed13c1398af7c9792e"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-01/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-02/readiness.json",
+    "size": 4131,
+    "sha256": "9d895ef5616a59291ac7ae3629c6536dce1e4e48b90dcdf60dfe49b0b704a789"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-02/report.json",
+    "size": 40999,
+    "sha256": "b75269055c4c3bf2f30ed3af337c72d37b5eb1afe36983d578f90404e5d40a85"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-02/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-03/readiness.json",
+    "size": 4726,
+    "sha256": "ee3f897767442c40a1b51f8eb426364f2a611b4b68fcc180ceec86b617ee7278"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-03/report.json",
+    "size": 52083,
+    "sha256": "a3ebfa9263bcb64788f92e579e5cc428d1cc31e835ada8280c4729655855fe64"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-03/summary.txt",
+    "size": 114,
+    "sha256": "7e7af6536eb13494f0b8cc4c4b8598377e84616184ce12a2148d6fbed3e787d1"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-04/readiness.json",
+    "size": 5291,
+    "sha256": "e347842ff0c574ae87da3d061f202ff681fc0649ab063ab2bf491f31352b1838"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-04/report.json",
+    "size": 63233,
+    "sha256": "1bad8ffacd6120d7dd010a2a9a95cd59e1b1326913a65aa7284b88ebe1d18560"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-04/summary.txt",
+    "size": 114,
+    "sha256": "7e7af6536eb13494f0b8cc4c4b8598377e84616184ce12a2148d6fbed3e787d1"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-05/readiness.json",
+    "size": 5866,
+    "sha256": "ab248732200ad8f56f6ea5f0a6dcaa9f6d47a56af567caa951697ff3a2aad362"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-05/report.json",
+    "size": 74409,
+    "sha256": "71eb49d8e878d87fbe3fa9cddf9efcc5248717d67d16c3f0a13e931f150f2672"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-05/summary.txt",
+    "size": 114,
+    "sha256": "7e7af6536eb13494f0b8cc4c4b8598377e84616184ce12a2148d6fbed3e787d1"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-06/readiness.json",
+    "size": 6477,
+    "sha256": "5f4bb06ab502ca9329a7d57c8b9b62a932ced03195d6bb14e16f435aa4361d40"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-06/report.json",
+    "size": 85481,
+    "sha256": "0e2f798f14347f20721a0da219819bb99a83f4ac0f700f5b9157c3f7974b768a"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-06/summary.txt",
+    "size": 114,
+    "sha256": "7e7af6536eb13494f0b8cc4c4b8598377e84616184ce12a2148d6fbed3e787d1"
+  },
+  {
+    "path": "build/multitask-policy42/factual/budget-results.json",
+    "size": 389098,
+    "sha256": "b5c058ac9bd3dcd2db8534f198167a63209548354fdbdd984df0393c177715fb"
+  },
+  {
+    "path": "build/multitask-policy42/factual/calibration.json",
+    "size": 305565,
+    "sha256": "767124a949d96aa2bf6142ca2b9abc77d0fecb76314425885bb38da84338f13e"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/attempts.jsonl",
+    "size": 3876333,
+    "sha256": "9e0611b742e0ebe868305e0001ac1d9bcee4277ece2ec27abcec66db792ac94c"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/collection-report.json",
+    "size": 563,
+    "sha256": "48beddd0b0139a555b2ceadbafb5f1af8ed11b23104d64e4c71bbe3e6554fc7f"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/measurements.json",
+    "size": 266807,
+    "sha256": "e25a34caeb6d974b568c3210dbf5ed5f6128485593b0ee095f835e739eb420aa"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/observed-setup.json",
+    "size": 5202,
+    "sha256": "ed99fecc014d9314de90122ace7cb4596ccd08e3da9970c8f10fc321c0fbb88a"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/recordings.json",
+    "size": 4227114,
+    "sha256": "6250e8bf6b5326b1096d5db3376fbb5fb4484ac2ae408dba2ee76049c0992628"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/request.json",
+    "size": 208196,
+    "sha256": "97cfa8842c3e7997edf8a5d574b4559e0d0551949648fc283f354aa1e04f779b"
+  },
+  {
+    "path": "build/multitask-policy42/factual/collection/started.jsonl",
+    "size": 26880,
+    "sha256": "1e433beb785f1505c0bc3b54e84caedb8e27daab2b32a473c7d0f913d94659f0"
+  },
+  {
+    "path": "build/multitask-policy42/factual/contract.json",
+    "size": 4347,
+    "sha256": "6e6c25030650327596585f47b81a713172621e2a848df9ec60a3e7625553b704"
+  },
+  {
+    "path": "build/multitask-policy42/factual/development-evaluation.json",
+    "size": 13337989,
+    "sha256": "fb00b72373e64d08f3566c119a12a19e35af0994bbbb32d1036dbe498ffe86b9"
+  },
+  {
+    "path": "build/multitask-policy42/factual/fit-provenance.json",
+    "size": 7579,
+    "sha256": "46f2d9c7f73c5823c003046afc988d8fcaa48a9accea8ff2cede3675317cf1bb"
+  },
+  {
+    "path": "build/multitask-policy42/factual/network-audit.jsonl",
+    "size": 368282,
+    "sha256": "1f764343632d52becbda671d85bbe1ebb70a1e57820efa48ef71c0d634ac98af"
+  },
+  {
+    "path": "build/multitask-policy42/factual/policy-input.json",
+    "size": 1566887,
+    "sha256": "dfcf558b09f21768799ad755501175c4c1497b1fa2cb436174e8a46bdf44d845"
+  },
+  {
+    "path": "build/multitask-policy42/factual/preparation.json",
+    "size": 186629,
+    "sha256": "dff77f67086c3001c9d74e59f37cf8835cf1b6bd04f1bf3853bc60f19e224da0"
+  },
+  {
+    "path": "build/multitask-policy42/factual/readiness.json",
+    "size": 6477,
+    "sha256": "5f4bb06ab502ca9329a7d57c8b9b62a932ced03195d6bb14e16f435aa4361d40"
+  },
+  {
+    "path": "build/multitask-policy42/factual/request.json",
+    "size": 208196,
+    "sha256": "97cfa8842c3e7997edf8a5d574b4559e0d0551949648fc283f354aa1e04f779b"
+  },
+  {
+    "path": "build/multitask-policy42/factual/reservation.json",
+    "size": 14563,
+    "sha256": "be3df9bc65a85829caae968f2584cc6d369677eb006a999efd132b06218c62de"
+  },
+  {
+    "path": "build/multitask-policy42/factual/resource-preflight.json",
+    "size": 8466,
+    "sha256": "7dd0d675b1480aebc389d087010f1c4dd8dce22da7d2d4827a42764d6ec015de"
+  },
+  {
+    "path": "build/multitask-policy42/factual/source-context.json",
+    "size": 11091,
+    "sha256": "2a8d7c77615bfa11067bdb05bc3c0e2bdaf804e476262b74a3e4dd18ac4459a2"
+  },
+  {
+    "path": "build/multitask-policy42/factual/training-manifest.json",
+    "size": 1502440,
+    "sha256": "9be8da9773eaced47faae3ff49e4e1536391be21824bb29f1e2c664cf5fd6e3c"
+  },
+  {
+    "path": "build/multitask-policy42/factual/unconstrained-comparison/policy.json",
+    "size": 34147,
+    "sha256": "ad891bb48f13eb9bb9aae2efd9098751df70d0b71b8cc598f70c16c5f7468dcb"
+  },
+  {
+    "path": "build/multitask-policy42/factual/unconstrained-comparison/report.json",
+    "size": 10043,
+    "sha256": "a9dae9bdeaaa8bed594693f49e39b097cd02aa1439606b0cb26fd6090217a722"
+  },
+  {
+    "path": "build/multitask-policy42/final-summary.json",
+    "size": 823,
+    "sha256": "0012180c40861b449811f3ca95ca54dc403ac1ccf00adb38c062eab02f7b70fa"
+  },
+  {
+    "path": "build/multitask-policy42/fit-work-state.json",
+    "size": 1729,
+    "sha256": "c42a54c83e0181696ff71f10f888ae5490598a181e68989460dbe938e69aa1e7"
+  },
+  {
+    "path": "build/multitask-policy42/index-receipt.json",
+    "size": 420,
+    "sha256": "3611b10fa291815b1c5db93ef98c60dd624877329270c8696185dd82f08fafcd"
+  },
+  {
+    "path": "build/multitask-policy42/index-v2/chunks.json",
+    "size": 10849,
+    "sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33"
+  },
+  {
+    "path": "build/multitask-policy42/index-v2/faiss.index",
+    "size": 87597,
+    "sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287"
+  },
+  {
+    "path": "build/multitask-policy42/index-v2/manifest.json",
+    "size": 475,
+    "sha256": "9c5b705ed629d3d15745bb5c2bf3cc52ccfaaab045ce59909fb983db4b6e4711"
+  },
+  {
+    "path": "build/multitask-policy42/preparation-freeze.json",
+    "size": 1027,
+    "sha256": "9fceffeb7e19cb116d51cf935ff0d8fef8071f37f69598129d5a2d88389a9331"
+  },
+  {
+    "path": "build/multitask-policy42/prior-public-overlap.json",
+    "size": 292,
+    "sha256": "99bfa5b77b65e34c8adf44eb9ae5c4d0e94f2f7c755c45121fd9bf34316ccf5a"
+  },
+  {
+    "path": "build/multitask-policy42/resource-validation-network.jsonl",
+    "size": 1696,
+    "sha256": "02ad99db570e30362605446cac7b9138a08942eaaa6e182ef66feac0bb356ef4"
+  },
+  {
+    "path": "build/multitask-policy42/resource-validation-scope.json",
+    "size": 6012,
+    "sha256": "4bae138fbbafd6857be58391728d679007d883643f093075c85a143edaa17624"
+  },
+  {
+    "path": "build/multitask-policy42/runtime-network.jsonl",
+    "size": 5118,
+    "sha256": "105ab5dfc759c254ae674d6db54fe7d950f0d5e6a769af402a3482e83518586b"
+  },
+  {
+    "path": "build/multitask-policy42/runtime-validation.json",
+    "size": 115116,
+    "sha256": "b820cf867252442d0b04c16964e7a82d6aa0bf21cf012f5070b1e06ce7b18973"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-00/readiness.json",
+    "size": 3035,
+    "sha256": "a9fc5811ec9416991398bd8b4665e23c70998f676287cfa68a3a384e093034be"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-00/report.json",
+    "size": 18940,
+    "sha256": "2fc9d99e67324f651086d4fe4443535c7cf51600dc1cec1e4e6f4500285cbb67"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-00/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-01/readiness.json",
+    "size": 3564,
+    "sha256": "17db3b2cbd3c39490c38445b7a88d8948f82b74eae451f8966f3f0336402e8bf"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-01/report.json",
+    "size": 29658,
+    "sha256": "bf0199380f01f19ed6845718a313da0843586b320d22f1e7e5c1bb31579559df"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-01/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-02/readiness.json",
+    "size": 4127,
+    "sha256": "adc775e6526883f2cd83e8f26f357dcbeb5023c6b4fb617974d087c85206f0f0"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-02/report.json",
+    "size": 40381,
+    "sha256": "62949dd5dc3305b76214e380d8fef30cc0db302a61d4fb909d29a68077b65616"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-02/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-03/readiness.json",
+    "size": 4724,
+    "sha256": "df3b08680f0be5e1674d1ceec2623f59351a97f108eebe02eb179da767380bb1"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-03/report.json",
+    "size": 51202,
+    "sha256": "b087ed6236605e1362d049b3727c5d2ed3a02d6ea8d82d2c3cac7c38e0920147"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-03/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-04/readiness.json",
+    "size": 5291,
+    "sha256": "11cf9d5b961b82636cbd5bd4fbb2e7b95c4c59868e5be357cd882ef31a96010e"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-04/report.json",
+    "size": 62114,
+    "sha256": "dbdf6a095479e9638c2252a22159235e2ee44730601942099440159b5aab7ffe"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-04/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-05/readiness.json",
+    "size": 5868,
+    "sha256": "0b5ae4e61b4ddcebb743504466bc1550befed560202c5a7b557f1ec411e12120"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-05/report.json",
+    "size": 73044,
+    "sha256": "bf9657216f58779d65b0a6e5d25502fbc7a607af7a5f16bfc330ebb2038930c2"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-05/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-06/readiness.json",
+    "size": 6479,
+    "sha256": "b0671d70be594869fd4d092dda32da5abad7b5e35d220d2c4a4e5a98aa1da58d"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-06/report.json",
+    "size": 83989,
+    "sha256": "96a0e8cd142fda8d2879471619df29590be075e570c4c3bab09a2fc4409bbc5b"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-06/summary.txt",
+    "size": 112,
+    "sha256": "90ba542195402212293e7e4c4e7491377d72c39a9b30927f8add0d2f112111b8"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/budget-results.json",
+    "size": 382744,
+    "sha256": "dfef4ae645161c254b11f8d46a0260a2f9ec3d6bb980b49da93c6bf8e34efe71"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/calibration.json",
+    "size": 316006,
+    "sha256": "9d46d2646512bff8ae27b60b68f1f2bf546c0db9e6462726e61d7ec182823bb6"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/attempts.jsonl",
+    "size": 3068198,
+    "sha256": "6505d745e2484ffb7017fd09e53d56b6851df624a4abd3af5ab6f75579cebecf"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/collection-report.json",
+    "size": 563,
+    "sha256": "92d3373242a2a0a6bc1e11ada373ebb04cce3722abae7464beced6a5d1ffe0c2"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/measurements.json",
+    "size": 276057,
+    "sha256": "f0a917ed3bdada55c574408fef7553d26fbcb33a03a4b6e21c0e07245de7cd82"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/observed-setup.json",
+    "size": 5202,
+    "sha256": "ed99fecc014d9314de90122ace7cb4596ccd08e3da9970c8f10fc321c0fbb88a"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/recordings.json",
+    "size": 3406212,
+    "sha256": "41f81a5e6af8cf1f4f5dd87049fb840ef30cff9a82df653616d7a596475414ef"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/request.json",
+    "size": 196815,
+    "sha256": "ba78d4fccdc3e2292ba26a1669c1957b1a3d186d4a33164b37dc09d3e2e96722"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/collection/started.jsonl",
+    "size": 26880,
+    "sha256": "2adc6f138941af30ed91ff39631e789ca938725ef8ee2b7b3d107af410977166"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/contract.json",
+    "size": 4347,
+    "sha256": "6e6c25030650327596585f47b81a713172621e2a848df9ec60a3e7625553b704"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/development-evaluation.json",
+    "size": 13228168,
+    "sha256": "cdea44f274cc4a0d0d67ce24c8092f1c3c5144bdddeeceff15155818c8b5beba"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/fit-provenance.json",
+    "size": 7579,
+    "sha256": "4230deaa6b3f10831f6cc79b478ff14e42e0c8c8edf91bf432825bfd4d44dbab"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/network-audit.jsonl",
+    "size": 368282,
+    "sha256": "1f764343632d52becbda671d85bbe1ebb70a1e57820efa48ef71c0d634ac98af"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/policy-input.json",
+    "size": 1156546,
+    "sha256": "d39029101b16d99ceb2ee47d8a565d4dcb06be6d8fecb129fd46614f89022897"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/preparation.json",
+    "size": 174055,
+    "sha256": "86cc48d8184a9c5e46c2e350bcdb37d7e4a736c1496e1d0e8a92450706747660"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/readiness.json",
+    "size": 6479,
+    "sha256": "b0671d70be594869fd4d092dda32da5abad7b5e35d220d2c4a4e5a98aa1da58d"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/request.json",
+    "size": 196815,
+    "sha256": "ba78d4fccdc3e2292ba26a1669c1957b1a3d186d4a33164b37dc09d3e2e96722"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/reservation.json",
+    "size": 15754,
+    "sha256": "a4a4c8cda5a854c3532f1dd794a7bfedd5d65fde4dc1b9cd996fce80bd659d1b"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/resource-preflight.json",
+    "size": 8466,
+    "sha256": "7dd0d675b1480aebc389d087010f1c4dd8dce22da7d2d4827a42764d6ec015de"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/source-context.json",
+    "size": 11113,
+    "sha256": "23b72a45e9de305db35de25a0fb8d61c2eb770de9719a5cded6191c46344990b"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/training-manifest.json",
+    "size": 1092069,
+    "sha256": "d56f872b1879355c17011ffc8de6875faf9e911ce63aab80e5ea4656bf65fd4a"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/unconstrained-comparison/policy.json",
+    "size": 34298,
+    "sha256": "18f804498f6b268ab40eb6cf77c254696b430a427850b18a1fe1f1677ee9970d"
+  },
+  {
+    "path": "build/multitask-policy42/semantic/unconstrained-comparison/report.json",
+    "size": 10038,
+    "sha256": "c1a008eb899415a22f5844d29ace87c98205550396b2dd06a51ee49e63ffeafc"
+  },
+  {
+    "path": "build/multitask-policy42/service-observation.json",
+    "size": 252,
+    "sha256": "3f2c8fcda879d219ce1112c0945278051102e6cbc6b83f4e8037d9b4a5258841"
+  },
+  {
+    "path": "build/multitask-policy42/sources/countries-revision.json",
+    "size": 99,
+    "sha256": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7"
+  },
+  {
+    "path": "build/multitask-policy42/sources/countries.json",
+    "size": 1398004,
+    "sha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd"
+  },
+  {
+    "path": "build/multitask-policy42/sources/geonames-countryInfo.txt",
+    "size": 32115,
+    "sha256": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+  },
+  {
+    "path": "build/multitask-policy42/sources/LICENSE",
+    "size": 25313,
+    "sha256": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc"
+  },
+  {
+    "path": "build/multitask-policy42/study-audit.json",
+    "size": 34849,
+    "sha256": "fecb7f26c7547bc7af1a5d737642212ec8e63aa5a22476d6166513da4a5fcbcf"
+  },
+  {
+    "path": "build/multitask-policy42/task-routing.json",
+    "size": 20270,
+    "sha256": "6067babe19f80a8969d58370b88e2cddd3846a6c0954274dfc952c6a69260691"
+  },
+  {
+    "path": "build/multitask-policy42/validation-checks.json",
+    "size": 2006,
+    "sha256": "13d2453074423107f37e8f7ddb6ba652d95d0ee290c8b0ea70c246fd385fc058"
+  },
+  {
+    "path": "build/multitask-policy42/work-state.json",
+    "size": 1379,
+    "sha256": "7db5f611124a1af9c1bfbec6844febc10707ec948d77a9f54108860d99d39f1a"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-incomplete/sources/countries-revision.json",
+    "size": 99,
+    "sha256": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-incomplete/sources/countries.json",
+    "size": 1398004,
+    "sha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-incomplete/sources/geonames-countryInfo.txt",
+    "size": 32115,
+    "sha256": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-incomplete/sources/LICENSE",
+    "size": 25313,
+    "sha256": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/adapter.json",
+    "size": 829,
+    "sha256": "bb7f188a93f341829ae5e119ffb592efeac82405b641617295ab0f1b5bad043b"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/arithmetic/preparation.json",
+    "size": 152601,
+    "sha256": "063f194a8fdb8be56793b5f5e0d9ff00a7cb522be29792d479f6fd91d43e3ad0"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/arithmetic/reservation.json",
+    "size": 16516,
+    "sha256": "eeffe619e4e703d0987e929fd58954bce63bc94bafc51d6b70e4c8ce2816d883"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/corpus.json",
+    "size": 9210,
+    "sha256": "7514adc4632de54d0f3d9bdaea83d5a437f0abf0aecf6a64f51eddbef0bed259"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/factual/preparation.json",
+    "size": 186629,
+    "sha256": "dff77f67086c3001c9d74e59f37cf8835cf1b6bd04f1bf3853bc60f19e224da0"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/factual/reservation.json",
+    "size": 14563,
+    "sha256": "ed2cd5d47bb7f27f9689561de65f2ab5993956f80a62485fe6e1ea3153fd6b10"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/semantic/preparation.json",
+    "size": 174055,
+    "sha256": "86cc48d8184a9c5e46c2e350bcdb37d7e4a736c1496e1d0e8a92450706747660"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/semantic/reservation.json",
+    "size": 15754,
+    "sha256": "a4a4c8cda5a854c3532f1dd794a7bfedd5d65fde4dc1b9cd996fce80bd659d1b"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/sources/countries-revision.json",
+    "size": 99,
+    "sha256": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/sources/countries.json",
+    "size": 1398004,
+    "sha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/sources/geonames-countryInfo.txt",
+    "size": 32115,
+    "sha256": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/sources/LICENSE",
+    "size": 25313,
+    "sha256": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc"
+  },
+  {
+    "path": "build/multitask-policy42-preparation-v1-invalid-area-format/study-audit.json",
+    "size": 34779,
+    "sha256": "bb4f013f3cfde3d8739bf65ee5319a4e221feb98105a981d6ccdb0ce5248b07a"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/arithmetic/costs.json",
+    "size": 1888,
+    "sha256": "cb2cb448c08e838000ca439adb46fddfd380ae4ab841810acf82101573ad0129"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/arithmetic/development-metrics.json",
+    "size": 9041,
+    "sha256": "e1b89acf369c03f3e9d805eec7244311246061b04d47e0f2ee253cf8013d92d6"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/arithmetic/episode.json",
+    "size": 18398,
+    "sha256": "22f6adb2eb19203e4bd2d1171fbc50a7dd153b670cf7dfa277089155b8eca064"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/arithmetic/policy.json",
+    "size": 45134,
+    "sha256": "ec1be5b69766948bbb444557806a6895cddf573f37c97e03472531685dde282c"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/arithmetic/reputation.json",
+    "size": 1160,
+    "sha256": "93b88903f4f70bca642c7ef2d175aad0d5d26a37dc92d362782509d3a8cec487"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/arithmetic/resources.json",
+    "size": 3712,
+    "sha256": "bf5656484de000c2bb4d3a8a714201fd6065186a2358001f11fac592aa2ad7ca"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/factual/costs.json",
+    "size": 1900,
+    "sha256": "2cdb76f86843627ba359b2ce6fffb86bff3ee64cb9feb57100fffa69b0418dea"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/factual/development-metrics.json",
+    "size": 9096,
+    "sha256": "4a7e40c51c3bc820dde7d4062da305c0b9429f328bb454f4bb9fabceb9cb65ac"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/factual/episode.json",
+    "size": 18144,
+    "sha256": "8f3bb53c0e2987cc82317a3d0ac3dde38c7cdc28ed2f45463b3382e31c39db72"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/factual/policy.json",
+    "size": 44449,
+    "sha256": "df1bef32fa422cadb29cc6034b9968ea9fd01d3dcea847e6d7e96382c0889d87"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/factual/reputation.json",
+    "size": 1160,
+    "sha256": "3065b548d976ca63885bbe45187a742aebbb52195873ecdfeee6a6b045e21e76"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/factual/resources.json",
+    "size": 3712,
+    "sha256": "bf5656484de000c2bb4d3a8a714201fd6065186a2358001f11fac592aa2ad7ca"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/manifest.json",
+    "size": 10771,
+    "sha256": "d81f2cca2956cc9d60cad43d8b29c12bebfff13987daafd6b1621c4025b590e3"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/README.md",
+    "size": 4313,
+    "sha256": "ed2e51d457d8daa74e09dea1cb7869175c6c0d5d26fb1d5fced89f09aeacb1af"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/resource-adapter.template.json",
+    "size": 599,
+    "sha256": "4be1f8b1b0bbee76a16df68704111204e2708b5e05878e86913c15aeedb839e1"
+  },
+  {
+    "path": "build/multitask-prototype42-v1/runtime-requirements.json",
+    "size": 1502,
+    "sha256": "8ee850767c03f12da786becfe5c20e77f1730e7773d07a2c24d294b601a2dbe8"
+  },
+  {
+    "path": "build/multitask-prototype42-v1-validation/completion-handoff.json",
+    "size": 2184,
+    "sha256": "d6226c3b70e69e044d254046f24b9743c455a35f34d5e862e5e23b2f647dc425"
+  },
+  {
+    "path": "build/multitask-prototype42-v1-validation/execution-traces.json",
+    "size": 326824,
+    "sha256": "5f0008bef07731534064ae0d03eb8693465c387db3daba0dcd912e37c61299e6"
+  },
+  {
+    "path": "build/multitask-prototype42-v1-validation/validation.json",
+    "size": 35138,
+    "sha256": "deba40d005a5a2b521ee76107f0b914b9174d4545a33616e904634f96cb6adb6"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-00/policy.json",
+    "size": 45295,
+    "sha256": "52b93894dac4be53037c9c9afb3552775ab551db9f68d15b82fc8bcf6753da8e"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-00/report.json",
+    "size": 18009,
+    "sha256": "2524f73871bdcd7bd09a44c2a969ec97399770b0de0acb32c32e69b5d8d70171"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-25/policy.json",
+    "size": 45153,
+    "sha256": "0a0311d8cc76e638dd2e8dcefb70b99a97e92ff3a4511da58548475a638068bb"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-25/report.json",
+    "size": 17871,
+    "sha256": "d955b367c334dcd7deade3a0e6a32134b51e726959051eb9278461b3fe214124"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-50/policy.json",
+    "size": 45134,
+    "sha256": "ec1be5b69766948bbb444557806a6895cddf573f37c97e03472531685dde282c"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-50/report.json",
+    "size": 17842,
+    "sha256": "9c760064c969a7b27411c560d6e9efd2fb3224dd634afb1d4437716bc824a521"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-75/policy.json",
+    "size": 45117,
+    "sha256": "b0fc363e3d2923f085a2c06ad321f09171cc9ca49d1012ca09384faf2687c55b"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-75/report.json",
+    "size": 17834,
+    "sha256": "21d6ae500d4f9799d468f34731c78659df3087ce57daff78b0bd9af47c7328bb"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/arithmetic/coverage-90/report.json",
+    "size": 467,
+    "sha256": "096693dbbf9ad86e0f4267324d11f190cdffd133eea884c4eff2a904f0e461fe"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/comparison.json",
+    "size": 144130,
+    "sha256": "41a45837cb0f7e1934694c6b996d3a774de6873a68b1d75229b248cc82b6b5fc"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/comparison.md",
+    "size": 30585,
+    "sha256": "adb931e91ac578169c001b7b296bd73e0bb7221e1f169df683eec840382745dd"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/completion-handoff.json",
+    "size": 1435,
+    "sha256": "99f64d3bbe9e2e7e094ec0df64a39d1cf423478162be46315dc584d07f642371"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-00/policy.json",
+    "size": 44710,
+    "sha256": "19e17fe7727aba7e68aab329702c7304ab5df5b74abac106149fb2c4f0289f63"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-00/report.json",
+    "size": 17370,
+    "sha256": "d3d0e3d227a765f8fbb022f82e8f477e17e1310179b06d44614cead28d125cf5"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-25/policy.json",
+    "size": 44449,
+    "sha256": "df1bef32fa422cadb29cc6034b9968ea9fd01d3dcea847e6d7e96382c0889d87"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-25/report.json",
+    "size": 17685,
+    "sha256": "b4b1196b27cafe0a99c98b45d4e3ecf6486efbfff6da23081f68558faa8e34c3"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-50/report.json",
+    "size": 465,
+    "sha256": "9d833453e2f7f7bad2ec248b26080149392492fbb05a7844f7cdd2d416dd7cc9"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-75/report.json",
+    "size": 466,
+    "sha256": "b63a56a6d86589d96250d23142f68a66b593ec21c80a8744bd40b0ed9ee43e81"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/factual/coverage-90/report.json",
+    "size": 465,
+    "sha256": "0cc32707a988db9053560fff3ef4c2e148be07de2b8e4ca494288be304f93d50"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/runtime-parity.json",
+    "size": 8093,
+    "sha256": "c1128ba99e1a12fb9518ca1f7692c546bdfc63ab50ad99fbddb09265b7dabbc9"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic/coverage-00/policy.json",
+    "size": 44715,
+    "sha256": "30d85d9bb9975cdd16ba6c28d53c6ba7f2def925d44e7b302e71dd75b6ba4f7f"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic/coverage-00/report.json",
+    "size": 17191,
+    "sha256": "35a08346097c48c58752606f3e03c43bd11ed4b8dacb22a974aa0a51323505d7"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic/coverage-25/report.json",
+    "size": 465,
+    "sha256": "8327a5ec78985e53750221bcfb2562ed2fc0291b91cf42451370e94d9d6a2ab6"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic/coverage-50/report.json",
+    "size": 464,
+    "sha256": "e509fbd1496a935ba3b42e8f1aa9986dfe07c34cfea47a6dc21bdbecb201c46a"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic/coverage-75/report.json",
+    "size": 465,
+    "sha256": "2d65ef6e8ccf88c19c963f7a11ac1c23c3458bdc96d263a5c007c463a6bcac6d"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic/coverage-90/report.json",
+    "size": 464,
+    "sha256": "48461f28feb24dbf51a8596ee7bed594deb8a74389c930db78c6df4fb36d685c"
+  },
+  {
+    "path": "build/multitask-uncertainty-sweep42/semantic-reference-audit.json",
+    "size": 22702,
+    "sha256": "05f59e4d4d050ea70c571bd0ec1e2089df2dc7077598664ca8ce6ec90c1ab5ef"
+  },
+  {
+    "path": "build/policy/missing-inputs.json",
+    "size": 7434,
+    "sha256": "5a01f8824f316148571f54f2be6bae817591d43ba80fc6e1402ece558e42c3f8"
+  },
+  {
+    "path": "build/policy/summary.txt",
+    "size": 3648,
+    "sha256": "6aa4c205bb1270a5f9d24f44c33c1baad5680bcecba12505a8f271ff6833f6d1"
+  },
+  {
+    "path": "build/prototype-publication-review/candidate-files.json",
+    "size": 1841,
+    "sha256": "163a9214457bdf769121e733f748ff5e49f11d3ae507749f4687d497b367958c"
+  },
+  {
+    "path": "build/prototype-publication-review/candidate-hashes.json",
+    "size": 5001,
+    "sha256": "76bc50ce341f2ba9e91e4d2a265dec1f8821df5ff2f53cf929324f67fa752c6f"
+  },
+  {
+    "path": "build/prototype-publication-review/commit-message.txt",
+    "size": 946,
+    "sha256": "a3451c2705810465f0607ea05affa11ff4316e0352dc60c56b05d349b1a60abb"
+  },
+  {
+    "path": "build/prototype-publication-review/current-deliverable-checks.json",
+    "size": 306,
+    "sha256": "77615040a0ab40f653c6bf82752b177f3bf1966a30a44998c75b9ba88b6f68ba"
+  },
+  {
+    "path": "build/prototype-publication-review/reviewed-paths.txt",
+    "size": 1550,
+    "sha256": "4ee59631d86f70789f11f16a05de110eb3d7e66d25b1ac36186adc229d16ecaa"
+  },
+  {
+    "path": "build/prototype-publication-review/staged.patch",
+    "size": 437549,
+    "sha256": "f82005a5e03caea5851ab120e627560c9e0d1e3d6fe1c305eac74b9c36c7e739"
+  },
+  {
+    "path": "build/verifier-collection/adapter.local.json",
+    "size": 778,
+    "sha256": "99a4d39c16a643921e69bb37434061c730b304af141ede3f31609a8ece2219d1"
+  },
+  {
+    "path": "build/verifier-collection/ollama-observed.json",
+    "size": 252,
+    "sha256": "94bc7a72347944e7e21f1469791523b66fe7d106710d886e3413dc1eea917460"
+  },
+  {
+    "path": "build/verifier-collection/preflight-current.json",
+    "size": 3064,
+    "sha256": "939dcf4abcfe2edacdde53618d6e0cc810c65ba0ac7b5acef2abaa807b180eeb"
+  },
+  {
+    "path": "build/verifier-collection/preflight-latest.json",
+    "size": 3264,
+    "sha256": "9e5cf03caf7712734cf6ca7f7fba0505e5a864dd06f276225fc6356a5cdf3299"
+  },
+  {
+    "path": "build/verifier-collection/preflight.json",
+    "size": 3196,
+    "sha256": "919000fee660b031a4cd69923a5d874e9ea5ec02f7b250f70fa72c2ab93bf717"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/adapter.json",
+    "size": 829,
+    "sha256": "58b3d0fb7a46e594d648f027c3fe3e57e05f498daf9325f7a12a30c6340be447"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/approval-binding.json",
+    "size": 90336,
+    "sha256": "1b369aeb82cae65cca588390a94841243fc35b1ca5bdb3469590dcdaddc06a4f"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/calibration.pending.json",
+    "size": 15110,
+    "sha256": "342d981a764a3a5baa28ae1a19994f8f89c1fa9f9f214e47907e821b5be765cf"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/check_runner.py",
+    "size": 1144,
+    "sha256": "d9912b092a1da932814f3d520bc33e07871604d9fa6aede03037f1badc364fea"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/collection.pending.json",
+    "size": 64333,
+    "sha256": "df3bf3a6cb830fec9b57e86ac8606f1a1c2b0eb0740b07e22850edf6298813af"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/DECISIONS.md",
+    "size": 12947,
+    "sha256": "ec5be330efff3beaa42a73b622b567f7a4f8a4c350bd1491efb100f20e1bf573"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/design.json",
+    "size": 2098,
+    "sha256": "a69c12a517f637d6b0d480936a5337810aadbc782ccb9d56f52401cd816a322a"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/execute_authorized.py",
+    "size": 15727,
+    "sha256": "e0230c64096d46565b09250641cf26ebd4d92fec5e79b412a4c7fe41e4ab4507"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/roster.json",
+    "size": 529812,
+    "sha256": "12bf064a5d19b48b3fec4b4826320f5c4c38a141058b92b105697f3e6fcaf68e"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/attempt-journal.jsonl",
+    "size": 226147,
+    "sha256": "57f1225e7b7ee5c5e424a2ac568c003f1c1dfb0a88f94774172498597c0f0b42"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/authorization.json",
+    "size": 1132,
+    "sha256": "b2718421b9c2d77bcd68d771092b6b279476e5328f716d516cdebd0a0f6419ba"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration-v1.json",
+    "size": 325712,
+    "sha256": "87d0818b0684e4f7405c52e0a96502b70f500a8761d0efaf44480f7e45967b84"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration-validation.json",
+    "size": 2445,
+    "sha256": "6e8eb9b6c7443c68c7d450424fe416fd1e33c419bb0fbbdd0a4b0f84e12ffa02"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration.authorized.json",
+    "size": 15589,
+    "sha256": "98859590a1fcc80d8e4884480e48f7ce98538014ba45eb507f48f3292ee52b45"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/calibration.before-measurements.json",
+    "size": 15384,
+    "sha256": "d9a7d407e54faabb72c57498d447a922e01785b0e29c804ee88537d76d8de3df"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/collection.authorized.json",
+    "size": 64802,
+    "sha256": "498e79d95d1ff7b9a86c3cf93701c9408bd02af4903960cde0fc1d30673210ec"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/collection.log",
+    "size": 963,
+    "sha256": "d78993e97b6575662f9930fa6dcad2331b2fb412df0f81bffbc1663a7115b8d9"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/execution-result.json",
+    "size": 202,
+    "sha256": "0a7feb693a2a64067b6b9d4ebc3e223f4376175e5b9884ce71c349b3795748e6"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/execution-start.json",
+    "size": 137,
+    "sha256": "7ffb43d063acb8ee98c309d34f0ee0b8c33c2693e2b1a46325e4fbc9359f28e4"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/freeze-receipt.json",
+    "size": 45229,
+    "sha256": "6d1e5903fd7cdce8af1931c5e3e95d00b8f0a11140cb03b8eb4c0e57763fd579"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/independent-validation.json",
+    "size": 933,
+    "sha256": "9e124cd38ac2ddbbd791483deafd2b1754b04c639976b560ea99c46f7ab9e5d6"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/measurements.json",
+    "size": 285293,
+    "sha256": "62b13ccdac1cdb9cfa28f7a23018b75f6b95aad6073ba52133112dc52d01c5a3"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/network-events.jsonl",
+    "size": 113886,
+    "sha256": "4715736dc89f08364515e084aef092780af40009bd469b68b637d41d66234cd0"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/preparation-validation.json",
+    "size": 665,
+    "sha256": "c54b10f78bfd0d220768b7fca4d8d985a3c1fbff54444477e1469dfe3a6c0fb5"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/resource-postcheck.json",
+    "size": 8466,
+    "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/resource-preflight.json",
+    "size": 8466,
+    "sha256": "e0293b70edb783ea0c965566ac72cfa01344af5bcd514dd74c1a23227ad23229"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/RESULTS.md",
+    "size": 4079,
+    "sha256": "30bd1df585463ba3ec721f22d3a57c411fb104b0b8bc3d96a7c3ba1b225a15d8"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/timings.csv",
+    "size": 431,
+    "sha256": "41f225c4077e7ffdd2a460d91d60006bf34eb83bf7d69814f0c945c61b223029"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/run-20261028-01/verify_result.py",
+    "size": 3657,
+    "sha256": "3f9478c001beda5de545e25de214f973c5db5bab2b33fc1703b31ce3f03d2e36"
+  },
+  {
+    "path": "build/verifier-cost-calibration-proposal-20261028-v2/validation.json",
+    "size": 19636,
+    "sha256": "b704e499c3a174c9dcba1d2039791d941952c3fbaaf8c79ba612a3927592e0e3"
+  },
+  {
+    "path": "docs/game_empirical_build_audit.json",
+    "size": 19595,
+    "sha256": "86db62ceed9c6db1e59f165e40f596d022b08eb53175ed159edb7dedc28ca387"
+  },
+  {
+    "path": "docs/game_empirical_build_audit.md",
+    "size": 11084,
+    "sha256": "e64e68f3d0a41e4bdd0be615b0735e27da2edcd9b24ba54ca6aa23f4d85df723"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/adapter.draft.json",
+    "size": 829,
+    "sha256": "58b3d0fb7a46e594d648f027c3fe3e57e05f498daf9325f7a12a30c6340be447"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/attacks.proposed.json",
+    "size": 74,
+    "sha256": "faa13edd11f1ac5f4db50283f4869254a164a651d5aadbc0c8c1781c39c6dbda"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/calibration-settings.draft.json",
+    "size": 2069,
+    "sha256": "61337af22d523122bf5f1e7a04378ec8f65280c2511e885878c6a7bb18d49a44"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/dependencies.proposed.json",
+    "size": 607,
+    "sha256": "baea40bd84999a72867a0db8c78733b8b472f803e2e0cd56ac0fb4f58e949d64"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/execution-contract.draft.json",
+    "size": 4351,
+    "sha256": "a7e541e0aebf9692c2a61c469cb62b4acdf2510633ba154860cde064d7e394b0"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/final-reservation.draft.json",
+    "size": 1787,
+    "sha256": "330fc117cd3f7d6e7fd9e991e0add22082c56d04d6ba5170914eb5cb8d7fae9f"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/label-review.draft.json",
+    "size": 5054,
+    "sha256": "a6e2e3e31782e2d407d325de2dfffa7e6091921568ff0033963456601ba0320a"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/loss-settings.proposed.json",
+    "size": 483,
+    "sha256": "d9830147f71e032b3f491feec330a26d328d40c64cc77fb6505771c55256b11a"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/preparation.draft.json",
+    "size": 6697,
+    "sha256": "1564fb70da74c033ad94838b0cda12553949f64d12ac880085e90b37b74fda6b"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/producer-plans.json",
+    "size": 27022,
+    "sha256": "53e92085bc20368c7700a9235060c5bcfd713dc291c7170176bb60325ebb4898"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/recording-config.draft.json",
+    "size": 1154,
+    "sha256": "4558125e0d0f15cc8ab68f6029b5722f3260890300d183d5f469220c1eeaa190"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/recording-request.draft.json",
+    "size": 24634,
+    "sha256": "4c1c8a5f118c06509538c8baf706bb4824fa16558000d565d1660c498d1bbfc2"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/resource-plan.json",
+    "size": 2165,
+    "sha256": "9a4c3ac0823d3580c647b14992563e3b43ba451d7ab4a2faa8b2f89f52b46eac"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/roster.draft.json",
+    "size": 5602,
+    "sha256": "a3d1afce1b25c73a7169ebb7b40e0514c28cfddd6160a7cd72283869583408f7"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/software-findings.json",
+    "size": 4842,
+    "sha256": "17542aa8cf96dc033ffe4b76ecc33951bdfc938a9b3277205179c972e1421772"
+  },
+  {
+    "path": "docs/studies/factual-feasibility-draft-v1/validation.json",
+    "size": 12004,
+    "sha256": "70d64d823204dced3a4c8a06d831c2d53a6d0563873f19b3eeb8b78b73e5d7b5"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/approval-binding.pending.json",
+    "size": 613,
+    "sha256": "cfe07c8d16d635ae58a243b56635973967e42defb9d204095e14ee72d01cd46c"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/calibration-settings.pending.json",
+    "size": 2069,
+    "sha256": "bb1a60ce57ebb92757b876297a4a949f798bf11422932c78cdd5eb9bd2e62c65"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/exclusions.json",
+    "size": 9159,
+    "sha256": "1ad6628b9de50cb9da83e046100bd1bf74d69fd225208bae6282b6953d022989"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/final-reservation.pending.json",
+    "size": 1787,
+    "sha256": "330fc117cd3f7d6e7fd9e991e0add22082c56d04d6ba5170914eb5cb8d7fae9f"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/historical-setup-differences.json",
+    "size": 371,
+    "sha256": "95d3c25776a032e181e84ea4c2319333453f6f023a3dbccf9ed38065862ff470"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/label-review.pending.json",
+    "size": 2486,
+    "sha256": "7c9429fed85b4d90306500a6f1defe226bd3efdf42921f74a28509b785a9bf5a"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/planning-context.review-only.json",
+    "size": 7788,
+    "sha256": "48adce179a96c5c8232fe702137109bdd86ce024347b88021a33c7201ea5beb3"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/provenance.json",
+    "size": 1044,
+    "sha256": "7c6d25210abf1bae6c830722719251e534561115de66cdc7da1d4a8444ecf2d5"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/readiness.json",
+    "size": 2309,
+    "sha256": "0fab83b7a92603432fcfe796a07c69eeeb0b92469dfa125d488ade501c96a673"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/recording-request.pending.json",
+    "size": 20322,
+    "sha256": "d0229a5f73fda7aad10f729d0af12797d307fb9e6a17ab15c96b7188792d9f0b"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/resource-preflight.json",
+    "size": 8466,
+    "sha256": "c1e0d173344ee259349060886a213d44dce0f008e5171a4f25fe6b9751550428"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/settings.pending.json",
+    "size": 1725,
+    "sha256": "6178bf68b3f82e63aa27dacf62980a072377318e739d5f96af32eb4ac681fafb"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/teams.json",
+    "size": 8868,
+    "sha256": "cd41597d29d7e8bf17933bfb03849f9a17dab58c804c3ed7817eb1350706a2ad"
+  },
+  {
+    "path": "docs/studies/factual-team-selection-v1/validation-results.json",
+    "size": 2155,
+    "sha256": "36a87abef32a3d66325236777bb75f5a7ed76b8212c87bf213be61b317ba9790"
+  },
+  {
+    "path": "docs/verifier_collection_blockers.json",
+    "size": 5988,
+    "sha256": "990d5856c297baf6af32284ac0dacd92c8624dc2c669ef79fc91feb7e5362331"
+  },
+  {
+    "path": "docs/verifier_cost_missing_inputs.json",
+    "size": 1543,
+    "sha256": "87c40108ea382a8d1e80a7a00a65fd20012cf417a73db6c90c219f7c4b81259f"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "abstentions": {
+    "rule": 0,
+    "semantic": 0
+  },
+  "calibration_id": "c32267151f0fdf265ca502652f11f6828d967b985ab1efbd7a33fdd69d117398",
+  "diagnostic_export_blocker": "diagnostic-only timings remain in linked attempts; study custody and calibration freeze are not approved",
+  "input_digest": "eb72570f52aa22fe074bbdfa40b53db5e4c2d27a6a6ca4b3a29c6a2276f1b307",
+  "newly_created": false,
+  "note": "Historical arithmetic setup only; do not pool with factual or new setup.",
+  "path": "build\\arithmetic-pilot42\\calibration.json",
+  "result": {
+    "estimates": [
+      {
+        "attempt_cost": 0.13031749986112118,
+        "attempts": 80,
+        "failures": 0,
+        "mean_ms": 0.13031749986112118,
+        "median_ms": 0.053099996875971556,
+        "p95_nearest_rank_ms": 0.08290004916489124,
+        "verifier_name": "rule"
+      },
+      {
+        "attempt_cost": 12.817771245318,
+        "attempts": 80,
+        "failures": 0,
+        "mean_ms": 12.817771245318,
+        "median_ms": 10.86074998602271,
+        "p95_nearest_rank_ms": 16.188699984923005,
+        "verifier_name": "semantic"
+      }
+    ],
+    "exclusions": []
+  },
+  "setup_fingerprint": "a560bccc2d7f5a99fd33c0b0b502c23c7c4a968e7ca683c3550cdc6bb8835ae2",
+  "valid": true
+}

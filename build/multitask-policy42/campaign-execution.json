@@ -1,0 +1,9 @@
+{
+  "worker_execution": "sequential complete-team calls per cohort",
+  "campaign_execution": "three independent cohort workers overlap on the same local CPU/Ollama service",
+  "cost_interpretation": "separate per-cohort measured attempt wall times under shared-machine contention; no pooled timing samples or isolated-latency claim",
+  "generations_per_cohort_max": 400,
+  "attempts_per_cohort_max": 320,
+  "total_attempts_max": 960,
+  "no_retries": true
+}

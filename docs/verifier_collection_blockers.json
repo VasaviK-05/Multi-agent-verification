@@ -1,0 +1,38 @@
+{
+  "status": "blocked",
+  "observation_date": "2026-10-26",
+  "real_measurements_created": false,
+  "empirical_policy_created": false,
+  "cost_table": null,
+  "cost_units_if_calibrated": "ms",
+  "setup_fingerprint": null,
+  "preflight_report": "build/verifier-collection/preflight-latest.json",
+  "adapter_configuration": "build/verifier-collection/adapter.local.json",
+  "available_local_resources": {
+    "embedding_snapshot": {"files": 11, "bytes": 91578415, "directory_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"},
+    "nli_snapshot": {"files": 7, "bytes": 578729785, "directory_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"},
+    "corpus": {"path": "data/test_evidence_corpus.json", "bytes": 2664, "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795"},
+    "index": {"path": "data/evidence_index/test_evidence_corpus", "files_present": ["faiss.index", "chunks.json", "manifest.json"], "provenance": "legacy alias-only manifest; no actual embedding build receipt"},
+    "service": {"observation": "build/verifier-collection/ollama-observed.json", "server_version": "0.40.5", "model_alias": "llama3.2:3b", "observed_model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"},
+    "hardware": {"logical_cpus": 16, "physical_memory_bytes": 16876888064, "execution_mode": "CPU, sequential"}
+  },
+  "available_candidate_data": {"path": "data/test_benchmark.jsonl", "rows": 10, "with_question_answer": 10, "with_context": 10, "approved_roles": false, "approved_group_roster": false, "labels_used": false, "promoted_to_preparation": false},
+  "execution": {"preflight_provider_requests": 0, "preflight_verifier_attempts": 0, "downloads": 0, "model_initializations": 0, "index_builds": 0, "separate_metadata_observation_only": true, "generation_requests": 0, "paid_inference_calls": 0, "pricing": null},
+  "intended_attempt_counts": null,
+  "blockers": [
+    {"input": "Approved label-free preparation roster", "owner": "dataset custodian", "required_fields": "history/development permission and dataset IDs; example_id, question_id, related split_identity, unique run_id, purpose, question, candidate answer, actual context; outcome-free FinalTestReservation with custody witness", "action": "Complete docs/verifier_preparation.template.json as build/approved-preparation.json. No automatic role/group assignment is permitted."},
+    {"input": "Reliable index provenance", "owner": "resource/collection owner", "required_fields": "observed_index_build_v1 receipt matching actual embedding directory digest, corpus digest, chunk_size, vector and chunk digests plus current complete retriever manifest", "action": "Review resources and authorize an explicit prepare-index job to a new build/ directory, or supply a genuine matching build receipt. Do not backfill a receipt from aliases."},
+    {"input": "Warm-up plan and calibration freeze", "owner": "study owner and dataset custodian", "required_fields": "explicit purpose per run, include_warmups decision, required verifier roster and pre-final-evaluation freeze witness", "action": "Approve before collection/calibration; existing template defaults are not approval."},
+    {"input": "Actual attempts", "owner": "benchmark measurement producer", "required_fields": "observed setup-compatible verify calls for every required verifier, retaining failures and original exception behavior", "action": "After preparation/provenance and resource authorization, prepare the collection request and execute the existing timing collector. No expensive job was launched."},
+    {"input": "Policy-compatible labelled recordings", "owner": "recording/integration owner and independent label producer", "required_fields": "independent correctness labels/provenance, captured analysis/prerequisites, complete candidate reports and observed resources using RecordingRequest/RecordingBundle", "action": "Use the existing detached recording producer and initial export interfaces. Timing-only inputs cannot become policy labels/reports. Existing exported categories are not rewritten."},
+    {"input": "Millisecond budget and loss weight plus full study settings", "owner": "study owner", "required_fields": "budget_ms, resource_weight_per_ms, approved evaluated setup fingerprint, other losses/priors/thresholds/attacks and complete policy specification", "action": "Review actual measured costs first; then choose the budget and penalty. Null templates remain invalid."},
+    {"input": "Evidence/public-coverage compatibility for evidence-bearing studies", "owner": "evidence verifier/integration owner", "required_fields": "separately reviewed resolution of readiness.py evidence-contract blockers", "action": "Retain existing readiness gates. The adapter does not alter verifier algorithms or approve a different study population."}
+  ],
+  "interfaces": {"timing_factory": "app.benchmark.project_adapter:create_verifiers", "recording_factory": "app.benchmark.project_adapter:create_recording_verifiers", "preparation": "app.benchmark.prepare_collection", "calibrated_context": "app.game.offline.prepare_calibrated_context", "commands": "docs/verifier_collection_adapter.md"},
+  "validation": {
+    "affected_regression": {"passed": 307, "deselected": 1, "command": ".venv/Scripts/python.exe -m pytest tests/test_project_collection_adapter.py tests/test_cost_calibration.py tests/test_offline_benchmark.py tests/test_game_collection.py tests/test_game_build.py tests/test_game_offline.py tests/test_game_research.py tests/test_verifier_selector.py -q -k 'not test_cli_unresolved_template_is_read_only_and_reports_digests'"},
+    "deselection_reason": "Previously reproduced at HEAD: research readiness CLI test hard-codes an obsolete Git revision.",
+    "sandbox_limitation": "Two existing policy-publication rename tests receive WinError 5 inside sandbox; both pass in the approved outside-sandbox run.",
+    "new_failures": 0
+  }
+}

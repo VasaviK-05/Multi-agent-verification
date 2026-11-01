@@ -1,0 +1,388 @@
+{
+  "artifact_created": true,
+  "build_metadata": {
+    "application_source_digest": "18fa2cec12b9a6b13654462c408c9ba2c654c6bb2dec4c4840b02c54f5f4c786",
+    "code_revision": "17b695373f935dc1f5fd09c37cf8917969367f7a",
+    "environment": {
+      "architecture": "AMD64",
+      "highs": "1.12.0",
+      "linprog_options": "SciPy defaults; no custom LP options",
+      "numpy": "2.4.6",
+      "platform": "Windows-10-10.0.26200-SP0",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "python_implementation": "CPython",
+      "scipy": "1.17.1",
+      "solver_method": "scipy.optimize.linprog:highs"
+    },
+    "input_digest": "91cbe3ee65ba3f46d7c7fe85a676c24e16a108a6a87084099a001943decd63b7",
+    "working_tree_clean": false
+  },
+  "missing_inputs": [],
+  "scientific_outputs": {
+    "applicability": {
+      "compatibility_id": "8ffb499984cca76b36ef929b6e42caf16e6e783957dce92583a4ea22fb38c128",
+      "domain": "general",
+      "execution_configuration_id": "9c81e66b3356176f658d99dba6d862174d5a99f40d825ba1811dcc0f8b5717ad",
+      "planning_category": "b44285a28fb40c81e384b4ac279e295e08dc5dba7790b19d984d49a9b24d170b"
+    },
+    "artifact_id": "238adc94fa3d6d81f60740d4cb585c52befa1748ea2ca1ee7aa2e169cf464236",
+    "attacks": {
+      "suppression": "unavailable",
+      "version": "report_corruption_v1"
+    },
+    "budget": 12955.553737469018,
+    "calibration": {
+      "calibration_id": "d5fd225b45d0b09fb54de3a07344415604638ce004fa8b51dac6218bd25a2793",
+      "cost_units": "ms",
+      "estimated_quantity": "sum of verifier-attempt wall times",
+      "freeze_record": "User engineering-study request attachment a20fd956-2750-40a2-9ef1-0bf06d958844: bounded collection, labels/preparation, procedural reservation and explicit settings; freeze actual complete collection 71ccd4a8c331e574e849e1d84b4b9993df60be3c38da2275b19b8b8872eaab3c",
+      "input_digest": "1c70a5b2f627a2c0457dec4fb53fd0c550581ab16e7e35898d33ea9c8020ed89",
+      "method": "mean_attempt_wall_time_ms_v1"
+    },
+    "certificate": {
+      "attack_losses": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.2014024096918393
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.2014024096918393
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.2014024096918393
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.2014024096918393
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.2014024096918393
+        ]
+      ],
+      "attack_probabilities": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.6007948962241494
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.3992051037758506
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "constraint_residuals": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.0
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.0
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "dual_lower_bound": 0.2014024096918393,
+      "game_value": 0.2014024096918393,
+      "matrix_id": "25303e5c2f8d8db609c812b780e9373923204743ee459d56e0000b0cd94504bc",
+      "minimum_probability": 0.0,
+      "normalization_residual": 0.0,
+      "optimality_basis": "highs_status_0_and_recomputed_primal_dual_certificate",
+      "primal_dual_gap": 0.0,
+      "probabilities": [
+        [
+          "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+          0.0
+        ],
+        [
+          "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+          0.0
+        ],
+        [
+          "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          1.0
+        ],
+        [
+          "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          0.0
+        ],
+        [
+          "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          0.0
+        ],
+        [
+          "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          0.0
+        ],
+        [
+          "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          0.0
+        ],
+        [
+          "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          0.0
+        ],
+        [
+          "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          0.0
+        ],
+        [
+          "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          0.0
+        ],
+        [
+          "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          0.0
+        ],
+        [
+          "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          0.0
+        ],
+        [
+          "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          0.0
+        ],
+        [
+          "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          0.0
+        ]
+      ],
+      "status": "optimal",
+      "tolerance": 1e-08,
+      "worst_case_attacks": [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+      ]
+    },
+    "concentration": "one strategy has probability one",
+    "cost_units": "ms",
+    "dependencies": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared installed model snapshot 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared installed model snapshot a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "observed-shared-models-and-unresolved-v1"
+    },
+    "development": {
+      "clean_scenario": {
+        "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        "decision_coverage": 0.0,
+        "development_game_objective": 0.2014024096918393,
+        "development_validation_loss": 0.2,
+        "expected_estimated_cost": 181.68994124571327,
+        "uncertainty_rate": 1.0
+      },
+      "evidence_role": "development",
+      "scenarios": [
+        {
+          "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          "decision_coverage": 0.0,
+          "development_game_objective": 0.2014024096918393,
+          "development_validation_loss": 0.2,
+          "expected_estimated_cost": 181.68994124571327,
+          "uncertainty_rate": 1.0
+        },
+        {
+          "attack_id": "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          "decision_coverage": 0.0,
+          "development_game_objective": 0.2014024096918393,
+          "development_validation_loss": 0.2,
+          "expected_estimated_cost": 181.68994124571327,
+          "uncertainty_rate": 1.0
+        },
+        {
+          "attack_id": "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          "decision_coverage": 0.0,
+          "development_game_objective": 0.2014024096918393,
+          "development_validation_loss": 0.2,
+          "expected_estimated_cost": 181.68994124571327,
+          "uncertainty_rate": 1.0
+        },
+        {
+          "attack_id": "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          "decision_coverage": 0.0,
+          "development_game_objective": 0.2014024096918393,
+          "development_validation_loss": 0.2,
+          "expected_estimated_cost": 181.68994124571327,
+          "uncertainty_rate": 1.0
+        },
+        {
+          "attack_id": "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          "decision_coverage": 0.0,
+          "development_game_objective": 0.2014024096918393,
+          "development_validation_loss": 0.2,
+          "expected_estimated_cost": 181.68994124571327,
+          "uncertainty_rate": 1.0
+        }
+      ],
+      "worst_case_scenarios": [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+      ],
+      "worst_validation_loss": 0.2
+    },
+    "evidence_kind": "empirical",
+    "feasible_strategies": 14,
+    "fitted_specification_id": "f5973f6cd1b08340bb4239f3b4a3f7a0acc76113f06f44ce89802bf903c4a0f0",
+    "fitting_randomness": "none: exact LP; seeds reserved for sampling/uncertainty, not extra evidence",
+    "loss_configuration": {
+      "cost_units": "ms",
+      "false_accept": 1.0,
+      "false_reject": 1.0,
+      "resource_weight": 7.718697481126415e-06,
+      "uncertain": 0.2,
+      "version": "approved-factual-engineering-v1"
+    },
+    "matrix_id": "25303e5c2f8d8db609c812b780e9373923204743ee459d56e0000b0cd94504bc",
+    "policy_id": "99d6d6369341c48f919c8a8f2a1643f0320821afa15bf9d323e816e5e46dad30",
+    "positive_probability_strategies": [
+      {
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 181.68994124571327,
+        "probability": 1.0,
+        "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ]
+      }
+    ],
+    "probabilities": [
+      [
+        "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+        0.0
+      ],
+      [
+        "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+        0.0
+      ],
+      [
+        "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        1.0
+      ],
+      [
+        "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        0.0
+      ],
+      [
+        "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        0.0
+      ],
+      [
+        "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        0.0
+      ],
+      [
+        "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        0.0
+      ],
+      [
+        "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        0.0
+      ],
+      [
+        "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+        0.0
+      ],
+      [
+        "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+        0.0
+      ],
+      [
+        "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        0.0
+      ],
+      [
+        "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        0.0
+      ],
+      [
+        "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        0.0
+      ],
+      [
+        "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+        0.0
+      ]
+    ],
+    "probability_by_team_size": {
+      "2": 1.0,
+      "3": 0.0,
+      "4": 0.0
+    },
+    "provider_reload_verified": true,
+    "reproducibility": {
+      "equivalent": true,
+      "matrix_atol": 1e-12,
+      "probability_atol": 1e-12,
+      "relative_tolerance": 0.0,
+      "reputation_atol": 1e-12
+    },
+    "reputation_snapshot_id": "0aff50756b09cd72d5e653e8739cde685d7ba90ff34188d86c7682315d8e4ad3",
+    "reservation_id": "2288db19bed68bbfe0d9a1f65a2ae6f6cb4aabd0c8a7529a4a5a87bf5bda3ee3",
+    "sampling_repetitions": 1,
+    "seeds": [
+      42
+    ],
+    "training_manifest_id": "c3fdcd4572ef78edc2ce0a2ba0b96d370d523c1ba325a21fc5e7fc930d8ba47f",
+    "uncertainty_design": {
+      "confidence_level": 0.95,
+      "method": "paired_split_identity_cluster_percentile_v1",
+      "resamples": 2000,
+      "seed": 42
+    }
+  },
+  "status": "complete"
+}

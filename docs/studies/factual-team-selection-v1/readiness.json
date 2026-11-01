@@ -1,0 +1,67 @@
+{
+  "approval_required": [
+    "new narrowed capital scope and constructed negative candidates; labels and rubric",
+    "preparation execution permission for 16 calls/20 local generations/68 metadata GETs",
+    "metadata reservation witness and measurement freeze",
+    "proposed game settings before fitting"
+  ],
+  "attempt_observation_model_hash_passes": 34,
+  "costs_for_review_only": true,
+  "development": {
+    "examples": 2,
+    "groups": 1,
+    "negative": 1,
+    "positive": 1
+  },
+  "downloads": 0,
+  "excluded_existing_preparation_rows": 4,
+  "generation_timeouts_sum_seconds": 1200,
+  "held_out_evidence": false,
+  "historical_calibration_id": "1a2abc5663193e025f9c7e62805dbad5e9d6b720a1a6895b7f40e91f779ab992",
+  "historical_setup_matches_current": false,
+  "history": {
+    "examples": 2,
+    "groups": 1,
+    "negative": 1,
+    "positive": 1
+  },
+  "informative_contributors": "Potential evidence+semantic or evidence+confidence; cannot certify frozen informative weights before new history. Rule supplies no factual check for these questions.",
+  "local_generations_max": 20,
+  "local_metadata_gets_max": 68,
+  "new_collection_executed": false,
+  "new_index_jobs": 0,
+  "owner_blockers": [
+    "evidence/retrieval: three reproduced existing contract probe failures",
+    "offline research readiness: evidence gate remains until reviewed repair",
+    "study owner: proposed scope/labels/run/settings are unapproved",
+    "custodian: witness procedural reservation and freeze actual measurements",
+    "collector/calibration producer: fresh complete reports and sample-specific costs",
+    "history reputation producer: derive counts only from new labelled history"
+  ],
+  "paid_services": 0,
+  "passes": 1,
+  "policy_created": false,
+  "proposed_examples": 4,
+  "ready": false,
+  "request_validation_errors": [
+    {
+      "loc": [
+        "preparation_authorization"
+      ],
+      "msg": "Input should be a valid string",
+      "type": "string_type"
+    },
+    {
+      "loc": [
+        "final_test_reservation",
+        "custody_record"
+      ],
+      "msg": "Input should be a valid string",
+      "type": "string_type"
+    }
+  ],
+  "reserved_metadata_entries": 4,
+  "retries": 0,
+  "verifier_attempts": 16,
+  "warmups": 0
+}

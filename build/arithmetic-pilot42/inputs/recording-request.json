@@ -1,0 +1,4428 @@
+{
+  "version": "offline_recording_request_v1",
+  "intended_use": "pilot",
+  "study_approval": null,
+  "preparation_authorization": "User request: constructed 60-group labelled local pilot, 20/20/20, seed42; no final collection",
+  "cache_contract": "complete_team_independent_v1",
+  "randomness_control": "Split seed42; exact Fraction labels; eval-mode local embedding without sampling; explicit two CPU threads",
+  "execution_configuration_id": "87ce2958bb86d4bdd8a38c0460a5e608a55437465855ce66f410b636e7bd3b59",
+  "factory": "app.game.offline.recording_adapters:arithmetic_factory",
+  "expected_setup": null,
+  "final_test_reservation": {
+    "version": "final_test_reservation_v1",
+    "role": "final_test",
+    "dataset_id": "constructed-arithmetic-pilot42-final_test-v1",
+    "custody_record": "User-authorized seed42 constructed pilot; procedural holdout, no third-party custody",
+    "examples": [
+      {
+        "example_id": "arith-add-02-correct",
+        "split_identity": "arith-add-02",
+        "question_id": "arith-add-02",
+        "content_identity": "f0b3ea61569185395878e8c3c433ae6f5bf697f8fd8fe2200b831d62a2ea3bca",
+        "validation_id": "pilot42-final_test-arith-add-02-correct"
+      },
+      {
+        "example_id": "arith-add-02-incorrect",
+        "split_identity": "arith-add-02",
+        "question_id": "arith-add-02",
+        "content_identity": "94c72c5f97eb38d905f6a01b2dcf1e606de1ec9982236639b34cba013ca6e2ae",
+        "validation_id": "pilot42-final_test-arith-add-02-incorrect"
+      },
+      {
+        "example_id": "arith-add-03-correct",
+        "split_identity": "arith-add-03",
+        "question_id": "arith-add-03",
+        "content_identity": "c026a07ae60bc90131df94e20c036f88ce1b34d6dcb5b1d430d14b06d79dcf30",
+        "validation_id": "pilot42-final_test-arith-add-03-correct"
+      },
+      {
+        "example_id": "arith-add-03-incorrect",
+        "split_identity": "arith-add-03",
+        "question_id": "arith-add-03",
+        "content_identity": "deaae3f83ea9e4c84e701cf8fb97514607d59a7afd9e7d7054bfa3c1a0c76182",
+        "validation_id": "pilot42-final_test-arith-add-03-incorrect"
+      },
+      {
+        "example_id": "arith-add-06-correct",
+        "split_identity": "arith-add-06",
+        "question_id": "arith-add-06",
+        "content_identity": "adebaee389ba43fd1fd1f607dd413ead43e280a8937f268629522161e8f2f572",
+        "validation_id": "pilot42-final_test-arith-add-06-correct"
+      },
+      {
+        "example_id": "arith-add-06-incorrect",
+        "split_identity": "arith-add-06",
+        "question_id": "arith-add-06",
+        "content_identity": "6bb7a4f53fab8f504057d4e2f98a3415718cad64bff4d9bb55b237a6978d998d",
+        "validation_id": "pilot42-final_test-arith-add-06-incorrect"
+      },
+      {
+        "example_id": "arith-add-07-correct",
+        "split_identity": "arith-add-07",
+        "question_id": "arith-add-07",
+        "content_identity": "1dec6ff1d63a3e9c53529e779b7c5954bddc71db99e9c19523d77c7a880f62df",
+        "validation_id": "pilot42-final_test-arith-add-07-correct"
+      },
+      {
+        "example_id": "arith-add-07-incorrect",
+        "split_identity": "arith-add-07",
+        "question_id": "arith-add-07",
+        "content_identity": "94771e06227bf61cf26325546237de1e6e87d0b5c95b92973298008f7f3df6d5",
+        "validation_id": "pilot42-final_test-arith-add-07-incorrect"
+      },
+      {
+        "example_id": "arith-add-08-correct",
+        "split_identity": "arith-add-08",
+        "question_id": "arith-add-08",
+        "content_identity": "24ac1f58344bf19b72f38ea2420f992f6b33256402a1742ce0662e5a7e1eef87",
+        "validation_id": "pilot42-final_test-arith-add-08-correct"
+      },
+      {
+        "example_id": "arith-add-08-incorrect",
+        "split_identity": "arith-add-08",
+        "question_id": "arith-add-08",
+        "content_identity": "71d3348b5ae7668628fcda37613a316280a8e00bd21d560fd1c78f3377f4aa0b",
+        "validation_id": "pilot42-final_test-arith-add-08-incorrect"
+      },
+      {
+        "example_id": "arith-add-09-correct",
+        "split_identity": "arith-add-09",
+        "question_id": "arith-add-09",
+        "content_identity": "81486f571b0e28f3025f52efc800acd990a8cdd2c9df8684efa10e1742235cc7",
+        "validation_id": "pilot42-final_test-arith-add-09-correct"
+      },
+      {
+        "example_id": "arith-add-09-incorrect",
+        "split_identity": "arith-add-09",
+        "question_id": "arith-add-09",
+        "content_identity": "f86bf9ca1f4565eaf8d6d416e358a1f563e2bc3dfcb475dfebee796c1d059f41",
+        "validation_id": "pilot42-final_test-arith-add-09-incorrect"
+      },
+      {
+        "example_id": "arith-add-14-correct",
+        "split_identity": "arith-add-14",
+        "question_id": "arith-add-14",
+        "content_identity": "a7c21649641a81f3694c7ecca65c4523b876e0330ad502e7db02275c2174bb45",
+        "validation_id": "pilot42-final_test-arith-add-14-correct"
+      },
+      {
+        "example_id": "arith-add-14-incorrect",
+        "split_identity": "arith-add-14",
+        "question_id": "arith-add-14",
+        "content_identity": "33f3d2f503188d3fc909ce4f8e1fd800d2182888ff0a82259c5f082289295595",
+        "validation_id": "pilot42-final_test-arith-add-14-incorrect"
+      },
+      {
+        "example_id": "arith-add-15-correct",
+        "split_identity": "arith-add-15",
+        "question_id": "arith-add-15",
+        "content_identity": "78eac93051a0fe5c13ccc2241763333b77abd6c09835669032046eeda50ada0d",
+        "validation_id": "pilot42-final_test-arith-add-15-correct"
+      },
+      {
+        "example_id": "arith-add-15-incorrect",
+        "split_identity": "arith-add-15",
+        "question_id": "arith-add-15",
+        "content_identity": "8f68c7fd0cf51780a61784f32f026656ad7811d8b314c4c76f75dab7d6436b02",
+        "validation_id": "pilot42-final_test-arith-add-15-incorrect"
+      },
+      {
+        "example_id": "arith-divide-02-correct",
+        "split_identity": "arith-divide-02",
+        "question_id": "arith-divide-02",
+        "content_identity": "c278943f8c432c2c6658eeee2da63c40070121a9d9aeb643d2473585e1dd9528",
+        "validation_id": "pilot42-final_test-arith-divide-02-correct"
+      },
+      {
+        "example_id": "arith-divide-02-incorrect",
+        "split_identity": "arith-divide-02",
+        "question_id": "arith-divide-02",
+        "content_identity": "c3b5094567883ee941296cfa91d2643569fbf15ab9f64259e12ec04c17dff774",
+        "validation_id": "pilot42-final_test-arith-divide-02-incorrect"
+      },
+      {
+        "example_id": "arith-divide-03-correct",
+        "split_identity": "arith-divide-03",
+        "question_id": "arith-divide-03",
+        "content_identity": "dfcefe1cb0e8f55d65db10badbefb5e7900474f3c8c4aa18982ddd6d7d81740b",
+        "validation_id": "pilot42-final_test-arith-divide-03-correct"
+      },
+      {
+        "example_id": "arith-divide-03-incorrect",
+        "split_identity": "arith-divide-03",
+        "question_id": "arith-divide-03",
+        "content_identity": "52add7b8a607bfb46a04ad714c9742252cb1bcca54026adb4f52d58884bbff22",
+        "validation_id": "pilot42-final_test-arith-divide-03-incorrect"
+      },
+      {
+        "example_id": "arith-divide-07-correct",
+        "split_identity": "arith-divide-07",
+        "question_id": "arith-divide-07",
+        "content_identity": "91b43ca20b24798f4914d312c91d94b8afe281bcea9379196eaf1d7ccd04f090",
+        "validation_id": "pilot42-final_test-arith-divide-07-correct"
+      },
+      {
+        "example_id": "arith-divide-07-incorrect",
+        "split_identity": "arith-divide-07",
+        "question_id": "arith-divide-07",
+        "content_identity": "d081991ccd86a39064ad32f5bc899ab94328cc510e2992ca571258c5932a0aa5",
+        "validation_id": "pilot42-final_test-arith-divide-07-incorrect"
+      },
+      {
+        "example_id": "arith-divide-12-correct",
+        "split_identity": "arith-divide-12",
+        "question_id": "arith-divide-12",
+        "content_identity": "34689e53f18725930da6ed4437e7dc850ee7e8c2580ada82061b2eda17f805eb",
+        "validation_id": "pilot42-final_test-arith-divide-12-correct"
+      },
+      {
+        "example_id": "arith-divide-12-incorrect",
+        "split_identity": "arith-divide-12",
+        "question_id": "arith-divide-12",
+        "content_identity": "b4f4d06f8f604bb402f52c79c8fc98c733659831c54a8f52780b42214ab778f3",
+        "validation_id": "pilot42-final_test-arith-divide-12-incorrect"
+      },
+      {
+        "example_id": "arith-divide-13-correct",
+        "split_identity": "arith-divide-13",
+        "question_id": "arith-divide-13",
+        "content_identity": "8d941e8e54aa78d158210f3acc01a2430eee154b5f05e1ad959ac37ea35d56b3",
+        "validation_id": "pilot42-final_test-arith-divide-13-correct"
+      },
+      {
+        "example_id": "arith-divide-13-incorrect",
+        "split_identity": "arith-divide-13",
+        "question_id": "arith-divide-13",
+        "content_identity": "33c502a88d6aa346efb001293d8c5a20bacbd5757e1200dff15ca56695d6b909",
+        "validation_id": "pilot42-final_test-arith-divide-13-incorrect"
+      },
+      {
+        "example_id": "arith-multiply-05-correct",
+        "split_identity": "arith-multiply-05",
+        "question_id": "arith-multiply-05",
+        "content_identity": "248bba44ce7fae638dbec44f94176d03a1f139e950c2b8e5fadfdcae1a983ae8",
+        "validation_id": "pilot42-final_test-arith-multiply-05-correct"
+      },
+      {
+        "example_id": "arith-multiply-05-incorrect",
+        "split_identity": "arith-multiply-05",
+        "question_id": "arith-multiply-05",
+        "content_identity": "e75ac707f10c55d24ff5a27aa34992e85c400d6a10e74df9033c4d27f9028de7",
+        "validation_id": "pilot42-final_test-arith-multiply-05-incorrect"
+      },
+      {
+        "example_id": "arith-multiply-08-correct",
+        "split_identity": "arith-multiply-08",
+        "question_id": "arith-multiply-08",
+        "content_identity": "0f6a5df9a02402426caded93a17837636a9b8a970d9dc43bd3d41c51318b79a3",
+        "validation_id": "pilot42-final_test-arith-multiply-08-correct"
+      },
+      {
+        "example_id": "arith-multiply-08-incorrect",
+        "split_identity": "arith-multiply-08",
+        "question_id": "arith-multiply-08",
+        "content_identity": "a45947a17cef25497fe1332bf135c4042939654f89476b8eb4f8b8d2915a2daa",
+        "validation_id": "pilot42-final_test-arith-multiply-08-incorrect"
+      },
+      {
+        "example_id": "arith-multiply-11-correct",
+        "split_identity": "arith-multiply-11",
+        "question_id": "arith-multiply-11",
+        "content_identity": "75d55ef85e41a99507227168d81dbd5f450e7f5c889d39e20f11ca5189573ce8",
+        "validation_id": "pilot42-final_test-arith-multiply-11-correct"
+      },
+      {
+        "example_id": "arith-multiply-11-incorrect",
+        "split_identity": "arith-multiply-11",
+        "question_id": "arith-multiply-11",
+        "content_identity": "7d690d0bc23f5a42f48adf3de6e9b58eed00c0e85b0b8d5ca8a78e43353c3802",
+        "validation_id": "pilot42-final_test-arith-multiply-11-incorrect"
+      },
+      {
+        "example_id": "arith-multiply-14-correct",
+        "split_identity": "arith-multiply-14",
+        "question_id": "arith-multiply-14",
+        "content_identity": "64f2325afb06ce9096d8199f9968335fa8d41fe592378a24c6907d60f37cf6d5",
+        "validation_id": "pilot42-final_test-arith-multiply-14-correct"
+      },
+      {
+        "example_id": "arith-multiply-14-incorrect",
+        "split_identity": "arith-multiply-14",
+        "question_id": "arith-multiply-14",
+        "content_identity": "6511582ba2f897aeff4c86684528dccba68ee996a937d80f96cfee8010644474",
+        "validation_id": "pilot42-final_test-arith-multiply-14-incorrect"
+      },
+      {
+        "example_id": "arith-subtract-01-correct",
+        "split_identity": "arith-subtract-01",
+        "question_id": "arith-subtract-01",
+        "content_identity": "290aa5b866e5ab1ef491199411739c99919739c54185aff329238afcab3ddce6",
+        "validation_id": "pilot42-final_test-arith-subtract-01-correct"
+      },
+      {
+        "example_id": "arith-subtract-01-incorrect",
+        "split_identity": "arith-subtract-01",
+        "question_id": "arith-subtract-01",
+        "content_identity": "0ecbb2fc6c6fa3955a2f489b7ad94eb269f31e04e50393bd4fb779b1859558ed",
+        "validation_id": "pilot42-final_test-arith-subtract-01-incorrect"
+      },
+      {
+        "example_id": "arith-subtract-03-correct",
+        "split_identity": "arith-subtract-03",
+        "question_id": "arith-subtract-03",
+        "content_identity": "2a12f1391e43dbca2266ad8ad556a6028158bcaadeef604967c3f6975c639f75",
+        "validation_id": "pilot42-final_test-arith-subtract-03-correct"
+      },
+      {
+        "example_id": "arith-subtract-03-incorrect",
+        "split_identity": "arith-subtract-03",
+        "question_id": "arith-subtract-03",
+        "content_identity": "bc874ea1ab95a53c03f6a3697d3e3a37ec03c12b92c8284c7439c970ed7c2074",
+        "validation_id": "pilot42-final_test-arith-subtract-03-incorrect"
+      },
+      {
+        "example_id": "arith-subtract-13-correct",
+        "split_identity": "arith-subtract-13",
+        "question_id": "arith-subtract-13",
+        "content_identity": "971a44e339c7e0fae20fc52e62bbf0b85679b2a3f797afeab1247c48c21d7a7b",
+        "validation_id": "pilot42-final_test-arith-subtract-13-correct"
+      },
+      {
+        "example_id": "arith-subtract-13-incorrect",
+        "split_identity": "arith-subtract-13",
+        "question_id": "arith-subtract-13",
+        "content_identity": "63d10318914e79e9cee86fdee9e7f3225f4b01af380455f94000c3de2718a89c",
+        "validation_id": "pilot42-final_test-arith-subtract-13-incorrect"
+      }
+    ]
+  },
+  "permitted_datasets": [
+    [
+      "history",
+      "constructed-arithmetic-pilot42-history-v1"
+    ],
+    [
+      "development",
+      "constructed-arithmetic-pilot42-development-v1"
+    ]
+  ],
+  "candidates": [
+    {
+      "verifier_name": "rule",
+      "adapter": "rule_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ]
+      }
+    },
+    {
+      "verifier_name": "semantic",
+      "adapter": "semantic_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "requires_reference": true,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "example_id": "arith-multiply-09-correct",
+      "split_identity": "arith-multiply-09",
+      "question_id": "arith-multiply-09",
+      "run_id": "pilot42-history-arith-multiply-09-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 11 * 35?",
+      "answer": "385",
+      "reference": "Exact arithmetic reference: 11 * 35 = 385.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 385, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 385, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [11, 35], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-09-incorrect",
+      "split_identity": "arith-multiply-09",
+      "question_id": "arith-multiply-09",
+      "run_id": "pilot42-history-arith-multiply-09-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 11 * 35?",
+      "answer": "386",
+      "reference": "Exact arithmetic reference: 11 * 35 = 385.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 386, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 385, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [11, 35], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-09-correct",
+      "split_identity": "arith-subtract-09",
+      "question_id": "arith-subtract-09",
+      "run_id": "pilot42-history-arith-subtract-09-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 156 - 35?",
+      "answer": "121",
+      "reference": "Exact arithmetic reference: 156 - 35 = 121.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 121, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 121, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [156, 35], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-09-incorrect",
+      "split_identity": "arith-subtract-09",
+      "question_id": "arith-subtract-09",
+      "run_id": "pilot42-history-arith-subtract-09-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 156 - 35?",
+      "answer": "122",
+      "reference": "Exact arithmetic reference: 156 - 35 = 121.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 122, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 121, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [156, 35], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-10-correct",
+      "split_identity": "arith-divide-10",
+      "question_id": "arith-divide-10",
+      "run_id": "pilot42-history-arith-divide-10-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 29 / 4?",
+      "answer": "7.25",
+      "reference": "Exact arithmetic reference: 29 / 4 = 7.25.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 4, \"candidate_numerator\": 29, \"equality\": true, \"expected_denominator\": 4, \"expected_numerator\": 29, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [29, 4], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-10-incorrect",
+      "split_identity": "arith-divide-10",
+      "question_id": "arith-divide-10",
+      "run_id": "pilot42-history-arith-divide-10-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 29 / 4?",
+      "answer": "8.25",
+      "reference": "Exact arithmetic reference: 29 / 4 = 7.25.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 4, \"candidate_numerator\": 33, \"equality\": false, \"expected_denominator\": 4, \"expected_numerator\": 29, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [29, 4], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-12-correct",
+      "split_identity": "arith-add-12",
+      "question_id": "arith-add-12",
+      "run_id": "pilot42-history-arith-add-12-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 50 + 26?",
+      "answer": "76",
+      "reference": "Exact arithmetic reference: 50 + 26 = 76.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 76, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 76, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [50, 26], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-12-incorrect",
+      "split_identity": "arith-add-12",
+      "question_id": "arith-add-12",
+      "run_id": "pilot42-history-arith-add-12-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 50 + 26?",
+      "answer": "77",
+      "reference": "Exact arithmetic reference: 50 + 26 = 76.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 77, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 76, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [50, 26], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-02-correct",
+      "split_identity": "arith-subtract-02",
+      "question_id": "arith-subtract-02",
+      "run_id": "pilot42-history-arith-subtract-02-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 107 - 14?",
+      "answer": "93",
+      "reference": "Exact arithmetic reference: 107 - 14 = 93.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 93, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 93, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [107, 14], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-02-incorrect",
+      "split_identity": "arith-subtract-02",
+      "question_id": "arith-subtract-02",
+      "run_id": "pilot42-history-arith-subtract-02-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 107 - 14?",
+      "answer": "94",
+      "reference": "Exact arithmetic reference: 107 - 14 = 93.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 94, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 93, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [107, 14], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-06-correct",
+      "split_identity": "arith-subtract-06",
+      "question_id": "arith-subtract-06",
+      "run_id": "pilot42-history-arith-subtract-06-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 135 - 26?",
+      "answer": "109",
+      "reference": "Exact arithmetic reference: 135 - 26 = 109.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 109, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 109, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [135, 26], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-06-incorrect",
+      "split_identity": "arith-subtract-06",
+      "question_id": "arith-subtract-06",
+      "run_id": "pilot42-history-arith-subtract-06-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 135 - 26?",
+      "answer": "110",
+      "reference": "Exact arithmetic reference: 135 - 26 = 109.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 110, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 109, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [135, 26], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-11-correct",
+      "split_identity": "arith-divide-11",
+      "question_id": "arith-divide-11",
+      "run_id": "pilot42-history-arith-divide-11-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 31 / 5?",
+      "answer": "6.2",
+      "reference": "Exact arithmetic reference: 31 / 5 = 6.2.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 5, \"candidate_numerator\": 31, \"equality\": true, \"expected_denominator\": 5, \"expected_numerator\": 31, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [31, 5], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-11-incorrect",
+      "split_identity": "arith-divide-11",
+      "question_id": "arith-divide-11",
+      "run_id": "pilot42-history-arith-divide-11-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 31 / 5?",
+      "answer": "7.2",
+      "reference": "Exact arithmetic reference: 31 / 5 = 6.2.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 5, \"candidate_numerator\": 36, \"equality\": false, \"expected_denominator\": 5, \"expected_numerator\": 31, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [31, 5], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-14-correct",
+      "split_identity": "arith-divide-14",
+      "question_id": "arith-divide-14",
+      "run_id": "pilot42-history-arith-divide-14-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 37 / 4?",
+      "answer": "9.25",
+      "reference": "Exact arithmetic reference: 37 / 4 = 9.25.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 4, \"candidate_numerator\": 37, \"equality\": true, \"expected_denominator\": 4, \"expected_numerator\": 37, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [37, 4], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-14-incorrect",
+      "split_identity": "arith-divide-14",
+      "question_id": "arith-divide-14",
+      "run_id": "pilot42-history-arith-divide-14-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 37 / 4?",
+      "answer": "10.25",
+      "reference": "Exact arithmetic reference: 37 / 4 = 9.25.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 4, \"candidate_numerator\": 41, \"equality\": false, \"expected_denominator\": 4, \"expected_numerator\": 37, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [37, 4], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-04-correct",
+      "split_identity": "arith-multiply-04",
+      "question_id": "arith-multiply-04",
+      "run_id": "pilot42-history-arith-multiply-04-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 6 * 25?",
+      "answer": "150",
+      "reference": "Exact arithmetic reference: 6 * 25 = 150.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 150, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 150, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [6, 25], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-04-incorrect",
+      "split_identity": "arith-multiply-04",
+      "question_id": "arith-multiply-04",
+      "run_id": "pilot42-history-arith-multiply-04-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 6 * 25?",
+      "answer": "151",
+      "reference": "Exact arithmetic reference: 6 * 25 = 150.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 151, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 150, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [6, 25], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-05-correct",
+      "split_identity": "arith-subtract-05",
+      "question_id": "arith-subtract-05",
+      "run_id": "pilot42-history-arith-subtract-05-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 128 - 23?",
+      "answer": "105",
+      "reference": "Exact arithmetic reference: 128 - 23 = 105.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 105, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 105, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [128, 23], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-05-incorrect",
+      "split_identity": "arith-subtract-05",
+      "question_id": "arith-subtract-05",
+      "run_id": "pilot42-history-arith-subtract-05-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 128 - 23?",
+      "answer": "106",
+      "reference": "Exact arithmetic reference: 128 - 23 = 105.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 106, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 105, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [128, 23], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-10-correct",
+      "split_identity": "arith-add-10",
+      "question_id": "arith-add-10",
+      "run_id": "pilot42-history-arith-add-10-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 44 + 22?",
+      "answer": "66",
+      "reference": "Exact arithmetic reference: 44 + 22 = 66.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 66, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 66, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [44, 22], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-10-incorrect",
+      "split_identity": "arith-add-10",
+      "question_id": "arith-add-10",
+      "run_id": "pilot42-history-arith-add-10-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 44 + 22?",
+      "answer": "67",
+      "reference": "Exact arithmetic reference: 44 + 22 = 66.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 67, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 66, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [44, 22], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-07-correct",
+      "split_identity": "arith-multiply-07",
+      "question_id": "arith-multiply-07",
+      "run_id": "pilot42-history-arith-multiply-07-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 9 * 31?",
+      "answer": "279",
+      "reference": "Exact arithmetic reference: 9 * 31 = 279.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 279, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 279, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [9, 31], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-07-incorrect",
+      "split_identity": "arith-multiply-07",
+      "question_id": "arith-multiply-07",
+      "run_id": "pilot42-history-arith-multiply-07-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 9 * 31?",
+      "answer": "280",
+      "reference": "Exact arithmetic reference: 9 * 31 = 279.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 280, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 279, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [9, 31], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-02-correct",
+      "split_identity": "arith-multiply-02",
+      "question_id": "arith-multiply-02",
+      "run_id": "pilot42-history-arith-multiply-02-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 4 * 21?",
+      "answer": "84",
+      "reference": "Exact arithmetic reference: 4 * 21 = 84.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 84, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 84, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [4, 21], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-02-incorrect",
+      "split_identity": "arith-multiply-02",
+      "question_id": "arith-multiply-02",
+      "run_id": "pilot42-history-arith-multiply-02-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 4 * 21?",
+      "answer": "85",
+      "reference": "Exact arithmetic reference: 4 * 21 = 84.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 85, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 84, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [4, 21], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-01-correct",
+      "split_identity": "arith-divide-01",
+      "question_id": "arith-divide-01",
+      "run_id": "pilot42-history-arith-divide-01-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 11 / 2?",
+      "answer": "5.5",
+      "reference": "Exact arithmetic reference: 11 / 2 = 5.5.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 2, \"candidate_numerator\": 11, \"equality\": true, \"expected_denominator\": 2, \"expected_numerator\": 11, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [11, 2], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-01-incorrect",
+      "split_identity": "arith-divide-01",
+      "question_id": "arith-divide-01",
+      "run_id": "pilot42-history-arith-divide-01-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 11 / 2?",
+      "answer": "6.5",
+      "reference": "Exact arithmetic reference: 11 / 2 = 5.5.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 2, \"candidate_numerator\": 13, \"equality\": false, \"expected_denominator\": 2, \"expected_numerator\": 11, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [11, 2], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-01-correct",
+      "split_identity": "arith-multiply-01",
+      "question_id": "arith-multiply-01",
+      "run_id": "pilot42-history-arith-multiply-01-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 3 * 19?",
+      "answer": "57",
+      "reference": "Exact arithmetic reference: 3 * 19 = 57.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 57, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 57, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [3, 19], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-01-incorrect",
+      "split_identity": "arith-multiply-01",
+      "question_id": "arith-multiply-01",
+      "run_id": "pilot42-history-arith-multiply-01-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 3 * 19?",
+      "answer": "58",
+      "reference": "Exact arithmetic reference: 3 * 19 = 57.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 58, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 57, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [3, 19], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-05-correct",
+      "split_identity": "arith-divide-05",
+      "question_id": "arith-divide-05",
+      "run_id": "pilot42-history-arith-divide-05-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 19 / 2?",
+      "answer": "9.5",
+      "reference": "Exact arithmetic reference: 19 / 2 = 9.5.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 2, \"candidate_numerator\": 19, \"equality\": true, \"expected_denominator\": 2, \"expected_numerator\": 19, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [19, 2], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-05-incorrect",
+      "split_identity": "arith-divide-05",
+      "question_id": "arith-divide-05",
+      "run_id": "pilot42-history-arith-divide-05-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 19 / 2?",
+      "answer": "10.5",
+      "reference": "Exact arithmetic reference: 19 / 2 = 9.5.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 2, \"candidate_numerator\": 21, \"equality\": false, \"expected_denominator\": 2, \"expected_numerator\": 19, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [19, 2], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-04-correct",
+      "split_identity": "arith-add-04",
+      "question_id": "arith-add-04",
+      "run_id": "pilot42-history-arith-add-04-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 26 + 10?",
+      "answer": "36",
+      "reference": "Exact arithmetic reference: 26 + 10 = 36.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 36, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 36, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [26, 10], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-04-incorrect",
+      "split_identity": "arith-add-04",
+      "question_id": "arith-add-04",
+      "run_id": "pilot42-history-arith-add-04-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 26 + 10?",
+      "answer": "37",
+      "reference": "Exact arithmetic reference: 26 + 10 = 36.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 37, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 36, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [26, 10], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-07-correct",
+      "split_identity": "arith-subtract-07",
+      "question_id": "arith-subtract-07",
+      "run_id": "pilot42-history-arith-subtract-07-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 142 - 29?",
+      "answer": "113",
+      "reference": "Exact arithmetic reference: 142 - 29 = 113.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 113, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 113, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [142, 29], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-07-incorrect",
+      "split_identity": "arith-subtract-07",
+      "question_id": "arith-subtract-07",
+      "run_id": "pilot42-history-arith-subtract-07-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 142 - 29?",
+      "answer": "114",
+      "reference": "Exact arithmetic reference: 142 - 29 = 113.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 114, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 113, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [142, 29], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-06-correct",
+      "split_identity": "arith-divide-06",
+      "question_id": "arith-divide-06",
+      "run_id": "pilot42-history-arith-divide-06-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 21 / 4?",
+      "answer": "5.25",
+      "reference": "Exact arithmetic reference: 21 / 4 = 5.25.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 4, \"candidate_numerator\": 21, \"equality\": true, \"expected_denominator\": 4, \"expected_numerator\": 21, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [21, 4], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-06-incorrect",
+      "split_identity": "arith-divide-06",
+      "question_id": "arith-divide-06",
+      "run_id": "pilot42-history-arith-divide-06-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 21 / 4?",
+      "answer": "6.25",
+      "reference": "Exact arithmetic reference: 21 / 4 = 5.25.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 4, \"candidate_numerator\": 25, \"equality\": false, \"expected_denominator\": 4, \"expected_numerator\": 21, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [21, 4], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-05-correct",
+      "split_identity": "arith-add-05",
+      "question_id": "arith-add-05",
+      "run_id": "pilot42-history-arith-add-05-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 29 + 12?",
+      "answer": "41",
+      "reference": "Exact arithmetic reference: 29 + 12 = 41.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 41, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 41, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [29, 12], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-05-incorrect",
+      "split_identity": "arith-add-05",
+      "question_id": "arith-add-05",
+      "run_id": "pilot42-history-arith-add-05-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-history-v1",
+      "role": "history",
+      "purpose": "calibration",
+      "question": "What is 29 + 12?",
+      "answer": "42",
+      "reference": "Exact arithmetic reference: 29 + 12 = 41.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 42, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 41, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [29, 12], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-15-correct",
+      "split_identity": "arith-subtract-15",
+      "question_id": "arith-subtract-15",
+      "run_id": "pilot42-development-arith-subtract-15-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 198 - 53?",
+      "answer": "145",
+      "reference": "Exact arithmetic reference: 198 - 53 = 145.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 145, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 145, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [198, 53], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-15-incorrect",
+      "split_identity": "arith-subtract-15",
+      "question_id": "arith-subtract-15",
+      "run_id": "pilot42-development-arith-subtract-15-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 198 - 53?",
+      "answer": "146",
+      "reference": "Exact arithmetic reference: 198 - 53 = 145.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 146, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 145, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [198, 53], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-11-correct",
+      "split_identity": "arith-add-11",
+      "question_id": "arith-add-11",
+      "run_id": "pilot42-development-arith-add-11-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 47 + 24?",
+      "answer": "71",
+      "reference": "Exact arithmetic reference: 47 + 24 = 71.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 71, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 71, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [47, 24], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-11-incorrect",
+      "split_identity": "arith-add-11",
+      "question_id": "arith-add-11",
+      "run_id": "pilot42-development-arith-add-11-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 47 + 24?",
+      "answer": "72",
+      "reference": "Exact arithmetic reference: 47 + 24 = 71.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 72, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 71, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [47, 24], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-15-correct",
+      "split_identity": "arith-divide-15",
+      "question_id": "arith-divide-15",
+      "run_id": "pilot42-development-arith-divide-15-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 39 / 5?",
+      "answer": "7.8",
+      "reference": "Exact arithmetic reference: 39 / 5 = 7.8.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 5, \"candidate_numerator\": 39, \"equality\": true, \"expected_denominator\": 5, \"expected_numerator\": 39, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [39, 5], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-15-incorrect",
+      "split_identity": "arith-divide-15",
+      "question_id": "arith-divide-15",
+      "run_id": "pilot42-development-arith-divide-15-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 39 / 5?",
+      "answer": "8.8",
+      "reference": "Exact arithmetic reference: 39 / 5 = 7.8.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 5, \"candidate_numerator\": 44, \"equality\": false, \"expected_denominator\": 5, \"expected_numerator\": 39, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [39, 5], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-08-correct",
+      "split_identity": "arith-subtract-08",
+      "question_id": "arith-subtract-08",
+      "run_id": "pilot42-development-arith-subtract-08-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 149 - 32?",
+      "answer": "117",
+      "reference": "Exact arithmetic reference: 149 - 32 = 117.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 117, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 117, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [149, 32], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-08-incorrect",
+      "split_identity": "arith-subtract-08",
+      "question_id": "arith-subtract-08",
+      "run_id": "pilot42-development-arith-subtract-08-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 149 - 32?",
+      "answer": "118",
+      "reference": "Exact arithmetic reference: 149 - 32 = 117.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 118, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 117, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [149, 32], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-12-correct",
+      "split_identity": "arith-multiply-12",
+      "question_id": "arith-multiply-12",
+      "run_id": "pilot42-development-arith-multiply-12-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 14 * 41?",
+      "answer": "574",
+      "reference": "Exact arithmetic reference: 14 * 41 = 574.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 574, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 574, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [14, 41], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-12-incorrect",
+      "split_identity": "arith-multiply-12",
+      "question_id": "arith-multiply-12",
+      "run_id": "pilot42-development-arith-multiply-12-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 14 * 41?",
+      "answer": "575",
+      "reference": "Exact arithmetic reference: 14 * 41 = 574.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 575, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 574, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [14, 41], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-10-correct",
+      "split_identity": "arith-subtract-10",
+      "question_id": "arith-subtract-10",
+      "run_id": "pilot42-development-arith-subtract-10-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 163 - 38?",
+      "answer": "125",
+      "reference": "Exact arithmetic reference: 163 - 38 = 125.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 125, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 125, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [163, 38], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-10-incorrect",
+      "split_identity": "arith-subtract-10",
+      "question_id": "arith-subtract-10",
+      "run_id": "pilot42-development-arith-subtract-10-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 163 - 38?",
+      "answer": "126",
+      "reference": "Exact arithmetic reference: 163 - 38 = 125.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 126, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 125, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [163, 38], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-01-correct",
+      "split_identity": "arith-add-01",
+      "question_id": "arith-add-01",
+      "run_id": "pilot42-development-arith-add-01-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 17 + 4?",
+      "answer": "21",
+      "reference": "Exact arithmetic reference: 17 + 4 = 21.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 21, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 21, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [17, 4], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-01-incorrect",
+      "split_identity": "arith-add-01",
+      "question_id": "arith-add-01",
+      "run_id": "pilot42-development-arith-add-01-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 17 + 4?",
+      "answer": "22",
+      "reference": "Exact arithmetic reference: 17 + 4 = 21.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 22, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 21, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [17, 4], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-15-correct",
+      "split_identity": "arith-multiply-15",
+      "question_id": "arith-multiply-15",
+      "run_id": "pilot42-development-arith-multiply-15-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 17 * 47?",
+      "answer": "799",
+      "reference": "Exact arithmetic reference: 17 * 47 = 799.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 799, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 799, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [17, 47], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-15-incorrect",
+      "split_identity": "arith-multiply-15",
+      "question_id": "arith-multiply-15",
+      "run_id": "pilot42-development-arith-multiply-15-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 17 * 47?",
+      "answer": "800",
+      "reference": "Exact arithmetic reference: 17 * 47 = 799.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 800, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 799, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [17, 47], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-11-correct",
+      "split_identity": "arith-subtract-11",
+      "question_id": "arith-subtract-11",
+      "run_id": "pilot42-development-arith-subtract-11-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 170 - 41?",
+      "answer": "129",
+      "reference": "Exact arithmetic reference: 170 - 41 = 129.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 129, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 129, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [170, 41], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-11-incorrect",
+      "split_identity": "arith-subtract-11",
+      "question_id": "arith-subtract-11",
+      "run_id": "pilot42-development-arith-subtract-11-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 170 - 41?",
+      "answer": "130",
+      "reference": "Exact arithmetic reference: 170 - 41 = 129.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 130, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 129, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [170, 41], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-08-correct",
+      "split_identity": "arith-divide-08",
+      "question_id": "arith-divide-08",
+      "run_id": "pilot42-development-arith-divide-08-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 25 / 8?",
+      "answer": "3.125",
+      "reference": "Exact arithmetic reference: 25 / 8 = 3.125.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 8, \"candidate_numerator\": 25, \"equality\": true, \"expected_denominator\": 8, \"expected_numerator\": 25, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [25, 8], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-08-incorrect",
+      "split_identity": "arith-divide-08",
+      "question_id": "arith-divide-08",
+      "run_id": "pilot42-development-arith-divide-08-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 25 / 8?",
+      "answer": "4.125",
+      "reference": "Exact arithmetic reference: 25 / 8 = 3.125.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 8, \"candidate_numerator\": 33, \"equality\": false, \"expected_denominator\": 8, \"expected_numerator\": 25, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [25, 8], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-04-correct",
+      "split_identity": "arith-subtract-04",
+      "question_id": "arith-subtract-04",
+      "run_id": "pilot42-development-arith-subtract-04-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 121 - 20?",
+      "answer": "101",
+      "reference": "Exact arithmetic reference: 121 - 20 = 101.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 101, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 101, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [121, 20], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-04-incorrect",
+      "split_identity": "arith-subtract-04",
+      "question_id": "arith-subtract-04",
+      "run_id": "pilot42-development-arith-subtract-04-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 121 - 20?",
+      "answer": "102",
+      "reference": "Exact arithmetic reference: 121 - 20 = 101.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 102, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 101, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [121, 20], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-14-correct",
+      "split_identity": "arith-subtract-14",
+      "question_id": "arith-subtract-14",
+      "run_id": "pilot42-development-arith-subtract-14-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 191 - 50?",
+      "answer": "141",
+      "reference": "Exact arithmetic reference: 191 - 50 = 141.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 141, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 141, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [191, 50], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-14-incorrect",
+      "split_identity": "arith-subtract-14",
+      "question_id": "arith-subtract-14",
+      "run_id": "pilot42-development-arith-subtract-14-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 191 - 50?",
+      "answer": "142",
+      "reference": "Exact arithmetic reference: 191 - 50 = 141.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 142, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 141, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [191, 50], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-10-correct",
+      "split_identity": "arith-multiply-10",
+      "question_id": "arith-multiply-10",
+      "run_id": "pilot42-development-arith-multiply-10-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 12 * 37?",
+      "answer": "444",
+      "reference": "Exact arithmetic reference: 12 * 37 = 444.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 444, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 444, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [12, 37], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-10-incorrect",
+      "split_identity": "arith-multiply-10",
+      "question_id": "arith-multiply-10",
+      "run_id": "pilot42-development-arith-multiply-10-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 12 * 37?",
+      "answer": "445",
+      "reference": "Exact arithmetic reference: 12 * 37 = 444.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 445, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 444, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [12, 37], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-12-correct",
+      "split_identity": "arith-subtract-12",
+      "question_id": "arith-subtract-12",
+      "run_id": "pilot42-development-arith-subtract-12-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 177 - 44?",
+      "answer": "133",
+      "reference": "Exact arithmetic reference: 177 - 44 = 133.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 133, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 133, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [177, 44], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-subtract-12-incorrect",
+      "split_identity": "arith-subtract-12",
+      "question_id": "arith-subtract-12",
+      "run_id": "pilot42-development-arith-subtract-12-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 177 - 44?",
+      "answer": "134",
+      "reference": "Exact arithmetic reference: 177 - 44 = 133.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 134, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 133, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [177, 44], \"operator\": \"-\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-04-correct",
+      "split_identity": "arith-divide-04",
+      "question_id": "arith-divide-04",
+      "run_id": "pilot42-development-arith-divide-04-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 17 / 8?",
+      "answer": "2.125",
+      "reference": "Exact arithmetic reference: 17 / 8 = 2.125.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 8, \"candidate_numerator\": 17, \"equality\": true, \"expected_denominator\": 8, \"expected_numerator\": 17, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [17, 8], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-04-incorrect",
+      "split_identity": "arith-divide-04",
+      "question_id": "arith-divide-04",
+      "run_id": "pilot42-development-arith-divide-04-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 17 / 8?",
+      "answer": "3.125",
+      "reference": "Exact arithmetic reference: 17 / 8 = 2.125.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 8, \"candidate_numerator\": 25, \"equality\": false, \"expected_denominator\": 8, \"expected_numerator\": 17, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [17, 8], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-13-correct",
+      "split_identity": "arith-add-13",
+      "question_id": "arith-add-13",
+      "run_id": "pilot42-development-arith-add-13-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 53 + 28?",
+      "answer": "81",
+      "reference": "Exact arithmetic reference: 53 + 28 = 81.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 81, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 81, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [53, 28], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-add-13-incorrect",
+      "split_identity": "arith-add-13",
+      "question_id": "arith-add-13",
+      "run_id": "pilot42-development-arith-add-13-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 53 + 28?",
+      "answer": "82",
+      "reference": "Exact arithmetic reference: 53 + 28 = 81.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 82, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 81, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [53, 28], \"operator\": \"+\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-06-correct",
+      "split_identity": "arith-multiply-06",
+      "question_id": "arith-multiply-06",
+      "run_id": "pilot42-development-arith-multiply-06-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 8 * 29?",
+      "answer": "232",
+      "reference": "Exact arithmetic reference: 8 * 29 = 232.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 232, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 232, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [8, 29], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-06-incorrect",
+      "split_identity": "arith-multiply-06",
+      "question_id": "arith-multiply-06",
+      "run_id": "pilot42-development-arith-multiply-06-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 8 * 29?",
+      "answer": "233",
+      "reference": "Exact arithmetic reference: 8 * 29 = 232.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 233, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 232, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [8, 29], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-13-correct",
+      "split_identity": "arith-multiply-13",
+      "question_id": "arith-multiply-13",
+      "run_id": "pilot42-development-arith-multiply-13-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 15 * 43?",
+      "answer": "645",
+      "reference": "Exact arithmetic reference: 15 * 43 = 645.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 645, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 645, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [15, 43], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-13-incorrect",
+      "split_identity": "arith-multiply-13",
+      "question_id": "arith-multiply-13",
+      "run_id": "pilot42-development-arith-multiply-13-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 15 * 43?",
+      "answer": "646",
+      "reference": "Exact arithmetic reference: 15 * 43 = 645.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 646, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 645, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [15, 43], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-03-correct",
+      "split_identity": "arith-multiply-03",
+      "question_id": "arith-multiply-03",
+      "run_id": "pilot42-development-arith-multiply-03-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 5 * 23?",
+      "answer": "115",
+      "reference": "Exact arithmetic reference: 5 * 23 = 115.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 115, \"equality\": true, \"expected_denominator\": 1, \"expected_numerator\": 115, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [5, 23], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-multiply-03-incorrect",
+      "split_identity": "arith-multiply-03",
+      "question_id": "arith-multiply-03",
+      "run_id": "pilot42-development-arith-multiply-03-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 5 * 23?",
+      "answer": "116",
+      "reference": "Exact arithmetic reference: 5 * 23 = 115.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 1, \"candidate_numerator\": 116, \"equality\": false, \"expected_denominator\": 1, \"expected_numerator\": 115, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [5, 23], \"operator\": \"*\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-09-correct",
+      "split_identity": "arith-divide-09",
+      "question_id": "arith-divide-09",
+      "run_id": "pilot42-development-arith-divide-09-correct",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 27 / 2?",
+      "answer": "13.5",
+      "reference": "Exact arithmetic reference: 27 / 2 = 13.5.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 2, \"candidate_numerator\": 27, \"equality\": true, \"expected_denominator\": 2, \"expected_numerator\": 27, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [27, 2], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    },
+    {
+      "example_id": "arith-divide-09-incorrect",
+      "split_identity": "arith-divide-09",
+      "question_id": "arith-divide-09",
+      "run_id": "pilot42-development-arith-divide-09-incorrect",
+      "dataset_id": "constructed-arithmetic-pilot42-development-v1",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 27 / 2?",
+      "answer": "14.5",
+      "reference": "Exact arithmetic reference: 27 / 2 = 13.5.",
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "direct_fact": 0.0,
+            "arithmetic": 1.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0,
+            "evidence_retrieval": 0.0,
+            "consistency": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "heuristic_surface_features_v1"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "constructed_arithmetic_fraction_v1",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"candidate_denominator\": 2, \"candidate_numerator\": 29, \"equality\": false, \"expected_denominator\": 2, \"expected_numerator\": 27, \"framework_verifiers_used\": false, \"generator_version\": \"constructed_arithmetic_fraction_v1\", \"method\": \"stdlib Fraction exact arithmetic and independent long division\", \"operands\": [27, 2], \"operator\": \"/\", \"source\": \"constructed engineering pilot, not external benchmark\"}"
+      }
+    }
+  ]
+}

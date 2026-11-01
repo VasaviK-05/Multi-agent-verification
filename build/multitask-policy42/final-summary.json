@@ -1,0 +1,29 @@
+{
+  "attempts": 960,
+  "primary": [
+    {
+      "cohort": "arithmetic",
+      "status": "infeasible_coverage",
+      "artifact_created": false,
+      "maximum_achievable_clean_coverage": 0.825,
+      "budget_ms": 21258.33526502247
+    },
+    {
+      "cohort": "semantic",
+      "status": "infeasible_coverage",
+      "artifact_created": false,
+      "maximum_achievable_clean_coverage": 0.0,
+      "budget_ms": 15852.424223729759
+    },
+    {
+      "cohort": "factual",
+      "status": "infeasible_coverage",
+      "artifact_created": false,
+      "maximum_achievable_clean_coverage": 0.375,
+      "budget_ms": 15965.046464995248
+    }
+  ],
+  "runtime_generation_calls": 0,
+  "final_test_evaluation": false,
+  "source_digest": "2926e0513be4c929d33bbcfa15787ee76fd96328a509821d91c71ff0467dc238"
+}
