@@ -6,29 +6,33 @@ study and prototype packaging work. Existing collection/calibration/fitting cont
 are preserved. No DB/API/frontend or teammate verifier/retrieval/generation changes
 are part of this publication.
 
-## Supplied artifact, separate from Git
+## Supplied artifact, now tracked in Git
 
-The integration owner obtains the already supplied `multitask-prototype42-v1.zip`
-from the study owner. Its local deliverable is `build/multitask-prototype42-v1.zip`;
-see the original chat handoff or request an out-of-band copy of those exact bytes.
-The repository has no approved remote artifact-storage convention. No release asset
-was uploaded and no ignored build file was force-added. Cloning the source does
-not download the ZIP, private recordings or external resources. Do not rerun
-collection/fitting to recreate this supplied deliverable.
+The original source publication supplied the ZIP separately. The subsequent
+explicit artifact-publication authorization adds those exact unchanged bytes at
+[`artifacts/policies/multitask-prototype42-v1.zip`](../artifacts/policies/multitask-prototype42-v1.zip).
+Cloning this branch now obtains the ZIP through normal Git. The archive is 41,243
+bytes; no LFS, release upload, ignore exception or forced build-file addition is
+needed. Private recordings and external resources remain outside this publication.
+Do not rerun collection/fitting to recreate this supplied deliverable.
 
 Bundle ID: `98b8f2654163fe95e84a1b916a94174ddc37aa399429bba94f99890573168d34`.
 ZIP SHA-256: `99516fbe460e816c68601509ca7e202cbcd3880d8d4250ec655f422244ec657c`.
 
 ```powershell
-Get-FileHash -Algorithm SHA256 PATH_TO_SUPPLIED_ZIP
-.venv/Scripts/python.exe -m app.game.offline.prototype validate --bundle PATH_TO_EXTRACTED_DIRECTORY
+Get-FileHash -Algorithm SHA256 artifacts/policies/multitask-prototype42-v1.zip
+Expand-Archive -LiteralPath artifacts/policies/multitask-prototype42-v1.zip -DestinationPath build/prototype-from-git-v1
+.venv/Scripts/python.exe -m app.game.offline.prototype validate --bundle build/prototype-from-git-v1
 ```
 
 The loader must print the exact bundle ID and both artifact IDs documented in
 [the complete prototype handoff](multitask_prototype_bundle.md). The archive contains
 sixteen hash-verified files and its extracted layout has been loaded successfully.
 Original content-addressed policy bytes and their historical revision/provenance
-are unchanged; the later source publication does not rewrite that provenance.
+are unchanged; publication does not rewrite that provenance. Use a fresh extraction
+directory. Policies are `arithmetic/policy.json` and `factual/policy.json` relative
+to it. See [publication instructions](../artifacts/policies/README.md) for exact
+artifact IDs and dependencies.
 
 ## Restricted engineering scope
 
@@ -53,7 +57,17 @@ Pin the bundle ID, use the actual analyzer/router/provider and legitimate select
 provide caller RNG and observer, preserve three-outcome finalization and explicit
 safe failures. No API activation or scope expansion is authorized here.
 
-## Verification for this publication
+## ZIP publication verification
+
+The ZIP publication rechecked its SHA-256, inspected all sixteen archive members
+for safe paths and private payloads, compared every extracted member byte-for-byte
+with the preserved supplied directory, and validated a fresh extraction through
+the public loader. Both original policy IDs, bundle ID and certificates validated.
+Only the ZIP, its adjacent README and this publication document belong to that
+commit; concurrent evaluator changes remain uncommitted. No inference or policy
+modification is part of ZIP publication.
+
+## Historical source-publication verification
 
 Executed now: bundle/file hashes, exact artifact IDs, numerical certificates and
 compatibility via the public loader; original-vs-bundled policy bytes; ZIP member
@@ -72,8 +86,9 @@ No fresh inference, calibration, fit, final evaluation or production write occur
 
 The historical evidence baseline failures were repaired upstream and later probes
 passed; no baseline failure is reproduced in these publication checks. Private/raw
-study inputs, all build outputs, caches and the ZIP remain outside Git. The pre-
-existing `docs/game_empirical_build_audit.md` remains uncommitted and untouched:
+study inputs, build outputs and caches remain outside Git. The ZIP is now explicitly
+published at the reviewed path above. The pre-existing
+`docs/game_empirical_build_audit.md` remains uncommitted and untouched:
 it is a historical local audit containing a private-machine link.
 
 ## Exact reviewed files in this source publication
