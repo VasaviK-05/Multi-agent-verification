@@ -1,4 +1,4 @@
-# Prototype game policy compatibility diagnosis
+﻿# Prototype game policy compatibility diagnosis
 
 Date: 2026-11-02. This is a read-only compatibility diagnosis after commit
 `6ba543890bf2d70bb2be4cce992056835ed4e6b1`. The concurrent
@@ -69,23 +69,28 @@ not evidence that the lost source snapshot was equivalent.
 
 ## Ollama identity
 
-`ServiceObservation` hashes these fields into the confidence service resource:
-`version`, `url`, `model`, `model_digest`, and `server_version`. The artifact's
-service fingerprint is `5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895`;
-the current record hashes to `c167e5133b0c0f9cb650c1d51cb5592a9be4c5d73133076389fb89ecaf5b0be9`.
+ServiceObservation hashes version, url, model, model_digest, and server_version.
+The artifact service fingerprint is
+5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895; the current
+record hashes to c167e5133b0c0f9cb650c1d51cb5592a9be4c5d73133076389fb89ecaf5b0be9.
 
-A metadata-only `observe_service()` call (version and tags endpoints; no
-generation) returned the saved current record exactly: URL
-`http://localhost:11434/api/generate`, model `llama3.2:3b`, model digest
-`sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72`,
-server version `0.40.11`. The URL/model are also bound by the matching adapter
+A metadata-only observe_service call (version and tags endpoints; no generation)
+returned the saved current record exactly: URL
+http://localhost:11434/api/generate, model llama3.2:3b, model digest
+sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72,
+server version 0.40.11. The URL/model are also bound by the matching adapter
 configuration fingerprint; the model digest is separately bound by the
-matching `ollama-model` resource; the observation schema version is fixed.
-Consequently the differing service fingerprint is attributable to
-`server_version`. The expected historical server version is not stored in the
-bundle and cannot be recovered from its aggregate digest. The current live
-service matches its saved observation, but not the policy's historical service
-identity. This remains an enforced blocker.
+matching ollama-model resource; the observation schema version is fixed. Thus
+the differing service fingerprint is attributable to server_version.
+
+Authentic records are available at published commit 1277e9d in both
+build/factual-policy42-20261029/service-observation.json and
+build/multitask-policy42/service-observation.json: server_version 0.40.5.
+Recomputing content_id over the five exact observation fields with that version
+reproduces the policy fingerprint 5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895.
+The historical cause is verified. An original-compatible run still needs an
+isolated 0.40.5 service with the pinned model digest; the current service
+remains an enforced mismatch.
 
 ## Runtime-version diagnostics
 
@@ -103,30 +108,104 @@ Version drift is not authorized as equivalent, however; prior cost timings and
 solver environment measurements do not establish equivalent performance in
 this environment.
 
+## Candidate current setup to freeze
+
+The candidate is the current working-tree source snapshot: Git revision
+`ab6bc1dc687452d72bfd6dffc67adfc0e87572ff`, plus the preserved
+`app/game/deployment.py` observer change. The measured application-source digest
+is `6fe4c7e5d373ecedc22a66224ebef9577e90831b6f6fac7f3f9ce215747ee364`;
+`deployment.py` SHA-256 is `22ea98d6d3bdc9e7516c631a135227bfd9d0702b8594a8ebcc6d4b5095f1ccc0`
+and its current Git diff SHA-256 is
+`05be1949ba722c21e90dd2b994d03765aca2d414d9c03c588654974c807f90b8`.
+The verifier-specific raw-source aggregates are the current values in the table
+above. Freeze or review this exact modified file before collection, then use
+the identical application source through fitting and live execution.
+
+The observed runtime is Python 3.10.0, NumPy 2.2.6, Pydantic 2.13.5,
+sentence-transformers 6.1.0, Transformers 5.17.0, PyTorch 2.14.0,
+FAISS-CPU 1.15.1, Requests 2.33.1, Safetensors 0.8.0, and Tokenizers 0.23.2.
+The resource setup uses CPU, chunk size 500, five Confidence samples at
+temperature 0.8, and a 60-second request timeout. The verified corpus digest is
+`28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a`; the
+embedding and NLI model digests are
+`23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255` and
+`a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e`.
+The FAISS index and chunks digests are
+`5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287` and
+`bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33`; the
+receipt matches those inputs. The semantic adapter configuration digest is
+`5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8`. Ollama's
+metadata-only observation is URL `http://localhost:11434/api/generate`, model
+`llama3.2:3b`, digest
+`sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72`,
+server version `0.40.11`. The index relocation binding remains limited to the
+content-verified index mapping.
+
 ## Status and concrete route
 
 No relocation binding was enabled. The two arithmetic requests were not sent to
-`ValidationService`: strategy selection and verifier dispatch did not occur.
+ValidationService: strategy selection and verifier dispatch did not occur.
 The recorded gate audit has null final status rather than a fabricated
 uncertain result.
 
-The smallest route that preserves the existing policy is for the original
-artifact/source owner to provide (1) the exact dirty application source snapshot
-whose digest is `d2565ca…`, and (2) the original Ollama `server_version` used
-for the policy's service fingerprint, with the same pinned model digest. Then
-run that code and service in a compatible isolated environment (the current
-machine has no Python 3.11 interpreter), confirm all original fingerprints,
-and enable the already implemented content-verified index relocation binding.
-No old fingerprints should be changed.
+The published historical-source archive was checked at commit 1277e9d on
+origin/codex/offline-policy-recording-pilots. Its 154-entry manifest and ZIP
+contain historical-review-local clean-source review snapshots. None of the ten
+verifier-fingerprint input paths listed above occurs in that archive. It is not
+the missing dirty application snapshot. Recomputing the exact raw-byte
+fingerprint algorithm for the current files and clean Git revision reproduces
+the aggregate values in the table; neither set equals the policy values. No
+archived candidate can be shown to reproduce the required fingerprints.
 
-If those historical inputs cannot be recovered, the concrete alternative is a
-new compatible deployment artifact, under separate authorization. Preserve the
-existing task identities, scope, resource bytes, thresholds, and decision
-guards as inputs; recover the original prepared examples/references first
-(the local bundle stores only question hashes, and the preparation source tree
-is absent). Collect fresh verifier reports for the current implementation,
-measure fresh per-verifier costs in the chosen environment, then fit separate
-arithmetic and factual task policies with a new reputation snapshot. Do not
-reuse old reports as current implementations, transplant their reputation as
-fresh evidence, or treat the offline transfer-evaluation contract as production
-authorization. No collection, calibration, fitting, or activation was started.
+The smallest route that preserves the existing policy is for the original
+artifact/source owner to provide the exact dirty application source snapshot
+whose digest is
+d2565ca4897a9e1f938900f4feb80fe675b9229c2acb7b27544781ec1c9bdcaf.
+The historical service version is now known to be 0.40.5; an isolated service
+of that version with the pinned model digest and a compatible Python environment
+would also be required. No source archive currently reproduces the four verifier
+hashes, so authentic restoration is not presently possible. Do not change old
+fingerprints.
+
+If the dirty source cannot be recovered, the concrete alternative is a new
+artifact for the current implementation and service, using a distinct output
+directory such as build/multitask-prototype42-v2/. The published preparation
+inputs are available at commit 1277e9d on
+origin/codex/offline-policy-recording-pilots; reuse only their 80
+history/development examples per task (40 history, 40 development), including
+the existing references, independent labels, and grouping. Do not pass the 40
+final-test reservation rows per task to collection.
+
+The exact full-roster ceiling from those inputs is 640 verifier attempts:
+80 examples x four registered verifiers x two tasks. The recorded adapter
+configuration uses Confidence n_samples=5; it is the only verifier that calls
+Ollama, so the ceiling is 160 Confidence attempts x five = 800 Ollama
+generations. The prepared analyses are supplied to collection, so these limits
+exclude analyzer calls. Use a new output directory, frozen source/resource
+manifest, checkpoint/resume, and no automatic retries. Failures and abstentions
+remain recorded. Old reports, costs, and reputation are not reusable as fresh
+evidence.
+
+For the replacement artifact, preserve the packaged arithmetic/factual coverage
+targets (expected_clean_coverage 0.50 and 0.25), threshold 0.55, losses
+false-accept 1.0 / false-reject 1.0 / uncertain 0.2, Beta(1,1) history prior,
+informative_history_influence_v1, task_output_contract_v2,
+all_selected_returned, existing minimum-informative-contributor and dependency
+guards, and the reliability-first validation-loss then attempt-cost objective
+with its existing tolerances. Preserve task scopes, references, strategies,
+and the existing all-feasible-strategies behavior. Fit on development only,
+estimate reputation from history only, compute fresh attempt costs, export with
+new IDs/provenance, and keep the final-test reservation outcome-free. The old
+90% research target remains a separate infeasibility result and is not a reason
+to silently alter the packaged 50%/25% targets.
+
+The previous approval reference 40cf4c15-2260-48ef-b3a1-7154d0d47554 covered
+the historical implementation/resource setup, not this changed implementation
+and 0.40.11 service. It does not authorize the proposed fresh collection.
+Before any collection, the project owner must approve the exact frozen source
+and resource manifest and the 640-attempt / 800-generation ceilings above. The
+current worktree also has the preserved uncommitted deployment.py observer
+change; freeze or explicitly include its exact bytes before collecting, and keep
+that identical source through fitting and live execution. No collection,
+calibration, fitting, strategy sampling, live verifier dispatch, or activation
+was started.
