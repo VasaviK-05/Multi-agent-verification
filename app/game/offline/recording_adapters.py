@@ -110,17 +110,119 @@ def rule_factory():
 
 
 class ProjectObserver:
+    def __init__(self):
+        self._relocation_state = None
+
     def snapshot(self):
         # Reuse the current project owner's local-resource and service observers.
         from app.benchmark.project_adapter import AdapterConfiguration, inspect_setup, observe_service
         from app.game.offline.calibration import read_json
         configuration = AdapterConfiguration.model_validate(read_json(os.environ['VERIFIER_COLLECTION_ADAPTER_CONFIG']))
         report = inspect_setup(configuration)
-        if not report['ready']:
+        self._relocation_state = None
+        if report['ready']:
+            if observe_service(configuration).model_dump(mode='json') != report['inventory']['service']:
+                raise ValueError('live service differs from declared resource observation')
+            from app.game.resource_provenance import ResourceManifest
+            return ResourceManifest.model_validate(report['observed_setup']['resources'])
+
+        binding_path = os.environ.get('VERIFIER_RESOURCE_RELOCATION_BINDING')
+        allowed_blocker = {
+            'resource': 'index_provenance',
+            'reason': 'index manifest is stale/legacy; explicit separate index preparation is required',
+            'owner': 'resource/collection owner',
+        }
+        if not binding_path or report['blockers'] != [allowed_blocker]:
             raise ValueError(json.dumps(report['blockers']))
-        if observe_service(configuration).model_dump(mode='json') != report['inventory']['service']:
+
+        from app.benchmark.project_adapter import (
+            content_id, file_digest, index_receipt,
+            local_path, source_constants,
+        )
+        from app.game.offline.resource_relocation import ResourceRelocationBinding
+        from app.game.resource_provenance import ResourceManifest
+
+        binding = ResourceRelocationBinding.model_validate(read_json(binding_path))
+        base = local_path(configuration.index_dir)
+        corpus_path = local_path(configuration.corpus_path)
+        manifest_path = base / 'manifest.json'
+        receipt_path = local_path(configuration.index_receipt)
+        stored_manifest = read_json(manifest_path)
+        inventory = report['inventory']
+        index_hashes = inventory['index']
+        corpus_sha = inventory['corpus']['sha256']
+        receipt = read_json(receipt_path)
+        expected_receipt = index_receipt(configuration, inventory['embedding_snapshot']['sha256'], corpus_sha, index_hashes)
+        if receipt != expected_receipt:
+            raise ValueError('index receipt differs from observed corpus, vectors, chunks, or embedding')
+
+        constants = source_constants('app/verifiers/evidence_retriever.py', {'EMBEDDING_MODEL', 'MANIFEST_VERSION'})
+        stat = corpus_path.stat()
+        corpus_version = 'sha256:' + corpus_sha
+        current_manifest = dict(version=constants['MANIFEST_VERSION'], corpus_path=str(corpus_path),
+            corpus_size=stat.st_size, corpus_mtime=stat.st_mtime, corpus_sha256=corpus_sha,
+            corpus_version=corpus_version, chunk_size=configuration.chunk_size,
+            embedding_model=constants['EMBEDDING_MODEL'], index_version='idx-' + hashlib.sha256(
+                json.dumps([corpus_version, configuration.chunk_size, constants['EMBEDDING_MODEL']]).encode()).hexdigest()[:12])
+
+        source = lambda names: content_id([(name, file_digest(ROOT / name)) for name in names])
+        shared = ['app/verifiers/base_verifier.py', 'app/models/schemas.py', 'app/benchmark/project_adapter.py']
+        verifier_files = {
+            'semantic': ['app/verifiers/semantic_verifier.py', 'app/verifiers/claim_generator.py', 'app/verifiers/confidence_verifier.py'],
+            'evidence': ['app/verifiers/evidence_verifier.py', 'app/verifiers/evidence_retriever.py', 'app/verifiers/claim_generator.py'],
+            'rule': ['app/verifiers/rule_verifier.py'],
+            'confidence': ['app/verifiers/confidence_verifier.py', 'app/verifiers/self_consistency.py', 'app/verifiers/evidence_verifier.py', 'app/verifiers/claim_generator.py'],
+        }
+        prompt = source_constants('app/verifiers/self_consistency.py', {'SHORT_ANSWER_PROMPT'})['SHORT_ANSWER_PROMPT']
+        semantic_configuration = configuration.model_dump(exclude={'embedding_snapshot', 'nli_snapshot', 'index_receipt', 'service_observation'})
+        def resource(kind, name, digest):
+            return dict(kind=kind, resource_id=name, sha256=digest)
+        embedding = resource('model', 'local-embedding-snapshot', inventory['embedding_snapshot']['sha256'])
+        nli = resource('model', 'local-nli-snapshot', inventory['nli_snapshot']['sha256'])
+        rows = []
+        for name in ('semantic', 'evidence', 'rule', 'confidence'):
+            resources = [resource('implementation', name+'-implementation', source(shared + verifier_files[name])),
+                resource('configuration', name+'-adapter-configuration', content_id(semantic_configuration))]
+            if name == 'semantic':
+                resources.append(embedding)
+            elif name == 'evidence':
+                resources += [embedding, nli, resource('corpus', 'evidence-corpus', corpus_sha),
+                    resource('index', 'evidence-index', content_id([index_hashes, receipt]))]
+            elif name == 'confidence':
+                service = inventory['service']
+                resources += [nli, resource('model', 'ollama-model', service['model_digest'][7:]),
+                    resource('prompt', 'self-consistency-short-answer', content_id(prompt)),
+                    resource('service', 'ollama-service', content_id(service))]
+            rows.append(dict(verifier_name=name, resources=resources))
+        resources = ResourceManifest(verifiers=tuple(rows))
+        if observe_service(configuration).model_dump(mode='json') != inventory['service']:
             raise ValueError('live service differs from declared resource observation')
-        return MeasurementSetup.model_validate(report['observed_setup']).resources
+        self._relocation_state = dict(binding=binding, stored_manifest=stored_manifest,
+            current_manifest=current_manifest, corpus_path=corpus_path, manifest_path=manifest_path,
+            corpus_sha256=corpus_sha, index_hashes=index_hashes, receipt_path=receipt_path,
+            receipt=receipt, expected_receipt=expected_receipt,
+            embedding_model_sha256=inventory['embedding_snapshot']['sha256'],
+            nli_model_sha256=inventory['nli_snapshot']['sha256'],
+            semantic_configuration_sha256=content_id(semantic_configuration),
+            resources=resources)
+        return resources
+
+    def authorize_relocation(self, expected, observed):
+        if self._relocation_state is None:
+            raise ValueError('no explicit verified relocation binding was used')
+        from app.game.offline.resource_relocation import verify_relocated_index
+        state = self._relocation_state
+        if observed != state['resources']:
+            raise ValueError('observed resource manifest changed after relocation verification')
+        return verify_relocated_index(state['binding'], expected_manifest=expected,
+            observed_manifest=observed, stored_manifest=state['stored_manifest'],
+            current_manifest=state['current_manifest'], corpus_path=state['corpus_path'],
+            manifest_path=state['manifest_path'], corpus_sha256=state['corpus_sha256'],
+            index_hashes=state['index_hashes'], receipt_path=state['receipt_path'],
+            receipt=state['receipt'], expected_receipt=state['expected_receipt'],
+            embedding_model_sha256=state['embedding_model_sha256'],
+            nli_model_sha256=state['nli_model_sha256'],
+            semantic_configuration_sha256=state['semantic_configuration_sha256'])
 
 
 def project_factory():
