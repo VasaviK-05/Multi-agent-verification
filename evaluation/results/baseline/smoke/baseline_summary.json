@@ -1,0 +1,198 @@
+{
+  "completed": 8,
+  "failed": 0,
+  "skipped": 0,
+  "overall": {
+    "instances": 8,
+    "accuracy": 0.0,
+    "precision_accept": null,
+    "recall_accept": 0.0,
+    "f1_accept": null,
+    "macro_f1_accept_reject": null,
+    "precision_recall_scope": "Accept/reject precision, recall, and macro F1 use only definitive predictions on binary gold roles. Abstentions are excluded from those counts and are not treated as rejections.",
+    "confusion_definitive_binary": {
+      "true_accept": 0,
+      "false_accept": 0,
+      "false_reject": 1,
+      "true_reject": 0
+    },
+    "false_acceptance_rate": 0.0,
+    "false_rejection_rate": 0.2,
+    "false_acceptance_count": 0,
+    "false_rejection_count": 1,
+    "incorrect_candidate_count": 3,
+    "correct_candidate_count": 5,
+    "coverage": 0.125,
+    "abstention_rate": 0.875,
+    "selective_accuracy": 0.0,
+    "definitive_count": 1,
+    "abstention_count": 7,
+    "correct_count": 0,
+    "decision_distribution": {
+      "failed": 1,
+      "uncertain": 7
+    },
+    "latency_ms": {
+      "mean": 18183.416,
+      "median": 14935.553,
+      "p95": 34832.93324999999
+    },
+    "verifier_calls": {
+      "mean": 3.25,
+      "total": 26
+    }
+  },
+  "by_benchmark": {
+    "FEVER": {
+      "instances": 2,
+      "accuracy": 0.0,
+      "precision_accept": null,
+      "recall_accept": null,
+      "f1_accept": null,
+      "macro_f1_accept_reject": null,
+      "precision_recall_scope": "Accept/reject precision, recall, and macro F1 use only definitive predictions on binary gold roles. Abstentions are excluded from those counts and are not treated as rejections.",
+      "confusion_definitive_binary": {
+        "true_accept": 0,
+        "false_accept": 0,
+        "false_reject": 0,
+        "true_reject": 0
+      },
+      "false_acceptance_rate": null,
+      "false_rejection_rate": 0.0,
+      "false_acceptance_count": 0,
+      "false_rejection_count": 0,
+      "incorrect_candidate_count": 0,
+      "correct_candidate_count": 2,
+      "coverage": 0.0,
+      "abstention_rate": 1.0,
+      "selective_accuracy": null,
+      "definitive_count": 0,
+      "abstention_count": 2,
+      "correct_count": 0,
+      "decision_distribution": {
+        "uncertain": 2
+      },
+      "latency_ms": {
+        "mean": 12495.761,
+        "median": 12495.761,
+        "p95": 12622.9427
+      },
+      "verifier_calls": {
+        "mean": 3.0,
+        "total": 6
+      }
+    },
+    "GSM8K": {
+      "instances": 4,
+      "accuracy": 0.0,
+      "precision_accept": null,
+      "recall_accept": null,
+      "f1_accept": null,
+      "macro_f1_accept_reject": null,
+      "precision_recall_scope": "Accept/reject precision, recall, and macro F1 use only definitive predictions on binary gold roles. Abstentions are excluded from those counts and are not treated as rejections.",
+      "confusion_definitive_binary": {
+        "true_accept": 0,
+        "false_accept": 0,
+        "false_reject": 0,
+        "true_reject": 0
+      },
+      "false_acceptance_rate": 0.0,
+      "false_rejection_rate": 0.0,
+      "false_acceptance_count": 0,
+      "false_rejection_count": 0,
+      "incorrect_candidate_count": 2,
+      "correct_candidate_count": 2,
+      "coverage": 0.0,
+      "abstention_rate": 1.0,
+      "selective_accuracy": null,
+      "definitive_count": 0,
+      "abstention_count": 4,
+      "correct_count": 0,
+      "decision_distribution": {
+        "uncertain": 4
+      },
+      "latency_ms": {
+        "mean": 15785.986499999999,
+        "median": 15823.4785,
+        "p95": 16675.8916
+      },
+      "verifier_calls": {
+        "mean": 3.0,
+        "total": 12
+      }
+    },
+    "HotpotQA": {
+      "instances": 2,
+      "accuracy": 0.0,
+      "precision_accept": null,
+      "recall_accept": 0.0,
+      "f1_accept": null,
+      "macro_f1_accept_reject": null,
+      "precision_recall_scope": "Accept/reject precision, recall, and macro F1 use only definitive predictions on binary gold roles. Abstentions are excluded from those counts and are not treated as rejections.",
+      "confusion_definitive_binary": {
+        "true_accept": 0,
+        "false_accept": 0,
+        "false_reject": 1,
+        "true_reject": 0
+      },
+      "false_acceptance_rate": 0.0,
+      "false_rejection_rate": 1.0,
+      "false_acceptance_count": 0,
+      "false_rejection_count": 1,
+      "incorrect_candidate_count": 1,
+      "correct_candidate_count": 1,
+      "coverage": 0.5,
+      "abstention_rate": 0.5,
+      "selective_accuracy": 0.0,
+      "definitive_count": 1,
+      "abstention_count": 1,
+      "correct_count": 0,
+      "decision_distribution": {
+        "failed": 1,
+        "uncertain": 1
+      },
+      "latency_ms": {
+        "mean": 28665.93,
+        "median": 28665.93,
+        "p95": 43007.2167
+      },
+      "verifier_calls": {
+        "mean": 4.0,
+        "total": 8
+      }
+    }
+  },
+  "decision_distribution": {
+    "failed": 1,
+    "uncertain": 7
+  },
+  "verifier_selection_frequency": {
+    "rule": 8,
+    "semantic": 2,
+    "evidence": 6
+  },
+  "verifier_execution_frequency": {
+    "rule": 8,
+    "semantic": 2,
+    "evidence": 8,
+    "confidence": 8
+  },
+  "skipped_by_benchmark": {},
+  "experiment": {
+    "execution_mode": "baseline",
+    "dataset": "evaluation/datasets/unified/development.json",
+    "seed": 0,
+    "reputation": "isolated cold-start ReputationManager prior alpha=1 beta=1; validate does not learn",
+    "started_at": "2026-10-31T22:02:29",
+    "wall_clock_seconds": 145.48,
+    "sum_instance_latency_ms": 145467.328,
+    "eligible_benchmarks": [
+      "FEVER",
+      "HotpotQA",
+      "GSM8K"
+    ],
+    "completed_instances": 8,
+    "failed_instances": 0,
+    "skipped_examples": 0
+  }
+}
