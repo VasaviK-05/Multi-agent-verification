@@ -199,13 +199,41 @@ new IDs/provenance, and keep the final-test reservation outcome-free. The old
 90% research target remains a separate infeasibility result and is not a reason
 to silently alter the packaged 50%/25% targets.
 
-The previous approval reference 40cf4c15-2260-48ef-b3a1-7154d0d47554 covered
-the historical implementation/resource setup, not this changed implementation
-and 0.40.11 service. It does not authorize the proposed fresh collection.
-Before any collection, the project owner must approve the exact frozen source
-and resource manifest and the 640-attempt / 800-generation ceilings above. The
-current worktree also has the preserved uncommitted deployment.py observer
-change; freeze or explicitly include its exact bytes before collecting, and keep
-that identical source through fitting and live execution. No collection,
-calibration, fitting, strategy sampling, live verifier dispatch, or activation
-was started.
+The project owner has now approved the fresh collection within the 640-attempt
+and 800-generation ceilings. Phase A stopped before collection because the
+approved collector/runtime identity assumptions do not hold. The frozen local
+audit is build/multitask-prototype42-v2/phase-a-snapshot.json. It records source
+revision 13c420169a96b2deaa0e20de5f63d3158257e5f3, the full app Python file
+manifest, verifier fingerprints, dependency versions, model/resource hashes,
+live metadata-only Ollama observation, approved input counts, and the exact
+deployment.py diff identity. The concurrent deployment.py change remains
+unmodified and unstaged.
+
+Two blockers were observed. First, the approved collector adapter.json points
+to build/multitask-policy42/corpus.json and index-v2. Its preflight returns
+index_provenance: index manifest is stale/legacy; explicit separate index
+preparation is required. The relocation implementation at 6ba5438 permits the
+runtime ProjectObserver to use an explicit verified binding, but the collector
+factory calls strict create_verifiers/inspect_setup before that observer and
+does not apply the binding. Second, the deployed VerifierSelector constructs
+default verifiers. EvidenceVerifier resolves EVIDENCE_CORPUS_PATH from .env as
+data/evidence_corpus.json (SHA-256 668b48aa59c758d6e5d082f9d07b9c544730c545ae3af36728e68a0144ec6ec5)
+and derives data/evidence_index/evidence_corpus. The collector instead observes
+the 9,206-byte build corpus (SHA-256
+28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a) and
+build/multitask-policy42/index-v2. The runtime corpus is 12,875,871 bytes and
+its FAISS/chunks hashes are 3893b97dca2804ecab0fabb26fc9cee52f34b759058ba3d11b2bd7d617ce4168
+and ed205cb4a4ac1b665dcffa521af021eef43674a1c3f34ad26674fc59a53e6b7e; no
+index receipt exists beside that default index. ProjectObserver reads adapter.json
+and does not inspect the verifier instances built by VerifierSelector.
+
+I did not change production resource configuration after finding this mismatch.
+The next owner action is to choose one resource configuration and freeze its
+exact source/config state: either make the deployed game
+verifier construction use the already approved adapter resources, or approve a
+revised campaign snapshot that measures the deployed default resources and
+includes a valid receipt. Then update the collector factory to honor only the
+explicit content-verified relocation proof when applicable, and re-run Phase A.
+Until both sides attest the same corpus/index/model/config and the collector
+preflight succeeds, collection must not start. Attempts and generations consumed
+remain zero; no strategy sampling or live verifier dispatch occurred.
