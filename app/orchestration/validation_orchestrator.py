@@ -32,6 +32,7 @@ from app.database.verifier_repository import get_verifier_outputs
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
+from app.selection.capabilities import BUILTIN_CAPABILITIES
 from app.selection.models import VerifierUnavailable
 
 
@@ -134,7 +135,7 @@ class ValidationOrchestrator:
                     shared.restore_state(build_reputation_state())
 
             return (
-                VerifierSelector(reputation_manager=shared),
+                VerifierSelector(reputation_manager=shared, capabilities=BUILTIN_CAPABILITIES),
                 DecisionEngine(reputation_manager=shared),
                 shared,
             )
@@ -150,7 +151,7 @@ class ValidationOrchestrator:
                     "DecisionEngine must use the orchestrator's ReputationManager."
                 )
             return (
-                VerifierSelector(reputation_manager=shared),
+                VerifierSelector(reputation_manager=shared, capabilities=BUILTIN_CAPABILITIES),
                 decision_engine,
                 shared,
             )
