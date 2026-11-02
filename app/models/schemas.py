@@ -7,8 +7,8 @@ from pydantic import BaseModel, Field
 class ValidationRequest(BaseModel):
     """Input payload for answer validation."""
 
-    question: str
-    answer: str
+    question: str = Field(min_length=1)
+    answer: str = Field(min_length=1)
     context: Optional[str] = None
     session_id: Optional[str] = None
     question_id: Optional[int] = None
@@ -71,3 +71,5 @@ class FeedbackRequest(BaseModel):
     validation_id: str
     is_correct: bool
     comment: Optional[str] = None
+
+
