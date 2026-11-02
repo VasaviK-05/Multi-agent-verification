@@ -110,10 +110,11 @@ def rule_factory():
 
 
 class ProjectObserver:
-    def __init__(self):
+    def __init__(self, verifiers=None):
         self._relocation_state = None
         self._last_configuration = None
         self._last_report = None
+        self._active_verifiers = verifiers
 
     def snapshot(self):
         # Use the same explicit adapter and relocation binding as collection and
@@ -128,18 +129,24 @@ class ProjectObserver:
         if report['ready']:
             if observe_service(configuration).model_dump(mode='json') != report['inventory']['service']:
                 raise ValueError('live service differs from declared resource observation')
+            if self._active_verifiers is not None:
+                self._attest_active_verifiers(self._active_verifiers, configuration, report)
             from app.game.resource_provenance import ResourceManifest
             return ResourceManifest.model_validate(report['observed_setup']['resources'])
         raise ValueError(json.dumps(report['blockers']))
 
     def snapshot_for(self, selector):
         """Attest active game verifier instances against the shared adapter setup."""
-        resources = self.snapshot()
-        config, report = self._last_configuration, self._last_report
         verifiers = getattr(selector, '_injected', None)
-        by_name = {v.name: v for v in verifiers or ()}
+        if verifiers is None:
+            raise ValueError('game selector does not expose its active configured verifier instances')
+        self._active_verifiers = tuple(verifiers)
+        return self.snapshot()
+
+    def _attest_active_verifiers(self, verifiers, config, report):
+        by_name = {v.name: v for v in verifiers}
         if set(by_name) != {'semantic', 'evidence', 'rule', 'confidence'}:
-            raise ValueError('game selector does not hold the complete configured verifier pool')
+            raise ValueError('active selector does not hold the complete configured verifier pool')
         evidence = by_name['evidence']
         retriever = evidence.retriever
         from app.benchmark.project_adapter import file_digest, local_path
@@ -163,7 +170,7 @@ class ProjectObserver:
         if (sampler.url, sampler.model, sampler.temperature, sampler.timeout, confidence.n_samples) != (
                 config.ollama_url, config.ollama_model, config.temperature, config.timeout, config.n_samples):
             raise ValueError('active confidence verifier settings differ from the game adapter')
-        return resources
+        return True
 
     def audit(self):
         """Return the verified resource mapping captured by the latest snapshot."""
@@ -192,7 +199,7 @@ class ProjectObserver:
 def project_factory():
     from app.benchmark.project_adapter import create_verifiers
     verifiers, setup = create_verifiers()
-    return verifiers, setup, ProjectObserver()
+    return verifiers, setup, ProjectObserver(verifiers)
 
 
 def main(argv=None):

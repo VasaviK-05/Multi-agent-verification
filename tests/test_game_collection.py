@@ -329,13 +329,14 @@ assert completeness(collect(request,pool,setup,observer))['complete']
 
 def test_project_bridge_uses_existing_factory_and_live_observers(tmp_path,monkeypatch):
     import app.benchmark.project_adapter as project
-    from app.game.offline.recording_adapters import project_factory
+    from app.game.offline.recording_adapters import ProjectObserver, project_factory
     request,pool,setup,_,_,_=fixture()
     config=tmp_path/'adapter.json'
     config.write_text(json.dumps(dict(embedding_snapshot=None,nli_snapshot=None,corpus_path='unused',
         index_dir='unused',index_receipt=None,service_observation=None)))
     monkeypatch.setenv('VERIFIER_COLLECTION_ADAPTER_CONFIG',str(config))
     monkeypatch.setattr(project,'create_verifiers',lambda:(pool,setup))
+    monkeypatch.setattr(ProjectObserver,'_attest_active_verifiers',lambda *args: True)
     observed={'version':'SYNTHETIC service observation'}
     monkeypatch.setattr(project,'inspect_setup',lambda c:dict(ready=True,blockers=[],
         observed_setup=setup.model_dump(mode='json'),inventory={'service':observed}))
