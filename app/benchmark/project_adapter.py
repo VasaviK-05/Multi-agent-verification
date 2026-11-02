@@ -32,6 +32,7 @@ class AdapterConfiguration(FrozenModel):
     index_dir: Text
     index_receipt: Text | None
     service_observation: Text | None
+    resource_relocation_binding: Text | None = None
     ollama_url: Text = 'http://localhost:11434/api/generate'
     ollama_model: Text = 'llama3.2:3b'
     n_samples: StrictInt = Field(default=5, ge=1)
@@ -183,9 +184,36 @@ def observe_service(config):
         session.close()
 
 
-def inspect_setup(configuration):
+def _load_relocation_binding(value):
+    if value is None:
+        return None
+    from app.game.offline.resource_relocation import ResourceRelocationBinding
+    if isinstance(value, (str, Path)):
+        value = read_json(local_path(value))
+    return ResourceRelocationBinding.model_validate(value)
+
+
+def _current_index_hashes(index_hashes, current_manifest):
+    """Hashes used for the relocated logical index, without writing a manifest."""
+    result = dict(index_hashes)
+    result['manifest.json'] = hashlib.sha256(json.dumps(current_manifest, indent=2).encode('utf-8')).hexdigest()
+    return result
+
+
+def _evidence_index_fingerprint(index_hashes, receipt, current_manifest=None):
+    hashes = index_hashes if current_manifest is None else _current_index_hashes(index_hashes, current_manifest)
+    return content_id([hashes, receipt])
+
+
+def inspect_setup(configuration, *, relocation_binding=None, _prepare_relocation_binding=False):
     """Hash local resources and saved service metadata; no loads/downloads/requests."""
     config = AdapterConfiguration.model_validate(configuration)
+    binding_source = relocation_binding
+    if binding_source is None and not _prepare_relocation_binding:
+        binding_source = config.resource_relocation_binding or os.environ.get('VERIFIER_RESOURCE_RELOCATION_BINDING')
+    binding = _load_relocation_binding(binding_source)
+    if binding is not None and _prepare_relocation_binding:
+        raise ValueError('supply either a relocation binding or prepare one, not both')
     blockers, inventory = [], {}
     def inspect(key, function):
         try:
@@ -229,8 +257,18 @@ def inspect_setup(configuration):
             index_version='idx-' + hashlib.sha256(json.dumps([corpus_version, config.chunk_size,
                 constants['EMBEDDING_MODEL']]).encode()).hexdigest()[:12])
         if stored != current:
-            raise ValueError('index manifest is stale/legacy; explicit separate index preparation is required')
+            differences = {key for key in set(stored) | set(current) if stored.get(key) != current.get(key)}
+            if not _prepare_relocation_binding and binding is None:
+                raise ValueError('index manifest is stale/legacy; explicit separate index preparation is required')
+            if differences != {'corpus_path', 'corpus_mtime'}:
+                raise ValueError('index manifest differs beyond relocation path/mtime: ' + ', '.join(sorted(differences)))
+            if stored.get('version') != current.get('version'):
+                raise ValueError('unsupported legacy index manifest version')
+        relocation_state.update(stored=stored, current=current, corpus_path=str(local_path(config.corpus_path)),
+            manifest_path=str(index_dir / 'manifest.json'), receipt_path=str(local_path(config.index_receipt)),
+            expected_receipt=expected_receipt, index_hashes=index, corpus_sha256=corpus['sha256'])
         return expected_receipt
+    relocation_state = {}
     receipt = inspect('index_provenance', check_index)
     def service_metadata():
         if not config.service_observation:
@@ -252,6 +290,8 @@ def inspect_setup(configuration):
     except importlib.metadata.PackageNotFoundError:
         versions['sentencepiece'] = 'not installed; local tokenizer.json avoids conversion'
     setup = None
+    relocation_audit = None
+    relocation_proof = None
     if not blockers:
         source = lambda files: content_id([(n, file_digest(ROOT / n)) for n in files])
         shared = ['app/verifiers/base_verifier.py', 'app/models/schemas.py', 'app/benchmark/project_adapter.py']
@@ -274,28 +314,122 @@ def inspect_setup(configuration):
             if name == 'semantic':
                 resources += [model]
             if name == 'evidence':
+                current_manifest = relocation_state.get('current')
                 resources += [model, nli_model, resource('corpus', 'evidence-corpus', corpus['sha256']),
-                              resource('index', 'evidence-index', content_id([index, receipt]))]
+                              resource('index', 'evidence-index', _evidence_index_fingerprint(index, receipt, current_manifest))]
             if name == 'confidence':
                 resources += [nli_model, resource('model', 'ollama-model', service['model_digest'][7:]),
                     resource('prompt', 'self-consistency-short-answer', content_id(prompt)),
                     resource('service', 'ollama-service', content_id(service))]
             rows.append(dict(verifier_name=name, resources=resources))
-        setup = MeasurementSetup(resources=ResourceManifest(verifiers=tuple(rows)), environment=hardware(),
+        resources_manifest = ResourceManifest(verifiers=tuple(rows))
+        if relocation_state and relocation_state.get('stored') != relocation_state.get('current'):
+            if _prepare_relocation_binding:
+                pass
+            else:
+                expected_data = resources_manifest.model_dump(mode='json')
+                for verifier in expected_data['verifiers']:
+                    if verifier['verifier_name'] == 'evidence':
+                        for row in verifier['resources']:
+                            if row['resource_id'] == 'evidence-index':
+                                row['sha256'] = binding.historical_index_fingerprint
+                expected_manifest = ResourceManifest.model_validate(expected_data)
+                semantic_configuration = config.model_dump(exclude={'embedding_snapshot', 'nli_snapshot', 'index_receipt', 'service_observation'})
+                from app.game.offline.resource_relocation import verify_relocated_index
+                relocation_audit = verify_relocated_index(binding, expected_manifest=expected_manifest,
+                    observed_manifest=resources_manifest, stored_manifest=relocation_state['stored'],
+                    current_manifest=relocation_state['current'], corpus_path=Path(relocation_state['corpus_path']),
+                    manifest_path=Path(relocation_state['manifest_path']), corpus_sha256=relocation_state['corpus_sha256'],
+                    index_hashes=relocation_state['index_hashes'], receipt_path=Path(relocation_state['receipt_path']),
+                    receipt=receipt, expected_receipt=relocation_state['expected_receipt'],
+                    embedding_model_sha256=embedding['sha256'], nli_model_sha256=nli['sha256'],
+                    semantic_configuration_sha256=content_id(semantic_configuration))
+                relocation_proof = dict(**relocation_audit, binding=binding.model_dump(mode='json'),
+                    corpus_sha256=relocation_state['corpus_sha256'],
+                    expected_resource_manifest=expected_manifest.model_dump(mode='json'),
+                    observed_resource_manifest=resources_manifest.model_dump(mode='json'),
+                    stored_manifest=relocation_state['stored'],
+                    current_manifest=relocation_state['current'],
+                    index_hashes=relocation_state['index_hashes'],
+                    receipt_path=relocation_state['receipt_path'],
+                    receipt=relocation_state['expected_receipt'],
+                    expected_receipt=relocation_state['expected_receipt'],
+                    corpus_path=relocation_state['corpus_path'],
+                    manifest_path=relocation_state['manifest_path'],
+                    embedding_model_sha256=embedding['sha256'], nli_model_sha256=nli['sha256'],
+                    semantic_configuration_sha256=content_id(semantic_configuration))
+                relocation_state.update(binding=binding, resources=resources_manifest,
+                    embedding_model_sha256=embedding['sha256'], nli_model_sha256=nli['sha256'],
+                    semantic_configuration_sha256=content_id(semantic_configuration),
+                    relocation_audit=relocation_audit)
+        environment = hardware()
+        if relocation_audit is not None:
+            environment['resource_relocation_audit'] = json.dumps(relocation_audit, sort_keys=True, separators=(',', ':'))
+        setup = MeasurementSetup(resources=resources_manifest, environment=environment,
             dependency_versions=versions, code_revision=subprocess.check_output(
                 ['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
             application_source_digest=content_id([(p.relative_to(ROOT).as_posix(), file_digest(p))
                 for p in sorted((ROOT / 'app').rglob('*.py'))]), evidence_kind='empirical')
-    return dict(ready=not blockers, blockers=blockers, inventory=inventory, hardware=hardware(),
+    report = dict(ready=not blockers, blockers=blockers, inventory=inventory, hardware=hardware(),
         ready_scope='local inputs only; saved service observation is revalidated live by factory',
         observed_setup=None if setup is None else setup.model_dump(mode='json'),
         observed_setup_fingerprint=None if setup is None else setup.fingerprint,
+        relocation_audit=relocation_audit,
+        relocation_proof=relocation_proof,
         downloads_performed=False, provider_requests_performed=0,
         requirements=dict(downloads='none allowed; missing snapshots require separately authorized provisioning',
             external_service=config.ollama_url, model=config.ollama_model, pricing=None,
             factory_metadata_get_requests=4,
             pricing_reason='no approved monetary pricing inputs supplied',
             memory='CPU mode; model file sizes reported; peak RAM and service memory are not estimated'))
+    if relocation_state:
+        report['_relocation_state'] = relocation_state
+    return report
+
+
+def create_relocation_binding(configuration):
+    """Create a fresh, auditable path/mtime-only binding for a new artifact setup."""
+    config = AdapterConfiguration.model_validate(configuration)
+    report = inspect_setup(config, _prepare_relocation_binding=True)
+    if not report['ready'] or report['observed_setup'] is None:
+        raise ValueError(json.dumps(report['blockers']))
+    state = report['_relocation_state']
+    if state['stored'] == state['current']:
+        raise ValueError('no corpus path/mtime relocation exists to bind')
+    current = MeasurementSetup.model_validate(report['observed_setup']).resources
+    historical_fp = _evidence_index_fingerprint(state['index_hashes'], state['expected_receipt'])
+    current_fp = next(r.sha256 for v in current.verifiers if v.verifier_name == 'evidence'
+                      for r in v.resources if r.resource_id == 'evidence-index')
+    if historical_fp == current_fp:
+        raise ValueError('relocation did not change the logical evidence-index identity')
+    expected_data = current.model_dump(mode='json')
+    for verifier in expected_data['verifiers']:
+        if verifier['verifier_name'] == 'evidence':
+            for row in verifier['resources']:
+                if row['resource_id'] == 'evidence-index':
+                    row['sha256'] = historical_fp
+    expected = ResourceManifest.model_validate(expected_data)
+    from app.game.offline.resource_relocation import ResourceRelocationBinding
+    stored, manifest = state['stored'], state['current']
+    index = state['index_hashes']
+    receipt = state['expected_receipt']
+    semantic_configuration = config.model_dump(exclude={'embedding_snapshot', 'nli_snapshot', 'index_receipt', 'service_observation'})
+    historical_manifest_path = str(Path(stored['corpus_path']).parent / Path(config.index_dir).name / 'manifest.json')
+    return ResourceRelocationBinding(version='verified_resource_relocation_v1',
+        expected_resource_manifest_id=expected.manifest_id,
+        historical_corpus_path=stored['corpus_path'], current_corpus_path=str(state['corpus_path']),
+        historical_manifest_path=historical_manifest_path,
+        current_manifest_path=str(state['manifest_path']),
+        historical_corpus_mtime=stored['corpus_mtime'], current_corpus_mtime=manifest['corpus_mtime'],
+        corpus_sha256=state['corpus_sha256'], corpus_size=manifest['corpus_size'],
+        faiss_sha256=index['faiss.index'], chunks_sha256=index['chunks.json'], manifest_sha256=index['manifest.json'],
+        receipt_sha256=file_digest(state['receipt_path']), receipt_fingerprint=content_id(receipt),
+        embedding_model_sha256=report['inventory']['embedding_snapshot']['sha256'],
+        nli_model_sha256=report['inventory']['nli_snapshot']['sha256'],
+        semantic_configuration_sha256=content_id(semantic_configuration),
+        manifest_version=manifest['version'], chunk_size=manifest['chunk_size'],
+        embedding_model=manifest['embedding_model'], index_version=manifest['index_version'],
+        historical_index_fingerprint=historical_fp, current_index_fingerprint=current_fp)
 
 
 def create_verifiers():
@@ -310,7 +444,8 @@ def create_verifiers():
     saved = ServiceObservation.model_validate(report['inventory']['service'])
     if observe_service(config) != saved:
         raise ValueError('live Ollama version/model digest differs from reviewed observation')
-    pool = construct_verifiers(config)
+    proof = report.get('relocation_proof')
+    pool = construct_verifiers(config) if proof is None else construct_verifiers(config, relocation_proof=proof)
     expected = MeasurementSetup.model_validate(report['observed_setup'])
     expected.resources.require_candidates(v.name for v in pool)
     if len({v.name for v in pool}) != len(pool):
@@ -346,7 +481,7 @@ def create_recording_verifiers():
     return pool, setup, ResourceObserver(config, setup)
 
 
-def construct_verifiers(config):
+def construct_verifiers(config, *, relocation_proof=None):
     """Supported constructors; only local files. No verify or generation calls."""
     from sentence_transformers import SentenceTransformer
     from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
@@ -361,7 +496,8 @@ def construct_verifiers(config):
     model = AutoModelForSequenceClassification.from_pretrained(str(local_path(config.nli_snapshot)), local_files_only=True)
     nli = pipeline('text-classification', model=model, tokenizer=tokenizer, top_k=None, device=-1)
     retriever = EvidenceRetriever(corpus_path=str(local_path(config.corpus_path)),
-        chunk_size=config.chunk_size, index_dir=local_path(config.index_dir), model=embedding)
+        chunk_size=config.chunk_size, index_dir=local_path(config.index_dir), model=embedding,
+        relocation_proof=relocation_proof)
     if retriever.index.ntotal != len(retriever.chunks) or retriever.index.d != embedding.get_sentence_embedding_dimension():
         raise ValueError('loaded index dimensions/counts differ from embedding/chunks')
     provider = SelfConsistencyJudge(sampler=OllamaSampler(url=config.ollama_url, model=config.ollama_model,

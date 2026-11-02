@@ -26,6 +26,14 @@ class VerifierExecutionFailure(RuntimeError):
     """
 
 
+def _snapshot_resources(observer, selector):
+    """Let configuration-aware observers attest the selector's actual instances."""
+    snapshot_for = getattr(observer, "snapshot_for", None)
+    if snapshot_for is not None:
+        return snapshot_for(selector)
+    return observer.snapshot()
+
+
 @dataclass(frozen=True)
 class GameRun:
     results: tuple
@@ -150,9 +158,14 @@ class GameRuntime:
             if self.resource_observer is None:
                 return failed("provenance_incompatible", "resource-bound execution requires an observation adapter")
             try:
-                observed = ResourceManifest.model_validate(self.resource_observer.snapshot())
+                observed = ResourceManifest.model_validate(
+                    _snapshot_resources(self.resource_observer, selector)
+                )
                 observed.require_candidates(c.verifier_name for c in current.plan.candidates)
                 summary["observed_resource_manifest_id"] = observed.manifest_id
+                observation_audit = getattr(self.resource_observer, "audit", None)
+                if callable(observation_audit):
+                    summary["resource_observation_audit"] = observation_audit()
                 if observed != contract.resource_manifest:
                     expected_rows = {(r.kind, r.resource_id): r.sha256
                         for verifier in contract.resource_manifest.verifiers for r in verifier.resources}
@@ -219,8 +232,12 @@ class GameRuntime:
         resource_drift = False
         if contract.resource_manifest is not None:
             try:
-                after = ResourceManifest.model_validate(self.resource_observer.snapshot())
+                after = ResourceManifest.model_validate(
+                    _snapshot_resources(self.resource_observer, selector)
+                )
                 summary["after_resource_manifest_id"] = after.manifest_id
+                if callable(observation_audit):
+                    summary["resource_observation_audit_after"] = observation_audit()
                 resource_drift = after != observed
             except (ValidationError, ValueError) as exc:
                 summary["resource_observation_error"] = str(exc)

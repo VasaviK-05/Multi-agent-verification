@@ -543,9 +543,11 @@ def test_validation_service_uses_baseline_mode(monkeypatch):
 def test_validation_service_uses_game_mode(monkeypatch):
     from app.services import validation_service
     from app.game import deployment
+    from app.benchmark import project_adapter
 
     fake_runtime = object()
     created = {}
+    configured_verifiers = [Checker(n) for n in ('semantic', 'evidence', 'rule', 'confidence')]
 
     class FakeOrchestrator:
         def __init__(self, *args, **kwargs):
@@ -558,6 +560,9 @@ def test_validation_service_uses_game_mode(monkeypatch):
         deployment, "create_game_runtime", lambda: fake_runtime
     )
     monkeypatch.setattr(
+        project_adapter, "create_verifiers", lambda: (configured_verifiers, object())
+    )
+    monkeypatch.setattr(
         validation_service, "ValidationOrchestrator", FakeOrchestrator
     )
 
@@ -566,6 +571,7 @@ def test_validation_service_uses_game_mode(monkeypatch):
     assert isinstance(service._orchestrator, FakeOrchestrator)
     assert created["kwargs"]["execution_mode"] == "game"
     assert created["kwargs"]["game_runtime"] is fake_runtime
+    assert created["kwargs"]["verifier_selector"]._injected == configured_verifiers
 
 
 def test_validation_service_rejects_invalid_execution_mode(monkeypatch):
