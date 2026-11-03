@@ -985,6 +985,58 @@ button {
   color: var(--warn);
 }
 
+.execution-audit-card {
+  width: 100%;
+  margin-top: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(20, 29, 31, 0.86), rgba(15, 21, 23, 0.86));
+}
+
+.execution-audit-card h2 {
+  margin: 0 0 13px;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.execution-audit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+}
+
+.execution-audit-item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.execution-audit-item > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.execution-audit-item strong,
+.execution-audit-item li {
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.execution-audit-guards ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
 .decision-caption {
   margin-top: 6px;
   color: #738184;
@@ -1165,6 +1217,12 @@ button {
   color: var(--bad);
 }
 
+.status-badge.abstained {
+  border-color: rgba(228, 194, 126, 0.2);
+  background: rgba(228, 194, 126, 0.07);
+  color: var(--warn);
+}
+
 .score-row {
   display: flex;
   justify-content: space-between;
@@ -1299,6 +1357,10 @@ button {
   }
 
   .verifier-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .execution-audit-grid {
     grid-template-columns: 1fr;
   }
 

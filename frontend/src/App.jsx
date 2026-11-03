@@ -1,7 +1,21 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = (
+  import.meta.env.VITE_API_BASE_URL?.trim() || "http://127.0.0.1:8000"
+).replace(/\/+$/, "");
+
+const getResponseErrorMessage = async (response, fallback) => {
+  const errorData = await response.json().catch(() => null);
+
+  if (errorData?.detail !== undefined && errorData.detail !== null) {
+    return typeof errorData.detail === "string"
+      ? errorData.detail
+      : JSON.stringify(errorData.detail);
+  }
+
+  return fallback;
+};
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -244,7 +258,9 @@ function App() {
       });
 
       if (!response.ok) {
-        throw new Error("Validation failed.");
+        throw new Error(
+          await getResponseErrorMessage(response, "Validation failed.")
+        );
       }
 
       const data = await response.json();
@@ -341,13 +357,62 @@ function App() {
     return Math.round(score * 100);
   };
 
-  const getStatusClass = (verifier) => {
-    if (verifier.metadata?.pipeline_role === "abstention") {
+  const isVerifierAbstention = (verifier, executionAudit) => {
+    const isGameMode = executionAudit?.execution_mode === "game";
+    const decision = verifier.metadata?.decision?.toUpperCase?.();
+    const attempts = Array.isArray(executionAudit?.attempts)
+      ? executionAudit.attempts
+      : [];
+    const attempt = attempts.find(
+      (item) => item.verifier_name === verifier.verifier_name
+    );
+
+    return (
+      verifier.metadata?.pipeline_role === "abstention" ||
+      (isGameMode &&
+        (decision === "UNSURE" ||
+          decision === "UNCERTAIN" ||
+          attempt?.state === "abstention"))
+    );
+  };
+
+  const getStatusClass = (verifier, executionAudit) => {
+    if (isVerifierAbstention(verifier, executionAudit)) {
       return "abstained";
     }
 
     return verifier.passed ? "passed" : "failed";
   };
+
+  const isGameModeResult =
+    result?.execution_audit?.execution_mode === "game";
+  const verifierResults = (Array.isArray(result?.results) ? result.results : [])
+    .filter((verifier) =>
+      isGameModeResult || verifier.metadata?.pipeline_role === "vote"
+    );
+  const executionAudit = result?.execution_audit;
+  const overrideReasons = Array.isArray(executionAudit?.override_reasons)
+    ? executionAudit.override_reasons.filter(Boolean)
+    : [];
+  const auditTeam = Array.isArray(executionAudit?.team)
+    ? executionAudit.team.filter(Boolean)
+    : [];
+  const hasExecutionDetails = Boolean(
+    executionAudit &&
+      (executionAudit.execution_mode ||
+        executionAudit.policy_id ||
+        executionAudit.artifact_id ||
+        executionAudit.selected_strategy_id ||
+        auditTeam.length > 0 ||
+        executionAudit.aggregation ||
+        overrideReasons.length > 0)
+  );
+  const formattedFinalScore = isGameModeResult
+    ? typeof result?.final_score === "number" &&
+      Number.isFinite(result.final_score)
+      ? `${result.final_score >= 0 ? "+" : ""}${result.final_score.toFixed(2)}`
+      : "Unavailable"
+    : `${getScorePercentage(result?.final_score)}%`;
 
   return (
     <div className="app">
@@ -761,12 +826,13 @@ function App() {
 
               <div className="verifier-grid">
 
-                {result?.results
-                  ?.filter(
-                    (verifier) =>
-                      verifier.metadata?.pipeline_role === "vote"
-                  )
-                  .map((verifier, index) => (
+                {verifierResults.length === 0 ? (
+                  <div className="no-verifiers">
+                    <strong>No verifier results</strong>
+                    No verifier results were returned for this validation.
+                  </div>
+                ) : (
+                  verifierResults.map((verifier, index) => (
 
                     <div
                       className="verifier-card"
@@ -780,12 +846,9 @@ function App() {
                         </h3>
 
                         <span
-                          className={`status-badge ${getStatusClass(
-                            verifier
-                          )}`}
+                          className={`status-badge ${getStatusClass(verifier, executionAudit)}`}
                         >
-                          {verifier.metadata?.pipeline_role ===
-                          "abstention"
+                          {isVerifierAbstention(verifier, executionAudit)
                             ? "Abstained"
                             : verifier.passed
                             ? "Passed"
@@ -819,7 +882,8 @@ function App() {
 
                     </div>
 
-                  ))}
+                  ))
+                )}
 
               </div>
 
@@ -832,14 +896,11 @@ function App() {
               <div className="final-result-left">
 
                 <div className="final-label">
-                  FINAL SCORE
+                  {isGameModeResult ? "FINAL SCORE · SIGNED" : "FINAL SCORE"}
                 </div>
 
                 <div className="final-score">
-                  {getScorePercentage(
-                    result?.final_score
-                  )}
-                  %
+                  {formattedFinalScore}
                 </div>
 
               </div>
@@ -870,6 +931,60 @@ function App() {
               </div>
 
             </div>
+
+            {hasExecutionDetails && (
+              <section className="execution-audit-card">
+                <h2>Game Execution</h2>
+                <div className="execution-audit-grid">
+                  {executionAudit.execution_mode && (
+                    <div className="execution-audit-item">
+                      <span>Execution mode</span>
+                      <strong>{executionAudit.execution_mode}</strong>
+                    </div>
+                  )}
+                  {executionAudit.policy_id && (
+                    <div className="execution-audit-item">
+                      <span>Policy ID</span>
+                      <strong>{executionAudit.policy_id}</strong>
+                    </div>
+                  )}
+                  {executionAudit.artifact_id && (
+                    <div className="execution-audit-item">
+                      <span>Artifact ID</span>
+                      <strong>{executionAudit.artifact_id}</strong>
+                    </div>
+                  )}
+                  {executionAudit.selected_strategy_id && (
+                    <div className="execution-audit-item">
+                      <span>Selected strategy</span>
+                      <strong>{executionAudit.selected_strategy_id}</strong>
+                    </div>
+                  )}
+                  {auditTeam.length > 0 && (
+                    <div className="execution-audit-item">
+                      <span>Selected verifier team</span>
+                      <strong>{auditTeam.join(", ")}</strong>
+                    </div>
+                  )}
+                  {executionAudit.aggregation && (
+                    <div className="execution-audit-item">
+                      <span>Aggregation</span>
+                      <strong>{executionAudit.aggregation}</strong>
+                    </div>
+                  )}
+                  {overrideReasons.length > 0 && (
+                    <div className="execution-audit-item execution-audit-guards">
+                      <span>Guard / override reason</span>
+                      <ul>
+                        {overrideReasons.map((reason) => (
+                          <li key={reason}>{reason}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
 
             {/* ================= FEEDBACK ================= */}
 

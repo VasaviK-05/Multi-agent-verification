@@ -1,4 +1,4 @@
-﻿"""Load and validate a server-configured game deployment."""
+"""Load and validate a server-configured game deployment."""
 
 import json
 import random
@@ -11,6 +11,7 @@ from app.game.artifacts import (
 )
 from app.game.execution import GameRuntime
 from app.game.prototype_bundle import load_prototype
+from app.game.offline.recording_adapters import ProjectObserver
 from app.utils.config import settings
 
 class PrototypeGameRuntime:
@@ -30,7 +31,7 @@ class PrototypeGameRuntime:
             validation_id,
             provider=self._provider,
             rng=self._rng,
-            resource_observer=None,
+            resource_observer=ProjectObserver(),
             allow_synthetic_for_tests=False,
         )
 
