@@ -1,0 +1,179 @@
+{
+  "version": "capability_probe_file_inventory_v1",
+  "new_source_files": [
+    {
+      "path": "app/analysis/capability_probe_analyzer.py",
+      "sha256": "ef3399e9727f940d21f020f362b6389d8918f0ffce8246b06d29fe5b1ae27af4",
+      "bytes": 2903
+    },
+    {
+      "path": "scripts/prepare_capability_probes.py",
+      "sha256": "de109aa172d3aa7ee860835164e43f04310ca680465f206053bf8bbee2781305",
+      "bytes": 10768
+    },
+    {
+      "path": "scripts/collect_capability_probes.py",
+      "sha256": "2651fd65c4665b82be83fafa4a2410d780c6beff17b26767f6d33342d35d8f85",
+      "bytes": 6322
+    },
+    {
+      "path": "scripts/evaluate_capability_probes.py",
+      "sha256": "70d478eaedb1e4728a224b3533b79d01f92efba7c968123923760ca09fdb4e9e",
+      "bytes": 17374
+    },
+    {
+      "path": "tests/test_capability_probe_analyzer.py",
+      "sha256": "82748597e70a3fd56ddf00442de72d39121acd63ecdea4e4cab8f6ef6e8527d4",
+      "bytes": 3778
+    },
+    {
+      "path": "docs/capability_probe_findings.md",
+      "sha256": "8549012ebe41ceec07a91fcf65208fc6f48f8926975d603ee426d973e6acc785",
+      "bytes": 15837
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "artifacts/capability-probes-v1/all-addition-comparisons.json",
+      "sha256": "1e1567641de465ce09d4c8605fbf3119d52ffb76921d1735b962ec179309dde3",
+      "bytes": 272613
+    },
+    {
+      "path": "artifacts/capability-probes-v1/analysis-code-seal.json",
+      "sha256": "7ad7e94daa448d1cf5b35d5722b09d5e7cd21e27bda2a86e6bc32c9c99a843b1",
+      "bytes": 411
+    },
+    {
+      "path": "artifacts/capability-probes-v1/candidates.json",
+      "sha256": "3c637c8803cf0adddcc458d549d56108df3a1700b6201ae105f4357dd70ff7b6",
+      "bytes": 2073
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/attempts.jsonl",
+      "sha256": "e53e33f156edccf42457bf7f83abb2eb810ac31f8aff7d0cff1e76c35d532a69",
+      "bytes": 1064860
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/collection-report.json",
+      "sha256": "9b1961741f748ffd939386847fcd4a6ff3427ad8e5384a5c5b7d1857865da9f7",
+      "bytes": 371
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/collector-provenance.json",
+      "sha256": "67cd71a45659961c9e2fafd70217efc5320e8adc0a2a35b1851eb4b66b37f129",
+      "bytes": 537
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/network-audit.jsonl",
+      "sha256": "3aa24896cefafd1081bcd3238b355f392ceb7de5ff4172a85ed4e7e74c75f48a",
+      "bytes": 111048
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/observed-setup.json",
+      "sha256": "359aadbb3d5704461be318d9f9eb290df052256efa0eec8d61b9ef268743d32c",
+      "bytes": 5204
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/recordings.json",
+      "sha256": "e05f6e47c32cf4862907705d080224a409db37857049d0a641fd850c6c34751d",
+      "bytes": 1210058
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/request.json",
+      "sha256": "57df68488b0207c3951b6ec8f7af0f47413e09012e6cfbfaf72a638ff1ea4cc9",
+      "bytes": 96455
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/resource-preflight.json",
+      "sha256": "379929ed0470d63f420771cd32f89a2d7faaebdb3006ae66704814e8a0f27253",
+      "bytes": 8468
+    },
+    {
+      "path": "artifacts/capability-probes-v1/collection/started.jsonl",
+      "sha256": "f9768e431ee412e529519c036ff12c2155ebec4f0324b8779d53e3b6f9046838",
+      "bytes": 8064
+    },
+    {
+      "path": "artifacts/capability-probes-v1/compound-blockers.json",
+      "sha256": "32430aaf8b71b73d29c7a7d70438bc87263b6f6550b879e31a2aaa8012362dc8",
+      "bytes": 3706
+    },
+    {
+      "path": "artifacts/capability-probes-v1/diagnostic-contexts.json",
+      "sha256": "bcf8157f9c1e83c8b8d86dce4fa0b525b5d75d7a2be7262dfad6c1cfc8ddfd48",
+      "bytes": 262663
+    },
+    {
+      "path": "artifacts/capability-probes-v1/enumerations.json",
+      "sha256": "f24c7752c53a4752120f73f6a4e64c177db94dc7a2ba547e4e1fa9740fd98db8",
+      "bytes": 119443
+    },
+    {
+      "path": "artifacts/capability-probes-v1/examples.json",
+      "sha256": "728585e7183b2fccd1158f6dfe0e3a81661f2f80a88df043609ccf5cb164d502",
+      "bytes": 38006
+    },
+    {
+      "path": "artifacts/capability-probes-v1/exclusions.json",
+      "sha256": "e353356719ddd39aa786332778bdfd9194bff502aa1bb6295c23110aaac47fe0",
+      "bytes": 46018
+    },
+    {
+      "path": "artifacts/capability-probes-v1/groups.json",
+      "sha256": "326014f277d0db6efaecfa39698ae10a01199dd172506ecb618bdb9de9360899",
+      "bytes": 57992
+    },
+    {
+      "path": "artifacts/capability-probes-v1/individual-findings.json",
+      "sha256": "23fbf4b7362c1eb3301f54e7c6b1a49cbb870547283bbb19ab2a860af0fafecf",
+      "bytes": 357029
+    },
+    {
+      "path": "artifacts/capability-probes-v1/labels.json",
+      "sha256": "d061a17436304c8479fe753bd23dc15eb85dc96827f8f6849b860bc1dae286aa",
+      "bytes": 14040
+    },
+    {
+      "path": "artifacts/capability-probes-v1/pre-execution-seal.json",
+      "sha256": "cd6804b272249224d49c118faf2de43eebd736e222581f6cdfa62d90abf63681",
+      "bytes": 2165
+    },
+    {
+      "path": "artifacts/capability-probes-v1/protocol.json",
+      "sha256": "4c468a6c604ca48e2f26bf4fa79bc94bad9fd6a41f7df0d49ecc632d65aa2543",
+      "bytes": 24226
+    },
+    {
+      "path": "artifacts/capability-probes-v1/report.md",
+      "sha256": "8b416a502248242eb5e2e00b813a730d6c4986fdb4920eb7e1fa71d86359df3a",
+      "bytes": 47552
+    },
+    {
+      "path": "artifacts/capability-probes-v1/summary.json",
+      "sha256": "684e88ba00a0b417ac87579ccc50e156dc541fe0480e3894a12f9a00f78ac7e4",
+      "bytes": 1012
+    },
+    {
+      "path": "artifacts/capability-probes-v1/team-metrics.json",
+      "sha256": "f6c46e16a18e5055a6260f3c5b74533003a158b1c46e10396efa2d28b7a26334",
+      "bytes": 27759
+    },
+    {
+      "path": "artifacts/capability-probes-v1/team-outcomes.json",
+      "sha256": "fa0043a484a9c88091e4a45d9fba5e920acd63cb7bed7121914d29191783065f",
+      "bytes": 1067593
+    },
+    {
+      "path": "artifacts/capability-probes-v1/timings-summary.json",
+      "sha256": "0fec0c9e8c72090e5809fc0875c6487d69a93d190aa90d5a4f687122f1593d43",
+      "bytes": 700
+    },
+    {
+      "path": "artifacts/capability-probes-v1/verification.json",
+      "sha256": "7eed3d4c4fb3b8a2ce0bc73580a9cef08294e4b9840e65f2ba03713850c7660d",
+      "bytes": 1299
+    }
+  ],
+  "inventory_path": "artifacts/capability-probes-v1/file-manifest.json",
+  "note": "Inventory excludes its own hash. All pre-existing files were preserved."
+}

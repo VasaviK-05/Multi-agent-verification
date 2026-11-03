@@ -1,0 +1,1880 @@
+{
+  "development": [
+    {
+      "answer": "{\"base\":\"29879337\",\"derived\":\"29880337\"}",
+      "example_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876",
+      "group_id": "CM",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"29879337\",\"derived\":\"29880336\"}",
+      "example_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+      "group_id": "CM",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"29879338\",\"derived\":\"29880338\"}",
+      "example_id": "d00d6670a119c409b260529e4a69d7ccd6cfe4c9012311ada4fcbdb9025cba10",
+      "group_id": "CM",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"29879338\",\"derived\":\"29880337\"}",
+      "example_id": "82b751011baa45a4d2ec7908dfd4993b21f0fac9b76fb2a5959f8fe8a39960c6",
+      "group_id": "CM",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"29743\",\"derived\":\"29753\"}",
+      "example_id": "1e74152f915e7bfc7f0d23c56cae39396e912a9135d0de46ceabb6f86779d3cc",
+      "group_id": "AM",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Armenia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"29743\",\"derived\":\"29752\"}",
+      "example_id": "eb368382a2d3a93c6eac72d05a0a242dcc0af71545262b9671d5eec7d7dfb833",
+      "group_id": "AM",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Armenia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"29744\",\"derived\":\"29754\"}",
+      "example_id": "458ca6ea81a8e6ff3f07f8b2ef4bd54f1051179a9d08bccf177bacecbd2c76c5",
+      "group_id": "AM",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Armenia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"29744\",\"derived\":\"29753\"}",
+      "example_id": "3bfff2b75524b6ff090350e7d785e6824293ac283bbb18f0aa94e929a5dbffd6",
+      "group_id": "AM",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Armenia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"406752\",\"derived\":\"406762\"}",
+      "example_id": "ff629cad32512b181f030b88c5cada49c9284c895a8a4ed2e526a702c35f0e16",
+      "group_id": "PY",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Paraguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"406752\",\"derived\":\"406761\"}",
+      "example_id": "0fc6e6b1a1f1c94f2e26f70b593ad5e84214e56ca9ab5c0707e14cc9005cd64b",
+      "group_id": "PY",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Paraguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"406753\",\"derived\":\"406763\"}",
+      "example_id": "0a6fc347a93e5e5f54d2efb45a2d2901e530ad59ca54965ab90ce81fb1e4adc3",
+      "group_id": "PY",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Paraguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"406753\",\"derived\":\"406762\"}",
+      "example_id": "97589d4078f6587316d935b2ec46c4da38c3d3a84e01bf5cd975d574bbe004f0",
+      "group_id": "PY",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Paraguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"8515767\",\"derived\":\"8515777\"}",
+      "example_id": "9dd329b540255695a6985c643c05ac704bda88a2091e6725cc33668e82095484",
+      "group_id": "BR",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Brazil, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"8515767\",\"derived\":\"8515776\"}",
+      "example_id": "3fe57b90cf9d3cba6ed888a53c9794cedcaff601248fb968f903c4ef84706e59",
+      "group_id": "BR",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Brazil, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"8515768\",\"derived\":\"8515778\"}",
+      "example_id": "b11ed0f137b7f7782191b7ea374874cd05e78748ddf8f10e951a66d0e4ccbaf8",
+      "group_id": "BR",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Brazil, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"8515768\",\"derived\":\"8515777\"}",
+      "example_id": "9e0763cab14eac90e4725f54475a1026c53511d67e0885d1ec449bf068342e83",
+      "group_id": "BR",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Brazil, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"78865\",\"derived\":\"78875\"}",
+      "example_id": "6f4299d90d21d8652f3c6e7e3f96350c37dd9e4926207eca7b364a25c6d54e30",
+      "group_id": "CZ",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Czechia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"78865\",\"derived\":\"78874\"}",
+      "example_id": "30a4e1cae4d2a4282abba4cab58d873e5a8e06399bf9214690a1bd7b634f61bc",
+      "group_id": "CZ",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Czechia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"78866\",\"derived\":\"78876\"}",
+      "example_id": "a0114f13ff363d03c347064717721fc5f29e6c5a4819f05d53b88f1017aac5fa",
+      "group_id": "CZ",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Czechia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"78866\",\"derived\":\"78875\"}",
+      "example_id": "ccb65124ffc7a02d1fe8675d83dc6cef733f4f6eae9ec833c40cfe0fc591f2b2",
+      "group_id": "CZ",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Czechia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"19654739\",\"derived\":\"19655739\"}",
+      "example_id": "dc8a69a326a50b87681bcb65ecbe50b9f1cbc1a8e8a654a5b8fa42190ed082c0",
+      "group_id": "SO",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Somalia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"19654739\",\"derived\":\"19655738\"}",
+      "example_id": "33a1583c6ca5f6ac1a800b0f1c5bba97a8e97ed388b223dd38e5df7cbf5f561a",
+      "group_id": "SO",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Somalia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"19654740\",\"derived\":\"19655740\"}",
+      "example_id": "4a7db1a080ce65fbd0e00bdbe938ae3dea6457ec00530036e614f912aae594a1",
+      "group_id": "SO",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Somalia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"19654740\",\"derived\":\"19655739\"}",
+      "example_id": "78cf446ffd7b64d480a73711ef64935779b5e19698f05b42a5394966662f57a5",
+      "group_id": "SO",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Somalia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"342353\",\"derived\":\"342363\"}",
+      "example_id": "4404bace73d8629017443cc1604658858845891210f607947624ed2d2c026085",
+      "group_id": "PH",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Philippines, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"342353\",\"derived\":\"342362\"}",
+      "example_id": "518b9cd5924ccc5368e3f0bb566cbfd730dd132c400fc34f629a6e96de2f7abb",
+      "group_id": "PH",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Philippines, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"342354\",\"derived\":\"342364\"}",
+      "example_id": "b262eb57177775857db48b1e712cc55b378ba3fdf10bd8e0c65e7913e3ed42c8",
+      "group_id": "PH",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Philippines, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"342354\",\"derived\":\"342363\"}",
+      "example_id": "8469b146f1dad84de1d163b07f539cd6dc070ba42486dc56b6c09bed0ccb7e28",
+      "group_id": "PH",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Philippines, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"117303\",\"derived\":\"118303\"}",
+      "example_id": "0b29eb1111d398133ac8cbe81c542b32b67849a5c11891e333c46c4f39006bc0",
+      "group_id": "GD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Grenada, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"117303\",\"derived\":\"118302\"}",
+      "example_id": "523db1e297b3480a8da6e8f17529db2d59e1d6a198520acf9def958ac4c0855a",
+      "group_id": "GD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Grenada, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"117304\",\"derived\":\"118304\"}",
+      "example_id": "0ae2c0a676e4d133029ce1085604c90f5c904258bac01e9b456ac7fe503ab406",
+      "group_id": "GD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Grenada, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"117304\",\"derived\":\"118303\"}",
+      "example_id": "f89a15211068dd377cf08eb134bfbec23ce8cb91322c4be26f4545d3e9b122f6",
+      "group_id": "GD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Grenada, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"639850\",\"derived\":\"640850\"}",
+      "example_id": "0b2e8e96275e625183f406d93d97702798dc14eba74070c1dde78356af8a27c4",
+      "group_id": "SR",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Suriname, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"639850\",\"derived\":\"640849\"}",
+      "example_id": "82b539d5ff90696f0ccbbeb4a54088e401e12a7a8900afa4eb6d97541145ebf6",
+      "group_id": "SR",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Suriname, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"639851\",\"derived\":\"640851\"}",
+      "example_id": "007442af94bf015cadf3f24257f84cadd1fcda8ebe4a2deb8d58f957dc9fc40e",
+      "group_id": "SR",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Suriname, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"639851\",\"derived\":\"640850\"}",
+      "example_id": "d886d81156abe0f9e79e9540de8cd4ad5613211e7a3b990ff4a51c482ede69bd",
+      "group_id": "SR",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Suriname, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"323802\",\"derived\":\"323812\"}",
+      "example_id": "26442a8342e4523c5a87520b45a172762f2abcf63351a28ea523291dae3aa5f0",
+      "group_id": "NO",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Norway, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"323802\",\"derived\":\"323811\"}",
+      "example_id": "d410d79b45ab0526569cc613000c693ffc006e83eb441d45e46960cdfdd893f4",
+      "group_id": "NO",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Norway, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"323803\",\"derived\":\"323813\"}",
+      "example_id": "7229e20e0cf3b1dc1169f62cf7de8d590e14120dcb671c570f9d56a0c841a16b",
+      "group_id": "NO",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Norway, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"323803\",\"derived\":\"323812\"}",
+      "example_id": "c706f6b621d2330104e0a0d681ce98f0109404ec00201b33f1887a36662832c2",
+      "group_id": "NO",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Norway, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"5731206\",\"derived\":\"5732206\"}",
+      "example_id": "070893a657c327cb1e56d71fc86c9a6d05b5ee83e0807bf285864525f468e87b",
+      "group_id": "LR",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Liberia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"5731206\",\"derived\":\"5732205\"}",
+      "example_id": "aa4de0c16f6bb88239e8f7a18a25434c478c85656ca9b404a8674f602d290ff2",
+      "group_id": "LR",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Liberia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"5731207\",\"derived\":\"5732207\"}",
+      "example_id": "e3dd8be6e131f18b5b2d9aa47f02f21db69770cab13242afa4717c8c1d2079df",
+      "group_id": "LR",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Liberia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"5731207\",\"derived\":\"5732206\"}",
+      "example_id": "bf55a432c018c840ec10a648ebf465805159ca277b0c150734feee50e052684c",
+      "group_id": "LR",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Liberia, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"923768\",\"derived\":\"923778\"}",
+      "example_id": "0c098881faea5e13005e9925bb4cdd22d5cddd68a622ff9090d1eaea4f360707",
+      "group_id": "NG",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Nigeria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"923768\",\"derived\":\"923777\"}",
+      "example_id": "c4f45ae417799e96b84b579f7100cf9b83795ad758c24c31169763e11c38f018",
+      "group_id": "NG",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Nigeria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"923769\",\"derived\":\"923779\"}",
+      "example_id": "22edf4aa761b99417d97331e6967576a8dd9dd660512e9019c7367f17737b00f",
+      "group_id": "NG",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Nigeria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"923769\",\"derived\":\"923778\"}",
+      "example_id": "befe7e6ef82316fe6d0655f29ac6d3fe075221d68382c7254d752f88b0c647ab",
+      "group_id": "NG",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Nigeria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    }
+  ],
+  "final_test": [
+    {
+      "answer": "{\"base\":\"71619863\",\"derived\":\"71620863\"}",
+      "example_id": "f810cfee2a6b926d3e9fe4a69262c4b9bb6dbb26cf4f3c137848d41f10b5a473",
+      "group_id": "TH",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Thailand, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"71619863\",\"derived\":\"71620862\"}",
+      "example_id": "043bd7dcc8b7ead5461fb44cfed1869bdc4d63ca4e30aacf45ce076b83906aeb",
+      "group_id": "TH",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Thailand, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"71619864\",\"derived\":\"71620864\"}",
+      "example_id": "f8b73c274216d20736a04c5381bb0d3f20977dec78b08401a40d61a734a95573",
+      "group_id": "TH",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Thailand, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"71619864\",\"derived\":\"71620863\"}",
+      "example_id": "2e43970a69fdda9e8170eae4415e3c61af4157327f0ef9a21dfc42fb013e0fb8",
+      "group_id": "TH",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Thailand, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"22216120\",\"derived\":\"22217120\"}",
+      "example_id": "102ed161de8fde26f0f2af033cb3e50dbc0aeb6e5bdfb4257579732a62508cdc",
+      "group_id": "MW",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Malawi, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"22216120\",\"derived\":\"22217119\"}",
+      "example_id": "bd474a70f57244f81cbbb59a6f834b4658de6a6f84cea655a5306cdc67b21dae",
+      "group_id": "MW",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Malawi, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"22216121\",\"derived\":\"22217121\"}",
+      "example_id": "60cb8dd0c639a72970db9647ba8d609a2b851e552f4f19767f6e6da3edb76dd4",
+      "group_id": "MW",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Malawi, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"22216121\",\"derived\":\"22217120\"}",
+      "example_id": "34a1f90d62ba2630a3dce96a01b1ced6f97b94f9f972f90444f8a6dab2037a34",
+      "group_id": "MW",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Malawi, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"185180\",\"derived\":\"185190\"}",
+      "example_id": "7b01131c7b7151f3ec5d6b2342708e1b36cd3d9523a84bfdc0fbddb3d101c235",
+      "group_id": "SY",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Syria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"185180\",\"derived\":\"185189\"}",
+      "example_id": "0dcf5541e584fb670a843a490abfd4a09236bf635e06d333e98e1b52460d3fff",
+      "group_id": "SY",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Syria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"185181\",\"derived\":\"185191\"}",
+      "example_id": "f201f5ff6458347a411858e2db5f3d73958f34f20de8c57f8d88c41ebde206ec",
+      "group_id": "SY",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Syria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"185181\",\"derived\":\"185190\"}",
+      "example_id": "8b8b4102efe61a18a02903ceb1de1efb3e37cf1fedec113a4ef1e921be35a7d8",
+      "group_id": "SY",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Syria, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"459\",\"derived\":\"469\"}",
+      "example_id": "4eba01a15537cfe2101d83f9df727e52041e919624ed10aac3ba8aff495eea09",
+      "group_id": "PW",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Palau, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"459\",\"derived\":\"468\"}",
+      "example_id": "dba54d2e51f055de4437b7ec604dfbc24d246c6fe7af470ae5ba1eeaa3a54b7c",
+      "group_id": "PW",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Palau, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"460\",\"derived\":\"470\"}",
+      "example_id": "c481491b273acb012e8ce725f9b0cc9fbe6c93bd275c4f36bf7ff18c604a3790",
+      "group_id": "PW",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Palau, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"460\",\"derived\":\"469\"}",
+      "example_id": "bfbc29ee0824e99971d897bed7e2745baebb2f7bb848bd6ead4325174ce86f59",
+      "group_id": "PW",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Palau, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"69700\",\"derived\":\"69710\"}",
+      "example_id": "f00c341f1649fc7cb3609ce4801c2d6bd761e6015868ed203ba5e4966f543687",
+      "group_id": "GE",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Georgia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"69700\",\"derived\":\"69709\"}",
+      "example_id": "42ff8eda804f7a8d1e133293234e18d616f6b3c518f25de2fea48ad8a5cbcc96",
+      "group_id": "GE",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Georgia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"69701\",\"derived\":\"69711\"}",
+      "example_id": "d28fe5ebeb0dbecdc92b6f773793f7d66e0812e58302063c0a2c4a1612620d1f",
+      "group_id": "GE",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Georgia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"69701\",\"derived\":\"69710\"}",
+      "example_id": "893705845fb07afff996b2133250f8172b0392c7dcd5a6f6f6a8a0bd31acd334",
+      "group_id": "GE",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Georgia, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"29618118\",\"derived\":\"29619118\"}",
+      "example_id": "825e13d7517bb35aec26e4e48750aac01d2b1854f202386f58462a8fb04d4ff1",
+      "group_id": "NP",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Nepal, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"29618118\",\"derived\":\"29619117\"}",
+      "example_id": "46541694c5dbd988067525a0888e08463dd43b083d6092f34ca8a92df135de89",
+      "group_id": "NP",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Nepal, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"29618119\",\"derived\":\"29619119\"}",
+      "example_id": "9187db11bfb5c9d265249987211a0a8bfb58c276d19360a5757e35d3c310f53c",
+      "group_id": "NP",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Nepal, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"29618119\",\"derived\":\"29619118\"}",
+      "example_id": "3b6eb91a2624960350f13ae10a71ae14191159b50532487566a0f27afa973cf4",
+      "group_id": "NP",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Nepal, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"51384894\",\"derived\":\"51385894\"}",
+      "example_id": "f2381de3d0d3924c2b745137fec4effeab0e66220333ce4bcbb1914d3b7922fb",
+      "group_id": "UG",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Uganda, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"51384894\",\"derived\":\"51385893\"}",
+      "example_id": "8434ad6d44bd923d8b9c8e79d10486e3c3162a1d0fbb150a89192d8b1e797bc7",
+      "group_id": "UG",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Uganda, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"51384895\",\"derived\":\"51385895\"}",
+      "example_id": "53c931c0b058065d093b602c098bd0f226e0cae5bba14ddaed9c21c3fdfeba59",
+      "group_id": "UG",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Uganda, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"51384895\",\"derived\":\"51385894\"}",
+      "example_id": "babbd5a13415194e0ec26db50ba9a86ff374339fb92e2bbe7fb3b84898d42b32",
+      "group_id": "UG",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Uganda, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"18289896\",\"derived\":\"18290896\"}",
+      "example_id": "6381d565ce45c9ed6191872a134fa2a7ec37e6eeff5204f488d6df2f0476cf89",
+      "group_id": "EC",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Ecuador, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"18289896\",\"derived\":\"18290895\"}",
+      "example_id": "96ed64b68a4c26c235343f79574c779bda874044c23c867067137562e37babb3",
+      "group_id": "EC",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Ecuador, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"18289897\",\"derived\":\"18290897\"}",
+      "example_id": "7ba6569f20c396c665f42c944f3c9eedc5c0999a2836f4943fc5fe9d3e4c66b3",
+      "group_id": "EC",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Ecuador, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"18289897\",\"derived\":\"18290896\"}",
+      "example_id": "43184a1e2f4adfaee23bf5fa8316d2abe2ef404b2c23131d3618d2d2b8d1db2b",
+      "group_id": "EC",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Ecuador, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"65300\",\"derived\":\"65310\"}",
+      "example_id": "718a2d51351eccc0408f37b82643da53e07ffbcd9dfbff32c2984fb5e87a2724",
+      "group_id": "LT",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Lithuania, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"65300\",\"derived\":\"65309\"}",
+      "example_id": "50c210d184a3db7e1bef048f5e1cb68969f7b3e3e3efd469babc09bd183c7c5b",
+      "group_id": "LT",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Lithuania, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"65301\",\"derived\":\"65311\"}",
+      "example_id": "1c0bafa35fa205bec7724a6484cb13ef4884ee6b8a629a88914ccf58c1a94959",
+      "group_id": "LT",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Lithuania, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"65301\",\"derived\":\"65310\"}",
+      "example_id": "914a9fce383f5aaafda980a913359e2e4639c942654ddfd49b9609b114b79043",
+      "group_id": "LT",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Lithuania, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"13812\",\"derived\":\"13822\"}",
+      "example_id": "baa9abe7a6b4cc667624e2e82b69e70ca840bc6ac7b19dbab35bd6b157a59d0c",
+      "group_id": "ME",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Montenegro, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"13812\",\"derived\":\"13821\"}",
+      "example_id": "ffdf2db7d278cc477225ffa024a4e8f8660944475bdc1c0f21984af5fe522446",
+      "group_id": "ME",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Montenegro, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"13813\",\"derived\":\"13823\"}",
+      "example_id": "8f8ba3905649de9f58cf8dd6a6239f77d6c04c00a81b10098517d5bd519ac374",
+      "group_id": "ME",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Montenegro, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"13813\",\"derived\":\"13822\"}",
+      "example_id": "2a5f8a92bd0963555aad96a63fdecd6b29e869b73f2098c1635e47fdf5dd4897",
+      "group_id": "ME",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Montenegro, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"147570\",\"derived\":\"147580\"}",
+      "example_id": "148ffefaf5b96c13aeb6f6e1610b5446ed46ad1b14822b709a430c1ad6425124",
+      "group_id": "BD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Bangladesh, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"147570\",\"derived\":\"147579\"}",
+      "example_id": "c8412a5a41f4111e358df45634800f649bdc84640b3e852ebea8e0255078aead",
+      "group_id": "BD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Bangladesh, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"147571\",\"derived\":\"147581\"}",
+      "example_id": "7255531474f389c82e83cbfd18e60fc32d296650bb0931dee6c3aa562ab77fb2",
+      "group_id": "BD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Bangladesh, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"147571\",\"derived\":\"147580\"}",
+      "example_id": "9d9dc53de4ae1ed84d1edf561563783a267ca6424723913fcc6f7b50977eee43",
+      "group_id": "BD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Bangladesh, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"1243741\",\"derived\":\"1244741\"}",
+      "example_id": "c4289b149722b27f461b8a5ae8c3116dc85727afafa651be2a973b4b3e9d1636",
+      "group_id": "MU",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Mauritius, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"1243741\",\"derived\":\"1244740\"}",
+      "example_id": "41acf4658d4be4be7e66236539a0759dc8bddbf8614bb403e8d6722461e816e1",
+      "group_id": "MU",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Mauritius, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"1243742\",\"derived\":\"1244742\"}",
+      "example_id": "1e96a08c2d6dd5d4a482bf7391ca5f53096f8a2ebf1523f4641cc716154317a5",
+      "group_id": "MU",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Mauritius, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"1243742\",\"derived\":\"1244741\"}",
+      "example_id": "e8bd2c61ba64c36b6aa6716d58f472ba55e00e0de419122f0b3d6d4808697b15",
+      "group_id": "MU",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Mauritius, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    }
+  ],
+  "history": [
+    {
+      "answer": "{\"base\":\"38430770\",\"derived\":\"38431770\"}",
+      "example_id": "c875834b2f6934ac7abc12ec001a94dba74d0885e47b0e5f2fbeeed5d6e84cc4",
+      "group_id": "MA",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Morocco, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"38430770\",\"derived\":\"38431769\"}",
+      "example_id": "60a2f5f7ecc36184aa9b37d3374bff71a1bb482cb80679fea0fa54223503f4a9",
+      "group_id": "MA",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Morocco, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"38430771\",\"derived\":\"38431771\"}",
+      "example_id": "eb107e1152dfce335d96e606aafc4b13c0a42d29926de6acc320d97b36f212eb",
+      "group_id": "MA",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Morocco, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"38430771\",\"derived\":\"38431770\"}",
+      "example_id": "7f0c4b1f06602e26b7931ae3159e2a2172e7e8ac5fba543a38979e329906bcdd",
+      "group_id": "MA",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Morocco, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"19020271\",\"derived\":\"19021271\"}",
+      "example_id": "a7db1766d75d87b2a8470031844f6773469a8dbbfe007fe2b660a5de995df8fd",
+      "group_id": "RO",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Romania, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"19020271\",\"derived\":\"19021270\"}",
+      "example_id": "2af8b35af9f18f47f5691f0f06e3a4912e51e02a92d3edc6aeb9df18f52b43eb",
+      "group_id": "RO",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Romania, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"19020272\",\"derived\":\"19021272\"}",
+      "example_id": "d32cd08895e6786c018fcea8ab9e06633ea34092595e1e5d7a48e4b0d1a8bfbf",
+      "group_id": "RO",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Romania, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"19020272\",\"derived\":\"19021271\"}",
+      "example_id": "ab3fff76ae030e40e670c4fc5afc89d5fd5255ca409be8d76ca1b3a5c96d7842",
+      "group_id": "RO",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Romania, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"468\",\"derived\":\"478\"}",
+      "example_id": "9fc9cf6d752ab0d8255c3eacefdf8e58959165fcc60150045ffffe10cfc909d8",
+      "group_id": "AD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Andorra, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"468\",\"derived\":\"477\"}",
+      "example_id": "07cb3cdc9fb73f6ef19c363369bb85cc7aa6c2c8e15327c188ac3ba783f060a4",
+      "group_id": "AD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Andorra, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"469\",\"derived\":\"479\"}",
+      "example_id": "f0fb3ae7e41877760890d135ddc45b052a26e0232b41da813850cb3f7d1d2d63",
+      "group_id": "AD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Andorra, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"469\",\"derived\":\"478\"}",
+      "example_id": "585582121759b81cf521c42666a1c4af95dd2734579d50a5774fcddbbbd4ea76",
+      "group_id": "AD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Andorra, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"1463865525\",\"derived\":\"1463866525\"}",
+      "example_id": "18bbd00a13929d04dc341b75ee75a88f9df89ba9979265ec85f7ac30acaa52ff",
+      "group_id": "IN",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of India, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"1463865525\",\"derived\":\"1463866524\"}",
+      "example_id": "08176a57525878da883be4f164590cecc7d95b4a7733c85d438b7b08eaf6498b",
+      "group_id": "IN",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of India, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"1463865526\",\"derived\":\"1463866526\"}",
+      "example_id": "a767df8e753b499ad2c2fa426b1c045c1b9241ba84e5fb98dd747a0288e223d6",
+      "group_id": "IN",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of India, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"1463865526\",\"derived\":\"1463866525\"}",
+      "example_id": "eafeb8295375aa2c46039a5046014e73ff998aeb731b36207dcbbeac4ef72138",
+      "group_id": "IN",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of India, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"529676\",\"derived\":\"530676\"}",
+      "example_id": "ee300126c5dafbbbb4552aebfc29d9cc74b88af3a9d9302c80c46ee5b19d4bae",
+      "group_id": "MV",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Maldives, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"529676\",\"derived\":\"530675\"}",
+      "example_id": "d698c9de0e668ebe232155032e0ea7c7d2be204a68eb8b789ed3e9843b728734",
+      "group_id": "MV",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Maldives, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"529677\",\"derived\":\"530677\"}",
+      "example_id": "433306f59cc0eb0c646f78a853e64bc5c0730e75649dedb71bca28fd14113d28",
+      "group_id": "MV",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Maldives, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"529677\",\"derived\":\"530676\"}",
+      "example_id": "8d95bf782c430ed1f788bf58d20345fafa384107c259f78a6980e12fcae0e2c4",
+      "group_id": "MV",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Maldives, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"2593130\",\"derived\":\"2594130\"}",
+      "example_id": "9c8a635a8c74ea43649ce84478fe38a2770e24b6a89947ce41665eff5e1aee7b",
+      "group_id": "GA",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Gabon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"2593130\",\"derived\":\"2594129\"}",
+      "example_id": "f55a2cbb4a6105d43620dfe7830152a7066bf220106510275e12715d5feadc78",
+      "group_id": "GA",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Gabon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"2593131\",\"derived\":\"2594131\"}",
+      "example_id": "19aa484d97e3b9218991c5f87b5c2ee8a6b3d86df5a09113fb2afa12d993dd02",
+      "group_id": "GA",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Gabon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"2593131\",\"derived\":\"2594130\"}",
+      "example_id": "187561e32aa47eaefb04a197536f0837c5f91979d83689b849b59ea0651867d1",
+      "group_id": "GA",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Gabon, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"2360527\",\"derived\":\"2361527\"}",
+      "example_id": "fbfa60d7e1e7a907ad476858294346f93efeeae7426e00e415ba57af93b62e8a",
+      "group_id": "MD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Moldova, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"2360527\",\"derived\":\"2361526\"}",
+      "example_id": "b4bfa9d879ce0a7a55793782fb9f6f9297c5fc5fdb53144f2d841ad8b0badbc6",
+      "group_id": "MD",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Moldova, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"2360528\",\"derived\":\"2361528\"}",
+      "example_id": "1483745412473da05735f3a5bb11a5ed897c11a6756a19868b68010b893b62cb",
+      "group_id": "MD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Moldova, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"2360528\",\"derived\":\"2361527\"}",
+      "example_id": "b21d7810b95145bf3d8ed4fd773b8fd4735f81a685ea48975fb39c6f62cf9152",
+      "group_id": "MD",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Moldova, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"17818\",\"derived\":\"17828\"}",
+      "example_id": "1bdf7a908ef41cbc02df323fad1d02c944537221b16708a178e793be01f05d56",
+      "group_id": "KW",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Kuwait, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"17818\",\"derived\":\"17827\"}",
+      "example_id": "6f3b3b355e63c137a4493109de89a2b5b706fcc080d323eb089aa8552efc79a8",
+      "group_id": "KW",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Kuwait, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"17819\",\"derived\":\"17829\"}",
+      "example_id": "fdfcd93ba0897214ab0b780f6d539cf18b70fd30e64e62d74d95d8e3d98dc742",
+      "group_id": "KW",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Kuwait, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"17819\",\"derived\":\"17828\"}",
+      "example_id": "184e76447a7f6941085460b2b188798e26ec8297a96ec0e82ffc73cd39fb7c80",
+      "group_id": "KW",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Kuwait, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"196722\",\"derived\":\"196732\"}",
+      "example_id": "e30404d99549c0153d6b73faeab2f18be8662710226087c8e36b2f1715d5dcca",
+      "group_id": "SN",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Senegal, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"196722\",\"derived\":\"196731\"}",
+      "example_id": "f76caa97e5ca515b1c2e961f3bf92031205c35ef6bf9788ed375b3e1b2ba2a67",
+      "group_id": "SN",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Senegal, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"196723\",\"derived\":\"196733\"}",
+      "example_id": "99b68fb0ba6ee2195d32d395bf728292b86c0972ba677c128683abb990142fe8",
+      "group_id": "SN",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Senegal, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"196723\",\"derived\":\"196732\"}",
+      "example_id": "f51fcf52df0682dd30729b8ca493bb3434e05db10485eeca3b00813d203d9140",
+      "group_id": "SN",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Senegal, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"580367\",\"derived\":\"580377\"}",
+      "example_id": "644ed91a492a52b726aa48ec07f4d42f20d8bfb4087848dbb315d7a8ad37eac4",
+      "group_id": "KE",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Kenya, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"580367\",\"derived\":\"580376\"}",
+      "example_id": "140f5b8334c83be6450555378882f8b02bfddc7b0d2397c29f47f58b400f240a",
+      "group_id": "KE",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Kenya, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"580368\",\"derived\":\"580378\"}",
+      "example_id": "990fc5a545913f52db15ed0ef0e7359fdd864d4f5cafd7a435745c6620fe98ce",
+      "group_id": "KE",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Kenya, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"580368\",\"derived\":\"580377\"}",
+      "example_id": "9d6c9d8eaf0995d8318b97c1325a1a1af3725f5bdd74bb0990aada6fe0bc3688",
+      "group_id": "KE",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Kenya, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"181034\",\"derived\":\"181044\"}",
+      "example_id": "32573ff5884670445ef8b58461f08ac3b9895f216f6d1ce3667f27f53af0c685",
+      "group_id": "UY",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the area of Uruguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"181034\",\"derived\":\"181043\"}",
+      "example_id": "d7c6515ba8043038cece80ccfc424591102a6006cf9c219145c3ff1303bdc20a",
+      "group_id": "UY",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Uruguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"181035\",\"derived\":\"181045\"}",
+      "example_id": "82c4c14467ec061c262bb92e19a3ee316f215fd19356061b9fdbe57e041c028e",
+      "group_id": "UY",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the area of Uruguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"181035\",\"derived\":\"181044\"}",
+      "example_id": "9a644d532dfde66dccc8dbee9235e4cee46755f7c293c38dd57742ff5130f472",
+      "group_id": "UY",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the area of Uruguay, and what is that area plus 10 square kilometres? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    },
+    {
+      "answer": "{\"base\":\"7618847\",\"derived\":\"7619847\"}",
+      "example_id": "022be40020b8fd208a792a1d30d2645f3c297101cc34f0d83939048b64626af4",
+      "group_id": "TM",
+      "label": {
+        "base_fact": true,
+        "derived_sum": true,
+        "whole": true
+      },
+      "question": "What is the population of Turkmenistan, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "correct"
+    },
+    {
+      "answer": "{\"base\":\"7618847\",\"derived\":\"7619846\"}",
+      "example_id": "0687810eb4195bc931d17a9876686338b31053aa72b86969f37c9febbff2f895",
+      "group_id": "TM",
+      "label": {
+        "base_fact": true,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Turkmenistan, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_math"
+    },
+    {
+      "answer": "{\"base\":\"7618848\",\"derived\":\"7619848\"}",
+      "example_id": "0534e6e2e5b6bec2193cc67f58b4771bbf1096010ed2889a3039ace9df64dd3a",
+      "group_id": "TM",
+      "label": {
+        "base_fact": false,
+        "derived_sum": true,
+        "whole": false
+      },
+      "question": "What is the population of Turkmenistan, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "wrong_base"
+    },
+    {
+      "answer": "{\"base\":\"7618848\",\"derived\":\"7619847\"}",
+      "example_id": "55a74878e1c3eccabb28838cdf0965887045f85742ff108d57dadb753daad3ba",
+      "group_id": "TM",
+      "label": {
+        "base_fact": false,
+        "derived_sum": false,
+        "whole": false
+      },
+      "question": "What is the population of Turkmenistan, and what is that population plus 1000? Give both values.",
+      "reference": null,
+      "variant": "both_wrong"
+    }
+  ]
+}

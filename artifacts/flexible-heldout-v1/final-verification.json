@@ -1,0 +1,158 @@
+{
+  "version": "heldout_collection_final_verification_v1",
+  "freeze_id": "bcba68b5bd2857246fb3c4d9248f0eb2af4fd891b5b694335799826942ae519e",
+  "cohorts": [
+    {
+      "cohort": "arithmetic",
+      "examples": 40,
+      "paired_groups": 20,
+      "attempts": 160,
+      "start_completion_ledger_exact": true,
+      "ambiguous_inflight_attempts": 0,
+      "resource_manifest_matches": true,
+      "versions_match": true,
+      "all_generation_requests_http200": true,
+      "network_counts": {
+        "blocked": 0,
+        "generation": 200,
+        "metadata": 646
+      },
+      "issues": 0,
+      "states": [
+        {
+          "verifier": "confidence",
+          "state": "abstention",
+          "count": 1
+        },
+        {
+          "verifier": "confidence",
+          "state": "directional",
+          "count": 39
+        },
+        {
+          "verifier": "evidence",
+          "state": "abstention",
+          "count": 40
+        },
+        {
+          "verifier": "rule",
+          "state": "directional",
+          "count": 40
+        },
+        {
+          "verifier": "semantic",
+          "state": "abstention",
+          "count": 26
+        },
+        {
+          "verifier": "semantic",
+          "state": "directional",
+          "count": 14
+        }
+      ],
+      "prepared_payload_unchanged": true
+    },
+    {
+      "cohort": "factual",
+      "examples": 40,
+      "paired_groups": 20,
+      "attempts": 160,
+      "start_completion_ledger_exact": true,
+      "ambiguous_inflight_attempts": 0,
+      "resource_manifest_matches": true,
+      "versions_match": true,
+      "all_generation_requests_http200": true,
+      "network_counts": {
+        "blocked": 0,
+        "generation": 200,
+        "metadata": 646
+      },
+      "issues": 0,
+      "states": [
+        {
+          "verifier": "confidence",
+          "state": "abstention",
+          "count": 20
+        },
+        {
+          "verifier": "confidence",
+          "state": "directional",
+          "count": 20
+        },
+        {
+          "verifier": "evidence",
+          "state": "abstention",
+          "count": 1
+        },
+        {
+          "verifier": "evidence",
+          "state": "directional",
+          "count": 39
+        },
+        {
+          "verifier": "rule",
+          "state": "abstention",
+          "count": 40
+        },
+        {
+          "verifier": "semantic",
+          "state": "directional",
+          "count": 40
+        }
+      ],
+      "prepared_payload_unchanged": true
+    }
+  ],
+  "total_examples": 80,
+  "total_attempts": 320,
+  "total_generation_requests": 400,
+  "semantic_test_collected": false,
+  "all_frozen_candidates_unchanged": true,
+  "all_prior_development_artifacts_unchanged": true,
+  "all_original_study_inputs_unchanged": true,
+  "historical_bundle_unchanged": true,
+  "final_resources_ready": true,
+  "tests": {
+    "collection_calibration_regression_passed": 63,
+    "broader_run_passed": 110,
+    "broader_run_sandbox_temp_rename_failures": 2,
+    "policy_build_rerun_outside_sandbox_passed": 26,
+    "final_heldout_tests_passed": 6,
+    "note": "Runs overlap. Two sandbox-only policy.json.tmp rename failures passed outside the sandbox."
+  },
+  "refitting": false,
+  "reputation_update": false,
+  "commit": false,
+  "push": false,
+  "merge": false,
+  "activation": false,
+  "evaluation_corrections": [
+    {
+      "version": "heldout_analysis_implementation_correction_v1",
+      "original_evaluator_sha256": "7ed57b90c2a06aaaec411ecf357e031aedf53d814e1c0c9d9dd7106538598fd8",
+      "corrected_evaluator_sha256": "6023bd82e381263e0305f974369bf22bc4fe3fceacb1dff797a53e4aeedcbade",
+      "reason": "Normalize Windows source manifest paths before recognizing the separately sealed collector extension. Original evaluation stopped before replay at the source-hash gate.",
+      "unchanged": "All policies, settings, test data, decision code, metrics, bootstrap and baseline definitions remain frozen. Only the path comparison and auditable correction-seal acceptance changed.",
+      "original_source_copy": "evaluate_flexible_heldout.original-sealed.py",
+      "fresh_inference": false,
+      "refitting": false
+    },
+    {
+      "version": "heldout_analysis_implementation_correction_v2",
+      "original_evaluator_sha256": "7ed57b90c2a06aaaec411ecf357e031aedf53d814e1c0c9d9dd7106538598fd8",
+      "parent_corrected_sha256": "6023bd82e381263e0305f974369bf22bc4fe3fceacb1dff797a53e4aeedcbade",
+      "corrected_evaluator_sha256": "0314cbb5942b27bf80f2b6f2e378e5a1c669b897c24f8a1fa36add9281e0a4bf",
+      "reason": "Apply the same Windows path normalization fix using universal-newline reading; the previous textual patch failed to replace its gate because raw CRLF bytes were decoded without normalization. Both failed runs stopped before replay.",
+      "unchanged": "No policy, metric, bootstrap, baseline, setting, contributor rule, test report or resource changes.",
+      "fresh_inference": false,
+      "refitting": false
+    }
+  ],
+  "evaluation_completed": true,
+  "results_sha256": "f12a537a5271671342ad8ad1fc3d60e9fe5ec882d291dd066dc1eacccfb33e42",
+  "policy_ids": {
+    "arithmetic": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+    "factual": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d"
+  },
+  "correction_v2_sha256": "9db68e04341dbd2cbaee3f8b176c0252a6aa3375093132d51cbf76b89d6ddce3"
+}

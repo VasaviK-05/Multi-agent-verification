@@ -1,0 +1,116 @@
+{
+  "cohort": "arithmetic",
+  "development_attack_metrics": {
+    "clean:f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782": {
+      "correct_accept": 20.0,
+      "correct_reject": 20.0,
+      "decision_coverage": 1.0,
+      "decision_loss": 0.0,
+      "estimated_resource_cost": 9.678209995036013,
+      "examples": 40,
+      "false_accept": 0.0,
+      "false_accept_rate": 0.0,
+      "false_reject": 0.0,
+      "false_reject_rate": 0.0,
+      "mean_loss": 4.5526659893073166e-05,
+      "selective_risk": 0.0,
+      "uncertain": 0.0,
+      "uncertainty_rate": 0.0,
+      "unresolved": 0.0
+    },
+    "confidence_inflation:4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01": {
+      "correct_accept": 20.0,
+      "correct_reject": 20.0,
+      "decision_coverage": 1.0,
+      "decision_loss": 0.0,
+      "estimated_resource_cost": 9.678209995036013,
+      "examples": 40,
+      "false_accept": 0.0,
+      "false_accept_rate": 0.0,
+      "false_reject": 0.0,
+      "false_reject_rate": 0.0,
+      "mean_loss": 4.5526659893073166e-05,
+      "selective_risk": 0.0,
+      "uncertain": 0.0,
+      "uncertainty_rate": 0.0,
+      "unresolved": 0.0
+    },
+    "forced_rejection:25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469": {
+      "correct_accept": 0.0,
+      "correct_reject": 20.0,
+      "decision_coverage": 1.0,
+      "decision_loss": 0.5,
+      "estimated_resource_cost": 9.678209995036013,
+      "examples": 40,
+      "false_accept": 0.0,
+      "false_accept_rate": 0.0,
+      "false_reject": 20.0,
+      "false_reject_rate": 0.5,
+      "mean_loss": 0.5000455266598931,
+      "selective_risk": 0.5,
+      "uncertain": 0.0,
+      "uncertainty_rate": 0.0,
+      "unresolved": 0.0
+    },
+    "forced_support:a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245": {
+      "correct_accept": 20.0,
+      "correct_reject": 0.0,
+      "decision_coverage": 1.0,
+      "decision_loss": 0.5,
+      "estimated_resource_cost": 9.678209995036013,
+      "examples": 40,
+      "false_accept": 20.0,
+      "false_accept_rate": 0.5,
+      "false_reject": 0.0,
+      "false_reject_rate": 0.0,
+      "mean_loss": 0.5000455266598931,
+      "selective_risk": 0.5,
+      "uncertain": 0.0,
+      "uncertainty_rate": 0.0,
+      "unresolved": 0.0
+    },
+    "suppression:068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad": {
+      "correct_accept": 0.0,
+      "correct_reject": 0.0,
+      "decision_coverage": 0.0,
+      "decision_loss": 0.2,
+      "estimated_resource_cost": 9.678209995036013,
+      "examples": 40,
+      "false_accept": 0.0,
+      "false_accept_rate": 0.0,
+      "false_reject": 0.0,
+      "false_reject_rate": 0.0,
+      "mean_loss": 0.20004552665989309,
+      "selective_risk": null,
+      "uncertain": 40.0,
+      "uncertainty_rate": 1.0,
+      "unresolved": 40.0
+    }
+  },
+  "held_out": "Not evaluated: reserved final examples have no recorded verifier outputs; no new inference authorized.",
+  "maximum_clean_coverage": 1.0,
+  "minimum": 1,
+  "selected_strategies": [
+    {
+      "aggregation": "reputation_weighted",
+      "probability": 1.0,
+      "team": [
+        "rule"
+      ]
+    }
+  ],
+  "selection_probability_by_team_size": {
+    "1": 1.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0
+  },
+  "status": "optimal",
+  "strategies": 16,
+  "team_sizes": [
+    1,
+    2,
+    3,
+    4
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "models": {
+    "embedding_snapshot": {
+      "repository": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "directory_digest": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+      "files": [
+        {
+          "path": "1_Pooling/config.json",
+          "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+          "bytes": 190
+        },
+        {
+          "path": "config.json",
+          "sha256": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+          "bytes": 612
+        },
+        {
+          "path": "config_sentence_transformers.json",
+          "sha256": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+          "bytes": 116
+        },
+        {
+          "path": "model.safetensors",
+          "sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+          "bytes": 90868376
+        },
+        {
+          "path": "modules.json",
+          "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+          "bytes": 349
+        },
+        {
+          "path": "README.md",
+          "sha256": "dcd602d2fd35c203a247304a06fec6654a12f7941b739f9221a064fe8dc3b7f0",
+          "bytes": 10502
+        },
+        {
+          "path": "sentence_bert_config.json",
+          "sha256": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+          "bytes": 53
+        },
+        {
+          "path": "special_tokens_map.json",
+          "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+          "bytes": 112
+        },
+        {
+          "path": "tokenizer.json",
+          "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+          "bytes": 466247
+        },
+        {
+          "path": "tokenizer_config.json",
+          "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+          "bytes": 350
+        },
+        {
+          "path": "vocab.txt",
+          "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+          "bytes": 231508
+        }
+      ],
+      "publish_weights": false,
+      "obtain": "Obtain exact approved cached bundle or these specific files at pinned revision; verify every digest before use. No download performed in this task."
+    },
+    "nli_snapshot": {
+      "repository": "cross-encoder/nli-deberta-v3-small",
+      "revision": "fa2804872c3b4bd748f38c0185cc85775361e735",
+      "directory_digest": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+      "files": [
+        {
+          "path": "added_tokens.json",
+          "sha256": "a4b6bfe668f2b3cf6f0cd535e98a0663d2d0d4a4a15f13075ad3597d33985a23",
+          "bytes": 26
+        },
+        {
+          "path": "config.json",
+          "sha256": "885d0dceae8fa5c136da9209121ec9eb11160488e840de3bc1f29353674e5712",
+          "bytes": 1052
+        },
+        {
+          "path": "model.safetensors",
+          "sha256": "ebc79588dd73ccfb6a3f6078519cfbf512c5305384c5ea1845bc71cd32216e86",
+          "bytes": 567605820
+        },
+        {
+          "path": "special_tokens_map.json",
+          "sha256": "ed7c099c988dbb414b18a6980d20cb57b91b7cd119f6f6941eb364b0e892e712",
+          "bytes": 301
+        },
+        {
+          "path": "spm.model",
+          "sha256": "c679fbf93643d19aab7ee10c0b99e460bdbc02fedf34b92b05af343b4af586fd",
+          "bytes": 2464616
+        },
+        {
+          "path": "tokenizer.json",
+          "sha256": "5124ef2ead1a10a717703bc436de7f353da76d6340e4587719b42b1693707964",
+          "bytes": 8656624
+        },
+        {
+          "path": "tokenizer_config.json",
+          "sha256": "f3eecd07c370ef0bf7dd3780d3cd68cf9c8b00c267e21a208ddcd8f82bfec1a6",
+          "bytes": 1346
+        }
+      ],
+      "publish_weights": false,
+      "obtain": "Obtain exact approved cached bundle or these specific files at pinned revision; verify every digest before use. No download performed in this task."
+    }
+  },
+  "index": {
+    "publish_binary_index": false,
+    "files": [
+      {
+        "path": "chunks.json",
+        "sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "bytes": 10849
+      },
+      {
+        "path": "faiss.index",
+        "sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "bytes": 87597
+      },
+      {
+        "path": "manifest.json",
+        "sha256": "9c5b705ed629d3d15745bb5c2bf3cc52ccfaaab045ce59909fb983db4b6e4711",
+        "bytes": 475
+      }
+    ],
+    "receipt": "portable-inputs/index-receipt.json",
+    "manifest": "portable-inputs/index-manifest.json",
+    "obtain": "Use original matching index bundle; copying/relocation requires the separate verified relocation proof. No rebuild performed."
+  },
+  "service": {
+    "publish_model": false,
+    "expected": {
+      "model": "llama3.2:3b",
+      "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "server_version": "0.40.5",
+      "url": "http://localhost:11434/api/generate",
+      "version": "ollama_metadata_observation_v1"
+    },
+    "obtain": "Obtain exact approved Ollama model locally; validate version/tag digest via metadata; do not substitute mutable tags or auto-pull."
+  },
+  "python": {
+    "publish_environment": false,
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "obtain": "Recreate approved environment and validate exact recorded versions; no dependencies installed in this task."
+  },
+  "excluded_other": [
+    "DB/user state",
+    "credentials and secrets",
+    "unrelated dirty files in original checkout",
+    "model caches",
+    "virtual environments",
+    "binary indexes"
+  ],
+  "raw_source_archive": "portable-inputs/manifest.json",
+  "no_resource_hashes_replaced": true
+}

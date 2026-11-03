@@ -1,0 +1,74 @@
+[
+  {
+    "adapter": "semantic_v1",
+    "capabilities": {
+      "expected_capabilities": [
+        "semantic_comparison"
+      ],
+      "limitations": [
+        "Reference similarity is not factual correctness."
+      ],
+      "readiness": "unknown",
+      "requires_reference": true,
+      "unavailable_reason": null
+    },
+    "capability_source": "builtin",
+    "registered": true,
+    "verifier_name": "semantic"
+  },
+  {
+    "adapter": "evidence_v1",
+    "capabilities": {
+      "expected_capabilities": [
+        "direct_fact",
+        "evidence_retrieval"
+      ],
+      "limitations": [
+        "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+        "Corpus/model readiness and claim coverage are unknown until execution."
+      ],
+      "readiness": "unknown",
+      "requires_reference": false,
+      "unavailable_reason": null
+    },
+    "capability_source": "builtin",
+    "registered": true,
+    "verifier_name": "evidence"
+  },
+  {
+    "adapter": "rule_v1",
+    "capabilities": {
+      "expected_capabilities": [
+        "arithmetic"
+      ],
+      "limitations": [
+        "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+        "Other deterministic/structural checks do not establish general factual coverage."
+      ],
+      "readiness": "unknown",
+      "requires_reference": false,
+      "unavailable_reason": null
+    },
+    "capability_source": "builtin",
+    "registered": true,
+    "verifier_name": "rule"
+  },
+  {
+    "adapter": "confidence_v1",
+    "capabilities": {
+      "expected_capabilities": [
+        "consistency"
+      ],
+      "limitations": [
+        "Generation/judgment agreement is not factual evidence or independence.",
+        "Provider readiness is unknown until execution."
+      ],
+      "readiness": "unknown",
+      "requires_reference": false,
+      "unavailable_reason": null
+    },
+    "capability_source": "builtin",
+    "registered": true,
+    "verifier_name": "confidence"
+  }
+]

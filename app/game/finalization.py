@@ -61,8 +61,11 @@ def finalize_decision(context, strategy, contract, reports, execution_states, va
         bound_contract=ExecutionContract.model_validate_json(context.execution_contract_json)
         task_aware='offline_public_decision_v4' in {bound_contract.version,contract.version}
         if ((task_aware and bound_contract!=contract)
+            or bound_contract.team_requirements!=contract.team_requirements
             or bound_contract.contributor_version!=contract.contributor_version):
             raise ValueError('finalization execution contract differs from the bound execution semantics')
+    if contract.team_requirements is not None and context.execution_contract_json is None:
+        raise ValueError("explicit team requirements must be bound to the planning context")
     if strategy not in enumerate_strategies(context).strategies:
         raise ValueError("strategy differs from the feasible team/aggregation/cost definition")
     states = tuple(execution_states)
@@ -91,7 +94,7 @@ def finalize_decision(context, strategy, contract, reports, execution_states, va
         if contract.coverage_version=='task_output_contract_v2' else factual_capabilities(r) for r in rows))))
     unresolved = tuple(r for r in required if r not in achieved)
     reasons = []
-    if contributors < context.minimum_participant_count:
+    if contributors < context.minimum_informative_count:
         reasons.append("minimum_contributors")
     if unresolved:
         reasons.append("missing_achieved_coverage")
@@ -99,5 +102,7 @@ def finalize_decision(context, strategy, contract, reports, execution_states, va
         reasons.append("requirements_unresolved")
     if contract.failure_contract == "all_selected_returned" and any(s in {"failed", "unavailable"} for _, s in states):
         reasons.append("selected_execution_incomplete")
+    if contract.team_requirements is not None and detail.status == "uncertain":
+        reasons.append("decision_threshold")
     return FinalizedDecision(detail, "uncertain" if reasons else detail.status, contributors,
                              required, achieved, unresolved, tuple(reasons), states, strategy.estimated_cost)

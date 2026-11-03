@@ -1,0 +1,9 @@
+{
+  "version": "audit_label_correction_v1",
+  "scope": "Policy-mediated execution audit tag only; no decision, requirement, threshold, resource or query change",
+  "reason": "Preserve failures, but label successfully selected fitted-policy execution as selected rather than diagnostic",
+  "before_sha256": "84e9176579dfc9c6b7fb057a13dc73f36e6a1fd7e103e4b46fd997e2cdbbe6b5",
+  "original_source_copy": "component-execution-before-audit-label.py",
+  "new_inference_repeated": false,
+  "development_outcomes_inspected": false
+}

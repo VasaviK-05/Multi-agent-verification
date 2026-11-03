@@ -1,0 +1,28 @@
+{
+  "base_fact": {
+    "verifier": "evidence",
+    "actual_calls": 48,
+    "states": {
+      "directional": 48
+    },
+    "history_only_unique_directional_successes": 24,
+    "history_only_unique_directional_failures": 0,
+    "posterior_alpha": 25,
+    "posterior_beta": 1,
+    "posterior_mean": 0.9615384615384616,
+    "mean_call_ms": 85.0166104210075
+  },
+  "derived_sum": {
+    "verifier": "rule",
+    "actual_calls": 48,
+    "states": {
+      "directional": 48
+    },
+    "history_only_unique_directional_successes": 48,
+    "history_only_unique_directional_failures": 0,
+    "posterior_alpha": 49,
+    "posterior_beta": 1,
+    "posterior_mean": 0.98,
+    "mean_call_ms": 0.12052292489291479
+  }
+}

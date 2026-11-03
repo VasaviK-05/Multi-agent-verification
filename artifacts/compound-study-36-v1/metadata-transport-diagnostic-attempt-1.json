@@ -1,0 +1,8 @@
+{
+  "status": "diagnostic_assertion_failure",
+  "metadata_gets_before_failure": 2,
+  "verifier_attempts": 0,
+  "generations": 0,
+  "explanation": "Raw API model digest was compared without the normalization already used by observe_service; no expected hashes or collection settings changed",
+  "normalization_reference": "app/benchmark/project_adapter.py:observe_service"
+}

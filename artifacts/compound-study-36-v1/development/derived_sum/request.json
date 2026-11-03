@@ -1,0 +1,3025 @@
+{
+  "version": "offline_recording_request_v1",
+  "intended_use": "study",
+  "study_approval": "User attachment 4976affc: amended36 exploratory study; maximum288 Evidence/Rule attempts; zero Confidence generations",
+  "preparation_authorization": "User attachment 4976affc: amended36 exploratory study; maximum288 Evidence/Rule attempts; zero Confidence generations",
+  "cache_contract": "complete_team_independent_v1",
+  "randomness_control": "No generation; preserve every Evidence/Rule attempt; no selective retries",
+  "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "factory": "app.benchmark.project_adapter:create_recording_verifiers",
+  "expected_setup": {
+    "resources": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "confidence",
+          "resources": [
+            {
+              "resource_id": "confidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "confidence-implementation",
+              "kind": "implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "resource_id": "ollama-model",
+              "kind": "model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "resource_id": "self-consistency-short-answer",
+              "kind": "prompt",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "resource_id": "ollama-service",
+              "kind": "service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        },
+        {
+          "verifier_name": "semantic",
+          "resources": [
+            {
+              "resource_id": "semantic-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "semantic-implementation",
+              "kind": "implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ]
+        }
+      ]
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "evidence_kind": "empirical"
+  },
+  "final_test_reservation": {
+    "version": "final_test_reservation_v1",
+    "role": "final_test",
+    "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-final_test-derived_sum",
+    "custody_record": "predeclared-source-known-exploratory-reservation:86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6",
+    "examples": [
+      {
+        "example_id": "043bd7dcc8b7ead5461fb44cfed1869bdc4d63ca4e30aacf45ce076b83906aeb-derived_sum",
+        "split_identity": "TH",
+        "question_id": "159e320df22cf7fefcd8aede4a45b3af0bdf707b62e4af2ad4cca3749c5c44c4",
+        "content_identity": "368c1f37ad928367102cd86d319723807c6ccbad22f8592dcf2e4e708a102d0b",
+        "validation_id": "cf2ff229ee817508b692bd6104842949a78cda85598d327d222be388cc6c3884"
+      },
+      {
+        "example_id": "0dcf5541e584fb670a843a490abfd4a09236bf635e06d333e98e1b52460d3fff-derived_sum",
+        "split_identity": "SY",
+        "question_id": "e83c46b199d0ab07445ac1d056e6f694ecdf178f5241df9ed786769193694eeb",
+        "content_identity": "9904ac9bee95796d6100569d05885123389e31d0fbbbd9156850969e7e1be073",
+        "validation_id": "105e9bf23f4232f2d8ccb6612acda2b965ea56e429c512b2d8a03bca7187cfd7"
+      },
+      {
+        "example_id": "102ed161de8fde26f0f2af033cb3e50dbc0aeb6e5bdfb4257579732a62508cdc-derived_sum",
+        "split_identity": "MW",
+        "question_id": "d3585fd532f3245f3614fa19eaa562b734dd9c47fefc241eb84179b581ab0b49",
+        "content_identity": "e8e9be5b7affe7e28edc23e0c416312b778f32dc309e1f4d168fdc6636638967",
+        "validation_id": "4e0cc41818ee02fc53ddae62d90570a3e4e4245901fa62ed44c6dfa6823b7e49"
+      },
+      {
+        "example_id": "148ffefaf5b96c13aeb6f6e1610b5446ed46ad1b14822b709a430c1ad6425124-derived_sum",
+        "split_identity": "BD",
+        "question_id": "fe76fdf6c80fa5567b544a58123d1d50ab1ca841eae2c89a280e21d9dee583ec",
+        "content_identity": "8fdf7044c079073031775cb6bbf00f6f2c600d6d066f9d6dccdacfab37a61db2",
+        "validation_id": "e04dba0486bac6baaf3880d50cb01405d3f174b514ceae6be0594a37d7af4467"
+      },
+      {
+        "example_id": "1c0bafa35fa205bec7724a6484cb13ef4884ee6b8a629a88914ccf58c1a94959-derived_sum",
+        "split_identity": "LT",
+        "question_id": "bf123fd6cf5da6f6ad7df1f4eb91c5218ad1952d810bebc51680f10f37a4f69d",
+        "content_identity": "b84a2eab4f7b70b9857f7c0297fb1e5d343121ea4d983ac6fbea6379fdda02b0",
+        "validation_id": "33e5c56cabd60e4674fb94b7620fee56e88c37ffb4dcb4d431d4573fd402a9fb"
+      },
+      {
+        "example_id": "1e96a08c2d6dd5d4a482bf7391ca5f53096f8a2ebf1523f4641cc716154317a5-derived_sum",
+        "split_identity": "MU",
+        "question_id": "3c3117f653408223088b8c7e4659c93b9384882ed881acfe948f6d53e7211832",
+        "content_identity": "0884256e255e4159c3a2cfe6ef207e1f7affd4c8891dbe8158d3d8af7b9b070b",
+        "validation_id": "1c1bf03e57681e0e7898380f757502b04773a24f3ab8e31c3e7196ca9abbefa0"
+      },
+      {
+        "example_id": "2a5f8a92bd0963555aad96a63fdecd6b29e869b73f2098c1635e47fdf5dd4897-derived_sum",
+        "split_identity": "ME",
+        "question_id": "fd14e450d593aa12508366ba9ba1ecec49fd82fb4b03bf0a00fdd252f6d6bd8d",
+        "content_identity": "cf9d2822fc96088e8526d47a507bbcc1486dbe314fb72da766e5377fc89a124d",
+        "validation_id": "4a75a04edcc201b18ee976c1d57ca500c968b4d4fb74a4544182b6fcae4ff3fc"
+      },
+      {
+        "example_id": "2e43970a69fdda9e8170eae4415e3c61af4157327f0ef9a21dfc42fb013e0fb8-derived_sum",
+        "split_identity": "TH",
+        "question_id": "159e320df22cf7fefcd8aede4a45b3af0bdf707b62e4af2ad4cca3749c5c44c4",
+        "content_identity": "20f88cecd9c0f4da2e0b302714a4c825498940a19905b8a284665e77363bdce4",
+        "validation_id": "8dcf5a48e63209fcd942f30e84588c4dd633d7b3f6d435613f9ce51cba885d81"
+      },
+      {
+        "example_id": "34a1f90d62ba2630a3dce96a01b1ced6f97b94f9f972f90444f8a6dab2037a34-derived_sum",
+        "split_identity": "MW",
+        "question_id": "d3585fd532f3245f3614fa19eaa562b734dd9c47fefc241eb84179b581ab0b49",
+        "content_identity": "796a643a221e53c374d910ed09261255a8444e32ff8ad2368293cf7e78affbd3",
+        "validation_id": "90cf8791e0299b7018f8a994d489b41fc647ed2f4c01a57559dfcb1a8fca287a"
+      },
+      {
+        "example_id": "3b6eb91a2624960350f13ae10a71ae14191159b50532487566a0f27afa973cf4-derived_sum",
+        "split_identity": "NP",
+        "question_id": "09db9c39ad3cd55720e36ad6a0195642fdcb4095b58116981903b2c1e2df1e99",
+        "content_identity": "77e888a3f36ff1d6fd5cb591dc650ca5f5f04d3af4d89be7fe95df5b665fe7c7",
+        "validation_id": "ef68bb767f17b0e1e7253cb9f5c9386eb7c2b5becd3722deab33f4f23ad12b4d"
+      },
+      {
+        "example_id": "41acf4658d4be4be7e66236539a0759dc8bddbf8614bb403e8d6722461e816e1-derived_sum",
+        "split_identity": "MU",
+        "question_id": "3c3117f653408223088b8c7e4659c93b9384882ed881acfe948f6d53e7211832",
+        "content_identity": "10419472149be5db74fc26d464731f4e6c68e74955fa7af71e69f1862dacb432",
+        "validation_id": "98c1973df4c1f3c66a625c9dbc8c14efe9c55a265b49283ac365f766b63410d0"
+      },
+      {
+        "example_id": "42ff8eda804f7a8d1e133293234e18d616f6b3c518f25de2fea48ad8a5cbcc96-derived_sum",
+        "split_identity": "GE",
+        "question_id": "51cacf9383a4439ec22d5bac3427c0b25e6f0689c3e27e820378e4552b02c2b1",
+        "content_identity": "352b032816dbe37903ba2ca9a6376769c7cc79c7db29f74609c7fef66613e113",
+        "validation_id": "773a658e7cf6b33d20a1ad3e9aa0640dd0059240f77bb667fd02cca450a9498b"
+      },
+      {
+        "example_id": "43184a1e2f4adfaee23bf5fa8316d2abe2ef404b2c23131d3618d2d2b8d1db2b-derived_sum",
+        "split_identity": "EC",
+        "question_id": "0c6d7ca34090c2dc10029150a25a37eb303f1aca4abe9efd959496ae573a4b58",
+        "content_identity": "a019bd0a8feaf03b5262976aed8127c9490a885c52a35dea80b979ba8d90b251",
+        "validation_id": "cf65f0e5f160026c58aa1017c4859c2d57625deaaf3e6c3b26b27970b0151f3d"
+      },
+      {
+        "example_id": "46541694c5dbd988067525a0888e08463dd43b083d6092f34ca8a92df135de89-derived_sum",
+        "split_identity": "NP",
+        "question_id": "09db9c39ad3cd55720e36ad6a0195642fdcb4095b58116981903b2c1e2df1e99",
+        "content_identity": "a3791f9c0a8474a967e84a3224d387f36fe81d9c776af2b0fa09ae5c76f9f193",
+        "validation_id": "3e9e71c53fb636e9302d11ce980a06c9cc5951952fd8bd371a4bc978709a6347"
+      },
+      {
+        "example_id": "4eba01a15537cfe2101d83f9df727e52041e919624ed10aac3ba8aff495eea09-derived_sum",
+        "split_identity": "PW",
+        "question_id": "063180d0b9d2af71cef25ab506a9be5a631a287d3b7172e2a7798f08869d4acd",
+        "content_identity": "4963d6b8be17b8f5d76b7254f2747ef5b879b71c87a21d4701da22e7f50535bf",
+        "validation_id": "2761c78aa700dd6480337004d8ed2c6fd4230dd0a17e88558b49c726d1ea8570"
+      },
+      {
+        "example_id": "50c210d184a3db7e1bef048f5e1cb68969f7b3e3e3efd469babc09bd183c7c5b-derived_sum",
+        "split_identity": "LT",
+        "question_id": "bf123fd6cf5da6f6ad7df1f4eb91c5218ad1952d810bebc51680f10f37a4f69d",
+        "content_identity": "8a45c2138db8c4f9dc08b2bb95a0123ccd2f5af600bfac6d622301a158501f64",
+        "validation_id": "d7dce2e7773de373f0bd9ec78766259aa38ea58d4c708b9f369e10271321714c"
+      },
+      {
+        "example_id": "53c931c0b058065d093b602c098bd0f226e0cae5bba14ddaed9c21c3fdfeba59-derived_sum",
+        "split_identity": "UG",
+        "question_id": "c1abf98cb110b2ec963a486e7e71125c75d5525b610ad8f3eb7919e94ecb855e",
+        "content_identity": "6d4b5d56d73e31594e26bdc47ac156ce971f6e145b704ead4863483a5378c07b",
+        "validation_id": "d9f1e9815fa5533e2d92dd8eec32e27efb5512e6ea22cd3ec6101d43f77c37bc"
+      },
+      {
+        "example_id": "60cb8dd0c639a72970db9647ba8d609a2b851e552f4f19767f6e6da3edb76dd4-derived_sum",
+        "split_identity": "MW",
+        "question_id": "d3585fd532f3245f3614fa19eaa562b734dd9c47fefc241eb84179b581ab0b49",
+        "content_identity": "22afe6f53607c3b1654afe12f129fb6ad5af82b4bc9f3a4bdaa992faac9b1753",
+        "validation_id": "54857036e5fbe551f27718851f1f125850fb4b54af713271d671f7af020b5b4f"
+      },
+      {
+        "example_id": "6381d565ce45c9ed6191872a134fa2a7ec37e6eeff5204f488d6df2f0476cf89-derived_sum",
+        "split_identity": "EC",
+        "question_id": "0c6d7ca34090c2dc10029150a25a37eb303f1aca4abe9efd959496ae573a4b58",
+        "content_identity": "e7acc62138dfb6d8259507426d25f8de2fe377ae60ffc93c80f29fd27e11478c",
+        "validation_id": "558ed6c7093fa9509b616dfd3c3b440132b08d5dbec6d367f26e2561bbd64ebe"
+      },
+      {
+        "example_id": "718a2d51351eccc0408f37b82643da53e07ffbcd9dfbff32c2984fb5e87a2724-derived_sum",
+        "split_identity": "LT",
+        "question_id": "bf123fd6cf5da6f6ad7df1f4eb91c5218ad1952d810bebc51680f10f37a4f69d",
+        "content_identity": "239ea1f94bcdffc8bf3c825a7485447e7683dc6ac7bd9eed183c50765d62f5d6",
+        "validation_id": "a4d72e4b0b76f4256c31dcf1b5ea91e0726874c9af11d2a84eae45b64b80c534"
+      },
+      {
+        "example_id": "7255531474f389c82e83cbfd18e60fc32d296650bb0931dee6c3aa562ab77fb2-derived_sum",
+        "split_identity": "BD",
+        "question_id": "fe76fdf6c80fa5567b544a58123d1d50ab1ca841eae2c89a280e21d9dee583ec",
+        "content_identity": "13b2d4d4a59910873bc12b5d42d85fd63625047d67300e5f4245db3b27795daa",
+        "validation_id": "63ca7557bdbf679d83fcf0d14de1f832fa724600ec3115fe4aa5f36945770c1e"
+      },
+      {
+        "example_id": "7b01131c7b7151f3ec5d6b2342708e1b36cd3d9523a84bfdc0fbddb3d101c235-derived_sum",
+        "split_identity": "SY",
+        "question_id": "e83c46b199d0ab07445ac1d056e6f694ecdf178f5241df9ed786769193694eeb",
+        "content_identity": "accfd492f75c35213c50dd9db908fe3db45b4eb8f20c849f335990ef90198b1a",
+        "validation_id": "06106c287df3c3f21852dbf570d94c0522165438bd389110ccbc5b0ca255496b"
+      },
+      {
+        "example_id": "7ba6569f20c396c665f42c944f3c9eedc5c0999a2836f4943fc5fe9d3e4c66b3-derived_sum",
+        "split_identity": "EC",
+        "question_id": "0c6d7ca34090c2dc10029150a25a37eb303f1aca4abe9efd959496ae573a4b58",
+        "content_identity": "342c82c27bf21a695ae6d9e38e7c89fe2800760ba844e71a08a55d041f421726",
+        "validation_id": "86b8263f3888da19ef26540da09487fb62793d0f7d7de1fa38da22329a91265f"
+      },
+      {
+        "example_id": "825e13d7517bb35aec26e4e48750aac01d2b1854f202386f58462a8fb04d4ff1-derived_sum",
+        "split_identity": "NP",
+        "question_id": "09db9c39ad3cd55720e36ad6a0195642fdcb4095b58116981903b2c1e2df1e99",
+        "content_identity": "deb2052e0465d95d91caf15c988982366636c188570b51efdff8094942c021f2",
+        "validation_id": "1611fd316e04862319feb58e48f804a10191e82bab443535dc5fc4bcac27c8bb"
+      },
+      {
+        "example_id": "8434ad6d44bd923d8b9c8e79d10486e3c3162a1d0fbb150a89192d8b1e797bc7-derived_sum",
+        "split_identity": "UG",
+        "question_id": "c1abf98cb110b2ec963a486e7e71125c75d5525b610ad8f3eb7919e94ecb855e",
+        "content_identity": "c9214820e69506d101a3599827af6dd7a2aa84551debc5b19078031a36b92637",
+        "validation_id": "2d26424d84e28aa103cda8b2a67b8ba98374b462c3363ed8c415dbf84cca9a1b"
+      },
+      {
+        "example_id": "893705845fb07afff996b2133250f8172b0392c7dcd5a6f6f6a8a0bd31acd334-derived_sum",
+        "split_identity": "GE",
+        "question_id": "51cacf9383a4439ec22d5bac3427c0b25e6f0689c3e27e820378e4552b02c2b1",
+        "content_identity": "9eddd3f2f6c85fea6bb4c4aef5f4bc1848083ef965ec680f281d41d69f86d332",
+        "validation_id": "d7d82b87a1ccd7bfd252f9538f277bddb13df1b4a1b0420fb31cfd38e68ec9fa"
+      },
+      {
+        "example_id": "8b8b4102efe61a18a02903ceb1de1efb3e37cf1fedec113a4ef1e921be35a7d8-derived_sum",
+        "split_identity": "SY",
+        "question_id": "e83c46b199d0ab07445ac1d056e6f694ecdf178f5241df9ed786769193694eeb",
+        "content_identity": "9c0fc94384f486cf9f395ce1afabfce9444a7e44cd01bc68a5ccfaf9eb4cfa96",
+        "validation_id": "dafb1df2a65073830bb58f461bf518455943017af0d4d72cfc26abcc9b140f96"
+      },
+      {
+        "example_id": "8f8ba3905649de9f58cf8dd6a6239f77d6c04c00a81b10098517d5bd519ac374-derived_sum",
+        "split_identity": "ME",
+        "question_id": "fd14e450d593aa12508366ba9ba1ecec49fd82fb4b03bf0a00fdd252f6d6bd8d",
+        "content_identity": "2972551e63943ae32149c0b14d9bb7f806167f0fd6304ba03c0bddf351559cd1",
+        "validation_id": "1d407e28c3dbea656da7e40685bb00939b9590ab6580ec598b657715768d76b5"
+      },
+      {
+        "example_id": "914a9fce383f5aaafda980a913359e2e4639c942654ddfd49b9609b114b79043-derived_sum",
+        "split_identity": "LT",
+        "question_id": "bf123fd6cf5da6f6ad7df1f4eb91c5218ad1952d810bebc51680f10f37a4f69d",
+        "content_identity": "92dfdf7d8f8e3c977ce2f8a89e54e8460f6d65ba41f0f5cbfa2d9cba59218ac3",
+        "validation_id": "d345bca5299723430b6fefe208a33ffbab76d49ce8827ab91038fea1be008091"
+      },
+      {
+        "example_id": "9187db11bfb5c9d265249987211a0a8bfb58c276d19360a5757e35d3c310f53c-derived_sum",
+        "split_identity": "NP",
+        "question_id": "09db9c39ad3cd55720e36ad6a0195642fdcb4095b58116981903b2c1e2df1e99",
+        "content_identity": "7e58f2826f8888f0944aa85042f6a513f3f6643c5013865f52a0ba4d2ab4de50",
+        "validation_id": "ab49e77fb7e9a05dd716a87fab172a4e303961b6c82b21babca0c16fd8fe4baf"
+      },
+      {
+        "example_id": "96ed64b68a4c26c235343f79574c779bda874044c23c867067137562e37babb3-derived_sum",
+        "split_identity": "EC",
+        "question_id": "0c6d7ca34090c2dc10029150a25a37eb303f1aca4abe9efd959496ae573a4b58",
+        "content_identity": "3c3741d2b165652acf59a6a87afa1b4721ebc85d20062fd907a1d363d5797384",
+        "validation_id": "19b1b528a901bd22041702a5dbc1c5629db606c941968daae4630b3d70eed47e"
+      },
+      {
+        "example_id": "9d9dc53de4ae1ed84d1edf561563783a267ca6424723913fcc6f7b50977eee43-derived_sum",
+        "split_identity": "BD",
+        "question_id": "fe76fdf6c80fa5567b544a58123d1d50ab1ca841eae2c89a280e21d9dee583ec",
+        "content_identity": "6957709db1d17acba7b55a1ba2acd417b0f0d08c9fe95d097aaf593fd68c26f3",
+        "validation_id": "e710b98e038ce1ff877580f775c43348767dc6470ded87717042cfbf8802b372"
+      },
+      {
+        "example_id": "baa9abe7a6b4cc667624e2e82b69e70ca840bc6ac7b19dbab35bd6b157a59d0c-derived_sum",
+        "split_identity": "ME",
+        "question_id": "fd14e450d593aa12508366ba9ba1ecec49fd82fb4b03bf0a00fdd252f6d6bd8d",
+        "content_identity": "420e08620f2420246c27e8fe7dc0ae34a9f241e213dc46ce246fe8d9eca1bac1",
+        "validation_id": "25dff76259ac8ddd89c53e6ffd1f638f283497d653954a9cac24211bfd4ba791"
+      },
+      {
+        "example_id": "babbd5a13415194e0ec26db50ba9a86ff374339fb92e2bbe7fb3b84898d42b32-derived_sum",
+        "split_identity": "UG",
+        "question_id": "c1abf98cb110b2ec963a486e7e71125c75d5525b610ad8f3eb7919e94ecb855e",
+        "content_identity": "81d284133383b15fe663d217fe4d0251c82b2435bc0450507fd3924d50530087",
+        "validation_id": "a9a074ecefd37b99180063243401894ba3fb3cb313fbbc23a344302b6a9a251a"
+      },
+      {
+        "example_id": "bd474a70f57244f81cbbb59a6f834b4658de6a6f84cea655a5306cdc67b21dae-derived_sum",
+        "split_identity": "MW",
+        "question_id": "d3585fd532f3245f3614fa19eaa562b734dd9c47fefc241eb84179b581ab0b49",
+        "content_identity": "9238130a92aa0d6e27e71cbafccb5cc2b7fc085e7fe1a5f5544a2b767f3445e0",
+        "validation_id": "df43f85c32c8dd03bbe074abf644214eec4a55c2770fe8637296b98459054d8f"
+      },
+      {
+        "example_id": "bfbc29ee0824e99971d897bed7e2745baebb2f7bb848bd6ead4325174ce86f59-derived_sum",
+        "split_identity": "PW",
+        "question_id": "063180d0b9d2af71cef25ab506a9be5a631a287d3b7172e2a7798f08869d4acd",
+        "content_identity": "a8a1adcdfb22a4706888a5463dd44eb6dfd4eb9de9d32a397497fa50ccdbfd01",
+        "validation_id": "20b3b15484a4d3ef5d684b538241ea467962c74ed1f82eb86da14864a5ad650a"
+      },
+      {
+        "example_id": "c4289b149722b27f461b8a5ae8c3116dc85727afafa651be2a973b4b3e9d1636-derived_sum",
+        "split_identity": "MU",
+        "question_id": "3c3117f653408223088b8c7e4659c93b9384882ed881acfe948f6d53e7211832",
+        "content_identity": "1d5296b473167081a9c0b40288dbbb265e8de8373bd9e6a0b1cbba56d6111411",
+        "validation_id": "c7e37485bff78220b9fdfd18819f4bbed5180a7d1dd7fc0d76ae5b689f97dced"
+      },
+      {
+        "example_id": "c481491b273acb012e8ce725f9b0cc9fbe6c93bd275c4f36bf7ff18c604a3790-derived_sum",
+        "split_identity": "PW",
+        "question_id": "063180d0b9d2af71cef25ab506a9be5a631a287d3b7172e2a7798f08869d4acd",
+        "content_identity": "68e7402a9d282363e84c7dec3bc0175efb7192a61d9ad60f6d2d9f7f9fc8c7cc",
+        "validation_id": "41fa7115a5165b11ef52ab31a92677c75affbdb798f648ab874582ccc2d1f43f"
+      },
+      {
+        "example_id": "c8412a5a41f4111e358df45634800f649bdc84640b3e852ebea8e0255078aead-derived_sum",
+        "split_identity": "BD",
+        "question_id": "fe76fdf6c80fa5567b544a58123d1d50ab1ca841eae2c89a280e21d9dee583ec",
+        "content_identity": "bf4ed481698b11a0889ab9ba807ba0277c9d783884424af92280424fb9bdf7df",
+        "validation_id": "8716ba7a986cce398d36ca32e60d4f70eb2c5a4d1ea0cf22df362dc2c1e90d11"
+      },
+      {
+        "example_id": "d28fe5ebeb0dbecdc92b6f773793f7d66e0812e58302063c0a2c4a1612620d1f-derived_sum",
+        "split_identity": "GE",
+        "question_id": "51cacf9383a4439ec22d5bac3427c0b25e6f0689c3e27e820378e4552b02c2b1",
+        "content_identity": "89efd5409afce08fc839e9f920b957e3db238ad8228b57e5e8917c9224f97624",
+        "validation_id": "fe966b8af812d317ebfd98cd7731127acaec30b7e42bf90a216570dd346202bc"
+      },
+      {
+        "example_id": "dba54d2e51f055de4437b7ec604dfbc24d246c6fe7af470ae5ba1eeaa3a54b7c-derived_sum",
+        "split_identity": "PW",
+        "question_id": "063180d0b9d2af71cef25ab506a9be5a631a287d3b7172e2a7798f08869d4acd",
+        "content_identity": "a0fbe4cf0ef1124af1bf6d8aee4aa52e3e358273dce79dc03ccebd16907160bd",
+        "validation_id": "5c6e0648ec904bd6ef1f6ddb8f642778b9fc248fe8133d3a5f822587b6b767d0"
+      },
+      {
+        "example_id": "e8bd2c61ba64c36b6aa6716d58f472ba55e00e0de419122f0b3d6d4808697b15-derived_sum",
+        "split_identity": "MU",
+        "question_id": "3c3117f653408223088b8c7e4659c93b9384882ed881acfe948f6d53e7211832",
+        "content_identity": "caba17c21b391762aedc46669829479e765ec9205f601f1773fecd43a4402c39",
+        "validation_id": "4bdb54afe0230e4286749b3cf3c2ff59e67aeafa8c80aae44b2a90c709f2a286"
+      },
+      {
+        "example_id": "f00c341f1649fc7cb3609ce4801c2d6bd761e6015868ed203ba5e4966f543687-derived_sum",
+        "split_identity": "GE",
+        "question_id": "51cacf9383a4439ec22d5bac3427c0b25e6f0689c3e27e820378e4552b02c2b1",
+        "content_identity": "76c262eaddbb3563974b1fcb05250c75aadc5e8c49ca045d2aea429f628f9ea0",
+        "validation_id": "8cc0cbd6ccf97a726f3506052c418e592983c525ab19b0df59be218c2e164ac7"
+      },
+      {
+        "example_id": "f201f5ff6458347a411858e2db5f3d73958f34f20de8c57f8d88c41ebde206ec-derived_sum",
+        "split_identity": "SY",
+        "question_id": "e83c46b199d0ab07445ac1d056e6f694ecdf178f5241df9ed786769193694eeb",
+        "content_identity": "c0b753c5f39c92657194c22b6d74db6f055c740f499dd8642286b3336b91a5ec",
+        "validation_id": "2ae06d769a46a1571d13c878c564321ae20075fa498518db8ec247e22d085901"
+      },
+      {
+        "example_id": "f2381de3d0d3924c2b745137fec4effeab0e66220333ce4bcbb1914d3b7922fb-derived_sum",
+        "split_identity": "UG",
+        "question_id": "c1abf98cb110b2ec963a486e7e71125c75d5525b610ad8f3eb7919e94ecb855e",
+        "content_identity": "fc1cdd0f604380bb29cad055b0da7ab77aa22ea3d2976788349448e8998e7961",
+        "validation_id": "90d4b02cec75f321645dd694f28f12bb39ee0b70a8498a8a1e42a50fd2ecd843"
+      },
+      {
+        "example_id": "f810cfee2a6b926d3e9fe4a69262c4b9bb6dbb26cf4f3c137848d41f10b5a473-derived_sum",
+        "split_identity": "TH",
+        "question_id": "159e320df22cf7fefcd8aede4a45b3af0bdf707b62e4af2ad4cca3749c5c44c4",
+        "content_identity": "97eda8dc1b6fe9dbdfc0e0d3f4ae3243ee119e75fd36efc1c354f2310e80249b",
+        "validation_id": "b1b69183254111d36a231fdd99d3ef472d5aab26004118eb62ce82c8abae3a85"
+      },
+      {
+        "example_id": "f8b73c274216d20736a04c5381bb0d3f20977dec78b08401a40d61a734a95573-derived_sum",
+        "split_identity": "TH",
+        "question_id": "159e320df22cf7fefcd8aede4a45b3af0bdf707b62e4af2ad4cca3749c5c44c4",
+        "content_identity": "52a7c654458eae6eba0aa6e2e1b1b734ce270ee516519669457ae60ceb7678bd",
+        "validation_id": "da1159c5890a1de9d537d341455090a1900b0650b3cd1c33127d8b1a860dd9a6"
+      },
+      {
+        "example_id": "ffdf2db7d278cc477225ffa024a4e8f8660944475bdc1c0f21984af5fe522446-derived_sum",
+        "split_identity": "ME",
+        "question_id": "fd14e450d593aa12508366ba9ba1ecec49fd82fb4b03bf0a00fdd252f6d6bd8d",
+        "content_identity": "7d3244c96d0bd3a423078aaf9eca8f38f656d007e8591a013723e27a49e47581",
+        "validation_id": "41185a77dc04dc2414c300eed33c8c7d0f813992630d2a50bbff1ab378715402"
+      }
+    ]
+  },
+  "permitted_datasets": [
+    [
+      "development",
+      "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum"
+    ]
+  ],
+  "candidates": [
+    {
+      "verifier_name": "confidence",
+      "adapter": "confidence_v1",
+      "registered": false,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ]
+      }
+    },
+    {
+      "verifier_name": "evidence",
+      "adapter": "evidence_v1",
+      "registered": false,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ]
+      }
+    },
+    {
+      "verifier_name": "rule",
+      "adapter": "rule_v1",
+      "registered": true,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "requires_reference": false,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ]
+      }
+    },
+    {
+      "verifier_name": "semantic",
+      "adapter": "semantic_v1",
+      "registered": false,
+      "capability_source": "builtin",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "requires_reference": true,
+        "readiness": "unknown",
+        "unavailable_reason": null,
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "example_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876-derived_sum",
+      "split_identity": "CM",
+      "question_id": "c7abaaf35ea199a07766df4f53b98fb8ea4236d3b852448c1a839a37d622179b",
+      "run_id": "ce562d76f0cb3d607108c5d7c2946711e8d1889892e99da824c5b43a2fcb9366",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29879337 + 1000?",
+      "answer": "29880337",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"1441601483bc4e9cc9418d9d9a28a76695324c1c179966f069908af5f18fa3c5\",\"component_id\":\"derived_sum\",\"source_entity\":\"CM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9-derived_sum",
+      "split_identity": "CM",
+      "question_id": "c7abaaf35ea199a07766df4f53b98fb8ea4236d3b852448c1a839a37d622179b",
+      "run_id": "e7ac8ca075cecdfba7795b1ac3a1496b6fbfdf8add2e84ba6ea7070ab88ab9c4",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29879337 + 1000?",
+      "answer": "29880336",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2\",\"component_id\":\"derived_sum\",\"source_entity\":\"CM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "d00d6670a119c409b260529e4a69d7ccd6cfe4c9012311ada4fcbdb9025cba10-derived_sum",
+      "split_identity": "CM",
+      "question_id": "c7abaaf35ea199a07766df4f53b98fb8ea4236d3b852448c1a839a37d622179b",
+      "run_id": "75da89aeedcb91b2df7cb38602605741e05fb54eaeafa3371433fc3b9b835d6f",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29879338 + 1000?",
+      "answer": "29880338",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"6c7f41386b19d4196f35b9f40fbaf1fc530c52dbf21042a6b8bf26585142f45f\",\"component_id\":\"derived_sum\",\"source_entity\":\"CM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "82b751011baa45a4d2ec7908dfd4993b21f0fac9b76fb2a5959f8fe8a39960c6-derived_sum",
+      "split_identity": "CM",
+      "question_id": "c7abaaf35ea199a07766df4f53b98fb8ea4236d3b852448c1a839a37d622179b",
+      "run_id": "b1001c000bada72c23cae926268609997ca1b582e905fb894fe093ac47e12981",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29879338 + 1000?",
+      "answer": "29880337",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"d3186a10891d1eafb23b11af3f472192d37f66984f4b31bfb6ce6196a874b14e\",\"component_id\":\"derived_sum\",\"source_entity\":\"CM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "1e74152f915e7bfc7f0d23c56cae39396e912a9135d0de46ceabb6f86779d3cc-derived_sum",
+      "split_identity": "AM",
+      "question_id": "3a493cd2e3d458795cf64db9b879d694d031ed74e257bc16f3f5f6407126e029",
+      "run_id": "e3c6637dd5f70ec5dbe622e75f9662e0542b1e926cd21e5604a5d008f3642db7",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29743 + 10?",
+      "answer": "29753",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"8276fa85b942fa51d12a78fbce16634a2166fd8b8e980fb47f05f11a247ae26f\",\"component_id\":\"derived_sum\",\"source_entity\":\"AM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "eb368382a2d3a93c6eac72d05a0a242dcc0af71545262b9671d5eec7d7dfb833-derived_sum",
+      "split_identity": "AM",
+      "question_id": "3a493cd2e3d458795cf64db9b879d694d031ed74e257bc16f3f5f6407126e029",
+      "run_id": "cb1b455381da7c7a0dc916664ffc6caa8caec6072b0cc82de0444816d747dcfe",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29743 + 10?",
+      "answer": "29752",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"ccad205f3677a6692bdf122b2142e3a0e5dc3ce53674c53dbce7a1f11e5012ec\",\"component_id\":\"derived_sum\",\"source_entity\":\"AM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "458ca6ea81a8e6ff3f07f8b2ef4bd54f1051179a9d08bccf177bacecbd2c76c5-derived_sum",
+      "split_identity": "AM",
+      "question_id": "3a493cd2e3d458795cf64db9b879d694d031ed74e257bc16f3f5f6407126e029",
+      "run_id": "8fd1a22eba242b4f104f39e24ee2ed77b449afca2e66b60dbaabe6fe6772514a",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29744 + 10?",
+      "answer": "29754",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"39bf0c5c2ef6c4d03fe1f2cb46c9386d603fa4e9953ec87cae5f5cad6a80d04a\",\"component_id\":\"derived_sum\",\"source_entity\":\"AM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "3bfff2b75524b6ff090350e7d785e6824293ac283bbb18f0aa94e929a5dbffd6-derived_sum",
+      "split_identity": "AM",
+      "question_id": "3a493cd2e3d458795cf64db9b879d694d031ed74e257bc16f3f5f6407126e029",
+      "run_id": "521d765591aba6700cb2c3b59b307edbd4d6c65f35004ce5490ae061d5997fce",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 29744 + 10?",
+      "answer": "29753",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"d5299a5e2e23002d65e220b7857a06f7c9c0c76cd1b0c382a71ac16b4b747506\",\"component_id\":\"derived_sum\",\"source_entity\":\"AM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "ff629cad32512b181f030b88c5cada49c9284c895a8a4ed2e526a702c35f0e16-derived_sum",
+      "split_identity": "PY",
+      "question_id": "17a94df116b917b866166e549d7e16ff267f38560b191ce5fc12b425d9d12140",
+      "run_id": "f64f7bff5f9d07c7b18489698aa69cd1030b9861718198042c9d69c16a6d6594",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 406752 + 10?",
+      "answer": "406762",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"3d272c27e199b9537b215d13f1c238b467c4824d51ea10550fb80667c3639bcc\",\"component_id\":\"derived_sum\",\"source_entity\":\"PY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "0fc6e6b1a1f1c94f2e26f70b593ad5e84214e56ca9ab5c0707e14cc9005cd64b-derived_sum",
+      "split_identity": "PY",
+      "question_id": "17a94df116b917b866166e549d7e16ff267f38560b191ce5fc12b425d9d12140",
+      "run_id": "ca186c6c1815464d35ba27e5d5a240a6a54d523476e6fab30f3c36b46f936138",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 406752 + 10?",
+      "answer": "406761",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"b058ed1c7b0b99f75aebaa259853a2004fc92feeb464d0b7e677b86e23ddaab9\",\"component_id\":\"derived_sum\",\"source_entity\":\"PY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "0a6fc347a93e5e5f54d2efb45a2d2901e530ad59ca54965ab90ce81fb1e4adc3-derived_sum",
+      "split_identity": "PY",
+      "question_id": "17a94df116b917b866166e549d7e16ff267f38560b191ce5fc12b425d9d12140",
+      "run_id": "c2c4c8bd6b92b1ac21959bb8a72bb1942a9c02889b094ddccb7c49afddb0f86a",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 406753 + 10?",
+      "answer": "406763",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"b291955e07b44cc289687358b8b3217d470f2cfc306fa0f10fcf9ce9eccc6154\",\"component_id\":\"derived_sum\",\"source_entity\":\"PY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "97589d4078f6587316d935b2ec46c4da38c3d3a84e01bf5cd975d574bbe004f0-derived_sum",
+      "split_identity": "PY",
+      "question_id": "17a94df116b917b866166e549d7e16ff267f38560b191ce5fc12b425d9d12140",
+      "run_id": "593eeea40b0a23675b6195d3c91e6ef539694f0034647e561fd8fc68ffce4535",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 406753 + 10?",
+      "answer": "406762",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"4eda830c5beccaf8b8960cce9395e23e027883949d0c35786fa0e4cf0b24f254\",\"component_id\":\"derived_sum\",\"source_entity\":\"PY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "9dd329b540255695a6985c643c05ac704bda88a2091e6725cc33668e82095484-derived_sum",
+      "split_identity": "BR",
+      "question_id": "e5947990697c6f2316b17c0b3266961a00c55522f163bb6862dd24186fe05869",
+      "run_id": "aa6a90158a5da3dd3c3ed9b07b76e281940e965cb56a6a421798b4b6853eb2f0",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 8515767 + 10?",
+      "answer": "8515777",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"1b6d186bb993bd58a2c7264bac7702c98f6c79edf94531dacba3e27543f3b637\",\"component_id\":\"derived_sum\",\"source_entity\":\"BR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "3fe57b90cf9d3cba6ed888a53c9794cedcaff601248fb968f903c4ef84706e59-derived_sum",
+      "split_identity": "BR",
+      "question_id": "e5947990697c6f2316b17c0b3266961a00c55522f163bb6862dd24186fe05869",
+      "run_id": "624fd0b8cdd83d2ec5a0be565caef5fa26ae9b6a3af8131f73060b6e8bd1bc0f",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 8515767 + 10?",
+      "answer": "8515776",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"d54fbaede5d6901d1f4a9c6aedd7eff42b8149ab7effbc0e3278a0e9579a63e4\",\"component_id\":\"derived_sum\",\"source_entity\":\"BR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "b11ed0f137b7f7782191b7ea374874cd05e78748ddf8f10e951a66d0e4ccbaf8-derived_sum",
+      "split_identity": "BR",
+      "question_id": "e5947990697c6f2316b17c0b3266961a00c55522f163bb6862dd24186fe05869",
+      "run_id": "c4bed4df14f86c018ccd153957dbba5be7544da258448ab5ec9470107de11add",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 8515768 + 10?",
+      "answer": "8515778",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"3154e7dd4f96df5ceea5a7a988595608e578c1d3ee853c0bcca619b8b00ac5d6\",\"component_id\":\"derived_sum\",\"source_entity\":\"BR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "9e0763cab14eac90e4725f54475a1026c53511d67e0885d1ec449bf068342e83-derived_sum",
+      "split_identity": "BR",
+      "question_id": "e5947990697c6f2316b17c0b3266961a00c55522f163bb6862dd24186fe05869",
+      "run_id": "4f77da2ba4b8011b677fb0fc1c794447082c710b0683c887adaf4aea9412578e",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 8515768 + 10?",
+      "answer": "8515777",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"42c2f27f41f2ab6d29fe20a21e1a9261a37358ce5b540484b1db219a445cb6dd\",\"component_id\":\"derived_sum\",\"source_entity\":\"BR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "6f4299d90d21d8652f3c6e7e3f96350c37dd9e4926207eca7b364a25c6d54e30-derived_sum",
+      "split_identity": "CZ",
+      "question_id": "117571fcc3dcad88bdd57cb4e5bb9d3e216582343ddbc0ced8dc0fd08a0a79de",
+      "run_id": "86e6b37b6bfd815600189564923880bb072d1c3c8017a6cf843779650bb4b170",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 78865 + 10?",
+      "answer": "78875",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"522fb7ae1265c8b2aff20ba64f7129e19d43ac1590bf6910406ffaab217049ee\",\"component_id\":\"derived_sum\",\"source_entity\":\"CZ\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "30a4e1cae4d2a4282abba4cab58d873e5a8e06399bf9214690a1bd7b634f61bc-derived_sum",
+      "split_identity": "CZ",
+      "question_id": "117571fcc3dcad88bdd57cb4e5bb9d3e216582343ddbc0ced8dc0fd08a0a79de",
+      "run_id": "946c4474adad07b6d816ce8f8c89f496cd3c294cb4889b2b1209c76c63632e10",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 78865 + 10?",
+      "answer": "78874",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"d81f801a897f9c4994a94d5accbccc6dc6ef914e1ac06d9f96c112bd59623cda\",\"component_id\":\"derived_sum\",\"source_entity\":\"CZ\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "a0114f13ff363d03c347064717721fc5f29e6c5a4819f05d53b88f1017aac5fa-derived_sum",
+      "split_identity": "CZ",
+      "question_id": "117571fcc3dcad88bdd57cb4e5bb9d3e216582343ddbc0ced8dc0fd08a0a79de",
+      "run_id": "ae6e1009d2f50483ad0fcfad898cf63e94e77ac3a59b6810d3b09f05d30b3a7e",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 78866 + 10?",
+      "answer": "78876",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"5b4c9d1984964a15a0d95cc6afb63a783e833ee2705c05b56aaf234cbec5fc4f\",\"component_id\":\"derived_sum\",\"source_entity\":\"CZ\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "ccb65124ffc7a02d1fe8675d83dc6cef733f4f6eae9ec833c40cfe0fc591f2b2-derived_sum",
+      "split_identity": "CZ",
+      "question_id": "117571fcc3dcad88bdd57cb4e5bb9d3e216582343ddbc0ced8dc0fd08a0a79de",
+      "run_id": "2956a6264bf89c8242dc91c6e6c52918c8dd42bb932805e1f0a0d65a05ff57ee",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 78866 + 10?",
+      "answer": "78875",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"5681229378c5b9c283e7530452a2a3f5ea643d2155bc876d67c00363038f6a44\",\"component_id\":\"derived_sum\",\"source_entity\":\"CZ\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "dc8a69a326a50b87681bcb65ecbe50b9f1cbc1a8e8a654a5b8fa42190ed082c0-derived_sum",
+      "split_identity": "SO",
+      "question_id": "f39c2f06f698dfbff53b2bd6584af5db3b899dfd326a759ee5dd5686ab73da92",
+      "run_id": "b4c5eff20ec422eb16ec0095f6c3ad858fc571b67e4017852bf31270c96067ad",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 19654739 + 1000?",
+      "answer": "19655739",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"acf2e5789df1735fa10f5112f93cee6ca836759c2a703259f128738c912678ae\",\"component_id\":\"derived_sum\",\"source_entity\":\"SO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "33a1583c6ca5f6ac1a800b0f1c5bba97a8e97ed388b223dd38e5df7cbf5f561a-derived_sum",
+      "split_identity": "SO",
+      "question_id": "f39c2f06f698dfbff53b2bd6584af5db3b899dfd326a759ee5dd5686ab73da92",
+      "run_id": "f888d0ac845c48f45bffb2d007e7c51592732056f50c6c0d2b9afc958a503451",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 19654739 + 1000?",
+      "answer": "19655738",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"8a8740487546ff0a29d753d8ded3f3f168112e47a164556950c1e26740c5937f\",\"component_id\":\"derived_sum\",\"source_entity\":\"SO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "4a7db1a080ce65fbd0e00bdbe938ae3dea6457ec00530036e614f912aae594a1-derived_sum",
+      "split_identity": "SO",
+      "question_id": "f39c2f06f698dfbff53b2bd6584af5db3b899dfd326a759ee5dd5686ab73da92",
+      "run_id": "03a4283b7ff9c254aac1fc7216d907e0d77d7577ba5b327296af9583577e82a1",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 19654740 + 1000?",
+      "answer": "19655740",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"800aa82db50c948cf2ce55ef6b87357b9f912b398634db93f333957b543b4fbf\",\"component_id\":\"derived_sum\",\"source_entity\":\"SO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "78cf446ffd7b64d480a73711ef64935779b5e19698f05b42a5394966662f57a5-derived_sum",
+      "split_identity": "SO",
+      "question_id": "f39c2f06f698dfbff53b2bd6584af5db3b899dfd326a759ee5dd5686ab73da92",
+      "run_id": "4315cf56281db83e50cd4126d202147294f45c4fd0f47aeff15561960034fcfd",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 19654740 + 1000?",
+      "answer": "19655739",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"e57717aec504caa61636b20b54cf20cfe51a51ddb73e1ecc97b9e9c468dc8724\",\"component_id\":\"derived_sum\",\"source_entity\":\"SO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "4404bace73d8629017443cc1604658858845891210f607947624ed2d2c026085-derived_sum",
+      "split_identity": "PH",
+      "question_id": "eaa936e6d0171f37a81289243002c51cfd1d85a3bbbc7beeccdaf3324b5cd033",
+      "run_id": "ddde348a8c095575adce97dfbb5d58cf433538d57a50a60119c32dfbe8ca231a",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 342353 + 10?",
+      "answer": "342363",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"06fec98b3d4ad93b28746fc7cc1c55729b645830ac16d21ce99ffb76d835f9e3\",\"component_id\":\"derived_sum\",\"source_entity\":\"PH\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "518b9cd5924ccc5368e3f0bb566cbfd730dd132c400fc34f629a6e96de2f7abb-derived_sum",
+      "split_identity": "PH",
+      "question_id": "eaa936e6d0171f37a81289243002c51cfd1d85a3bbbc7beeccdaf3324b5cd033",
+      "run_id": "82943338e0fa0c8158eb1f5fd8fe36c75017b40b6aded4b7db880644802c36fe",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 342353 + 10?",
+      "answer": "342362",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"e12f4023a580b65bc9c5af76e1c54fac80371dccd574b4a63befe4d6200a558b\",\"component_id\":\"derived_sum\",\"source_entity\":\"PH\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "b262eb57177775857db48b1e712cc55b378ba3fdf10bd8e0c65e7913e3ed42c8-derived_sum",
+      "split_identity": "PH",
+      "question_id": "eaa936e6d0171f37a81289243002c51cfd1d85a3bbbc7beeccdaf3324b5cd033",
+      "run_id": "12d418df60762f8d8f4534739decf0ed4f19e4da9342a42ab24d232265475435",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 342354 + 10?",
+      "answer": "342364",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"f1ca7028eced21d3d9b77c216df62028cf71fd707734bb92876054c66aa3a2d1\",\"component_id\":\"derived_sum\",\"source_entity\":\"PH\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "8469b146f1dad84de1d163b07f539cd6dc070ba42486dc56b6c09bed0ccb7e28-derived_sum",
+      "split_identity": "PH",
+      "question_id": "eaa936e6d0171f37a81289243002c51cfd1d85a3bbbc7beeccdaf3324b5cd033",
+      "run_id": "0c5e60665230220b02f5ea9ffc48fb1d38fcf0b4f1885c4e62fb839a389c08e4",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 342354 + 10?",
+      "answer": "342363",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"7e7bfe5c67e6223cac085afc7413723732b8fb5e683150fee03fa1bc7aafc4ee\",\"component_id\":\"derived_sum\",\"source_entity\":\"PH\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "0b29eb1111d398133ac8cbe81c542b32b67849a5c11891e333c46c4f39006bc0-derived_sum",
+      "split_identity": "GD",
+      "question_id": "2f3c9c41c896999dabd1ea3c2e037ace63370267a18d37f79f5a1f1777d23425",
+      "run_id": "49218c01980d36faf8cffe75157a6ad8d3761d40db523300cab618f8209ac6e5",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 117303 + 1000?",
+      "answer": "118303",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"a03b2e85088588decc4e5d9252f4ffe4e915b8fab553b0951766da9465cd356c\",\"component_id\":\"derived_sum\",\"source_entity\":\"GD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "523db1e297b3480a8da6e8f17529db2d59e1d6a198520acf9def958ac4c0855a-derived_sum",
+      "split_identity": "GD",
+      "question_id": "2f3c9c41c896999dabd1ea3c2e037ace63370267a18d37f79f5a1f1777d23425",
+      "run_id": "0a06938f359cb22503c3ce37b938f83a628ed395a2b3c0e1029bd3df34fd202d",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 117303 + 1000?",
+      "answer": "118302",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"a9dfd3a98263a696c4a0604448fc5b76994ec9b88ab21ec341810c931ea34eda\",\"component_id\":\"derived_sum\",\"source_entity\":\"GD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "0ae2c0a676e4d133029ce1085604c90f5c904258bac01e9b456ac7fe503ab406-derived_sum",
+      "split_identity": "GD",
+      "question_id": "2f3c9c41c896999dabd1ea3c2e037ace63370267a18d37f79f5a1f1777d23425",
+      "run_id": "b699f9c6f1f8f45d5322541239de8ea509054fe52b0acb9376b8ac2b74fe4f4c",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 117304 + 1000?",
+      "answer": "118304",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"4f9a81edbc2b03b465583869013f864206d03b2276e635d7bc53d0b5c6202ad4\",\"component_id\":\"derived_sum\",\"source_entity\":\"GD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "f89a15211068dd377cf08eb134bfbec23ce8cb91322c4be26f4545d3e9b122f6-derived_sum",
+      "split_identity": "GD",
+      "question_id": "2f3c9c41c896999dabd1ea3c2e037ace63370267a18d37f79f5a1f1777d23425",
+      "run_id": "4096e63f76a522cceaee771c6834cdb1f578e24e46ba7628d23da6fabefd6212",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 117304 + 1000?",
+      "answer": "118303",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"78c13e52f9a74e5b7cfe3f89ad5f0625bf78ee691be1947a5d2d76bb7e43dde2\",\"component_id\":\"derived_sum\",\"source_entity\":\"GD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "0b2e8e96275e625183f406d93d97702798dc14eba74070c1dde78356af8a27c4-derived_sum",
+      "split_identity": "SR",
+      "question_id": "4b14139e4a4dc1e62f44ec31bbc0dc4ee943cd736ef6c56374ded5d143113c83",
+      "run_id": "1bb88f920b8e867a96026847a83168f99704868276b9873faf98d61f666b1cb2",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 639850 + 1000?",
+      "answer": "640850",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"8d5d2ef4fe11a86cbe36b5b16c3bc6279343fc0cf09e11481eb38da171d9c339\",\"component_id\":\"derived_sum\",\"source_entity\":\"SR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "82b539d5ff90696f0ccbbeb4a54088e401e12a7a8900afa4eb6d97541145ebf6-derived_sum",
+      "split_identity": "SR",
+      "question_id": "4b14139e4a4dc1e62f44ec31bbc0dc4ee943cd736ef6c56374ded5d143113c83",
+      "run_id": "de2e803d1a6ccfc5cb038b8f5452006183ec3f868d283135c85358b3a37339d3",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 639850 + 1000?",
+      "answer": "640849",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"d263a05cbe6bfb58e37488a00de1438873f5d346c52c516f49276628165e3b52\",\"component_id\":\"derived_sum\",\"source_entity\":\"SR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "007442af94bf015cadf3f24257f84cadd1fcda8ebe4a2deb8d58f957dc9fc40e-derived_sum",
+      "split_identity": "SR",
+      "question_id": "4b14139e4a4dc1e62f44ec31bbc0dc4ee943cd736ef6c56374ded5d143113c83",
+      "run_id": "c9649fad6e488454ae7aec61697d6fef89d7dbf9575af27d135e9caea50fde7a",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 639851 + 1000?",
+      "answer": "640851",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"f2b9936599ff135b545affd6ba23a0dec2f44892a00968e24d639abc8a56aa76\",\"component_id\":\"derived_sum\",\"source_entity\":\"SR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "d886d81156abe0f9e79e9540de8cd4ad5613211e7a3b990ff4a51c482ede69bd-derived_sum",
+      "split_identity": "SR",
+      "question_id": "4b14139e4a4dc1e62f44ec31bbc0dc4ee943cd736ef6c56374ded5d143113c83",
+      "run_id": "c1945b6d0c9dc67cd7ba6be98e0f3740f0b2d25b3c25923bad046ca3f81a4fce",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 639851 + 1000?",
+      "answer": "640850",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"0b55de03c92796e7aed0f56c8f9d4c18e88eb74bd59ffa657a050dc3ca7c1927\",\"component_id\":\"derived_sum\",\"source_entity\":\"SR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "26442a8342e4523c5a87520b45a172762f2abcf63351a28ea523291dae3aa5f0-derived_sum",
+      "split_identity": "NO",
+      "question_id": "95071ef63ed74f63c95faa196f5b1bf396326f85f7f88f33a68f836a6e98eb04",
+      "run_id": "49ff7d83db795441e1f608509be22f9388865559ecb22f4888f56f87e5a1ebb6",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 323802 + 10?",
+      "answer": "323812",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"9a678e2c31b9cd0989d80d78dc5b52d307682e1855fe9b0d595e736eb2953940\",\"component_id\":\"derived_sum\",\"source_entity\":\"NO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "d410d79b45ab0526569cc613000c693ffc006e83eb441d45e46960cdfdd893f4-derived_sum",
+      "split_identity": "NO",
+      "question_id": "95071ef63ed74f63c95faa196f5b1bf396326f85f7f88f33a68f836a6e98eb04",
+      "run_id": "d8b02e7177bc09eebad8348184c0e6eccde5bb3a3d98f65b83a22155d09a6ac6",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 323802 + 10?",
+      "answer": "323811",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"6fca4fc2418e5e2dc18894de2d607d1c74a79955bf5edbae7a7ed7daad4c5747\",\"component_id\":\"derived_sum\",\"source_entity\":\"NO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "7229e20e0cf3b1dc1169f62cf7de8d590e14120dcb671c570f9d56a0c841a16b-derived_sum",
+      "split_identity": "NO",
+      "question_id": "95071ef63ed74f63c95faa196f5b1bf396326f85f7f88f33a68f836a6e98eb04",
+      "run_id": "eb79df743bd24e0d99251afca6378da522e3ffa4f7e9db8308a9db9098127a8d",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 323803 + 10?",
+      "answer": "323813",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"c12bcdc4c794a2e3a510dadcd0d66418ec85e59c3dd35b3dc6231cee54130a3a\",\"component_id\":\"derived_sum\",\"source_entity\":\"NO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "c706f6b621d2330104e0a0d681ce98f0109404ec00201b33f1887a36662832c2-derived_sum",
+      "split_identity": "NO",
+      "question_id": "95071ef63ed74f63c95faa196f5b1bf396326f85f7f88f33a68f836a6e98eb04",
+      "run_id": "4f2723e134a009ade86db5776fcba805b33a31823c3639385bcd1035568f8683",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 323803 + 10?",
+      "answer": "323812",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"b8d7d23a9a14996b8cd97fe6fd5edaa18aaf60c79ab1ca4189c11c44203ac073\",\"component_id\":\"derived_sum\",\"source_entity\":\"NO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "070893a657c327cb1e56d71fc86c9a6d05b5ee83e0807bf285864525f468e87b-derived_sum",
+      "split_identity": "LR",
+      "question_id": "d2e5d8f9cbfc1016bd393515755d78dd8d1c276bf767d183f872392ed41cb250",
+      "run_id": "ad0ba75ddd53fe6aad2e544c64d9930734683b34a511c76aa34e94462f7615d3",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 5731206 + 1000?",
+      "answer": "5732206",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"543ad86f8f2c509c23b9e20c0f14c68ddf41b813e8c50abd110db58ff67794ce\",\"component_id\":\"derived_sum\",\"source_entity\":\"LR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "aa4de0c16f6bb88239e8f7a18a25434c478c85656ca9b404a8674f602d290ff2-derived_sum",
+      "split_identity": "LR",
+      "question_id": "d2e5d8f9cbfc1016bd393515755d78dd8d1c276bf767d183f872392ed41cb250",
+      "run_id": "91c07c03cd07e331244d1191dc5bbd5703a741c262ff4d35153c0f329109317e",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 5731206 + 1000?",
+      "answer": "5732205",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"eb36249a1efbd8c8822cca4b77da8041bdaf4b542c971c366a07cf15ee06748c\",\"component_id\":\"derived_sum\",\"source_entity\":\"LR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "e3dd8be6e131f18b5b2d9aa47f02f21db69770cab13242afa4717c8c1d2079df-derived_sum",
+      "split_identity": "LR",
+      "question_id": "d2e5d8f9cbfc1016bd393515755d78dd8d1c276bf767d183f872392ed41cb250",
+      "run_id": "34d36c9717b54edbef725daed46dd96fca987add0cce0168eea6acd5973b5199",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 5731207 + 1000?",
+      "answer": "5732207",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"9a6e8aa2247bdbd51df25d2ef8e5dbbc3e8b970d9aaf18bd2159a9456c662842\",\"component_id\":\"derived_sum\",\"source_entity\":\"LR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "bf55a432c018c840ec10a648ebf465805159ca277b0c150734feee50e052684c-derived_sum",
+      "split_identity": "LR",
+      "question_id": "d2e5d8f9cbfc1016bd393515755d78dd8d1c276bf767d183f872392ed41cb250",
+      "run_id": "302b5676646dccd825d0de06fbbb46f19001049e08835fcb71915f08eb8b3ddf",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 5731207 + 1000?",
+      "answer": "5732206",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"a42d0ec6071f69826b4ad93065697696bbadc083c9553d3203773260392d5b9c\",\"component_id\":\"derived_sum\",\"source_entity\":\"LR\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "0c098881faea5e13005e9925bb4cdd22d5cddd68a622ff9090d1eaea4f360707-derived_sum",
+      "split_identity": "NG",
+      "question_id": "4f551bbec0155e44bfd78416c3de24f7dd72ac229a9afb445f42b089aa03b089",
+      "run_id": "8ffd3c4dceff83b86a44edfad793f952764fcc57ce9a26e5bcf1261c3e8fa452",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 923768 + 10?",
+      "answer": "923778",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"29287b28e57ffc743489f084a29d674174d0c489c0a0d176e5ef577b0e9c50d0\",\"component_id\":\"derived_sum\",\"source_entity\":\"NG\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "c4f45ae417799e96b84b579f7100cf9b83795ad758c24c31169763e11c38f018-derived_sum",
+      "split_identity": "NG",
+      "question_id": "4f551bbec0155e44bfd78416c3de24f7dd72ac229a9afb445f42b089aa03b089",
+      "run_id": "57e6debc9771c810006bc674110fbffcef742683d5f4f2e0c683a1fe353d2471",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 923768 + 10?",
+      "answer": "923777",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"aaa3f309fd719493b6bf4908d725e713fe0d0cd13ee5685b89284cc8f65abb24\",\"component_id\":\"derived_sum\",\"source_entity\":\"NG\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "22edf4aa761b99417d97331e6967576a8dd9dd660512e9019c7367f17737b00f-derived_sum",
+      "split_identity": "NG",
+      "question_id": "4f551bbec0155e44bfd78416c3de24f7dd72ac229a9afb445f42b089aa03b089",
+      "run_id": "a8e324e52699708a06d0e9a7e46c0670667cfc2c6eba750e67cabafbeb8e403c",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 923769 + 10?",
+      "answer": "923779",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": true,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"1a7d5f75de26de704caf051e02b208357663c035411e996e9e883b198808bbd2\",\"component_id\":\"derived_sum\",\"source_entity\":\"NG\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    },
+    {
+      "example_id": "befe7e6ef82316fe6d0655f29ac6d3fe075221d68382c7254d752f88b0c647ab-derived_sum",
+      "split_identity": "NG",
+      "question_id": "4f551bbec0155e44bfd78416c3de24f7dd72ac229a9afb445f42b089aa03b089",
+      "run_id": "bcc121c6c5ef01ef1f06b773d5ec7c38d2be5bfaf966bd60949cdea848001e3e",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development-derived_sum",
+      "role": "development",
+      "purpose": "calibration",
+      "question": "What is 923769 + 10?",
+      "answer": "923778",
+      "reference": null,
+      "analysis": {
+        "domain": "general",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "subject": "",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "verification_types": [
+          "arithmetic"
+        ],
+        "analysis_method": "heuristic",
+        "fallback_reason": null,
+        "rubric_ratings": null,
+        "research_context": {
+          "context_version": "question_context_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ],
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "normalized_rubric": null,
+          "domain_status": "unknown",
+          "analysis_method": "heuristic",
+          "scoring_version": "source_backed_component_questions_v2"
+        }
+      },
+      "label": {
+        "answer_is_correct": false,
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "label_method": "independent_ground_truth",
+        "provenance": "{\"binding_id\":\"aa9a6d9866375db13ea26645496a40b5d85da7bd68bd51815b9258a78c507d41\",\"component_id\":\"derived_sum\",\"source_entity\":\"NG\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      }
+    }
+  ]
+}

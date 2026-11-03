@@ -1,0 +1,35 @@
+{
+  "version": "supported_policy_identity_index_v1",
+  "available_atomic": [
+    {
+      "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+      "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+      "resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+    },
+    {
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+      "resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+    }
+  ],
+  "available_compound": {
+    "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+    "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+    "matrix_id": "bd4918e38503ec6ab990c83d687c1bc648015823a5ca2fa9ad18473421ab9970",
+    "resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+  },
+  "unavailable_reference": {
+    "status": "infeasible_no_policy",
+    "context_id": "ef609bf14955502a5e082a678194bde15649ffa920df461fbff2773af41abdfd",
+    "matrix_id": "3512477e99938df8f4ab6d42b8675d3ec9e22c68793e92bb9b79868b0fc8ed5b",
+    "contract_content_id": "dc55c285163a32b70e21d5267847063945b587fd28cd44a4852a4f0dba813fa0",
+    "resource_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+    "setup_fingerprint": "fa6b309cf995f17e91ce94686b593517abee5e449292e58a109defca5c834ea7",
+    "minimum_clean_coverage": 0.9
+  },
+  "minimal_bundle_id": "4eea7626639ec7ceb74305eb384423a336a9da8b7c75f60119ae2c37c4051ce9"
+}

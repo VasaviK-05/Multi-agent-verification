@@ -1,0 +1,55 @@
+{
+  "partitions": {
+    "history": {
+      "examples": 48,
+      "actual_attempts": 96,
+      "evidence": 48,
+      "rule": 48,
+      "generations": 0,
+      "retries": 0,
+      "failures": 0,
+      "raw_abstentions": 0,
+      "mean_call_ms": {
+        "evidence": 85.0166104210075,
+        "rule": 0.12052292489291479
+      },
+      "network": {
+        "generation": 0,
+        "metadata": 968,
+        "blocked": 0
+      }
+    },
+    "development": {
+      "examples": 48,
+      "actual_attempts": 96,
+      "evidence": 48,
+      "rule": 48,
+      "generations": 0,
+      "retries": 0,
+      "failures": 0,
+      "raw_abstentions": 0,
+      "mean_call_ms": {
+        "evidence": 83.12451247184072,
+        "rule": 0.12453334541836132
+      },
+      "network": {
+        "generation": 0,
+        "metadata": 968,
+        "blocked": 0
+      }
+    }
+  },
+  "total_attempts": 192,
+  "maximum_attempts": 288,
+  "unused_attempt_allowance": 96,
+  "reserved_attempts": 0,
+  "reserved_outcomes_opened": false,
+  "generation_calls": 0,
+  "metadata_gets_collection": 1936,
+  "metadata_gets_readiness": 2,
+  "metadata_gets_transport_diagnostics": 6,
+  "extra_live_acceptance_calls": 0,
+  "publication_replay_live_calls": 0,
+  "selective_retries": 0,
+  "early_stopping": false
+}

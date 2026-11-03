@@ -1,0 +1,1845 @@
+[
+  {
+    "answers": [
+      {
+        "answer": "703",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "693",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "arithmetic",
+    "group_id": "a-multiply",
+    "independent_label_provenance": "Independent Decimal integer multiplication: 37*19=703.",
+    "input_support": "Supported binary Rule input; other verifiers may abstain or disagree.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "arithmetic",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "arithmetic",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is 37 * 19?",
+    "reference": "The product of 37 and 19 is 703.",
+    "required_checks": [
+      "arithmetic"
+    ],
+    "why_additional_checking_might_help": "Compare exact multiplication with generation agreement and reference resemblance."
+  },
+  {
+    "answers": [
+      {
+        "answer": "8",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "42",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "arithmetic",
+    "group_id": "a-word-difference",
+    "independent_label_provenance": "Independent integer subtraction; wrong answer is the sum, not the difference.",
+    "input_support": "Rule input supported; legacy analyzer requirements unknown; opt-in analyzer adds a versioned category.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.23,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": false,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": []
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": []
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [],
+      "legacy_unrecognized": [],
+      "requirements": [],
+      "requirements_known": false,
+      "source": "research_context",
+      "status": "unknown",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": []
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.23,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "arithmetic",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "binary_word_difference",
+      "input_supported": true,
+      "limitation": "Standalone Rule input supported; no fitted policy for this new question-rule version.",
+      "required_checks": [
+        "arithmetic"
+      ],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is the difference between 25 and 17?",
+    "reference": "Subtracting 17 from 25 yields 8.",
+    "required_checks": [
+      "arithmetic"
+    ],
+    "why_additional_checking_might_help": "Exercise wording accepted by Rule but missed by the existing analyzer; additional results cannot replace missing routing."
+  },
+  {
+    "answers": [
+      {
+        "answer": "4.25",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "4.2",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "arithmetic",
+    "group_id": "a-division",
+    "independent_label_provenance": "Independent Decimal division and explicit half-up rounding check.",
+    "input_support": "Supported binary Rule input; 4.2 is wrong even at its displayed precision (expected 4.3).",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "arithmetic",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "arithmetic",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is 17 / 4?",
+    "reference": "Seventeen divided by four equals 4.25.",
+    "required_checks": [
+      "arithmetic"
+    ],
+    "why_additional_checking_might_help": "Check exact arithmetic versus a nearby numeric distractor under the existing rounding policy."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The area of Bahrain is 765 square kilometres.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "The area of Bahrain is 766 square kilometres.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "factual",
+    "group_id": "f-area",
+    "independent_label_provenance": {
+      "iso": "BH",
+      "kind": "area",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": 765
+    },
+    "input_support": "Existing factual interface; numeric facts do not imply arithmetic coverage.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is the area of Bahrain?",
+    "reference": "The area of Bahrain is 765 square kilometres.",
+    "required_checks": [
+      "direct_fact"
+    ],
+    "why_additional_checking_might_help": "Contrast retrieval/NLI with similarity and generation agreement on a near-number or related-currency distractor."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The population of Belgium is 11941781.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "The population of Belgium is 11941718.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "factual",
+    "group_id": "f-population",
+    "independent_label_provenance": {
+      "iso": "BE",
+      "kind": "population",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": 11941781
+    },
+    "input_support": "Existing factual interface; numeric facts do not imply arithmetic coverage.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is the population of Belgium?",
+    "reference": "The population of Belgium is 11941781.",
+    "required_checks": [
+      "direct_fact"
+    ],
+    "why_additional_checking_might_help": "Contrast retrieval/NLI with similarity and generation agreement on a near-number or related-currency distractor."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The currency of Cuba is the Cuban peso.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "The currency of Cuba is the Mexican peso.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "factual",
+    "group_id": "f-currency",
+    "independent_label_provenance": {
+      "iso": "CU",
+      "kind": "currency",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": "Cuban peso"
+    },
+    "input_support": "Existing factual interface; numeric facts do not imply arithmetic coverage.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is the currency of Cuba?",
+    "reference": "The currency of Cuba is the Cuban peso.",
+    "required_checks": [
+      "direct_fact"
+    ],
+    "why_additional_checking_might_help": "Contrast retrieval/NLI with similarity and generation agreement on a near-number or related-currency distractor."
+  },
+  {
+    "answers": [
+      {
+        "answer": "Four amber tokens were placed in the blue box by Nora.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "Nora placed five amber tokens in the blue box.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "semantic",
+    "group_id": "s-number",
+    "independent_label_provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Exact count preservation versus four-to-five change."
+    },
+    "input_support": "Semantic input/measurement supported; similarity contract is not a logical-equivalence certificate. Synthetic frames are not added to the retrieval corpus.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.09,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.09,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "Paraphrase this reference: Nora placed four amber tokens in the blue box.",
+    "reference": "Nora placed four amber tokens in the blue box.",
+    "required_checks": [
+      "semantic_comparison"
+    ],
+    "why_additional_checking_might_help": "Contrast logical equivalence with cosine resemblance and generation/NLI agreement."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The red gate was not opened by Owen.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "Owen opened the red gate.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "semantic",
+    "group_id": "s-negation",
+    "independent_label_provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Explicit negation preserved versus reversed."
+    },
+    "input_support": "Semantic input/measurement supported; similarity contract is not a logical-equivalence certificate. Synthetic frames are not added to the retrieval corpus.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "Paraphrase this reference: Owen did not open the red gate.",
+    "reference": "Owen did not open the red gate.",
+    "required_checks": [
+      "semantic_comparison"
+    ],
+    "why_additional_checking_might_help": "Contrast logical equivalence with cosine resemblance and generation/NLI agreement."
+  },
+  {
+    "answers": [
+      {
+        "answer": "Theo borrowed a book from Mira.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "Theo lent a book to Mira.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "semantic",
+    "group_id": "s-roles",
+    "independent_label_provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Lender/borrower roles preserved versus reversed."
+    },
+    "input_support": "Semantic input/measurement supported; similarity contract is not a logical-equivalence certificate. Synthetic frames are not added to the retrieval corpus.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "Paraphrase this reference: Mira lent a book to Theo.",
+    "reference": "Mira lent a book to Theo.",
+    "required_checks": [
+      "semantic_comparison"
+    ],
+    "why_additional_checking_might_help": "Contrast logical equivalence with cosine resemblance and generation/NLI agreement."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The oak crate is to the right of the cedar crate.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "The cedar crate is to the right of the oak crate.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "semantic",
+    "group_id": "s-spatial",
+    "independent_label_provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Left/right inverse relation preserved versus contradicted."
+    },
+    "input_support": "Semantic input/measurement supported; similarity contract is not a logical-equivalence certificate. Synthetic frames are not added to the retrieval corpus.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.1,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.1,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "semantic_comparison"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "semantic_comparison",
+          1.0
+        ]
+      ]
+    },
+    "profile": {
+      "category": "existing_atomic_or_unknown",
+      "input_supported": null,
+      "limitation": "Delegate to the unchanged task analyzer; this profile does not certify arbitrary inputs.",
+      "required_checks": [],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "Paraphrase this reference: The cedar crate is to the left of the oak crate.",
+    "reference": "The cedar crate is to the left of the oak crate.",
+    "required_checks": [
+      "semantic_comparison"
+    ],
+    "why_additional_checking_might_help": "Contrast logical equivalence with cosine resemblance and generation/NLI agreement."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The area of Bahrain is 765 square kilometres. Adding 10 gives 775 square kilometres.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "The area of Bahrain is 765 square kilometres. Adding 10 gives 774 square kilometres.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "mixed",
+    "group_id": "m-area",
+    "independent_label_provenance": {
+      "calculation": "765+10=775",
+      "fact": {
+        "iso": "BH",
+        "kind": "area",
+        "source_hashes": {
+          "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+          "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+          "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+          "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+        },
+        "source_snapshot_truth": true,
+        "value": 765
+      },
+      "negative": "Correct base fact, incorrect derived sum."
+    },
+    "input_support": "Diagnostic compound only; whole-question Rule matching and component binding are unsupported.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.3,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": false,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": []
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": []
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [],
+      "legacy_unrecognized": [],
+      "requirements": [],
+      "requirements_known": false,
+      "source": "research_context",
+      "status": "unknown",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": []
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.3,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.5,
+          "compound_component_binding_v1": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.5,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "direct_fact",
+          "arithmetic",
+          "compound_component_binding_v1"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ],
+      "legacy_unrecognized": [
+        "compound_component_binding_v1"
+      ],
+      "requirements": [
+        "direct_fact",
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [
+        "compound_component_binding_v1"
+      ],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          0.5
+        ],
+        [
+          "arithmetic",
+          0.5
+        ]
+      ]
+    },
+    "profile": {
+      "category": "fact_then_calculation",
+      "input_supported": false,
+      "limitation": "No verified component decomposition, answer binding or arithmetic report for this whole compound input.",
+      "required_checks": [
+        "arithmetic",
+        "direct_fact"
+      ],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "reference": "The area of Bahrain is 765 square kilometres.",
+    "required_checks": [
+      "direct_fact",
+      "arithmetic"
+    ],
+    "why_additional_checking_might_help": "Requires retrieving the base fact and checking the derived result; merely selecting two names cannot bind components."
+  },
+  {
+    "answers": [
+      {
+        "answer": "The population of Belgium is 11941781. Adding 1000 gives 11942781.",
+        "answer_is_correct": true
+      },
+      {
+        "answer": "The population of Belgium is 11941718. Adding 1000 gives 11942718.",
+        "answer_is_correct": false
+      }
+    ],
+    "expected_eligible": [
+      "semantic",
+      "evidence",
+      "rule",
+      "confidence"
+    ],
+    "family": "mixed",
+    "group_id": "m-population",
+    "independent_label_provenance": {
+      "calculation": "11941781+1000=11942781",
+      "fact": {
+        "iso": "BE",
+        "kind": "population",
+        "source_hashes": {
+          "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+          "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+          "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+          "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+        },
+        "source_snapshot_truth": true,
+        "value": 11941781
+      },
+      "negative": "Wrong base fact; addition internally correct for the supplied wrong base, but whole answer incorrect."
+    },
+    "input_support": "Diagnostic compound only; a fact-looking prefix must not drop the arithmetic obligation.",
+    "known_limitations": "No independent failure-path guarantee; new wording/contrasts may shift reliability away from prior narrow history. References are legitimate fixed comparison inputs, not correctness labels.",
+    "legacy_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.29,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "legacy_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "direct_fact"
+      ],
+      "legacy_unrecognized": [],
+      "requirements": [
+        "direct_fact"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          1.0
+        ]
+      ]
+    },
+    "owned_analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.29,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.5,
+          "compound_component_binding_v1": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.5,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "direct_fact",
+          "arithmetic",
+          "compound_component_binding_v1"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ]
+    },
+    "owned_requirements": {
+      "disagreements": [],
+      "errors": [],
+      "legacy_hints": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ],
+      "legacy_unrecognized": [
+        "compound_component_binding_v1"
+      ],
+      "requirements": [
+        "direct_fact",
+        "arithmetic"
+      ],
+      "requirements_known": true,
+      "source": "research_context",
+      "status": "known",
+      "unsupported": [
+        "compound_component_binding_v1"
+      ],
+      "weight_discrepancies": [],
+      "weights": [
+        [
+          "direct_fact",
+          0.5
+        ],
+        [
+          "arithmetic",
+          0.5
+        ]
+      ]
+    },
+    "profile": {
+      "category": "fact_then_calculation",
+      "input_supported": false,
+      "limitation": "No verified component decomposition, answer binding or arithmetic report for this whole compound input.",
+      "required_checks": [
+        "arithmetic",
+        "direct_fact"
+      ],
+      "version": "capability_probe_questions_v1"
+    },
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "reference": "The population of Belgium is 11941781.",
+    "required_checks": [
+      "direct_fact",
+      "arithmetic"
+    ],
+    "why_additional_checking_might_help": "Distinguish a wrong retrieved base fact from an internally consistent calculation on that wrong base."
+  }
+]

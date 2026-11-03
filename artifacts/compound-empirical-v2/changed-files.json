@@ -1,0 +1,30 @@
+{
+  "extended_existing_owned_files": [
+    "app/game/component_execution.py",
+    "app/game/question_routing.py"
+  ],
+  "new_files": [
+    "app/game/component_sources.py",
+    "app/game/offline/compound.py",
+    "app/game/offline/compound_journal.py",
+    "scripts/compound_study.py",
+    "scripts/collect_compound_partition.py",
+    "scripts/describe_compound_routes.py",
+    "tests/test_compound_empirical.py",
+    "docs/compound_empirical_v2_handoff.md"
+  ],
+  "prior_uncommitted_work_preserved": true,
+  "sha256": {
+    "app/game/component_execution.py": "84e9176579dfc9c6b7fb057a13dc73f36e6a1fd7e103e4b46fd997e2cdbbe6b5",
+    "app/game/component_sources.py": "c6e0e837ec8e114f72c0ebd5cc3fed13e75140266bfc0eb865b60d91433923e3",
+    "app/game/offline/compound.py": "469d029cf056a939c3ae75544642dc8a96a52e38d67fb21d25817dc3ef9ac099",
+    "app/game/offline/compound_journal.py": "58bfd039a962dc93a0f4b5591af3609972396544509c5d7aed1a398ff9983d70",
+    "app/game/question_routing.py": "85e31e9608e19df09c778561761b7e1600a8948bcffc9c8853b4fcf05f07730a",
+    "docs/compound_empirical_v2_handoff.md": "9ffb5caaa7078185de007aebb480cf95bf62d9a53a17739f50418b6e96e8086b",
+    "scripts/collect_compound_partition.py": "ac27bb3638e25a90a06e553caf38de2428b82cd341e78401011e767662df49d8",
+    "scripts/compound_study.py": "d027e38ea99488ff04a38d8a18b5a148b3596a6b16dce173e1445ec55833f3e4",
+    "scripts/describe_compound_routes.py": "6b5b5840bc5d34f4704228e305dd1c4ef012f91f05f5006daabf80d453165ed3",
+    "tests/test_compound_empirical.py": "9781d3358548203fde3f041f9db68a7ec7ac960c6f6a6da1a38c127ead975377"
+  },
+  "v1_binding_file_unchanged": true
+}

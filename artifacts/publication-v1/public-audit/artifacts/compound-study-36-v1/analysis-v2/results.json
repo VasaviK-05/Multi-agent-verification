@@ -1,0 +1,2813 @@
+{
+  "status": "infeasible",
+  "deployable_policy": false,
+  "solver": {
+    "attack_losses": [],
+    "attack_probabilities": [],
+    "constraint_residuals": [],
+    "dual_lower_bound": null,
+    "game_value": null,
+    "matrix_id": "4d7126a8d652a35045b2682e222e0fd767fef43a5b8b6d9d9e4f5cc074fe90c9",
+    "message": "clean coverage target exceeds every feasible strategy",
+    "minimum_probability": null,
+    "normalization_residual": null,
+    "optimality_basis": "not_verified",
+    "primal_dual_gap": null,
+    "probabilities": [],
+    "status": "infeasible",
+    "tolerance": 1e-08,
+    "worst_case_attacks": []
+  },
+  "matrix_id": "4d7126a8d652a35045b2682e222e0fd767fef43a5b8b6d9d9e4f5cc074fe90c9",
+  "contract_id": "284e7f29545d2d1cb26f783ee6d241a2d7224de5a5ba35afe2fbb7d60ddeb5a7",
+  "strategies": [
+    {
+      "strategy_id": "efef1f1d0ec7374d0f754da60688ef29c8d555021eb25b4de7acf112b7a5e671",
+      "team": [
+        "evidence",
+        "rule"
+      ],
+      "estimated_cost": 84.19308958157974,
+      "version": "component_strategy_v1",
+      "contract_id": "284e7f29545d2d1cb26f783ee6d241a2d7224de5a5ba35afe2fbb7d60ddeb5a7",
+      "components": [
+        [
+          "base_fact",
+          {
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "verifiers": [
+              "evidence"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 84.07056144642411
+          }
+        ],
+        [
+          "derived_sum",
+          {
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "verifiers": [
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 0.12252813515563805
+          }
+        ]
+      ]
+    },
+    {
+      "strategy_id": "a134fdb113f45464679934f633ad4baa403c8fa443164f049101b40c2bf76901",
+      "team": [
+        "evidence",
+        "rule"
+      ],
+      "estimated_cost": 84.19308958157974,
+      "version": "component_strategy_v1",
+      "contract_id": "284e7f29545d2d1cb26f783ee6d241a2d7224de5a5ba35afe2fbb7d60ddeb5a7",
+      "components": [
+        [
+          "base_fact",
+          {
+            "strategy_id": "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+            "verifiers": [
+              "evidence"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 84.07056144642411
+          }
+        ],
+        [
+          "derived_sum",
+          {
+            "strategy_id": "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+            "verifiers": [
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 0.12252813515563805
+          }
+        ]
+      ]
+    }
+  ],
+  "development_best_fixed_strategy_id": "a134fdb113f45464679934f633ad4baa403c8fa443164f049101b40c2bf76901",
+  "coverage_target": 0.9,
+  "fixed_baseline_meets_coverage_target": false,
+  "maximum_clean_coverage": 0.8958333333333334,
+  "strategy_probabilities": null,
+  "any_mixture_cannot_improve_equal_coverage": true,
+  "attack_metrics": {
+    "clean": {
+      "whole": {
+        "examples": 48,
+        "coverage": 0.8958333333333334,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "uncertainty": 0.10416666666666667,
+        "selective_risk": 0.0,
+        "decision_loss": 0.020833333333333332,
+        "mean_loss": 0.021229380759117008,
+        "estimated_cost": 84.1930895815798
+      },
+      "statuses": {
+        "passed": 12,
+        "failed": 31,
+        "uncertain": 5
+      },
+      "components": {
+        "base_fact": {
+          "examples": 48,
+          "coverage": 0.7916666666666666,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.20833333333333334,
+          "selective_risk": 0.0,
+          "decision_loss": 0.041666666666666664,
+          "mean_loss": 0.041666666666666664,
+          "estimated_cost": 84.07056144642411,
+          "statuses": {
+            "passed": 24,
+            "failed": 14,
+            "uncertain": 10
+          }
+        },
+        "derived_sum": {
+          "examples": 48,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.0,
+          "estimated_cost": 0.122528135155638,
+          "statuses": {
+            "passed": 24,
+            "failed": 24
+          }
+        }
+      },
+      "variants": {
+        "correct": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_math": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_base": {
+          "examples": 12,
+          "coverage": 0.5833333333333334,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.4166666666666667,
+          "selective_risk": 0.0,
+          "decision_loss": 0.08333333333333333,
+          "mean_loss": 0.083729380759117,
+          "estimated_cost": 84.19308958157976
+        },
+        "both_wrong": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        }
+      },
+      "entity_groups": 12,
+      "entity_cluster_bootstrap_95_percentile": {
+        "coverage": [
+          0.8333333333333334,
+          0.9583333333333334
+        ],
+        "decision_loss": [
+          0.008333333333333333,
+          0.03333333333333333
+        ]
+      }
+    },
+    "forced_support": {
+      "whole": {
+        "examples": 48,
+        "coverage": 1.0,
+        "false_accepts": 36,
+        "false_rejects": 0,
+        "uncertainty": 0.0,
+        "selective_risk": 0.75,
+        "decision_loss": 0.75,
+        "mean_loss": 0.7503960474257839,
+        "estimated_cost": 84.1930895815798
+      },
+      "statuses": {
+        "passed": 48
+      },
+      "components": {
+        "base_fact": {
+          "examples": 48,
+          "coverage": 1.0,
+          "false_accepts": 24,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.5,
+          "decision_loss": 0.5,
+          "mean_loss": 0.5,
+          "estimated_cost": 84.07056144642411,
+          "statuses": {
+            "passed": 48
+          }
+        },
+        "derived_sum": {
+          "examples": 48,
+          "coverage": 1.0,
+          "false_accepts": 24,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.5,
+          "decision_loss": 0.5,
+          "mean_loss": 0.5,
+          "estimated_cost": 0.122528135155638,
+          "statuses": {
+            "passed": 48
+          }
+        }
+      },
+      "variants": {
+        "correct": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_math": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 12,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 1.0,
+          "decision_loss": 1.0,
+          "mean_loss": 1.0003960474257838,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_base": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 12,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 1.0,
+          "decision_loss": 1.0,
+          "mean_loss": 1.0003960474257838,
+          "estimated_cost": 84.19308958157976
+        },
+        "both_wrong": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 12,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 1.0,
+          "decision_loss": 1.0,
+          "mean_loss": 1.0003960474257838,
+          "estimated_cost": 84.19308958157976
+        }
+      },
+      "entity_groups": 12,
+      "entity_cluster_bootstrap_95_percentile": {
+        "coverage": [
+          1.0,
+          1.0
+        ],
+        "decision_loss": [
+          0.75,
+          0.75
+        ]
+      }
+    },
+    "forced_rejection": {
+      "whole": {
+        "examples": 48,
+        "coverage": 1.0,
+        "false_accepts": 0,
+        "false_rejects": 12,
+        "uncertainty": 0.0,
+        "selective_risk": 0.25,
+        "decision_loss": 0.25,
+        "mean_loss": 0.250396047425784,
+        "estimated_cost": 84.1930895815798
+      },
+      "statuses": {
+        "failed": 48
+      },
+      "components": {
+        "base_fact": {
+          "examples": 48,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 24,
+          "uncertainty": 0.0,
+          "selective_risk": 0.5,
+          "decision_loss": 0.5,
+          "mean_loss": 0.5,
+          "estimated_cost": 84.07056144642411,
+          "statuses": {
+            "failed": 48
+          }
+        },
+        "derived_sum": {
+          "examples": 48,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 24,
+          "uncertainty": 0.0,
+          "selective_risk": 0.5,
+          "decision_loss": 0.5,
+          "mean_loss": 0.5,
+          "estimated_cost": 0.122528135155638,
+          "statuses": {
+            "failed": 48
+          }
+        }
+      },
+      "variants": {
+        "correct": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 12,
+          "uncertainty": 0.0,
+          "selective_risk": 1.0,
+          "decision_loss": 1.0,
+          "mean_loss": 1.0003960474257838,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_math": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_base": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "both_wrong": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        }
+      },
+      "entity_groups": 12,
+      "entity_cluster_bootstrap_95_percentile": {
+        "coverage": [
+          1.0,
+          1.0
+        ],
+        "decision_loss": [
+          0.25,
+          0.25
+        ]
+      }
+    },
+    "confidence_inflation": {
+      "whole": {
+        "examples": 48,
+        "coverage": 0.9166666666666666,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "uncertainty": 0.08333333333333333,
+        "selective_risk": 0.0,
+        "decision_loss": 0.016666666666666666,
+        "mean_loss": 0.017062714092450342,
+        "estimated_cost": 84.1930895815798
+      },
+      "statuses": {
+        "passed": 12,
+        "failed": 32,
+        "uncertain": 4
+      },
+      "components": {
+        "base_fact": {
+          "examples": 48,
+          "coverage": 0.8333333333333334,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.16666666666666666,
+          "selective_risk": 0.0,
+          "decision_loss": 0.03333333333333333,
+          "mean_loss": 0.03333333333333333,
+          "estimated_cost": 84.07056144642411,
+          "statuses": {
+            "passed": 24,
+            "failed": 16,
+            "uncertain": 8
+          }
+        },
+        "derived_sum": {
+          "examples": 48,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.0,
+          "estimated_cost": 0.122528135155638,
+          "statuses": {
+            "passed": 24,
+            "failed": 24
+          }
+        }
+      },
+      "variants": {
+        "correct": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_math": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_base": {
+          "examples": 12,
+          "coverage": 0.6666666666666666,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.3333333333333333,
+          "selective_risk": 0.0,
+          "decision_loss": 0.06666666666666667,
+          "mean_loss": 0.06706271409245033,
+          "estimated_cost": 84.19308958157976
+        },
+        "both_wrong": {
+          "examples": 12,
+          "coverage": 1.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 0.0,
+          "selective_risk": 0.0,
+          "decision_loss": 0.0,
+          "mean_loss": 0.00039604742578365173,
+          "estimated_cost": 84.19308958157976
+        }
+      },
+      "entity_groups": 12,
+      "entity_cluster_bootstrap_95_percentile": {
+        "coverage": [
+          0.8541666666666666,
+          0.9791666666666666
+        ],
+        "decision_loss": [
+          0.004166666666666667,
+          0.029166666666666664
+        ]
+      }
+    },
+    "suppression": {
+      "whole": {
+        "examples": 48,
+        "coverage": 0.0,
+        "false_accepts": 0,
+        "false_rejects": 0,
+        "uncertainty": 1.0,
+        "selective_risk": null,
+        "decision_loss": 0.19999999999999996,
+        "mean_loss": 0.20039604742578374,
+        "estimated_cost": 84.1930895815798
+      },
+      "statuses": {
+        "uncertain": 48
+      },
+      "components": {
+        "base_fact": {
+          "examples": 48,
+          "coverage": 0.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 1.0,
+          "selective_risk": null,
+          "decision_loss": 0.19999999999999996,
+          "mean_loss": 0.19999999999999996,
+          "estimated_cost": 84.07056144642411,
+          "statuses": {
+            "uncertain": 48
+          }
+        },
+        "derived_sum": {
+          "examples": 48,
+          "coverage": 0.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 1.0,
+          "selective_risk": null,
+          "decision_loss": 0.19999999999999996,
+          "mean_loss": 0.19999999999999996,
+          "estimated_cost": 0.122528135155638,
+          "statuses": {
+            "uncertain": 48
+          }
+        }
+      },
+      "variants": {
+        "correct": {
+          "examples": 12,
+          "coverage": 0.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 1.0,
+          "selective_risk": null,
+          "decision_loss": 0.19999999999999998,
+          "mean_loss": 0.20039604742578374,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_math": {
+          "examples": 12,
+          "coverage": 0.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 1.0,
+          "selective_risk": null,
+          "decision_loss": 0.19999999999999998,
+          "mean_loss": 0.20039604742578374,
+          "estimated_cost": 84.19308958157976
+        },
+        "wrong_base": {
+          "examples": 12,
+          "coverage": 0.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 1.0,
+          "selective_risk": null,
+          "decision_loss": 0.19999999999999998,
+          "mean_loss": 0.20039604742578374,
+          "estimated_cost": 84.19308958157976
+        },
+        "both_wrong": {
+          "examples": 12,
+          "coverage": 0.0,
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "uncertainty": 1.0,
+          "selective_risk": null,
+          "decision_loss": 0.19999999999999998,
+          "mean_loss": 0.20039604742578374,
+          "estimated_cost": 84.19308958157976
+        }
+      },
+      "entity_groups": 12,
+      "entity_cluster_bootstrap_95_percentile": {
+        "coverage": [
+          0.0,
+          0.0
+        ],
+        "decision_loss": [
+          0.19999999999999996,
+          0.19999999999999996
+        ]
+      }
+    }
+  },
+  "qualified_rejection_diagnostics": [
+    {
+      "entity": "AM",
+      "variant": "wrong_base",
+      "question": "What is the area of Armenia, and what is that area plus 10 square kilometres? Give both values.",
+      "answer": "{\"base\":\"29744\",\"derived\":\"29754\"}",
+      "whole_status": "uncertain",
+      "fact_status": "uncertain",
+      "math_status": "passed",
+      "evidence_score": 0.23361527919769287,
+      "decision": "REJECT",
+      "nli_label": "contradiction",
+      "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+      "contradicting_row_labels": [
+        "entailment"
+      ],
+      "component_reasons": [
+        "missing_achieved_coverage",
+        "decision_threshold"
+      ],
+      "achieved": [],
+      "contributors": 1,
+      "raw_evidence_report": {
+        "verifier_name": "evidence",
+        "score": 0.23361527919769287,
+        "passed": false,
+        "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: AM. Claim: The area of Armenia is 29744 square kilometres. NLI confidence: 0.2336.",
+        "metadata": {
+          "best_retrieval_score": 0.9006915092468262,
+          "candidate_pipeline": [
+            {
+              "article_id": "AM",
+              "article_key": "url:https://www.geonames.org/countries/AM/",
+              "article_key_scope": "global",
+              "chunk_id": 56,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:AM:56",
+              "nli_executed": true,
+              "passed_on_topic": true,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.9006915092468262,
+              "source_id": "url:https://www.geonames.org/countries/AM/#6166d37c4dbc",
+              "title": "AM"
+            },
+            {
+              "article_id": "LT",
+              "article_key": "url:https://www.geonames.org/countries/LT/",
+              "article_key_scope": "global",
+              "chunk_id": 7,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:LT:7",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.5072084069252014,
+              "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+              "title": "LT"
+            },
+            {
+              "article_id": "ME",
+              "article_key": "url:https://www.geonames.org/countries/ME/",
+              "article_key_scope": "global",
+              "chunk_id": 53,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:ME:53",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.5016450881958008,
+              "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+              "title": "ME"
+            },
+            {
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.4241694211959839,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH"
+            },
+            {
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.38185471296310425,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW"
+            }
+          ],
+          "claim_decisions": [
+            {
+              "best_retrieval_score": 0.9006915092468262,
+              "claim": "The area of Armenia is 29744 square kilometres.",
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "confidence": 0.23361527919769287,
+              "deciding_source_id": "url:https://www.geonames.org/countries/AM/#6166d37c4dbc",
+              "decision": "REJECT",
+              "evidence_refs": {
+                "contradicting": [
+                  "url:https://www.geonames.org/countries/AM/#6166d37c4dbc"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                  "url:https://www.geonames.org/countries/KW/#af247303c6ac"
+                ],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/AM/#6166d37c4dbc"
+                ],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "supporting": []
+              },
+              "hypothesis": "The area of Armenia is 29744 square kilometres.",
+              "template": "statement",
+              "unsure_reason": null
+            }
+          ],
+          "claims": [
+            "The area of Armenia is 29744 square kilometres."
+          ],
+          "contradicting": [
+            {
+              "article_id": "AM",
+              "article_key": "url:https://www.geonames.org/countries/AM/",
+              "article_key_scope": "global",
+              "chunk_id": 56,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "excerpt": "The area of Armenia is 29743 square kilometres.",
+              "index_ref": "idx-0b78f878aa86:AM:56",
+              "nli_label": "entailment",
+              "nli_score": 0.6341913938522339,
+              "retrieval_score": 0.9006915092468262,
+              "source_id": "url:https://www.geonames.org/countries/AM/#6166d37c4dbc",
+              "title": "AM",
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/AM/"
+            }
+          ],
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "deciding_claim_id": "claim-0",
+          "decision": "REJECT",
+          "diagnostic_code": null,
+          "discarded_evidence": [
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "missing_anchor_terms": [
+                "armenia"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.4241694211959839,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/BH/"
+            },
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "missing_anchor_terms": [
+                "armenia"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.38185471296310425,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/KW/"
+            }
+          ],
+          "evaluated_evidence": [
+            {
+              "about_subject": true,
+              "article_covers_event": true,
+              "article_id": "AM",
+              "article_key": "url:https://www.geonames.org/countries/AM/",
+              "article_key_scope": "global",
+              "chunk_id": 56,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "claim_names_in_premise": true,
+              "condition_consistent": true,
+              "discard_code": "candidate_retained_for_nli",
+              "eligibility_basis": "lexical_subject",
+              "entity_consistent": true,
+              "event_consistent": true,
+              "fact_score": 9,
+              "index_ref": "idx-0b78f878aa86:AM:56",
+              "match_score": 4,
+              "missing_anchor_terms": [],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "nli_label": "entailment",
+              "nli_output_shape": "list[dict]",
+              "nli_score": 0.6341913938522339,
+              "office_holder_consistent": true,
+              "premise_windows": [
+                {
+                  "fact_score": 9,
+                  "nli_label": "entailment",
+                  "premise": "The area of Armenia is 29743 square kilometres.",
+                  "probabilities": {
+                    "contradiction": 0.23361527919769287,
+                    "entailment": 0.6341913938522339,
+                    "neutral": 0.13219329714775085
+                  },
+                  "title_dependent": false,
+                  "token_count": 23,
+                  "value_relation": "mismatch"
+                }
+              ],
+              "probabilities": {
+                "contradiction": 0.23361527919769287,
+                "entailment": 0.6341913938522339,
+                "neutral": 0.13219329714775085
+              },
+              "quantity_kinds": [
+                "number"
+              ],
+              "quantity_scope_aligned": true,
+              "relation_aligned": true,
+              "relevant_evidence": "The area of Armenia is 29743 square kilometres.",
+              "retrieval_score": 0.9006915092468262,
+              "source_id": "url:https://www.geonames.org/countries/AM/#6166d37c4dbc",
+              "title": "AM",
+              "title_covers_event": false,
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/AM/",
+              "value_relation": "mismatch"
+            }
+          ],
+          "evidence_chunk_id": 56,
+          "evidence_source_id": "url:https://www.geonames.org/countries/AM/#6166d37c4dbc",
+          "evidence_title": "AM",
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "index_version": "idx-0b78f878aa86",
+          "latency_breakdown_ms": {
+            "nli": 43.63,
+            "retrieval": 20.27,
+            "total": 65.8
+          },
+          "latency_ms": 65.8,
+          "max_premise_windows": 3,
+          "min_nli_score": 0.5,
+          "min_retrieval_score": 0.45,
+          "min_topic_coverage": 0.5,
+          "nli_label": "contradiction",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "retrieval_margin": 0.15,
+          "retrieval_score": 0.9006915092468262,
+          "retrieved_counts": [
+            {
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "retrieved_count": 5
+            }
+          ],
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "supporting": [],
+          "thresholds_calibrated": false,
+          "top_k": 3,
+          "topic_margin": 0.3,
+          "unchecked_claims": [],
+          "unsure_reason": null
+        }
+      },
+      "source_attempt_id": "4894c4749630fb9d6718f5a7627e1f241bf67bc0ca54604e1330d8c7bd5c9664"
+    },
+    {
+      "entity": "PY",
+      "variant": "wrong_base",
+      "question": "What is the area of Paraguay, and what is that area plus 10 square kilometres? Give both values.",
+      "answer": "{\"base\":\"406753\",\"derived\":\"406763\"}",
+      "whole_status": "uncertain",
+      "fact_status": "uncertain",
+      "math_status": "passed",
+      "evidence_score": 0.12364429235458374,
+      "decision": "REJECT",
+      "nli_label": "contradiction",
+      "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+      "contradicting_row_labels": [
+        "entailment"
+      ],
+      "component_reasons": [
+        "missing_achieved_coverage",
+        "decision_threshold"
+      ],
+      "achieved": [],
+      "contributors": 1,
+      "raw_evidence_report": {
+        "verifier_name": "evidence",
+        "score": 0.12364429235458374,
+        "passed": false,
+        "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: PY. Claim: The area of Paraguay is 406753 square kilometres. NLI confidence: 0.1236.",
+        "metadata": {
+          "best_retrieval_score": 0.8067044615745544,
+          "candidate_pipeline": [
+            {
+              "article_id": "PY",
+              "article_key": "url:https://www.geonames.org/countries/PY/",
+              "article_key_scope": "global",
+              "chunk_id": 24,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:PY:24",
+              "nli_executed": true,
+              "passed_on_topic": true,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.8067044615745544,
+              "source_id": "url:https://www.geonames.org/countries/PY/#b11e073aafe1",
+              "title": "PY"
+            },
+            {
+              "article_id": "UY",
+              "article_key": "url:https://www.geonames.org/countries/UY/",
+              "article_key_scope": "global",
+              "chunk_id": 47,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:UY:47",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.595296323299408,
+              "source_id": "url:https://www.geonames.org/countries/UY/#6617f39d12f3",
+              "title": "UY"
+            },
+            {
+              "article_id": "BR",
+              "article_key": "url:https://www.geonames.org/countries/BR/",
+              "article_key_scope": "global",
+              "chunk_id": 38,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:BR:38",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.49900564551353455,
+              "source_id": "url:https://www.geonames.org/countries/BR/#8164c7b88e02",
+              "title": "BR"
+            },
+            {
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.4151042103767395,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH"
+            },
+            {
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.30502262711524963,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW"
+            }
+          ],
+          "claim_decisions": [
+            {
+              "best_retrieval_score": 0.8067044615745544,
+              "claim": "The area of Paraguay is 406753 square kilometres.",
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "confidence": 0.12364429235458374,
+              "deciding_source_id": "url:https://www.geonames.org/countries/PY/#b11e073aafe1",
+              "decision": "REJECT",
+              "evidence_refs": {
+                "contradicting": [
+                  "url:https://www.geonames.org/countries/PY/#b11e073aafe1"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                  "url:https://www.geonames.org/countries/KW/#af247303c6ac"
+                ],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/PY/#b11e073aafe1"
+                ],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "supporting": []
+              },
+              "hypothesis": "The area of Paraguay is 406753 square kilometres.",
+              "template": "statement",
+              "unsure_reason": null
+            }
+          ],
+          "claims": [
+            "The area of Paraguay is 406753 square kilometres."
+          ],
+          "contradicting": [
+            {
+              "article_id": "PY",
+              "article_key": "url:https://www.geonames.org/countries/PY/",
+              "article_key_scope": "global",
+              "chunk_id": 24,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "excerpt": "The area of Paraguay is 406752 square kilometres.",
+              "index_ref": "idx-0b78f878aa86:PY:24",
+              "nli_label": "entailment",
+              "nli_score": 0.7850905656814575,
+              "retrieval_score": 0.8067044615745544,
+              "source_id": "url:https://www.geonames.org/countries/PY/#b11e073aafe1",
+              "title": "PY",
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/PY/"
+            }
+          ],
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "deciding_claim_id": "claim-0",
+          "decision": "REJECT",
+          "diagnostic_code": null,
+          "discarded_evidence": [
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "missing_anchor_terms": [
+                "paraguay"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.4151042103767395,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/BH/"
+            },
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "missing_anchor_terms": [
+                "paraguay"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.30502262711524963,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/KW/"
+            }
+          ],
+          "evaluated_evidence": [
+            {
+              "about_subject": true,
+              "article_covers_event": true,
+              "article_id": "PY",
+              "article_key": "url:https://www.geonames.org/countries/PY/",
+              "article_key_scope": "global",
+              "chunk_id": 24,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "claim_names_in_premise": true,
+              "condition_consistent": true,
+              "discard_code": "candidate_retained_for_nli",
+              "eligibility_basis": "lexical_subject",
+              "entity_consistent": true,
+              "event_consistent": true,
+              "fact_score": 9,
+              "index_ref": "idx-0b78f878aa86:PY:24",
+              "match_score": 4,
+              "missing_anchor_terms": [],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "nli_label": "entailment",
+              "nli_output_shape": "list[dict]",
+              "nli_score": 0.7850905656814575,
+              "office_holder_consistent": true,
+              "premise_windows": [
+                {
+                  "fact_score": 9,
+                  "nli_label": "entailment",
+                  "premise": "The area of Paraguay is 406752 square kilometres.",
+                  "probabilities": {
+                    "contradiction": 0.12364429235458374,
+                    "entailment": 0.7850905656814575,
+                    "neutral": 0.09126515686511993
+                  },
+                  "title_dependent": false,
+                  "token_count": 23,
+                  "value_relation": "mismatch"
+                }
+              ],
+              "probabilities": {
+                "contradiction": 0.12364429235458374,
+                "entailment": 0.7850905656814575,
+                "neutral": 0.09126515686511993
+              },
+              "quantity_kinds": [
+                "number"
+              ],
+              "quantity_scope_aligned": true,
+              "relation_aligned": true,
+              "relevant_evidence": "The area of Paraguay is 406752 square kilometres.",
+              "retrieval_score": 0.8067044615745544,
+              "source_id": "url:https://www.geonames.org/countries/PY/#b11e073aafe1",
+              "title": "PY",
+              "title_covers_event": false,
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/PY/",
+              "value_relation": "mismatch"
+            }
+          ],
+          "evidence_chunk_id": 24,
+          "evidence_source_id": "url:https://www.geonames.org/countries/PY/#b11e073aafe1",
+          "evidence_title": "PY",
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "index_version": "idx-0b78f878aa86",
+          "latency_breakdown_ms": {
+            "nli": 49.22,
+            "retrieval": 23.02,
+            "total": 73.79
+          },
+          "latency_ms": 73.79,
+          "max_premise_windows": 3,
+          "min_nli_score": 0.5,
+          "min_retrieval_score": 0.45,
+          "min_topic_coverage": 0.5,
+          "nli_label": "contradiction",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "retrieval_margin": 0.15,
+          "retrieval_score": 0.8067044615745544,
+          "retrieved_counts": [
+            {
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "retrieved_count": 5
+            }
+          ],
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "supporting": [],
+          "thresholds_calibrated": false,
+          "top_k": 3,
+          "topic_margin": 0.3,
+          "unchecked_claims": [],
+          "unsure_reason": null
+        }
+      },
+      "source_attempt_id": "264b4d4bfd2f49c375afbeae5497a9f92b188c0eb305096efda85c42ca184780"
+    },
+    {
+      "entity": "CZ",
+      "variant": "wrong_base",
+      "question": "What is the area of Czechia, and what is that area plus 10 square kilometres? Give both values.",
+      "answer": "{\"base\":\"78866\",\"derived\":\"78876\"}",
+      "whole_status": "uncertain",
+      "fact_status": "uncertain",
+      "math_status": "passed",
+      "evidence_score": 0.3526395857334137,
+      "decision": "REJECT",
+      "nli_label": "contradiction",
+      "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+      "contradicting_row_labels": [
+        "entailment"
+      ],
+      "component_reasons": [
+        "missing_achieved_coverage",
+        "decision_threshold"
+      ],
+      "achieved": [],
+      "contributors": 1,
+      "raw_evidence_report": {
+        "verifier_name": "evidence",
+        "score": 0.3526395857334137,
+        "passed": false,
+        "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: CZ. Claim: The area of Czechia is 78866 square kilometres. NLI confidence: 0.3526.",
+        "metadata": {
+          "best_retrieval_score": 0.8249374628067017,
+          "candidate_pipeline": [
+            {
+              "article_id": "CZ",
+              "article_key": "url:https://www.geonames.org/countries/CZ/",
+              "article_key_scope": "global",
+              "chunk_id": 30,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:CZ:30",
+              "nli_executed": true,
+              "passed_on_topic": true,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.8249374628067017,
+              "source_id": "url:https://www.geonames.org/countries/CZ/#f17916c5ea47",
+              "title": "CZ"
+            },
+            {
+              "article_id": "ME",
+              "article_key": "url:https://www.geonames.org/countries/ME/",
+              "article_key_scope": "global",
+              "chunk_id": 53,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:ME:53",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.5876267552375793,
+              "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+              "title": "ME"
+            },
+            {
+              "article_id": "LT",
+              "article_key": "url:https://www.geonames.org/countries/LT/",
+              "article_key_scope": "global",
+              "chunk_id": 7,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:LT:7",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.5146939754486084,
+              "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+              "title": "LT"
+            },
+            {
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.3838961124420166,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH"
+            },
+            {
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.3571942448616028,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW"
+            }
+          ],
+          "claim_decisions": [
+            {
+              "best_retrieval_score": 0.8249374628067017,
+              "claim": "The area of Czechia is 78866 square kilometres.",
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "confidence": 0.3526395857334137,
+              "deciding_source_id": "url:https://www.geonames.org/countries/CZ/#f17916c5ea47",
+              "decision": "REJECT",
+              "evidence_refs": {
+                "contradicting": [
+                  "url:https://www.geonames.org/countries/CZ/#f17916c5ea47"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                  "url:https://www.geonames.org/countries/KW/#af247303c6ac"
+                ],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/CZ/#f17916c5ea47"
+                ],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "supporting": []
+              },
+              "hypothesis": "The area of Czechia is 78866 square kilometres.",
+              "template": "statement",
+              "unsure_reason": null
+            }
+          ],
+          "claims": [
+            "The area of Czechia is 78866 square kilometres."
+          ],
+          "contradicting": [
+            {
+              "article_id": "CZ",
+              "article_key": "url:https://www.geonames.org/countries/CZ/",
+              "article_key_scope": "global",
+              "chunk_id": 30,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "excerpt": "The area of Czechia is 78865 square kilometres.",
+              "index_ref": "idx-0b78f878aa86:CZ:30",
+              "nli_label": "entailment",
+              "nli_score": 0.45486271381378174,
+              "retrieval_score": 0.8249374628067017,
+              "source_id": "url:https://www.geonames.org/countries/CZ/#f17916c5ea47",
+              "title": "CZ",
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/CZ/"
+            }
+          ],
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "deciding_claim_id": "claim-0",
+          "decision": "REJECT",
+          "diagnostic_code": null,
+          "discarded_evidence": [
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "missing_anchor_terms": [
+                "czechia"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.3838961124420166,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/BH/"
+            },
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "missing_anchor_terms": [
+                "czechia"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.3571942448616028,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/KW/"
+            }
+          ],
+          "evaluated_evidence": [
+            {
+              "about_subject": true,
+              "article_covers_event": true,
+              "article_id": "CZ",
+              "article_key": "url:https://www.geonames.org/countries/CZ/",
+              "article_key_scope": "global",
+              "chunk_id": 30,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "claim_names_in_premise": true,
+              "condition_consistent": true,
+              "discard_code": "candidate_retained_for_nli",
+              "eligibility_basis": "lexical_subject",
+              "entity_consistent": true,
+              "event_consistent": true,
+              "fact_score": 9,
+              "index_ref": "idx-0b78f878aa86:CZ:30",
+              "match_score": 4,
+              "missing_anchor_terms": [],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "nli_label": "entailment",
+              "nli_output_shape": "list[dict]",
+              "nli_score": 0.45486271381378174,
+              "office_holder_consistent": true,
+              "premise_windows": [
+                {
+                  "fact_score": 9,
+                  "nli_label": "entailment",
+                  "premise": "The area of Czechia is 78865 square kilometres.",
+                  "probabilities": {
+                    "contradiction": 0.3526395857334137,
+                    "entailment": 0.45486271381378174,
+                    "neutral": 0.19249777495861053
+                  },
+                  "title_dependent": false,
+                  "token_count": 25,
+                  "value_relation": "mismatch"
+                }
+              ],
+              "probabilities": {
+                "contradiction": 0.3526395857334137,
+                "entailment": 0.45486271381378174,
+                "neutral": 0.19249777495861053
+              },
+              "quantity_kinds": [
+                "number"
+              ],
+              "quantity_scope_aligned": true,
+              "relation_aligned": true,
+              "relevant_evidence": "The area of Czechia is 78865 square kilometres.",
+              "retrieval_score": 0.8249374628067017,
+              "source_id": "url:https://www.geonames.org/countries/CZ/#f17916c5ea47",
+              "title": "CZ",
+              "title_covers_event": false,
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/CZ/",
+              "value_relation": "mismatch"
+            }
+          ],
+          "evidence_chunk_id": 30,
+          "evidence_source_id": "url:https://www.geonames.org/countries/CZ/#f17916c5ea47",
+          "evidence_title": "CZ",
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "index_version": "idx-0b78f878aa86",
+          "latency_breakdown_ms": {
+            "nli": 44.71,
+            "retrieval": 21.4,
+            "total": 67.32
+          },
+          "latency_ms": 67.32,
+          "max_premise_windows": 3,
+          "min_nli_score": 0.5,
+          "min_retrieval_score": 0.45,
+          "min_topic_coverage": 0.5,
+          "nli_label": "contradiction",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "retrieval_margin": 0.15,
+          "retrieval_score": 0.8249374628067017,
+          "retrieved_counts": [
+            {
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "retrieved_count": 5
+            }
+          ],
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "supporting": [],
+          "thresholds_calibrated": false,
+          "top_k": 3,
+          "topic_margin": 0.3,
+          "unchecked_claims": [],
+          "unsure_reason": null
+        }
+      },
+      "source_attempt_id": "9f8d5c62b7976b799df7426ee4452f91915e5149f3fae096effbccf0f0703cd4"
+    },
+    {
+      "entity": "SR",
+      "variant": "wrong_base",
+      "question": "What is the population of Suriname, and what is that population plus 1000? Give both values.",
+      "answer": "{\"base\":\"639851\",\"derived\":\"640851\"}",
+      "whole_status": "uncertain",
+      "fact_status": "uncertain",
+      "math_status": "passed",
+      "evidence_score": 0.4786796569824219,
+      "decision": "REJECT",
+      "nli_label": "contradiction",
+      "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+      "contradicting_row_labels": [
+        "contradiction"
+      ],
+      "component_reasons": [
+        "decision_threshold"
+      ],
+      "achieved": [
+        "direct_fact"
+      ],
+      "contributors": 1,
+      "raw_evidence_report": {
+        "verifier_name": "evidence",
+        "score": 0.4786796569824219,
+        "passed": false,
+        "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: SR. Claim: The population of Suriname is 639851. NLI confidence: 0.4787.",
+        "metadata": {
+          "best_retrieval_score": 0.8754477500915527,
+          "candidate_pipeline": [
+            {
+              "article_id": "SR",
+              "article_key": "url:https://www.geonames.org/countries/SR/",
+              "article_key_scope": "global",
+              "chunk_id": 48,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:SR:48",
+              "nli_executed": true,
+              "passed_on_topic": true,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.8754477500915527,
+              "source_id": "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a",
+              "title": "SR"
+            },
+            {
+              "article_id": "EC",
+              "article_key": "url:https://www.geonames.org/countries/EC/",
+              "article_key_scope": "global",
+              "chunk_id": 19,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:EC:19",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.6268212795257568,
+              "source_id": "url:https://www.geonames.org/countries/EC/#9284fe8c3a13",
+              "title": "EC"
+            },
+            {
+              "article_id": "MV",
+              "article_key": "url:https://www.geonames.org/countries/MV/",
+              "article_key_scope": "global",
+              "chunk_id": 5,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:MV:5",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.5576167702674866,
+              "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+              "title": "MV"
+            },
+            {
+              "article_id": "IN",
+              "article_key": "url:https://www.geonames.org/countries/IN/",
+              "article_key_scope": "global",
+              "chunk_id": 2,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:IN:2",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.42559123039245605,
+              "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+              "title": "IN"
+            }
+          ],
+          "claim_decisions": [
+            {
+              "best_retrieval_score": 0.8754477500915527,
+              "claim": "The population of Suriname is 639851.",
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "confidence": 0.4786796569824219,
+              "deciding_source_id": "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a",
+              "decision": "REJECT",
+              "evidence_refs": {
+                "contradicting": [
+                  "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                  "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                ],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a"
+                ],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "supporting": []
+              },
+              "hypothesis": "The population of Suriname is 639851.",
+              "template": "statement",
+              "unsure_reason": null
+            }
+          ],
+          "claims": [
+            "The population of Suriname is 639851."
+          ],
+          "contradicting": [
+            {
+              "article_id": "SR",
+              "article_key": "url:https://www.geonames.org/countries/SR/",
+              "article_key_scope": "global",
+              "chunk_id": 48,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "excerpt": "The population of Suriname is 639850.",
+              "index_ref": "idx-0b78f878aa86:SR:48",
+              "nli_label": "contradiction",
+              "nli_score": 0.4786796569824219,
+              "retrieval_score": 0.8754477500915527,
+              "source_id": "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a",
+              "title": "SR",
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/SR/"
+            }
+          ],
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "deciding_claim_id": "claim-0",
+          "decision": "REJECT",
+          "diagnostic_code": null,
+          "discarded_evidence": [
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "MV",
+              "article_key": "url:https://www.geonames.org/countries/MV/",
+              "article_key_scope": "global",
+              "chunk_id": 5,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:MV:5",
+              "missing_anchor_terms": [
+                "suriname"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.5576167702674866,
+              "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+              "title": "MV",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/MV/"
+            },
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "IN",
+              "article_key": "url:https://www.geonames.org/countries/IN/",
+              "article_key_scope": "global",
+              "chunk_id": 2,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:IN:2",
+              "missing_anchor_terms": [
+                "suriname"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.42559123039245605,
+              "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+              "title": "IN",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/IN/"
+            }
+          ],
+          "evaluated_evidence": [
+            {
+              "about_subject": true,
+              "article_covers_event": true,
+              "article_id": "SR",
+              "article_key": "url:https://www.geonames.org/countries/SR/",
+              "article_key_scope": "global",
+              "chunk_id": 48,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "claim_names_in_premise": true,
+              "condition_consistent": true,
+              "discard_code": "candidate_retained_for_nli",
+              "eligibility_basis": "lexical_subject",
+              "entity_consistent": true,
+              "event_consistent": true,
+              "fact_score": 7,
+              "index_ref": "idx-0b78f878aa86:SR:48",
+              "match_score": 2,
+              "missing_anchor_terms": [],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "nli_label": "contradiction",
+              "nli_output_shape": "list[dict]",
+              "nli_score": 0.4786796569824219,
+              "office_holder_consistent": true,
+              "premise_windows": [
+                {
+                  "fact_score": 7,
+                  "nli_label": "contradiction",
+                  "premise": "The population of Suriname is 639850.",
+                  "probabilities": {
+                    "contradiction": 0.4786796569824219,
+                    "entailment": 0.17994962632656097,
+                    "neutral": 0.34137076139450073
+                  },
+                  "title_dependent": false,
+                  "token_count": 19,
+                  "value_relation": "mismatch"
+                }
+              ],
+              "probabilities": {
+                "contradiction": 0.4786796569824219,
+                "entailment": 0.17994962632656097,
+                "neutral": 0.34137076139450073
+              },
+              "quantity_kinds": [
+                "number"
+              ],
+              "quantity_scope_aligned": true,
+              "relation_aligned": true,
+              "relevant_evidence": "The population of Suriname is 639850.",
+              "retrieval_score": 0.8754477500915527,
+              "source_id": "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a",
+              "title": "SR",
+              "title_covers_event": false,
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/SR/",
+              "value_relation": "mismatch"
+            }
+          ],
+          "evidence_chunk_id": 48,
+          "evidence_source_id": "url:https://www.geonames.org/countries/SR/#d67d8d2a6a2a",
+          "evidence_title": "SR",
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "index_version": "idx-0b78f878aa86",
+          "latency_breakdown_ms": {
+            "nli": 44.48,
+            "retrieval": 22.28,
+            "total": 67.97
+          },
+          "latency_ms": 67.97,
+          "max_premise_windows": 3,
+          "min_nli_score": 0.5,
+          "min_retrieval_score": 0.45,
+          "min_topic_coverage": 0.5,
+          "nli_label": "contradiction",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "retrieval_margin": 0.15,
+          "retrieval_score": 0.8754477500915527,
+          "retrieved_counts": [
+            {
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "retrieved_count": 4
+            }
+          ],
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "supporting": [],
+          "thresholds_calibrated": false,
+          "top_k": 3,
+          "topic_margin": 0.3,
+          "unchecked_claims": [],
+          "unsure_reason": null
+        }
+      },
+      "source_attempt_id": "278eeaafbf89c3f89ba4de960b25c33fc47ae928f3536474e73b25d46ae87454"
+    },
+    {
+      "entity": "NG",
+      "variant": "wrong_base",
+      "question": "What is the area of Nigeria, and what is that area plus 10 square kilometres? Give both values.",
+      "answer": "{\"base\":\"923769\",\"derived\":\"923779\"}",
+      "whole_status": "uncertain",
+      "fact_status": "uncertain",
+      "math_status": "passed",
+      "evidence_score": 0.09208790957927704,
+      "decision": "REJECT",
+      "nli_label": "contradiction",
+      "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+      "contradicting_row_labels": [
+        "entailment"
+      ],
+      "component_reasons": [
+        "missing_achieved_coverage",
+        "decision_threshold"
+      ],
+      "achieved": [],
+      "contributors": 1,
+      "raw_evidence_report": {
+        "verifier_name": "evidence",
+        "score": 0.09208790957927704,
+        "passed": false,
+        "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: NG. Claim: The area of Nigeria is 923769 square kilometres. NLI confidence: 0.0921.",
+        "metadata": {
+          "best_retrieval_score": 0.783319354057312,
+          "candidate_pipeline": [
+            {
+              "article_id": "NG",
+              "article_key": "url:https://www.geonames.org/countries/NG/",
+              "article_key_scope": "global",
+              "chunk_id": 27,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:NG:27",
+              "nli_executed": true,
+              "passed_on_topic": true,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.783319354057312,
+              "source_id": "url:https://www.geonames.org/countries/NG/#afc24958c4aa",
+              "title": "NG"
+            },
+            {
+              "article_id": "SN",
+              "article_key": "url:https://www.geonames.org/countries/SN/",
+              "article_key_scope": "global",
+              "chunk_id": 33,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:SN:33",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.5396579504013062,
+              "source_id": "url:https://www.geonames.org/countries/SN/#0207342348f7",
+              "title": "SN"
+            },
+            {
+              "article_id": "ME",
+              "article_key": "url:https://www.geonames.org/countries/ME/",
+              "article_key_scope": "global",
+              "chunk_id": 53,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:ME:53",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.5081596374511719,
+              "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+              "title": "ME"
+            },
+            {
+              "article_id": "BR",
+              "article_key": "url:https://www.geonames.org/countries/BR/",
+              "article_key_scope": "global",
+              "chunk_id": 38,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": null,
+              "index_ref": "idx-0b78f878aa86:BR:38",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": false,
+              "retrieval_score": 0.505099356174469,
+              "source_id": "url:https://www.geonames.org/countries/BR/#8164c7b88e02",
+              "title": "BR"
+            },
+            {
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.47875121235847473,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH"
+            },
+            {
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "discard_code": "off_subject",
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "nli_executed": false,
+              "passed_on_topic": false,
+              "passed_select_relevant": true,
+              "retrieval_score": 0.2841642200946808,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW"
+            }
+          ],
+          "claim_decisions": [
+            {
+              "best_retrieval_score": 0.783319354057312,
+              "claim": "The area of Nigeria is 923769 square kilometres.",
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "confidence": 0.09208790957927704,
+              "deciding_source_id": "url:https://www.geonames.org/countries/NG/#afc24958c4aa",
+              "decision": "REJECT",
+              "evidence_refs": {
+                "contradicting": [
+                  "url:https://www.geonames.org/countries/NG/#afc24958c4aa"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                  "url:https://www.geonames.org/countries/KW/#af247303c6ac"
+                ],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/NG/#afc24958c4aa"
+                ],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "supporting": []
+              },
+              "hypothesis": "The area of Nigeria is 923769 square kilometres.",
+              "template": "statement",
+              "unsure_reason": null
+            }
+          ],
+          "claims": [
+            "The area of Nigeria is 923769 square kilometres."
+          ],
+          "contradicting": [
+            {
+              "article_id": "NG",
+              "article_key": "url:https://www.geonames.org/countries/NG/",
+              "article_key_scope": "global",
+              "chunk_id": 27,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "excerpt": "The area of Nigeria is 923768 square kilometres.",
+              "index_ref": "idx-0b78f878aa86:NG:27",
+              "nli_label": "entailment",
+              "nli_score": 0.8926661610603333,
+              "retrieval_score": 0.783319354057312,
+              "source_id": "url:https://www.geonames.org/countries/NG/#afc24958c4aa",
+              "title": "NG",
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/NG/"
+            }
+          ],
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "deciding_claim_id": "claim-0",
+          "decision": "REJECT",
+          "diagnostic_code": null,
+          "discarded_evidence": [
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "BH",
+              "article_key": "url:https://www.geonames.org/countries/BH/",
+              "article_key_scope": "global",
+              "chunk_id": 1,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:BH:1",
+              "missing_anchor_terms": [
+                "nigeria"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.47875121235847473,
+              "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+              "title": "BH",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/BH/"
+            },
+            {
+              "about_subject": false,
+              "article_covers_event": false,
+              "article_id": "KW",
+              "article_key": "url:https://www.geonames.org/countries/KW/",
+              "article_key_scope": "global",
+              "chunk_id": 4,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "condition_consistent": true,
+              "discard_code": "off_subject",
+              "eligibility_basis": null,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "index_ref": "idx-0b78f878aa86:KW:4",
+              "missing_anchor_terms": [
+                "nigeria"
+              ],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "reason": "article title is about a different subject than the question",
+              "retrieval_score": 0.2841642200946808,
+              "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+              "title": "KW",
+              "title_covers_event": false,
+              "topic_coverage": 0.24023221105427947,
+              "url": "https://www.geonames.org/countries/KW/"
+            }
+          ],
+          "evaluated_evidence": [
+            {
+              "about_subject": true,
+              "article_covers_event": true,
+              "article_id": "NG",
+              "article_key": "url:https://www.geonames.org/countries/NG/",
+              "article_key_scope": "global",
+              "chunk_id": 27,
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "claim_names_in_premise": true,
+              "condition_consistent": true,
+              "discard_code": "candidate_retained_for_nli",
+              "eligibility_basis": "lexical_subject",
+              "entity_consistent": true,
+              "event_consistent": true,
+              "fact_score": 9,
+              "index_ref": "idx-0b78f878aa86:NG:27",
+              "match_score": 4,
+              "missing_anchor_terms": [],
+              "missing_event_identifiers": [],
+              "missing_numbers": [],
+              "nli_label": "entailment",
+              "nli_output_shape": "list[dict]",
+              "nli_score": 0.8926661610603333,
+              "office_holder_consistent": true,
+              "premise_windows": [
+                {
+                  "fact_score": 9,
+                  "nli_label": "entailment",
+                  "premise": "The area of Nigeria is 923768 square kilometres.",
+                  "probabilities": {
+                    "contradiction": 0.09208790957927704,
+                    "entailment": 0.8926661610603333,
+                    "neutral": 0.015245937742292881
+                  },
+                  "title_dependent": false,
+                  "token_count": 25,
+                  "value_relation": "mismatch"
+                }
+              ],
+              "probabilities": {
+                "contradiction": 0.09208790957927704,
+                "entailment": 0.8926661610603333,
+                "neutral": 0.015245937742292881
+              },
+              "quantity_kinds": [
+                "number"
+              ],
+              "quantity_scope_aligned": true,
+              "relation_aligned": true,
+              "relevant_evidence": "The area of Nigeria is 923768 square kilometres.",
+              "retrieval_score": 0.783319354057312,
+              "source_id": "url:https://www.geonames.org/countries/NG/#afc24958c4aa",
+              "title": "NG",
+              "title_covers_event": false,
+              "topic_coverage": 1.0,
+              "url": "https://www.geonames.org/countries/NG/",
+              "value_relation": "mismatch"
+            }
+          ],
+          "evidence_chunk_id": 27,
+          "evidence_source_id": "url:https://www.geonames.org/countries/NG/#afc24958c4aa",
+          "evidence_title": "NG",
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "index_version": "idx-0b78f878aa86",
+          "latency_breakdown_ms": {
+            "nli": 63.88,
+            "retrieval": 45.4,
+            "total": 113.17
+          },
+          "latency_ms": 113.17,
+          "max_premise_windows": 3,
+          "min_nli_score": 0.5,
+          "min_retrieval_score": 0.45,
+          "min_topic_coverage": 0.5,
+          "nli_label": "contradiction",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "retrieval_margin": 0.15,
+          "retrieval_score": 0.783319354057312,
+          "retrieved_counts": [
+            {
+              "claim_id": "claim-0",
+              "claim_index": 0,
+              "retrieved_count": 6
+            }
+          ],
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "supporting": [],
+          "thresholds_calibrated": false,
+          "top_k": 3,
+          "topic_margin": 0.3,
+          "unchecked_claims": [],
+          "unsure_reason": null
+        }
+      },
+      "source_attempt_id": "0e505829648f29cd54f0c8d2752d2011d64b94a37b09bbd6286703133bb84ca8"
+    }
+  ],
+  "history_only_weights": {
+    "base_fact": [
+      {
+        "name": "evidence",
+        "alpha": 25.0,
+        "beta": 1.0,
+        "observations": 24,
+        "posterior_mean": 0.9615384615384615
+      },
+      {
+        "name": "rule",
+        "alpha": 1.0,
+        "beta": 1.0,
+        "observations": 0,
+        "posterior_mean": 0.5
+      }
+    ],
+    "derived_sum": [
+      {
+        "name": "evidence",
+        "alpha": 1.0,
+        "beta": 1.0,
+        "observations": 0,
+        "posterior_mean": 0.5
+      },
+      {
+        "name": "rule",
+        "alpha": 49.0,
+        "beta": 1.0,
+        "observations": 48,
+        "posterior_mean": 0.98
+      }
+    ]
+  },
+  "estimated_call_cost_ms": {
+    "evidence": 84.07056144642411,
+    "rule": 0.12252813515563805
+  },
+  "budget_ms": 84.19308958157974,
+  "actual_full_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "projected_component_resource_manifest_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+  "singleton_baselines": "infeasible: missing one required component",
+  "triple": "not evaluated: third useful verifier not included",
+  "greedy": "not defined as comparable component executor",
+  "empirical_team_selection_advantage": false,
+  "reserved_verifier_outcomes_collected": false,
+  "actual_attempts": 192,
+  "unused_attempt_allowance": 96,
+  "source_hashes": [
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\__init__.py",
+      "a6450036934bf60c5547c90663aa6be8d9d9920b35f41747787e6a659e73b407"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\__init__.py",
+      "ca9d0fefff13992e5a96b1779f0f94c5c423404ca48cb6a8a122d0e40432fac9"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\capability_probe_analyzer.py",
+      "ef3399e9727f940d21f020f362b6389d8918f0ffce8246b06d29fe5b1ae27af4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\evaluate_context.py",
+      "266b86c69369ddf9aebb28bdcc53a76136729e2beec1b3ce1fd4cae1a9f4ad29"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\heuristic.py",
+      "608b398295903a7204922e9dcc31c410ed032f973c10c3c9df9686f2807b3131"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\model_assessment.py",
+      "dfb2079e10ba7db801fe7ea2b882592e6cb38201d610b591d9ddcbd7af3b1b2c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\models.py",
+      "89dc1437b53b3f951fc706f278964c487c0fb2c290383d20c6522ec5d2349658"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\question_analyzer.py",
+      "4b201b90e0dae9a6921883428a58e6217ae218d39c0e8739f82c02a7913746b8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\research_context.py",
+      "6272bad8f53cc6956ae79cac47c674e36c943d91471cff1015159fb248e721cd"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\task_analyzer.py",
+      "9536f5386d45a4743a4a6cb0233bf019c5a68ed08d6505d21b5e744ba9261154"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\api\\__init__.py",
+      "ab875dc57ecf7f21c560c505979d92546b47148747c801210fe8cd07e2baad2c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\api\\feedback_routes.py",
+      "f8efcbebed9f414e739119b164e1a46f411b7e2ffd30de21f9433df874483379"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\api\\routes.py",
+      "71962ff49789c19d60aa283a00962fdbae48d6ff44e1ece431e76e26e4e95595"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\__init__.py",
+      "4866842fa21c5be56b2ebdc88edb18ef450d1f8580a44a8d652c4d211e5d2ef9"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\collect_costs.py",
+      "aa019f3c3460c88e9113de404d0f21003675aa8a098d21c94d9bf5af570eec78"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\offline_benchmark.py",
+      "e621735454034f11d6ef86933b55ba0435949351c9104509522bde77e4c0a306"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\prepare_collection.py",
+      "2f9b3ad3e4395a36b6c37c01c2f92983ff41391734645d7dd4e845afd459e438"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\project_adapter.py",
+      "0d2b1b82115def73b1b9d23f078f7a7aa4031e4ac78657cd662d990e653aa46b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\__init__.py",
+      "5c7c1ce3a39fe9cc5d0e726fd719dc8e0a895501157bff67d73454704032e516"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\audit_repository.py",
+      "9897e7b9104b6b312f223b8a1a3f19a2ba468aee31de8eafd14afedb1b59c630"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\feedback_repository.py",
+      "265adf251f5502d396c3b947728175bef286f21d701d55a8459687e2a778676b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\models.py",
+      "251fc6d3aafe8eb647f2dde130995ab5afec2fa3b917103506b0090a87f7e3d3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\repository.py",
+      "628b3096d45139807e83afdb3753d0e8cfdbe46b1276369541cdb9255f372750"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\reputation_repository.py",
+      "33c891693e105613e4cfc0af18db2672927050ec3ef42df388fde2b30ec891c4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\session_repository.py",
+      "617664274d172952755d3d47a1bf0dc8557cd2d924ad936987030cef39765d0f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\validation_repository.py",
+      "f647c7b429c211744ddb6b343d12b2781381fa9d709fb12e09a17d920becd936"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\verifier_cost_repository.py",
+      "d635f11493afca32964bc6928760603607ee6f26b20ce33523ee4179384ede44"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\verifier_repository.py",
+      "ad4dd698e1b8a0b8c11e5bdc169ee69b8ec58cad771734391d530b0c2b60968f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\__init__.py",
+      "b985937d12dd0891a97fa20dabae339da0cfd497632e3894b718d9aba40f0085"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\coverage.py",
+      "b90922034a33af9fad718643ce5f87caaff7a2048d92aa97392d5599a2852f29"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\decision_engine.py",
+      "9e00f8bb7d086fe059a5c1707a7ee740116416db7f458e0ce0b89aebce71e6c6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\dependency_aggregation.py",
+      "ab0954b50cbc5c787c890c4ff2ff40a042f3135b969ecef7faed6455ebf5f645"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\early_termination.py",
+      "532606873694837f3383748e8486eca96644e320153a160d6e91df8d027ef956"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\report_identity.py",
+      "5ef741652ff9055736f13fceae3dbcd34377e127fe7729ad25552ffcb5ed3ef6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\vote_normalization.py",
+      "6bfbf0f19debe0350925746107ce0f7efb7b6b85d58e4066c472ae265de598f3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\answer_correctness.py",
+      "1ed0a9e23eb0ec4626b0d644623c605576e73f51a873148dfa99917a690764d0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\automatic_ground_truth.py",
+      "b65942b9ec4e2b3d2372246c939b321387a60717585b248c6e2ee59695699844"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\compare_similarity.py",
+      "fde7cd436b54cf75a8d4fb0bf275754cf1d49c694c14401f6b15df233459da8c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\semantic_calibration.py",
+      "3c01b1996b0ced45b1d359095e26eaf7c145652dfcf5792f7a4e79ce8403f780"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\semantic_evaluation.py",
+      "7df088e5f54423289d78e354c15ac9f7541376a048ff7960e6852a05da90724c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\feedback\\__init__.py",
+      "5836e8797128faac7ee767aa484bdf1d3f33adba65d27201dfc80c8768255886"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\feedback\\evaluation_service.py",
+      "c3474c94ae46c75269a7b9ac6fa750dfd33a5bdeb719114eb7a2b912ebeed239"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\__init__.py",
+      "4d05ede56d27993337acd09dde58ab56c1b41ac8b884785fed8b5a87bfcee0a0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\artifacts.py",
+      "e944979ff5c282125c438c1df2f027d278c461ef02fd8fb8b68502953f0ae2d2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\component_binding.py",
+      "d6804f3bb8990f2835d7974d59d0e674545edd580a5ced8a87da0d5d50ba8522"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\component_execution.py",
+      "e89cb355ec23c633702277c11dd48f2ce7f688a0d2c277515ede917710fabe70"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\component_sources.py",
+      "c6e0e837ec8e114f72c0ebd5cc3fed13e75140266bfc0eb865b60d91433923e3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\coverage_contract.py",
+      "3c28ec86e37ae12cf15a9f7bff16f46f9b895809654d1e42d7e66b429b517390"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\decision_inputs.py",
+      "e2b047860316fcbb4abefaa4e5d256f569dcb4d5efc03aaef347530f486c4d50"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\dependencies.py",
+      "9fff7b8e3c5e9f23ef75380ff5a3ccf06abde058f11d92806da0703cb06edc93"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\deployment.py",
+      "649bf9284ba4284de8a1f0dfadec90148e4057fccf70744a9e2e0c5216d445b3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\domain_routing.py",
+      "1e438384f224481a9d226c664d96fff1035cca2dada5ffe8a1de005b8f9c2cce"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\execution.py",
+      "f5dfb96641b119826f3db44ca373eba654c98f0dca01ad3ad7280cc0ece9b30c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\execution_contract.py",
+      "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\finalization.py",
+      "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\frozen_planning.py",
+      "8bb06dc8911d6895c16bb0e5dbc394c5f4c48d25146b3eb406ea85893f9e362a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\models.py",
+      "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\__init__.py",
+      "775589a07778ba6335b331552f94f2af9aa807bad5e38e88ebe11b70039b286b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\arithmetic_pilot.py",
+      "3f2bd9b44bd1a55281f5f080675906927e25b26a0b16afceb59d6e071ca94ea2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\attacks.py",
+      "a616786735b415583a9dc2d9d7430e6bf1429ade30f3a82950400e1e7e5fbfa2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\budget_sensitivity.py",
+      "b559c0b6c77ce4b71c2d9f6b8c44e6c18992a90282eb2e5aad3becef239fcb4b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\build.py",
+      "57eef01b9e5f1c11018d6169ed339282e48d602a4a7af75fb5653ed933ba8079"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\calibration.py",
+      "6d567bf35dd2c8a00636822ac95d3014e764fc1889b4a7d492498dae7d3d673f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\collect.py",
+      "7dd091841cee63da7e1c9dcf14619fd2e0a329c4fa79dbabb0fd754f4b8ef02f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\collection.py",
+      "79023cafef880223ea800d86e43001d8ab0e35b05b49e3f76a782a1a7ddf954b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\compound.py",
+      "bf3d4161f88447e1345dc57b6ac033989c87b2b971d4ebe1ab807ba14281a8ab"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\compound_journal.py",
+      "58bfd039a962dc93a0f4b5591af3609972396544509c5d7aed1a398ff9983d70"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\coverage.py",
+      "2e408a7fa2a32a245f50a53fb7c6397a2a32b67eb7bce5ebff21c8093d13862e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\evaluation.py",
+      "5bbf7314fa5f537843dcb7cc88cb176a08d6cfc0b7fa5a41a896b3806c348b1e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\pilot_proposal.py",
+      "e7a38d891b61bc33a52aa193ff7d6db5031f0036ba3599fdf3490938e0b15f15"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\pooling.py",
+      "9576146aee16c9637129b01ab29321b6a975a2ef168761af9bad418d1929a6d4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\prepare_calibrated_context.py",
+      "269e82995fff0b28cc52bec4c3ad88b7636ea6adc67780d3d291559dbdd3ab30"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\prototype.py",
+      "13d81171a3d15b62e4fc6b8bcc197e9647131e74f509a3c1c8fd9e287c7fc2e0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\recording_adapters.py",
+      "132188dceafadeb1d70db6af265cde0ed3bd73fe897f4fa1402fa62f2421d17f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\records.py",
+      "873dcd5e94ff6127aee83c09dceac8cc8a5fee192912fd16f7fcfb1942531fe3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\reliability.py",
+      "454f73534508e2c78d27bd51ff37a21365ccde47a7b619dee7347322106dd3cf"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\replay.py",
+      "2d32c62f95fadf57383e9d341d0b4584a9c2f6e4ee7b7d07567899076e326f4e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\timing.py",
+      "10daa328ff2f2a6fc0e67d0c0d0f120a151fa02196590f32ef1c01c6294e9978"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\upstream.py",
+      "567ffc8cb3da416e64455a4c52956806cd6867a93b1c630b0afeaf3ec88cfbd7"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\upstream_evaluation.py",
+      "1f619936dd097a85bb844e4ca9ae37815e900c761f4008bdc2ab9abbba92868b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\upstream_transfer.py",
+      "ac7ee5495df27d292e45b2d57cd64d6211e8e02548cff2b3810e3222c2e846d1"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\policy.py",
+      "133603e3dfe50e1c6b258221d81632326bc857f7757d62450258037a784706f3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\pooling_contract.py",
+      "d5745ca1a1ad51d30737ab97415c898ef8fe67ea2b66fd948c3864ff7b82def2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\prototype_bundle.py",
+      "65ca144556f7f4826ec85fbae75fb579132ef49fb97b234c53a735828aaa433e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\question_routing.py",
+      "85e31e9608e19df09c778561761b7e1600a8948bcffc9c8853b4fcf05f07730a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\reliability_contract.py",
+      "46cacd608ad1cc5a61c80f038c2bcefc6ad2667b5453c8766fa710498b537dd5"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\__init__.py",
+      "8b37718e4bb8b67cea77b04fba4956348fd1a806d85b98c0524d876c095a5b7a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\__main__.py",
+      "f00003e31cb6652869f9d4039f18101a9fe4f79b43e48f4ed25c2c47664586bc"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\comparison.py",
+      "1de1987191c7f42282b34f5da64f5a5676fcad87bb39234498dc730f36a1d9e6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\evidence_validation.py",
+      "480d0d563ed37f2d9678bd9aed689e1a690b1b33ca7ec2b9102f64882142fcbd"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\readiness.py",
+      "5f1ca6196b0cbfc8740c20a35b0d0703790f31fa968e18cdcef4866a4116f874"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\specification.py",
+      "501cbf3aa287e1532f0f4ac0571f914b86c3412a2060a2851bca0e2d1b8f60ad"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\uncertainty.py",
+      "28116976ab49116e35dee81c39a657fcae105b5beb090badd511c3bb4dcb551b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\resource_provenance.py",
+      "4a09f2de086483555e0ba2741058e5cf4d12ad4f7f9b1eede82e63c03c41d860"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\solver.py",
+      "1c41449e48a3a1815d21259520b2a4edf1e5b41c8571de91c84f6ac98b31c28e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\strategies.py",
+      "62d9e1a721a7546e9b17762c372c7bab910a82ae77d3097e50f1e29dff9fb772"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\task_conditioning.py",
+      "123eff948c28cc9fa6891aec586da0cb2fd3b90cbc40f4bade38267de778a0e0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\models.py",
+      "70263364833766418313ca5785dd368f33daaeda1e110b17d3bfa004798eebf3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\service.py",
+      "f5754f8e5c09f3fbf844c0f370ab73940152b4869f1bcd8a3be1fc667526969d"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\storage.py",
+      "625801f976f3c98eeab6d1fdff919ef935dbc8049672e188f4efafa8573fc486"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\wikidata_client.py",
+      "0156e41774ca12908650b60241f971dc59def8576a70f4c5e60a16479561c7c7"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\main.py",
+      "48a2efcf68d466a8029fee0b75ef64083934ad13b5b759cd302200644c24ea2c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\models\\__init__.py",
+      "36d5424d932825e1c915cd5baf5f1293b9305d41256addb4ca0148fd5eb8dfa8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\models\\schemas.py",
+      "2ddcb19b63af208c6b513de09016b5acccb21a72211b543f6449cad912528c53"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\orchestration\\__init__.py",
+      "22a9f0fd67038c16d6ecb81eb0b27f256aed5c673ccbc94e370bf652d9b9849a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\orchestration\\validation_orchestrator.py",
+      "9300ded2a425114cd2f55a65db00d8220bd6f9d36cd9d034594ca87053022786"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\reputation\\__init__.py",
+      "bdf7d76b1cb2adcfc19f6960cc8110702bf813319e8024e0ed61616d5dc621b9"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\reputation\\reputation_manager.py",
+      "5eedc4a823447242c0e687f81a12b47cd87e44beb2bdc28510b036c6e746abc0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\__init__.py",
+      "d83810f2af7d72184decb1c7039d05c3a24fea0cde73894af12b5fc410ac7cde"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\capabilities.py",
+      "3781e0dded2c3d57fabb6fa3e1cfa2c2d95c68236d15b2a7a594299f217cb3c2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\models.py",
+      "b4406d6a6476564294f380bb780c0d48706370f70f87a0c39eb504a1701a62d8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\requirements.py",
+      "66d12409804c6b3a3ca520766b70658385df12f7b7b6a287e8829cb3698ccbfc"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\verifier_selector.py",
+      "b14227e5d4c65b24939119d3c2afddb11281ab67352845bda683824a85fcf0a6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\services\\__init__.py",
+      "2b178193b705a9ab99d7dae27a93b4870b4f5900b7cf4ee156bdae5e0946661e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\services\\validation_service.py",
+      "60e3a683d1ec67cbfecd7c88cab72548ea55ce9c6a6e4b92c859d3ec0e8fbce5"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\utils\\__init__.py",
+      "45bb75b6d26e72f9fef717dc5d3d053b057541694f0763cd904cc50354e7b8f4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\utils\\config.py",
+      "ed10efe089a977c373f65e3b220cf57e300ebbf79e203ca5bfbb2fa1c6c12214"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\__init__.py",
+      "3e4d911db4646beb066a6300a00d58408a641dbbb5e9014ef9d88ef5a0a86291"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\base_verifier.py",
+      "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\claim_generator.py",
+      "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\confidence_verifier.py",
+      "e05617149ea32f4f6136cc9ac8512296075acd285005d7d99670e4ab750ed94f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\evidence_retriever.py",
+      "25fe2cb43df5e02034f657d5beb2d7f2cc7c952ff09a4313842c25aedf5a8e18"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\evidence_verifier.py",
+      "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\rule_verifier.py",
+      "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\self_consistency.py",
+      "627b0e81bf9b57cd502f90a42c363af18d407e8c4465cae9fef25a39bc996ca4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\semantic_verifier.py",
+      "c72cf7a6f34a66d16e36e360286ab6085000e1594e86dd1e124480aa43086bd8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\verification_trace.py",
+      "fff89787d5360da44d72c68195487e030091190db57b32bac8a1ad02884a7e68"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\scripts\\collect_compound_partition.py",
+      "7502bcf9d54591cc3f9fd87b22e3ea4b467faef7954769aec8d1ade953ea29fc"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\scripts\\compound_study.py",
+      "23315b7a9e14b9be679792c6558cf365822f197ad1f416bf3ba605ddc7320662"
+    ]
+  ],
+  "bootstrap_seed": 1102,
+  "bootstrap_replicates": 1000,
+  "limitations": "12 source-known development clusters; bootstrap intervals do not change the fixed empirical90% gate or prove generalization."
+}
