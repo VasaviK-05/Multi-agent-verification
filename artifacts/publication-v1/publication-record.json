@@ -1,0 +1,31 @@
+{
+  "version": "owned_publication_record_v1",
+  "repository": "https://github.com/VasaviK-05/Multi-agent-verification",
+  "visibility": "public",
+  "branch": "codex/flexible-verifier-teams",
+  "content_commit": "1139dd2d2a47e8fecbbbd2744d1d2e25908bf7ee",
+  "base_commit": "0b3595ef965d196f93916d10999c7fae63daf7af",
+  "scope": "Bounded prototype handover; no API activation, main merge or new inference for publication verification.",
+  "test_result": "51 owned regression tests passed; portable policy loading, certificate validation, category replay and direct-router example passed.",
+  "dependency_versions": {
+    "python": "3.11.5",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pydantic": "2.13.5",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "sentence-transformers": "6.1.0",
+    "faiss-cpu": "1.15.1",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.2"
+  },
+  "metadata_overlay": [
+    ".gitignore",
+    ".gitattributes",
+    "docs/PUBLICATION.md",
+    "docs/supported_category_policy_integration.md",
+    "artifacts/publication-v1/publication-record.json",
+    "artifacts/publication-v1/file-hashes-v2.json"
+  ]
+}
