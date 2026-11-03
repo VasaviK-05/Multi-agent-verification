@@ -1,0 +1,2562 @@
+{
+  "cache_contract": "complete_team_independent_v1",
+  "candidates": [
+    {
+      "adapter": "semantic_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ],
+        "readiness": "unknown",
+        "requires_reference": true,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "semantic"
+    },
+    {
+      "adapter": "evidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "evidence"
+    },
+    {
+      "adapter": "rule_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "rule"
+    },
+    {
+      "adapter": "confidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "confidence"
+    }
+  ],
+  "examples": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "828",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-314-514-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 828, \"method\": \"independent exact integer addition\", \"operands\": [314, 514]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 314 + 514?",
+      "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+      "reference": "828",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-314-514-correct",
+      "split_identity": "multitask42-arithmetic-addition-314-514"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "829",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-314-514-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 828, \"method\": \"independent exact integer addition\", \"operands\": [314, 514]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 314 + 514?",
+      "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+      "reference": "828",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-314-514-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-314-514"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "846",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-321-525-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 846, \"method\": \"independent exact integer addition\", \"operands\": [321, 525]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 321 + 525?",
+      "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+      "reference": "846",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-321-525-correct",
+      "split_identity": "multitask42-arithmetic-addition-321-525"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "847",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-321-525-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 846, \"method\": \"independent exact integer addition\", \"operands\": [321, 525]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 321 + 525?",
+      "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+      "reference": "846",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-321-525-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-321-525"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "900",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-342-558-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 900, \"method\": \"independent exact integer addition\", \"operands\": [342, 558]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 342 + 558?",
+      "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+      "reference": "900",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-342-558-correct",
+      "split_identity": "multitask42-arithmetic-addition-342-558"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "901",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-342-558-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 900, \"method\": \"independent exact integer addition\", \"operands\": [342, 558]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 342 + 558?",
+      "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+      "reference": "900",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-342-558-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-342-558"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "918",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-349-569-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 918, \"method\": \"independent exact integer addition\", \"operands\": [349, 569]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 349 + 569?",
+      "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+      "reference": "918",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-349-569-correct",
+      "split_identity": "multitask42-arithmetic-addition-349-569"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "919",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-349-569-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 918, \"method\": \"independent exact integer addition\", \"operands\": [349, 569]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 349 + 569?",
+      "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+      "reference": "918",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-349-569-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-349-569"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "936",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-356-580-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 936, \"method\": \"independent exact integer addition\", \"operands\": [356, 580]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 356 + 580?",
+      "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+      "reference": "936",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-356-580-correct",
+      "split_identity": "multitask42-arithmetic-addition-356-580"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "937",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-356-580-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 936, \"method\": \"independent exact integer addition\", \"operands\": [356, 580]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 356 + 580?",
+      "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+      "reference": "936",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-356-580-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-356-580"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "954",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-363-591-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 954, \"method\": \"independent exact integer addition\", \"operands\": [363, 591]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 363 + 591?",
+      "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+      "reference": "954",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-363-591-correct",
+      "split_identity": "multitask42-arithmetic-addition-363-591"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "955",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-363-591-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 954, \"method\": \"independent exact integer addition\", \"operands\": [363, 591]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 363 + 591?",
+      "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+      "reference": "954",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-363-591-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-363-591"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1044",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-398-646-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1044, \"method\": \"independent exact integer addition\", \"operands\": [398, 646]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 398 + 646?",
+      "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+      "reference": "1044",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-398-646-correct",
+      "split_identity": "multitask42-arithmetic-addition-398-646"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1045",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-398-646-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1044, \"method\": \"independent exact integer addition\", \"operands\": [398, 646]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 398 + 646?",
+      "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+      "reference": "1044",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-398-646-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-398-646"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1062",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-405-657-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1062, \"method\": \"independent exact integer addition\", \"operands\": [405, 657]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 405 + 657?",
+      "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+      "reference": "1062",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-405-657-correct",
+      "split_identity": "multitask42-arithmetic-addition-405-657"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1063",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-405-657-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1062, \"method\": \"independent exact integer addition\", \"operands\": [405, 657]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 405 + 657?",
+      "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+      "reference": "1062",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-405-657-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-405-657"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1080",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-412-668-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1080, \"method\": \"independent exact integer addition\", \"operands\": [412, 668]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 412 + 668?",
+      "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+      "reference": "1080",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-412-668-correct",
+      "split_identity": "multitask42-arithmetic-addition-412-668"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1081",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-412-668-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1080, \"method\": \"independent exact integer addition\", \"operands\": [412, 668]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 412 + 668?",
+      "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+      "reference": "1080",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-412-668-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-412-668"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1116",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-426-690-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1116, \"method\": \"independent exact integer addition\", \"operands\": [426, 690]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 426 + 690?",
+      "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+      "reference": "1116",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-426-690-correct",
+      "split_identity": "multitask42-arithmetic-addition-426-690"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1117",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-426-690-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1116, \"method\": \"independent exact integer addition\", \"operands\": [426, 690]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 426 + 690?",
+      "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+      "reference": "1116",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-426-690-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-426-690"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1296",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-496-800-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1296, \"method\": \"independent exact integer addition\", \"operands\": [496, 800]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 496 + 800?",
+      "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+      "reference": "1296",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-496-800-correct",
+      "split_identity": "multitask42-arithmetic-addition-496-800"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1297",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-496-800-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1296, \"method\": \"independent exact integer addition\", \"operands\": [496, 800]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 496 + 800?",
+      "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+      "reference": "1296",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-496-800-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-496-800"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1422",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-545-877-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1422, \"method\": \"independent exact integer addition\", \"operands\": [545, 877]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 545 + 877?",
+      "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+      "reference": "1422",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-545-877-correct",
+      "split_identity": "multitask42-arithmetic-addition-545-877"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1423",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-545-877-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1422, \"method\": \"independent exact integer addition\", \"operands\": [545, 877]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 545 + 877?",
+      "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+      "reference": "1422",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-545-877-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-545-877"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1476",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-566-910-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1476, \"method\": \"independent exact integer addition\", \"operands\": [566, 910]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 566 + 910?",
+      "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+      "reference": "1476",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-566-910-correct",
+      "split_identity": "multitask42-arithmetic-addition-566-910"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1477",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-566-910-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1476, \"method\": \"independent exact integer addition\", \"operands\": [566, 910]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 566 + 910?",
+      "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+      "reference": "1476",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-566-910-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-566-910"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1530",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-587-943-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1530, \"method\": \"independent exact integer addition\", \"operands\": [587, 943]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 587 + 943?",
+      "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+      "reference": "1530",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-587-943-correct",
+      "split_identity": "multitask42-arithmetic-addition-587-943"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1531",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-587-943-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1530, \"method\": \"independent exact integer addition\", \"operands\": [587, 943]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 587 + 943?",
+      "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+      "reference": "1530",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-587-943-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-587-943"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1584",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-608-976-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1584, \"method\": \"independent exact integer addition\", \"operands\": [608, 976]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 608 + 976?",
+      "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+      "reference": "1584",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-608-976-correct",
+      "split_identity": "multitask42-arithmetic-addition-608-976"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1585",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-608-976-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1584, \"method\": \"independent exact integer addition\", \"operands\": [608, 976]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 608 + 976?",
+      "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+      "reference": "1584",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-608-976-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-608-976"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1638",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-629-1009-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1638, \"method\": \"independent exact integer addition\", \"operands\": [629, 1009]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 629 + 1009?",
+      "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+      "reference": "1638",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-629-1009-correct",
+      "split_identity": "multitask42-arithmetic-addition-629-1009"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1639",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-629-1009-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1638, \"method\": \"independent exact integer addition\", \"operands\": [629, 1009]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 629 + 1009?",
+      "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+      "reference": "1638",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-629-1009-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-629-1009"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1656",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-636-1020-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1656, \"method\": \"independent exact integer addition\", \"operands\": [636, 1020]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 636 + 1020?",
+      "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+      "reference": "1656",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-636-1020-correct",
+      "split_identity": "multitask42-arithmetic-addition-636-1020"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1657",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-636-1020-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1656, \"method\": \"independent exact integer addition\", \"operands\": [636, 1020]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 636 + 1020?",
+      "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+      "reference": "1656",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-636-1020-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-636-1020"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1728",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-664-1064-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1728, \"method\": \"independent exact integer addition\", \"operands\": [664, 1064]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 664 + 1064?",
+      "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+      "reference": "1728",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-664-1064-correct",
+      "split_identity": "multitask42-arithmetic-addition-664-1064"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1729",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-664-1064-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1728, \"method\": \"independent exact integer addition\", \"operands\": [664, 1064]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 664 + 1064?",
+      "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+      "reference": "1728",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-664-1064-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-664-1064"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1818",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-699-1119-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1818, \"method\": \"independent exact integer addition\", \"operands\": [699, 1119]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 699 + 1119?",
+      "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+      "reference": "1818",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-699-1119-correct",
+      "split_identity": "multitask42-arithmetic-addition-699-1119"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1819",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-699-1119-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1818, \"method\": \"independent exact integer addition\", \"operands\": [699, 1119]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 699 + 1119?",
+      "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+      "reference": "1818",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-699-1119-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-699-1119"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1836",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-706-1130-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1836, \"method\": \"independent exact integer addition\", \"operands\": [706, 1130]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 706 + 1130?",
+      "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+      "reference": "1836",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-706-1130-correct",
+      "split_identity": "multitask42-arithmetic-addition-706-1130"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.12,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 1.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "arithmetic"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "arithmetic"
+        ]
+      },
+      "answer": "1837",
+      "dataset_id": "multitask42-arithmetic-final_test",
+      "example_id": "addition-706-1130-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-arithmetic-frames-v1",
+        "provenance": "{\"correct_integer\": 1836, \"method\": \"independent exact integer addition\", \"operands\": [706, 1130]}"
+      },
+      "purpose": "heldout",
+      "question": "What is 706 + 1130?",
+      "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+      "reference": "1836",
+      "role": "final_test",
+      "run_id": "multitask42-arithmetic-final_test-addition-706-1130-incorrect",
+      "split_identity": "multitask42-arithmetic-addition-706-1130"
+    }
+  ],
+  "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "expected_setup": {
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "factory": "app.benchmark.project_adapter:create_recording_verifiers",
+  "final_test_reservation": {
+    "custody_record": "User request 40cf4c15-2260-48ef-b3a1-7154d0d47554: task-conditioned exploratory collection and reliability-first fits; procedural source-known reservation",
+    "dataset_id": "multitask42-arithmetic-final_test",
+    "examples": [
+      {
+        "content_identity": "0aef7f2c601bb89d497a81e0a832e9befcc66da0f9be2ea43686dcfa290bfa85",
+        "example_id": "addition-314-514-correct",
+        "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+        "split_identity": "multitask42-arithmetic-addition-314-514",
+        "validation_id": "multitask42-arithmetic-final_test-addition-314-514-correct"
+      },
+      {
+        "content_identity": "8d64e4b80b53fd43ecebc3eb24c27983dde2c4efe699cf6f5302751256461e78",
+        "example_id": "addition-314-514-incorrect",
+        "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+        "split_identity": "multitask42-arithmetic-addition-314-514",
+        "validation_id": "multitask42-arithmetic-final_test-addition-314-514-incorrect"
+      },
+      {
+        "content_identity": "3b3c2937cf2a2d98ad76d4639411435c8e67976c5393f646fa05e08c1b0b3d13",
+        "example_id": "addition-321-525-correct",
+        "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+        "split_identity": "multitask42-arithmetic-addition-321-525",
+        "validation_id": "multitask42-arithmetic-final_test-addition-321-525-correct"
+      },
+      {
+        "content_identity": "698e36f78a0bba54fec7f27582a5f3b90e1f084e6242da81f829218d256f79a4",
+        "example_id": "addition-321-525-incorrect",
+        "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+        "split_identity": "multitask42-arithmetic-addition-321-525",
+        "validation_id": "multitask42-arithmetic-final_test-addition-321-525-incorrect"
+      },
+      {
+        "content_identity": "c37b9e3359da33465cd39676e0de31b12cec01928cc604a6195acbfa36054f56",
+        "example_id": "addition-342-558-correct",
+        "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+        "split_identity": "multitask42-arithmetic-addition-342-558",
+        "validation_id": "multitask42-arithmetic-final_test-addition-342-558-correct"
+      },
+      {
+        "content_identity": "0569aaee26ea3a2cbad3abe0c88f356e306741058345836845b9eb0ca4a211b7",
+        "example_id": "addition-342-558-incorrect",
+        "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+        "split_identity": "multitask42-arithmetic-addition-342-558",
+        "validation_id": "multitask42-arithmetic-final_test-addition-342-558-incorrect"
+      },
+      {
+        "content_identity": "3c28edded8ce2c9031aca251dae0a8c263cfa9cf32716e449800103ec36c34cf",
+        "example_id": "addition-349-569-correct",
+        "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+        "split_identity": "multitask42-arithmetic-addition-349-569",
+        "validation_id": "multitask42-arithmetic-final_test-addition-349-569-correct"
+      },
+      {
+        "content_identity": "947c24afac67f3233b26772565f1989d03db4b457f6291679a0b8ef9edd43bdc",
+        "example_id": "addition-349-569-incorrect",
+        "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+        "split_identity": "multitask42-arithmetic-addition-349-569",
+        "validation_id": "multitask42-arithmetic-final_test-addition-349-569-incorrect"
+      },
+      {
+        "content_identity": "8a7a7df44641a3db1eaccd2fb4218d67af7218cc84630e88441bdd3238c67ab0",
+        "example_id": "addition-356-580-correct",
+        "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+        "split_identity": "multitask42-arithmetic-addition-356-580",
+        "validation_id": "multitask42-arithmetic-final_test-addition-356-580-correct"
+      },
+      {
+        "content_identity": "8bef68b764a6c42cd4c2b4cfaf9d12fa47fd5d17deb52a74d17aa645ed6a1e19",
+        "example_id": "addition-356-580-incorrect",
+        "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+        "split_identity": "multitask42-arithmetic-addition-356-580",
+        "validation_id": "multitask42-arithmetic-final_test-addition-356-580-incorrect"
+      },
+      {
+        "content_identity": "e09b4548d0552dae049f04bab1f8478d436befd0bc5d5fe6800fc316ecd56e6b",
+        "example_id": "addition-363-591-correct",
+        "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+        "split_identity": "multitask42-arithmetic-addition-363-591",
+        "validation_id": "multitask42-arithmetic-final_test-addition-363-591-correct"
+      },
+      {
+        "content_identity": "27e6dba0703f27ed5c0c4099a6896ebf32ae21689f67e3444f520006ff1e9c04",
+        "example_id": "addition-363-591-incorrect",
+        "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+        "split_identity": "multitask42-arithmetic-addition-363-591",
+        "validation_id": "multitask42-arithmetic-final_test-addition-363-591-incorrect"
+      },
+      {
+        "content_identity": "a11bb5a6ca1cb37da306637d3805b76056447ddf03bf4321cd9fd9a723a8957e",
+        "example_id": "addition-398-646-correct",
+        "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+        "split_identity": "multitask42-arithmetic-addition-398-646",
+        "validation_id": "multitask42-arithmetic-final_test-addition-398-646-correct"
+      },
+      {
+        "content_identity": "20200df5d4bbda7fa6a15cc87bbdb2433f516e9af1825c578761f0b69f0ac092",
+        "example_id": "addition-398-646-incorrect",
+        "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+        "split_identity": "multitask42-arithmetic-addition-398-646",
+        "validation_id": "multitask42-arithmetic-final_test-addition-398-646-incorrect"
+      },
+      {
+        "content_identity": "69290cfe34014c38557f97beeabe198f8ad9025d50ebb541c03887ae0219d752",
+        "example_id": "addition-405-657-correct",
+        "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+        "split_identity": "multitask42-arithmetic-addition-405-657",
+        "validation_id": "multitask42-arithmetic-final_test-addition-405-657-correct"
+      },
+      {
+        "content_identity": "4d234bd7092f4384e8b5ef3442219bc7674d16f59493a7135fc8ea37ddcf1114",
+        "example_id": "addition-405-657-incorrect",
+        "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+        "split_identity": "multitask42-arithmetic-addition-405-657",
+        "validation_id": "multitask42-arithmetic-final_test-addition-405-657-incorrect"
+      },
+      {
+        "content_identity": "9e2a5be3083ffd4c40b2eabeb2913e125ec25f908cd56339ab28d6251cd6c4ff",
+        "example_id": "addition-412-668-correct",
+        "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+        "split_identity": "multitask42-arithmetic-addition-412-668",
+        "validation_id": "multitask42-arithmetic-final_test-addition-412-668-correct"
+      },
+      {
+        "content_identity": "171eb0c163f2d7d80f9692b6a8d043e5f36b6eae9ddd63126f56df1493ec4060",
+        "example_id": "addition-412-668-incorrect",
+        "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+        "split_identity": "multitask42-arithmetic-addition-412-668",
+        "validation_id": "multitask42-arithmetic-final_test-addition-412-668-incorrect"
+      },
+      {
+        "content_identity": "846eb6e976d09e78040fafe947d735703f8ae4a865ac4719d78d45e5308845fc",
+        "example_id": "addition-426-690-correct",
+        "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+        "split_identity": "multitask42-arithmetic-addition-426-690",
+        "validation_id": "multitask42-arithmetic-final_test-addition-426-690-correct"
+      },
+      {
+        "content_identity": "a478b98bb765a6c276191ec6ed7840d9920ff2f467d49971a40c6fae9ca6590e",
+        "example_id": "addition-426-690-incorrect",
+        "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+        "split_identity": "multitask42-arithmetic-addition-426-690",
+        "validation_id": "multitask42-arithmetic-final_test-addition-426-690-incorrect"
+      },
+      {
+        "content_identity": "9f020e32a69f0b5adf8c95f162df895851e2eef3102b2158907f3a1c0155fc0a",
+        "example_id": "addition-496-800-correct",
+        "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+        "split_identity": "multitask42-arithmetic-addition-496-800",
+        "validation_id": "multitask42-arithmetic-final_test-addition-496-800-correct"
+      },
+      {
+        "content_identity": "11a71ca490df21f87b4c6359ac12090fc93e28f2e1119b9dcf904d5eafc15dac",
+        "example_id": "addition-496-800-incorrect",
+        "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+        "split_identity": "multitask42-arithmetic-addition-496-800",
+        "validation_id": "multitask42-arithmetic-final_test-addition-496-800-incorrect"
+      },
+      {
+        "content_identity": "cb67e77b2cab2808074ad652bbb7b2adb7d6e92e3392f05f3b420f8e347c1b78",
+        "example_id": "addition-545-877-correct",
+        "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+        "split_identity": "multitask42-arithmetic-addition-545-877",
+        "validation_id": "multitask42-arithmetic-final_test-addition-545-877-correct"
+      },
+      {
+        "content_identity": "a3623a3880c1a12207a7277e606c3c85c912d56fcab2bb5cfebbf2c7a0a10d13",
+        "example_id": "addition-545-877-incorrect",
+        "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+        "split_identity": "multitask42-arithmetic-addition-545-877",
+        "validation_id": "multitask42-arithmetic-final_test-addition-545-877-incorrect"
+      },
+      {
+        "content_identity": "8fe24e09fca843dcecb5382b9b71fd915d559402c6310b47e60d7c778cbfab43",
+        "example_id": "addition-566-910-correct",
+        "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+        "split_identity": "multitask42-arithmetic-addition-566-910",
+        "validation_id": "multitask42-arithmetic-final_test-addition-566-910-correct"
+      },
+      {
+        "content_identity": "e40c4425c323eb4e23683bb7d9fd00772f800179a4ec7f78af61e79c32baa169",
+        "example_id": "addition-566-910-incorrect",
+        "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+        "split_identity": "multitask42-arithmetic-addition-566-910",
+        "validation_id": "multitask42-arithmetic-final_test-addition-566-910-incorrect"
+      },
+      {
+        "content_identity": "d233341dd7f25c5008538728e5178c990b763c5548561c0568aa0b3a86879110",
+        "example_id": "addition-587-943-correct",
+        "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+        "split_identity": "multitask42-arithmetic-addition-587-943",
+        "validation_id": "multitask42-arithmetic-final_test-addition-587-943-correct"
+      },
+      {
+        "content_identity": "071b66100854caca2a9b222df781ca379287cec8d6dd7e7a799dfce006f902e6",
+        "example_id": "addition-587-943-incorrect",
+        "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+        "split_identity": "multitask42-arithmetic-addition-587-943",
+        "validation_id": "multitask42-arithmetic-final_test-addition-587-943-incorrect"
+      },
+      {
+        "content_identity": "c36827a1ace9e6966f836486d578f9b591420dfc6bfa82c258954badc01ea728",
+        "example_id": "addition-608-976-correct",
+        "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+        "split_identity": "multitask42-arithmetic-addition-608-976",
+        "validation_id": "multitask42-arithmetic-final_test-addition-608-976-correct"
+      },
+      {
+        "content_identity": "5c3003eae6384283259ab85cdba99a78c6e42625b64c950873f803b95c05ed9c",
+        "example_id": "addition-608-976-incorrect",
+        "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+        "split_identity": "multitask42-arithmetic-addition-608-976",
+        "validation_id": "multitask42-arithmetic-final_test-addition-608-976-incorrect"
+      },
+      {
+        "content_identity": "671e642c3945a6a7f32e58de1074f19b6d166bcf24ce6dea76236bb90851219c",
+        "example_id": "addition-629-1009-correct",
+        "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+        "split_identity": "multitask42-arithmetic-addition-629-1009",
+        "validation_id": "multitask42-arithmetic-final_test-addition-629-1009-correct"
+      },
+      {
+        "content_identity": "c3cbeeeea15bd9c2cde59551dffe1594b2902e6c7ea33cfb4f05f1c0e665bd06",
+        "example_id": "addition-629-1009-incorrect",
+        "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+        "split_identity": "multitask42-arithmetic-addition-629-1009",
+        "validation_id": "multitask42-arithmetic-final_test-addition-629-1009-incorrect"
+      },
+      {
+        "content_identity": "966aed767b066c41561ed931b9aa86d4a5336780caf7fb3d6df78b3177a4dc84",
+        "example_id": "addition-636-1020-correct",
+        "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+        "split_identity": "multitask42-arithmetic-addition-636-1020",
+        "validation_id": "multitask42-arithmetic-final_test-addition-636-1020-correct"
+      },
+      {
+        "content_identity": "70d98bfcc38d8fe9babd10ae5f43c6e166c7adb900b85a56e1efa28c1652a063",
+        "example_id": "addition-636-1020-incorrect",
+        "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+        "split_identity": "multitask42-arithmetic-addition-636-1020",
+        "validation_id": "multitask42-arithmetic-final_test-addition-636-1020-incorrect"
+      },
+      {
+        "content_identity": "de59ec06b0123170093f78313c953bd2c21100169d8b3b217fc0f8fdd0c92704",
+        "example_id": "addition-664-1064-correct",
+        "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+        "split_identity": "multitask42-arithmetic-addition-664-1064",
+        "validation_id": "multitask42-arithmetic-final_test-addition-664-1064-correct"
+      },
+      {
+        "content_identity": "a999f52a2a023e038015fb5bd8be2202f348760dbfb9e3d8675ef345eb0e4752",
+        "example_id": "addition-664-1064-incorrect",
+        "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+        "split_identity": "multitask42-arithmetic-addition-664-1064",
+        "validation_id": "multitask42-arithmetic-final_test-addition-664-1064-incorrect"
+      },
+      {
+        "content_identity": "c123fb2c16fde24ff4d25bf830c23694ec3dae9df674175afeffe2172ec454d9",
+        "example_id": "addition-699-1119-correct",
+        "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+        "split_identity": "multitask42-arithmetic-addition-699-1119",
+        "validation_id": "multitask42-arithmetic-final_test-addition-699-1119-correct"
+      },
+      {
+        "content_identity": "ecc93eb8e5aa208f20aeccdc58e2d22a51b815d682d5a9517582235a0dd1b28b",
+        "example_id": "addition-699-1119-incorrect",
+        "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+        "split_identity": "multitask42-arithmetic-addition-699-1119",
+        "validation_id": "multitask42-arithmetic-final_test-addition-699-1119-incorrect"
+      },
+      {
+        "content_identity": "58cb2f9295d8a0f3db29551b556d74f2cddef0bcd8f0086f93854978359bd7cb",
+        "example_id": "addition-706-1130-correct",
+        "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+        "split_identity": "multitask42-arithmetic-addition-706-1130",
+        "validation_id": "multitask42-arithmetic-final_test-addition-706-1130-correct"
+      },
+      {
+        "content_identity": "0accedc1fa56e29fd57b7b98599b4062404fccb24663f5548e4332967044553b",
+        "example_id": "addition-706-1130-incorrect",
+        "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+        "split_identity": "multitask42-arithmetic-addition-706-1130",
+        "validation_id": "multitask42-arithmetic-final_test-addition-706-1130-incorrect"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "freeze_id": "bcba68b5bd2857246fb3c4d9248f0eb2af4fd891b5b694335799826942ae519e",
+  "intended_use": "heldout",
+  "permitted_datasets": [
+    [
+      "final_test",
+      "multitask42-arithmetic-final_test"
+    ]
+  ],
+  "preparation_authorization": "User follow-up: bounded local inference for reserved arithmetic/factual partitions only",
+  "randomness_control": "Frozen temperature0.8; n5 existing sampler seeds0..4; no deterministic generation claim",
+  "study_approval": "User follow-up: bounded local inference for reserved arithmetic/factual partitions only",
+  "version": "offline_heldout_recording_v1"
+}

@@ -1,0 +1,84 @@
+{
+  "attacks": {
+    "suppression": "unavailable",
+    "version": "report_corruption_v1"
+  },
+  "authorization": "User attachment a58ea544: current-service transition; cumulative255 verifier starts/372 generation requests; no additional retries.",
+  "caps": {
+    "all_attempts": 240,
+    "all_examples": 60,
+    "all_generations": 300,
+    "reserved_attempts": 80,
+    "reserved_examples": 20,
+    "reserved_generations": 100,
+    "training_attempts": 160,
+    "training_examples": 40,
+    "training_generations": 200
+  },
+  "costs": "Per-verifier mean measured history+development wall_ms, no warmup; budget=sum four means; resource penalty=.1/budget.",
+  "cumulative_caps": {
+    "generation_requests": 372,
+    "verifier_starts": 255
+  },
+  "dependencies": {
+    "dependencies": [
+      {
+        "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "resource_id": "local-embedding-snapshot",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ]
+      },
+      {
+        "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "resource_id": "local-nli-snapshot",
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ]
+      }
+    ],
+    "unknown_treatment": "shared_unknown",
+    "unresolved": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "version": "multitask-observed-dependencies-v1"
+  },
+  "difficulty": "One bounded category constant easy/.1, not empirical adaptation; legacy word-count scores span .06\u2013.10.",
+  "fitting": "All genuinely eligible teams sizes1\u20134, both existing aggregations; no team quotas.",
+  "fixed_baseline": "Development-best coverage-eligible fixed team; valid existing greedy under identical contract if feasible.",
+  "grammar": "Paraphrase this reference: <one exact predeclared reference>",
+  "grouping": "All lexicalized entity/predicate/template frames and both answer variants grouped; broad contrast families recur across partitions.",
+  "history": "Fresh Beta(1,1), directional history only, no cross-task copying.",
+  "independent_label_rule": "Semantic predicate/argument/count/polarity/spatial equivalence, never cosine or verifier agreement.",
+  "losses": {
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "uncertain": 0.2
+  },
+  "min_informative_contributors": 1,
+  "minimum_clean_development_coverage": 0.5,
+  "objective": "Worst finalized validation loss then attempt cost, epsilon1e-8.",
+  "partitions": {
+    "development": 10,
+    "final_test": 10,
+    "history": 10
+  },
+  "reference_contract": "Fixed legitimate source text provided to semantic comparison; raw cosine measurement is not equivalence certification.",
+  "resource_transition": "current_reference_service_v1; resumed exploratory study, not uninterrupted campaign",
+  "routing_version": "bounded_reference_frames_v1",
+  "scope": "30 explicit frames only, no API activation or broad difficulty adaptation",
+  "seed": "reference-fresh-v1-seed1103",
+  "threshold": 0.55,
+  "uncertainty": {
+    "method": "group bootstrap",
+    "resamples": 1000,
+    "seed": 1103
+  },
+  "version": "reference-fresh-v1",
+  "coverage_amendment": "reference_post_development_50_v1: chosen after observing60% development coverage; only fitting coverage floor changes; original90% infeasibility preserved."
+}

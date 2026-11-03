@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "host": "localhost",
+      "timing_ms": {
+        "version": 2092.329300008714,
+        "tags": 22.854899987578392
+      },
+      "observed": {
+        "server_version": "0.40.5",
+        "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+      },
+      "matches_expected": true
+    },
+    {
+      "host": "127.0.0.1",
+      "timing_ms": {
+        "version": 23.164300015196204,
+        "tags": 42.063500033691525
+      },
+      "observed": {
+        "server_version": "0.40.5",
+        "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+      },
+      "matches_expected": true
+    }
+  ],
+  "resolved_localhost": [
+    {
+      "family": 23,
+      "address": "::1"
+    },
+    {
+      "family": 2,
+      "address": "127.0.0.1"
+    }
+  ],
+  "verifier_attempts": 0,
+  "generations": 0,
+  "metadata_gets": 4,
+  "expected_configuration_unchanged": true
+}

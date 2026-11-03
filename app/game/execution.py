@@ -100,7 +100,8 @@ class GameRuntime:
             estimated_selected_cost=0., estimated_attempted_cost=0.,
             attempted_verifiers=[], attempts=[], selection_status="pending", selection_reasons=[],
             numerical_decision=None, public_status="uncertain", override_reasons=[],
-            contributors=0, minimum_contributors=context.minimum_participant_count,
+            contributors=0, minimum_contributors=context.minimum_informative_count,
+            minimum_selected_team_size=context.minimum_participant_count,
             pooling_contract_json=context.pooling_contract_json,
             expected_resource_manifest_id=None if contract.resource_manifest is None else contract.resource_manifest.manifest_id,
             observed_resource_manifest_id=None,
@@ -200,7 +201,7 @@ class GameRuntime:
                 resource_drift = True
         summary.update(attempted_verifiers=list(strategy.verifiers), attempts=attempts,
             estimated_attempted_cost=math.fsum(a["estimated_attempt_cost"] for a in attempts),
-            contributors=finalized.contributors, minimum_contributors=current.minimum_participant_count,
+            contributors=finalized.contributors, minimum_contributors=current.minimum_informative_count,
             required=list(finalized.required), achieved=list(finalized.achieved), unresolved=list(finalized.unresolved),
             override_reasons=list(finalized.reasons), numerical_decision=finalized.detail.to_dict(),
             public_status=finalized.public_status, selection_plan=current.plan.to_dict(),

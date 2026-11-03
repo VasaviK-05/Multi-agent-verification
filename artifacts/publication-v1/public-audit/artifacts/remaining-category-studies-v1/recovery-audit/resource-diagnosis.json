@@ -1,0 +1,15 @@
+{
+  "endpoint": "http://localhost:11434/api/generate",
+  "listener": "127.0.0.1:11434",
+  "serving_pid": 15980,
+  "serving_executable": "<LOCAL_USER_HOME>/AppData/Local/Programs/Ollama/ollama.exe",
+  "expected_server_version": "0.40.5",
+  "actual_server_version": "0.40.14",
+  "model_digest_matches": true,
+  "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+  "active_python_collector_found": false,
+  "exact_old_server_located": false,
+  "old_version_evidence": "Rotated app logs show0.40.5 historically; logs do not constitute an executable installation or service equivalence evidence.",
+  "resource_transfer_proposal": "For compound only, separately version a strict full-manifest transfer allowing only Confidence ollama-service metadata change. First reobserve and compare every active E/R implementation, configuration, embedding/NLI model, corpus/index and decision contract exactly; attest actual selected instances; bind original and new full manifests and whitelist the sole service delta. No Confidence invocation or reference transfer. Existing frozen candidate must remain unchanged and evaluation must explicitly bind transfer proof. Not implemented or assumed valid here.",
+  "reference_transfer": "Not established: changed generation service may alter Confidence outputs despite identical model digest. Exact restoration or separately authorized compatibility evidence required."
+}

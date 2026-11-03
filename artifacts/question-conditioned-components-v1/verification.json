@@ -1,0 +1,96 @@
+{
+  "attempts": 16,
+  "executed_binding_snapshot_verified": true,
+  "execution_mode": "diagnostic_no_policy",
+  "false_accepts": 0,
+  "independent_labels": [
+    {
+      "answer_is_correct": true,
+      "arithmetic_correct": true,
+      "base_correct": true,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": true,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    {
+      "answer_is_correct": false,
+      "arithmetic_correct": true,
+      "base_correct": false,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": false,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    {
+      "answer_is_correct": true,
+      "arithmetic_correct": true,
+      "base_correct": true,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": true,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    {
+      "answer_is_correct": false,
+      "arithmetic_correct": true,
+      "base_correct": false,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": false,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    }
+  ],
+  "no_new_inference_in_evaluation": true,
+  "not_a_fitted_policy": true,
+  "predeclared_inputs_verified": true,
+  "prior_artifact_count": 130,
+  "prior_artifacts_unchanged": true,
+  "statuses": {
+    "area-both_wrong": "failed",
+    "area-correct": "passed",
+    "area-wrong_base": "failed",
+    "area-wrong_math": "failed",
+    "population-both_wrong": "failed",
+    "population-correct": "passed",
+    "population-wrong_base": "failed",
+    "population-wrong_math": "failed"
+  },
+  "unique_call_ids": 16
+}

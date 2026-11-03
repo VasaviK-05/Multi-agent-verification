@@ -1,0 +1,489 @@
+{
+  "attack_ids": [
+    "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+    "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+    "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+    "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+    "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+  ],
+  "clean_coverage": {
+    "minimum": 0.9,
+    "parent_matrix_id": "ff820aef5976ffaf153d2ed06031002286b0cfaa2c61f0fa284824146d5e1472",
+    "source_evaluation_id": "ee242866bcaff592167ec3ba21723c82c916b576b49187c27dbc7b643a04effc",
+    "strategy_coverage": [
+      [
+        "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        0.975
+      ],
+      [
+        "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+        0.975
+      ],
+      [
+        "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+        0.9
+      ],
+      [
+        "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+        0.9
+      ],
+      [
+        "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        0.975
+      ],
+      [
+        "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        0.975
+      ],
+      [
+        "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        0.975
+      ],
+      [
+        "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        0.975
+      ],
+      [
+        "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+        0.9
+      ],
+      [
+        "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+        0.9
+      ],
+      [
+        "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+        0.9
+      ],
+      [
+        "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+        0.9
+      ],
+      [
+        "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        0.975
+      ],
+      [
+        "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        0.975
+      ],
+      [
+        "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+        0.9
+      ],
+      [
+        "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+        0.9
+      ]
+    ],
+    "training_binding_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+    "version": "finalized_clean_development_coverage_v1"
+  },
+  "compatibility_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+  "reliability_first": {
+    "cost_tolerance": 1e-08,
+    "epsilon": 1e-08,
+    "parent_matrix_id": "623188085489fdedf8b5d7fd2afb80d0f7aaefbf2d26bc40d38db5de93eb68d5",
+    "validation_values": [
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.03,
+        0.5,
+        0.5,
+        0.03,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ],
+      [
+        0.045,
+        0.5,
+        0.5,
+        0.045,
+        0.2
+      ]
+    ],
+    "version": "validation_then_attempt_cost_v1"
+  },
+  "strategy_definitions": [
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 188.79894875281025,
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "verifiers": [
+        "evidence"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 188.79894875281025,
+      "strategy_id": "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+      "verifiers": [
+        "evidence"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 15921.25526748423,
+      "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+      "verifiers": [
+        "confidence",
+        "evidence"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 15921.25526748423,
+      "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+      "verifiers": [
+        "confidence",
+        "evidence"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 188.90355375187937,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 188.90355375187937,
+      "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 232.48554126475938,
+      "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 232.48554126475938,
+      "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+      "verifiers": [
+        "evidence",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 15921.3598724833,
+      "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 15921.3598724833,
+      "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 15964.94185999618,
+      "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 15964.94185999618,
+      "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 232.5901462638285,
+      "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 232.5901462638285,
+      "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 15965.046464995248,
+      "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 15965.046464995248,
+      "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    }
+  ],
+  "strategy_ids": [
+    "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+    "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+    "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+    "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+    "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+    "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+    "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+    "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+    "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+    "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+    "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+    "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+    "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+    "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+    "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+    "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80"
+  ],
+  "values": [
+    [
+      0.031182576882358395,
+      0.5011825768823583,
+      0.5011825768823583,
+      0.031182576882358395,
+      0.2011825768823584
+    ],
+    [
+      0.031182576882358395,
+      0.5011825768823583,
+      0.5011825768823583,
+      0.031182576882358395,
+      0.2011825768823584
+    ],
+    [
+      0.144725705793547,
+      0.599725705793547,
+      0.599725705793547,
+      0.144725705793547,
+      0.29972570579354696
+    ],
+    [
+      0.144725705793547,
+      0.599725705793547,
+      0.599725705793547,
+      0.144725705793547,
+      0.29972570579354696
+    ],
+    [
+      0.031183232094977403,
+      0.5011832320949774,
+      0.5011832320949774,
+      0.031183232094977403,
+      0.2011832320949774
+    ],
+    [
+      0.031183232094977403,
+      0.5011832320949774,
+      0.5011832320949774,
+      0.031183232094977403,
+      0.2011832320949774
+    ],
+    [
+      0.031456215876192434,
+      0.5014562158761924,
+      0.5014562158761924,
+      0.031456215876192434,
+      0.20145621587619245
+    ],
+    [
+      0.031456215876192434,
+      0.5014562158761924,
+      0.5014562158761924,
+      0.031456215876192434,
+      0.20145621587619245
+    ],
+    [
+      0.14472636100616598,
+      0.5997263610061659,
+      0.5997263610061659,
+      0.14472636100616598,
+      0.299726361006166
+    ],
+    [
+      0.14472636100616598,
+      0.5997263610061659,
+      0.5997263610061659,
+      0.14472636100616598,
+      0.299726361006166
+    ],
+    [
+      0.144999344787381,
+      0.599999344787381,
+      0.599999344787381,
+      0.144999344787381,
+      0.299999344787381
+    ],
+    [
+      0.144999344787381,
+      0.599999344787381,
+      0.599999344787381,
+      0.144999344787381,
+      0.299999344787381
+    ],
+    [
+      0.03145687108881144,
+      0.5014568710888114,
+      0.5014568710888114,
+      0.03145687108881144,
+      0.20145687108881144
+    ],
+    [
+      0.03145687108881144,
+      0.5014568710888114,
+      0.5014568710888114,
+      0.03145687108881144,
+      0.20145687108881144
+    ],
+    [
+      0.14500000000000002,
+      0.6,
+      0.6,
+      0.14500000000000002,
+      0.30000000000000004
+    ],
+    [
+      0.14500000000000002,
+      0.6,
+      0.6,
+      0.14500000000000002,
+      0.30000000000000004
+    ]
+  ]
+}

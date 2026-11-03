@@ -1,0 +1,1130 @@
+[
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 9.678209995036013,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 9.678209995036013,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21137.283848738298,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21137.283848738298,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 91.13092127081472,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 91.13092127081472,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 49.27691500342917,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 49.27691500342917,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21218.736560014077,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21218.736560014077,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21176.88255374669,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21176.88255374669,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 130.72962627920788,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 130.72962627920788,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21258.33526502247,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "1eb2397953de570c77d69427f0e14ef636fe222f6f8c33d2b5098b3fdb71b878",
+      "bde588038ad2a1b5cd38074857d8b5ded8c1283de07cbcfb5a369f02dd72637e"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 21258.33526502247,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "arithmetic",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 188.79894875281025,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 188.79894875281025,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15921.25526748423,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15921.25526748423,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 188.90355375187937,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 188.90355375187937,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 232.48554126475938,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 232.48554126475938,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15921.3598724833,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15921.3598724833,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15964.94185999618,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15964.94185999618,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 232.5901462638285,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 232.5901462638285,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15965.046464995248,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 3,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "c2ce6a1b081e7b4367282a1e3190d50878f7a28f0b98e0fd78af397a2dc59d47"
+    ],
+    "coverage": 1.0,
+    "decision_loss": 0.0,
+    "estimated_team_cost_ms": 15965.046464995248,
+    "examples": 6,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "factual",
+    "rejects": 3,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 0,
+    "uncertainty_reasons": {}
+  },
+  {
+    "accepts": 0,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 42.32344499905594,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 42.32344499905594,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15820.463388747885,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15820.463388747885,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 74.17498749564402,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 74.17498749564402,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 42.43273748434149,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 42.43273748434149,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15852.314931244473,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15852.314931244473,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15820.57268123317,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15820.57268123317,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 74.28427998092957,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 0,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.0,
+    "decision_loss": 0.19999999999999998,
+    "estimated_team_cost_ms": 74.28427998092957,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 0,
+    "selective_risk": null,
+    "team": [
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 8,
+    "uncertainty_reasons": {
+      "minimum_contributors": 8
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "reputation_weighted",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15852.424223729759,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  },
+  {
+    "accepts": 4,
+    "aggregation": "dependency_group",
+    "context_ids": [
+      "0a0ea0ef43ba849241d332359a978190ab4a2501bb8a7dbdabcfa4916c779d2f"
+    ],
+    "coverage": 0.75,
+    "decision_loss": 0.05,
+    "estimated_team_cost_ms": 15852.424223729759,
+    "examples": 8,
+    "false_accept": 0,
+    "false_reject": 0,
+    "family": "semantic",
+    "rejects": 2,
+    "selective_risk": 0.0,
+    "team": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "uncertain": 2,
+    "uncertainty_reasons": {
+      "minimum_contributors": 2
+    }
+  }
+]

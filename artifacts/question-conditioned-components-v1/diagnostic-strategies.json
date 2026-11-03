@@ -1,0 +1,58 @@
+{
+  "area": {
+    "components": [
+      [
+        "base_fact",
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 188.79894875281025,
+          "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          "verifiers": [
+            "evidence"
+          ]
+        }
+      ],
+      [
+        "derived_sum",
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 9.678209995036013,
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "verifiers": [
+            "rule"
+          ]
+        }
+      ]
+    ],
+    "contract_id": "6c4155e5610faa28de417900af502ae9e4632b68aa8cb41e5b94e13930b8b4ba",
+    "version": "component_strategy_v1"
+  },
+  "population": {
+    "components": [
+      [
+        "base_fact",
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 188.79894875281025,
+          "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          "verifiers": [
+            "evidence"
+          ]
+        }
+      ],
+      [
+        "derived_sum",
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 9.678209995036013,
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "verifiers": [
+            "rule"
+          ]
+        }
+      ]
+    ],
+    "contract_id": "b8432c30e3bd4ab0f9d289c7dd76bd3f3e7aa65f38e041feb6349bc7ac9d49f4",
+    "version": "component_strategy_v1"
+  }
+}

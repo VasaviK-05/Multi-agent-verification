@@ -1,0 +1,246 @@
+[
+  {
+    "family": "arithmetic",
+    "question": "What is 328 + 536?",
+    "answer": "864",
+    "reference": "864",
+    "validation_id": "multitask42-arithmetic-history-addition-328-536-correct",
+    "selected": "rule",
+    "report_json": "{\"metadata\":{\"actual\":864,\"actual_exact\":\"864\",\"comparison_policy\":\"exact Decimal equality\",\"decision\":\"SUPPORT\",\"expected\":864,\"expected_exact\":\"864\",\"latency_ms\":0.06,\"rule\":\"arithmetic_addition\",\"rule_kind\":\"factual\",\"score_meaning\":\"Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.\"},\"passed\":true,\"reasoning\":\"Expected 864; received 864.\",\"score\":1.0,\"verifier_name\":\"rule\"}",
+    "resources": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "confidence",
+          "resources": [
+            {
+              "resource_id": "confidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "confidence-implementation",
+              "kind": "implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "resource_id": "ollama-model",
+              "kind": "model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "resource_id": "self-consistency-short-answer",
+              "kind": "prompt",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "resource_id": "ollama-service",
+              "kind": "service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        },
+        {
+          "verifier_name": "semantic",
+          "resources": [
+            {
+              "resource_id": "semantic-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "semantic-implementation",
+              "kind": "implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ]
+        }
+      ]
+    },
+    "source_manifest_sha256": "c87d65246015919c02d86c4c83f39e0ded6ede02d25aa551a034b66a738ed485",
+    "source_example_id": "addition-328-536-correct",
+    "source_role": "history"
+  },
+  {
+    "family": "factual",
+    "question": "What is the population of Belgium?",
+    "answer": "The population of Belgium is 11941781.",
+    "reference": "The population of Belgium is 11941781.",
+    "validation_id": "multitask42-factual-history-BE-correct",
+    "selected": "evidence",
+    "report_json": "{\"metadata\":{\"best_retrieval_score\":0.8275878429412842,\"candidate_pipeline\":[{\"article_id\":\"BE\",\"article_key\":\"url:https://www.geonames.org/countries/BE/\",\"article_key_scope\":\"global\",\"chunk_id\":14,\"claim_id\":\"claim-0\",\"claim_index\":0,\"discard_code\":null,\"index_ref\":\"idx-0b78f878aa86:BE:14\",\"nli_executed\":true,\"passed_on_topic\":true,\"passed_select_relevant\":true,\"retrieval_score\":0.8275878429412842,\"source_id\":\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\",\"title\":\"BE\"},{\"article_id\":\"LR\",\"article_key\":\"url:https://www.geonames.org/countries/LR/\",\"article_key_scope\":\"global\",\"chunk_id\":8,\"claim_id\":\"claim-0\",\"claim_index\":0,\"discard_code\":null,\"index_ref\":\"idx-0b78f878aa86:LR:8\",\"nli_executed\":false,\"passed_on_topic\":false,\"passed_select_relevant\":false,\"retrieval_score\":0.549077570438385,\"source_id\":\"url:https://www.geonames.org/countries/LR/#476b7ca8dbdb\",\"title\":\"LR\"},{\"article_id\":\"CM\",\"article_key\":\"url:https://www.geonames.org/countries/CM/\",\"article_key_scope\":\"global\",\"chunk_id\":54,\"claim_id\":\"claim-0\",\"claim_index\":0,\"discard_code\":null,\"index_ref\":\"idx-0b78f878aa86:CM:54\",\"nli_executed\":false,\"passed_on_topic\":false,\"passed_select_relevant\":false,\"retrieval_score\":0.5430408716201782,\"source_id\":\"url:https://www.geonames.org/countries/CM/#31b352a64a12\",\"title\":\"CM\"},{\"article_id\":\"MV\",\"article_key\":\"url:https://www.geonames.org/countries/MV/\",\"article_key_scope\":\"global\",\"chunk_id\":5,\"claim_id\":\"claim-0\",\"claim_index\":0,\"discard_code\":\"off_subject\",\"index_ref\":\"idx-0b78f878aa86:MV:5\",\"nli_executed\":false,\"passed_on_topic\":false,\"passed_select_relevant\":true,\"retrieval_score\":0.4451748728752136,\"source_id\":\"url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4\",\"title\":\"MV\"},{\"article_id\":\"IN\",\"article_key\":\"url:https://www.geonames.org/countries/IN/\",\"article_key_scope\":\"global\",\"chunk_id\":2,\"claim_id\":\"claim-0\",\"claim_index\":0,\"discard_code\":\"off_subject\",\"index_ref\":\"idx-0b78f878aa86:IN:2\",\"nli_executed\":false,\"passed_on_topic\":false,\"passed_select_relevant\":true,\"retrieval_score\":0.4088893234729767,\"source_id\":\"url:https://www.geonames.org/countries/IN/#896f20d2c32b\",\"title\":\"IN\"}],\"claim_decisions\":[{\"best_retrieval_score\":0.8275878429412842,\"claim\":\"The population of Belgium is 11941781.\",\"claim_id\":\"claim-0\",\"claim_index\":0,\"confidence\":0.9903382658958435,\"deciding_source_id\":\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\",\"decision\":\"SUPPORT\",\"evidence_refs\":{\"contradicting\":[],\"discarded\":[\"url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4\",\"url:https://www.geonames.org/countries/IN/#896f20d2c32b\"],\"evaluated\":[\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\"],\"ignored_contradictions\":[],\"ignored_support\":[],\"supporting\":[\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\"]},\"hypothesis\":\"The population of Belgium is 11941781.\",\"template\":\"statement\",\"unsure_reason\":null}],\"claims\":[\"The population of Belgium is 11941781.\"],\"contradicting\":[],\"corpus_version\":\"sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\",\"deciding_claim_id\":\"claim-0\",\"decision\":\"SUPPORT\",\"diagnostic_code\":null,\"discarded_evidence\":[{\"about_subject\":false,\"article_covers_event\":false,\"article_id\":\"MV\",\"article_key\":\"url:https://www.geonames.org/countries/MV/\",\"article_key_scope\":\"global\",\"chunk_id\":5,\"claim_id\":\"claim-0\",\"claim_index\":0,\"condition_consistent\":true,\"discard_code\":\"off_subject\",\"eligibility_basis\":null,\"entity_consistent\":true,\"event_consistent\":true,\"index_ref\":\"idx-0b78f878aa86:MV:5\",\"missing_anchor_terms\":[\"belgium\"],\"missing_event_identifiers\":[],\"missing_numbers\":[],\"reason\":\"article title is about a different subject than the question\",\"retrieval_score\":0.4451748728752136,\"source_id\":\"url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4\",\"title\":\"MV\",\"title_covers_event\":false,\"topic_coverage\":0.24023221105427947,\"url\":\"https://www.geonames.org/countries/MV/\"},{\"about_subject\":false,\"article_covers_event\":false,\"article_id\":\"IN\",\"article_key\":\"url:https://www.geonames.org/countries/IN/\",\"article_key_scope\":\"global\",\"chunk_id\":2,\"claim_id\":\"claim-0\",\"claim_index\":0,\"condition_consistent\":true,\"discard_code\":\"off_subject\",\"eligibility_basis\":null,\"entity_consistent\":true,\"event_consistent\":true,\"index_ref\":\"idx-0b78f878aa86:IN:2\",\"missing_anchor_terms\":[\"belgium\"],\"missing_event_identifiers\":[],\"missing_numbers\":[],\"reason\":\"article title is about a different subject than the question\",\"retrieval_score\":0.4088893234729767,\"source_id\":\"url:https://www.geonames.org/countries/IN/#896f20d2c32b\",\"title\":\"IN\",\"title_covers_event\":false,\"topic_coverage\":0.24023221105427947,\"url\":\"https://www.geonames.org/countries/IN/\"}],\"evaluated_evidence\":[{\"about_subject\":true,\"article_covers_event\":true,\"article_id\":\"BE\",\"article_key\":\"url:https://www.geonames.org/countries/BE/\",\"article_key_scope\":\"global\",\"chunk_id\":14,\"claim_id\":\"claim-0\",\"claim_index\":0,\"claim_names_in_premise\":true,\"condition_consistent\":true,\"discard_code\":\"candidate_retained_for_nli\",\"eligibility_basis\":\"lexical_subject\",\"entity_consistent\":true,\"event_consistent\":true,\"fact_score\":12,\"index_ref\":\"idx-0b78f878aa86:BE:14\",\"match_score\":4,\"missing_anchor_terms\":[],\"missing_event_identifiers\":[],\"missing_numbers\":[],\"nli_label\":\"entailment\",\"nli_output_shape\":\"list[dict]\",\"nli_score\":0.9903382658958435,\"office_holder_consistent\":true,\"premise_windows\":[{\"fact_score\":12,\"nli_label\":\"entailment\",\"premise\":\"The population of Belgium is 11941781.\",\"probabilities\":{\"contradiction\":0.0017662030877545476,\"entailment\":0.9903382658958435,\"neutral\":0.00789548084139824},\"title_dependent\":false,\"token_count\":21,\"value_relation\":\"match\"}],\"probabilities\":{\"contradiction\":0.0017662030877545476,\"entailment\":0.9903382658958435,\"neutral\":0.00789548084139824},\"quantity_kinds\":[\"number\"],\"quantity_scope_aligned\":true,\"relation_aligned\":true,\"relevant_evidence\":\"The population of Belgium is 11941781.\",\"retrieval_score\":0.8275878429412842,\"source_id\":\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\",\"title\":\"BE\",\"title_covers_event\":false,\"topic_coverage\":1.0,\"url\":\"https://www.geonames.org/countries/BE/\",\"value_relation\":\"match\"}],\"evidence_chunk_id\":14,\"evidence_source_id\":\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\",\"evidence_title\":\"BE\",\"ignored_contradictions\":[],\"ignored_support\":[],\"index_version\":\"idx-0b78f878aa86\",\"latency_breakdown_ms\":{\"nli\":122.3,\"retrieval\":28.86,\"total\":152.57},\"latency_ms\":152.57,\"max_premise_windows\":3,\"min_nli_score\":0.5,\"min_retrieval_score\":0.45,\"min_topic_coverage\":0.5,\"nli_label\":\"entailment\",\"nli_model\":\"cross-encoder/nli-deberta-v3-small\",\"nli_output_shape\":\"list[dict]\",\"retrieval_margin\":0.15,\"retrieval_score\":0.8275878429412842,\"retrieved_counts\":[{\"claim_id\":\"claim-0\",\"claim_index\":0,\"retrieved_count\":5}],\"score_meaning\":\"NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.\",\"supporting\":[{\"article_id\":\"BE\",\"article_key\":\"url:https://www.geonames.org/countries/BE/\",\"article_key_scope\":\"global\",\"chunk_id\":14,\"claim_id\":\"claim-0\",\"claim_index\":0,\"excerpt\":\"The population of Belgium is 11941781.\",\"index_ref\":\"idx-0b78f878aa86:BE:14\",\"nli_label\":\"entailment\",\"nli_score\":0.9903382658958435,\"retrieval_score\":0.8275878429412842,\"source_id\":\"url:https://www.geonames.org/countries/BE/#d4ea91dfb974\",\"title\":\"BE\",\"topic_coverage\":1.0,\"url\":\"https://www.geonames.org/countries/BE/\"}],\"thresholds_calibrated\":false,\"top_k\":3,\"topic_margin\":0.3,\"unchecked_claims\":[],\"unsure_reason\":null},\"passed\":true,\"reasoning\":\"NLI result: entailment. Retrieved evidence entails the claim. Evidence: BE. Claim: The population of Belgium is 11941781. NLI confidence: 0.9903.\",\"score\":0.9903382658958435,\"verifier_name\":\"evidence\"}",
+    "resources": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "confidence",
+          "resources": [
+            {
+              "resource_id": "confidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "confidence-implementation",
+              "kind": "implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "resource_id": "ollama-model",
+              "kind": "model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "resource_id": "self-consistency-short-answer",
+              "kind": "prompt",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "resource_id": "ollama-service",
+              "kind": "service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        },
+        {
+          "verifier_name": "semantic",
+          "resources": [
+            {
+              "resource_id": "semantic-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "semantic-implementation",
+              "kind": "implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ]
+        }
+      ]
+    },
+    "source_manifest_sha256": "9be8da9773eaced47faae3ff49e4e1536391be21824bb29f1e2c664cf5fd6e3c",
+    "source_example_id": "BE-correct",
+    "source_role": "history"
+  }
+]

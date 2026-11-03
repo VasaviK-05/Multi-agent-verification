@@ -1,0 +1,1402 @@
+{
+  "cache_contract": "complete_team_independent_v1",
+  "candidates": [
+    {
+      "adapter": "semantic_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ],
+        "readiness": "unknown",
+        "requires_reference": true,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "semantic"
+    },
+    {
+      "adapter": "evidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "evidence"
+    },
+    {
+      "adapter": "rule_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "rule"
+    },
+    {
+      "adapter": "confidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "confidence"
+    }
+  ],
+  "examples": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Yesterday eleven scrolls were catalogued by the archivist.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-01-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes count."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The archivist catalogued eleven scrolls yesterday.",
+      "question_id": "2a4e8783ac2086076419f82ce94416abe416fb4a803fd54f6f49ba2e594d440d",
+      "reference": "The archivist catalogued eleven scrolls yesterday.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-01-equivalent",
+      "split_identity": "reference-fresh-01"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The archivist catalogued twelve scrolls yesterday.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-01-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes count."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The archivist catalogued eleven scrolls yesterday.",
+      "question_id": "2a4e8783ac2086076419f82ce94416abe416fb4a803fd54f6f49ba2e594d440d",
+      "reference": "The archivist catalogued eleven scrolls yesterday.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-01-contrast",
+      "split_identity": "reference-fresh-01"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The fictional planet Vesta has three orbiting satellites.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-04-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes count."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: There are three satellites orbiting the fictional planet Vesta.",
+      "question_id": "74dae58652e840bc5522c5d153aedef5fdeca187044d898b9cd576083e59a2a6",
+      "reference": "There are three satellites orbiting the fictional planet Vesta.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-04-equivalent",
+      "split_identity": "reference-fresh-04"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "There are two satellites orbiting the fictional planet Vesta.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-04-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes count."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: There are three satellites orbiting the fictional planet Vesta.",
+      "question_id": "74dae58652e840bc5522c5d153aedef5fdeca187044d898b9cd576083e59a2a6",
+      "reference": "There are three satellites orbiting the fictional planet Vesta.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-04-contrast",
+      "split_identity": "reference-fresh-04"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "On Tuesday the cactus was never watered by Selene.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-08-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes negation."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: Selene never watered the cactus on Tuesday.",
+      "question_id": "3017a06b87d6e24ee638dc6820b58dd0e3e9ca6e8723e2b3ae5ba9c16f8cc92a",
+      "reference": "Selene never watered the cactus on Tuesday.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-08-equivalent",
+      "split_identity": "reference-fresh-08"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Selene watered the cactus on Tuesday.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-08-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes negation."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: Selene never watered the cactus on Tuesday.",
+      "question_id": "3017a06b87d6e24ee638dc6820b58dd0e3e9ca6e8723e2b3ae5ba9c16f8cc92a",
+      "reference": "Selene never watered the cactus on Tuesday.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-08-contrast",
+      "split_identity": "reference-fresh-08"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The bronze latch was not repaired by the locksmith.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-09-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes negation."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The locksmith did not repair the bronze latch.",
+      "question_id": "4e04d31091c7b9e2e48fd13c4db045f9e825bd174894c8f15c88970a8e95a62e",
+      "reference": "The locksmith did not repair the bronze latch.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-09-equivalent",
+      "split_identity": "reference-fresh-09"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The locksmith repaired the bronze latch.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-09-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes negation."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The locksmith did not repair the bronze latch.",
+      "question_id": "4e04d31091c7b9e2e48fd13c4db045f9e825bd174894c8f15c88970a8e95a62e",
+      "reference": "The locksmith did not repair the bronze latch.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-09-contrast",
+      "split_identity": "reference-fresh-09"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Not one violet balloon burst during the parade.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-13-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes negation."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: None of the violet balloons burst during the parade.",
+      "question_id": "942cf9c1d24c2e353716bb5c0a0da6958af5d43fcaa4c8f93043dd256b3462ea",
+      "reference": "None of the violet balloons burst during the parade.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-13-equivalent",
+      "split_identity": "reference-fresh-13"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "At least one violet balloon burst during the parade.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-13-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes negation."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: None of the violet balloons burst during the parade.",
+      "question_id": "942cf9c1d24c2e353716bb5c0a0da6958af5d43fcaa4c8f93043dd256b3462ea",
+      "reference": "None of the violet balloons burst during the parade.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-13-contrast",
+      "split_identity": "reference-fresh-13"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Idris sent a parcel to Helena.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-18-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes role."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: Helena received a parcel from Idris.",
+      "question_id": "8d1ea3478ef2f5c9c5d5178f992fe62f050f68ff56e1db5a4d548aa3ecf77656",
+      "reference": "Helena received a parcel from Idris.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-18-equivalent",
+      "split_identity": "reference-fresh-18"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Helena sent a parcel to Idris.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-18-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes role."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: Helena received a parcel from Idris.",
+      "question_id": "8d1ea3478ef2f5c9c5d5178f992fe62f050f68ff56e1db5a4d548aa3ecf77656",
+      "reference": "Helena received a parcel from Idris.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-18-contrast",
+      "split_identity": "reference-fresh-18"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Malik followed Leonie through the tunnel.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-20-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes role."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: Leonie was followed through the tunnel by Malik.",
+      "question_id": "dcfa8cf33b042bc856e137f17f2b71a1ccf9f0db43dd688a2f8c86a8d96e6ba1",
+      "reference": "Leonie was followed through the tunnel by Malik.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-20-equivalent",
+      "split_identity": "reference-fresh-20"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "Leonie followed Malik through the tunnel.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-20-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes role."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: Leonie was followed through the tunnel by Malik.",
+      "question_id": "dcfa8cf33b042bc856e137f17f2b71a1ccf9f0db43dd688a2f8c86a8d96e6ba1",
+      "reference": "Leonie was followed through the tunnel by Malik.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-20-contrast",
+      "split_identity": "reference-fresh-20"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The walnut shelf is below the silver vase.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-24-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes spatial."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The silver vase rests above the walnut shelf.",
+      "question_id": "714c9fa1331c232742580cbc3ff5b0532c193e5077e6622bab87687b52f5d44e",
+      "reference": "The silver vase rests above the walnut shelf.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-24-equivalent",
+      "split_identity": "reference-fresh-24"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The silver vase rests below the walnut shelf.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-24-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes spatial."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The silver vase rests above the walnut shelf.",
+      "question_id": "714c9fa1331c232742580cbc3ff5b0532c193e5077e6622bab87687b52f5d44e",
+      "reference": "The silver vase rests above the walnut shelf.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-24-contrast",
+      "split_identity": "reference-fresh-24"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The greenhouse lies west of the tram stop.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-25-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes spatial."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The tram stop lies east of the greenhouse.",
+      "question_id": "508bb19e805c8a1f3d50410a39bd4d282d0f837f4566416c196449554aef3cde",
+      "reference": "The tram stop lies east of the greenhouse.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-25-equivalent",
+      "split_identity": "reference-fresh-25"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The tram stop lies west of the greenhouse.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-25-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes spatial."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The tram stop lies east of the greenhouse.",
+      "question_id": "508bb19e805c8a1f3d50410a39bd4d282d0f837f4566416c196449554aef3cde",
+      "reference": "The tram stop lies east of the greenhouse.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-25-contrast",
+      "split_identity": "reference-fresh-25"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The ivory plate is above the coral bead.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-29-equivalent",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes spatial."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The coral bead is beneath the ivory plate.",
+      "question_id": "3f061ef6ca2a9fbe8cc14c3fc30bd02e0ed8df127e255c0a026f6ae909e271d1",
+      "reference": "The coral bead is beneath the ivory plate.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-29-equivalent",
+      "split_identity": "reference-fresh-29"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 0.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 1.0
+          },
+          "requirements_known": true,
+          "scoring_version": "bounded_reference_frames_v1",
+          "verification_requirements": [
+            "semantic_comparison"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "semantic_comparison"
+        ]
+      },
+      "answer": "The coral bead is above the ivory plate.",
+      "dataset_id": "reference-fresh-v1-final_test",
+      "example_id": "reference-fresh-29-contrast",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-constructed-reference-frames-v1",
+        "provenance": "Equivalent preserves all predicate arguments, polarity, exact count and spatial orientation; negative changes spatial."
+      },
+      "purpose": "heldout",
+      "question": "Paraphrase this reference: The coral bead is beneath the ivory plate.",
+      "question_id": "3f061ef6ca2a9fbe8cc14c3fc30bd02e0ed8df127e255c0a026f6ae909e271d1",
+      "reference": "The coral bead is beneath the ivory plate.",
+      "role": "final_test",
+      "run_id": "reference-fresh-v1-reference-fresh-29-contrast",
+      "split_identity": "reference-fresh-29"
+    }
+  ],
+  "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+  "expected_setup": {
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "factory": "app.benchmark.project_adapter:create_recording_verifiers",
+  "final_test_reservation": {
+    "custody_record": "Procedurally reserved before collection; author prepared independent labels; not blinded external custody.",
+    "dataset_id": "reference-fresh-v1-final_test",
+    "examples": [
+      {
+        "content_identity": "6b67a83aba9696aaa4e45ed7df59b843645ecfee4956b1d3d427f2dc68607cdf",
+        "example_id": "reference-fresh-01-contrast",
+        "question_id": "2a4e8783ac2086076419f82ce94416abe416fb4a803fd54f6f49ba2e594d440d",
+        "split_identity": "reference-fresh-01",
+        "validation_id": "reference-fresh-v1-reference-fresh-01-contrast"
+      },
+      {
+        "content_identity": "0831387ec323b026ee4318bea6fd84fbd69e843ac20bc81668bf2a64d13b1aba",
+        "example_id": "reference-fresh-01-equivalent",
+        "question_id": "2a4e8783ac2086076419f82ce94416abe416fb4a803fd54f6f49ba2e594d440d",
+        "split_identity": "reference-fresh-01",
+        "validation_id": "reference-fresh-v1-reference-fresh-01-equivalent"
+      },
+      {
+        "content_identity": "0929fa36c8390a305d86221198f4030a601345451fd984d41e7d6dc6623259ca",
+        "example_id": "reference-fresh-04-contrast",
+        "question_id": "74dae58652e840bc5522c5d153aedef5fdeca187044d898b9cd576083e59a2a6",
+        "split_identity": "reference-fresh-04",
+        "validation_id": "reference-fresh-v1-reference-fresh-04-contrast"
+      },
+      {
+        "content_identity": "8e22e93776ab110a9adeb4ad562cd0ec60d7fb907dce15161350624e63bfb2df",
+        "example_id": "reference-fresh-04-equivalent",
+        "question_id": "74dae58652e840bc5522c5d153aedef5fdeca187044d898b9cd576083e59a2a6",
+        "split_identity": "reference-fresh-04",
+        "validation_id": "reference-fresh-v1-reference-fresh-04-equivalent"
+      },
+      {
+        "content_identity": "f860d21fbad5e1d2f22b02ec65bd532bafff0998d831216f2d15676db692e47f",
+        "example_id": "reference-fresh-08-contrast",
+        "question_id": "3017a06b87d6e24ee638dc6820b58dd0e3e9ca6e8723e2b3ae5ba9c16f8cc92a",
+        "split_identity": "reference-fresh-08",
+        "validation_id": "reference-fresh-v1-reference-fresh-08-contrast"
+      },
+      {
+        "content_identity": "b0b2d99153fef8e19524254198473db68f0574c33ac9f67f1075d0a13adbe5f4",
+        "example_id": "reference-fresh-08-equivalent",
+        "question_id": "3017a06b87d6e24ee638dc6820b58dd0e3e9ca6e8723e2b3ae5ba9c16f8cc92a",
+        "split_identity": "reference-fresh-08",
+        "validation_id": "reference-fresh-v1-reference-fresh-08-equivalent"
+      },
+      {
+        "content_identity": "1a183cdb8d572af6f71b94b0fb2025836a9afce196553467aa58f69f82d9b3d0",
+        "example_id": "reference-fresh-09-contrast",
+        "question_id": "4e04d31091c7b9e2e48fd13c4db045f9e825bd174894c8f15c88970a8e95a62e",
+        "split_identity": "reference-fresh-09",
+        "validation_id": "reference-fresh-v1-reference-fresh-09-contrast"
+      },
+      {
+        "content_identity": "8c53a1e84cf8b1d2e45707b6b115200f76d2d656d4d4f30f16529c851fd2e83b",
+        "example_id": "reference-fresh-09-equivalent",
+        "question_id": "4e04d31091c7b9e2e48fd13c4db045f9e825bd174894c8f15c88970a8e95a62e",
+        "split_identity": "reference-fresh-09",
+        "validation_id": "reference-fresh-v1-reference-fresh-09-equivalent"
+      },
+      {
+        "content_identity": "f350e5f9a44da02893a303331304165e830476f49632504d517327bbd87a281b",
+        "example_id": "reference-fresh-13-contrast",
+        "question_id": "942cf9c1d24c2e353716bb5c0a0da6958af5d43fcaa4c8f93043dd256b3462ea",
+        "split_identity": "reference-fresh-13",
+        "validation_id": "reference-fresh-v1-reference-fresh-13-contrast"
+      },
+      {
+        "content_identity": "57cc9eab4dbb7204339c3100e572258ee495287e00cf0ba21af16ff859955414",
+        "example_id": "reference-fresh-13-equivalent",
+        "question_id": "942cf9c1d24c2e353716bb5c0a0da6958af5d43fcaa4c8f93043dd256b3462ea",
+        "split_identity": "reference-fresh-13",
+        "validation_id": "reference-fresh-v1-reference-fresh-13-equivalent"
+      },
+      {
+        "content_identity": "52395ca7b85df6f258b8610f542fe292f473a26127617f377bb7ee7a462e58ef",
+        "example_id": "reference-fresh-18-contrast",
+        "question_id": "8d1ea3478ef2f5c9c5d5178f992fe62f050f68ff56e1db5a4d548aa3ecf77656",
+        "split_identity": "reference-fresh-18",
+        "validation_id": "reference-fresh-v1-reference-fresh-18-contrast"
+      },
+      {
+        "content_identity": "6d83430d14ce81856e062749864bc576af5b9fe605a6668bd5b159fc65f3793a",
+        "example_id": "reference-fresh-18-equivalent",
+        "question_id": "8d1ea3478ef2f5c9c5d5178f992fe62f050f68ff56e1db5a4d548aa3ecf77656",
+        "split_identity": "reference-fresh-18",
+        "validation_id": "reference-fresh-v1-reference-fresh-18-equivalent"
+      },
+      {
+        "content_identity": "e5a07581e8aeea7f7916ea78f97dae682ebeb7db4b03dce69c5d3df884e11c1e",
+        "example_id": "reference-fresh-20-contrast",
+        "question_id": "dcfa8cf33b042bc856e137f17f2b71a1ccf9f0db43dd688a2f8c86a8d96e6ba1",
+        "split_identity": "reference-fresh-20",
+        "validation_id": "reference-fresh-v1-reference-fresh-20-contrast"
+      },
+      {
+        "content_identity": "7ab30b990297f85fbffe196e7a3ef2e76ce7b22af22aad1d5674710d994ab5f0",
+        "example_id": "reference-fresh-20-equivalent",
+        "question_id": "dcfa8cf33b042bc856e137f17f2b71a1ccf9f0db43dd688a2f8c86a8d96e6ba1",
+        "split_identity": "reference-fresh-20",
+        "validation_id": "reference-fresh-v1-reference-fresh-20-equivalent"
+      },
+      {
+        "content_identity": "786465fa031a3c4a54af55fa67e134d614a1c4f48a69785e142d90377d14ba97",
+        "example_id": "reference-fresh-24-contrast",
+        "question_id": "714c9fa1331c232742580cbc3ff5b0532c193e5077e6622bab87687b52f5d44e",
+        "split_identity": "reference-fresh-24",
+        "validation_id": "reference-fresh-v1-reference-fresh-24-contrast"
+      },
+      {
+        "content_identity": "8c0ba408a30e24d571322e6ccf7e2d37534a54e2c19537493855a5cacf3b28a5",
+        "example_id": "reference-fresh-24-equivalent",
+        "question_id": "714c9fa1331c232742580cbc3ff5b0532c193e5077e6622bab87687b52f5d44e",
+        "split_identity": "reference-fresh-24",
+        "validation_id": "reference-fresh-v1-reference-fresh-24-equivalent"
+      },
+      {
+        "content_identity": "c881ce31e68f1a443d331ec9e4900918d77f1d45b4c843adb3f3722c66fc6d94",
+        "example_id": "reference-fresh-25-contrast",
+        "question_id": "508bb19e805c8a1f3d50410a39bd4d282d0f837f4566416c196449554aef3cde",
+        "split_identity": "reference-fresh-25",
+        "validation_id": "reference-fresh-v1-reference-fresh-25-contrast"
+      },
+      {
+        "content_identity": "d2d640d980321ae4c5e668faac832ff82bba3573b963e733d9f9ec607290d585",
+        "example_id": "reference-fresh-25-equivalent",
+        "question_id": "508bb19e805c8a1f3d50410a39bd4d282d0f837f4566416c196449554aef3cde",
+        "split_identity": "reference-fresh-25",
+        "validation_id": "reference-fresh-v1-reference-fresh-25-equivalent"
+      },
+      {
+        "content_identity": "34b0b502daf016385271e31eb414f837b72f90b18d775e9c9bd0788396df7fd8",
+        "example_id": "reference-fresh-29-contrast",
+        "question_id": "3f061ef6ca2a9fbe8cc14c3fc30bd02e0ed8df127e255c0a026f6ae909e271d1",
+        "split_identity": "reference-fresh-29",
+        "validation_id": "reference-fresh-v1-reference-fresh-29-contrast"
+      },
+      {
+        "content_identity": "6f101dfa1744ccb492579db76b262d389b1616d2053cf5f88a2e80f91c44c30b",
+        "example_id": "reference-fresh-29-equivalent",
+        "question_id": "3f061ef6ca2a9fbe8cc14c3fc30bd02e0ed8df127e255c0a026f6ae909e271d1",
+        "split_identity": "reference-fresh-29",
+        "validation_id": "reference-fresh-v1-reference-fresh-29-equivalent"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "freeze_id": "94e3a7dcbe2b6ccb3d0155018f04419a9513abce8f3752aaeb32f1c38d2d4596",
+  "intended_use": "heldout",
+  "permitted_datasets": [
+    [
+      "final_test",
+      "reference-fresh-v1-final_test"
+    ]
+  ],
+  "preparation_authorization": "User attachment 9d033868: fresh30 groups,60 examples,240 attempts,300 local generations; no retries or deployment.",
+  "randomness_control": "Existing n5 temperature.8 seeds0..4; stochastic local service, no deterministic claim.",
+  "study_approval": "User attachment a58ea544: current-service transition; cumulative255 verifier starts/372 generation requests; no additional retries.",
+  "version": "offline_heldout_recording_v1"
+}

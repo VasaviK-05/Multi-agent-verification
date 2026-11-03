@@ -1,0 +1,112 @@
+{
+  "version": "compound_required_resource_transfer_v1",
+  "original_freeze_id": "d327793b940b356a0e8cd418c9a6a7ae3d93c3f6a21035a0f36b0e29910ad0c0",
+  "original_policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+  "original_full_resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "scoped_resource_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+  "scoped_setup": {
+    "resources": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        }
+      ]
+    },
+    "environment": {
+      "os": "Windows-10-10.0.26200-SP0",
+      "architecture": "AMD64",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "logical_cpus": "16",
+      "device": "cpu",
+      "concurrency": "sequential",
+      "runtime": "3.11.5",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+      "physical_memory_bytes": "16876888064"
+    },
+    "dependency_versions": {
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "sentence-transformers": "6.1.0",
+      "transformers": "5.17.0",
+      "torch": "2.14.0",
+      "faiss-cpu": "1.15.1",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.23.2",
+      "python": "3.11.5",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion"
+    },
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "evidence_kind": "empirical"
+  },
+  "study_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6",
+  "required_entries_exactly_equal": true,
+  "policy_bytes_unchanged": true,
+  "decision_semantics_unchanged": true,
+  "no_refit": true,
+  "scope": [
+    "evidence",
+    "rule"
+  ],
+  "network_forbidden": true,
+  "history_development_provenance": "Original full-roster recordings unchanged; new scoped final records validated separately.",
+  "code_hashes": {
+    "scripts/scoped_er_adapter.py": "0ab6ca048f516df4e178be5163f7e65ab86c477b765391a8c6e89f7f7ca4039b",
+    "scripts/scoped_compound_bridge.py": "b01eeba66efcf0a5f5f9e7d64df0bf96d8dd211636d2078103f9feae3517971c",
+    "scripts/evaluate_scoped_compound.py": "657a6a3b442ea26394426717378a0a09f7bf411a84fbb17163acefda8df7f3be",
+    "scripts/prepare_scoped_compound.py": "d002e173d24c5ef138cd76d8a29770e3da8049c442aaf3a251a9d3d93302c746"
+  },
+  "authorization": "User attachment2ebba2cc: scoped Evidence/Rule correction and96 reserved calls, zero generations.",
+  "transfer_id": "b6eef0e3b178bafb87368a2884a8209f45e7368448bf05ec82c215f01626d343"
+}

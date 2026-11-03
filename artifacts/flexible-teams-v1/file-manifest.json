@@ -1,0 +1,228 @@
+{
+  "changed_source_files": [
+    {
+      "path": "app/game/execution.py",
+      "sha256": "f5dfb96641b119826f3db44ca373eba654c98f0dca01ad3ad7280cc0ece9b30c"
+    },
+    {
+      "path": "app/game/execution_contract.py",
+      "sha256": "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432"
+    },
+    {
+      "path": "app/game/finalization.py",
+      "sha256": "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b"
+    },
+    {
+      "path": "app/game/models.py",
+      "sha256": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73"
+    },
+    {
+      "path": "scripts/evaluate_flexible_teams.py",
+      "sha256": "f7582391fb1785ce9a8c2a3d671604de198417d73335f5ebc838b132fe6f24c1"
+    },
+    {
+      "path": "tests/test_flexible_teams.py",
+      "sha256": "2784360ae234a59b4a94e4c0f55a6b808b20c3f00c86fca0da33268b45efa4f8"
+    },
+    {
+      "path": "docs/flexible_verifier_teams.md",
+      "sha256": "c5e13703294df577b64a572d06a7ea8a7afdf9cf3937071ecd499802c5192efe"
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/context.json",
+      "sha256": "e9cb06abdc7c3964af4bbaab900a274b8a7ca749bf3f721617d948d25b66ecd5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/contract.json",
+      "sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/enumeration.json",
+      "sha256": "6678a880abeb31a59cf7642e3f8e38dd27d991d4f09b7c55bcdbd5cd79c40311"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/matrix.json",
+      "sha256": "0c7afadfe78adbec0c25e5a8470e4fecdafb80c3422d866ccad414008d609fe8"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/policy.json",
+      "sha256": "4acd309726069c5878d35c99df5fa91c7de7b8159ae5d0c9fc18fbb87fb0c55d"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/solution.json",
+      "sha256": "edd57ad1647e51e143ed95f02b351ae84f3175d1ffa9ab2ded7162190eae0f27"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/strategy-diagnostics.json",
+      "sha256": "2d4bbeb960644ea98f7d311717b9a3f80016b1905cb75be8d65c0b33507473ba"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-1/summary.json",
+      "sha256": "865f587f8268f9596f2145a8959eefc35522779e23bf65022e098daf9f2664ed"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/context.json",
+      "sha256": "a98c47bbd1dc99e3e9b9b071236e62bb4298e0560a762b463cf99fe7e824653e"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/contract.json",
+      "sha256": "785208922e334a21569a29d37bc42f04d591d9b54588668c99a785927eaa79d5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/enumeration.json",
+      "sha256": "1e59955d96f895e4be072b926ff5e37a4552684407c86fc17ce7e19088640bc4"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/matrix.json",
+      "sha256": "f8a75368639adf4aa080798df9ba15a5390e28d4f762f6d6766942fe2409bab5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/solution.json",
+      "sha256": "eba0d5a2bb110f0a632456925147f2c52abd273ab7685d262582f0c3756af9c4"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/strategy-diagnostics.json",
+      "sha256": "e90ca7a482709336749172480010e097883adec336e5a27e3cdb31ad64fae6b6"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/arithmetic-minimum-2/summary.json",
+      "sha256": "90ff9bf39c056e6898e3057b956fb2fc93891cf8401c59263928d62abe41e290"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/baseline-reproduction.json",
+      "sha256": "801b9f50d9bb25b114f1acfc3b87a813765dfad7502ca3a8eadfd027eaf6ff75"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/comparison.json",
+      "sha256": "cb8d357fa196d600d270b92a835499bc0900477ac702355d9d8fe0f39949d710"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/context.json",
+      "sha256": "353daeea8491253dc64adbb672a096a0508a25ba48867d22901ec3b28311bcf5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/contract.json",
+      "sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/enumeration.json",
+      "sha256": "d1c5d4b17039e97c3883cbccc8a14f6662c08613c1e87b39817b16be44b761a9"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/matrix.json",
+      "sha256": "8306cd45bcd745938b02ce5fc73fe2b45f33b744505e5048e617255e3a2ccce0"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/policy.json",
+      "sha256": "d4a69bb8f7f5e6fbfc87b7d4c900f22f191946d001d24655011296b404b2fc00"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/solution.json",
+      "sha256": "a75f111b9d8ca5f042ddc9000b47763648b0f613a050948d7e1c77ab5212226d"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/strategy-diagnostics.json",
+      "sha256": "8223f0c9c4e13402b8042251485eb5291beab35d6a8e1f7ed4d9456daad193f5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-1/summary.json",
+      "sha256": "2c3f7bcd8310618c10dd42fead805bb17a2991ad19853da118516894fc01ff0e"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/context.json",
+      "sha256": "d5f446bc399e751df54970b5fff02127f640d4ba9925c6bafe39bd8b658034b8"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/contract.json",
+      "sha256": "785208922e334a21569a29d37bc42f04d591d9b54588668c99a785927eaa79d5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/enumeration.json",
+      "sha256": "98dce4506b2039ef7fffdbc892a7a08526c3c350bf3da5d0af6a222b4d8cf4f7"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/matrix.json",
+      "sha256": "e88c57b5ee6f1b4775c54cc975af13a51adde9cf75ec878380cc07c8776d5c19"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/solution.json",
+      "sha256": "9a46cfe70052374c0d73eb65fae76e431a8ce1b1cc69f55d0e9e56eb0677c883"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/strategy-diagnostics.json",
+      "sha256": "a37c68192b7a6bc4dca39f865213c6a72cf3a27cdcc1638f5fd9454b5301e9e3"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/factual-minimum-2/summary.json",
+      "sha256": "b24772f233ba280215870da044ee958193dff33304dc4b56ba40d4493a07e1b9"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/input-hashes.json",
+      "sha256": "9f07b9b2953c7916733669b0bb9c16d500ca43ae0ed27055ebc16d1233b766d0"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/context.json",
+      "sha256": "f2abf900f5aba15798b8af20ad4e71a11c289e76102db90daa98cdb35a3b70b1"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/contract.json",
+      "sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/enumeration.json",
+      "sha256": "f75a1480b0e8c893abc85daaeee90de4f6e5a3273cff1de8f73d20e80290b886"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/matrix.json",
+      "sha256": "25192cee308452467f32e48f1c759ccc8828032be8909176a6bd8f871a56f12f"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/solution.json",
+      "sha256": "9770034e6dd53b0fca5459c93d1a88a8d8b82a84eba11013a2344a2c874c8a81"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/strategy-diagnostics.json",
+      "sha256": "32ee1ad2a54eaa1abfda1d51e6193a2caec9c1d7e63239d2740cbe21104c751f"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-1/summary.json",
+      "sha256": "10fa75b482103e80214d2aba6fd73788e1026031b46a4457e562bd4b68dddc9f"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/context.json",
+      "sha256": "bede201efd32e2d2df220714807fb5447615ba404a07563220ed5caf5c6cd374"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/contract.json",
+      "sha256": "785208922e334a21569a29d37bc42f04d591d9b54588668c99a785927eaa79d5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/enumeration.json",
+      "sha256": "5131a327d1522dd43359eecbc4c0f5baca474d1df37273f6cad57404e37164c5"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/matrix.json",
+      "sha256": "a8ef6dd212e5884965a3262250e9500ddc38680a59588a97941dd8cc0dce7b61"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/solution.json",
+      "sha256": "62558d52e9916daa04c30947e795f548a2b73b67663475bf5e644781929fd9e1"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/strategy-diagnostics.json",
+      "sha256": "5f26061d8616cf172a583e5167ab06edb542ef06558b645b5e6dfda1defcb0fd"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/semantic-minimum-2/summary.json",
+      "sha256": "28aba831a6f4772dc3cdf30de3f03c5eb3265bbb2fd56804ece38ac887e1dfc9"
+    },
+    {
+      "path": "artifacts/flexible-teams-v1/verification.json",
+      "sha256": "8ad4c9db8cd6ffb7e6f64bc258b4215f7b730923c99b12acd1b06b5cacbf4dcc"
+    }
+  ],
+  "inventory_path": "artifacts/flexible-teams-v1/file-manifest.json",
+  "note": "Inventory excludes its own hash. Policy probabilities are solver outputs and were not changed during metric reporting."
+}

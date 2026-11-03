@@ -1,0 +1,4274 @@
+[
+  {
+    "attempts": [
+      {
+        "answer": "The area of Bahrain is 765 square kilometres.",
+        "binding_id": "cad763c56ef5516307d1a79c22213a8fe5217b9a6a6a0e5cff8255635c3a8f34",
+        "call_id": "00bde2f789a9ab5418871549a0ad6ce279d542855d1809fc04b04947a56036da",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 364.64480007998645,
+        "question": "What is the area of Bahrain?",
+        "replay_elapsed_ms": 1.0037000756710768,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.8547038435935974,
+            "binding_id": "cad763c56ef5516307d1a79c22213a8fe5217b9a6a6a0e5cff8255635c3a8f34",
+            "candidate_pipeline": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.8547038435935974,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH"
+              },
+              {
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW"
+              },
+              {
+                "article_id": "ME",
+                "article_key": "url:https://www.geonames.org/countries/ME/",
+                "article_key_scope": "global",
+                "chunk_id": 53,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:ME:53",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5491288900375366,
+                "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+                "title": "ME"
+              },
+              {
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.36005765199661255,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.8547038435935974,
+                "claim": "The area of Bahrain is 765 square kilometres.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9929022192955017,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "decision": "SUPPORT",
+                "evidence_refs": {
+                  "contradicting": [],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                    "url:https://www.geonames.org/countries/LT/#7ab6415fe17c"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ]
+                },
+                "hypothesis": "The area of Bahrain is 765 square kilometres.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The area of Bahrain is 765 square kilometres."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "SUPPORT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/KW/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.36005765199661255,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/LT/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 14,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "match_score": 6,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "entailment",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9929022192955017,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 14,
+                    "nli_label": "entailment",
+                    "premise": "The area of Bahrain is 765 square kilometres.",
+                    "probabilities": {
+                      "contradiction": 0.001154914265498519,
+                      "entailment": 0.9929022192955017,
+                      "neutral": 0.005942877847701311
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "match"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.001154914265498519,
+                  "entailment": 0.9929022192955017,
+                  "neutral": 0.005942877847701311
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The area of Bahrain is 765 square kilometres.",
+                "retrieval_score": 0.8547038435935974,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/",
+                "value_relation": "match"
+              }
+            ],
+            "evidence_chunk_id": 1,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+            "evidence_title": "BH",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 216.65,
+              "retrieval": 145.19,
+              "total": 364.39
+            },
+            "latency_ms": 364.39,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "entailment",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.8547038435935974,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 4
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The area of Bahrain is 765 square kilometres.",
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_label": "entailment",
+                "nli_score": 0.9929022192955017,
+                "retrieval_score": 0.8547038435935974,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/"
+              }
+            ],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "d5d2286958e3b90a7ea61cc7bd6ea9dba13ca2871fc5f7b7e10a369740e3d7cb"
+          },
+          "passed": true,
+          "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: BH. Claim: The area of Bahrain is 765 square kilometres. NLI confidence: 0.9929.",
+          "score": 0.9929022192955017,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "d5d2286958e3b90a7ea61cc7bd6ea9dba13ca2871fc5f7b7e10a369740e3d7cb",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "775",
+        "binding_id": "228ac74d504858f6055cb52448f2aa3d05bc1bc86199038bb9ce2ebc10deca68",
+        "call_id": "2b2509e73bd32cea357f36d8a5f4ffdb8d2786c685f6a137eedb383680f5ef6f",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.1867001410573721,
+        "question": "What is 765 + 10?",
+        "replay_elapsed_ms": 0.13090018182992935,
+        "report": {
+          "metadata": {
+            "actual": 775,
+            "actual_exact": "775",
+            "binding_id": "228ac74d504858f6055cb52448f2aa3d05bc1bc86199038bb9ce2ebc10deca68",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "SUPPORT",
+            "expected": 775,
+            "expected_exact": "775",
+            "latency_ms": 0.11,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "e1bbaa2544d7244403ec3ca9c9b68c871757ca71ab5d9ff0d02d29ae3a98a937"
+          },
+          "passed": true,
+          "reasoning": "Expected 775; received 775.",
+          "score": 1.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "e1bbaa2544d7244403ec3ca9c9b68c871757ca71ab5d9ff0d02d29ae3a98a937",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "cad763c56ef5516307d1a79c22213a8fe5217b9a6a6a0e5cff8255635c3a8f34",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 0.9929022192955017,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": 0.992902,
+          "status": "passed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "d5d2286958e3b90a7ea61cc7bd6ea9dba13ca2871fc5f7b7e10a369740e3d7cb",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9929022192955017,
+              "contribution": 2.923539996994542,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 0.9929022192955017,
+              "passed": true,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "d5d2286958e3b90a7ea61cc7bd6ea9dba13ca2871fc5f7b7e10a369740e3d7cb",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "d5d2286958e3b90a7ea61cc7bd6ea9dba13ca2871fc5f7b7e10a369740e3d7cb"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "228ac74d504858f6055cb52448f2aa3d05bc1bc86199038bb9ce2ebc10deca68",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": 1.0,
+          "status": "passed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "e1bbaa2544d7244403ec3ca9c9b68c871757ca71ab5d9ff0d02d29ae3a98a937",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": 3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 1.0,
+              "passed": true,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "e1bbaa2544d7244403ec3ca9c9b68c871757ca71ab5d9ff0d02d29ae3a98a937",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "e1bbaa2544d7244403ec3ca9c9b68c871757ca71ab5d9ff0d02d29ae3a98a937"
+      }
+    ],
+    "contract_id": "6c4155e5610faa28de417900af502ae9e4632b68aa8cb41e5b94e13930b8b4ba",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "area-correct",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": true,
+      "arithmetic_correct": true,
+      "base_correct": true,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    "override_reasons": [],
+    "plan_id": "e36c793d64058b4bd04ab2c1a329fe6f9ca6e729b8eeb5fe6de5055b33f04f20",
+    "public_status": "passed",
+    "selected_strategy_id": "b3ed4a83da8dbd45255ee34374be8ed5052659aba8b5c9a7a998e9d84a774c5d",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The area of Bahrain is 765 square kilometres.",
+        "binding_id": "cad763c56ef5516307d1a79c22213a8fe5217b9a6a6a0e5cff8255635c3a8f34",
+        "call_id": "a937179cf3787c80e69ddbe3c595e181bfb2ecb69b559de2f9178849af5c6a1d",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 55.19209988415241,
+        "question": "What is the area of Bahrain?",
+        "replay_elapsed_ms": 0.9728001896291971,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.8547038435935974,
+            "binding_id": "cad763c56ef5516307d1a79c22213a8fe5217b9a6a6a0e5cff8255635c3a8f34",
+            "candidate_pipeline": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.8547038435935974,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH"
+              },
+              {
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW"
+              },
+              {
+                "article_id": "ME",
+                "article_key": "url:https://www.geonames.org/countries/ME/",
+                "article_key_scope": "global",
+                "chunk_id": 53,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:ME:53",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5491288900375366,
+                "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+                "title": "ME"
+              },
+              {
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.36005765199661255,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.8547038435935974,
+                "claim": "The area of Bahrain is 765 square kilometres.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9929022192955017,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "decision": "SUPPORT",
+                "evidence_refs": {
+                  "contradicting": [],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                    "url:https://www.geonames.org/countries/LT/#7ab6415fe17c"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ]
+                },
+                "hypothesis": "The area of Bahrain is 765 square kilometres.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The area of Bahrain is 765 square kilometres."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "SUPPORT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/KW/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.36005765199661255,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/LT/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 14,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "match_score": 6,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "entailment",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9929022192955017,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 14,
+                    "nli_label": "entailment",
+                    "premise": "The area of Bahrain is 765 square kilometres.",
+                    "probabilities": {
+                      "contradiction": 0.001154914265498519,
+                      "entailment": 0.9929022192955017,
+                      "neutral": 0.005942877847701311
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "match"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.001154914265498519,
+                  "entailment": 0.9929022192955017,
+                  "neutral": 0.005942877847701311
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The area of Bahrain is 765 square kilometres.",
+                "retrieval_score": 0.8547038435935974,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/",
+                "value_relation": "match"
+              }
+            ],
+            "evidence_chunk_id": 1,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+            "evidence_title": "BH",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 46.24,
+              "retrieval": 7.99,
+              "total": 55.02
+            },
+            "latency_ms": 55.02,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "entailment",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.8547038435935974,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 4
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The area of Bahrain is 765 square kilometres.",
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_label": "entailment",
+                "nli_score": 0.9929022192955017,
+                "retrieval_score": 0.8547038435935974,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/"
+              }
+            ],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "effd9e02a4e95dca14e61645c71dd4e23928c8945ab67af34303f2a73ad01476"
+          },
+          "passed": true,
+          "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: BH. Claim: The area of Bahrain is 765 square kilometres. NLI confidence: 0.9929.",
+          "score": 0.9929022192955017,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "effd9e02a4e95dca14e61645c71dd4e23928c8945ab67af34303f2a73ad01476",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "774",
+        "binding_id": "2cdb9f7f3f6bc6cfc3f6f49908c720dc5c9789001d6026c5655752e9c72ae1fa",
+        "call_id": "b0515278775f293e859426661d73f5ec56765f3ac5caf0ff07dbfa2ebd5496f1",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.15460001304745674,
+        "question": "What is 765 + 10?",
+        "replay_elapsed_ms": 0.18809991888701916,
+        "report": {
+          "metadata": {
+            "actual": 774,
+            "actual_exact": "774",
+            "binding_id": "2cdb9f7f3f6bc6cfc3f6f49908c720dc5c9789001d6026c5655752e9c72ae1fa",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "REJECT",
+            "expected": 775,
+            "expected_exact": "775",
+            "latency_ms": 0.07,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "702134907ed786daf16007f846da0b1515c828c63343b5da995454b07c229c06"
+          },
+          "passed": false,
+          "reasoning": "Expected 775; received 774.",
+          "score": 0.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "702134907ed786daf16007f846da0b1515c828c63343b5da995454b07c229c06",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "cad763c56ef5516307d1a79c22213a8fe5217b9a6a6a0e5cff8255635c3a8f34",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 0.9929022192955017,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": 0.992902,
+          "status": "passed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "effd9e02a4e95dca14e61645c71dd4e23928c8945ab67af34303f2a73ad01476",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9929022192955017,
+              "contribution": 2.923539996994542,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 0.9929022192955017,
+              "passed": true,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "effd9e02a4e95dca14e61645c71dd4e23928c8945ab67af34303f2a73ad01476",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "effd9e02a4e95dca14e61645c71dd4e23928c8945ab67af34303f2a73ad01476"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "2cdb9f7f3f6bc6cfc3f6f49908c720dc5c9789001d6026c5655752e9c72ae1fa",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": -1.0,
+          "status": "failed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "702134907ed786daf16007f846da0b1515c828c63343b5da995454b07c229c06",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": -3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -1.0,
+              "passed": false,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "702134907ed786daf16007f846da0b1515c828c63343b5da995454b07c229c06",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "702134907ed786daf16007f846da0b1515c828c63343b5da995454b07c229c06"
+      }
+    ],
+    "contract_id": "6c4155e5610faa28de417900af502ae9e4632b68aa8cb41e5b94e13930b8b4ba",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "area-wrong_math",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": true,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    "override_reasons": [],
+    "plan_id": "e36c793d64058b4bd04ab2c1a329fe6f9ca6e729b8eeb5fe6de5055b33f04f20",
+    "public_status": "failed",
+    "selected_strategy_id": "b3ed4a83da8dbd45255ee34374be8ed5052659aba8b5c9a7a998e9d84a774c5d",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The area of Bahrain is 766 square kilometres.",
+        "binding_id": "867f7f5a1281f635054f7dcdde65b7d059ebd6e2e33a3824f75ddf14023f00e8",
+        "call_id": "9618711cecb7ba2d2994d8c9517cf7a82154f753b1b24c9d8ce5890dd3ae1964",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 60.12180005200207,
+        "question": "What is the area of Bahrain?",
+        "replay_elapsed_ms": 1.154799945652485,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.8773449659347534,
+            "binding_id": "867f7f5a1281f635054f7dcdde65b7d059ebd6e2e33a3824f75ddf14023f00e8",
+            "candidate_pipeline": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.8773449659347534,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH"
+              },
+              {
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW"
+              },
+              {
+                "article_id": "ME",
+                "article_key": "url:https://www.geonames.org/countries/ME/",
+                "article_key_scope": "global",
+                "chunk_id": 53,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:ME:53",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5491288900375366,
+                "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+                "title": "ME"
+              },
+              {
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.3630973696708679,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.8773449659347534,
+                "claim": "The area of Bahrain is 766 square kilometres.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9769747257232666,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "decision": "REJECT",
+                "evidence_refs": {
+                  "contradicting": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                    "url:https://www.geonames.org/countries/LT/#7ab6415fe17c"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": []
+                },
+                "hypothesis": "The area of Bahrain is 766 square kilometres.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The area of Bahrain is 766 square kilometres."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The area of Bahrain is 765 square kilometres.",
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_label": "contradiction",
+                "nli_score": 0.9769747257232666,
+                "retrieval_score": 0.8773449659347534,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/"
+              }
+            ],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "REJECT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/KW/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.3630973696708679,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/LT/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 9,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "match_score": 4,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "contradiction",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9769747257232666,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 9,
+                    "nli_label": "contradiction",
+                    "premise": "The area of Bahrain is 765 square kilometres.",
+                    "probabilities": {
+                      "contradiction": 0.9769747257232666,
+                      "entailment": 0.0031005863565951586,
+                      "neutral": 0.01992458663880825
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "mismatch"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.9769747257232666,
+                  "entailment": 0.0031005863565951586,
+                  "neutral": 0.01992458663880825
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The area of Bahrain is 765 square kilometres.",
+                "retrieval_score": 0.8773449659347534,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/",
+                "value_relation": "mismatch"
+              }
+            ],
+            "evidence_chunk_id": 1,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+            "evidence_title": "BH",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 42.5,
+              "retrieval": 16.09,
+              "total": 59.95
+            },
+            "latency_ms": 59.95,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "contradiction",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.8773449659347534,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 4
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "60299d0310c18a7b8475f789441ae555f284ac33944599dd79ce28ba87e204fc"
+          },
+          "passed": false,
+          "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: BH. Claim: The area of Bahrain is 766 square kilometres. NLI confidence: 0.9770.",
+          "score": 0.9769747257232666,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "60299d0310c18a7b8475f789441ae555f284ac33944599dd79ce28ba87e204fc",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "776",
+        "binding_id": "eafffec10b0ef413e973d74629df84f679b6aa1a87cf398e1d7fbfd4f805da88",
+        "call_id": "8689a402628bdad2aa994624cdd9986d6497166f94c61dfa01585fc499be8755",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.17310003750026226,
+        "question": "What is 766 + 10?",
+        "replay_elapsed_ms": 0.20730006508529186,
+        "report": {
+          "metadata": {
+            "actual": 776,
+            "actual_exact": "776",
+            "binding_id": "eafffec10b0ef413e973d74629df84f679b6aa1a87cf398e1d7fbfd4f805da88",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "SUPPORT",
+            "expected": 776,
+            "expected_exact": "776",
+            "latency_ms": 0.07,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "a831c0640f7f0deb71cc8bcfd9d4a74bdaccf5ad052f1eb0dccb6ca9165aed0f"
+          },
+          "passed": true,
+          "reasoning": "Expected 776; received 776.",
+          "score": 1.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "a831c0640f7f0deb71cc8bcfd9d4a74bdaccf5ad052f1eb0dccb6ca9165aed0f",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "867f7f5a1281f635054f7dcdde65b7d059ebd6e2e33a3824f75ddf14023f00e8",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -0.9769747257232666,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": -0.976975,
+          "status": "failed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "60299d0310c18a7b8475f789441ae555f284ac33944599dd79ce28ba87e204fc",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9769747257232666,
+              "contribution": -2.87664246408003,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -0.9769747257232666,
+              "passed": false,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "60299d0310c18a7b8475f789441ae555f284ac33944599dd79ce28ba87e204fc",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "60299d0310c18a7b8475f789441ae555f284ac33944599dd79ce28ba87e204fc"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "eafffec10b0ef413e973d74629df84f679b6aa1a87cf398e1d7fbfd4f805da88",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": 1.0,
+          "status": "passed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "a831c0640f7f0deb71cc8bcfd9d4a74bdaccf5ad052f1eb0dccb6ca9165aed0f",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": 3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 1.0,
+              "passed": true,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "a831c0640f7f0deb71cc8bcfd9d4a74bdaccf5ad052f1eb0dccb6ca9165aed0f",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "a831c0640f7f0deb71cc8bcfd9d4a74bdaccf5ad052f1eb0dccb6ca9165aed0f"
+      }
+    ],
+    "contract_id": "6c4155e5610faa28de417900af502ae9e4632b68aa8cb41e5b94e13930b8b4ba",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "area-wrong_base",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": false,
+      "arithmetic_correct": true,
+      "base_correct": false,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    "override_reasons": [],
+    "plan_id": "e36c793d64058b4bd04ab2c1a329fe6f9ca6e729b8eeb5fe6de5055b33f04f20",
+    "public_status": "failed",
+    "selected_strategy_id": "b3ed4a83da8dbd45255ee34374be8ed5052659aba8b5c9a7a998e9d84a774c5d",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The area of Bahrain is 766 square kilometres.",
+        "binding_id": "867f7f5a1281f635054f7dcdde65b7d059ebd6e2e33a3824f75ddf14023f00e8",
+        "call_id": "1c2ad7a08e2fd7ad1c0aa21a33bc21474e367aebb5a97383941a794a4445a629",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 62.20669997856021,
+        "question": "What is the area of Bahrain?",
+        "replay_elapsed_ms": 0.7069997955113649,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.8773449659347534,
+            "binding_id": "867f7f5a1281f635054f7dcdde65b7d059ebd6e2e33a3824f75ddf14023f00e8",
+            "candidate_pipeline": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.8773449659347534,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH"
+              },
+              {
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW"
+              },
+              {
+                "article_id": "ME",
+                "article_key": "url:https://www.geonames.org/countries/ME/",
+                "article_key_scope": "global",
+                "chunk_id": 53,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:ME:53",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5491288900375366,
+                "source_id": "url:https://www.geonames.org/countries/ME/#a777d0afc392",
+                "title": "ME"
+              },
+              {
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.3630973696708679,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.8773449659347534,
+                "claim": "The area of Bahrain is 766 square kilometres.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9769747257232666,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "decision": "REJECT",
+                "evidence_refs": {
+                  "contradicting": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                    "url:https://www.geonames.org/countries/LT/#7ab6415fe17c"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BH/#2958afa25ac7"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": []
+                },
+                "hypothesis": "The area of Bahrain is 766 square kilometres.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The area of Bahrain is 766 square kilometres."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [
+              {
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The area of Bahrain is 765 square kilometres.",
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "nli_label": "contradiction",
+                "nli_score": 0.9769747257232666,
+                "retrieval_score": 0.8773449659347534,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/"
+              }
+            ],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "REJECT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "KW",
+                "article_key": "url:https://www.geonames.org/countries/KW/",
+                "article_key_scope": "global",
+                "chunk_id": 4,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:KW:4",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.5571214556694031,
+                "source_id": "url:https://www.geonames.org/countries/KW/#af247303c6ac",
+                "title": "KW",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/KW/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "LT",
+                "article_key": "url:https://www.geonames.org/countries/LT/",
+                "article_key_scope": "global",
+                "chunk_id": 7,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:LT:7",
+                "missing_anchor_terms": [
+                  "bahrain"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.3630973696708679,
+                "source_id": "url:https://www.geonames.org/countries/LT/#7ab6415fe17c",
+                "title": "LT",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/LT/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BH",
+                "article_key": "url:https://www.geonames.org/countries/BH/",
+                "article_key_scope": "global",
+                "chunk_id": 1,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 9,
+                "index_ref": "idx-0b78f878aa86:BH:1",
+                "match_score": 4,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "contradiction",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9769747257232666,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 9,
+                    "nli_label": "contradiction",
+                    "premise": "The area of Bahrain is 765 square kilometres.",
+                    "probabilities": {
+                      "contradiction": 0.9769747257232666,
+                      "entailment": 0.0031005863565951586,
+                      "neutral": 0.01992458663880825
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "mismatch"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.9769747257232666,
+                  "entailment": 0.0031005863565951586,
+                  "neutral": 0.01992458663880825
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The area of Bahrain is 765 square kilometres.",
+                "retrieval_score": 0.8773449659347534,
+                "source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+                "title": "BH",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BH/",
+                "value_relation": "mismatch"
+              }
+            ],
+            "evidence_chunk_id": 1,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BH/#2958afa25ac7",
+            "evidence_title": "BH",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 42.63,
+              "retrieval": 18.03,
+              "total": 62.04
+            },
+            "latency_ms": 62.04,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "contradiction",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.8773449659347534,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 4
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "829e90a74551b8f23d90f0e684579715acd934bb8eade04fa6b8c48f94839c84"
+          },
+          "passed": false,
+          "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: BH. Claim: The area of Bahrain is 766 square kilometres. NLI confidence: 0.9770.",
+          "score": 0.9769747257232666,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "829e90a74551b8f23d90f0e684579715acd934bb8eade04fa6b8c48f94839c84",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "774",
+        "binding_id": "ca1d70b680760bef1ff795654b01d43d8634edf42e672bbecad48a96f6d7688e",
+        "call_id": "666800341a772d9dedf7230ec6eb7ac7e080732a9c12b5b9fb0ebff7d3d6c07b",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.14599994756281376,
+        "question": "What is 766 + 10?",
+        "replay_elapsed_ms": 0.12809992767870426,
+        "report": {
+          "metadata": {
+            "actual": 774,
+            "actual_exact": "774",
+            "binding_id": "ca1d70b680760bef1ff795654b01d43d8634edf42e672bbecad48a96f6d7688e",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "REJECT",
+            "expected": 776,
+            "expected_exact": "776",
+            "latency_ms": 0.07,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "54460e4a63215d9e5cf1b40a7c2deb07e865977bef196fa4008b05ba90aaa2bb"
+          },
+          "passed": false,
+          "reasoning": "Expected 776; received 774.",
+          "score": 0.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "54460e4a63215d9e5cf1b40a7c2deb07e865977bef196fa4008b05ba90aaa2bb",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "867f7f5a1281f635054f7dcdde65b7d059ebd6e2e33a3824f75ddf14023f00e8",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -0.9769747257232666,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": -0.976975,
+          "status": "failed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "829e90a74551b8f23d90f0e684579715acd934bb8eade04fa6b8c48f94839c84",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9769747257232666,
+              "contribution": -2.87664246408003,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -0.9769747257232666,
+              "passed": false,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "829e90a74551b8f23d90f0e684579715acd934bb8eade04fa6b8c48f94839c84",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "829e90a74551b8f23d90f0e684579715acd934bb8eade04fa6b8c48f94839c84"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "ca1d70b680760bef1ff795654b01d43d8634edf42e672bbecad48a96f6d7688e",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": -1.0,
+          "status": "failed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "54460e4a63215d9e5cf1b40a7c2deb07e865977bef196fa4008b05ba90aaa2bb",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": -3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -1.0,
+              "passed": false,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "54460e4a63215d9e5cf1b40a7c2deb07e865977bef196fa4008b05ba90aaa2bb",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "54460e4a63215d9e5cf1b40a7c2deb07e865977bef196fa4008b05ba90aaa2bb"
+      }
+    ],
+    "contract_id": "6c4155e5610faa28de417900af502ae9e4632b68aa8cb41e5b94e13930b8b4ba",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "area-both_wrong",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": false,
+      "group_id": "area",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The area of Bahrain is 765 square kilometres."
+    },
+    "override_reasons": [],
+    "plan_id": "e36c793d64058b4bd04ab2c1a329fe6f9ca6e729b8eeb5fe6de5055b33f04f20",
+    "public_status": "failed",
+    "selected_strategy_id": "b3ed4a83da8dbd45255ee34374be8ed5052659aba8b5c9a7a998e9d84a774c5d",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The population of Belgium is 11941781.",
+        "binding_id": "4e7c602ca42b8b0a0087fb397a1cf0246f6a32a845cce3dbb2710570a074bc60",
+        "call_id": "afa55ac8ea6edb43f5f298545e22c0be2349f80ffcff45e48eb507897abd6a7c",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 52.50320001505315,
+        "question": "What is the population of Belgium?",
+        "replay_elapsed_ms": 0.7883000653237104,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.8275878429412842,
+            "binding_id": "4e7c602ca42b8b0a0087fb397a1cf0246f6a32a845cce3dbb2710570a074bc60",
+            "candidate_pipeline": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.8275878429412842,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE"
+              },
+              {
+                "article_id": "LR",
+                "article_key": "url:https://www.geonames.org/countries/LR/",
+                "article_key_scope": "global",
+                "chunk_id": 8,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:LR:8",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.549077570438385,
+                "source_id": "url:https://www.geonames.org/countries/LR/#476b7ca8dbdb",
+                "title": "LR"
+              },
+              {
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "chunk_id": 54,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5430408716201782,
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "title": "CM"
+              },
+              {
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.4451748728752136,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV"
+              },
+              {
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.4088893234729767,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.8275878429412842,
+                "claim": "The population of Belgium is 11941781.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9903382658958435,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "decision": "SUPPORT",
+                "evidence_refs": {
+                  "contradicting": [],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                    "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ]
+                },
+                "hypothesis": "The population of Belgium is 11941781.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The population of Belgium is 11941781."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "SUPPORT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.4451748728752136,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/MV/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.4088893234729767,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/IN/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 12,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "match_score": 4,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "entailment",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9903382658958435,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 12,
+                    "nli_label": "entailment",
+                    "premise": "The population of Belgium is 11941781.",
+                    "probabilities": {
+                      "contradiction": 0.0017662030877545476,
+                      "entailment": 0.9903382658958435,
+                      "neutral": 0.00789548084139824
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "match"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.0017662030877545476,
+                  "entailment": 0.9903382658958435,
+                  "neutral": 0.00789548084139824
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The population of Belgium is 11941781.",
+                "retrieval_score": 0.8275878429412842,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/",
+                "value_relation": "match"
+              }
+            ],
+            "evidence_chunk_id": 14,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "evidence_title": "BE",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 43.88,
+              "retrieval": 7.67,
+              "total": 52.25
+            },
+            "latency_ms": 52.25,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "entailment",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.8275878429412842,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 5
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The population of Belgium is 11941781.",
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_label": "entailment",
+                "nli_score": 0.9903382658958435,
+                "retrieval_score": 0.8275878429412842,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/"
+              }
+            ],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "6dd37cae48f25700b24c2542cd21fcf8f1db1d5331287875f84bd34c96c6933e"
+          },
+          "passed": true,
+          "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: BE. Claim: The population of Belgium is 11941781. NLI confidence: 0.9903.",
+          "score": 0.9903382658958435,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "6dd37cae48f25700b24c2542cd21fcf8f1db1d5331287875f84bd34c96c6933e",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "11942781",
+        "binding_id": "85311261722242c61c250cbce646c6057612442bf5073c1bef7a6a9dace89452",
+        "call_id": "c30fc1abb566a2f28b833d9ed2e11fe6027af7c03d46e8a9b24325fd0f7e2eef",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.16359984874725342,
+        "question": "What is 11941781 + 1000?",
+        "replay_elapsed_ms": 0.16449997201561928,
+        "report": {
+          "metadata": {
+            "actual": 11942781,
+            "actual_exact": "11942781",
+            "binding_id": "85311261722242c61c250cbce646c6057612442bf5073c1bef7a6a9dace89452",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "SUPPORT",
+            "expected": 11942781,
+            "expected_exact": "11942781",
+            "latency_ms": 0.07,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "39199d2ad56bec517bedb714b03899200f9a56989305b6d2205fd0c69c592ec3"
+          },
+          "passed": true,
+          "reasoning": "Expected 11942781; received 11942781.",
+          "score": 1.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "39199d2ad56bec517bedb714b03899200f9a56989305b6d2205fd0c69c592ec3",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "4e7c602ca42b8b0a0087fb397a1cf0246f6a32a845cce3dbb2710570a074bc60",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 0.9903382658958435,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": 0.990338,
+          "status": "passed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "6dd37cae48f25700b24c2542cd21fcf8f1db1d5331287875f84bd34c96c6933e",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9903382658958435,
+              "contribution": 2.915990592663822,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 0.9903382658958435,
+              "passed": true,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "6dd37cae48f25700b24c2542cd21fcf8f1db1d5331287875f84bd34c96c6933e",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "6dd37cae48f25700b24c2542cd21fcf8f1db1d5331287875f84bd34c96c6933e"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "85311261722242c61c250cbce646c6057612442bf5073c1bef7a6a9dace89452",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": 1.0,
+          "status": "passed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "39199d2ad56bec517bedb714b03899200f9a56989305b6d2205fd0c69c592ec3",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": 3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 1.0,
+              "passed": true,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "39199d2ad56bec517bedb714b03899200f9a56989305b6d2205fd0c69c592ec3",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "39199d2ad56bec517bedb714b03899200f9a56989305b6d2205fd0c69c592ec3"
+      }
+    ],
+    "contract_id": "b8432c30e3bd4ab0f9d289c7dd76bd3f3e7aa65f38e041feb6349bc7ac9d49f4",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "population-correct",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": true,
+      "arithmetic_correct": true,
+      "base_correct": true,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    "override_reasons": [],
+    "plan_id": "929f933cb182196532a7a6aba22b2b5ca11fbad76763f731180c6f8496741a3b",
+    "public_status": "passed",
+    "selected_strategy_id": "bcd29e763820b78b7cea593ae8635a20c4e01536ec1e925984298bb137576e85",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The population of Belgium is 11941781.",
+        "binding_id": "4e7c602ca42b8b0a0087fb397a1cf0246f6a32a845cce3dbb2710570a074bc60",
+        "call_id": "f4b398fbe4ac53f1c4f8769f0a287c4d7b1a3a13f7e96cfa1a7e565ff817f676",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 64.68579987995327,
+        "question": "What is the population of Belgium?",
+        "replay_elapsed_ms": 0.7159998640418053,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.8275878429412842,
+            "binding_id": "4e7c602ca42b8b0a0087fb397a1cf0246f6a32a845cce3dbb2710570a074bc60",
+            "candidate_pipeline": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.8275878429412842,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE"
+              },
+              {
+                "article_id": "LR",
+                "article_key": "url:https://www.geonames.org/countries/LR/",
+                "article_key_scope": "global",
+                "chunk_id": 8,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:LR:8",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.549077570438385,
+                "source_id": "url:https://www.geonames.org/countries/LR/#476b7ca8dbdb",
+                "title": "LR"
+              },
+              {
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "chunk_id": 54,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5430408716201782,
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "title": "CM"
+              },
+              {
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.4451748728752136,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV"
+              },
+              {
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.4088893234729767,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.8275878429412842,
+                "claim": "The population of Belgium is 11941781.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9903382658958435,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "decision": "SUPPORT",
+                "evidence_refs": {
+                  "contradicting": [],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                    "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ]
+                },
+                "hypothesis": "The population of Belgium is 11941781.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The population of Belgium is 11941781."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "SUPPORT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.4451748728752136,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/MV/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.4088893234729767,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/IN/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 12,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "match_score": 4,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "entailment",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9903382658958435,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 12,
+                    "nli_label": "entailment",
+                    "premise": "The population of Belgium is 11941781.",
+                    "probabilities": {
+                      "contradiction": 0.0017662030877545476,
+                      "entailment": 0.9903382658958435,
+                      "neutral": 0.00789548084139824
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "match"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.0017662030877545476,
+                  "entailment": 0.9903382658958435,
+                  "neutral": 0.00789548084139824
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The population of Belgium is 11941781.",
+                "retrieval_score": 0.8275878429412842,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/",
+                "value_relation": "match"
+              }
+            ],
+            "evidence_chunk_id": 14,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "evidence_title": "BE",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 50.41,
+              "retrieval": 13.05,
+              "total": 64.51
+            },
+            "latency_ms": 64.51,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "entailment",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.8275878429412842,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 5
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The population of Belgium is 11941781.",
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_label": "entailment",
+                "nli_score": 0.9903382658958435,
+                "retrieval_score": 0.8275878429412842,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/"
+              }
+            ],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "35aec445d1eb393e3e1ca4a680cb645b6c1a3a21bdc103bff03cad6386e99498"
+          },
+          "passed": true,
+          "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: BE. Claim: The population of Belgium is 11941781. NLI confidence: 0.9903.",
+          "score": 0.9903382658958435,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "35aec445d1eb393e3e1ca4a680cb645b6c1a3a21bdc103bff03cad6386e99498",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "11942780",
+        "binding_id": "f7d180dde63c11f9c4896ade2f7554a107e36f1fb2b6d9827cc8bc81f92120ad",
+        "call_id": "48c08c0cb20974d55a24fa96096496661b471ea1eeff37573466dfe72ee42b40",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.15689991414546967,
+        "question": "What is 11941781 + 1000?",
+        "replay_elapsed_ms": 0.12079998850822449,
+        "report": {
+          "metadata": {
+            "actual": 11942780,
+            "actual_exact": "11942780",
+            "binding_id": "f7d180dde63c11f9c4896ade2f7554a107e36f1fb2b6d9827cc8bc81f92120ad",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "REJECT",
+            "expected": 11942781,
+            "expected_exact": "11942781",
+            "latency_ms": 0.08,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "4bdb3994b885f52982236eb8448c9f19bb5630b2d8f49b693018a83866c5f5a6"
+          },
+          "passed": false,
+          "reasoning": "Expected 11942781; received 11942780.",
+          "score": 0.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "4bdb3994b885f52982236eb8448c9f19bb5630b2d8f49b693018a83866c5f5a6",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "4e7c602ca42b8b0a0087fb397a1cf0246f6a32a845cce3dbb2710570a074bc60",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 0.9903382658958435,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": 0.990338,
+          "status": "passed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "35aec445d1eb393e3e1ca4a680cb645b6c1a3a21bdc103bff03cad6386e99498",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9903382658958435,
+              "contribution": 2.915990592663822,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 0.9903382658958435,
+              "passed": true,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "35aec445d1eb393e3e1ca4a680cb645b6c1a3a21bdc103bff03cad6386e99498",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "35aec445d1eb393e3e1ca4a680cb645b6c1a3a21bdc103bff03cad6386e99498"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "f7d180dde63c11f9c4896ade2f7554a107e36f1fb2b6d9827cc8bc81f92120ad",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": -1.0,
+          "status": "failed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "4bdb3994b885f52982236eb8448c9f19bb5630b2d8f49b693018a83866c5f5a6",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": -3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -1.0,
+              "passed": false,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "4bdb3994b885f52982236eb8448c9f19bb5630b2d8f49b693018a83866c5f5a6",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "4bdb3994b885f52982236eb8448c9f19bb5630b2d8f49b693018a83866c5f5a6"
+      }
+    ],
+    "contract_id": "b8432c30e3bd4ab0f9d289c7dd76bd3f3e7aa65f38e041feb6349bc7ac9d49f4",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "population-wrong_math",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": true,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    "override_reasons": [],
+    "plan_id": "929f933cb182196532a7a6aba22b2b5ca11fbad76763f731180c6f8496741a3b",
+    "public_status": "failed",
+    "selected_strategy_id": "bcd29e763820b78b7cea593ae8635a20c4e01536ec1e925984298bb137576e85",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The population of Belgium is 11941782.",
+        "binding_id": "6a9bb78abe864f3c69b9cd29f62c3b5f9562bb34628c5ed5d6b4bd332a9cc3cd",
+        "call_id": "e5ea173161879d57c8329cc95c06fd61ba205c130c6ed919c69625bdf07a5aee",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 79.75430018268526,
+        "question": "What is the population of Belgium?",
+        "replay_elapsed_ms": 1.3250999618321657,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.929902970790863,
+            "binding_id": "6a9bb78abe864f3c69b9cd29f62c3b5f9562bb34628c5ed5d6b4bd332a9cc3cd",
+            "candidate_pipeline": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.929902970790863,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE"
+              },
+              {
+                "article_id": "EC",
+                "article_key": "url:https://www.geonames.org/countries/EC/",
+                "article_key_scope": "global",
+                "chunk_id": 19,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:EC:19",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5761301517486572,
+                "source_id": "url:https://www.geonames.org/countries/EC/#9284fe8c3a13",
+                "title": "EC"
+              },
+              {
+                "article_id": "LR",
+                "article_key": "url:https://www.geonames.org/countries/LR/",
+                "article_key_scope": "global",
+                "chunk_id": 8,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:LR:8",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.570313572883606,
+                "source_id": "url:https://www.geonames.org/countries/LR/#476b7ca8dbdb",
+                "title": "LR"
+              },
+              {
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "chunk_id": 54,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5430408716201782,
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "title": "CM"
+              },
+              {
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.49505478143692017,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV"
+              },
+              {
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.47395390272140503,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.929902970790863,
+                "claim": "The population of Belgium is 11941782.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9678749442100525,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "decision": "REJECT",
+                "evidence_refs": {
+                  "contradicting": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                    "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": []
+                },
+                "hypothesis": "The population of Belgium is 11941782.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The population of Belgium is 11941782."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The population of Belgium is 11941781.",
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_label": "contradiction",
+                "nli_score": 0.9678749442100525,
+                "retrieval_score": 0.929902970790863,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/"
+              }
+            ],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "REJECT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.49505478143692017,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/MV/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.47395390272140503,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/IN/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 7,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "match_score": 2,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "contradiction",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9678749442100525,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 7,
+                    "nli_label": "contradiction",
+                    "premise": "The population of Belgium is 11941781.",
+                    "probabilities": {
+                      "contradiction": 0.9678749442100525,
+                      "entailment": 0.007030827458947897,
+                      "neutral": 0.02509431540966034
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "mismatch"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.9678749442100525,
+                  "entailment": 0.007030827458947897,
+                  "neutral": 0.02509431540966034
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The population of Belgium is 11941781.",
+                "retrieval_score": 0.929902970790863,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/",
+                "value_relation": "mismatch"
+              }
+            ],
+            "evidence_chunk_id": 14,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "evidence_title": "BE",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 50.02,
+              "retrieval": 27.96,
+              "total": 79.54
+            },
+            "latency_ms": 79.54,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "contradiction",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.929902970790863,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 6
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "c4a4aa89893f6e0db6422c7ab475ea4856f4a066808e8e1eff3246b7db0f3d45"
+          },
+          "passed": false,
+          "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: BE. Claim: The population of Belgium is 11941782. NLI confidence: 0.9679.",
+          "score": 0.9678749442100525,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "c4a4aa89893f6e0db6422c7ab475ea4856f4a066808e8e1eff3246b7db0f3d45",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "11942782",
+        "binding_id": "e90f0696196ab7fdfc762785346d8d8d3d633062db649668eac6d3484f5f656c",
+        "call_id": "6ced93a480b058cd3fe1ff55b9fde5be7a134c52421c9e495ca6ba94497f177f",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.14350004494190216,
+        "question": "What is 11941782 + 1000?",
+        "replay_elapsed_ms": 0.19880011677742004,
+        "report": {
+          "metadata": {
+            "actual": 11942782,
+            "actual_exact": "11942782",
+            "binding_id": "e90f0696196ab7fdfc762785346d8d8d3d633062db649668eac6d3484f5f656c",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "SUPPORT",
+            "expected": 11942782,
+            "expected_exact": "11942782",
+            "latency_ms": 0.06,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "941d5d15092d9ce3cf63abfdf181be024a69569c1ad036fcaddcbec1599ff014"
+          },
+          "passed": true,
+          "reasoning": "Expected 11942782; received 11942782.",
+          "score": 1.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "941d5d15092d9ce3cf63abfdf181be024a69569c1ad036fcaddcbec1599ff014",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "6a9bb78abe864f3c69b9cd29f62c3b5f9562bb34628c5ed5d6b4bd332a9cc3cd",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -0.9678749442100525,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": -0.967875,
+          "status": "failed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "c4a4aa89893f6e0db6422c7ab475ea4856f4a066808e8e1eff3246b7db0f3d45",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9678749442100525,
+              "contribution": -2.849848712690624,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -0.9678749442100525,
+              "passed": false,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "c4a4aa89893f6e0db6422c7ab475ea4856f4a066808e8e1eff3246b7db0f3d45",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "c4a4aa89893f6e0db6422c7ab475ea4856f4a066808e8e1eff3246b7db0f3d45"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "e90f0696196ab7fdfc762785346d8d8d3d633062db649668eac6d3484f5f656c",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": 1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": 1.0,
+          "status": "passed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "941d5d15092d9ce3cf63abfdf181be024a69569c1ad036fcaddcbec1599ff014",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": 3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": 1.0,
+              "passed": true,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "941d5d15092d9ce3cf63abfdf181be024a69569c1ad036fcaddcbec1599ff014",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "passed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "941d5d15092d9ce3cf63abfdf181be024a69569c1ad036fcaddcbec1599ff014"
+      }
+    ],
+    "contract_id": "b8432c30e3bd4ab0f9d289c7dd76bd3f3e7aa65f38e041feb6349bc7ac9d49f4",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "population-wrong_base",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": false,
+      "arithmetic_correct": true,
+      "base_correct": false,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    "override_reasons": [],
+    "plan_id": "929f933cb182196532a7a6aba22b2b5ca11fbad76763f731180c6f8496741a3b",
+    "public_status": "failed",
+    "selected_strategy_id": "bcd29e763820b78b7cea593ae8635a20c4e01536ec1e925984298bb137576e85",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  },
+  {
+    "attempts": [
+      {
+        "answer": "The population of Belgium is 11941782.",
+        "binding_id": "6a9bb78abe864f3c69b9cd29f62c3b5f9562bb34628c5ed5d6b4bd332a9cc3cd",
+        "call_id": "f6329cab1e56e583f841c3d72c71db2dd2af6543937f9c55498ef196c699aa34",
+        "component_id": "base_fact",
+        "estimated_cost": 188.79894875281025,
+        "live_elapsed_ms": 62.28629988618195,
+        "question": "What is the population of Belgium?",
+        "replay_elapsed_ms": 0.7509998977184296,
+        "report": {
+          "metadata": {
+            "best_retrieval_score": 0.929902970790863,
+            "binding_id": "6a9bb78abe864f3c69b9cd29f62c3b5f9562bb34628c5ed5d6b4bd332a9cc3cd",
+            "candidate_pipeline": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_executed": true,
+                "passed_on_topic": true,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.929902970790863,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE"
+              },
+              {
+                "article_id": "EC",
+                "article_key": "url:https://www.geonames.org/countries/EC/",
+                "article_key_scope": "global",
+                "chunk_id": 19,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:EC:19",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5761301517486572,
+                "source_id": "url:https://www.geonames.org/countries/EC/#9284fe8c3a13",
+                "title": "EC"
+              },
+              {
+                "article_id": "LR",
+                "article_key": "url:https://www.geonames.org/countries/LR/",
+                "article_key_scope": "global",
+                "chunk_id": 8,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:LR:8",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.570313572883606,
+                "source_id": "url:https://www.geonames.org/countries/LR/#476b7ca8dbdb",
+                "title": "LR"
+              },
+              {
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "chunk_id": 54,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": null,
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": false,
+                "retrieval_score": 0.5430408716201782,
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "title": "CM"
+              },
+              {
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.49505478143692017,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV"
+              },
+              {
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "discard_code": "off_subject",
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "nli_executed": false,
+                "passed_on_topic": false,
+                "passed_select_relevant": true,
+                "retrieval_score": 0.47395390272140503,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN"
+              }
+            ],
+            "claim_decisions": [
+              {
+                "best_retrieval_score": 0.929902970790863,
+                "claim": "The population of Belgium is 11941782.",
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "confidence": 0.9678749442100525,
+                "deciding_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "decision": "REJECT",
+                "evidence_refs": {
+                  "contradicting": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                    "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                  ],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                  ],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "supporting": []
+                },
+                "hypothesis": "The population of Belgium is 11941782.",
+                "template": "statement",
+                "unsure_reason": null
+              }
+            ],
+            "claims": [
+              "The population of Belgium is 11941782."
+            ],
+            "component_id": "base_fact",
+            "contradicting": [
+              {
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "excerpt": "The population of Belgium is 11941781.",
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "nli_label": "contradiction",
+                "nli_score": 0.9678749442100525,
+                "retrieval_score": 0.929902970790863,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/"
+              }
+            ],
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "deciding_claim_id": "claim-0",
+            "decision": "REJECT",
+            "diagnostic_code": null,
+            "discarded_evidence": [
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "chunk_id": 5,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.49505478143692017,
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "title": "MV",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/MV/"
+              },
+              {
+                "about_subject": false,
+                "article_covers_event": false,
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "chunk_id": 2,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "condition_consistent": true,
+                "discard_code": "off_subject",
+                "eligibility_basis": null,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "missing_anchor_terms": [
+                  "belgium"
+                ],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "reason": "article title is about a different subject than the question",
+                "retrieval_score": 0.47395390272140503,
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "title": "IN",
+                "title_covers_event": false,
+                "topic_coverage": 0.24023221105427947,
+                "url": "https://www.geonames.org/countries/IN/"
+              }
+            ],
+            "evaluated_evidence": [
+              {
+                "about_subject": true,
+                "article_covers_event": true,
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "chunk_id": 14,
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "claim_names_in_premise": true,
+                "condition_consistent": true,
+                "discard_code": "candidate_retained_for_nli",
+                "eligibility_basis": "lexical_subject",
+                "entity_consistent": true,
+                "event_consistent": true,
+                "fact_score": 7,
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "match_score": 2,
+                "missing_anchor_terms": [],
+                "missing_event_identifiers": [],
+                "missing_numbers": [],
+                "nli_label": "contradiction",
+                "nli_output_shape": "list[dict]",
+                "nli_score": 0.9678749442100525,
+                "office_holder_consistent": true,
+                "premise_windows": [
+                  {
+                    "fact_score": 7,
+                    "nli_label": "contradiction",
+                    "premise": "The population of Belgium is 11941781.",
+                    "probabilities": {
+                      "contradiction": 0.9678749442100525,
+                      "entailment": 0.007030827458947897,
+                      "neutral": 0.02509431540966034
+                    },
+                    "title_dependent": false,
+                    "token_count": 21,
+                    "value_relation": "mismatch"
+                  }
+                ],
+                "probabilities": {
+                  "contradiction": 0.9678749442100525,
+                  "entailment": 0.007030827458947897,
+                  "neutral": 0.02509431540966034
+                },
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "relation_aligned": true,
+                "relevant_evidence": "The population of Belgium is 11941781.",
+                "retrieval_score": 0.929902970790863,
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "title": "BE",
+                "title_covers_event": false,
+                "topic_coverage": 1.0,
+                "url": "https://www.geonames.org/countries/BE/",
+                "value_relation": "mismatch"
+              }
+            ],
+            "evidence_chunk_id": 14,
+            "evidence_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "evidence_title": "BE",
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "index_version": "idx-0b78f878aa86",
+            "latency_breakdown_ms": {
+              "nli": 44.71,
+              "retrieval": 15.92,
+              "total": 62.13
+            },
+            "latency_ms": 62.13,
+            "max_premise_windows": 3,
+            "min_nli_score": 0.5,
+            "min_retrieval_score": 0.45,
+            "min_topic_coverage": 0.5,
+            "nli_label": "contradiction",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "retrieval_margin": 0.15,
+            "retrieval_score": 0.929902970790863,
+            "retrieved_counts": [
+              {
+                "claim_id": "claim-0",
+                "claim_index": 0,
+                "retrieved_count": 6
+              }
+            ],
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "supporting": [],
+            "thresholds_calibrated": false,
+            "top_k": 3,
+            "topic_margin": 0.3,
+            "unchecked_claims": [],
+            "unsure_reason": null,
+            "validation_id": "9e5cb1f5cffee47f400c3e13d14eed7ced15b484dab1845b7ddfa8c92c148b0e"
+          },
+          "passed": false,
+          "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: BE. Claim: The population of Belgium is 11941782. NLI confidence: 0.9679.",
+          "score": 0.9678749442100525,
+          "verifier_name": "evidence"
+        },
+        "state": "directional",
+        "validation_id": "9e5cb1f5cffee47f400c3e13d14eed7ced15b484dab1845b7ddfa8c92c148b0e",
+        "verifier_name": "evidence"
+      },
+      {
+        "answer": "11942780",
+        "binding_id": "a54cade15cef3d07c80e7008c00c10b5b6796f96a74f33d87c4032a698cc0e48",
+        "call_id": "76d1c25d2e4a031b2a157d91c45ccf2c3ea6462846d66c08ecc5d3df57727389",
+        "component_id": "derived_sum",
+        "estimated_cost": 9.678209995036013,
+        "live_elapsed_ms": 0.14660018496215343,
+        "question": "What is 11941782 + 1000?",
+        "replay_elapsed_ms": 0.16150018200278282,
+        "report": {
+          "metadata": {
+            "actual": 11942780,
+            "actual_exact": "11942780",
+            "binding_id": "a54cade15cef3d07c80e7008c00c10b5b6796f96a74f33d87c4032a698cc0e48",
+            "comparison_policy": "exact Decimal equality",
+            "component_id": "derived_sum",
+            "decision": "REJECT",
+            "expected": 11942782,
+            "expected_exact": "11942782",
+            "latency_ms": 0.07,
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "validation_id": "ff724ef72147ac98cd6b8d3120006360491ea6f9d9839d5a994bdd94e532cbb2"
+          },
+          "passed": false,
+          "reasoning": "Expected 11942782; received 11942780.",
+          "score": 0.0,
+          "verifier_name": "rule"
+        },
+        "state": "directional",
+        "validation_id": "ff724ef72147ac98cd6b8d3120006360491ea6f9d9839d5a994bdd94e532cbb2",
+        "verifier_name": "rule"
+      }
+    ],
+    "components": [
+      {
+        "achieved": [
+          "direct_fact"
+        ],
+        "binding_id": "6a9bb78abe864f3c69b9cd29f62c3b5f9562bb34628c5ed5d6b4bd332a9cc3cd",
+        "component_id": "base_fact",
+        "depends_on": [],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -0.9678749442100525,
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "score": -0.967875,
+          "status": "failed",
+          "team": [
+            "evidence"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "9e5cb1f5cffee47f400c3e13d14eed7ced15b484dab1845b7ddfa8c92c148b0e",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 0.9678749442100525,
+              "contribution": -2.849848712690624,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -0.9678749442100525,
+              "passed": false,
+              "reliability_strength": 0.9000000000000001,
+              "reputation": 0.9500000000000001,
+              "validation_id": "9e5cb1f5cffee47f400c3e13d14eed7ced15b484dab1845b7ddfa8c92c148b0e",
+              "verifier_name": "evidence",
+              "weight": 2.944438979166442
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "direct_fact"
+        ],
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "9e5cb1f5cffee47f400c3e13d14eed7ced15b484dab1845b7ddfa8c92c148b0e"
+      },
+      {
+        "achieved": [
+          "arithmetic"
+        ],
+        "binding_id": "a54cade15cef3d07c80e7008c00c10b5b6796f96a74f33d87c4032a698cc0e48",
+        "component_id": "derived_sum",
+        "depends_on": [
+          "base_fact"
+        ],
+        "detail": {
+          "aggregation": "log_odds",
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "domain": "general",
+          "fallback": null,
+          "groups": [],
+          "lower_cut": -0.55,
+          "missing_reports": [],
+          "raw_score": -1.0,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "score": -1.0,
+          "status": "failed",
+          "team": [
+            "rule"
+          ],
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "validation_id": "ff724ef72147ac98cd6b8d3120006360491ea6f9d9839d5a994bdd94e532cbb2",
+          "votes": [
+            {
+              "abstained": false,
+              "confidence": 1.0,
+              "contribution": -3.7135720667043066,
+              "failure_group_id": null,
+              "included": true,
+              "inclusion_reason": "included",
+              "normalized_strength": -1.0,
+              "passed": false,
+              "reliability_strength": 0.9523809523809523,
+              "reputation": 0.9761904761904762,
+              "validation_id": "ff724ef72147ac98cd6b8d3120006360491ea6f9d9839d5a994bdd94e532cbb2",
+              "verifier_name": "rule",
+              "weight": 3.7135720667043066
+            }
+          ]
+        },
+        "public_status": "failed",
+        "reasons": [],
+        "required": [
+          "arithmetic"
+        ],
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ],
+        "unresolved": [],
+        "validation_id": "ff724ef72147ac98cd6b8d3120006360491ea6f9d9839d5a994bdd94e532cbb2"
+      }
+    ],
+    "contract_id": "b8432c30e3bd4ab0f9d289c7dd76bd3f3e7aa65f38e041feb6349bc7ac9d49f4",
+    "contributor_count": 2,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "dependency_assumptions": {
+      "dependencies": [
+        {
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "resource_id": "local-embedding-snapshot",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "resource_id": "local-nli-snapshot",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unknown_treatment": "shared_unknown",
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "version": "multitask-observed-dependencies-v1"
+    },
+    "early_stopping_enabled": false,
+    "estimated_attempted_cost": 198.47715874784626,
+    "estimated_selected_cost": 198.47715874784626,
+    "example_id": "population-both_wrong",
+    "execution_mode": "diagnostic_no_policy",
+    "independent_label": {
+      "answer_is_correct": false,
+      "arithmetic_correct": false,
+      "base_correct": false,
+      "group_id": "population",
+      "not_blinded": true,
+      "source": "Retained history-source corpus fact; independent integer addition",
+      "source_fact": "The population of Belgium is 11941781."
+    },
+    "override_reasons": [],
+    "plan_id": "929f933cb182196532a7a6aba22b2b5ca11fbad76763f731180c6f8496741a3b",
+    "public_status": "failed",
+    "selected_strategy_id": "bcd29e763820b78b7cea593ae8635a20c4e01536ec1e925984298bb137576e85",
+    "selection_status": "diagnostic",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "termination": "complete_selected_team"
+  }
+]
