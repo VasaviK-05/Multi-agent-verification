@@ -4,8 +4,8 @@ from pathlib import Path
 from scripts.policy_package import load
 def main():
     folder=Path('artifacts/publication-v1')
-    manifest=folder/'file-hashes-v2.json'
-    if not manifest.exists():manifest=folder/'file-hashes.json'
+    versions=list(folder.glob('file-hashes-v*.json'))
+    manifest=max(versions,key=lambda p:int(p.stem.rsplit('v',1)[1])) if versions else folder/'file-hashes.json'
     rows=json.loads(manifest.read_text(encoding='utf-8'));bad=[]
     for name,expected in rows.items():
         path=Path(name)
