@@ -1,0 +1,64 @@
+{
+  "attempt_costs": [
+    [
+      "confidence",
+      13678.262464996078
+    ],
+    [
+      "evidence",
+      111.56469999841647
+    ],
+    [
+      "rule",
+      0.07588749431306496
+    ],
+    [
+      "semantic",
+      23.642405001737643
+    ]
+  ],
+  "budget": 15965.046464995248,
+  "calibration_id": "42ad21401196b164eee5847d1e7f1b1d211fa7302bd9e0224e807ebdac181f04",
+  "calibration_input_digest": "92b1daa082d77ecbb1d6031bc26302d37f80d4130a327d38e8a7956c796da1f3",
+  "estimates": [
+    {
+      "attempt_cost": 13678.262464996078,
+      "attempts": 80,
+      "failures": 0,
+      "mean_ms": 13678.262464996078,
+      "median_ms": 13621.815650025383,
+      "p95_nearest_rank_ms": 15020.719100022689,
+      "verifier_name": "confidence"
+    },
+    {
+      "attempt_cost": 111.56469999841647,
+      "attempts": 80,
+      "failures": 0,
+      "mean_ms": 111.56469999841647,
+      "median_ms": 84.27575003588572,
+      "p95_nearest_rank_ms": 198.6775000113994,
+      "verifier_name": "evidence"
+    },
+    {
+      "attempt_cost": 0.07588749431306496,
+      "attempts": 80,
+      "failures": 0,
+      "mean_ms": 0.07588749431306496,
+      "median_ms": 0.05400000372901559,
+      "p95_nearest_rank_ms": 0.17310003750026226,
+      "verifier_name": "rule"
+    },
+    {
+      "attempt_cost": 23.642405001737643,
+      "attempts": 80,
+      "failures": 0,
+      "mean_ms": 23.642405001737643,
+      "median_ms": 18.811499990988523,
+      "p95_nearest_rank_ms": 47.440199996344745,
+      "verifier_name": "semantic"
+    }
+  ],
+  "interpretation": "Fresh mean measured verifier-attempt wall milliseconds from 80 history/development observations per verifier; includes first and subsequent calls; not money or request latency.",
+  "setup_fingerprint": "a552f04a646eb09c527e1e4b54f7cce59dde5277be31c1644cf67d161429f777",
+  "units": "ms"
+}

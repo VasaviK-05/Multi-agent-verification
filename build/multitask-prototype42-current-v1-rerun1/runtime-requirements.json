@@ -1,0 +1,28 @@
+{
+  "application_source_digest": "583fa4f909def95fc78784993793ce0da7bc94909ba164eed3cdcbbda77c7714",
+  "concurrent_deployment_observer_diff_sha256": "05be1949ba722c21e90dd2b994d03765aca2d414d9c03c588654974c807f90b8",
+  "dependency_versions": {
+    "faiss-cpu": "1.15.1",
+    "numpy": "2.2.6",
+    "pydantic": "2.13.5",
+    "python": "3.10.0",
+    "requests": "2.33.1",
+    "safetensors": "0.8.0",
+    "sentence-transformers": "6.1.0",
+    "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+    "tokenizers": "0.23.2",
+    "torch": "2.14.0",
+    "transformers": "5.17.0"
+  },
+  "evidence_resource_manifest_id": "898af00e993768ab1d2d320a4cd2d743187ccb475979a39072c1bc8deabf96d7",
+  "execution_mode": "game",
+  "note": "Deployment expectations only; local paths, raw recordings and credentials are excluded.",
+  "ollama": {
+    "digest": null,
+    "model": "llama3.2:3b",
+    "server_version": "0.40.11"
+  },
+  "python": "3.10.0",
+  "relocation_binding_id": null,
+  "source_revision": "b03ace7d5c71a775eadc5812d4bb5ff01211b863"
+}

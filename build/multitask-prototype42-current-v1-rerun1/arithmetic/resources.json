@@ -1,0 +1,110 @@
+{
+  "verifiers": [
+    {
+      "resources": [
+        {
+          "kind": "configuration",
+          "resource_id": "confidence-adapter-configuration",
+          "sha256": "b3ec769299cc6c008e2c7a47bd959558571221a9ab89a40ec1bf2d0ed5e8c530"
+        },
+        {
+          "kind": "implementation",
+          "resource_id": "confidence-implementation",
+          "sha256": "1492ddd2562e338a8a1a84dc8edc01ffd997ae1701ab436bc2fec0613e3683f6"
+        },
+        {
+          "kind": "model",
+          "resource_id": "local-nli-snapshot",
+          "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+        },
+        {
+          "kind": "model",
+          "resource_id": "ollama-model",
+          "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+        },
+        {
+          "kind": "prompt",
+          "resource_id": "self-consistency-short-answer",
+          "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+        },
+        {
+          "kind": "service",
+          "resource_id": "ollama-service",
+          "sha256": "c167e5133b0c0f9cb650c1d51cb5592a9be4c5d73133076389fb89ecaf5b0be9"
+        }
+      ],
+      "verifier_name": "confidence"
+    },
+    {
+      "resources": [
+        {
+          "kind": "configuration",
+          "resource_id": "evidence-adapter-configuration",
+          "sha256": "b3ec769299cc6c008e2c7a47bd959558571221a9ab89a40ec1bf2d0ed5e8c530"
+        },
+        {
+          "kind": "corpus",
+          "resource_id": "evidence-corpus",
+          "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+        },
+        {
+          "kind": "implementation",
+          "resource_id": "evidence-implementation",
+          "sha256": "5903359855c9fef4e92584643aceb8b4c494835907aaaa5106fa80c45b58119e"
+        },
+        {
+          "kind": "index",
+          "resource_id": "evidence-index",
+          "sha256": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98"
+        },
+        {
+          "kind": "model",
+          "resource_id": "local-embedding-snapshot",
+          "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+        },
+        {
+          "kind": "model",
+          "resource_id": "local-nli-snapshot",
+          "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+        }
+      ],
+      "verifier_name": "evidence"
+    },
+    {
+      "resources": [
+        {
+          "kind": "configuration",
+          "resource_id": "rule-adapter-configuration",
+          "sha256": "b3ec769299cc6c008e2c7a47bd959558571221a9ab89a40ec1bf2d0ed5e8c530"
+        },
+        {
+          "kind": "implementation",
+          "resource_id": "rule-implementation",
+          "sha256": "7522a6bcffe4234e3e0a23e0a944a197f831b7a496f905b049ffed552afd907d"
+        }
+      ],
+      "verifier_name": "rule"
+    },
+    {
+      "resources": [
+        {
+          "kind": "configuration",
+          "resource_id": "semantic-adapter-configuration",
+          "sha256": "b3ec769299cc6c008e2c7a47bd959558571221a9ab89a40ec1bf2d0ed5e8c530"
+        },
+        {
+          "kind": "implementation",
+          "resource_id": "semantic-implementation",
+          "sha256": "cddd1bf8b3b8de71453647ff5d58ef65acc5ff18a7c643b216edff3cb8cda2a6"
+        },
+        {
+          "kind": "model",
+          "resource_id": "local-embedding-snapshot",
+          "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+        }
+      ],
+      "verifier_name": "semantic"
+    }
+  ],
+  "version": "game_resource_manifest_v1"
+}
