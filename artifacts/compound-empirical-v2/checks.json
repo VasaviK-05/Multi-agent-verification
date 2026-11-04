@@ -1,0 +1,30 @@
+{
+  "api_activated": false,
+  "broad_regression": {
+    "command": "python -m pytest tests/test_compound_empirical.py tests/test_component_execution.py tests/test_flexible_teams.py tests/test_game_task_conditioning.py tests/test_game_runtime.py tests/test_game_collection.py tests/test_heldout_collection.py tests/test_game_clean_coverage.py tests/test_game_reliability_first.py tests/test_capability_probe_analyzer.py -q",
+    "failed": 0,
+    "passed": 207,
+    "seconds": 135.31
+  },
+  "committed": false,
+  "existing_component_tests": 25,
+  "final_focused": {
+    "command": "python -m pytest tests/test_compound_empirical.py tests/test_component_execution.py tests/test_game_task_conditioning.py tests/test_flexible_teams.py -q",
+    "failed": 0,
+    "passed": 58,
+    "seconds": 111.87
+  },
+  "git_diff_check": "passed",
+  "historical_artifact_files_preserved": 155,
+  "historical_v1_contracts_and_atomic_policy_ids": "unchanged: historical-identity-check.json",
+  "live_service_attestation_performed": false,
+  "local_full_resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "local_resource_preflight_ready": true,
+  "merged": false,
+  "producer_tests": 10,
+  "pushed": false,
+  "py_compile": "passed",
+  "software_fixture_design": "48 groups:16 history/16 development/16 test, four variants/group; simulated Evidence/Rule only",
+  "software_fixture_evidence_kind": "synthetic_test_fixture",
+  "source_capacity_gate": "correctly refused36 eligible groups; no study shrink or model dispatch"
+}

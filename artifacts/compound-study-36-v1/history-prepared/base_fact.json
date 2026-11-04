@@ -1,0 +1,3025 @@
+{
+  "cache_contract": "complete_team_independent_v1",
+  "candidates": [
+    {
+      "adapter": "confidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": false,
+      "verifier_name": "confidence"
+    },
+    {
+      "adapter": "evidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "evidence"
+    },
+    {
+      "adapter": "rule_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": false,
+      "verifier_name": "rule"
+    },
+    {
+      "adapter": "semantic_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ],
+        "readiness": "unknown",
+        "requires_reference": true,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": false,
+      "verifier_name": "semantic"
+    }
+  ],
+  "examples": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Morocco is 38430770.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "c875834b2f6934ac7abc12ec001a94dba74d0885e47b0e5f2fbeeed5d6e84cc4-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"dc7175e12d2067b37a9567a684267b492d81c0826cc4f22ade84c972e1b0eb62\",\"component_id\":\"base_fact\",\"source_entity\":\"MA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Morocco?",
+      "question_id": "f7d44fab392d8f422ac788d8ae5071850e640e7fe13c54da128d4ee01709bdfa",
+      "reference": null,
+      "role": "history",
+      "run_id": "52b44ba4514a6b148655688f0f131a88ace2b19765ac33503c9426098bea46ff",
+      "split_identity": "MA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Morocco is 38430770.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "60a2f5f7ecc36184aa9b37d3374bff71a1bb482cb80679fea0fa54223503f4a9-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"dc7175e12d2067b37a9567a684267b492d81c0826cc4f22ade84c972e1b0eb62\",\"component_id\":\"base_fact\",\"source_entity\":\"MA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Morocco?",
+      "question_id": "f7d44fab392d8f422ac788d8ae5071850e640e7fe13c54da128d4ee01709bdfa",
+      "reference": null,
+      "role": "history",
+      "run_id": "a40df69ba339401328644295f2046ad9543e6e52a105ff34a77a40295f4e5f26",
+      "split_identity": "MA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Morocco is 38430771.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "eb107e1152dfce335d96e606aafc4b13c0a42d29926de6acc320d97b36f212eb-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"00da73afca81c49af734cc2b57d8c09620c9de2ea15177e995f18a82cc1ed7d8\",\"component_id\":\"base_fact\",\"source_entity\":\"MA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Morocco?",
+      "question_id": "f7d44fab392d8f422ac788d8ae5071850e640e7fe13c54da128d4ee01709bdfa",
+      "reference": null,
+      "role": "history",
+      "run_id": "1a12671dd8b2487f9a72ddc08631b7944d3321c43130e4da478c0a598d513e3b",
+      "split_identity": "MA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Morocco is 38430771.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "7f0c4b1f06602e26b7931ae3159e2a2172e7e8ac5fba543a38979e329906bcdd-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"00da73afca81c49af734cc2b57d8c09620c9de2ea15177e995f18a82cc1ed7d8\",\"component_id\":\"base_fact\",\"source_entity\":\"MA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Morocco?",
+      "question_id": "f7d44fab392d8f422ac788d8ae5071850e640e7fe13c54da128d4ee01709bdfa",
+      "reference": null,
+      "role": "history",
+      "run_id": "83ae8c87b83ef0266c0240e292ce29661034db0a9c8f591290d9778193f03546",
+      "split_identity": "MA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Romania is 19020271.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "a7db1766d75d87b2a8470031844f6773469a8dbbfe007fe2b660a5de995df8fd-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"87d23c8806de0d29f2c1a4f9aef6bde5eaf21f075d79e1c19a32243cc5e0b2f2\",\"component_id\":\"base_fact\",\"source_entity\":\"RO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Romania?",
+      "question_id": "301acdf01a651fa22584463f3e02ebd165896575c6ef01f7f5fdc53b8607cae5",
+      "reference": null,
+      "role": "history",
+      "run_id": "dce1adb94a2f2cedf37cde9742c7e292797cd328cd387c430db3df59c3b5ccb2",
+      "split_identity": "RO"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Romania is 19020271.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "2af8b35af9f18f47f5691f0f06e3a4912e51e02a92d3edc6aeb9df18f52b43eb-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"87d23c8806de0d29f2c1a4f9aef6bde5eaf21f075d79e1c19a32243cc5e0b2f2\",\"component_id\":\"base_fact\",\"source_entity\":\"RO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Romania?",
+      "question_id": "301acdf01a651fa22584463f3e02ebd165896575c6ef01f7f5fdc53b8607cae5",
+      "reference": null,
+      "role": "history",
+      "run_id": "c85dbb42c019dcaa3c61b16db5c0bda68d428c4aa3851414ae0a4e912aa4a774",
+      "split_identity": "RO"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Romania is 19020272.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "d32cd08895e6786c018fcea8ab9e06633ea34092595e1e5d7a48e4b0d1a8bfbf-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"dc86d523a3307141b667e7f9a1e4420f481b3ec398822c71fd287fbe37d10c9a\",\"component_id\":\"base_fact\",\"source_entity\":\"RO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Romania?",
+      "question_id": "301acdf01a651fa22584463f3e02ebd165896575c6ef01f7f5fdc53b8607cae5",
+      "reference": null,
+      "role": "history",
+      "run_id": "98afa991ae33f8c4e53ee16391872430f4e2500242f01afc22df8930ec54c558",
+      "split_identity": "RO"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Romania is 19020272.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "ab3fff76ae030e40e670c4fc5afc89d5fd5255ca409be8d76ca1b3a5c96d7842-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"dc86d523a3307141b667e7f9a1e4420f481b3ec398822c71fd287fbe37d10c9a\",\"component_id\":\"base_fact\",\"source_entity\":\"RO\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Romania?",
+      "question_id": "301acdf01a651fa22584463f3e02ebd165896575c6ef01f7f5fdc53b8607cae5",
+      "reference": null,
+      "role": "history",
+      "run_id": "83adcbedfaeadf734d21a0fd1866f1b0a84ca160ecddb1a6993f9b267bf71bc5",
+      "split_identity": "RO"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Andorra is 468 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "9fc9cf6d752ab0d8255c3eacefdf8e58959165fcc60150045ffffe10cfc909d8-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"6fc58a7c7c80d3bcf97975fbfab2329aac48e5daffb76e7a191ad89f1d1fd6df\",\"component_id\":\"base_fact\",\"source_entity\":\"AD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Andorra?",
+      "question_id": "7e0b4696baee06d383bba806f2821e5d6b77595fb4cc1e13d236de9d031bddda",
+      "reference": null,
+      "role": "history",
+      "run_id": "7d6f1358225d126ab505611b55ebdca9a810e4d3b5341f7b8ee994691af041cc",
+      "split_identity": "AD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Andorra is 468 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "07cb3cdc9fb73f6ef19c363369bb85cc7aa6c2c8e15327c188ac3ba783f060a4-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"6fc58a7c7c80d3bcf97975fbfab2329aac48e5daffb76e7a191ad89f1d1fd6df\",\"component_id\":\"base_fact\",\"source_entity\":\"AD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Andorra?",
+      "question_id": "7e0b4696baee06d383bba806f2821e5d6b77595fb4cc1e13d236de9d031bddda",
+      "reference": null,
+      "role": "history",
+      "run_id": "038c7e0004745713271b613fd712dc3d78094cf227dbf38705daa369db482202",
+      "split_identity": "AD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Andorra is 469 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "f0fb3ae7e41877760890d135ddc45b052a26e0232b41da813850cb3f7d1d2d63-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"03b35f676fe07342e88e37f707853b921a6bd7bb54f44aa577aa6001ff85becd\",\"component_id\":\"base_fact\",\"source_entity\":\"AD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Andorra?",
+      "question_id": "7e0b4696baee06d383bba806f2821e5d6b77595fb4cc1e13d236de9d031bddda",
+      "reference": null,
+      "role": "history",
+      "run_id": "60e4d692fc8cfbb9cf3f11eb6ce2debfaf6c862d64f580ee1abc99a47d16f174",
+      "split_identity": "AD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Andorra is 469 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "585582121759b81cf521c42666a1c4af95dd2734579d50a5774fcddbbbd4ea76-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"03b35f676fe07342e88e37f707853b921a6bd7bb54f44aa577aa6001ff85becd\",\"component_id\":\"base_fact\",\"source_entity\":\"AD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Andorra?",
+      "question_id": "7e0b4696baee06d383bba806f2821e5d6b77595fb4cc1e13d236de9d031bddda",
+      "reference": null,
+      "role": "history",
+      "run_id": "8eea2e5ab9a64c933170d58536b7c98c9a566c8b68b28b90c0a49bd528ac1cec",
+      "split_identity": "AD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of India is 1463865525.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "18bbd00a13929d04dc341b75ee75a88f9df89ba9979265ec85f7ac30acaa52ff-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"643d83fcf384725a709635e03f0815257ddf4ef8bb599c3db32dc3511a2dc6d6\",\"component_id\":\"base_fact\",\"source_entity\":\"IN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of India?",
+      "question_id": "2baefa7dcec03d93f296aad4026b64c4de2c387e4819a74eb12e13b06009cc12",
+      "reference": null,
+      "role": "history",
+      "run_id": "ba36fdbbc498f4ce5afcd124f922224ecb1477078b1afd86781e234bbb59e334",
+      "split_identity": "IN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of India is 1463865525.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "08176a57525878da883be4f164590cecc7d95b4a7733c85d438b7b08eaf6498b-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"643d83fcf384725a709635e03f0815257ddf4ef8bb599c3db32dc3511a2dc6d6\",\"component_id\":\"base_fact\",\"source_entity\":\"IN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of India?",
+      "question_id": "2baefa7dcec03d93f296aad4026b64c4de2c387e4819a74eb12e13b06009cc12",
+      "reference": null,
+      "role": "history",
+      "run_id": "49121a03030a34245b37fe1cef108c1a3efd343566525970759e7281320dc2d4",
+      "split_identity": "IN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of India is 1463865526.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "a767df8e753b499ad2c2fa426b1c045c1b9241ba84e5fb98dd747a0288e223d6-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"6e227af740cc7cf7f57b809e9acf6b0f8422708865f1138055b7c080548492c5\",\"component_id\":\"base_fact\",\"source_entity\":\"IN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of India?",
+      "question_id": "2baefa7dcec03d93f296aad4026b64c4de2c387e4819a74eb12e13b06009cc12",
+      "reference": null,
+      "role": "history",
+      "run_id": "08cddc01423c21366ae49f9ea8c3c7e3c4f083ed1c5108cfcd0b6b12e5875504",
+      "split_identity": "IN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of India is 1463865526.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "eafeb8295375aa2c46039a5046014e73ff998aeb731b36207dcbbeac4ef72138-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"6e227af740cc7cf7f57b809e9acf6b0f8422708865f1138055b7c080548492c5\",\"component_id\":\"base_fact\",\"source_entity\":\"IN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of India?",
+      "question_id": "2baefa7dcec03d93f296aad4026b64c4de2c387e4819a74eb12e13b06009cc12",
+      "reference": null,
+      "role": "history",
+      "run_id": "1e65b97ef6c642aabdba20599f8da15f48f1f373232a8d9258efb5eff1d4003f",
+      "split_identity": "IN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Maldives is 529676.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "ee300126c5dafbbbb4552aebfc29d9cc74b88af3a9d9302c80c46ee5b19d4bae-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"e9eb4910406e9d89b20962b929a0d1389d15fda0a74a4dd79883343db5fe5497\",\"component_id\":\"base_fact\",\"source_entity\":\"MV\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Maldives?",
+      "question_id": "a063e02b4c798d7faafd7e780ad0f23c5bc33b835202d491740d63f11ead6f7c",
+      "reference": null,
+      "role": "history",
+      "run_id": "675c812e0b5ca8f7f95df4f8a0942e43b04b6c1579f940fb12afeb9ef447b2e6",
+      "split_identity": "MV"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Maldives is 529676.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "d698c9de0e668ebe232155032e0ea7c7d2be204a68eb8b789ed3e9843b728734-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"e9eb4910406e9d89b20962b929a0d1389d15fda0a74a4dd79883343db5fe5497\",\"component_id\":\"base_fact\",\"source_entity\":\"MV\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Maldives?",
+      "question_id": "a063e02b4c798d7faafd7e780ad0f23c5bc33b835202d491740d63f11ead6f7c",
+      "reference": null,
+      "role": "history",
+      "run_id": "4116151040f1c5af91f6e2deb0c8b24e7dde2f00961d6d0ad0c8ac89ea731aab",
+      "split_identity": "MV"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Maldives is 529677.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "433306f59cc0eb0c646f78a853e64bc5c0730e75649dedb71bca28fd14113d28-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"76a1f475b293d40ab782b73a2302d8b4b9be55fd965e0af9c54a525e989c29ac\",\"component_id\":\"base_fact\",\"source_entity\":\"MV\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Maldives?",
+      "question_id": "a063e02b4c798d7faafd7e780ad0f23c5bc33b835202d491740d63f11ead6f7c",
+      "reference": null,
+      "role": "history",
+      "run_id": "08e6c1dabc80778c8a4cdb641af30215f56f3db97eb230b92538016ea54c632c",
+      "split_identity": "MV"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Maldives is 529677.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "8d95bf782c430ed1f788bf58d20345fafa384107c259f78a6980e12fcae0e2c4-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"76a1f475b293d40ab782b73a2302d8b4b9be55fd965e0af9c54a525e989c29ac\",\"component_id\":\"base_fact\",\"source_entity\":\"MV\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Maldives?",
+      "question_id": "a063e02b4c798d7faafd7e780ad0f23c5bc33b835202d491740d63f11ead6f7c",
+      "reference": null,
+      "role": "history",
+      "run_id": "8a711bd08050be9cf925d5eff48790500683f9b782eedaf9784df666d1bb4145",
+      "split_identity": "MV"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Gabon is 2593130.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "9c8a635a8c74ea43649ce84478fe38a2770e24b6a89947ce41665eff5e1aee7b-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"a45494dd9dea0576518aa8dad1a0d2b2adae19ad084ea4b052c696604a95d666\",\"component_id\":\"base_fact\",\"source_entity\":\"GA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Gabon?",
+      "question_id": "638ffed603f3a0ea1d4ce4ccfbb5db524c088378495129a0faa9a98e5465a9d0",
+      "reference": null,
+      "role": "history",
+      "run_id": "a88267769c36d552413d55540b3e591ccb5649b67cf29aedacab525579e0877f",
+      "split_identity": "GA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Gabon is 2593130.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "f55a2cbb4a6105d43620dfe7830152a7066bf220106510275e12715d5feadc78-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"a45494dd9dea0576518aa8dad1a0d2b2adae19ad084ea4b052c696604a95d666\",\"component_id\":\"base_fact\",\"source_entity\":\"GA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Gabon?",
+      "question_id": "638ffed603f3a0ea1d4ce4ccfbb5db524c088378495129a0faa9a98e5465a9d0",
+      "reference": null,
+      "role": "history",
+      "run_id": "364b09af64c80dbcaefd11df5df8fd9a99274e14ff8dd7363485fca3243698a7",
+      "split_identity": "GA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Gabon is 2593131.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "19aa484d97e3b9218991c5f87b5c2ee8a6b3d86df5a09113fb2afa12d993dd02-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"2f51a13a01650fe3fd6e6a888bc0d1d4c00dbfd12f61e23cccf6b80770d6dbc9\",\"component_id\":\"base_fact\",\"source_entity\":\"GA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Gabon?",
+      "question_id": "638ffed603f3a0ea1d4ce4ccfbb5db524c088378495129a0faa9a98e5465a9d0",
+      "reference": null,
+      "role": "history",
+      "run_id": "2c9e45157272e3eb13ad00cd8abab7b00a2b1544e5b78f845ad7ab0297d0631c",
+      "split_identity": "GA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Gabon is 2593131.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "187561e32aa47eaefb04a197536f0837c5f91979d83689b849b59ea0651867d1-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"2f51a13a01650fe3fd6e6a888bc0d1d4c00dbfd12f61e23cccf6b80770d6dbc9\",\"component_id\":\"base_fact\",\"source_entity\":\"GA\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Gabon?",
+      "question_id": "638ffed603f3a0ea1d4ce4ccfbb5db524c088378495129a0faa9a98e5465a9d0",
+      "reference": null,
+      "role": "history",
+      "run_id": "119852ab61eb32fe954e73494b02834c361b1f63487f90252d2dccfdc9643462",
+      "split_identity": "GA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Moldova is 2360527.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "fbfa60d7e1e7a907ad476858294346f93efeeae7426e00e415ba57af93b62e8a-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"e00fae546c969720c1f84cff01512b0198ef5c525b059d477e051a1a1ae63c54\",\"component_id\":\"base_fact\",\"source_entity\":\"MD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Moldova?",
+      "question_id": "f8def845d1464759eab5ee7b34cd36e58092a231d6fb46e173a3f8453f121378",
+      "reference": null,
+      "role": "history",
+      "run_id": "e1a5c02cd66638156f183c1ce71cbe4924ab31d91972b3e12bca2cedede52e1d",
+      "split_identity": "MD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Moldova is 2360527.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "b4bfa9d879ce0a7a55793782fb9f6f9297c5fc5fdb53144f2d841ad8b0badbc6-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"e00fae546c969720c1f84cff01512b0198ef5c525b059d477e051a1a1ae63c54\",\"component_id\":\"base_fact\",\"source_entity\":\"MD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Moldova?",
+      "question_id": "f8def845d1464759eab5ee7b34cd36e58092a231d6fb46e173a3f8453f121378",
+      "reference": null,
+      "role": "history",
+      "run_id": "3fda3cf08642c468015cb896374fee56263b0c0e496934a6e4b20cb0628eb6d2",
+      "split_identity": "MD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Moldova is 2360528.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "1483745412473da05735f3a5bb11a5ed897c11a6756a19868b68010b893b62cb-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"c2374d1c8998f1de2a64f1380222e942a7773d750f79ada43d016489cd1259ca\",\"component_id\":\"base_fact\",\"source_entity\":\"MD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Moldova?",
+      "question_id": "f8def845d1464759eab5ee7b34cd36e58092a231d6fb46e173a3f8453f121378",
+      "reference": null,
+      "role": "history",
+      "run_id": "05e5b563fe2c9d964a0f3b3b47ae9f3c5c42437ffedddb3849cab158ea048009",
+      "split_identity": "MD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Moldova is 2360528.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "b21d7810b95145bf3d8ed4fd773b8fd4735f81a685ea48975fb39c6f62cf9152-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"c2374d1c8998f1de2a64f1380222e942a7773d750f79ada43d016489cd1259ca\",\"component_id\":\"base_fact\",\"source_entity\":\"MD\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Moldova?",
+      "question_id": "f8def845d1464759eab5ee7b34cd36e58092a231d6fb46e173a3f8453f121378",
+      "reference": null,
+      "role": "history",
+      "run_id": "a32760653b07238dc06537ee2a05c475d60fdb5c1c7d5e9d7487874dc8051827",
+      "split_identity": "MD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kuwait is 17818 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "1bdf7a908ef41cbc02df323fad1d02c944537221b16708a178e793be01f05d56-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"1e2d4cfd30405468b73da191e26272d77ee3f521e0ee2da116906d8f5b1d5f2c\",\"component_id\":\"base_fact\",\"source_entity\":\"KW\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kuwait?",
+      "question_id": "37792355e27ba0685d272cbb60cb449cf8880a8ff873f00a11d3ba44a9c01f0c",
+      "reference": null,
+      "role": "history",
+      "run_id": "0bcc2d176580732f2a2f4fe7b2cf53c9f7953e4b1b95c861b04d94239f22cbb6",
+      "split_identity": "KW"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kuwait is 17818 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "6f3b3b355e63c137a4493109de89a2b5b706fcc080d323eb089aa8552efc79a8-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"1e2d4cfd30405468b73da191e26272d77ee3f521e0ee2da116906d8f5b1d5f2c\",\"component_id\":\"base_fact\",\"source_entity\":\"KW\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kuwait?",
+      "question_id": "37792355e27ba0685d272cbb60cb449cf8880a8ff873f00a11d3ba44a9c01f0c",
+      "reference": null,
+      "role": "history",
+      "run_id": "e23f65d1e0d9c00fae7063a35a63c0b5111126da2e312eb08fcbe0bc965e9a4e",
+      "split_identity": "KW"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kuwait is 17819 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "fdfcd93ba0897214ab0b780f6d539cf18b70fd30e64e62d74d95d8e3d98dc742-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"dc1f5cdd84ac444fc56b8890a5e075f965febc23e97b840b5b05170fbcaafc50\",\"component_id\":\"base_fact\",\"source_entity\":\"KW\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kuwait?",
+      "question_id": "37792355e27ba0685d272cbb60cb449cf8880a8ff873f00a11d3ba44a9c01f0c",
+      "reference": null,
+      "role": "history",
+      "run_id": "20cc72faa801ac72d7565fcb943dabde816eef0f1bcc9b39d8c0f34205ee513b",
+      "split_identity": "KW"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kuwait is 17819 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "184e76447a7f6941085460b2b188798e26ec8297a96ec0e82ffc73cd39fb7c80-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"dc1f5cdd84ac444fc56b8890a5e075f965febc23e97b840b5b05170fbcaafc50\",\"component_id\":\"base_fact\",\"source_entity\":\"KW\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kuwait?",
+      "question_id": "37792355e27ba0685d272cbb60cb449cf8880a8ff873f00a11d3ba44a9c01f0c",
+      "reference": null,
+      "role": "history",
+      "run_id": "baab4da35e8e8fcef496f04ce79944b5b3b4a9a5e169ae461c5920b05ea7d4ac",
+      "split_identity": "KW"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Senegal is 196722 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "e30404d99549c0153d6b73faeab2f18be8662710226087c8e36b2f1715d5dcca-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"805e7bac80e5772a01e543264e3081f98a132aae28166792bb8b82838cf7734d\",\"component_id\":\"base_fact\",\"source_entity\":\"SN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Senegal?",
+      "question_id": "84e17e0212ae825de02b5a3d8837e2b856f587654110586500fc5f237be8fe5c",
+      "reference": null,
+      "role": "history",
+      "run_id": "484b9df5d788216db15375f4f0e6445b9bfa1538caf0af7a70956aa4c03bda0d",
+      "split_identity": "SN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Senegal is 196722 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "f76caa97e5ca515b1c2e961f3bf92031205c35ef6bf9788ed375b3e1b2ba2a67-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"805e7bac80e5772a01e543264e3081f98a132aae28166792bb8b82838cf7734d\",\"component_id\":\"base_fact\",\"source_entity\":\"SN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Senegal?",
+      "question_id": "84e17e0212ae825de02b5a3d8837e2b856f587654110586500fc5f237be8fe5c",
+      "reference": null,
+      "role": "history",
+      "run_id": "cef893913886a5abc5083e8f5868303dc86c16744120fdb69688939df3e15c7c",
+      "split_identity": "SN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Senegal is 196723 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "99b68fb0ba6ee2195d32d395bf728292b86c0972ba677c128683abb990142fe8-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"4c376778e42a7029e4626acda3c593b7b6f1b3d7c0d3366f26642dd21fe65e9a\",\"component_id\":\"base_fact\",\"source_entity\":\"SN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Senegal?",
+      "question_id": "84e17e0212ae825de02b5a3d8837e2b856f587654110586500fc5f237be8fe5c",
+      "reference": null,
+      "role": "history",
+      "run_id": "65ae5e52ad22713acfc68f00210fa7b0bcb75a02fd85a54c73b45e59d221fa5e",
+      "split_identity": "SN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Senegal is 196723 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "f51fcf52df0682dd30729b8ca493bb3434e05db10485eeca3b00813d203d9140-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"4c376778e42a7029e4626acda3c593b7b6f1b3d7c0d3366f26642dd21fe65e9a\",\"component_id\":\"base_fact\",\"source_entity\":\"SN\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Senegal?",
+      "question_id": "84e17e0212ae825de02b5a3d8837e2b856f587654110586500fc5f237be8fe5c",
+      "reference": null,
+      "role": "history",
+      "run_id": "354e93958ce65da9189d01f521b47028d65f4b9834896ce47ff7f2670b83d18c",
+      "split_identity": "SN"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kenya is 580367 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "644ed91a492a52b726aa48ec07f4d42f20d8bfb4087848dbb315d7a8ad37eac4-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"238be8dde8eee9490511f50f9dc794ad89620bb02bc78b6e706db6326e51db52\",\"component_id\":\"base_fact\",\"source_entity\":\"KE\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kenya?",
+      "question_id": "2238ba804103eb56287752d1e3f635df11adbfa1e254ff51c19afe7410762bd8",
+      "reference": null,
+      "role": "history",
+      "run_id": "c57c31f98b3d287f8ffcc97bf0662194fe3a15669b759186d5865868130c4337",
+      "split_identity": "KE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kenya is 580367 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "140f5b8334c83be6450555378882f8b02bfddc7b0d2397c29f47f58b400f240a-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"238be8dde8eee9490511f50f9dc794ad89620bb02bc78b6e706db6326e51db52\",\"component_id\":\"base_fact\",\"source_entity\":\"KE\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kenya?",
+      "question_id": "2238ba804103eb56287752d1e3f635df11adbfa1e254ff51c19afe7410762bd8",
+      "reference": null,
+      "role": "history",
+      "run_id": "8be95daef4100061dcadb62adc7f3313a43e3cab70ed1b684bf17fae457be045",
+      "split_identity": "KE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kenya is 580368 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "990fc5a545913f52db15ed0ef0e7359fdd864d4f5cafd7a435745c6620fe98ce-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"0ddf4f19f0926318a3b4263e427109f711aba056dd32ceb056e46033833abe04\",\"component_id\":\"base_fact\",\"source_entity\":\"KE\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kenya?",
+      "question_id": "2238ba804103eb56287752d1e3f635df11adbfa1e254ff51c19afe7410762bd8",
+      "reference": null,
+      "role": "history",
+      "run_id": "b3741206c09465784a99ed44144f384214c72562d402a4762e030a294d5284c5",
+      "split_identity": "KE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kenya is 580368 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "9d6c9d8eaf0995d8318b97c1325a1a1af3725f5bdd74bb0990aada6fe0bc3688-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"0ddf4f19f0926318a3b4263e427109f711aba056dd32ceb056e46033833abe04\",\"component_id\":\"base_fact\",\"source_entity\":\"KE\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Kenya?",
+      "question_id": "2238ba804103eb56287752d1e3f635df11adbfa1e254ff51c19afe7410762bd8",
+      "reference": null,
+      "role": "history",
+      "run_id": "36ecd3daa57af0ee339fe6c375c48e00bba1a01ccaebaae88379c4ccf84d886f",
+      "split_identity": "KE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Uruguay is 181034 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "32573ff5884670445ef8b58461f08ac3b9895f216f6d1ce3667f27f53af0c685-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"c440f3dd7e1b4f3bec28bf741beaa1447519c21119d12e9a57eb3ec71d21b597\",\"component_id\":\"base_fact\",\"source_entity\":\"UY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Uruguay?",
+      "question_id": "be82be4f5eef419e29efb96b36634f5e1613c7bc164818f77abb93f470bcccc2",
+      "reference": null,
+      "role": "history",
+      "run_id": "26b034bf5f46b1cf3f702db7065b499843acee250941e0182f31017087709bc2",
+      "split_identity": "UY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Uruguay is 181034 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "d7c6515ba8043038cece80ccfc424591102a6006cf9c219145c3ff1303bdc20a-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"c440f3dd7e1b4f3bec28bf741beaa1447519c21119d12e9a57eb3ec71d21b597\",\"component_id\":\"base_fact\",\"source_entity\":\"UY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Uruguay?",
+      "question_id": "be82be4f5eef419e29efb96b36634f5e1613c7bc164818f77abb93f470bcccc2",
+      "reference": null,
+      "role": "history",
+      "run_id": "909ef8be10df47ce36d535d26d3d32028302cdd2d281a7abc8e70876747bdc44",
+      "split_identity": "UY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Uruguay is 181035 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "82c4c14467ec061c262bb92e19a3ee316f215fd19356061b9fdbe57e041c028e-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"39e32fc79bbd9e6318b8a7a4c235984d7197aa22e8e183575c11fe2d447297e0\",\"component_id\":\"base_fact\",\"source_entity\":\"UY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Uruguay?",
+      "question_id": "be82be4f5eef419e29efb96b36634f5e1613c7bc164818f77abb93f470bcccc2",
+      "reference": null,
+      "role": "history",
+      "run_id": "141a7ee7e28d0a341cd6813e4f4b7cd66bc6a684c6218182a8d8a47e470d0334",
+      "split_identity": "UY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Uruguay is 181035 square kilometres.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "9a644d532dfde66dccc8dbee9235e4cee46755f7c293c38dd57742ff5130f472-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"39e32fc79bbd9e6318b8a7a4c235984d7197aa22e8e183575c11fe2d447297e0\",\"component_id\":\"base_fact\",\"source_entity\":\"UY\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the area of Uruguay?",
+      "question_id": "be82be4f5eef419e29efb96b36634f5e1613c7bc164818f77abb93f470bcccc2",
+      "reference": null,
+      "role": "history",
+      "run_id": "ca9931535f9c1773a4dcb1b53f180431cd5f2068327ad4b918426b05834d30cd",
+      "split_identity": "UY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Turkmenistan is 7618847.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "022be40020b8fd208a792a1d30d2645f3c297101cc34f0d83939048b64626af4-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"be13923e8e406898fbbbc3da75fa7a2a87bb770e2b7dcf5434c85fbe4bb84355\",\"component_id\":\"base_fact\",\"source_entity\":\"TM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Turkmenistan?",
+      "question_id": "cd0f573eccc071fc2a58f024f2d378a0943b1296fce408be260828ddf15f75bb",
+      "reference": null,
+      "role": "history",
+      "run_id": "6298e0953bb4cafe9861a5ec772beba8057b1f1c12107c739319e745a95ca821",
+      "split_identity": "TM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Turkmenistan is 7618847.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "0687810eb4195bc931d17a9876686338b31053aa72b86969f37c9febbff2f895-base_fact",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"be13923e8e406898fbbbc3da75fa7a2a87bb770e2b7dcf5434c85fbe4bb84355\",\"component_id\":\"base_fact\",\"source_entity\":\"TM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Turkmenistan?",
+      "question_id": "cd0f573eccc071fc2a58f024f2d378a0943b1296fce408be260828ddf15f75bb",
+      "reference": null,
+      "role": "history",
+      "run_id": "40ddfeb10788e4776de656ff7c13e8b2881617b65021531bec87024861529290",
+      "split_identity": "TM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Turkmenistan is 7618848.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "0534e6e2e5b6bec2193cc67f58b4771bbf1096010ed2889a3039ace9df64dd3a-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"98586c779b4dc965e4fc87274fa2eb1968e74256964534eb811cc3a4dd4528e3\",\"component_id\":\"base_fact\",\"source_entity\":\"TM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Turkmenistan?",
+      "question_id": "cd0f573eccc071fc2a58f024f2d378a0943b1296fce408be260828ddf15f75bb",
+      "reference": null,
+      "role": "history",
+      "run_id": "aeeda2351e1c919f1f9cfa65ea8167ed39fe714b0268f5f50ef205009ebc0a20",
+      "split_identity": "TM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "source_backed_component_questions_v2",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Turkmenistan is 7618848.",
+      "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact",
+      "example_id": "55a74878e1c3eccabb28838cdf0965887045f85742ff108d57dadb753daad3ba-base_fact",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-source-and-exact-decimal-v2",
+        "provenance": "{\"binding_id\":\"98586c779b4dc965e4fc87274fa2eb1968e74256964534eb811cc3a4dd4528e3\",\"component_id\":\"base_fact\",\"source_entity\":\"TM\",\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\"}"
+      },
+      "purpose": "calibration",
+      "question": "What is the population of Turkmenistan?",
+      "question_id": "cd0f573eccc071fc2a58f024f2d378a0943b1296fce408be260828ddf15f75bb",
+      "reference": null,
+      "role": "history",
+      "run_id": "a11af25d42822ea7354341da8d6160a1491eb450fe256d708bd81c0b97b549b4",
+      "split_identity": "TM"
+    }
+  ],
+  "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "expected_setup": {
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "factory": "app.benchmark.project_adapter:create_recording_verifiers",
+  "final_test_reservation": {
+    "custody_record": "predeclared-source-known-exploratory-reservation:86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6",
+    "dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-final_test-base_fact",
+    "examples": [
+      {
+        "content_identity": "5d9f7d95211657372b921a0ce84130bbd3b7964c97da67831251efd1ea3fb6e2",
+        "example_id": "043bd7dcc8b7ead5461fb44cfed1869bdc4d63ca4e30aacf45ce076b83906aeb-base_fact",
+        "question_id": "27f282fcc56f78a7eae38eda600cf18767b1c5692e7c5eb9d212c4385da5d052",
+        "split_identity": "TH",
+        "validation_id": "d0224858045cdd20a6925e6432960bef6a373e5dc6cc31165badc9cbdd0ece81"
+      },
+      {
+        "content_identity": "16c7ff89b9693261b304cb733b4e451ae00f997b1c56ee9b80f52c9468af68c5",
+        "example_id": "0dcf5541e584fb670a843a490abfd4a09236bf635e06d333e98e1b52460d3fff-base_fact",
+        "question_id": "6518aba57f9af939a31f7da6a0f6792ad92fc5d4249c011af01df9bf94bcd526",
+        "split_identity": "SY",
+        "validation_id": "0e1621fad47dca482d6ee680541ff4a64ebd6c9db64b68796cb99ce170a6cabe"
+      },
+      {
+        "content_identity": "2445be707df122ae661581c27915bdabeba4039feb4a79296c21aaed655f8b0e",
+        "example_id": "102ed161de8fde26f0f2af033cb3e50dbc0aeb6e5bdfb4257579732a62508cdc-base_fact",
+        "question_id": "4de5f3da305e590502b5da1d26659e024454eed8db70c1da1b1f123e22af1cab",
+        "split_identity": "MW",
+        "validation_id": "dae7eff872319d7c66213d122ad92ed1e23771b92a24bd69447f7689c8789b38"
+      },
+      {
+        "content_identity": "b7a32b23b5008b14ca0b04035865ac31667117d53f3de9e8a5225173136395c1",
+        "example_id": "148ffefaf5b96c13aeb6f6e1610b5446ed46ad1b14822b709a430c1ad6425124-base_fact",
+        "question_id": "d86d0ec0f248e0379dc5e06ad6094d53b5042859eff96035670a82e0dff66d63",
+        "split_identity": "BD",
+        "validation_id": "17cb19fde20effcd2bb6b45917a0a4ef0ab7e48c4ab5ed8e8a1a6695bd126519"
+      },
+      {
+        "content_identity": "ab2bdf79164b2f66aec07d241adcd651869648f37ad0cd6b3d169690e3666d32",
+        "example_id": "1c0bafa35fa205bec7724a6484cb13ef4884ee6b8a629a88914ccf58c1a94959-base_fact",
+        "question_id": "09c62956ea5b52bad892004066d3da16639008e309117551509ae89da75d195b",
+        "split_identity": "LT",
+        "validation_id": "20e822607cdfd98418bf103da2706a68137dc8f0bd4c75acb9b50d6feb54a745"
+      },
+      {
+        "content_identity": "b187ffbf25d773b6881a9c742db216e2f74da1fb47e96ee95b7b275c7040de60",
+        "example_id": "1e96a08c2d6dd5d4a482bf7391ca5f53096f8a2ebf1523f4641cc716154317a5-base_fact",
+        "question_id": "55dc2759418908757b51d70e480a8d12be08aad228b1c01055eae85e5d4bd28c",
+        "split_identity": "MU",
+        "validation_id": "0170c57e0c0d194e8594587c89b6d50de3662fe4c0ccc1dd7286dccde091f517"
+      },
+      {
+        "content_identity": "4b38844875e38cb9d5374f36f09aa364def090faae1be3cf0c4de1e781cf2596",
+        "example_id": "2a5f8a92bd0963555aad96a63fdecd6b29e869b73f2098c1635e47fdf5dd4897-base_fact",
+        "question_id": "030c2c71195a17bce772df56b2ce85197f214804eda2c051d7ca3c15d4833f13",
+        "split_identity": "ME",
+        "validation_id": "266a63f0c132277364c2c80031f82aa362c879e7856b6b539e35857c08d84c39"
+      },
+      {
+        "content_identity": "377354b4c998fc14aa0719fe4429a251c59a89d0365b226cb988379a97c95475",
+        "example_id": "2e43970a69fdda9e8170eae4415e3c61af4157327f0ef9a21dfc42fb013e0fb8-base_fact",
+        "question_id": "27f282fcc56f78a7eae38eda600cf18767b1c5692e7c5eb9d212c4385da5d052",
+        "split_identity": "TH",
+        "validation_id": "1b01b67d8586f19fabf49029c71f991a22f7d096f4442d16cf1e80cfb6eafc5d"
+      },
+      {
+        "content_identity": "a7a407f8089d1d15695d2bc2468e9e437aee5bbda4baab5f4b6ac66d42576529",
+        "example_id": "34a1f90d62ba2630a3dce96a01b1ced6f97b94f9f972f90444f8a6dab2037a34-base_fact",
+        "question_id": "4de5f3da305e590502b5da1d26659e024454eed8db70c1da1b1f123e22af1cab",
+        "split_identity": "MW",
+        "validation_id": "b95285204899002f731a6531dd53c1229a442686c7e4f42af6a5922b31536751"
+      },
+      {
+        "content_identity": "e7f54423bd3b4ced16a9392959e6a1fc1a273c8c1fc326665c2474767cf6815b",
+        "example_id": "3b6eb91a2624960350f13ae10a71ae14191159b50532487566a0f27afa973cf4-base_fact",
+        "question_id": "d03df346355f3a7c632448fb857347f1b1dd1051145514cd006fe30f22b0b914",
+        "split_identity": "NP",
+        "validation_id": "d20151144d2173107aedc66a678c8e4076c1ccc06e32746618cb1cfbc69e4c2d"
+      },
+      {
+        "content_identity": "8dbaa030a2cc8285422269d744d3fe89819db7ce8666cc87f1d8299c67e1a328",
+        "example_id": "41acf4658d4be4be7e66236539a0759dc8bddbf8614bb403e8d6722461e816e1-base_fact",
+        "question_id": "55dc2759418908757b51d70e480a8d12be08aad228b1c01055eae85e5d4bd28c",
+        "split_identity": "MU",
+        "validation_id": "ad1e5953d6f4c5161575c4db51fd87c70fff6d3ef24db3ab2dee78baaacdb59f"
+      },
+      {
+        "content_identity": "d27b327aea1f5cf2c6db128285f49b1c326ae6870f2b5a9819b085324f88078e",
+        "example_id": "42ff8eda804f7a8d1e133293234e18d616f6b3c518f25de2fea48ad8a5cbcc96-base_fact",
+        "question_id": "4e1497a59dd20523257cb4076ef95c43e4268aa319f68d9d6adde3fec615c43c",
+        "split_identity": "GE",
+        "validation_id": "df40aa5596cbe79655c8dd979edb3a09ae4a16465a1d391fac3aa6c058525506"
+      },
+      {
+        "content_identity": "19704577110909031f42e9a6f36a1b2fdfed02691003bf57674aa0845439b774",
+        "example_id": "43184a1e2f4adfaee23bf5fa8316d2abe2ef404b2c23131d3618d2d2b8d1db2b-base_fact",
+        "question_id": "95819928dadd14670046bd0ced908a99310c01627643308974228193d2802915",
+        "split_identity": "EC",
+        "validation_id": "3ff17442dc69a2596245a7aa774bf466534abce79bbdbbc0ff30146953041826"
+      },
+      {
+        "content_identity": "1afa88d9a9bc166dc118d6fb6be55a833ed6f400d59600c1eea614a916101d78",
+        "example_id": "46541694c5dbd988067525a0888e08463dd43b083d6092f34ca8a92df135de89-base_fact",
+        "question_id": "d03df346355f3a7c632448fb857347f1b1dd1051145514cd006fe30f22b0b914",
+        "split_identity": "NP",
+        "validation_id": "caa38293c05e7827367cb47448d8f8477ae938114bdd0d08c6358f3f366fe504"
+      },
+      {
+        "content_identity": "05eeebfc7fb656f9b21f275b73fc73dc1fe816e1cb7a50b7e2f27d204b7382ab",
+        "example_id": "4eba01a15537cfe2101d83f9df727e52041e919624ed10aac3ba8aff495eea09-base_fact",
+        "question_id": "0b76d55889642dff57ee291268dad51bffca46bd6e22c08cd59eee807aa24dd8",
+        "split_identity": "PW",
+        "validation_id": "4347ee689d4adbc3dbcc92bbb40dc8850472b7cded4a4397715c3f97ce960b48"
+      },
+      {
+        "content_identity": "d6fc0353def143b6420370a27810ef124deec4c98a45b2372216abbb3d432586",
+        "example_id": "50c210d184a3db7e1bef048f5e1cb68969f7b3e3e3efd469babc09bd183c7c5b-base_fact",
+        "question_id": "09c62956ea5b52bad892004066d3da16639008e309117551509ae89da75d195b",
+        "split_identity": "LT",
+        "validation_id": "a2280f06a4f2eee9bdce879704e7d88c43d1e4c319f6e88265cf4f9f902112a7"
+      },
+      {
+        "content_identity": "1bba47fcaaad44fe0afb3f2561ca195d45891b09ea47b37baa946745dc57b53a",
+        "example_id": "53c931c0b058065d093b602c098bd0f226e0cae5bba14ddaed9c21c3fdfeba59-base_fact",
+        "question_id": "fa70eacb9dabedacda0140c42b2b2e771785e5c9fb67cceb62bdf073ce3edd38",
+        "split_identity": "UG",
+        "validation_id": "f59c87ddd83cc0b3f78cdda17a920a7645f52b3e0acec758b8c3d54557e29e09"
+      },
+      {
+        "content_identity": "a7a407f8089d1d15695d2bc2468e9e437aee5bbda4baab5f4b6ac66d42576529",
+        "example_id": "60cb8dd0c639a72970db9647ba8d609a2b851e552f4f19767f6e6da3edb76dd4-base_fact",
+        "question_id": "4de5f3da305e590502b5da1d26659e024454eed8db70c1da1b1f123e22af1cab",
+        "split_identity": "MW",
+        "validation_id": "f2ca40ae330a57a4f3a7be3760faf794de4759d31b877ed34e0d6c99819101cd"
+      },
+      {
+        "content_identity": "622a70c3dbc6312080cb5b871b160f4717422f15a17d9e1b906d91c208093b14",
+        "example_id": "6381d565ce45c9ed6191872a134fa2a7ec37e6eeff5204f488d6df2f0476cf89-base_fact",
+        "question_id": "95819928dadd14670046bd0ced908a99310c01627643308974228193d2802915",
+        "split_identity": "EC",
+        "validation_id": "d1c13795f349114e6aaaa852bbf0dd000788a58bb60c5a69345c75be171f4f6b"
+      },
+      {
+        "content_identity": "d6fc0353def143b6420370a27810ef124deec4c98a45b2372216abbb3d432586",
+        "example_id": "718a2d51351eccc0408f37b82643da53e07ffbcd9dfbff32c2984fb5e87a2724-base_fact",
+        "question_id": "09c62956ea5b52bad892004066d3da16639008e309117551509ae89da75d195b",
+        "split_identity": "LT",
+        "validation_id": "0c48fe589fdf941c78d5ffd2a83e0639761539d5d8509005cd926eed4ded105f"
+      },
+      {
+        "content_identity": "9713a9b6b2eaa199ff66dacc2ba1051ad5896655c05154dee0b2adb285642f96",
+        "example_id": "7255531474f389c82e83cbfd18e60fc32d296650bb0931dee6c3aa562ab77fb2-base_fact",
+        "question_id": "d86d0ec0f248e0379dc5e06ad6094d53b5042859eff96035670a82e0dff66d63",
+        "split_identity": "BD",
+        "validation_id": "69427a9d18916252d657f4ffbe6c3827d51e849167b753d0a9da59c8482f4149"
+      },
+      {
+        "content_identity": "16c7ff89b9693261b304cb733b4e451ae00f997b1c56ee9b80f52c9468af68c5",
+        "example_id": "7b01131c7b7151f3ec5d6b2342708e1b36cd3d9523a84bfdc0fbddb3d101c235-base_fact",
+        "question_id": "6518aba57f9af939a31f7da6a0f6792ad92fc5d4249c011af01df9bf94bcd526",
+        "split_identity": "SY",
+        "validation_id": "6773dde852b82057f8bdc38492e6c6da681eb2b55b9a9c6d4c7fdd278b7df780"
+      },
+      {
+        "content_identity": "19704577110909031f42e9a6f36a1b2fdfed02691003bf57674aa0845439b774",
+        "example_id": "7ba6569f20c396c665f42c944f3c9eedc5c0999a2836f4943fc5fe9d3e4c66b3-base_fact",
+        "question_id": "95819928dadd14670046bd0ced908a99310c01627643308974228193d2802915",
+        "split_identity": "EC",
+        "validation_id": "a0d1c0920a8be66869d9abe946cc605594d25604bddad671dfb1d29c29f41c11"
+      },
+      {
+        "content_identity": "1afa88d9a9bc166dc118d6fb6be55a833ed6f400d59600c1eea614a916101d78",
+        "example_id": "825e13d7517bb35aec26e4e48750aac01d2b1854f202386f58462a8fb04d4ff1-base_fact",
+        "question_id": "d03df346355f3a7c632448fb857347f1b1dd1051145514cd006fe30f22b0b914",
+        "split_identity": "NP",
+        "validation_id": "cb501440cb75e3e82ae34a53b4606dd964817c27c5bf856728790ffa498b4e31"
+      },
+      {
+        "content_identity": "a0c7780fdc439673529e17a71dac0076eec8b0191589058b8e5866cee80ad1af",
+        "example_id": "8434ad6d44bd923d8b9c8e79d10486e3c3162a1d0fbb150a89192d8b1e797bc7-base_fact",
+        "question_id": "fa70eacb9dabedacda0140c42b2b2e771785e5c9fb67cceb62bdf073ce3edd38",
+        "split_identity": "UG",
+        "validation_id": "da318d4fb95f14226570dca889bcbc141107c547ef24ea8279c9d5f08f963fc3"
+      },
+      {
+        "content_identity": "7b4510dd5c10b4ea9229561136f9715515ec16df73916b5c9060a2de6eb19de6",
+        "example_id": "893705845fb07afff996b2133250f8172b0392c7dcd5a6f6f6a8a0bd31acd334-base_fact",
+        "question_id": "4e1497a59dd20523257cb4076ef95c43e4268aa319f68d9d6adde3fec615c43c",
+        "split_identity": "GE",
+        "validation_id": "1672577a79810dcbcb08b0db2abc9dfef32f881257f6390058cc53103751502d"
+      },
+      {
+        "content_identity": "2208c2ab9127fb4a4ff2ffecd04bd8708307b95743e6e2289f10d82bf82911b9",
+        "example_id": "8b8b4102efe61a18a02903ceb1de1efb3e37cf1fedec113a4ef1e921be35a7d8-base_fact",
+        "question_id": "6518aba57f9af939a31f7da6a0f6792ad92fc5d4249c011af01df9bf94bcd526",
+        "split_identity": "SY",
+        "validation_id": "8cdf088a8f4a49d224d574d9a4c91096b015a7d47b40f615972394a6f824a6a8"
+      },
+      {
+        "content_identity": "4b38844875e38cb9d5374f36f09aa364def090faae1be3cf0c4de1e781cf2596",
+        "example_id": "8f8ba3905649de9f58cf8dd6a6239f77d6c04c00a81b10098517d5bd519ac374-base_fact",
+        "question_id": "030c2c71195a17bce772df56b2ce85197f214804eda2c051d7ca3c15d4833f13",
+        "split_identity": "ME",
+        "validation_id": "b1559026bf98cb725d9a3ba1ff8288dfdbb7cb7871ce4810f400c94f6d8a0d03"
+      },
+      {
+        "content_identity": "ab2bdf79164b2f66aec07d241adcd651869648f37ad0cd6b3d169690e3666d32",
+        "example_id": "914a9fce383f5aaafda980a913359e2e4639c942654ddfd49b9609b114b79043-base_fact",
+        "question_id": "09c62956ea5b52bad892004066d3da16639008e309117551509ae89da75d195b",
+        "split_identity": "LT",
+        "validation_id": "26c4b1bcfc1ac078a4bed742e64e01785eb0a3e4d73d90c23130e62200c37855"
+      },
+      {
+        "content_identity": "e7f54423bd3b4ced16a9392959e6a1fc1a273c8c1fc326665c2474767cf6815b",
+        "example_id": "9187db11bfb5c9d265249987211a0a8bfb58c276d19360a5757e35d3c310f53c-base_fact",
+        "question_id": "d03df346355f3a7c632448fb857347f1b1dd1051145514cd006fe30f22b0b914",
+        "split_identity": "NP",
+        "validation_id": "ba22aef15f6cd349a2600ba78205556194cfbe282aad5994d48db9ded819ea0a"
+      },
+      {
+        "content_identity": "622a70c3dbc6312080cb5b871b160f4717422f15a17d9e1b906d91c208093b14",
+        "example_id": "96ed64b68a4c26c235343f79574c779bda874044c23c867067137562e37babb3-base_fact",
+        "question_id": "95819928dadd14670046bd0ced908a99310c01627643308974228193d2802915",
+        "split_identity": "EC",
+        "validation_id": "34fe95bbb6ab9c69536702007a2450a0074a7373b8ffa1d96f61921956e3f40e"
+      },
+      {
+        "content_identity": "9713a9b6b2eaa199ff66dacc2ba1051ad5896655c05154dee0b2adb285642f96",
+        "example_id": "9d9dc53de4ae1ed84d1edf561563783a267ca6424723913fcc6f7b50977eee43-base_fact",
+        "question_id": "d86d0ec0f248e0379dc5e06ad6094d53b5042859eff96035670a82e0dff66d63",
+        "split_identity": "BD",
+        "validation_id": "da08447a00f46964a6329dc18d4891430efaa5e1ded82fc4c84648aca1320348"
+      },
+      {
+        "content_identity": "6cf31c78b3a8aed0f26c27b4aa959a31aa4c1892ce398002dc89f304842b5f58",
+        "example_id": "baa9abe7a6b4cc667624e2e82b69e70ca840bc6ac7b19dbab35bd6b157a59d0c-base_fact",
+        "question_id": "030c2c71195a17bce772df56b2ce85197f214804eda2c051d7ca3c15d4833f13",
+        "split_identity": "ME",
+        "validation_id": "3bf4f0777a73a03ed714199bf8451ff2207be0dea35ad262c8c986bb395801d8"
+      },
+      {
+        "content_identity": "1bba47fcaaad44fe0afb3f2561ca195d45891b09ea47b37baa946745dc57b53a",
+        "example_id": "babbd5a13415194e0ec26db50ba9a86ff374339fb92e2bbe7fb3b84898d42b32-base_fact",
+        "question_id": "fa70eacb9dabedacda0140c42b2b2e771785e5c9fb67cceb62bdf073ce3edd38",
+        "split_identity": "UG",
+        "validation_id": "652918936bdfdd907f309407b81d7849cce2ae80a33218d1358de09f7d9226ca"
+      },
+      {
+        "content_identity": "2445be707df122ae661581c27915bdabeba4039feb4a79296c21aaed655f8b0e",
+        "example_id": "bd474a70f57244f81cbbb59a6f834b4658de6a6f84cea655a5306cdc67b21dae-base_fact",
+        "question_id": "4de5f3da305e590502b5da1d26659e024454eed8db70c1da1b1f123e22af1cab",
+        "split_identity": "MW",
+        "validation_id": "3dd398ab7df8c252477aaa61cac23113e88c64718e93f32a166c4fae27598390"
+      },
+      {
+        "content_identity": "64c4b65387884a77875bb167c04e4e66f743e40529abdac3333335d420519e47",
+        "example_id": "bfbc29ee0824e99971d897bed7e2745baebb2f7bb848bd6ead4325174ce86f59-base_fact",
+        "question_id": "0b76d55889642dff57ee291268dad51bffca46bd6e22c08cd59eee807aa24dd8",
+        "split_identity": "PW",
+        "validation_id": "2d12ff620d15c733c06bea95929667371813d2b147e8ee6ac9b97aee9e2ac9af"
+      },
+      {
+        "content_identity": "8dbaa030a2cc8285422269d744d3fe89819db7ce8666cc87f1d8299c67e1a328",
+        "example_id": "c4289b149722b27f461b8a5ae8c3116dc85727afafa651be2a973b4b3e9d1636-base_fact",
+        "question_id": "55dc2759418908757b51d70e480a8d12be08aad228b1c01055eae85e5d4bd28c",
+        "split_identity": "MU",
+        "validation_id": "c6db3d730cd64712a2469656c737baa0f08b18e017586aa1acc179be02c30a9a"
+      },
+      {
+        "content_identity": "64c4b65387884a77875bb167c04e4e66f743e40529abdac3333335d420519e47",
+        "example_id": "c481491b273acb012e8ce725f9b0cc9fbe6c93bd275c4f36bf7ff18c604a3790-base_fact",
+        "question_id": "0b76d55889642dff57ee291268dad51bffca46bd6e22c08cd59eee807aa24dd8",
+        "split_identity": "PW",
+        "validation_id": "780f6dbde98452b9efff6bf02eabaf7f39699e40ae9a2b5e85796d02be912214"
+      },
+      {
+        "content_identity": "b7a32b23b5008b14ca0b04035865ac31667117d53f3de9e8a5225173136395c1",
+        "example_id": "c8412a5a41f4111e358df45634800f649bdc84640b3e852ebea8e0255078aead-base_fact",
+        "question_id": "d86d0ec0f248e0379dc5e06ad6094d53b5042859eff96035670a82e0dff66d63",
+        "split_identity": "BD",
+        "validation_id": "1181fe8b968ed041a758cb156899742392c7e1c3baf794c6c211f97837f959f7"
+      },
+      {
+        "content_identity": "7b4510dd5c10b4ea9229561136f9715515ec16df73916b5c9060a2de6eb19de6",
+        "example_id": "d28fe5ebeb0dbecdc92b6f773793f7d66e0812e58302063c0a2c4a1612620d1f-base_fact",
+        "question_id": "4e1497a59dd20523257cb4076ef95c43e4268aa319f68d9d6adde3fec615c43c",
+        "split_identity": "GE",
+        "validation_id": "eb544f23f6e9b9ca349d98d253503767b6ad1ea2d19f0b0d1db11edfd08515ca"
+      },
+      {
+        "content_identity": "05eeebfc7fb656f9b21f275b73fc73dc1fe816e1cb7a50b7e2f27d204b7382ab",
+        "example_id": "dba54d2e51f055de4437b7ec604dfbc24d246c6fe7af470ae5ba1eeaa3a54b7c-base_fact",
+        "question_id": "0b76d55889642dff57ee291268dad51bffca46bd6e22c08cd59eee807aa24dd8",
+        "split_identity": "PW",
+        "validation_id": "6fafced551f74f03662e25f8882ce1f4ec20ebbe381047f1e10e39577890edeb"
+      },
+      {
+        "content_identity": "b187ffbf25d773b6881a9c742db216e2f74da1fb47e96ee95b7b275c7040de60",
+        "example_id": "e8bd2c61ba64c36b6aa6716d58f472ba55e00e0de419122f0b3d6d4808697b15-base_fact",
+        "question_id": "55dc2759418908757b51d70e480a8d12be08aad228b1c01055eae85e5d4bd28c",
+        "split_identity": "MU",
+        "validation_id": "bdda7f8cf33f945701c7b198be378758a6b89a8d7909be4512f9003db1292d12"
+      },
+      {
+        "content_identity": "d27b327aea1f5cf2c6db128285f49b1c326ae6870f2b5a9819b085324f88078e",
+        "example_id": "f00c341f1649fc7cb3609ce4801c2d6bd761e6015868ed203ba5e4966f543687-base_fact",
+        "question_id": "4e1497a59dd20523257cb4076ef95c43e4268aa319f68d9d6adde3fec615c43c",
+        "split_identity": "GE",
+        "validation_id": "bf7e8b74951e11cf12238957b0247113ada0438dc83a66b040a3dc6ea83d1218"
+      },
+      {
+        "content_identity": "2208c2ab9127fb4a4ff2ffecd04bd8708307b95743e6e2289f10d82bf82911b9",
+        "example_id": "f201f5ff6458347a411858e2db5f3d73958f34f20de8c57f8d88c41ebde206ec-base_fact",
+        "question_id": "6518aba57f9af939a31f7da6a0f6792ad92fc5d4249c011af01df9bf94bcd526",
+        "split_identity": "SY",
+        "validation_id": "03aa6ee83df51bc5d314f73e8679a53a3ee8eb1dde386b073e0d3157a28b3e89"
+      },
+      {
+        "content_identity": "a0c7780fdc439673529e17a71dac0076eec8b0191589058b8e5866cee80ad1af",
+        "example_id": "f2381de3d0d3924c2b745137fec4effeab0e66220333ce4bcbb1914d3b7922fb-base_fact",
+        "question_id": "fa70eacb9dabedacda0140c42b2b2e771785e5c9fb67cceb62bdf073ce3edd38",
+        "split_identity": "UG",
+        "validation_id": "111509736f4f79028759cd641001528a59c880193baff88cf0dda6b38beb647a"
+      },
+      {
+        "content_identity": "5d9f7d95211657372b921a0ce84130bbd3b7964c97da67831251efd1ea3fb6e2",
+        "example_id": "f810cfee2a6b926d3e9fe4a69262c4b9bb6dbb26cf4f3c137848d41f10b5a473-base_fact",
+        "question_id": "27f282fcc56f78a7eae38eda600cf18767b1c5692e7c5eb9d212c4385da5d052",
+        "split_identity": "TH",
+        "validation_id": "82e6ad08b7fec80bc7c4a263b09c0f12d75777cb4574b344025e615970b2ac68"
+      },
+      {
+        "content_identity": "377354b4c998fc14aa0719fe4429a251c59a89d0365b226cb988379a97c95475",
+        "example_id": "f8b73c274216d20736a04c5381bb0d3f20977dec78b08401a40d61a734a95573-base_fact",
+        "question_id": "27f282fcc56f78a7eae38eda600cf18767b1c5692e7c5eb9d212c4385da5d052",
+        "split_identity": "TH",
+        "validation_id": "222d8f309962e9423a724f420a257e6261d28cd186c61d67fc3849b9b38bdfec"
+      },
+      {
+        "content_identity": "6cf31c78b3a8aed0f26c27b4aa959a31aa4c1892ce398002dc89f304842b5f58",
+        "example_id": "ffdf2db7d278cc477225ffa024a4e8f8660944475bdc1c0f21984af5fe522446-base_fact",
+        "question_id": "030c2c71195a17bce772df56b2ce85197f214804eda2c051d7ca3c15d4833f13",
+        "split_identity": "ME",
+        "validation_id": "c8fc33180f6fd3e844689cca26e2c1c6b3c48547e69bd9bdf09cef23b1dd285e"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "intended_use": "study",
+  "permitted_datasets": [
+    [
+      "history",
+      "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history-base_fact"
+    ]
+  ],
+  "preparation_authorization": "User attachment 4976affc: amended36 exploratory study; maximum288 Evidence/Rule attempts; zero Confidence generations",
+  "randomness_control": "No generation; preserve every Evidence/Rule attempt; no selective retries",
+  "study_approval": "User attachment 4976affc: amended36 exploratory study; maximum288 Evidence/Rule attempts; zero Confidence generations",
+  "version": "offline_recording_request_v1"
+}

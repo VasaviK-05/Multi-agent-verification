@@ -6,6 +6,79 @@ API, frontend, DB, answer generation, verifier or retrieval algorithms.
 Run package commands from the isolated feature checkout, not the offline-policy
 host checkout.
 
+## Main conflict-resolution addendum
+
+The feature parent is `03a0fa161d7ca783258a3114d17ede7de537476e`; the merged
+main parent is `c7be1489b26ec7e0f2237acb71ca4f97000d7a8f`. The feature worktree
+was clean and no merge/rebase/cherry-pick was in progress before merging main.
+The dirty offline-policy host checkout was not used for the merge.
+
+Eight paths conflicted: `.gitattributes`,
+`app/analysis/capability_probe_analyzer.py`, `app/game/component_execution.py`,
+`app/game/execution.py`, `app/game/execution_contract.py`,
+`app/game/finalization.py`, `app/game/models.py`, and
+`app/game/task_conditioning.py`. Both complete implementations were compared.
+The analyzer, contract, finalization, models and task router have identical source
+lines on both parents; their exact publication encoding was retained. Component
+execution keeps main's dispatch/finalization plus the opt-in proof seam and
+separate historical/pre/post observations. Game execution keeps selected-instance
+observations, ProjectObserver audit output, strict relocation authorization and
+reference proofs, and incorporates main's distinct selected-team/informative
+minimum audit fields. The attributes file combines the full publication inventory
+with later reconciliation-specific byte-preservation rules.
+
+None of these seven resolved Python files contributes directly to the pinned
+implementation/configuration resource fingerprints. The attribute resolution can
+affect those contributors' checkout encodings, so all fourteen pinned contributing
+source/dependency files were rehashed: every original pin still matches. No
+expected resource hash or capsule ID was changed and no new verifier-equivalence
+exception was added. The whole application-source digest and revision are new;
+they must never be relabelled as the original measured setup. API, DB, selector,
+ProjectObserver and native verifier/retrieval source files remain unchanged from
+the feature parent. Historical policies, certificates and evaluations remain
+unchanged.
+
+`reconciliation/main-merge-review-v1.json` records both parents, all eight source
+resolutions, and exact original/merged source-overlay identities. The canonical
+`scripts.verify_publication` check intentionally reports three modified integration
+source paths: `.gitattributes`, `app/game/execution.py`, and
+`app/game/component_execution.py`. This is not a resource mismatch and is not
+reported as an unchanged whole publication. Its other 484 inventoried files,
+including every frozen publication artifact, still match. Use the separately
+versioned overlay audit without changing the original publication inventories:
+
+```powershell
+python -m scripts.verify_reconciliation_merge
+python -m scripts.verify_reconciliation_package
+```
+
+That audit checks the reviewed source overlays, the unchanged original inventory,
+original resource pins and typed frozen policies. The original canonical checker
+can still be run on the immutable publication checkout. Portable replay remains
+retained-report evidence. No live verifier acceptance, generations, refit, download,
+index rebuild or activation was performed to resolve this merge. The prior
+singleton-contraction, incomplete compound acceptance and teammate live-API
+limitations below are unchanged.
+
+Merge verification: 297 compatibility, relocation, selector, routing, reference,
+reputation/injection and API audit tests passed outside the sandbox. Another
+18 synthetic held-out-recording and no-dispatch answer-binding tests passed.
+The threaded
+API client stalled in the sandbox; no API/DB implementation was changed to avoid
+that restriction. One new audit test initially assumed the synthetic selected
+floor was two; its fixture expectation was corrected to the actual floor of one,
+while testing a distinct informative floor of two. The final suite passes. The
+immutable publication checkout still passes all 487 byte/certificate checks;
+merged overlay audit, package identities and seven portable replay cases pass.
+There is one existing Starlette/httpx deprecation warning; no dependency was
+installed or changed.
+
+Whitespace checks on the merge's code, docs and reconciliation changes pass.
+The all-imported-files check reports 525 existing whitespace findings in six
+frozen license/source/diff artifacts. Every one of those file blobs is identical
+to fetched main; they were deliberately preserved rather than rewriting frozen
+history. Their exact paths and classifications are in the merge review record.
+
 ## Source state and scope
 
 * Feature branch: `codex/policy-resource-reconciliation-v1`. Its exact delivery
@@ -14,8 +87,9 @@ host checkout.
 * Integration base and refreshed relocation ref:
   `2c3813b58761b4b10a05d41d532d8d10575d16a3`.
 * Frozen policy publication: `9f774678c5e4d845690022bcfd0a2550b1b3eaec`.
-* Refreshed main: `c7be1489b26ec7e0f2237acb71ca4f97000d7a8f`; it was not merged
-  or substituted for the integration base.
+* PR base incorporated into the feature by merge:
+  `main` at `c7be1489b26ec7e0f2237acb71ca4f97000d7a8f`. This updates the
+  reconciliation branch; it does not merge or activate the feature into main.
 * Local policy-bound host: `C:/Users/jhaan/Multi-agent-verification`, branch
   `codex/offline-policy-recording-pilots`, HEAD
   `2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f`. Its existing execution/recording

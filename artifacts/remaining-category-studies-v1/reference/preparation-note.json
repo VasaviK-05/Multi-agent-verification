@@ -1,0 +1,9 @@
+{
+  "version": "reference_preparation_note_v1",
+  "before_inference": true,
+  "initial_preparation": "Refused before writing study inputs: legacy length-based difficulty_score differed (.06 to .10). Empty output directory retained.",
+  "correction": "Added an explicitly opt-in bounded_reference_frames_v1 category with easy/.1 constant. No measured difficulty or easy/hard adaptation claim. Existing analyzer and default routing unchanged.",
+  "filesystem_followup": "A second preparation attempt refused the existing empty directory. Preparation now accepts an empty directory and refuses any nonempty output directory.",
+  "new_verifier_attempts_for_preparation": 0,
+  "fitting_preparation_note": "First compound85 audit assertion expected an atomic reliability_first field; component matrices directly contain validation losses. Removed that invalid assertion before export, retained exact matrix-value/outcome equality checks. No original files or outcomes changed."
+}

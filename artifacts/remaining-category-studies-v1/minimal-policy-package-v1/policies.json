@@ -1,0 +1,3001 @@
+{
+  "version": "supported_policy_bundle_v1",
+  "atomic_artifacts": [
+    {
+      "version": "deployable_game_policy_reliability_first_v1",
+      "policy": {
+        "version": "game_policy_reliability_first_v1",
+        "compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+        "provenance": {
+          "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+          "history_dataset": "multitask42-arithmetic-history",
+          "development_dataset": "multitask42-arithmetic-development",
+          "final_test_dataset": "multitask42-arithmetic-final_test",
+          "matrix_version": "multitask-finalized-development-v1",
+          "loss_configuration": "multitask-exploratory-loss-v1",
+          "category": "general",
+          "category_kind": "domain",
+          "evidence_kind": "empirical"
+        },
+        "matrix": {
+          "strategy_ids": [
+            "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+            "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+            "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+            "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+            "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+            "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+            "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80"
+          ],
+          "attack_ids": [
+            "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+            "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+            "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+            "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+            "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+          ],
+          "values": [
+            [
+              4.5526659893073166e-05,
+              0.5000455266598931,
+              0.5000455266598931,
+              4.5526659893073166e-05,
+              0.20004552665989309
+            ],
+            [
+              4.5526659893073166e-05,
+              0.5000455266598931,
+              0.5000455266598931,
+              4.5526659893073166e-05,
+              0.20004552665989309
+            ],
+            [
+              0.12443056963409857,
+              0.5994305696340986,
+              0.5994305696340986,
+              0.12443056963409857,
+              0.2994305696340986
+            ],
+            [
+              0.12443056963409857,
+              0.5994305696340986,
+              0.5994305696340986,
+              0.12443056963409857,
+              0.2994305696340986
+            ],
+            [
+              0.00042868324417085255,
+              0.5004286832441709,
+              0.5004286832441709,
+              0.00042868324417085255,
+              0.20042868324417087
+            ],
+            [
+              0.00042868324417085255,
+              0.5004286832441709,
+              0.5004286832441709,
+              0.00042868324417085255,
+              0.20042868324417087
+            ],
+            [
+              0.00023180044151673175,
+              0.5002318004415167,
+              0.5002318004415167,
+              0.00023180044151673175,
+              0.20023180044151676
+            ],
+            [
+              0.00023180044151673175,
+              0.5002318004415167,
+              0.5002318004415167,
+              0.035231800441516734,
+              0.20023180044151676
+            ],
+            [
+              0.12481372621837636,
+              0.5998137262183764,
+              0.5998137262183764,
+              0.12481372621837636,
+              0.2998137262183764
+            ],
+            [
+              0.12481372621837636,
+              0.5998137262183764,
+              0.5998137262183764,
+              0.12481372621837636,
+              0.2998137262183764
+            ],
+            [
+              0.12461684341572224,
+              0.5996168434157222,
+              0.5996168434157222,
+              0.12461684341572224,
+              0.29961684341572226
+            ],
+            [
+              0.12461684341572224,
+              0.5996168434157222,
+              0.5996168434157222,
+              0.12461684341572224,
+              0.29961684341572226
+            ],
+            [
+              0.0006149570257945111,
+              0.5006149570257945,
+              0.5006149570257945,
+              0.0006149570257945111,
+              0.20061495702579452
+            ],
+            [
+              0.0006149570257945111,
+              0.5006149570257945,
+              0.5006149570257945,
+              0.035614957025794515,
+              0.20061495702579452
+            ],
+            [
+              0.125,
+              0.6,
+              0.6,
+              0.125,
+              0.30000000000000004
+            ],
+            [
+              0.125,
+              0.6,
+              0.6,
+              0.125,
+              0.30000000000000004
+            ]
+          ],
+          "compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+          "strategy_definitions": [
+            {
+              "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+              "verifiers": [
+                "rule"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 9.678209995036013
+            },
+            {
+              "strategy_id": "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+              "verifiers": [
+                "rule"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 9.678209995036013
+            },
+            {
+              "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+              "verifiers": [
+                "confidence",
+                "rule"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 21137.283848738298
+            },
+            {
+              "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+              "verifiers": [
+                "confidence",
+                "rule"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 21137.283848738298
+            },
+            {
+              "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+              "verifiers": [
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 91.13092127081472
+            },
+            {
+              "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+              "verifiers": [
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 91.13092127081472
+            },
+            {
+              "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+              "verifiers": [
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 49.27691500342917
+            },
+            {
+              "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+              "verifiers": [
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 49.27691500342917
+            },
+            {
+              "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 21218.736560014077
+            },
+            {
+              "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 21218.736560014077
+            },
+            {
+              "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+              "verifiers": [
+                "confidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 21176.88255374669
+            },
+            {
+              "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+              "verifiers": [
+                "confidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 21176.88255374669
+            },
+            {
+              "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+              "verifiers": [
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 130.72962627920788
+            },
+            {
+              "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+              "verifiers": [
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 130.72962627920788
+            },
+            {
+              "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 21258.33526502247
+            },
+            {
+              "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 21258.33526502247
+            }
+          ],
+          "clean_coverage": {
+            "version": "finalized_clean_development_coverage_v1",
+            "minimum": 0.9,
+            "strategy_coverage": [
+              [
+                "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                1.0
+              ],
+              [
+                "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+                1.0
+              ],
+              [
+                "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+                0.875
+              ],
+              [
+                "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+                0.875
+              ],
+              [
+                "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+                1.0
+              ],
+              [
+                "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                1.0
+              ],
+              [
+                "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+                1.0
+              ],
+              [
+                "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+                1.0
+              ],
+              [
+                "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+                0.875
+              ],
+              [
+                "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+                0.875
+              ],
+              [
+                "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+                0.875
+              ],
+              [
+                "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+                0.875
+              ],
+              [
+                "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+                1.0
+              ],
+              [
+                "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+                1.0
+              ],
+              [
+                "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+                0.875
+              ],
+              [
+                "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+                0.875
+              ]
+            ],
+            "parent_matrix_id": "1e710803f7a46dfb56c6c2dfbee8efc7baf29de9f3755077a5b9959ff94db264",
+            "training_binding_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+            "source_evaluation_id": "a59218d2a00b4f09c4ef6e444682d3e20381ebd45b8c5bc76a89b923ed6658df"
+          },
+          "reliability_first": {
+            "version": "validation_then_attempt_cost_v1",
+            "epsilon": 1e-08,
+            "cost_tolerance": 1e-08,
+            "parent_matrix_id": "5d5eb70e16770e8034db23b6f72c575e3b20cb7f8308a4b3f1967cc0745bba1c",
+            "validation_values": [
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.035,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.0,
+                0.2
+              ],
+              [
+                0.0,
+                0.5,
+                0.5,
+                0.035,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ],
+              [
+                0.025,
+                0.5,
+                0.5,
+                0.025,
+                0.2
+              ]
+            ]
+          }
+        },
+        "solution": {
+          "status": "optimal",
+          "message": "Stage A and Stage B: Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "tolerance": 1e-08,
+          "probabilities": [
+            [
+              "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+              1.0
+            ],
+            [
+              "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+              0.0
+            ],
+            [
+              "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+              0.0
+            ],
+            [
+              "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+              0.0
+            ],
+            [
+              "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+              0.0
+            ],
+            [
+              "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+              0.0
+            ],
+            [
+              "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+              0.0
+            ],
+            [
+              "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+              0.0
+            ],
+            [
+              "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+              0.0
+            ],
+            [
+              "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+              0.0
+            ],
+            [
+              "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+              0.0
+            ],
+            [
+              "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+              0.0
+            ],
+            [
+              "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+              0.0
+            ],
+            [
+              "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+              0.0
+            ],
+            [
+              "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+              0.0
+            ],
+            [
+              "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+              0.0
+            ]
+          ],
+          "game_value": 0.5,
+          "constraint_residuals": [
+            [
+              "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              0.50000001
+            ],
+            [
+              "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+              1.0000000050247593e-08
+            ],
+            [
+              "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+              1.0000000050247593e-08
+            ],
+            [
+              "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+              0.50000001
+            ],
+            [
+              "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+              0.30000001000000004
+            ]
+          ],
+          "attack_losses": [
+            [
+              "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              0.0
+            ],
+            [
+              "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+              0.5
+            ],
+            [
+              "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+              0.5
+            ],
+            [
+              "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+              0.0
+            ],
+            [
+              "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+              0.2
+            ]
+          ],
+          "worst_case_attacks": [
+            "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+            "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469"
+          ],
+          "normalization_residual": 0.0,
+          "minimum_probability": 0.0,
+          "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+          "attack_probabilities": [
+            [
+              "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              0.0
+            ],
+            [
+              "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+              1.0
+            ],
+            [
+              "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+              0.0
+            ],
+            [
+              "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+              0.0
+            ],
+            [
+              "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+              0.0
+            ]
+          ],
+          "dual_lower_bound": 0.5,
+          "primal_dual_gap": 0.0,
+          "optimality_basis": "highs_validation_then_cost_two_stage_certificate_v1",
+          "reliability_certificate": {
+            "version": "validation_then_cost_certificate_v1",
+            "stage_a_json": "{\"status\":\"optimal\",\"message\":\"Optimization terminated successfully. (HiGHS Status 7: Optimal)\",\"tolerance\":1e-8,\"probabilities\":[[\"afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac\",0.0],[\"b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570\",0.0],[\"d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af\",0.0],[\"64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e\",0.0],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",0.0],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",0.0],[\"4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95\",0.0],[\"a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f\",1.0],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.0],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.0],[\"af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd\",0.0],[\"e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad\",0.0],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.0],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.0]],\"game_value\":0.5,\"constraint_residuals\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.5],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.46499999999999997],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.3]],\"attack_losses\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.0],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.5],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.5],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.035],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.2]],\"worst_case_attacks\":[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\"],\"normalization_residual\":0.0,\"minimum_probability\":0.0,\"matrix_id\":\"6f97b10f0685b513e654ff5da35f7c31e84b9e48b1c17bd689a005fee58f8c7c\",\"attack_probabilities\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.0],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",1.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.0],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.0]],\"dual_lower_bound\":0.5,\"primal_dual_gap\":0.0,\"optimality_basis\":\"highs_status_0_and_clean_coverage_primal_dual_certificate_v1\",\"coverage_certificate\":{\"version\":\"clean_coverage_dual_v1\",\"multiplier\":0.0,\"achieved\":1.0,\"residual\":0.09999999999999998}}",
+            "reliability_cap": 0.50000001,
+            "attack_multipliers": [
+              [
+                "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                0.0
+              ],
+              [
+                "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+                0.0
+              ],
+              [
+                "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+                0.0
+              ],
+              [
+                "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+                0.0
+              ],
+              [
+                "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+                0.0
+              ]
+            ],
+            "coverage_multiplier": 0.0,
+            "achieved_coverage": 1.0,
+            "coverage_residual": 0.09999999999999998,
+            "expected_cost": 9.678209995036013,
+            "cost_dual_lower_bound": 9.678209995036013,
+            "cost_primal_dual_gap": 0.0
+          }
+        },
+        "strategies": [
+          {
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "verifiers": [
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 9.678209995036013
+          },
+          {
+            "strategy_id": "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+            "verifiers": [
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 9.678209995036013
+          },
+          {
+            "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+            "verifiers": [
+              "confidence",
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 21137.283848738298
+          },
+          {
+            "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+            "verifiers": [
+              "confidence",
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 21137.283848738298
+          },
+          {
+            "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 91.13092127081472
+          },
+          {
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 91.13092127081472
+          },
+          {
+            "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+            "verifiers": [
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 49.27691500342917
+          },
+          {
+            "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+            "verifiers": [
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 49.27691500342917
+          },
+          {
+            "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 21218.736560014077
+          },
+          {
+            "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 21218.736560014077
+          },
+          {
+            "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+            "verifiers": [
+              "confidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 21176.88255374669
+          },
+          {
+            "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+            "verifiers": [
+              "confidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 21176.88255374669
+          },
+          {
+            "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            "verifiers": [
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 130.72962627920788
+          },
+          {
+            "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            "verifiers": [
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 130.72962627920788
+          },
+          {
+            "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 21258.33526502247
+          },
+          {
+            "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 21258.33526502247
+          }
+        ]
+      },
+      "context": {
+        "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.3,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"semantic_comparison\"],\"latency\":0.4,\"limitations\":[\"Reference similarity is not factual correctness.\"],\"observation_count\":23,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.64,\"requires_reference\":true,\"resource_penalty\":0.085,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.555,\"verifier_name\":\"semantic\"},{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.29,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":2,\"reputation\":0.97619,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":1.12619,\"verifier_name\":\"rule\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.9,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"consistency\"],\"latency\":1.0,\"limitations\":[\"Generation/judgment agreement is not factual evidence or independence.\",\"Provider readiness is unknown until execution.\"],\"observation_count\":37,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":3,\"reputation\":0.871795,\"requires_reference\":false,\"resource_penalty\":0.23500000000000001,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.636795,\"verifier_name\":\"confidence\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.12,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"arithmetic\"],\"expected_uncovered\":[],\"fallback\":[\"semantic\",\"evidence\"],\"initial_selected\":[\"rule\",\"confidence\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":true,\"reputation_statistics\":[{\"alpha\":16.0,\"beta\":9.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":8,\"observation_count\":23,\"posterior_mean\":0.64,\"posterior_variance\":0.00886153846153846,\"successes\":15,\"verifier_name\":\"semantic\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"evidence\"},{\"alpha\":41.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":40,\"posterior_mean\":0.9761904761904762,\"posterior_variance\":0.0005405262880345942,\"successes\":40,\"verifier_name\":\"rule\"},{\"alpha\":34.0,\"beta\":5.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":4,\"observation_count\":37,\"posterior_mean\":0.8717948717948718,\"posterior_variance\":0.0027942143326758714,\"successes\":33,\"verifier_name\":\"confidence\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"arithmetic\"],\"legacy_unrecognized\":[],\"requirements\":[\"arithmetic\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"arithmetic\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"explicit_task_questions_v1\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+        "attempt_costs": [
+          [
+            "confidence",
+            21127.60563874326
+          ],
+          [
+            "evidence",
+            81.45271127577871
+          ],
+          [
+            "rule",
+            9.678209995036013
+          ],
+          [
+            "semantic",
+            39.59870500839315
+          ]
+        ],
+        "budget": 21258.33526502247,
+        "cost_units": "ms",
+        "loss_configuration": {
+          "version": "multitask-exploratory-loss-v1",
+          "false_accept": 1.0,
+          "false_reject": 1.0,
+          "uncertain": 0.2,
+          "resource_weight": 4.704037204857504e-06,
+          "cost_units": "ms"
+        },
+        "analyzer_provenance": [
+          [
+            "analysis_method",
+            "heuristic"
+          ],
+          [
+            "context_version",
+            "question_context_v1"
+          ],
+          [
+            "domain_status",
+            "unknown"
+          ],
+          [
+            "research_context_presence",
+            "present"
+          ],
+          [
+            "scoring_version",
+            "explicit_task_questions_v1"
+          ]
+        ],
+        "dependencies": {
+          "version": "multitask-observed-dependencies-v1",
+          "dependencies": [
+            {
+              "resource_id": "local-embedding-snapshot",
+              "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verifiers": [
+                "evidence",
+                "semantic"
+              ]
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verifiers": [
+                "confidence",
+                "evidence"
+              ]
+            }
+          ],
+          "unresolved": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "unknown_treatment": "shared_unknown"
+        },
+        "aggregation_versions": [
+          [
+            "dependency_group",
+            "groups_v1"
+          ],
+          [
+            "reputation_weighted",
+            "log_odds_v1"
+          ]
+        ],
+        "provenance": {
+          "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+          "history_dataset": "multitask42-arithmetic-history",
+          "development_dataset": "multitask42-arithmetic-development",
+          "final_test_dataset": "multitask42-arithmetic-final_test",
+          "matrix_version": "multitask-finalized-development-v1",
+          "loss_configuration": "multitask-exploratory-loss-v1",
+          "category": "general",
+          "category_kind": "domain",
+          "evidence_kind": "empirical"
+        },
+        "version": "game_context_v1",
+        "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+        "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"confidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"confidence-implementation\",\"sha256\":\"9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"},{\"kind\":\"model\",\"resource_id\":\"ollama-model\",\"sha256\":\"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72\"},{\"kind\":\"prompt\",\"resource_id\":\"self-consistency-short-answer\",\"sha256\":\"dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b\"},{\"kind\":\"service\",\"resource_id\":\"ollama-service\",\"sha256\":\"5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895\"}],\"verifier_name\":\"confidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"semantic-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"semantic-implementation\",\"sha256\":\"9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"}],\"verifier_name\":\"semantic\"}],\"version\":\"game_resource_manifest_v1\"},\"team_requirements\":{\"minimum_informative\":1,\"minimum_selected\":1,\"version\":\"flexible_team_requirements_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}",
+        "clean_coverage_json": "{\"minimum\":0.9,\"parent_matrix_id\":\"1e710803f7a46dfb56c6c2dfbee8efc7baf29de9f3755077a5b9959ff94db264\",\"source_evaluation_id\":\"a59218d2a00b4f09c4ef6e444682d3e20381ebd45b8c5bc76a89b923ed6658df\",\"strategy_coverage\":[[\"afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac\",1.0],[\"b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570\",1.0],[\"d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af\",0.875],[\"64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e\",0.875],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",1.0],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",1.0],[\"4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95\",1.0],[\"a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f\",1.0],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.875],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.875],[\"af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd\",0.875],[\"e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad\",0.875],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",1.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",1.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.875],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.875]],\"training_binding_id\":\"109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9\",\"version\":\"finalized_clean_development_coverage_v1\"}",
+        "reliability_first_json": "{\"cost_tolerance\":1e-08,\"epsilon\":1e-08,\"parent_matrix_id\":\"5d5eb70e16770e8034db23b6f72c575e3b20cb7f8308a4b3f1967cc0745bba1c\",\"validation_values\":[[0.0,0.5,0.5,0.0,0.2],[0.0,0.5,0.5,0.0,0.2],[0.025,0.5,0.5,0.025,0.2],[0.025,0.5,0.5,0.025,0.2],[0.0,0.5,0.5,0.0,0.2],[0.0,0.5,0.5,0.0,0.2],[0.0,0.5,0.5,0.0,0.2],[0.0,0.5,0.5,0.035,0.2],[0.025,0.5,0.5,0.025,0.2],[0.025,0.5,0.5,0.025,0.2],[0.025,0.5,0.5,0.025,0.2],[0.025,0.5,0.5,0.025,0.2],[0.0,0.5,0.5,0.0,0.2],[0.0,0.5,0.5,0.035,0.2],[0.025,0.5,0.5,0.025,0.2],[0.025,0.5,0.5,0.025,0.2]],\"version\":\"validation_then_attempt_cost_v1\"}",
+        "task_conditioning_json": "{\"history_dataset_id\":\"multitask42-arithmetic-history\",\"history_partition_digest\":\"1032da5a62e373c7f2535f16a031d9bfaa6e17b370676d990da615df699e5cba\",\"identity\":{\"domain_status\":\"unknown\",\"question_rules_version\":\"explicit_task_questions_v1\",\"requirements\":[\"arithmetic\"],\"subject_domain\":\"general\",\"version\":\"domain_requirements_task_v1\"},\"sparse_history\":\"isolated_beta_prior_no_pooling\",\"version\":\"task_isolated_history_v1\"}"
+      },
+      "contract": {
+        "version": "offline_public_decision_v4",
+        "coverage_version": "task_output_contract_v2",
+        "contributor_version": "informative_history_influence_v1",
+        "threshold": 0.55,
+        "failure_contract": "all_selected_returned",
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "history_prior_alpha": 1.0,
+        "history_prior_beta": 1.0,
+        "resource_manifest": {
+          "version": "game_resource_manifest_v1",
+          "verifiers": [
+            {
+              "verifier_name": "confidence",
+              "resources": [
+                {
+                  "resource_id": "confidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "confidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                },
+                {
+                  "resource_id": "ollama-model",
+                  "kind": "model",
+                  "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                },
+                {
+                  "resource_id": "self-consistency-short-answer",
+                  "kind": "prompt",
+                  "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                },
+                {
+                  "resource_id": "ollama-service",
+                  "kind": "service",
+                  "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                }
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "resources": [
+                {
+                  "resource_id": "evidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "evidence-corpus",
+                  "kind": "corpus",
+                  "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                },
+                {
+                  "resource_id": "evidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                },
+                {
+                  "resource_id": "evidence-index",
+                  "kind": "index",
+                  "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                }
+              ]
+            },
+            {
+              "verifier_name": "rule",
+              "resources": [
+                {
+                  "resource_id": "rule-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "rule-implementation",
+                  "kind": "implementation",
+                  "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                }
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "resources": [
+                {
+                  "resource_id": "semantic-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "semantic-implementation",
+                  "kind": "implementation",
+                  "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                }
+              ]
+            }
+          ]
+        },
+        "team_requirements": {
+          "version": "flexible_team_requirements_v1",
+          "minimum_selected": 1,
+          "minimum_informative": 1
+        }
+      },
+      "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "applicable_domain": "general"
+    },
+    {
+      "version": "deployable_game_policy_reliability_first_v1",
+      "policy": {
+        "version": "game_policy_reliability_first_v1",
+        "compatibility_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+        "provenance": {
+          "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+          "history_dataset": "multitask42-factual-history",
+          "development_dataset": "multitask42-factual-development",
+          "final_test_dataset": "multitask42-factual-final_test",
+          "matrix_version": "multitask-finalized-development-v1",
+          "loss_configuration": "multitask-exploratory-loss-v1",
+          "category": "general",
+          "category_kind": "domain",
+          "evidence_kind": "empirical"
+        },
+        "matrix": {
+          "strategy_ids": [
+            "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+            "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+            "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+            "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+            "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+            "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+            "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80"
+          ],
+          "attack_ids": [
+            "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+            "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+            "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+            "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+            "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+          ],
+          "values": [
+            [
+              0.031182576882358395,
+              0.5011825768823583,
+              0.5011825768823583,
+              0.031182576882358395,
+              0.2011825768823584
+            ],
+            [
+              0.031182576882358395,
+              0.5011825768823583,
+              0.5011825768823583,
+              0.031182576882358395,
+              0.2011825768823584
+            ],
+            [
+              0.144725705793547,
+              0.599725705793547,
+              0.599725705793547,
+              0.144725705793547,
+              0.29972570579354696
+            ],
+            [
+              0.144725705793547,
+              0.599725705793547,
+              0.599725705793547,
+              0.144725705793547,
+              0.29972570579354696
+            ],
+            [
+              0.031183232094977403,
+              0.5011832320949774,
+              0.5011832320949774,
+              0.031183232094977403,
+              0.2011832320949774
+            ],
+            [
+              0.031183232094977403,
+              0.5011832320949774,
+              0.5011832320949774,
+              0.031183232094977403,
+              0.2011832320949774
+            ],
+            [
+              0.031456215876192434,
+              0.5014562158761924,
+              0.5014562158761924,
+              0.031456215876192434,
+              0.20145621587619245
+            ],
+            [
+              0.031456215876192434,
+              0.5014562158761924,
+              0.5014562158761924,
+              0.031456215876192434,
+              0.20145621587619245
+            ],
+            [
+              0.14472636100616598,
+              0.5997263610061659,
+              0.5997263610061659,
+              0.14472636100616598,
+              0.299726361006166
+            ],
+            [
+              0.14472636100616598,
+              0.5997263610061659,
+              0.5997263610061659,
+              0.14472636100616598,
+              0.299726361006166
+            ],
+            [
+              0.144999344787381,
+              0.599999344787381,
+              0.599999344787381,
+              0.144999344787381,
+              0.299999344787381
+            ],
+            [
+              0.144999344787381,
+              0.599999344787381,
+              0.599999344787381,
+              0.144999344787381,
+              0.299999344787381
+            ],
+            [
+              0.03145687108881144,
+              0.5014568710888114,
+              0.5014568710888114,
+              0.03145687108881144,
+              0.20145687108881144
+            ],
+            [
+              0.03145687108881144,
+              0.5014568710888114,
+              0.5014568710888114,
+              0.03145687108881144,
+              0.20145687108881144
+            ],
+            [
+              0.14500000000000002,
+              0.6,
+              0.6,
+              0.14500000000000002,
+              0.30000000000000004
+            ],
+            [
+              0.14500000000000002,
+              0.6,
+              0.6,
+              0.14500000000000002,
+              0.30000000000000004
+            ]
+          ],
+          "compatibility_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+          "strategy_definitions": [
+            {
+              "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+              "verifiers": [
+                "evidence"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 188.79894875281025
+            },
+            {
+              "strategy_id": "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+              "verifiers": [
+                "evidence"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 188.79894875281025
+            },
+            {
+              "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+              "verifiers": [
+                "confidence",
+                "evidence"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 15921.25526748423
+            },
+            {
+              "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+              "verifiers": [
+                "confidence",
+                "evidence"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 15921.25526748423
+            },
+            {
+              "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+              "verifiers": [
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 188.90355375187937
+            },
+            {
+              "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+              "verifiers": [
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 188.90355375187937
+            },
+            {
+              "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+              "verifiers": [
+                "evidence",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 232.48554126475938
+            },
+            {
+              "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+              "verifiers": [
+                "evidence",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 232.48554126475938
+            },
+            {
+              "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 15921.3598724833
+            },
+            {
+              "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 15921.3598724833
+            },
+            {
+              "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 15964.94185999618
+            },
+            {
+              "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 15964.94185999618
+            },
+            {
+              "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+              "verifiers": [
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 232.5901462638285
+            },
+            {
+              "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+              "verifiers": [
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 232.5901462638285
+            },
+            {
+              "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "reputation_weighted",
+              "estimated_cost": 15965.046464995248
+            },
+            {
+              "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+              "verifiers": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "aggregation": "dependency_group",
+              "estimated_cost": 15965.046464995248
+            }
+          ],
+          "clean_coverage": {
+            "version": "finalized_clean_development_coverage_v1",
+            "minimum": 0.9,
+            "strategy_coverage": [
+              [
+                "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+                0.975
+              ],
+              [
+                "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+                0.975
+              ],
+              [
+                "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+                0.9
+              ],
+              [
+                "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+                0.9
+              ],
+              [
+                "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+                0.975
+              ],
+              [
+                "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                0.975
+              ],
+              [
+                "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+                0.975
+              ],
+              [
+                "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+                0.975
+              ],
+              [
+                "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+                0.9
+              ],
+              [
+                "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+                0.9
+              ],
+              [
+                "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+                0.9
+              ],
+              [
+                "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+                0.9
+              ],
+              [
+                "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+                0.975
+              ],
+              [
+                "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+                0.975
+              ],
+              [
+                "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+                0.9
+              ],
+              [
+                "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+                0.9
+              ]
+            ],
+            "parent_matrix_id": "ff820aef5976ffaf153d2ed06031002286b0cfaa2c61f0fa284824146d5e1472",
+            "training_binding_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+            "source_evaluation_id": "ee242866bcaff592167ec3ba21723c82c916b576b49187c27dbc7b643a04effc"
+          },
+          "reliability_first": {
+            "version": "validation_then_attempt_cost_v1",
+            "epsilon": 1e-08,
+            "cost_tolerance": 1e-08,
+            "parent_matrix_id": "623188085489fdedf8b5d7fd2afb80d0f7aaefbf2d26bc40d38db5de93eb68d5",
+            "validation_values": [
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.03,
+                0.5,
+                0.5,
+                0.03,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ],
+              [
+                0.045,
+                0.5,
+                0.5,
+                0.045,
+                0.2
+              ]
+            ]
+          }
+        },
+        "solution": {
+          "status": "optimal",
+          "message": "Stage A and Stage B: Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+          "tolerance": 1e-08,
+          "probabilities": [
+            [
+              "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+              1.0
+            ],
+            [
+              "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+              0.0
+            ],
+            [
+              "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+              0.0
+            ],
+            [
+              "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+              0.0
+            ],
+            [
+              "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+              0.0
+            ],
+            [
+              "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+              0.0
+            ],
+            [
+              "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+              0.0
+            ],
+            [
+              "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+              0.0
+            ],
+            [
+              "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+              0.0
+            ],
+            [
+              "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+              0.0
+            ],
+            [
+              "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+              0.0
+            ],
+            [
+              "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+              0.0
+            ],
+            [
+              "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+              0.0
+            ],
+            [
+              "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+              0.0
+            ],
+            [
+              "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+              0.0
+            ],
+            [
+              "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+              0.0
+            ]
+          ],
+          "game_value": 0.5,
+          "constraint_residuals": [
+            [
+              "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              0.47000001
+            ],
+            [
+              "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+              1.0000000050247593e-08
+            ],
+            [
+              "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+              1.0000000050247593e-08
+            ],
+            [
+              "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+              0.47000001
+            ],
+            [
+              "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+              0.30000001000000004
+            ]
+          ],
+          "attack_losses": [
+            [
+              "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              0.03
+            ],
+            [
+              "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+              0.5
+            ],
+            [
+              "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+              0.5
+            ],
+            [
+              "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+              0.03
+            ],
+            [
+              "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+              0.2
+            ]
+          ],
+          "worst_case_attacks": [
+            "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+            "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469"
+          ],
+          "normalization_residual": 0.0,
+          "minimum_probability": 0.0,
+          "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+          "attack_probabilities": [
+            [
+              "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              0.0
+            ],
+            [
+              "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+              1.0
+            ],
+            [
+              "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+              0.0
+            ],
+            [
+              "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+              0.0
+            ],
+            [
+              "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+              0.0
+            ]
+          ],
+          "dual_lower_bound": 0.5,
+          "primal_dual_gap": 0.0,
+          "optimality_basis": "highs_validation_then_cost_two_stage_certificate_v1",
+          "reliability_certificate": {
+            "version": "validation_then_cost_certificate_v1",
+            "stage_a_json": "{\"status\":\"optimal\",\"message\":\"Optimization terminated successfully. (HiGHS Status 7: Optimal)\",\"tolerance\":1e-8,\"probabilities\":[[\"3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3\",1.0],[\"a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53\",0.0],[\"521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be\",0.0],[\"3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109\",0.0],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",0.0],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",0.0],[\"ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a\",0.0],[\"6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8\",0.0],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.0],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.0],[\"9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a\",0.0],[\"fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9\",0.0],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.0],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.0]],\"game_value\":0.5,\"constraint_residuals\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.47],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.47],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.3]],\"attack_losses\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.03],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.5],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.5],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.03],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.2]],\"worst_case_attacks\":[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\"],\"normalization_residual\":0.0,\"minimum_probability\":0.0,\"matrix_id\":\"4562fa07034a3f0149041b5ffe0a929c8355fac18f1d5a6365b19eef28f57dfc\",\"attack_probabilities\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.0],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",1.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.0],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.0]],\"dual_lower_bound\":0.5,\"primal_dual_gap\":0.0,\"optimality_basis\":\"highs_status_0_and_clean_coverage_primal_dual_certificate_v1\",\"coverage_certificate\":{\"version\":\"clean_coverage_dual_v1\",\"multiplier\":0.0,\"achieved\":0.975,\"residual\":0.07499999999999996}}",
+            "reliability_cap": 0.50000001,
+            "attack_multipliers": [
+              [
+                "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                0.0
+              ],
+              [
+                "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+                0.0
+              ],
+              [
+                "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+                0.0
+              ],
+              [
+                "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+                0.0
+              ],
+              [
+                "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+                0.0
+              ]
+            ],
+            "coverage_multiplier": 0.0,
+            "achieved_coverage": 0.975,
+            "coverage_residual": 0.07499999999999996,
+            "expected_cost": 188.79894875281025,
+            "cost_dual_lower_bound": 188.79894875281025,
+            "cost_primal_dual_gap": 0.0
+          }
+        },
+        "strategies": [
+          {
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "verifiers": [
+              "evidence"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 188.79894875281025
+          },
+          {
+            "strategy_id": "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+            "verifiers": [
+              "evidence"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 188.79894875281025
+          },
+          {
+            "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+            "verifiers": [
+              "confidence",
+              "evidence"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 15921.25526748423
+          },
+          {
+            "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+            "verifiers": [
+              "confidence",
+              "evidence"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 15921.25526748423
+          },
+          {
+            "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 188.90355375187937
+          },
+          {
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 188.90355375187937
+          },
+          {
+            "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+            "verifiers": [
+              "evidence",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 232.48554126475938
+          },
+          {
+            "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+            "verifiers": [
+              "evidence",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 232.48554126475938
+          },
+          {
+            "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 15921.3598724833
+          },
+          {
+            "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 15921.3598724833
+          },
+          {
+            "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 15964.94185999618
+          },
+          {
+            "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 15964.94185999618
+          },
+          {
+            "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            "verifiers": [
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 232.5901462638285
+          },
+          {
+            "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            "verifiers": [
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 232.5901462638285
+          },
+          {
+            "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 15965.046464995248
+          },
+          {
+            "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+            "verifiers": [
+              "confidence",
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "aggregation": "dependency_group",
+            "estimated_cost": 15965.046464995248
+          }
+        ]
+      },
+      "context": {
+        "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.3,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"semantic_comparison\"],\"latency\":0.4,\"limitations\":[\"Reference similarity is not factual correctness.\"],\"observation_count\":40,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.5,\"requires_reference\":true,\"resource_penalty\":0.085,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.415,\"verifier_name\":\"semantic\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":38,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.95,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":0.94,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":2,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.45,\"verifier_name\":\"rule\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.9,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"consistency\"],\"latency\":1.0,\"limitations\":[\"Generation/judgment agreement is not factual evidence or independence.\",\"Provider readiness is unknown until execution.\"],\"observation_count\":13,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":3,\"reputation\":0.733333,\"requires_reference\":false,\"resource_penalty\":0.23500000000000001,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.498333,\"verifier_name\":\"confidence\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.13,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"direct_fact\"],\"expected_uncovered\":[],\"fallback\":[\"rule\",\"semantic\"],\"initial_selected\":[\"evidence\",\"confidence\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":true,\"reputation_statistics\":[{\"alpha\":21.0,\"beta\":21.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":20,\"observation_count\":40,\"posterior_mean\":0.5,\"posterior_variance\":0.005813953488372093,\"successes\":20,\"verifier_name\":\"semantic\"},{\"alpha\":38.0,\"beta\":2.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":1,\"observation_count\":38,\"posterior_mean\":0.9500000000000001,\"posterior_variance\":0.001158536585365852,\"successes\":37,\"verifier_name\":\"evidence\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"rule\"},{\"alpha\":11.0,\"beta\":4.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":3,\"observation_count\":13,\"posterior_mean\":0.7333333333333333,\"posterior_variance\":0.012222222222222225,\"successes\":10,\"verifier_name\":\"confidence\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"direct_fact\"],\"legacy_unrecognized\":[],\"requirements\":[\"direct_fact\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"direct_fact\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"explicit_task_questions_v1\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+        "attempt_costs": [
+          [
+            "confidence",
+            15732.45631873142
+          ],
+          [
+            "evidence",
+            188.79894875281025
+          ],
+          [
+            "rule",
+            0.10460499906912446
+          ],
+          [
+            "semantic",
+            43.68659251194913
+          ]
+        ],
+        "budget": 15965.046464995248,
+        "cost_units": "ms",
+        "loss_configuration": {
+          "version": "multitask-exploratory-loss-v1",
+          "false_accept": 1.0,
+          "false_reject": 1.0,
+          "uncertain": 0.2,
+          "resource_weight": 6.263683617787064e-06,
+          "cost_units": "ms"
+        },
+        "analyzer_provenance": [
+          [
+            "analysis_method",
+            "heuristic"
+          ],
+          [
+            "context_version",
+            "question_context_v1"
+          ],
+          [
+            "domain_status",
+            "unknown"
+          ],
+          [
+            "research_context_presence",
+            "present"
+          ],
+          [
+            "scoring_version",
+            "explicit_task_questions_v1"
+          ]
+        ],
+        "dependencies": {
+          "version": "multitask-observed-dependencies-v1",
+          "dependencies": [
+            {
+              "resource_id": "local-embedding-snapshot",
+              "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verifiers": [
+                "evidence",
+                "semantic"
+              ]
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verifiers": [
+                "confidence",
+                "evidence"
+              ]
+            }
+          ],
+          "unresolved": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "unknown_treatment": "shared_unknown"
+        },
+        "aggregation_versions": [
+          [
+            "dependency_group",
+            "groups_v1"
+          ],
+          [
+            "reputation_weighted",
+            "log_odds_v1"
+          ]
+        ],
+        "provenance": {
+          "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+          "history_dataset": "multitask42-factual-history",
+          "development_dataset": "multitask42-factual-development",
+          "final_test_dataset": "multitask42-factual-final_test",
+          "matrix_version": "multitask-finalized-development-v1",
+          "loss_configuration": "multitask-exploratory-loss-v1",
+          "category": "general",
+          "category_kind": "domain",
+          "evidence_kind": "empirical"
+        },
+        "version": "game_context_v1",
+        "offline_evaluation_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+        "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"confidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"confidence-implementation\",\"sha256\":\"9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"},{\"kind\":\"model\",\"resource_id\":\"ollama-model\",\"sha256\":\"a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72\"},{\"kind\":\"prompt\",\"resource_id\":\"self-consistency-short-answer\",\"sha256\":\"dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b\"},{\"kind\":\"service\",\"resource_id\":\"ollama-service\",\"sha256\":\"5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895\"}],\"verifier_name\":\"confidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"semantic-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"semantic-implementation\",\"sha256\":\"9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"}],\"verifier_name\":\"semantic\"}],\"version\":\"game_resource_manifest_v1\"},\"team_requirements\":{\"minimum_informative\":1,\"minimum_selected\":1,\"version\":\"flexible_team_requirements_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}",
+        "clean_coverage_json": "{\"minimum\":0.9,\"parent_matrix_id\":\"ff820aef5976ffaf153d2ed06031002286b0cfaa2c61f0fa284824146d5e1472\",\"source_evaluation_id\":\"ee242866bcaff592167ec3ba21723c82c916b576b49187c27dbc7b643a04effc\",\"strategy_coverage\":[[\"3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3\",0.975],[\"a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53\",0.975],[\"521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be\",0.9],[\"3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109\",0.9],[\"7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac\",0.975],[\"ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0\",0.975],[\"ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a\",0.975],[\"6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8\",0.975],[\"dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc\",0.9],[\"540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6\",0.9],[\"9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a\",0.9],[\"fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9\",0.9],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.975],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.975],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.9],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.9]],\"training_binding_id\":\"5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107\",\"version\":\"finalized_clean_development_coverage_v1\"}",
+        "reliability_first_json": "{\"cost_tolerance\":1e-08,\"epsilon\":1e-08,\"parent_matrix_id\":\"623188085489fdedf8b5d7fd2afb80d0f7aaefbf2d26bc40d38db5de93eb68d5\",\"validation_values\":[[0.03,0.5,0.5,0.03,0.2],[0.03,0.5,0.5,0.03,0.2],[0.045,0.5,0.5,0.045,0.2],[0.045,0.5,0.5,0.045,0.2],[0.03,0.5,0.5,0.03,0.2],[0.03,0.5,0.5,0.03,0.2],[0.03,0.5,0.5,0.03,0.2],[0.03,0.5,0.5,0.03,0.2],[0.045,0.5,0.5,0.045,0.2],[0.045,0.5,0.5,0.045,0.2],[0.045,0.5,0.5,0.045,0.2],[0.045,0.5,0.5,0.045,0.2],[0.03,0.5,0.5,0.03,0.2],[0.03,0.5,0.5,0.03,0.2],[0.045,0.5,0.5,0.045,0.2],[0.045,0.5,0.5,0.045,0.2]],\"version\":\"validation_then_attempt_cost_v1\"}",
+        "task_conditioning_json": "{\"history_dataset_id\":\"multitask42-factual-history\",\"history_partition_digest\":\"99eb2ffd2d0d481eb3f23303ede787877b0622a39227bbf838c4ef65df4856ed\",\"identity\":{\"domain_status\":\"unknown\",\"question_rules_version\":\"explicit_task_questions_v1\",\"requirements\":[\"direct_fact\"],\"subject_domain\":\"general\",\"version\":\"domain_requirements_task_v1\"},\"sparse_history\":\"isolated_beta_prior_no_pooling\",\"version\":\"task_isolated_history_v1\"}"
+      },
+      "contract": {
+        "version": "offline_public_decision_v4",
+        "coverage_version": "task_output_contract_v2",
+        "contributor_version": "informative_history_influence_v1",
+        "threshold": 0.55,
+        "failure_contract": "all_selected_returned",
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "history_prior_alpha": 1.0,
+        "history_prior_beta": 1.0,
+        "resource_manifest": {
+          "version": "game_resource_manifest_v1",
+          "verifiers": [
+            {
+              "verifier_name": "confidence",
+              "resources": [
+                {
+                  "resource_id": "confidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "confidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                },
+                {
+                  "resource_id": "ollama-model",
+                  "kind": "model",
+                  "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                },
+                {
+                  "resource_id": "self-consistency-short-answer",
+                  "kind": "prompt",
+                  "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                },
+                {
+                  "resource_id": "ollama-service",
+                  "kind": "service",
+                  "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                }
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "resources": [
+                {
+                  "resource_id": "evidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "evidence-corpus",
+                  "kind": "corpus",
+                  "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                },
+                {
+                  "resource_id": "evidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                },
+                {
+                  "resource_id": "evidence-index",
+                  "kind": "index",
+                  "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                }
+              ]
+            },
+            {
+              "verifier_name": "rule",
+              "resources": [
+                {
+                  "resource_id": "rule-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "rule-implementation",
+                  "kind": "implementation",
+                  "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                }
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "resources": [
+                {
+                  "resource_id": "semantic-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "semantic-implementation",
+                  "kind": "implementation",
+                  "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                }
+              ]
+            }
+          ]
+        },
+        "team_requirements": {
+          "version": "flexible_team_requirements_v1",
+          "minimum_selected": 1,
+          "minimum_informative": 1
+        }
+      },
+      "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "applicable_domain": "general"
+    }
+  ],
+  "compound_policy": {
+    "version": "component_game_policy_v1",
+    "contract": {
+      "version": "component_complete_team_v1",
+      "binding_version": "fact_plus_sum_binding_v2",
+      "descriptor_catalog_json": "{\"descriptors\":[{\"entity\":\"Bahrain\",\"measure\":\"area\",\"source_id\":\"BH\"},{\"entity\":\"India\",\"measure\":\"population\",\"source_id\":\"IN\"},{\"entity\":\"Kuwait\",\"measure\":\"area\",\"source_id\":\"KW\"},{\"entity\":\"Maldives\",\"measure\":\"population\",\"source_id\":\"MV\"},{\"entity\":\"Lithuania\",\"measure\":\"area\",\"source_id\":\"LT\"},{\"entity\":\"Liberia\",\"measure\":\"population\",\"source_id\":\"LR\"},{\"entity\":\"Palau\",\"measure\":\"area\",\"source_id\":\"PW\"},{\"entity\":\"Somalia\",\"measure\":\"population\",\"source_id\":\"SO\"},{\"entity\":\"Norway\",\"measure\":\"area\",\"source_id\":\"NO\"},{\"entity\":\"Belgium\",\"measure\":\"population\",\"source_id\":\"BE\"},{\"entity\":\"Georgia\",\"measure\":\"area\",\"source_id\":\"GE\"},{\"entity\":\"Romania\",\"measure\":\"population\",\"source_id\":\"RO\"},{\"entity\":\"Ecuador\",\"measure\":\"population\",\"source_id\":\"EC\"},{\"entity\":\"Philippines\",\"measure\":\"area\",\"source_id\":\"PH\"},{\"entity\":\"Malawi\",\"measure\":\"population\",\"source_id\":\"MW\"},{\"entity\":\"Paraguay\",\"measure\":\"area\",\"source_id\":\"PY\"},{\"entity\":\"Thailand\",\"measure\":\"population\",\"source_id\":\"TH\"},{\"entity\":\"Nigeria\",\"measure\":\"area\",\"source_id\":\"NG\"},{\"entity\":\"Gabon\",\"measure\":\"population\",\"source_id\":\"GA\"},{\"entity\":\"Czechia\",\"measure\":\"area\",\"source_id\":\"CZ\"},{\"entity\":\"Nepal\",\"measure\":\"population\",\"source_id\":\"NP\"},{\"entity\":\"Senegal\",\"measure\":\"area\",\"source_id\":\"SN\"},{\"entity\":\"Grenada\",\"measure\":\"population\",\"source_id\":\"GD\"},{\"entity\":\"Bangladesh\",\"measure\":\"area\",\"source_id\":\"BD\"},{\"entity\":\"Morocco\",\"measure\":\"population\",\"source_id\":\"MA\"},{\"entity\":\"Brazil\",\"measure\":\"area\",\"source_id\":\"BR\"},{\"entity\":\"Mauritius\",\"measure\":\"population\",\"source_id\":\"MU\"},{\"entity\":\"Syria\",\"measure\":\"area\",\"source_id\":\"SY\"},{\"entity\":\"Turkmenistan\",\"measure\":\"population\",\"source_id\":\"TM\"},{\"entity\":\"Andorra\",\"measure\":\"area\",\"source_id\":\"AD\"},{\"entity\":\"Uganda\",\"measure\":\"population\",\"source_id\":\"UG\"},{\"entity\":\"Uruguay\",\"measure\":\"area\",\"source_id\":\"UY\"},{\"entity\":\"Suriname\",\"measure\":\"population\",\"source_id\":\"SR\"},{\"entity\":\"Kenya\",\"measure\":\"area\",\"source_id\":\"KE\"},{\"entity\":\"Moldova\",\"measure\":\"population\",\"source_id\":\"MD\"},{\"entity\":\"Montenegro\",\"measure\":\"area\",\"source_id\":\"ME\"},{\"entity\":\"Cameroon\",\"measure\":\"population\",\"source_id\":\"CM\"},{\"entity\":\"Armenia\",\"measure\":\"area\",\"source_id\":\"AM\"}],\"source_manifest_id\":\"a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167\",\"version\":\"source_backed_component_catalog_v2\"}",
+      "component_assignments": [
+        [
+          "base_fact",
+          [
+            "evidence"
+          ]
+        ],
+        [
+          "derived_sum",
+          [
+            "rule"
+          ]
+        ]
+      ],
+      "actual_resources": {
+        "version": "game_resource_manifest_v1",
+        "verifiers": [
+          {
+            "verifier_name": "confidence",
+            "resources": [
+              {
+                "resource_id": "confidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "confidence-implementation",
+                "kind": "implementation",
+                "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              },
+              {
+                "resource_id": "ollama-model",
+                "kind": "model",
+                "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+              },
+              {
+                "resource_id": "self-consistency-short-answer",
+                "kind": "prompt",
+                "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+              },
+              {
+                "resource_id": "ollama-service",
+                "kind": "service",
+                "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+              }
+            ]
+          },
+          {
+            "verifier_name": "evidence",
+            "resources": [
+              {
+                "resource_id": "evidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "evidence-corpus",
+                "kind": "corpus",
+                "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+              },
+              {
+                "resource_id": "evidence-implementation",
+                "kind": "implementation",
+                "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+              },
+              {
+                "resource_id": "evidence-index",
+                "kind": "index",
+                "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              }
+            ]
+          },
+          {
+            "verifier_name": "rule",
+            "resources": [
+              {
+                "resource_id": "rule-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "rule-implementation",
+                "kind": "implementation",
+                "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+              }
+            ]
+          },
+          {
+            "verifier_name": "semantic",
+            "resources": [
+              {
+                "resource_id": "semantic-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "semantic-implementation",
+                "kind": "implementation",
+                "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              }
+            ]
+          }
+        ]
+      },
+      "fitting_configuration": {
+        "version": "post_development_85_exploratory_v1",
+        "minimum_clean_coverage": 0.85,
+        "chosen_after_development": true,
+        "original_study_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6",
+        "authorization": "User attachment 9d033868: separately versioned 85% exploratory configuration chosen after development; only coverage constraint changes."
+      },
+      "category": "numeric_fact",
+      "question_signature": [
+        "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+        "two_required_checks",
+        2.0,
+        false
+      ],
+      "obligations": [
+        {
+          "component_id": "base_fact",
+          "context": {
+            "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":24,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.961538,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":0.951538,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.45,\"verifier_name\":\"rule\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.13,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"direct_fact\"],\"expected_uncovered\":[],\"fallback\":[],\"initial_selected\":[\"evidence\",\"rule\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":false,\"reputation_statistics\":[{\"alpha\":25.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":24,\"posterior_mean\":0.9615384615384615,\"posterior_variance\":0.0013697129081744496,\"successes\":24,\"verifier_name\":\"evidence\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"rule\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"direct_fact\"],\"legacy_unrecognized\":[],\"requirements\":[\"direct_fact\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"direct_fact\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"source_backed_component_questions_v2\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+            "attempt_costs": [
+              [
+                "evidence",
+                84.07056144642411
+              ],
+              [
+                "rule",
+                0.12252813515563805
+              ]
+            ],
+            "budget": 84.19308958157974,
+            "cost_units": "ms",
+            "loss_configuration": {
+              "version": "multitask-exploratory-loss-v1",
+              "false_accept": 1.0,
+              "false_reject": 1.0,
+              "uncertain": 0.2,
+              "resource_weight": 4.704037204857504e-06,
+              "cost_units": "ms"
+            },
+            "analyzer_provenance": [
+              [
+                "analysis_method",
+                "heuristic"
+              ],
+              [
+                "context_version",
+                "question_context_v1"
+              ],
+              [
+                "domain_status",
+                "unknown"
+              ],
+              [
+                "research_context_presence",
+                "present"
+              ],
+              [
+                "scoring_version",
+                "source_backed_component_questions_v2"
+              ]
+            ],
+            "dependencies": {
+              "version": "multitask-observed-dependencies-v1",
+              "dependencies": [
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "verifiers": [
+                    "evidence",
+                    "semantic"
+                  ]
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "verifiers": [
+                    "confidence",
+                    "evidence"
+                  ]
+                }
+              ],
+              "unresolved": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "unknown_treatment": "shared_unknown"
+            },
+            "aggregation_versions": [
+              [
+                "dependency_group",
+                "groups_v1"
+              ],
+              [
+                "reputation_weighted",
+                "log_odds_v1"
+              ]
+            ],
+            "provenance": {
+              "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+              "history_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history",
+              "development_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development",
+              "final_test_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-reserved-test",
+              "matrix_version": "compound_joint_v2",
+              "loss_configuration": "multitask-exploratory-loss-v1",
+              "category": "general",
+              "category_kind": "domain",
+              "evidence_kind": "empirical"
+            },
+            "version": "game_context_v1",
+            "offline_evaluation_id": null,
+            "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"}],\"version\":\"game_resource_manifest_v1\"},\"team_requirements\":{\"minimum_informative\":1,\"minimum_selected\":1,\"version\":\"flexible_team_requirements_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}"
+          },
+          "contract": {
+            "version": "offline_public_decision_v4",
+            "coverage_version": "task_output_contract_v2",
+            "contributor_version": "informative_history_influence_v1",
+            "threshold": 0.55,
+            "failure_contract": "all_selected_returned",
+            "execution_configuration_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "history_prior_alpha": 1.0,
+            "history_prior_beta": 1.0,
+            "resource_manifest": {
+              "version": "game_resource_manifest_v1",
+              "verifiers": [
+                {
+                  "verifier_name": "evidence",
+                  "resources": [
+                    {
+                      "resource_id": "evidence-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "evidence-corpus",
+                      "kind": "corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                    },
+                    {
+                      "resource_id": "evidence-implementation",
+                      "kind": "implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                    },
+                    {
+                      "resource_id": "evidence-index",
+                      "kind": "index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                    },
+                    {
+                      "resource_id": "local-embedding-snapshot",
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    },
+                    {
+                      "resource_id": "local-nli-snapshot",
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "rule",
+                  "resources": [
+                    {
+                      "resource_id": "rule-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "rule-implementation",
+                      "kind": "implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                    }
+                  ]
+                }
+              ]
+            },
+            "team_requirements": {
+              "version": "flexible_team_requirements_v1",
+              "minimum_selected": 1,
+              "minimum_informative": 1
+            }
+          }
+        },
+        {
+          "component_id": "derived_sum",
+          "context": {
+            "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.29,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":48,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.98,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":1.13,\"verifier_name\":\"rule\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.12,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"arithmetic\"],\"expected_uncovered\":[],\"fallback\":[],\"initial_selected\":[\"rule\",\"evidence\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":false,\"reputation_statistics\":[{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"evidence\"},{\"alpha\":49.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":48,\"posterior_mean\":0.98,\"posterior_variance\":0.0003843137254901964,\"successes\":48,\"verifier_name\":\"rule\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"arithmetic\"],\"legacy_unrecognized\":[],\"requirements\":[\"arithmetic\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"arithmetic\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"source_backed_component_questions_v2\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+            "attempt_costs": [
+              [
+                "evidence",
+                84.07056144642411
+              ],
+              [
+                "rule",
+                0.12252813515563805
+              ]
+            ],
+            "budget": 84.19308958157974,
+            "cost_units": "ms",
+            "loss_configuration": {
+              "version": "multitask-exploratory-loss-v1",
+              "false_accept": 1.0,
+              "false_reject": 1.0,
+              "uncertain": 0.2,
+              "resource_weight": 4.704037204857504e-06,
+              "cost_units": "ms"
+            },
+            "analyzer_provenance": [
+              [
+                "analysis_method",
+                "heuristic"
+              ],
+              [
+                "context_version",
+                "question_context_v1"
+              ],
+              [
+                "domain_status",
+                "unknown"
+              ],
+              [
+                "research_context_presence",
+                "present"
+              ],
+              [
+                "scoring_version",
+                "source_backed_component_questions_v2"
+              ]
+            ],
+            "dependencies": {
+              "version": "multitask-observed-dependencies-v1",
+              "dependencies": [
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "verifiers": [
+                    "evidence",
+                    "semantic"
+                  ]
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "verifiers": [
+                    "confidence",
+                    "evidence"
+                  ]
+                }
+              ],
+              "unresolved": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "unknown_treatment": "shared_unknown"
+            },
+            "aggregation_versions": [
+              [
+                "dependency_group",
+                "groups_v1"
+              ],
+              [
+                "reputation_weighted",
+                "log_odds_v1"
+              ]
+            ],
+            "provenance": {
+              "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+              "history_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history",
+              "development_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development",
+              "final_test_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-reserved-test",
+              "matrix_version": "compound_joint_v2",
+              "loss_configuration": "multitask-exploratory-loss-v1",
+              "category": "general",
+              "category_kind": "domain",
+              "evidence_kind": "empirical"
+            },
+            "version": "game_context_v1",
+            "offline_evaluation_id": null,
+            "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"}],\"version\":\"game_resource_manifest_v1\"},\"team_requirements\":{\"minimum_informative\":1,\"minimum_selected\":1,\"version\":\"flexible_team_requirements_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}"
+          },
+          "contract": {
+            "version": "offline_public_decision_v4",
+            "coverage_version": "task_output_contract_v2",
+            "contributor_version": "informative_history_influence_v1",
+            "threshold": 0.55,
+            "failure_contract": "all_selected_returned",
+            "execution_configuration_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "history_prior_alpha": 1.0,
+            "history_prior_beta": 1.0,
+            "resource_manifest": {
+              "version": "game_resource_manifest_v1",
+              "verifiers": [
+                {
+                  "verifier_name": "evidence",
+                  "resources": [
+                    {
+                      "resource_id": "evidence-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "evidence-corpus",
+                      "kind": "corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                    },
+                    {
+                      "resource_id": "evidence-implementation",
+                      "kind": "implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                    },
+                    {
+                      "resource_id": "evidence-index",
+                      "kind": "index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                    },
+                    {
+                      "resource_id": "local-embedding-snapshot",
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    },
+                    {
+                      "resource_id": "local-nli-snapshot",
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "rule",
+                  "resources": [
+                    {
+                      "resource_id": "rule-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "rule-implementation",
+                      "kind": "implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                    }
+                  ]
+                }
+              ]
+            },
+            "team_requirements": {
+              "version": "flexible_team_requirements_v1",
+              "minimum_selected": 1,
+              "minimum_informative": 1
+            }
+          }
+        }
+      ],
+      "budget": 84.19308958157974,
+      "minimum_selected": 1,
+      "minimum_distinct_contributors": 1,
+      "contributor_semantics": "distinct_influential_verifier_union_v1",
+      "decision_semantics": "all_required_pass_any_qualified_reject_v1"
+    },
+    "matrix": {
+      "strategy_ids": [
+        "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+        "4a1f4788418e20084c514f9e3b2634952bf5722e3e3b9f4495d22047d8ef4ecd"
+      ],
+      "attack_ids": [
+        "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+        "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+        "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad"
+      ],
+      "values": [
+        [
+          0.020833333333333332,
+          0.75,
+          0.25,
+          0.016666666666666666,
+          0.19999999999999996
+        ],
+        [
+          0.020833333333333332,
+          0.75,
+          0.25,
+          0.016666666666666666,
+          0.19999999999999996
+        ]
+      ],
+      "compatibility_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+      "strategy_definitions": [],
+      "clean_coverage": {
+        "version": "finalized_clean_development_coverage_v1",
+        "minimum": 0.85,
+        "strategy_coverage": [
+          [
+            "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+            0.8958333333333334
+          ],
+          [
+            "4a1f4788418e20084c514f9e3b2634952bf5722e3e3b9f4495d22047d8ef4ecd",
+            0.8958333333333334
+          ]
+        ],
+        "parent_matrix_id": "f91963a18ddeeff501066aac8b5d7613e1b49828a7dddb509fc94e5fc7c05253",
+        "training_binding_id": "7e6f1c357dac0441dc03f84edad70c5744222a0634566d3afd8d41efb27cb510",
+        "source_evaluation_id": "788549a185bd5a62eac092cfa09e36a665f6d9a0a035be45d177a200fd57f8c5"
+      }
+    },
+    "solution": {
+      "status": "optimal",
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "tolerance": 1e-08,
+      "probabilities": [
+        [
+          "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+          1.0
+        ],
+        [
+          "4a1f4788418e20084c514f9e3b2634952bf5722e3e3b9f4495d22047d8ef4ecd",
+          0.0
+        ]
+      ],
+      "game_value": 0.75,
+      "constraint_residuals": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.7291666666666666
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.5
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.7333333333333333
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.55
+        ]
+      ],
+      "attack_losses": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.020833333333333332
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.75
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.25
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.016666666666666666
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.19999999999999996
+        ]
+      ],
+      "worst_case_attacks": [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245"
+      ],
+      "normalization_residual": 0.0,
+      "minimum_probability": 0.0,
+      "matrix_id": "bd4918e38503ec6ab990c83d687c1bc648015823a5ca2fa9ad18473421ab9970",
+      "attack_probabilities": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.0
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          1.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.0
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "dual_lower_bound": 0.75,
+      "primal_dual_gap": 0.0,
+      "optimality_basis": "highs_status_0_and_clean_coverage_primal_dual_certificate_v1",
+      "coverage_certificate": {
+        "version": "clean_coverage_dual_v1",
+        "multiplier": 0.0,
+        "achieved": 0.8958333333333334,
+        "residual": 0.04583333333333339
+      }
+    },
+    "evidence_kind": "empirical",
+    "joint_evidence_id": "570af35064f7124d37794be4df060e83449ad14980e93db9a52a3483c72ee45f",
+    "joint_development": {
+      "version": "joint_component_development_v1",
+      "binding_version": "fact_plus_sum_binding_v2",
+      "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+      "matrix_id": "bd4918e38503ec6ab990c83d687c1bc648015823a5ca2fa9ad18473421ab9970",
+      "history_dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history",
+      "development_dataset_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development",
+      "final_test_reservation_id": "4db49d1117d211c7362465bace159319957085c9dc7a6f2e1ffe5f57d36e3311",
+      "history_manifest_sha256": "e05c0ff4f95f2393018633347e90c224bb558d37698d14f41d465051e0576292",
+      "development_manifest_sha256": "e7e70e874cf84b230d918959e149f8c430ac2fa5e566d4d7ade3dc6f9c05510c",
+      "grouped_partition_sha256": "8948eb71fbf4550a3dcaac3cd9a60f8bc139581bccabe3f8cc79b86a22417337",
+      "label_protocol_id": "independent-source-and-exact-decimal-v2",
+      "attack_specification_id": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+      "collection_protocol": "complete_bound_component_calls_v1"
+    }
+  },
+  "allowed_questions": [
+    "Paraphrase this reference: A baker packed thirteen croissants for delivery.",
+    "Paraphrase this reference: Dorian sold a violin to Elara.",
+    "Paraphrase this reference: Eight appointments remain on the dentist schedule.",
+    "Paraphrase this reference: Exactly six otters inhabit the lagoon.",
+    "Paraphrase this reference: Farah taught geology to Gideon.",
+    "Paraphrase this reference: Five musicians rehearsed inside the pavilion.",
+    "Paraphrase this reference: Helena received a parcel from Idris.",
+    "Paraphrase this reference: Ivo has not signed the rental agreement.",
+    "Paraphrase this reference: Jules defeated Kiran in the final match.",
+    "Paraphrase this reference: Leonie was followed through the tunnel by Malik.",
+    "Paraphrase this reference: Nadia invited Orson to the symposium.",
+    "Paraphrase this reference: No ferries departed from the northern pier this morning.",
+    "Paraphrase this reference: None of the violet balloons burst during the parade.",
+    "Paraphrase this reference: Petra inherited a cottage from Quentin.",
+    "Paraphrase this reference: Rhea did not photograph the comet last night.",
+    "Paraphrase this reference: Selene never watered the cactus on Tuesday.",
+    "Paraphrase this reference: Seven lanterns hang above the marina.",
+    "Paraphrase this reference: The ambulance is parked behind the theatre.",
+    "Paraphrase this reference: The archivist catalogued eleven scrolls yesterday.",
+    "Paraphrase this reference: The chef excluded sesame from the soup.",
+    "Paraphrase this reference: The copper disk is inside the transparent cylinder.",
+    "Paraphrase this reference: The coral bead is beneath the ivory plate.",
+    "Paraphrase this reference: The fountain stands north of the observatory.",
+    "Paraphrase this reference: The inspection recorded sixteen cracks in the dam.",
+    "Paraphrase this reference: The inspector denied approving the turbine.",
+    "Paraphrase this reference: The locksmith did not repair the bronze latch.",
+    "Paraphrase this reference: The pine bench is to the right of the stone arch.",
+    "Paraphrase this reference: The silver vase rests above the walnut shelf.",
+    "Paraphrase this reference: The tram stop lies east of the greenhouse.",
+    "Paraphrase this reference: There are three satellites orbiting the fictional planet Vesta.",
+    "What is 328 + 536?",
+    "What is the area of Andorra, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Armenia, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Bahrain, and what is that area times 10 square kilometres? Give both values.",
+    "What is the area of Bangladesh, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Brazil, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Czechia, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Georgia, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Kenya, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Kuwait, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Lithuania, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Montenegro, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Nigeria, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Norway, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Palau, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Paraguay, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Philippines, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Senegal, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Syria, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the area of Uruguay, and what is that area plus 10 square kilometres? Give both values.",
+    "What is the population of Belgium?",
+    "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+    "What is the population of Ecuador, and what is that population plus 1000? Give both values.",
+    "What is the population of Gabon, and what is that population plus 1000? Give both values.",
+    "What is the population of Grenada, and what is that population plus 1000? Give both values.",
+    "What is the population of India, and what is that population plus 1000? Give both values.",
+    "What is the population of Liberia, and what is that population plus 1000? Give both values.",
+    "What is the population of Malawi, and what is that population plus 1000? Give both values.",
+    "What is the population of Maldives, and what is that population plus 1000? Give both values.",
+    "What is the population of Mauritius, and what is that population plus 1000? Give both values.",
+    "What is the population of Moldova, and what is that population plus 1000? Give both values.",
+    "What is the population of Morocco, and what is that population plus 1000? Give both values.",
+    "What is the population of Nepal, and what is that population plus 1000? Give both values.",
+    "What is the population of Romania, and what is that population plus 1000? Give both values.",
+    "What is the population of Somalia, and what is that population plus 1000? Give both values.",
+    "What is the population of Suriname, and what is that population plus 1000? Give both values.",
+    "What is the population of Thailand, and what is that population plus 1000? Give both values.",
+    "What is the population of Turkmenistan, and what is that population plus 1000? Give both values.",
+    "What is the population of Uganda, and what is that population plus 1000? Give both values."
+  ],
+  "reference_status": "infeasible",
+  "deployment_active": false,
+  "compound_transfer": {
+    "version": "compound_required_resource_transfer_v1",
+    "original_freeze_id": "d327793b940b356a0e8cd418c9a6a7ae3d93c3f6a21035a0f36b0e29910ad0c0",
+    "original_policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+    "original_full_resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+    "scoped_resource_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+    "scoped_setup": {
+      "resources": {
+        "version": "game_resource_manifest_v1",
+        "verifiers": [
+          {
+            "verifier_name": "evidence",
+            "resources": [
+              {
+                "resource_id": "evidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "evidence-corpus",
+                "kind": "corpus",
+                "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+              },
+              {
+                "resource_id": "evidence-implementation",
+                "kind": "implementation",
+                "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+              },
+              {
+                "resource_id": "evidence-index",
+                "kind": "index",
+                "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              }
+            ]
+          },
+          {
+            "verifier_name": "rule",
+            "resources": [
+              {
+                "resource_id": "rule-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "rule-implementation",
+                "kind": "implementation",
+                "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+              }
+            ]
+          }
+        ]
+      },
+      "environment": {
+        "os": "Windows-10-10.0.26200-SP0",
+        "architecture": "AMD64",
+        "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+        "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+        "logical_cpus": "16",
+        "device": "cpu",
+        "concurrency": "sequential",
+        "runtime": "3.11.5",
+        "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+        "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+        "physical_memory_bytes": "16876888064"
+      },
+      "dependency_versions": {
+        "numpy": "2.4.6",
+        "pydantic": "2.13.5",
+        "sentence-transformers": "6.1.0",
+        "transformers": "5.17.0",
+        "torch": "2.14.0",
+        "faiss-cpu": "1.15.1",
+        "requests": "2.34.2",
+        "safetensors": "0.8.0",
+        "tokenizers": "0.23.2",
+        "python": "3.11.5",
+        "sentencepiece": "not installed; local tokenizer.json avoids conversion"
+      },
+      "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+      "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+      "evidence_kind": "empirical"
+    },
+    "study_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6",
+    "required_entries_exactly_equal": true,
+    "policy_bytes_unchanged": true,
+    "decision_semantics_unchanged": true,
+    "no_refit": true,
+    "scope": [
+      "evidence",
+      "rule"
+    ],
+    "network_forbidden": true,
+    "history_development_provenance": "Original full-roster recordings unchanged; new scoped final records validated separately.",
+    "code_hashes": {
+      "scripts/scoped_er_adapter.py": "0ab6ca048f516df4e178be5163f7e65ab86c477b765391a8c6e89f7f7ca4039b",
+      "scripts/scoped_compound_bridge.py": "b01eeba66efcf0a5f5f9e7d64df0bf96d8dd211636d2078103f9feae3517971c",
+      "scripts/evaluate_scoped_compound.py": "657a6a3b442ea26394426717378a0a09f7bf411a84fbb17163acefda8df7f3be",
+      "scripts/prepare_scoped_compound.py": "d002e173d24c5ef138cd76d8a29770e3da8049c442aaf3a251a9d3d93302c746"
+    },
+    "authorization": "User attachment2ebba2cc: scoped Evidence/Rule correction and96 reserved calls, zero generations.",
+    "transfer_id": "b6eef0e3b178bafb87368a2884a8209f45e7368448bf05ec82c215f01626d343"
+  },
+  "limitations": "Explicit offline scope. Historical identity strings preserved; live resources/instance compatibility checked separately. No API activation.",
+  "bundle_id": "4eea7626639ec7ceb74305eb384423a336a9da8b7c75f60119ae2c37c4051ce9"
+}

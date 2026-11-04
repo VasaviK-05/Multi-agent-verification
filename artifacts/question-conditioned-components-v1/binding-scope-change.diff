@@ -1,0 +1,19 @@
+--- binding-at-smoke.py
++++ app\game\component_binding.py
+@@ -12,6 +12,7 @@
+ _QUESTION = re.compile(
+     rf'What is the (area|population) of ([A-Za-z]+), and what is that (area|population) '
+     rf'plus ({_NUMBER})( square kilometres)?\? Give both values\.', re.I)
++_SUPPORTED = {('area', 'bahrain', '10'), ('population', 'belgium', '1000')}
+ 
+ 
+ class BindingError(ValueError):
+@@ -59,6 +60,8 @@
+     measure = match[1].lower()
+     if bool(match[5]) != (measure == 'area'):
+         raise BindingError('unsupported_category: units do not match the measure')
++    if (measure, match[2].lower(), match[4]) not in _SUPPORTED:
++        raise BindingError('unsupported_category: outside the two declared compound questions')
+     return ComponentPlan(measure, match[2].title(), match[4])
+ 
+ 

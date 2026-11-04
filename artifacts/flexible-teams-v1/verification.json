@@ -1,0 +1,33 @@
+{
+  "api_activation": false,
+  "base_commit": "0b3595e",
+  "baseline_payoffs_exact": true,
+  "branch": "codex/flexible-verifier-teams",
+  "fresh_inference": false,
+  "historical_bundle_identical": true,
+  "historical_bundle_sha256": "99516fbe460e816c68601509ca7e202cbcd3880d8d4250ec655f422244ec657c",
+  "input_hashes_unchanged": true,
+  "policies": [
+    {
+      "cohort": "arithmetic",
+      "context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+      "minimum_two_rejected": true,
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "validated": true
+    },
+    {
+      "cohort": "factual",
+      "context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "minimum_two_rejected": true,
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "validated": true
+    }
+  ],
+  "tests": {
+    "aggregation_policy_bundle_run": 257,
+    "broad_replay_selector_stopping_run": 397,
+    "final_flexible_contract_run": 7,
+    "note": "Runs overlap; counts are not unique test totals.",
+    "runtime_followup": 73
+  }
+}

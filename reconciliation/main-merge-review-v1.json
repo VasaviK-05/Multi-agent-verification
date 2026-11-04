@@ -1,0 +1,131 @@
+{
+  "version": "main_merge_review_v1",
+  "feature_parent": "03a0fa161d7ca783258a3114d17ede7de537476e",
+  "main_commit": "c7be1489b26ec7e0f2237acb71ca4f97000d7a8f",
+  "resolved_files": {
+    ".gitattributes": {
+      "feature_parent_git_bytes_sha256": "042ab949e083f4df08cfccec8e5eeb2e48df932b5a17395a351472ec5f690151",
+      "main_parent_git_bytes_sha256": "b7c004cde8f039d6e0859c42333e8f1710997727b41258d072d4248a78af1167",
+      "merged_checkout_sha256": "334bdc799d399673eb0decc96f6cc9cd8dfdc58e785bf42773302e86b7684c97",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Combine all original publication byte-preservation rules with later exact resource-source CRLF rules and frozen reconciliation JSON rules."
+    },
+    "app/analysis/capability_probe_analyzer.py": {
+      "feature_parent_git_bytes_sha256": "6a510c41920cabfc42bec6afc787c7d671547732a85f371f6436917f9b1d91f4",
+      "main_parent_git_bytes_sha256": "ef3399e9727f940d21f020f362b6389d8918f0ffce8246b06d29fe5b1ae27af4",
+      "merged_checkout_sha256": "ef3399e9727f940d21f020f362b6389d8918f0ffce8246b06d29fe5b1ae27af4",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Compared both complete contents after line-ending normalization: identical source; preserve exact published byte encoding."
+    },
+    "app/game/component_execution.py": {
+      "feature_parent_git_bytes_sha256": "41a995319a76bd930e51771f37a61be61237374f079aebed7ac5f9b525f79b29",
+      "main_parent_git_bytes_sha256": "5372e0513bb6209412cbd95e2323c431500b401679615506d93234068521cfb0",
+      "merged_checkout_sha256": "e6d70834e8a8dfd8701a965e6b067bfd7ada20cb10f917be89975f766351e201",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Retain main native component dispatch/finalization plus the feature opt-in source/relocation proof seam and separate pre/post identities."
+    },
+    "app/game/execution.py": {
+      "feature_parent_git_bytes_sha256": "07b2a9c66f4a24334a0d6621c29c3d37352be99e98c202d2ee1ed1e2ddfb8aaf",
+      "main_parent_git_bytes_sha256": "f5dfb96641b119826f3db44ca373eba654c98f0dca01ad3ad7280cc0ece9b30c",
+      "merged_checkout_sha256": "938b42aa9ef27b54814c0efc37c1594216e348b22fc0e2b5e332fa2b5781200d",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Retain injected actual-selector observations, ProjectObserver audits, relocation and reference proofs; incorporate main selected-team vs informative-minimum audit fields."
+    },
+    "app/game/execution_contract.py": {
+      "feature_parent_git_bytes_sha256": "ebf4821996f20eef173f5f6facbc889fc81176d84df33819bb699252e1af1df8",
+      "main_parent_git_bytes_sha256": "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432",
+      "merged_checkout_sha256": "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Compared both complete contents after line-ending normalization: identical source; preserve exact published byte encoding."
+    },
+    "app/game/finalization.py": {
+      "feature_parent_git_bytes_sha256": "274a5d60fbedbe27efb3cbf39ec8ca9a26a25acfc292a0c6f6f980d7d252a809",
+      "main_parent_git_bytes_sha256": "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b",
+      "merged_checkout_sha256": "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Compared both complete contents after line-ending normalization: identical source; preserve exact published byte encoding."
+    },
+    "app/game/models.py": {
+      "feature_parent_git_bytes_sha256": "b7a9d2fc0d38c6f22b4e3f488c8b91532a3424969e2a1f7963c5ecacc4475c61",
+      "main_parent_git_bytes_sha256": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73",
+      "merged_checkout_sha256": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Compared both complete contents after line-ending normalization: identical source; preserve exact published byte encoding."
+    },
+    "app/game/task_conditioning.py": {
+      "feature_parent_git_bytes_sha256": "34423bf66ed557fbf03350827400cd9d60556a6c2ae539c2343d06ae90f7f086",
+      "main_parent_git_bytes_sha256": "123eff948c28cc9fa6891aec586da0cb2fd3b90cbc40f4bade38267de778a0e0",
+      "merged_checkout_sha256": "123eff948c28cc9fa6891aec586da0cb2fd3b90cbc40f4bade38267de778a0e0",
+      "contributes_directly_to_pinned_implementation_or_configuration": false,
+      "resolution": "Compared both complete contents after line-ending normalization: identical source; preserve exact published byte encoding."
+    }
+  },
+  "publication_source_overlays": {
+    ".gitattributes": {
+      "original_publication_sha256": "b7c004cde8f039d6e0859c42333e8f1710997727b41258d072d4248a78af1167",
+      "merged_checkout_sha256": "334bdc799d399673eb0decc96f6cc9cd8dfdc58e785bf42773302e86b7684c97",
+      "rationale": "Combine all original publication byte-preservation rules with later exact resource-source CRLF rules and frozen reconciliation JSON rules."
+    },
+    "app/game/execution.py": {
+      "original_publication_sha256": "f5dfb96641b119826f3db44ca373eba654c98f0dca01ad3ad7280cc0ece9b30c",
+      "merged_checkout_sha256": "938b42aa9ef27b54814c0efc37c1594216e348b22fc0e2b5e332fa2b5781200d",
+      "rationale": "Retain injected actual-selector observations, ProjectObserver audits, relocation and reference proofs; incorporate main selected-team vs informative-minimum audit fields."
+    },
+    "app/game/component_execution.py": {
+      "original_publication_sha256": "5372e0513bb6209412cbd95e2323c431500b401679615506d93234068521cfb0",
+      "merged_checkout_sha256": "e6d70834e8a8dfd8701a965e6b067bfd7ada20cb10f917be89975f766351e201",
+      "rationale": "Retain main native component dispatch/finalization plus the feature opt-in source/relocation proof seam and separate pre/post identities."
+    }
+  },
+  "pinned_resource_contributors": {
+    "app/benchmark/project_adapter.py": "6b7893a98510a5c4a487d8ae8b64590839195f52b228c4f7759923dee19c33a1",
+    "app/models/schemas.py": "2ddcb19b63af208c6b513de09016b5acccb21a72211b543f6449cad912528c53",
+    "app/verifiers/base_verifier.py": "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899",
+    "app/verifiers/claim_generator.py": "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01",
+    "app/verifiers/evidence_retriever.py": "d99f4377c68a1cc2d8b7d3a29bc682d95c135814ebd6792c035989dbbc9af774",
+    "app/verifiers/evidence_verifier.py": "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c",
+    "app/verifiers/rule_verifier.py": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715",
+    "app/verifiers/confidence_verifier.py": "e05617149ea32f4f6136cc9ac8512296075acd285005d7d99670e4ab750ed94f",
+    "app/verifiers/self_consistency.py": "627b0e81bf9b57cd502f90a42c363af18d407e8c4465cae9fef25a39bc996ca4",
+    "app/verifiers/semantic_verifier.py": "c72cf7a6f34a66d16e36e360286ab6085000e1594e86dd1e124480aa43086bd8",
+    "app/game/offline/resource_relocation.py": "a23246cfb678833b655da99607f25ab6e429be81a21d1d1faf261ecfe7b748f8",
+    "app/game/offline/recording_adapters.py": "20ec9c693be8f641ad7eb13980664bbd5c9f06a68374a6194d8b8100cc7d954b",
+    "app/selection/verifier_selector.py": "b14227e5d4c65b24939119d3c2afddb11281ab67352845bda683824a85fcf0a6",
+    "app/selection/capabilities.py": "3781e0dded2c3d57fabb6fa3e1cfa2c2d95c68236d15b2a7a594299f217cb3c2"
+  },
+  "new_resource_transition_required": false,
+  "application_source_digest": "Changed application tree has a distinct setup/application-source digest and merge revision; never relabel it as the historical setup.",
+  "limitations_preserved": [
+    "singleton contraction not authorized",
+    "compound native acceptance remains incomplete",
+    "teammate live API remains unvalidated"
+  ],
+  "inference_performed": false,
+  "validation": {
+    "compatibility_relocation_selector_routing_api_tests_passed": 297,
+    "immutable_publication_files_verified": 487,
+    "merged_original_files_unchanged": 484,
+    "merged_known_source_overlays": 3,
+    "portable_replay_cases": 7,
+    "no_unresolved_conflicts": true,
+    "new_code_whitespace_errors": false,
+    "inherited_whitespace": {
+      "warnings": 525,
+      "paths": [
+        "artifacts/compound-study-36-v1/portable-inputs/LICENSE",
+        "artifacts/compound-study-36-v1/portable-inputs/geonames-countryInfo.txt",
+        "artifacts/flexible-heldout-v1/evaluate_flexible_heldout.failed-path-patch.py",
+        "artifacts/flexible-heldout-v1/evaluation-code-correction-v2.diff",
+        "artifacts/flexible-heldout-v1/evaluation-code-correction.diff",
+        "artifacts/question-conditioned-components-v1/binding-scope-change.diff"
+      ],
+      "all_git_blobs_identical_to_main": true
+    },
+    "environment": "Sandbox threaded API run stalled; full suite passed outside sandbox with one existing Starlette/httpx deprecation warning. New audit test initially assumed the synthetic selected floor was two; fixed fixture expectation to one while separately exercising informative floor two.",
+    "native_acceptance_performed": false,
+    "confidence_generations": 0,
+    "refit_performed": false,
+    "deployment_activated": false,
+    "additional_no_inference_recording_binding_tests_passed": 18
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "activated": false,
+  "addition_change_counts": {
+    "helps": 48,
+    "same_loss": 432
+  },
+  "attempts": 96,
+  "cautions": [
+    "No new policy was fitted or selected.",
+    "These are fixed historical task-family weight scenarios; new contrasts/operations are not validated by that history.",
+    "Factual examples reuse history-source facts, not unseen accuracy evidence.",
+    "Semantic coverage is a similarity measurement, not logical entailment.",
+    "Related factual/compound probes share source entities; 12 groups are not 12 independent benchmark clusters.",
+    "Old held-out results were not used to fit or select these examples."
+  ],
+  "compound_examples_blocked": 4,
+  "corpus_changed": false,
+  "evaluated_team_example_rows": 320,
+  "examples": 24,
+  "exploratory_only": true,
+  "policy_probabilities_changed": false,
+  "recordings_complete": true,
+  "reputation_updated": false,
+  "supported_atomic_examples": 20,
+  "version": "capability_probe_diagnostics_v1"
+}

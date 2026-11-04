@@ -1,0 +1,1126 @@
+[
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "answer": "703",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "a-multiply-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is 37 * 19?",
+    "question_id": "49b2b142af7224c0b090667c038557721ae5c660bd59c556f0f3ac193bdafbd0",
+    "reference": "The product of 37 and 19 is 703.",
+    "role": "development",
+    "run_id": "capability-probes-v1-a-multiply-correct",
+    "split_identity": "a-multiply"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "answer": "693",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "a-multiply-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is 37 * 19?",
+    "question_id": "49b2b142af7224c0b090667c038557721ae5c660bd59c556f0f3ac193bdafbd0",
+    "reference": "The product of 37 and 19 is 703.",
+    "role": "development",
+    "run_id": "capability-probes-v1-a-multiply-incorrect",
+    "split_identity": "a-multiply"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.23,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "answer": "8",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "a-word-difference-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the difference between 25 and 17?",
+    "question_id": "f22eeb6f0f6975ef131a3839a6ca374bda2288d9b5734dc8dd4b3b72f6ee796e",
+    "reference": "Subtracting 17 from 25 yields 8.",
+    "role": "development",
+    "run_id": "capability-probes-v1-a-word-difference-correct",
+    "split_identity": "a-word-difference"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.23,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "answer": "42",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "a-word-difference-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the difference between 25 and 17?",
+    "question_id": "f22eeb6f0f6975ef131a3839a6ca374bda2288d9b5734dc8dd4b3b72f6ee796e",
+    "reference": "Subtracting 17 from 25 yields 8.",
+    "role": "development",
+    "run_id": "capability-probes-v1-a-word-difference-incorrect",
+    "split_identity": "a-word-difference"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "answer": "4.25",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "a-division-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is 17 / 4?",
+    "question_id": "c3e282b2e645a8ce38c02b8dd9bb57dfde087501dd3bdb031a98bd1872e07a09",
+    "reference": "Seventeen divided by four equals 4.25.",
+    "role": "development",
+    "run_id": "capability-probes-v1-a-division-correct",
+    "split_identity": "a-division"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.12,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 1.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "arithmetic"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic"
+      ]
+    },
+    "answer": "4.2",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "a-division-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is 17 / 4?",
+    "question_id": "c3e282b2e645a8ce38c02b8dd9bb57dfde087501dd3bdb031a98bd1872e07a09",
+    "reference": "Seventeen divided by four equals 4.25.",
+    "role": "development",
+    "run_id": "capability-probes-v1-a-division-incorrect",
+    "split_identity": "a-division"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "answer": "The area of Bahrain is 765 square kilometres.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "f-area-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the area of Bahrain?",
+    "question_id": "f0f8755d01ac21a223b884c37d843410c3490cdc3b589562b50da263b81f8ba0",
+    "reference": "The area of Bahrain is 765 square kilometres.",
+    "role": "development",
+    "run_id": "capability-probes-v1-f-area-correct",
+    "split_identity": "f-area"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "answer": "The area of Bahrain is 766 square kilometres.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "f-area-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the area of Bahrain?",
+    "question_id": "f0f8755d01ac21a223b884c37d843410c3490cdc3b589562b50da263b81f8ba0",
+    "reference": "The area of Bahrain is 765 square kilometres.",
+    "role": "development",
+    "run_id": "capability-probes-v1-f-area-incorrect",
+    "split_identity": "f-area"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "answer": "The population of Belgium is 11941781.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "f-population-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the population of Belgium?",
+    "question_id": "a8997a8fa7814380053797b498507a1fbbb60e70137a10058b6d7813909922ea",
+    "reference": "The population of Belgium is 11941781.",
+    "role": "development",
+    "run_id": "capability-probes-v1-f-population-correct",
+    "split_identity": "f-population"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "answer": "The population of Belgium is 11941718.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "f-population-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the population of Belgium?",
+    "question_id": "a8997a8fa7814380053797b498507a1fbbb60e70137a10058b6d7813909922ea",
+    "reference": "The population of Belgium is 11941781.",
+    "role": "development",
+    "run_id": "capability-probes-v1-f-population-incorrect",
+    "split_identity": "f-population"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "answer": "The currency of Cuba is the Cuban peso.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "f-currency-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the currency of Cuba?",
+    "question_id": "025fbe8f16640abd40c62a5c02e177464a727548bed2e25800a8ad1d37fcdb7a",
+    "reference": "The currency of Cuba is the Cuban peso.",
+    "role": "development",
+    "run_id": "capability-probes-v1-f-currency-correct",
+    "split_identity": "f-currency"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 1.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "direct_fact"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "direct_fact"
+      ]
+    },
+    "answer": "The currency of Cuba is the Mexican peso.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "f-currency-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the currency of Cuba?",
+    "question_id": "025fbe8f16640abd40c62a5c02e177464a727548bed2e25800a8ad1d37fcdb7a",
+    "reference": "The currency of Cuba is the Cuban peso.",
+    "role": "development",
+    "run_id": "capability-probes-v1-f-currency-incorrect",
+    "split_identity": "f-currency"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.09,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "Four amber tokens were placed in the blue box by Nora.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-number-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: Nora placed four amber tokens in the blue box.",
+    "question_id": "90e80e236dcc7cb7e82166d3c7f5ef2ead77cd2cb02c5b5c815458884487fa86",
+    "reference": "Nora placed four amber tokens in the blue box.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-number-correct",
+    "split_identity": "s-number"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.09,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "Nora placed five amber tokens in the blue box.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-number-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: Nora placed four amber tokens in the blue box.",
+    "question_id": "90e80e236dcc7cb7e82166d3c7f5ef2ead77cd2cb02c5b5c815458884487fa86",
+    "reference": "Nora placed four amber tokens in the blue box.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-number-incorrect",
+    "split_identity": "s-number"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "The red gate was not opened by Owen.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-negation-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: Owen did not open the red gate.",
+    "question_id": "f46deccec5b3f82de70ba08727b5751063dab81e6c8275490c9cea4388744179",
+    "reference": "Owen did not open the red gate.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-negation-correct",
+    "split_identity": "s-negation"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "Owen opened the red gate.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-negation-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: Owen did not open the red gate.",
+    "question_id": "f46deccec5b3f82de70ba08727b5751063dab81e6c8275490c9cea4388744179",
+    "reference": "Owen did not open the red gate.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-negation-incorrect",
+    "split_identity": "s-negation"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "Theo borrowed a book from Mira.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-roles-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: Mira lent a book to Theo.",
+    "question_id": "e0106b484f91721e64eb9fff63f305de468ace2d853839d0ad1202535a958691",
+    "reference": "Mira lent a book to Theo.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-roles-correct",
+    "split_identity": "s-roles"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.07,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "Theo lent a book to Mira.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-roles-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: Mira lent a book to Theo.",
+    "question_id": "e0106b484f91721e64eb9fff63f305de468ace2d853839d0ad1202535a958691",
+    "reference": "Mira lent a book to Theo.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-roles-incorrect",
+    "split_identity": "s-roles"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.1,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "The oak crate is to the right of the cedar crate.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-spatial-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: The cedar crate is to the left of the oak crate.",
+    "question_id": "155691d84f6afcc495447bd385077ab923e1c0c68eee3d0fa855e5d3cf86501e",
+    "reference": "The cedar crate is to the left of the oak crate.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-spatial-correct",
+    "split_identity": "s-spatial"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.1,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.0,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 1.0
+        },
+        "requirements_known": true,
+        "scoring_version": "explicit_task_questions_v1",
+        "verification_requirements": [
+          "semantic_comparison"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "semantic_comparison"
+      ]
+    },
+    "answer": "The cedar crate is to the right of the oak crate.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "s-spatial-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "Paraphrase this reference: The cedar crate is to the left of the oak crate.",
+    "question_id": "155691d84f6afcc495447bd385077ab923e1c0c68eee3d0fa855e5d3cf86501e",
+    "reference": "The cedar crate is to the left of the oak crate.",
+    "role": "development",
+    "run_id": "capability-probes-v1-s-spatial-incorrect",
+    "split_identity": "s-spatial"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.3,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.5,
+          "compound_component_binding_v1": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.5,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "direct_fact",
+          "arithmetic",
+          "compound_component_binding_v1"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ]
+    },
+    "answer": "The area of Bahrain is 765 square kilometres. Adding 10 gives 775 square kilometres.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "m-area-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "question_id": "7466a849744355f3ac3b25b3d7c3b39e2f9ae2838da50b26ff4163d1124628f2",
+    "reference": "The area of Bahrain is 765 square kilometres.",
+    "role": "development",
+    "run_id": "capability-probes-v1-m-area-correct",
+    "split_identity": "m-area"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.3,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.5,
+          "compound_component_binding_v1": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.5,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "direct_fact",
+          "arithmetic",
+          "compound_component_binding_v1"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ]
+    },
+    "answer": "The area of Bahrain is 765 square kilometres. Adding 10 gives 774 square kilometres.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "m-area-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "question_id": "7466a849744355f3ac3b25b3d7c3b39e2f9ae2838da50b26ff4163d1124628f2",
+    "reference": "The area of Bahrain is 765 square kilometres.",
+    "role": "development",
+    "run_id": "capability-probes-v1-m-area-incorrect",
+    "split_identity": "m-area"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.29,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.5,
+          "compound_component_binding_v1": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.5,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "direct_fact",
+          "arithmetic",
+          "compound_component_binding_v1"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ]
+    },
+    "answer": "The population of Belgium is 11941781. Adding 1000 gives 11942781.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "m-population-correct",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "question_id": "7a06baed128fea303e9c9f96eaf868e203f890ae4f6df020a7f6432a63535b08",
+    "reference": "The population of Belgium is 11941781.",
+    "role": "development",
+    "run_id": "capability-probes-v1-m-population-correct",
+    "split_identity": "m-population"
+  },
+  {
+    "analysis": {
+      "analysis_method": "heuristic",
+      "difficulty": "easy",
+      "difficulty_score": 0.29,
+      "domain": "general",
+      "domain_candidates": [],
+      "domain_status": "unknown",
+      "fallback_reason": null,
+      "research_context": {
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "domain_status": "unknown",
+        "normalized_rubric": null,
+        "requirement_weights": {
+          "arithmetic": 0.5,
+          "compound_component_binding_v1": 0.0,
+          "consistency": 0.0,
+          "direct_fact": 0.5,
+          "evidence_retrieval": 0.0,
+          "logical_rule": 0.0,
+          "semantic_comparison": 0.0
+        },
+        "requirements_known": true,
+        "scoring_version": "capability_probe_questions_v1",
+        "verification_requirements": [
+          "direct_fact",
+          "arithmetic",
+          "compound_component_binding_v1"
+        ]
+      },
+      "rubric_ratings": null,
+      "subject": "",
+      "verification_types": [
+        "arithmetic",
+        "direct_fact",
+        "compound_component_binding_v1"
+      ]
+    },
+    "answer": "The population of Belgium is 11941718. Adding 1000 gives 11942718.",
+    "dataset_id": "capability-probes-v1-diagnostic",
+    "example_id": "m-population-incorrect",
+    "label": null,
+    "purpose": "calibration",
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "question_id": "7a06baed128fea303e9c9f96eaf868e203f890ae4f6df020a7f6432a63535b08",
+    "reference": "The population of Belgium is 11941781.",
+    "role": "development",
+    "run_id": "capability-probes-v1-m-population-incorrect",
+    "split_identity": "m-population"
+  }
+]

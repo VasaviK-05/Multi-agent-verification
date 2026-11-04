@@ -1,0 +1,163 @@
+[
+  {
+    "achieved_unbound_report_capabilities": [],
+    "enumeration_status": "no_feasible_strategy",
+    "example_id": "m-area-correct",
+    "expected_union_teams": [
+      [
+        "evidence",
+        "rule"
+      ],
+      [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    ],
+    "limitation": "Expected union is not compound coverage. No component binding or mixed history/policy; no compound acceptance or decision-loss comparison is manufactured.",
+    "missing_actual_checks": [
+      "arithmetic",
+      "direct_fact"
+    ],
+    "public_status": "uncertain",
+    "reasons": [
+      "unsupported_requirements"
+    ],
+    "required": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  {
+    "achieved_unbound_report_capabilities": [],
+    "enumeration_status": "no_feasible_strategy",
+    "example_id": "m-area-incorrect",
+    "expected_union_teams": [
+      [
+        "evidence",
+        "rule"
+      ],
+      [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    ],
+    "limitation": "Expected union is not compound coverage. No component binding or mixed history/policy; no compound acceptance or decision-loss comparison is manufactured.",
+    "missing_actual_checks": [
+      "arithmetic",
+      "direct_fact"
+    ],
+    "public_status": "uncertain",
+    "reasons": [
+      "unsupported_requirements"
+    ],
+    "required": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  {
+    "achieved_unbound_report_capabilities": [],
+    "enumeration_status": "no_feasible_strategy",
+    "example_id": "m-population-correct",
+    "expected_union_teams": [
+      [
+        "evidence",
+        "rule"
+      ],
+      [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    ],
+    "limitation": "Expected union is not compound coverage. No component binding or mixed history/policy; no compound acceptance or decision-loss comparison is manufactured.",
+    "missing_actual_checks": [
+      "arithmetic",
+      "direct_fact"
+    ],
+    "public_status": "uncertain",
+    "reasons": [
+      "unsupported_requirements"
+    ],
+    "required": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  {
+    "achieved_unbound_report_capabilities": [
+      "direct_fact"
+    ],
+    "enumeration_status": "no_feasible_strategy",
+    "example_id": "m-population-incorrect",
+    "expected_union_teams": [
+      [
+        "evidence",
+        "rule"
+      ],
+      [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    ],
+    "limitation": "Expected union is not compound coverage. No component binding or mixed history/policy; no compound acceptance or decision-loss comparison is manufactured.",
+    "missing_actual_checks": [
+      "arithmetic"
+    ],
+    "public_status": "uncertain",
+    "reasons": [
+      "unsupported_requirements"
+    ],
+    "required": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "regression": {
+    "passed": 211,
+    "failed": 0,
+    "command": "python -m pytest tests/test_compound_empirical.py tests/test_component_execution.py tests/test_flexible_teams.py tests/test_game_task_conditioning.py tests/test_game_runtime.py tests/test_game_collection.py tests/test_heldout_collection.py tests/test_game_clean_coverage.py tests/test_game_reliability_first.py tests/test_capability_probe_analyzer.py -q"
+  },
+  "audit_label_correction": {
+    "passed": 25,
+    "failed": 0,
+    "command": "python -m pytest tests/test_component_execution.py -q"
+  },
+  "amendment_guard_tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "source_material_and_partition_validation": "passed; actual36 entities;12 per role",
+  "collection_history": "complete96 attempts; all actual reports retained",
+  "collection_development": "complete96 attempts; all actual reports retained",
+  "matrix_and_fit": "empirical; infeasible:43/48 clean coverage below0.9 for both strategies",
+  "analysis": "read-only; contexts and cost estimates match matrix compatibility identity",
+  "routing_replay": "real singleton policies passed; compound missing; unsupported and incompatible-resource negatives preserved;zero new live calls",
+  "reserved_evaluation": "not run because no feasible policy; remaining96 attempts unused",
+  "historical_artifact_files_preserved": 170,
+  "historical_artifact_bytes_unchanged": true,
+  "old48_plan_unchanged": true,
+  "code_compile": "passed",
+  "git_diff_check": "passed",
+  "status": {
+    "implementation_complete": true,
+    "empirical_compound_policy_created": false,
+    "held_out_evaluation_complete": false,
+    "held_out_reason": "Not collected: no feasible candidate at the frozen90% development coverage target",
+    "offline_handoff_ready": true,
+    "live_api_integration_pending": true,
+    "api_activated": false,
+    "actual_attempts": 192,
+    "history_attempts": 96,
+    "development_attempts": 96,
+    "reserved_attempts": 0,
+    "unused_attempt_allowance": 96,
+    "confidence_generations": 0,
+    "policy_probabilities": null
+  }
+}

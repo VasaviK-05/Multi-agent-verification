@@ -1,0 +1,146 @@
+{
+  "corpora": [
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\factual-policy42-20261029\\corpus.json",
+      "exists": true,
+      "sha256": "e7f747f05bcc5d46e401e3f6e1c89edc4b7b171db5b509c73621504253000630",
+      "rows": 60,
+      "numeric_entity_count": 0,
+      "numeric_ids": []
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\corpus.json",
+      "exists": true,
+      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+      "rows": 57,
+      "numeric_entity_count": 38,
+      "numeric_ids": [
+        "AD",
+        "AM",
+        "BD",
+        "BE",
+        "BH",
+        "BR",
+        "CM",
+        "CZ",
+        "EC",
+        "GA",
+        "GD",
+        "GE",
+        "IN",
+        "KE",
+        "KW",
+        "LR",
+        "LT",
+        "MA",
+        "MD",
+        "ME",
+        "MU",
+        "MV",
+        "MW",
+        "NG",
+        "NO",
+        "NP",
+        "PH",
+        "PW",
+        "PY",
+        "RO",
+        "SN",
+        "SO",
+        "SR",
+        "SY",
+        "TH",
+        "TM",
+        "UG",
+        "UY"
+      ]
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+      "exists": true,
+      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+      "rows": 57,
+      "numeric_entity_count": 38,
+      "numeric_ids": [
+        "AD",
+        "AM",
+        "BD",
+        "BE",
+        "BH",
+        "BR",
+        "CM",
+        "CZ",
+        "EC",
+        "GA",
+        "GD",
+        "GE",
+        "IN",
+        "KE",
+        "KW",
+        "LR",
+        "LT",
+        "MA",
+        "MD",
+        "ME",
+        "MU",
+        "MV",
+        "MW",
+        "NG",
+        "NO",
+        "NP",
+        "PH",
+        "PW",
+        "PY",
+        "RO",
+        "SN",
+        "SO",
+        "SR",
+        "SY",
+        "TH",
+        "TM",
+        "UG",
+        "UY"
+      ]
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\corpus.json",
+      "exists": false
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\data\\test_evidence_corpus.json",
+      "exists": true,
+      "sha256": "0170d64b697dab9bbeb91e2f935b6bcad862ae8bb55958beea712ccf1e424795",
+      "rows": 10,
+      "numeric_entity_count": 0,
+      "numeric_ids": []
+    }
+  ],
+  "adapters": [
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\multitask-policy42\\adapter.json",
+      "has_project_corpus_path": true
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\factual-policy42-20261029\\adapter.json",
+      "has_project_corpus_path": true
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\multitask-policy42-preparation-v1-invalid-area-format\\adapter.json",
+      "has_project_corpus_path": true
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\broader-cost-measurement-20261028-v1\\adapter.json",
+      "has_project_corpus_path": true
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\verifier-cost-calibration-proposal-20261028-v2\\adapter.json",
+      "has_project_corpus_path": true
+    },
+    {
+      "path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\arithmetic-pilot42\\inputs\\adapter.json",
+      "has_project_corpus_path": false
+    }
+  ],
+  "test_fixture_directories_excluded": true,
+  "copies_not_independent": true
+}

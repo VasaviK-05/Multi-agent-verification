@@ -1,0 +1,396 @@
+{
+  "a-division-correct": {
+    "answer": "4.25",
+    "answer_is_correct": true,
+    "family": "arithmetic",
+    "group_id": "a-division",
+    "provenance": "Independent Decimal division and explicit half-up rounding check.",
+    "required_checks": [
+      "arithmetic"
+    ]
+  },
+  "a-division-incorrect": {
+    "answer": "4.2",
+    "answer_is_correct": false,
+    "family": "arithmetic",
+    "group_id": "a-division",
+    "provenance": "Independent Decimal division and explicit half-up rounding check.",
+    "required_checks": [
+      "arithmetic"
+    ]
+  },
+  "a-multiply-correct": {
+    "answer": "703",
+    "answer_is_correct": true,
+    "family": "arithmetic",
+    "group_id": "a-multiply",
+    "provenance": "Independent Decimal integer multiplication: 37*19=703.",
+    "required_checks": [
+      "arithmetic"
+    ]
+  },
+  "a-multiply-incorrect": {
+    "answer": "693",
+    "answer_is_correct": false,
+    "family": "arithmetic",
+    "group_id": "a-multiply",
+    "provenance": "Independent Decimal integer multiplication: 37*19=703.",
+    "required_checks": [
+      "arithmetic"
+    ]
+  },
+  "a-word-difference-correct": {
+    "answer": "8",
+    "answer_is_correct": true,
+    "family": "arithmetic",
+    "group_id": "a-word-difference",
+    "provenance": "Independent integer subtraction; wrong answer is the sum, not the difference.",
+    "required_checks": [
+      "arithmetic"
+    ]
+  },
+  "a-word-difference-incorrect": {
+    "answer": "42",
+    "answer_is_correct": false,
+    "family": "arithmetic",
+    "group_id": "a-word-difference",
+    "provenance": "Independent integer subtraction; wrong answer is the sum, not the difference.",
+    "required_checks": [
+      "arithmetic"
+    ]
+  },
+  "f-area-correct": {
+    "answer": "The area of Bahrain is 765 square kilometres.",
+    "answer_is_correct": true,
+    "family": "factual",
+    "group_id": "f-area",
+    "provenance": {
+      "iso": "BH",
+      "kind": "area",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": 765
+    },
+    "required_checks": [
+      "direct_fact"
+    ]
+  },
+  "f-area-incorrect": {
+    "answer": "The area of Bahrain is 766 square kilometres.",
+    "answer_is_correct": false,
+    "family": "factual",
+    "group_id": "f-area",
+    "provenance": {
+      "iso": "BH",
+      "kind": "area",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": 765
+    },
+    "required_checks": [
+      "direct_fact"
+    ]
+  },
+  "f-currency-correct": {
+    "answer": "The currency of Cuba is the Cuban peso.",
+    "answer_is_correct": true,
+    "family": "factual",
+    "group_id": "f-currency",
+    "provenance": {
+      "iso": "CU",
+      "kind": "currency",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": "Cuban peso"
+    },
+    "required_checks": [
+      "direct_fact"
+    ]
+  },
+  "f-currency-incorrect": {
+    "answer": "The currency of Cuba is the Mexican peso.",
+    "answer_is_correct": false,
+    "family": "factual",
+    "group_id": "f-currency",
+    "provenance": {
+      "iso": "CU",
+      "kind": "currency",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": "Cuban peso"
+    },
+    "required_checks": [
+      "direct_fact"
+    ]
+  },
+  "f-population-correct": {
+    "answer": "The population of Belgium is 11941781.",
+    "answer_is_correct": true,
+    "family": "factual",
+    "group_id": "f-population",
+    "provenance": {
+      "iso": "BE",
+      "kind": "population",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": 11941781
+    },
+    "required_checks": [
+      "direct_fact"
+    ]
+  },
+  "f-population-incorrect": {
+    "answer": "The population of Belgium is 11941718.",
+    "answer_is_correct": false,
+    "family": "factual",
+    "group_id": "f-population",
+    "provenance": {
+      "iso": "BE",
+      "kind": "population",
+      "source_hashes": {
+        "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+        "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+        "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+        "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+      },
+      "source_snapshot_truth": true,
+      "value": 11941781
+    },
+    "required_checks": [
+      "direct_fact"
+    ]
+  },
+  "m-area-correct": {
+    "answer": "The area of Bahrain is 765 square kilometres. Adding 10 gives 775 square kilometres.",
+    "answer_is_correct": true,
+    "family": "mixed",
+    "group_id": "m-area",
+    "provenance": {
+      "calculation": "765+10=775",
+      "fact": {
+        "iso": "BH",
+        "kind": "area",
+        "source_hashes": {
+          "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+          "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+          "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+          "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+        },
+        "source_snapshot_truth": true,
+        "value": 765
+      },
+      "negative": "Correct base fact, incorrect derived sum."
+    },
+    "required_checks": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  "m-area-incorrect": {
+    "answer": "The area of Bahrain is 765 square kilometres. Adding 10 gives 774 square kilometres.",
+    "answer_is_correct": false,
+    "family": "mixed",
+    "group_id": "m-area",
+    "provenance": {
+      "calculation": "765+10=775",
+      "fact": {
+        "iso": "BH",
+        "kind": "area",
+        "source_hashes": {
+          "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+          "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+          "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+          "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+        },
+        "source_snapshot_truth": true,
+        "value": 765
+      },
+      "negative": "Correct base fact, incorrect derived sum."
+    },
+    "required_checks": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  "m-population-correct": {
+    "answer": "The population of Belgium is 11941781. Adding 1000 gives 11942781.",
+    "answer_is_correct": true,
+    "family": "mixed",
+    "group_id": "m-population",
+    "provenance": {
+      "calculation": "11941781+1000=11942781",
+      "fact": {
+        "iso": "BE",
+        "kind": "population",
+        "source_hashes": {
+          "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+          "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+          "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+          "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+        },
+        "source_snapshot_truth": true,
+        "value": 11941781
+      },
+      "negative": "Wrong base fact; addition internally correct for the supplied wrong base, but whole answer incorrect."
+    },
+    "required_checks": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  "m-population-incorrect": {
+    "answer": "The population of Belgium is 11941718. Adding 1000 gives 11942718.",
+    "answer_is_correct": false,
+    "family": "mixed",
+    "group_id": "m-population",
+    "provenance": {
+      "calculation": "11941781+1000=11942781",
+      "fact": {
+        "iso": "BE",
+        "kind": "population",
+        "source_hashes": {
+          "LICENSE": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+          "countries-revision.json": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+          "countries.json": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+          "geonames-countryInfo.txt": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671"
+        },
+        "source_snapshot_truth": true,
+        "value": 11941781
+      },
+      "negative": "Wrong base fact; addition internally correct for the supplied wrong base, but whole answer incorrect."
+    },
+    "required_checks": [
+      "direct_fact",
+      "arithmetic"
+    ]
+  },
+  "s-negation-correct": {
+    "answer": "The red gate was not opened by Owen.",
+    "answer_is_correct": true,
+    "family": "semantic",
+    "group_id": "s-negation",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Explicit negation preserved versus reversed."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-negation-incorrect": {
+    "answer": "Owen opened the red gate.",
+    "answer_is_correct": false,
+    "family": "semantic",
+    "group_id": "s-negation",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Explicit negation preserved versus reversed."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-number-correct": {
+    "answer": "Four amber tokens were placed in the blue box by Nora.",
+    "answer_is_correct": true,
+    "family": "semantic",
+    "group_id": "s-number",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Exact count preservation versus four-to-five change."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-number-incorrect": {
+    "answer": "Nora placed five amber tokens in the blue box.",
+    "answer_is_correct": false,
+    "family": "semantic",
+    "group_id": "s-number",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Exact count preservation versus four-to-five change."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-roles-correct": {
+    "answer": "Theo borrowed a book from Mira.",
+    "answer_is_correct": true,
+    "family": "semantic",
+    "group_id": "s-roles",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Lender/borrower roles preserved versus reversed."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-roles-incorrect": {
+    "answer": "Theo lent a book to Mira.",
+    "answer_is_correct": false,
+    "family": "semantic",
+    "group_id": "s-roles",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Lender/borrower roles preserved versus reversed."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-spatial-correct": {
+    "answer": "The oak crate is to the right of the cedar crate.",
+    "answer_is_correct": true,
+    "family": "semantic",
+    "group_id": "s-spatial",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Left/right inverse relation preserved versus contradicted."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  },
+  "s-spatial-incorrect": {
+    "answer": "The cedar crate is to the right of the oak crate.",
+    "answer_is_correct": false,
+    "family": "semantic",
+    "group_id": "s-spatial",
+    "provenance": {
+      "method": "independent predicate/argument/count/negation reasoning",
+      "proof": "Left/right inverse relation preserved versus contradicted."
+    },
+    "required_checks": [
+      "semantic_comparison"
+    ]
+  }
+}
