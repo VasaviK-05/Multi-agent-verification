@@ -1,0 +1,269 @@
+{
+  "all_strategies": [
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 11948.309553742001,
+      "probability": 0.6060604101843167,
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "verifiers": [
+        "confidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 11948.309553742001,
+      "probability": 0.0,
+      "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+      "verifiers": [
+        "confidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 29.59013249783311,
+      "probability": 0.3939392496094962,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 29.59013249783311,
+      "probability": 0.0,
+      "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 18.442622499424033,
+      "probability": 0.0,
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 18.442622499424033,
+      "probability": 3.402061871240427e-07,
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 11977.80277999409,
+      "probability": 0.0,
+      "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 11977.80277999409,
+      "probability": 0.0,
+      "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 11966.655269995681,
+      "probability": 0.0,
+      "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+      "verifiers": [
+        "confidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 11966.655269995681,
+      "probability": 0.0,
+      "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+      "verifiers": [
+        "confidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 47.93584875151282,
+      "probability": 0.0,
+      "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 47.93584875151282,
+      "probability": 0.0,
+      "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 11996.14849624777,
+      "probability": 0.0,
+      "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    },
+    {
+      "aggregation": "dependency_group",
+      "estimated_cost": 11996.14849624777,
+      "probability": 0.0,
+      "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ]
+    }
+  ],
+  "artifact_id": "1a336129b0c32b8634e434be7c1ff3a8ef73f79353270be03ce61ecf2e91f697",
+  "candidates": 40,
+  "expected_clean_coverage": 0.5,
+  "groups": 20,
+  "label_scope": "Independent binary correctness; abstentions do not change labels.",
+  "limitations": "Development only; prepared history/development question scope; no unseen-question guarantee; shared model dependencies and shared-unknown compromise treatment retained.",
+  "scenarios": [
+    {
+      "attack": "clean",
+      "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+      "decision_coverage": 0.5,
+      "expected_estimated_cost": 7253.054110016403,
+      "metrics": {
+        "correct_accept": 8.484849825054676,
+        "correct_reject": 11.515150174945322,
+        "decision_coverage": 0.5,
+        "estimated_resource_cost": 7253.054110016403,
+        "examples": 40,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "mean_loss": 0.13411863638236177,
+        "selective_risk": 0.0,
+        "uncertain": 20.0,
+        "unresolved": 0.0
+      },
+      "uncertainty_rate": 0.5,
+      "validation_loss": 0.1
+    },
+    {
+      "attack": "forced_support",
+      "attack_id": "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+      "decision_coverage": 0.5909090615276474,
+      "expected_estimated_cost": 7253.054110016403,
+      "metrics": {
+        "correct_accept": 12.121212286160572,
+        "correct_reject": 0.0,
+        "decision_coverage": 0.5909090615276474,
+        "estimated_resource_cost": 7253.054110016403,
+        "examples": 40,
+        "false_accept": 11.515150174945322,
+        "false_reject": 0.0,
+        "mean_loss": 0.40381557845046545,
+        "selective_risk": 0.4871794547022085,
+        "uncertain": 16.363637538894107,
+        "unresolved": 0.0
+      },
+      "uncertainty_rate": 0.40909093847235267,
+      "validation_loss": 0.3696969420681036
+    },
+    {
+      "attack": "forced_rejection",
+      "attack_id": "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+      "decision_coverage": 0.5909090615276474,
+      "expected_estimated_cost": 7253.054110016403,
+      "metrics": {
+        "correct_accept": 0.0,
+        "correct_reject": 11.515150174945322,
+        "decision_coverage": 0.5909090615276474,
+        "estimated_resource_cost": 7253.054110016403,
+        "examples": 40,
+        "false_accept": 0.0,
+        "false_reject": 12.121212286160572,
+        "mean_loss": 0.4189671312308467,
+        "selective_risk": 0.5128205452977914,
+        "uncertain": 16.363637538894107,
+        "unresolved": 0.0
+      },
+      "uncertainty_rate": 0.40909093847235267,
+      "validation_loss": 0.3848484948484848
+    },
+    {
+      "attack": "confidence_inflation",
+      "attack_id": "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+      "decision_coverage": 0.49999994046391727,
+      "expected_estimated_cost": 7253.054110016403,
+      "metrics": {
+        "correct_accept": 8.484849825054676,
+        "correct_reject": 11.515147793502015,
+        "decision_coverage": 0.49999994046391727,
+        "estimated_resource_cost": 7253.054110016403,
+        "examples": 40,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "mean_loss": 0.1341186482895783,
+        "selective_risk": 0.0,
+        "uncertain": 20.00000238144332,
+        "unresolved": 0.0
+      },
+      "uncertainty_rate": 0.500000059536083,
+      "validation_loss": 0.10000001190721661
+    },
+    {
+      "attack": "suppression",
+      "attack_id": "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+      "decision_coverage": 0.0,
+      "expected_estimated_cost": 7253.054110016403,
+      "metrics": {
+        "correct_accept": 0.0,
+        "correct_reject": 0.0,
+        "decision_coverage": 0.0,
+        "estimated_resource_cost": 7253.054110016403,
+        "examples": 40,
+        "false_accept": 0.0,
+        "false_reject": 0.0,
+        "mean_loss": 0.2341186363823618,
+        "selective_risk": null,
+        "uncertain": 39.99999999999987,
+        "unresolved": 39.99999999999987
+      },
+      "uncertainty_rate": 0.9999999999999968,
+      "validation_loss": 0.19999999999999937
+    }
+  ],
+  "source_build_report_id": "603e49d4cce4e2807d2d145d38bffd0ff6b368e2fc54c6ff7d37a67db932269c",
+  "worst_validation_loss": 0.3848484948484848
+}

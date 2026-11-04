@@ -48,6 +48,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import json
 import math
 import os
 import re
@@ -148,6 +149,8 @@ class EvidenceRetriever:
         chunk_size: int = 500,
         index_dir: str | Path | None = None,
         model: SentenceTransformer | None = None,
+        *,
+        relocation_proof: dict | None = None,
     ) -> None:
         if corpus_path is None:
             corpus_path = default_corpus_path()
@@ -173,6 +176,7 @@ class EvidenceRetriever:
         self.manifest_path = self.index_dir / "manifest.json"
 
         self.model = model or SentenceTransformer(self.EMBEDDING_MODEL)
+        self._relocation_proof = relocation_proof
         self._document_frequency: Counter[str] | None = None
         self._postings: dict[str, list[tuple[int, int]]] | None = None
         self._doc_lengths: list[int] = []
@@ -273,11 +277,14 @@ class EvidenceRetriever:
         }
 
     def _index_is_current(self) -> bool:
-        if not (
+        files_present = (
             self.index_path.exists()
             and self.chunks_path.exists()
             and self.manifest_path.exists()
-        ):
+        )
+        if not files_present:
+            if self._relocation_proof is not None:
+                raise ValueError("verified relocation cannot load missing index, chunks, or manifest files")
             return False
 
         try:
@@ -288,15 +295,83 @@ class EvidenceRetriever:
                 stored = json.load(file)
 
         except (OSError, json.JSONDecodeError):
+            if self._relocation_proof is not None:
+                raise ValueError("verified relocation cannot load an unreadable historical manifest")
             return False
         current = self._manifest()
         # Never accept a legacy size/mtime-only manifest: replacing a corpus
         # with same-size bytes while preserving its timestamp would otherwise
         # reuse stale chunks and vectors.
         matches = all(stored.get(key) == current[key] for key in self._MANIFEST_KEYS)
+        if self._relocation_proof is not None:
+            if not matches:
+                raise ValueError("verified relocation rejects changed corpus/index semantic fields")
+            self._verify_relocation_proof(stored, current)
+            return True
         if matches and stored != current:
             self._write_manifest(current)
         return matches
+
+    def _verify_relocation_proof(self, stored: dict, current: dict) -> None:
+        """Recheck the content-bound preflight proof immediately before load."""
+        proof = self._relocation_proof
+        if not isinstance(proof, dict) or proof.get("version") != "verified_resource_relocation_v1":
+            raise ValueError("relocation-aware index loading requires a verified relocation proof")
+        from app.game.offline.resource_relocation import ResourceRelocationBinding
+        binding = ResourceRelocationBinding.model_validate(proof.get("binding"))
+        if binding.binding_id != proof.get("binding_id"):
+            raise ValueError("relocation proof binding identity is invalid")
+        differing = {key for key in set(stored) | set(current) if stored.get(key) != current.get(key)}
+        if differing != {"corpus_path", "corpus_mtime"}:
+            raise ValueError("relocation proof permits only corpus_path/corpus_mtime manifest differences")
+        if proof.get("historical_corpus_path") != stored.get("corpus_path"):
+            raise ValueError("relocation proof historical corpus path differs from stored manifest")
+        if proof.get("current_corpus_path") != str(self.corpus_path.resolve()):
+            raise ValueError("relocation proof current corpus path differs from configured corpus")
+        if proof.get("historical_corpus_mtime") != stored.get("corpus_mtime"):
+            raise ValueError("relocation proof historical timestamp differs from stored manifest")
+        if proof.get("current_corpus_mtime") != self.corpus_path.stat().st_mtime:
+            raise ValueError("relocation proof current timestamp differs from corpus")
+        if proof.get("current_manifest_path") != str(self.manifest_path.resolve()):
+            raise ValueError("relocation proof manifest path differs from configured index")
+        if proof.get("current_manifest") != current:
+            raise ValueError("relocation proof current manifest differs from configured corpus/index")
+        hashes = {
+            name: file_sha256(self.index_dir / name)
+            for name in ("faiss.index", "chunks.json", "manifest.json")
+        }
+        if hashes != proof.get("index_hashes"):
+            raise ValueError("relocation proof index/chunks/manifest bytes changed before load")
+        if file_sha256(self.corpus_path) != proof.get("corpus_sha256"):
+            raise ValueError("relocation proof corpus bytes changed before load")
+        if (hashes.get("faiss.index") != binding.faiss_sha256
+                or hashes.get("chunks.json") != binding.chunks_sha256
+                or hashes.get("manifest.json") != binding.manifest_sha256
+                or proof.get("corpus_sha256") != binding.corpus_sha256):
+            raise ValueError("relocation proof content no longer matches its explicit binding")
+        receipt_path = Path(proof.get("receipt_path", ""))
+        if not receipt_path.is_file() or file_sha256(receipt_path) != binding.receipt_sha256:
+            raise ValueError("relocation proof receipt is missing or changed before index load")
+        try:
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError("relocation proof receipt is unreadable") from exc
+        from app.game.models import content_id
+        if receipt != proof.get("receipt") or content_id(receipt) != binding.receipt_fingerprint:
+            raise ValueError("relocation proof receipt identity differs from explicit binding")
+        from app.game.offline.resource_relocation import verify_relocated_index
+        from app.game.resource_provenance import ResourceManifest
+        verify_relocated_index(binding,
+            expected_manifest=ResourceManifest.model_validate(proof.get("expected_resource_manifest")),
+            observed_manifest=ResourceManifest.model_validate(proof.get("observed_resource_manifest")),
+            stored_manifest=proof.get("stored_manifest"), current_manifest=current,
+            corpus_path=self.corpus_path, manifest_path=self.manifest_path,
+            corpus_sha256=proof.get("corpus_sha256"), index_hashes=hashes,
+            receipt_path=receipt_path, receipt=receipt,
+            expected_receipt=proof.get("expected_receipt"),
+            embedding_model_sha256=proof.get("embedding_model_sha256"),
+            nli_model_sha256=proof.get("nli_model_sha256"),
+            semantic_configuration_sha256=proof.get("semantic_configuration_sha256"))
 
     def _write_manifest(self, manifest: dict) -> None:
         with self.manifest_path.open("w", encoding="utf-8") as file:

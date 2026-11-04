@@ -1,0 +1,31 @@
+{
+  "version": "reviewed_source_invariants_v1",
+  "invariants": [
+    {
+      "path": "app/models/schemas.py",
+      "class_name": "VerificationResult",
+      "unchanged_ast": true
+    },
+    {
+      "path": "app/verifiers/evidence_verifier.py",
+      "class_name": "EvidenceVerifier",
+      "unchanged_ast": true
+    },
+    {
+      "path": "app/verifiers/rule_verifier.py",
+      "class_name": "RuleVerifier",
+      "unchanged_ast": true
+    },
+    {
+      "path": "app/verifiers/semantic_verifier.py",
+      "class_name": "SemanticVerifier",
+      "unchanged_ast": true
+    },
+    {
+      "path": "app/verifiers/confidence_verifier.py",
+      "class_name": "ConfidenceVerifier",
+      "unchanged_ast": true
+    }
+  ],
+  "line_ending_policy": "exact checked-out CRLF bytes pinned; source review diff normalizes line endings"
+}

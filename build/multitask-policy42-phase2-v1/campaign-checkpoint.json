@@ -1,0 +1,131 @@
+{
+  "artifacts": {
+    "arithmetic": {
+      "artifact_id": "1a336129b0c32b8634e434be7c1ff3a8ef73f79353270be03ce61ecf2e91f697",
+      "build-report.json": "65691208308ebbb4bb84d728c99dacf3b1aa9bef7fd14478441d28d4a9516045",
+      "calibration.json": "30b063a4b19cdc0f578d95a6f0f6acb0dea4a30b2b6713463c11a3f6d6649c13",
+      "calibration_id": "357ca8dc3dfb273de028ba4bd7b317b6b223fb8c907d2513bcd1228452cf3c13",
+      "development-evaluation.json": "16c2a63e16a686b6088cca700a8ff6fc2eca45afaed94a09ca67fefb9d3b57e2",
+      "episode.json": "6ffc33ba371e4bc0571f2beda298890c36cdfdf7c5a2c0e2263d06bb9e3fc024",
+      "fit_ready": true,
+      "policy.json": "965c55fd4987c359fc3e12491b224dc5c3807a0707a17c4c9905466cc3dbe901",
+      "policy_id": "99d261fcf126e930fa4f0becd7c763ec4224c2e436db7bbe05b64922a6e87f6b",
+      "positive_strategy_count": 3,
+      "reputation.json": "c3b561d1c67383f26ca7104aca74cd29ad2cf976fa7626946c3490cfb2234d0a",
+      "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+      "strategy_count": 14,
+      "verifier_attempts_during_fit": 0
+    },
+    "factual": {
+      "artifact_id": "d65f9a06e87621225d948cc3412f1098141893460e360661a08fb105cdc38dbb",
+      "build-report.json": "7ab16f10befca8b025b50bcbfe5b4a825b5b9e7077ed320934ee0b56939acc31",
+      "calibration.json": "084b3be6cd42f24599e42789b5a4f1737e8fbba2d1d249abebb7b211f08ccd0e",
+      "calibration_id": "42ad21401196b164eee5847d1e7f1b1d211fa7302bd9e0224e807ebdac181f04",
+      "development-evaluation.json": "bf927d48d566e28bb5f74a39580c2d84e3e5c1ec2efa1aca3fd925060c2ae5a0",
+      "episode.json": "84d5c722630adc0937af5c72893e6223820afa24c4ec621b6acea74ce418f0e9",
+      "fit_ready": true,
+      "policy.json": "a4e20be215f66af908f05b2c9dc4efe414c9ae6ca14a56d1141d65ed41c222b9",
+      "policy_id": "952305abb963f1149ea605ac4183cf8e0d830860d82078df25471068f1cc050c",
+      "positive_strategy_count": 2,
+      "reputation.json": "e079f446f283b0b29094e74fe2208f2472f4b227f86a495661654d33d32683c4",
+      "reputation_snapshot_id": "2696fa1ac3234bc770cf054a56977f16791a1f915c9d4372fa31fcf4b27fe290",
+      "strategy_count": 14,
+      "verifier_attempts_during_fit": 0
+    }
+  },
+  "attempt_limit": 640,
+  "collection_root": "build\\multitask-policy42-phase2-v1\\collection",
+  "generation_limit": 800,
+  "no_new_calls_during_reconciliation": true,
+  "persisted_files": {},
+  "published_bundle_candidate": {
+    "bundle_id": "63d7ff38a554e3865baf1125138810fe706e33e36cd21a61a97d18162e65aa0b",
+    "final_test_payloads_included": false,
+    "load_prototype_validated": true,
+    "manifest_sha256": "744daad24c402b4b72682e5bc72ca1d657b20c30fcfbdaab2dc80e32c5567c6e",
+    "path": "build\\multitask-prototype42-current-v1-rerun1",
+    "raw_recordings_included": false
+  },
+  "status": "complete",
+  "status_before_reconciliation": {
+    "artifact_export": "completed and package loader validated",
+    "cost_calculation": "completed for both tasks",
+    "development_only_fitting": "completed for both tasks",
+    "history_only_reputation_estimation": "completed for both tasks"
+  },
+  "tasks": {
+    "arithmetic": {
+      "attempts_by_verifier": {
+        "confidence": 80,
+        "evidence": 80,
+        "rule": 80,
+        "semantic": 80
+      },
+      "collection_complete": true,
+      "expected_attempts": 320,
+      "failed_timing_or_execution_rows": 0,
+      "files": {
+        "attempts.jsonl": "ee5ad94f89dc8928a18d60916231f471afdb4841943d5b16e7395ba78536e52f",
+        "collection-report.json": "29f3c0cc0e5c7138a4111efdd57f2d3d7eb8d70f41758ba4a0c915b6e79822aa",
+        "measurements.json": "a3e02d5455c8aca08c8e77ac5360196d8f6bdbb0b3b492e1da616188351689c3",
+        "recordings.json": "dc883602b2cb2bdaa55018bbb714e1c840daaea8763c66dbaf632890aa0b43d6",
+        "started.jsonl": "5cf59dd4434952cc1d6823f59b7ad88286ff5f93a57d5a3288f60b55926535a7"
+      },
+      "issues": 0,
+      "ollama_generations": 400,
+      "outcome_states": {
+        "confidence:abstention": 4,
+        "confidence:directional": 76,
+        "evidence:abstention": 80,
+        "rule:directional": 80,
+        "semantic:abstention": 38,
+        "semantic:directional": 42
+      },
+      "persisted_outcomes": 320,
+      "recorded_executed_calls": 320,
+      "started_attempts": 320
+    },
+    "factual": {
+      "attempts_by_verifier": {
+        "confidence": 80,
+        "evidence": 80,
+        "rule": 80,
+        "semantic": 80
+      },
+      "collection_complete": true,
+      "expected_attempts": 320,
+      "failed_timing_or_execution_rows": 0,
+      "files": {
+        "attempts.jsonl": "9c24d7245c51636ae3501b51ec79ae7abb6dc3df32446a3a846bd8c409c80806",
+        "collection-report.json": "6f1efed2db64398ad59254ddfcdef34d12559523beb9bd8596c51dff491c0ddf",
+        "measurements.json": "0815c64e1f47131c2635455693f8a325d6fc751b627a696b680044c00732ef7e",
+        "recordings.json": "08c5217a19c7b070b48983d1b1851c766f76c9b727d8eb03f9729bc56dddb47b",
+        "started.jsonl": "80ee9ab626a81d85321df6c6e9454e9b84443825e3da685f96ca9ab8cbb5a023"
+      },
+      "issues": 0,
+      "ollama_generations": 400,
+      "outcome_states": {
+        "confidence:abstention": 50,
+        "confidence:directional": 30,
+        "evidence:abstention": 2,
+        "evidence:directional": 78,
+        "rule:abstention": 80,
+        "semantic:directional": 80
+      },
+      "persisted_outcomes": 320,
+      "recorded_executed_calls": 320,
+      "started_attempts": 320
+    }
+  },
+  "totals": {
+    "abstentions": 254,
+    "examples": 160,
+    "failed_attempts": 0,
+    "issues": 0,
+    "ollama_generations": 800,
+    "ollama_generations_remaining": 0,
+    "verifier_attempts": 640,
+    "verifier_attempts_remaining": 0
+  },
+  "version": "phase2_campaign_checkpoint_v1"
+}

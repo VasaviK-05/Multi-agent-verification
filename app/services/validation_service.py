@@ -23,8 +23,21 @@ class ValidationService:
             self._orchestrator = ValidationOrchestrator()
         elif mode == "game":
             from app.game.deployment import create_game_runtime
+            from app.benchmark.project_adapter import create_verifiers
+            from app.selection.capabilities import BUILTIN_CAPABILITIES
+            from app.selection.verifier_selector import VerifierSelector
+
+            # Game execution and Phase 2 collection share the reviewed adapter
+            # factory, including its explicit relocation proof when configured.
+            # Baseline mode keeps its existing lazy default verifier behavior.
+            verifiers, _measurement_setup = create_verifiers()
+            selector = VerifierSelector(
+                verifiers=verifiers,
+                capabilities=BUILTIN_CAPABILITIES,
+            )
 
             self._orchestrator = ValidationOrchestrator(
+                verifier_selector=selector,
                 execution_mode="game",
                 game_runtime=create_game_runtime(),
             )

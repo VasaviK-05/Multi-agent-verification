@@ -110,23 +110,96 @@ def rule_factory():
 
 
 class ProjectObserver:
+    def __init__(self, verifiers=None):
+        self._relocation_state = None
+        self._last_configuration = None
+        self._last_report = None
+        self._active_verifiers = verifiers
+
     def snapshot(self):
-        # Reuse the current project owner's local-resource and service observers.
+        # Use the same explicit adapter and relocation binding as collection and
+        # game-mode verifier construction.
         from app.benchmark.project_adapter import AdapterConfiguration, inspect_setup, observe_service
         from app.game.offline.calibration import read_json
         configuration = AdapterConfiguration.model_validate(read_json(os.environ['VERIFIER_COLLECTION_ADAPTER_CONFIG']))
         report = inspect_setup(configuration)
-        if not report['ready']:
-            raise ValueError(json.dumps(report['blockers']))
-        if observe_service(configuration).model_dump(mode='json') != report['inventory']['service']:
-            raise ValueError('live service differs from declared resource observation')
-        return MeasurementSetup.model_validate(report['observed_setup']).resources
+        self._relocation_state = report.get('_relocation_state')
+        self._last_configuration = configuration
+        self._last_report = report
+        if report['ready']:
+            if observe_service(configuration).model_dump(mode='json') != report['inventory']['service']:
+                raise ValueError('live service differs from declared resource observation')
+            if self._active_verifiers is not None:
+                self._attest_active_verifiers(self._active_verifiers, configuration, report)
+            from app.game.resource_provenance import ResourceManifest
+            return ResourceManifest.model_validate(report['observed_setup']['resources'])
+        raise ValueError(json.dumps(report['blockers']))
+
+    def snapshot_for(self, selector):
+        """Attest active game verifier instances against the shared adapter setup."""
+        verifiers = getattr(selector, '_injected', None)
+        if verifiers is None:
+            raise ValueError('game selector does not expose its active configured verifier instances')
+        self._active_verifiers = tuple(verifiers)
+        return self.snapshot()
+
+    def _attest_active_verifiers(self, verifiers, config, report):
+        by_name = {v.name: v for v in verifiers}
+        if set(by_name) != {'semantic', 'evidence', 'rule', 'confidence'}:
+            raise ValueError('active selector does not hold the complete configured verifier pool')
+        evidence = by_name['evidence']
+        retriever = evidence.retriever
+        from app.benchmark.project_adapter import file_digest, local_path
+        if (Path(retriever.corpus_path).resolve() != local_path(config.corpus_path)
+                or Path(retriever.index_dir).resolve() != local_path(config.index_dir)
+                or retriever.chunk_size != config.chunk_size):
+            raise ValueError('active EvidenceVerifier resource paths/settings differ from the game adapter')
+        inventory = report['inventory']
+        if file_digest(retriever.corpus_path) != inventory['corpus']['sha256']:
+            raise ValueError('active EvidenceVerifier corpus bytes differ from observed setup')
+        if retriever.model is not by_name['semantic'].model:
+            raise ValueError('active semantic and evidence verifiers do not share the configured embedding model')
+        confidence = by_name['confidence'].judgment_provider
+        if confidence.labeler.nli is not evidence.nli:
+            raise ValueError('active confidence and evidence verifiers do not share the configured NLI model')
+        nli_source = getattr(getattr(evidence.nli, 'model', None), 'config', None)
+        nli_source = getattr(nli_source, '_name_or_path', None)
+        if nli_source is not None and Path(nli_source).resolve() != local_path(config.nli_snapshot):
+            raise ValueError('active NLI model source differs from the configured local snapshot')
+        sampler = confidence.sampler
+        if (sampler.url, sampler.model, sampler.temperature, sampler.timeout, confidence.n_samples) != (
+                config.ollama_url, config.ollama_model, config.temperature, config.timeout, config.n_samples):
+            raise ValueError('active confidence verifier settings differ from the game adapter')
+        return True
+
+    def audit(self):
+        """Return the verified resource mapping captured by the latest snapshot."""
+        if self._last_report is None:
+            return None
+        return self._last_report.get('relocation_audit')
+
+    def authorize_relocation(self, expected, observed):
+        if self._relocation_state is None or 'binding' not in self._relocation_state:
+            raise ValueError('no explicit verified relocation binding was used')
+        from app.game.offline.resource_relocation import verify_relocated_index
+        state = self._relocation_state
+        if observed != state['resources']:
+            raise ValueError('observed resource manifest changed after relocation verification')
+        return verify_relocated_index(state['binding'], expected_manifest=expected,
+            observed_manifest=observed, stored_manifest=state['stored'],
+            current_manifest=state['current'], corpus_path=Path(state['corpus_path']),
+            manifest_path=Path(state['manifest_path']), corpus_sha256=state['corpus_sha256'],
+            index_hashes=state['index_hashes'], receipt_path=Path(state['receipt_path']),
+            receipt=state['expected_receipt'], expected_receipt=state['expected_receipt'],
+            embedding_model_sha256=state['embedding_model_sha256'],
+            nli_model_sha256=state['nli_model_sha256'],
+            semantic_configuration_sha256=state['semantic_configuration_sha256'])
 
 
 def project_factory():
     from app.benchmark.project_adapter import create_verifiers
     verifiers, setup = create_verifiers()
-    return verifiers, setup, ProjectObserver()
+    return verifiers, setup, ProjectObserver(verifiers)
 
 
 def main(argv=None):

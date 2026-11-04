@@ -317,7 +317,7 @@ def run_component_policy(policy, selector, question, answer, reference, validati
     strategies = enumerate_component_strategies(policy.contract)
     strategy = next(s for s in strategies if s.strategy_id == selected)
     result = run_component_diagnostic(policy.contract, strategy, selector, question, answer,
-        reference, validation_id, resource_observer=resource_observer)
+        reference, validation_id, resource_observer=resource_observer, compatibility_policy_id=policy.policy_id)
     if result.summary.get('selection_status')=='diagnostic':
         result.summary['selection_status']='selected'
     result.summary.update(policy_id=policy.policy_id, evidence_kind=policy.evidence_kind,
@@ -327,7 +327,7 @@ def run_component_policy(policy, selector, question, answer, reference, validati
 
 
 def run_component_diagnostic(contract, strategy, selector, question, answer, reference,
-                             validation_id, *, resource_observer):
+                             validation_id, *, resource_observer, compatibility_policy_id=None):
     """Explicit diagnostic harness. Does not fit, register or authorize a policy."""
     from app.analysis.capability_probe_analyzer import CapabilityProbeAnalyzer
     from app.game.frozen_planning import frozen_selector
@@ -361,12 +361,20 @@ def run_component_diagnostic(contract, strategy, selector, question, answer, ref
                 return unavailable('incompatible_policy: component planning inputs differ')
             selectors.append(frozen)
         expected = contract.actual_resources or contract.obligations[0].contract.resource_manifest
-        if resource_observer is None or ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector)) != expected:
-            return unavailable('resource_incompatible: pre-dispatch observation differs')
+        if resource_observer is None:
+            return unavailable('resource_incompatible: observation required')
+        observed_before = ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector))
+        resource_proof = None
+        if observed_before != expected:
+            from app.game.offline.reconciled_resources import ReconciledERObserver
+            if compatibility_policy_id is None or not isinstance(resource_observer, ReconciledERObserver):
+                return unavailable('resource_incompatible: pre-dispatch observation differs')
+            resource_proof = resource_observer.authorize_component(compatibility_policy_id, expected, observed_before)
     except ValueError as exc:
         return unavailable(str(exc))
     attempts, components, contributors = [], [], set()
     resource_drift = False
+    observed_after, after_proof, post_observation_error = None, None, None
     for obligation, (_, atomic), component, cid, frozen in zip(
             contract.obligations, strategy.components, bound, ids, selectors):
         rows, states = [], []
@@ -399,14 +407,24 @@ def run_component_diagnostic(contract, strategy, selector, question, answer, ref
         contributors.update(influential)
         components.append(decision)
     try:
-        resource_drift = ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector)) != expected
-    except ValueError:
+        observed_after = ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector))
+        resource_drift = observed_after != observed_before
+        if resource_proof is not None:
+            after_proof = resource_observer.authorize_component(compatibility_policy_id, expected, observed_after)
+            resource_drift = resource_drift or after_proof != resource_proof
+    except ValueError as exc:
         resource_drift = True
+        post_observation_error = str(exc)
     status,reasons=join_components(contract,components,contributors,resource_drift=resource_drift)
     return ComponentRun(status, dict(public_status=status, execution_mode='diagnostic_no_policy',
         selection_status='diagnostic', contract_id=contract.compatibility_id,
         selected_strategy_id=strategy.strategy_id, plan_id=plan.plan_id,
         team=list(strategy.verifiers), attempts=attempts, components=components,
+        historical_resource_manifest_id=expected.manifest_id,
+        observed_resource_manifest_id=observed_before.manifest_id,
+        resource_compatibility=resource_proof,
+        after_resource_manifest_id=None if observed_after is None else observed_after.manifest_id,
+        resource_compatibility_after=after_proof, resource_observation_error=post_observation_error,
         contributors=sorted(contributors), contributor_count=len(contributors),
         dependency_assumptions=contract.obligations[0].context.dependencies.model_dump(mode='json'),
         estimated_selected_cost=strategy.estimated_cost,

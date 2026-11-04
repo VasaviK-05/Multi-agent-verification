@@ -1,6 +1,7 @@
 """Synthetic local bytes and mocked runtimes only; no empirical measurements."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import types
@@ -273,6 +274,161 @@ def test_resource_observer_rejects_changed_service(configuration, monkeypatch):
         **{**observed.model_dump(), 'server_version': 'CHANGED_SYNTHETIC'}))
     with pytest.raises(ValueError, match='identity changed'):
         observer.snapshot()
+
+
+def _relocate_manifest_metadata(configuration):
+    path = Path(configuration.index_dir) / 'manifest.json'
+    manifest = json.loads(path.read_text())
+    manifest['corpus_path'] = r'C:\historical\project\corpus.json'
+    manifest['corpus_mtime'] = 1_600_000_000.0
+    path.write_text(json.dumps(manifest, indent=2))
+    return path
+
+
+def _retriever_for_relocation(configuration, proof):
+    from app.verifiers.evidence_retriever import EvidenceRetriever
+    instance = EvidenceRetriever.__new__(EvidenceRetriever)
+    instance.corpus_path = Path(configuration.corpus_path)
+    instance.chunk_size = configuration.chunk_size
+    instance.corpus_version = 'sha256:' + adapter.file_digest(instance.corpus_path)
+    instance.index_version = 'idx-' + hashlib.sha256(json.dumps([
+        instance.corpus_version, instance.chunk_size, instance.EMBEDDING_MODEL
+    ]).encode()).hexdigest()[:12]
+    instance.index_dir = Path(configuration.index_dir)
+    instance.index_path = instance.index_dir / 'faiss.index'
+    instance.chunks_path = instance.index_dir / 'chunks.json'
+    instance.manifest_path = instance.index_dir / 'manifest.json'
+    instance._relocation_proof = proof
+    return instance
+
+
+def test_verified_relocation_loads_existing_index_without_mutating_historical_manifest(configuration):
+    manifest_path = _relocate_manifest_metadata(configuration)
+    original = manifest_path.read_bytes()
+    binding = adapter.create_relocation_binding(configuration)
+    # Ordinary preflight remains strict unless the binding is explicitly passed.
+    strict = adapter.inspect_setup(configuration)
+    assert strict['ready'] is False
+    assert any('stale/legacy' in item['reason'] for item in strict['blockers'])
+
+    report = adapter.inspect_setup(configuration, relocation_binding=binding.model_dump(mode='json'))
+    assert report['ready'], report['blockers']
+    assert report['relocation_audit']['authorized_resource_ids'] == ['index:evidence-index']
+    assert report['relocation_audit']['historical_corpus_path'] == r'C:\historical\project\corpus.json'
+    assert report['relocation_audit']['current_corpus_path'] == str(Path(configuration.corpus_path).resolve())
+    assert report['relocation_audit']['historical_corpus_mtime'] != report['relocation_audit']['current_corpus_mtime']
+    setup = adapter.MeasurementSetup.model_validate(report['observed_setup'])
+    assert json.loads(setup.environment['resource_relocation_audit']) == report['relocation_audit']
+    retriever = _retriever_for_relocation(configuration, report['relocation_proof'])
+    assert retriever._index_is_current() is True
+    assert manifest_path.read_bytes() == original
+
+
+@pytest.mark.parametrize('changed', ['corpus_same_size', 'faiss', 'chunks', 'missing_faiss'])
+def test_verified_relocation_rejects_changed_or_missing_bytes_without_rebuild(configuration, changed):
+    manifest_path = _relocate_manifest_metadata(configuration)
+    binding = adapter.create_relocation_binding(configuration)
+    report = adapter.inspect_setup(configuration, relocation_binding=binding.model_dump(mode='json'))
+    instance = _retriever_for_relocation(configuration, report['relocation_proof'])
+    original_manifest = manifest_path.read_bytes()
+    if changed == 'corpus_same_size':
+        corpus = Path(configuration.corpus_path)
+        original = corpus.read_bytes()
+        stat = corpus.stat()
+        corpus.write_bytes(original.replace(b'SYNTHETIC', b'SAME_SIZE'))
+        os.utime(corpus, ns=(stat.st_atime_ns, stat.st_mtime_ns))
+        assert corpus.stat().st_size == stat.st_size
+    elif changed == 'faiss':
+        target = instance.index_path
+        original = target.read_bytes()
+        target.write_bytes(bytes([original[0] ^ 1]) + original[1:])
+    elif changed == 'chunks':
+        target = instance.chunks_path
+        original = target.read_bytes()
+        target.write_bytes(bytes([original[0] ^ 1]) + original[1:])
+    else:
+        instance.index_path.unlink()
+    with pytest.raises(ValueError):
+        instance._index_is_current()
+    assert manifest_path.read_bytes() == original_manifest
+
+
+def test_explicit_relocation_binding_generation_rejects_non_path_manifest_changes(configuration):
+    manifest_path = _relocate_manifest_metadata(configuration)
+    manifest = json.loads(manifest_path.read_text())
+    manifest['chunk_size'] = 501
+    manifest_path.write_text(json.dumps(manifest, indent=2))
+    with pytest.raises(ValueError, match='differs beyond relocation'):
+        adapter.create_relocation_binding(configuration)
+
+
+def test_relocation_binding_cannot_be_created_when_no_relocation_exists(configuration):
+    with pytest.raises(ValueError, match='no corpus path/mtime relocation'):
+        adapter.create_relocation_binding(configuration)
+
+
+def test_project_observer_and_runtime_factory_share_relocated_resource_identity(configuration, monkeypatch, tmp_path):
+    from app.game.offline.recording_adapters import ProjectObserver
+    manifest_path = _relocate_manifest_metadata(configuration)
+    historical_manifest_bytes = manifest_path.read_bytes()
+    binding = adapter.create_relocation_binding(configuration)
+    binding_path = tmp_path / 'resource-relocation.json'
+    binding_path.write_text(binding.model_dump_json())
+    config_path = tmp_path / 'adapter.json'
+    config_path.write_text(configuration.model_dump_json())
+    monkeypatch.setenv('VERIFIER_COLLECTION_ADAPTER_CONFIG', str(config_path))
+    monkeypatch.setenv('VERIFIER_RESOURCE_RELOCATION_BINDING', str(binding_path))
+    report = adapter.inspect_setup(configuration, relocation_binding=binding)
+    service = adapter.ServiceObservation.model_validate(report['inventory']['service'])
+    monkeypatch.setattr(adapter, 'observe_service', lambda _config: service)
+    observer = ProjectObserver()
+    observed = observer.snapshot()
+    assert observed == adapter.MeasurementSetup.model_validate(report['observed_setup']).resources
+    assert manifest_path.read_bytes() == historical_manifest_bytes
+
+    shared_embedding, shared_nli = object(), object()
+    retriever = types.SimpleNamespace(corpus_path=adapter.local_path(configuration.corpus_path),
+        index_dir=adapter.local_path(configuration.index_dir), chunk_size=configuration.chunk_size,
+        model=shared_embedding)
+    evidence = types.SimpleNamespace(name='evidence', retriever=retriever, nli=shared_nli)
+    semantic = types.SimpleNamespace(name='semantic', model=shared_embedding)
+    confidence = types.SimpleNamespace(name='confidence', judgment_provider=types.SimpleNamespace(
+        labeler=types.SimpleNamespace(nli=shared_nli), n_samples=configuration.n_samples,
+        sampler=types.SimpleNamespace(url=configuration.ollama_url, model=configuration.ollama_model,
+            temperature=configuration.temperature, timeout=configuration.timeout)))
+    selector = types.SimpleNamespace(_injected=[semantic, evidence, types.SimpleNamespace(name='rule'), confidence])
+    assert observer.snapshot_for(selector) == observed
+    retriever.index_dir = tmp_path / 'different-index'
+    with pytest.raises(ValueError, match='paths/settings differ'):
+        observer.snapshot_for(selector)
+
+
+def test_configured_evidence_constructor_receives_verified_relocation_proof(configuration, monkeypatch):
+    manifest_path = _relocate_manifest_metadata(configuration)
+    historical_manifest_bytes = manifest_path.read_bytes()
+    binding = adapter.create_relocation_binding(configuration)
+    report = adapter.inspect_setup(configuration, relocation_binding=binding)
+    calls = []
+    embedding = types.SimpleNamespace(get_sentence_embedding_dimension=lambda: 384)
+    def sentence_model(path, **kwargs):
+        return embedding
+    nli = types.SimpleNamespace(model=types.SimpleNamespace(config=types.SimpleNamespace(
+        id2label={0: 'contradiction', 1: 'entailment', 2: 'neutral'})))
+    def load(path, **kwargs):
+        return object()
+    monkeypatch.setitem(sys.modules, 'sentence_transformers', types.SimpleNamespace(SentenceTransformer=sentence_model))
+    monkeypatch.setitem(sys.modules, 'transformers', types.SimpleNamespace(
+        AutoModelForSequenceClassification=types.SimpleNamespace(from_pretrained=load),
+        AutoTokenizer=types.SimpleNamespace(from_pretrained=load), pipeline=lambda *a, **kw: nli))
+    import app.verifiers.evidence_retriever as retrieval
+    loaded = types.SimpleNamespace(index=types.SimpleNamespace(ntotal=1, d=384), chunks=[{}])
+    monkeypatch.setattr(retrieval, 'EvidenceRetriever', lambda **kwargs: (calls.append(kwargs) or loaded))
+    pool = adapter.construct_verifiers(configuration, relocation_proof=report['relocation_proof'])
+    assert pool[1].retriever is loaded
+    assert calls[0]['corpus_path'] == str(adapter.local_path(configuration.corpus_path))
+    assert calls[0]['index_dir'] == adapter.local_path(configuration.index_dir)
+    assert calls[0]['relocation_proof']['binding_id'] == binding.binding_id
+    assert manifest_path.read_bytes() == historical_manifest_bytes
 
 
 def test_mock_attempts_feed_existing_calibration(configuration):
