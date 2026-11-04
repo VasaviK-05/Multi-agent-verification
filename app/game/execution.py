@@ -162,14 +162,23 @@ class GameRuntime:
                 observed = ResourceManifest.model_validate(
                     _snapshot_resources(self.resource_observer, selector)
                 )
-                observed.require_candidates(c.verifier_name for c in current.plan.candidates)
+                from app.game.offline.singleton_compatibility import SingletonObserver
+                if isinstance(self.resource_observer, SingletonObserver):
+                    summary['singleton_resource_compatibility'] = self.resource_observer.authorize_artifact(artifact, observed)
+                    observed.require_candidates(self.resource_observer.last_proof['native_selected'])
+                else:
+                    observed.require_candidates(c.verifier_name for c in current.plan.candidates)
                 summary["observed_resource_manifest_id"] = observed.manifest_id
                 observation_audit = getattr(self.resource_observer, "audit", None)
                 if callable(observation_audit):
                     summary["resource_observation_audit"] = observation_audit()
                 if observed != contract.resource_manifest:
                     from app.game.offline.reference_compatibility import ReferenceObserver
-                    if isinstance(self.resource_observer, ReferenceObserver):
+                    if isinstance(self.resource_observer, SingletonObserver):
+                        # This separate proof preserves the entire captured plan;
+                        # it contracts only the unique certified dispatch closure.
+                        self.resource_observer.authorize_artifact(artifact, observed)
+                    elif isinstance(self.resource_observer, ReferenceObserver):
                         summary['reference_resource_compatibility'] = self.resource_observer.authorize_artifact(artifact, observed)
                     else:
                         expected_rows = {(r.kind, r.resource_id): r.sha256
@@ -244,6 +253,10 @@ class GameRuntime:
                 if callable(observation_audit):
                     summary["resource_observation_audit_after"] = observation_audit()
                 resource_drift = after != observed
+                if 'singleton_resource_compatibility' in summary:
+                    after_proof = self.resource_observer.authorize_artifact(artifact, after)
+                    summary['singleton_resource_compatibility_after'] = after_proof
+                    resource_drift = resource_drift or after_proof != summary['singleton_resource_compatibility']
                 if 'reference_resource_compatibility' in summary:
                     resource_drift = resource_drift or self.resource_observer.authorize_artifact(artifact, after) != summary['reference_resource_compatibility']
             except (ValidationError, ValueError) as exc:

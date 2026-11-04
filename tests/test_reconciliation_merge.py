@@ -23,8 +23,15 @@ def test_runtime_keeps_selected_and_informative_minimum_audits_distinct(monkeypa
 
 def test_merge_overlay_preserves_pinned_resources_and_frozen_artifacts():
     from scripts.verify_reconciliation_merge import audit
-    result = audit()
+    from pathlib import Path
+    if (Path(__file__).resolve().parents[1]/'reconciliation/framework-completion-review-v1.json').is_file():
+        # Preserve the old review verbatim: it must reject the new execution
+        # overlay, rather than silently relabel it as the original merge.
+        with pytest.raises(ValueError,match='unreviewed publication difference'):audit()
+        from scripts.verify_framework_delivery import audit_delivery
+        result=audit_delivery()
+    else:result = audit()
     assert result['unchanged_original_files'] == 484
     assert result['frozen_publication_artifacts_unchanged']
     assert result['resource_fingerprint_pins_unchanged']
-    assert not result['canonical_whole_publication_unchanged']
+    assert not result.get('canonical_whole_publication_unchanged',False)

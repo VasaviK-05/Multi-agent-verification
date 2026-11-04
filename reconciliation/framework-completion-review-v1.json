@@ -1,0 +1,22 @@
+{
+  "version": "framework_completion_review_v1",
+  "source_main": "68e2871f386468eb28620a6fd61bdf325d1dd498",
+  "publication_overlay_changes": {
+    ".gitattributes": {
+      "parent_checkout_sha256": "334bdc799d399673eb0decc96f6cc9cd8dfdc58e785bf42773302e86b7684c97",
+      "delivery_checkout_sha256": "754890c717536d1a9493891d80f38f989e9b7cc7c985cc80e474926e6c6479fd",
+      "reason": "Preserve tested adapter byte encodings across checkout"
+    },
+    "app/game/execution.py": {
+      "parent_checkout_sha256": "938b42aa9ef27b54814c0efc37c1594216e348b22fc0e2b5e332fa2b5781200d",
+      "delivery_checkout_sha256": "5182a48060deb1a3f9f10fe53163931cee534b14d610823c4fac8e9c073c4b6e",
+      "reason": "Opt-in exact singleton proof; preserve four-candidate planning and all ordinary/full/reference resource gates"
+    }
+  },
+  "resource_contributor_pins_changed": false,
+  "original_policy_bytes_changed": false,
+  "constructor_ast_comparison": "All six existing embedding/tokenizer/model/NLI/retriever/Evidence constructor expressions are identical; only shared helper extraction.",
+  "singleton_transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+  "parent_merge_review_content_id": "7197b3809f796e5a3e3c41ecd113638d6e809fa06838aaf2e3c5773de55fab1f",
+  "review_id": "a8bfc20323bae911ba4968fc7f060ad1c608d0c4d5eccc57708c569a36797cdd"
+}

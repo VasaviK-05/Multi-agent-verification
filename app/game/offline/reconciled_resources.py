@@ -74,8 +74,10 @@ def source_transition(policy_id, historical, config, capsule):
     return historical, ResourceManifest.model_validate(data)
 
 
-def inspect_required(config, intermediate, *, prepare=False):
+def inspect_required(config, intermediate, *, prepare=False, names=('evidence', 'rule')):
     """Observe actual required bytes. No model construction or service calls."""
+    if names not in {('evidence',), ('evidence', 'rule')} or {v.verifier_name for v in intermediate.verifiers} != set(names):
+        raise ValueError('unexpected required resource scope')
     embedding = adapter.directory_digest(config.embedding_snapshot)
     nli = adapter.directory_digest(config.nli_snapshot)
     if not (adapter.local_path(config.embedding_snapshot) / 'modules.json').is_file():
@@ -112,7 +114,7 @@ def inspect_required(config, intermediate, *, prepare=False):
                           'app/verifiers/claim_generator.py'], rule=['app/verifiers/rule_verifier.py'])
     # Construct from OBSERVED bytes, not the intermediate manifest.
     rows = []
-    for name in ('evidence', 'rule'):
+    for name in names:
         resources = [dict(kind='implementation', resource_id=name+'-implementation',
             sha256=content_id([(p, adapter.file_digest(adapter.ROOT / p)) for p in shared + files[name]])),
             dict(kind='configuration', resource_id=name+'-adapter-configuration',
@@ -163,6 +165,11 @@ def prepare_relocation(configuration, policy):
     observed, _, state = inspect_required(config, intermediate, prepare=True)
     if state is None or 'current_manifest' not in state:
         raise ValueError('no relocation exists to bind')
+    return make_relocation_binding(config, intermediate, observed, state)
+
+
+def make_relocation_binding(config, intermediate, observed, state):
+    """Common existing byte-proof builder; scope remains explicit in intermediate."""
     stored, current = state['stored_manifest'], state['current_manifest']
     index = state['index_hashes']
     binding = ResourceRelocationBinding(version='verified_resource_relocation_v1',
@@ -251,6 +258,17 @@ def create_scoped(configuration, policy, *, capsule_path=None):
         raise ValueError('unapproved policy; singleton contraction is not authorized')
     historical, intermediate = source_transition(policy.policy_id, policy.contract.actual_resources, config, capsule)
     before, _, load_proof = inspect_required(config, intermediate)
+    from app.verifiers.rule_verifier import RuleVerifier
+    pool = [construct_evidence(config, load_proof), RuleVerifier()]
+    observer = ReconciledERObserver(config, capsule, historical, intermediate, pool)
+    after, _, _ = inspect_required(config, intermediate)
+    if after != before:
+        raise ValueError('required resources changed during initialization')
+    return pool, observer
+
+
+def construct_evidence(config, load_proof=None):
+    """Shared local-only native construction; no unused Confidence/service."""
     from sentence_transformers import SentenceTransformer
     from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
     from app.verifiers.evidence_retriever import EvidenceRetriever
@@ -264,9 +282,4 @@ def create_scoped(configuration, policy, *, capsule_path=None):
         index_dir=adapter.local_path(config.index_dir), model=embedding, relocation_proof=load_proof)
     if retriever.index.ntotal != len(retriever.chunks) or retriever.index.d != embedding.get_sentence_embedding_dimension():
         raise ValueError('loaded index dimensions/counts differ')
-    pool = [EvidenceVerifier(corpus_path=str(adapter.local_path(config.corpus_path)), retriever=retriever, nli=nli), RuleVerifier()]
-    observer = ReconciledERObserver(config, capsule, historical, intermediate, pool)
-    after, _, _ = inspect_required(config, intermediate)
-    if after != before:
-        raise ValueError('required resources changed during initialization')
-    return pool, observer
+    return EvidenceVerifier(corpus_path=str(adapter.local_path(config.corpus_path)), retriever=retriever, nli=nli)

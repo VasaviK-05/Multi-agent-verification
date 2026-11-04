@@ -514,3 +514,8 @@ reconciliation/integration-dependencies.json -text
 reconciliation/*.json whitespace=cr-at-eol
 docs/policy-source-capsule-v2.json whitespace=cr-at-eol
 reconciliation/source-review.patch -whitespace
+# Preserve the exact owned execution-adapter bytes tested by the bounded native
+# campaign. Existing historical verifier/dependency pins above remain unchanged.
+app/game/offline/reconciled_resources.py -text
+app/game/offline/singleton_compatibility.py -text
+scripts/framework_acceptance.py -text
