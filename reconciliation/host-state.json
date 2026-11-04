@@ -1,0 +1,51 @@
+{
+  "version": "preserved_host_source_inventory_v1",
+  "host_head": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+  "host_branch": "codex/offline-policy-recording-pilots",
+  "integration_base": "2c3813b58761b4b10a05d41d532d8d10575d16a3",
+  "publication": "9f774678c5e4d845690022bcfd0a2550b1b3eaec",
+  "rows": [
+    {
+      "path": "app/benchmark/resource_diagnostics.py",
+      "original_status": "??",
+      "original_sha256": "02eeaca8bfc6046153ae07ee11c0558d8cf1d0aa3d8e0c843f8ee34e2c3e2655",
+      "final_sha256": "02eeaca8bfc6046153ae07ee11c0558d8cf1d0aa3d8e0c843f8ee34e2c3e2655",
+      "preserved": true,
+      "before_source": "initial reconciliation byte inventory"
+    },
+    {
+      "path": "app/game/execution.py",
+      "original_status": " M",
+      "original_sha256": "8fe557ec28efcde3d8e1a7ec7b75872736a1fd1c8404a59c5875d3a42762b681",
+      "final_sha256": "8fe557ec28efcde3d8e1a7ec7b75872736a1fd1c8404a59c5875d3a42762b681",
+      "preserved": true,
+      "before_source": "canonical custody source inventory; initial status parser dropped first character"
+    },
+    {
+      "path": "app/game/offline/recording_adapters.py",
+      "original_status": " M",
+      "original_sha256": "a4cb06d87c24ca9c8d5e24c38658528721cddc3fb4d91b2f4d52b5bbad13ff44",
+      "final_sha256": "a4cb06d87c24ca9c8d5e24c38658528721cddc3fb4d91b2f4d52b5bbad13ff44",
+      "preserved": true,
+      "before_source": "initial reconciliation byte inventory"
+    },
+    {
+      "path": "tests/test_game_upstream_evidence.py",
+      "original_status": " M",
+      "original_sha256": "c3f73c503266b5d4aeea4178eaba6ec4e75c88459f73dea21f863a2ec5048996",
+      "final_sha256": "c3f73c503266b5d4aeea4178eaba6ec4e75c88459f73dea21f863a2ec5048996",
+      "preserved": true,
+      "before_source": "initial reconciliation byte inventory"
+    },
+    {
+      "path": "tests/test_project_collection_adapter.py",
+      "original_status": " M",
+      "original_sha256": "3ae9025cbd54ed98bf1c8239884e9c3914faded94a896e1875ee6f7b558e281f",
+      "final_sha256": "3ae9025cbd54ed98bf1c8239884e9c3914faded94a896e1875ee6f7b558e281f",
+      "preserved": true,
+      "before_source": "initial reconciliation byte inventory"
+    }
+  ],
+  "original_record_unchanged": true,
+  "status_parser_correction": "Preserve leading porcelain status spaces. First original path was truncated; repaired separately using exact canonical file identity, not by rewriting the initial record."
+}

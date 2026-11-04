@@ -1,9 +1,16 @@
 """Dataset-free, versioned execution semantics shared by deployment and replay."""
 
 from typing import Literal
-from pydantic import Field, StrictFloat, model_serializer, model_validator
+from pydantic import Field, StrictFloat, StrictInt, model_serializer, model_validator
 from app.game.dependencies import FrozenModel, identifier
 from app.game.resource_provenance import ResourceManifest
+
+class TeamRequirements(FrozenModel):
+    """Explicit game-only minima, independent of difficulty and greedy routing."""
+    version: Literal["flexible_team_requirements_v1"] = "flexible_team_requirements_v1"
+    minimum_selected: StrictInt = Field(ge=1, le=4)
+    minimum_informative: StrictInt = Field(ge=1, le=4)
+
 
 class ExecutionContract(FrozenModel):
     version: Literal["offline_public_decision_v1", "offline_public_decision_v2",'offline_public_decision_v3','offline_public_decision_v4']
@@ -15,17 +22,22 @@ class ExecutionContract(FrozenModel):
     history_prior_alpha: StrictFloat = Field(gt=0)
     history_prior_beta: StrictFloat = Field(gt=0)
     resource_manifest: ResourceManifest | None = None
+    team_requirements: TeamRequirements | None = None
 
     @model_serializer(mode="wrap")
     def serialize_contract(self, handler):
         data = handler(self)
         if self.resource_manifest is None:
             data.pop("resource_manifest", None)
+        if self.team_requirements is None:
+            data.pop("team_requirements", None)
         return data
 
     @model_validator(mode="after")
     def check(self):
         identifier(self.execution_configuration_id)
+        if self.team_requirements is not None and self.contributor_version != "informative_history_influence_v1":
+            raise ValueError("explicit team requirements require informative contributor semantics")
         if (self.version in {'offline_public_decision_v3','offline_public_decision_v4'})!=(self.contributor_version=='informative_history_influence_v1'):
             raise ValueError('informative contributor semantics require execution contract v3')
         if (self.version=='offline_public_decision_v4')!=(self.coverage_version=='task_output_contract_v2'):

@@ -82,6 +82,11 @@ class TaskPolicyRouter:
                 if (signature!=(binding.identity.task_id,plan.difficulty,plan.difficulty_score,plan.reference_available)
                     or episode.context.budget!=budget):
                     raise ValueError('route differs from bound task/budget')
+    def resolve(self,signature,budget=None):
+        """Shared explicit route lookup; never supplies a fallback category."""
+        matching=[r for r in self.routes if r[0]==signature and (r[2] if budget is None else r[1]==budget)]
+        return matching[0] if len(matching)==1 else None
+
     def run(self,selector,analysis,request,validation_id,*,provider,rng,resource_observer,budget=None,allow_synthetic_for_tests=False):
         from app.game.execution import GameRuntime, GameRun
         from app.decision.decision_engine import DecisionDetail
@@ -94,9 +99,9 @@ class TaskPolicyRouter:
             and request.question.strip().casefold().startswith('paraphrase this reference: ')
             and request.context!=request.question.strip().partition(': ')[2]):
             return failed('task_reference_mismatch','comparison reference differs from the question source')
-        matching=[r for r in self.routes if r[0]==signature and (r[2] if budget is None else r[1]==budget)]
-        if len(matching)!=1:return failed('task_out_of_scope','no unique explicit task/context/budget route')
-        _,_,_,episode,reason=matching[0]
+        matching=self.resolve(signature,budget)
+        if matching is None:return failed('task_out_of_scope','no unique explicit task/context/budget route')
+        _,_,_,episode,reason=matching
         if episode is None:return failed('task_infeasible',reason)
         result=GameRuntime(provider,episode,rng,allow_synthetic_for_tests=allow_synthetic_for_tests,resource_observer=resource_observer).run(selector,analysis,request,validation_id)
         result.summary.update(task_id=signature[0],task_route='domain_requirements_task_v1')
