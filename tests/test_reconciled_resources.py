@@ -82,8 +82,10 @@ def test_changed_required_bytes_reject(tmp_path, resource):
     with pytest.raises(ValueError):inspect_required(config,intermediate)
 
 
-def test_relocation_composes_only_with_named_intermediate(tmp_path):
+@pytest.mark.parametrize('names',[('evidence','rule'),('evidence',)])
+def test_relocation_composes_only_with_named_intermediate(tmp_path,names):
     config, intermediate, manifest, hashes, receipt = assets(tmp_path)
+    intermediate=ResourceManifest(verifiers=tuple(v for v in intermediate.verifiers if v.verifier_name in names))
     index = Path(config.index_dir)
     stored = dict(manifest, corpus_path='C:\\original\\corpus.json', corpus_mtime=1.)
     (index/'manifest.json').write_text(json.dumps(stored,indent=2))
@@ -112,11 +114,11 @@ def test_relocation_composes_only_with_named_intermediate(tmp_path):
         manifest_version=2,chunk_size=500,embedding_model='all-MiniLM-L6-v2',index_version=manifest['index_version'],
         historical_index_fingerprint=content_id([hashes,receipt]),current_index_fingerprint=content_id([logical,receipt]))
     binding_path.write_text(binding.model_dump_json())
-    observed,proof,load_proof=inspect_required(config,intermediate)
+    observed,proof,load_proof=inspect_required(config,intermediate,names=names)
     assert proof['expected_resource_manifest_id']==intermediate.manifest_id
     assert observed.manifest_id!=intermediate.manifest_id and load_proof['binding_id']==binding.binding_id
     binding_path.write_text(binding.model_copy(update={'expected_resource_manifest_id':'f'*64}).model_dump_json())
-    with pytest.raises(ValueError,match='different policy resource manifest'):inspect_required(config,intermediate)
+    with pytest.raises(ValueError,match='different policy resource manifest'):inspect_required(config,intermediate,names=names)
 
 
 def test_different_selected_objects_reject_before_observation():

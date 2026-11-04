@@ -1,0 +1,457 @@
+{
+  "version": "framework_native_acceptance_evidence_v1",
+  "source_main": "68e2871f386468eb28620a6fd61bdf325d1dd498",
+  "source_capture_boundary": "Hashes captured immediately after the campaign; no execution-code edits occurred between run and capture.",
+  "tested_execution_source_sha256": {
+    "app/game/execution.py": "5182a48060deb1a3f9f10fe53163931cee534b14d610823c4fac8e9c073c4b6e",
+    "app/game/offline/reconciled_resources.py": "08eccb8bd82574d89c2ab4f2b1118747e37d8d907d65481cd5565f82a3bac4aa",
+    "app/game/offline/singleton_compatibility.py": "8a9c1bb49a8a01ec15d5d06eb57a161d24c24b0b9f7b67cf9d8fbd128676d96f",
+    "scripts/framework_acceptance.py": "5a75ae091bd3cdaaca02b976554d55cce3c65f9690a93c4b3e30a3e880ba3b77"
+  },
+  "plan_id": "da850b53f862eb590b9dd3185da035f8aa9a95ec0a9fdcf286941a27856a3017",
+  "complete": true,
+  "native_calls_started": 8,
+  "native_calls_completed": 8,
+  "confidence_generations": 0,
+  "retries": 0,
+  "requests": [
+    {
+      "category": "arithmetic",
+      "request_id": "addition-328-536-correct",
+      "public_status": "passed",
+      "expected_label": true,
+      "native_calls": 1,
+      "valid_execution": true,
+      "team": [
+        "rule"
+      ],
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "estimated_attempted_cost": 9.678209995036013,
+      "achieved": [
+        "arithmetic"
+      ],
+      "unresolved": [],
+      "components": [],
+      "proof": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+        "intermediate_manifest_id": "550a0ab2b4454a27b5f7e80346f04716ad492f8b5d32e833c9fa7370079a179a",
+        "observed_manifest_id": "550a0ab2b4454a27b5f7e80346f04716ad492f8b5d32e833c9fa7370079a179a",
+        "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+        "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "rule"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "bbdd489301ce06557ed757781b13141c2e67721cc3f02044efea553ef4af427a",
+        "relocation": null,
+        "proof_id": "09a2e055dee20cc27de2bf9703bcba92f9d2de5b1941dd0959d9d24456258b98"
+      },
+      "after_proof_matches": true,
+      "after_manifest_id": "550a0ab2b4454a27b5f7e80346f04716ad492f8b5d32e833c9fa7370079a179a",
+      "override_reasons": []
+    },
+    {
+      "category": "arithmetic",
+      "request_id": "addition-328-536-incorrect",
+      "public_status": "failed",
+      "expected_label": false,
+      "native_calls": 1,
+      "valid_execution": true,
+      "team": [
+        "rule"
+      ],
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "estimated_attempted_cost": 9.678209995036013,
+      "achieved": [
+        "arithmetic"
+      ],
+      "unresolved": [],
+      "components": [],
+      "proof": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+        "intermediate_manifest_id": "550a0ab2b4454a27b5f7e80346f04716ad492f8b5d32e833c9fa7370079a179a",
+        "observed_manifest_id": "550a0ab2b4454a27b5f7e80346f04716ad492f8b5d32e833c9fa7370079a179a",
+        "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+        "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "rule"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "bbdd489301ce06557ed757781b13141c2e67721cc3f02044efea553ef4af427a",
+        "relocation": null,
+        "proof_id": "09a2e055dee20cc27de2bf9703bcba92f9d2de5b1941dd0959d9d24456258b98"
+      },
+      "after_proof_matches": true,
+      "after_manifest_id": "550a0ab2b4454a27b5f7e80346f04716ad492f8b5d32e833c9fa7370079a179a",
+      "override_reasons": []
+    },
+    {
+      "category": "factual",
+      "request_id": "BE-correct",
+      "public_status": "passed",
+      "expected_label": true,
+      "native_calls": 1,
+      "valid_execution": true,
+      "team": [
+        "evidence"
+      ],
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "estimated_attempted_cost": 188.79894875281025,
+      "achieved": [
+        "direct_fact"
+      ],
+      "unresolved": [],
+      "components": [],
+      "proof": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+        "intermediate_manifest_id": "362b9be00eeadbc204042d508faa524b7105812ee716f1498f83d62696bc7611",
+        "observed_manifest_id": "362b9be00eeadbc204042d508faa524b7105812ee716f1498f83d62696bc7611",
+        "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+        "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "evidence"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "3faf20c81f85f683c3d3927e5dbbcbec47b93c06a1800dcb426492d6d2ad50ec",
+        "relocation": null,
+        "proof_id": "f74ddd79f588919465e7bfb58e927ddf952557a5447f12151d902a739f56307f"
+      },
+      "after_proof_matches": true,
+      "after_manifest_id": "362b9be00eeadbc204042d508faa524b7105812ee716f1498f83d62696bc7611",
+      "override_reasons": []
+    },
+    {
+      "category": "factual",
+      "request_id": "BE-incorrect",
+      "public_status": "failed",
+      "expected_label": false,
+      "native_calls": 1,
+      "valid_execution": true,
+      "team": [
+        "evidence"
+      ],
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "estimated_attempted_cost": 188.79894875281025,
+      "achieved": [
+        "direct_fact"
+      ],
+      "unresolved": [],
+      "components": [],
+      "proof": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+        "intermediate_manifest_id": "362b9be00eeadbc204042d508faa524b7105812ee716f1498f83d62696bc7611",
+        "observed_manifest_id": "362b9be00eeadbc204042d508faa524b7105812ee716f1498f83d62696bc7611",
+        "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+        "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "evidence"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "3faf20c81f85f683c3d3927e5dbbcbec47b93c06a1800dcb426492d6d2ad50ec",
+        "relocation": null,
+        "proof_id": "f74ddd79f588919465e7bfb58e927ddf952557a5447f12151d902a739f56307f"
+      },
+      "after_proof_matches": true,
+      "after_manifest_id": "362b9be00eeadbc204042d508faa524b7105812ee716f1498f83d62696bc7611",
+      "override_reasons": []
+    },
+    {
+      "category": "compound",
+      "request_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876",
+      "public_status": "passed",
+      "expected_label": true,
+      "native_calls": 2,
+      "valid_execution": true,
+      "team": [
+        "evidence",
+        "rule"
+      ],
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "selected_strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+      "estimated_attempted_cost": 84.19308958157974,
+      "achieved": null,
+      "unresolved": null,
+      "components": [
+        {
+          "component_id": "base_fact",
+          "validation_id": "f80ef11f5d8746db89a8fa9267ba4bf7fc252f758f555c145c4c03682640a475",
+          "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+          "public_status": "passed",
+          "required": [
+            "direct_fact"
+          ],
+          "achieved": [
+            "direct_fact"
+          ],
+          "unresolved": [],
+          "states": [
+            [
+              "evidence",
+              "directional"
+            ]
+          ]
+        },
+        {
+          "component_id": "derived_sum",
+          "validation_id": "a7717120765476d49469cd64575ea6e9f615be4911fe97e248bcf6c4cdc764d5",
+          "binding_id": "1441601483bc4e9cc9418d9d9a28a76695324c1c179966f069908af5f18fa3c5",
+          "public_status": "passed",
+          "required": [
+            "arithmetic"
+          ],
+          "achieved": [
+            "arithmetic"
+          ],
+          "unresolved": [],
+          "states": [
+            [
+              "rule",
+              "directional"
+            ]
+          ]
+        }
+      ],
+      "proof": {
+        "version": "scoped_source_relocation_composition_v1",
+        "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+        "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+        "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+        "intermediate_manifest_id": "012cee47d0c816b89bb792d987ade2204abebf9ab026737a0967bac503987de9",
+        "observed_manifest_id": "012cee47d0c816b89bb792d987ade2204abebf9ab026737a0967bac503987de9",
+        "relocation": null,
+        "active_instances_checked": true,
+        "constructor_settings_id": "bdd9d4fa6acad975be98ffa54418f88c15b99f105ca23111a7725592e51f086f",
+        "execution_scope": [
+          "evidence",
+          "rule"
+        ],
+        "proof_id": "d7d61db668f06260b3ea59c4d2d1cf03dce45c27baadf7cb1309c171c6d3f2cc"
+      },
+      "after_proof_matches": true,
+      "after_manifest_id": "012cee47d0c816b89bb792d987ade2204abebf9ab026737a0967bac503987de9",
+      "override_reasons": []
+    },
+    {
+      "category": "compound",
+      "request_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+      "public_status": "failed",
+      "expected_label": false,
+      "native_calls": 2,
+      "valid_execution": true,
+      "team": [
+        "evidence",
+        "rule"
+      ],
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "selected_strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+      "estimated_attempted_cost": 84.19308958157974,
+      "achieved": null,
+      "unresolved": null,
+      "components": [
+        {
+          "component_id": "base_fact",
+          "validation_id": "63e2ef8fe86f427f82b4afd49d9e85c75884263adafcb7cc7f0104ad5f1910ca",
+          "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+          "public_status": "passed",
+          "required": [
+            "direct_fact"
+          ],
+          "achieved": [
+            "direct_fact"
+          ],
+          "unresolved": [],
+          "states": [
+            [
+              "evidence",
+              "directional"
+            ]
+          ]
+        },
+        {
+          "component_id": "derived_sum",
+          "validation_id": "3b3747768c3bbec08382b8a58e507a7c5e5f3d32ebcb329d6eaceb45993421b1",
+          "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+          "public_status": "failed",
+          "required": [
+            "arithmetic"
+          ],
+          "achieved": [
+            "arithmetic"
+          ],
+          "unresolved": [],
+          "states": [
+            [
+              "rule",
+              "directional"
+            ]
+          ]
+        }
+      ],
+      "proof": {
+        "version": "scoped_source_relocation_composition_v1",
+        "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+        "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+        "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+        "intermediate_manifest_id": "012cee47d0c816b89bb792d987ade2204abebf9ab026737a0967bac503987de9",
+        "observed_manifest_id": "012cee47d0c816b89bb792d987ade2204abebf9ab026737a0967bac503987de9",
+        "relocation": null,
+        "active_instances_checked": true,
+        "constructor_settings_id": "bdd9d4fa6acad975be98ffa54418f88c15b99f105ca23111a7725592e51f086f",
+        "execution_scope": [
+          "evidence",
+          "rule"
+        ],
+        "proof_id": "d7d61db668f06260b3ea59c4d2d1cf03dce45c27baadf7cb1309c171c6d3f2cc"
+      },
+      "after_proof_matches": true,
+      "after_manifest_id": "012cee47d0c816b89bb792d987ade2204abebf9ab026737a0967bac503987de9",
+      "override_reasons": []
+    }
+  ],
+  "call_events": [
+    {
+      "event": "started",
+      "call_number": 1,
+      "category": "arithmetic",
+      "request_id": "addition-328-536-correct",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "completed",
+      "call_number": 1,
+      "category": "arithmetic",
+      "request_id": "addition-328-536-correct",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "started",
+      "call_number": 2,
+      "category": "arithmetic",
+      "request_id": "addition-328-536-incorrect",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "completed",
+      "call_number": 2,
+      "category": "arithmetic",
+      "request_id": "addition-328-536-incorrect",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "started",
+      "call_number": 3,
+      "category": "factual",
+      "request_id": "BE-correct",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "completed",
+      "call_number": 3,
+      "category": "factual",
+      "request_id": "BE-correct",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "started",
+      "call_number": 4,
+      "category": "factual",
+      "request_id": "BE-incorrect",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "completed",
+      "call_number": 4,
+      "category": "factual",
+      "request_id": "BE-incorrect",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "started",
+      "call_number": 5,
+      "category": "compound",
+      "request_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "completed",
+      "call_number": 5,
+      "category": "compound",
+      "request_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "started",
+      "call_number": 6,
+      "category": "compound",
+      "request_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "completed",
+      "call_number": 6,
+      "category": "compound",
+      "request_id": "4cb9235ea3e10a568d82c3db2ee4cd0cf41e1cb0b386248409148c2aa232b876",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "started",
+      "call_number": 7,
+      "category": "compound",
+      "request_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "completed",
+      "call_number": 7,
+      "category": "compound",
+      "request_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+      "verifier_name": "evidence"
+    },
+    {
+      "event": "started",
+      "call_number": 8,
+      "category": "compound",
+      "request_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+      "verifier_name": "rule"
+    },
+    {
+      "event": "completed",
+      "call_number": 8,
+      "category": "compound",
+      "request_id": "6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+      "verifier_name": "rule"
+    }
+  ],
+  "raw_local_result_sha256": "7d588f0ba3bcde1636c1d497206b0a796fda0ca5491edf1c98c17b6bb4a91d84",
+  "raw_local_journal_sha256": "4c0aaba3484de2cb046546c79ce0c13ad2ff488edb4d15f067440cd05c6ec5ae",
+  "raw_resource_snapshots_published": false,
+  "limitation": "Six predeclared source-known/history-development examples: direct execution acceptance, not a new held-out study or API/deployment result."
+}

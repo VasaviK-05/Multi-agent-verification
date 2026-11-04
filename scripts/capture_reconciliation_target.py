@@ -17,6 +17,7 @@ SOURCES = ['app/benchmark/project_adapter.py','app/models/schemas.py',
     'app/game/offline/recording_adapters.py','app/game/offline/resource_relocation.py',
     'app/game/execution.py','app/game/component_execution.py','app/game/question_routing.py',
     'app/game/offline/reconciled_resources.py','app/game/offline/reference_compatibility.py',
+    'app/game/offline/singleton_compatibility.py',
     'app/selection/verifier_selector.py','app/selection/capabilities.py',
     'app/services/validation_service.py','app/orchestration/validation_orchestrator.py']
 
