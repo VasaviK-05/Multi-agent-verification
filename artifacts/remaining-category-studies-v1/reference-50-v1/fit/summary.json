@@ -1,0 +1,84 @@
+{
+  "actual_training_attempts": 160,
+  "attempt_states": {
+    "abstention": 95,
+    "directional": 65
+  },
+  "budget": 16594.78458249673,
+  "costs": [
+    [
+      "semantic",
+      102.07135749794816
+    ],
+    [
+      "evidence",
+      63.82666750764656
+    ],
+    [
+      "rule",
+      0.1494324911845979
+    ],
+    [
+      "confidence",
+      16428.737124999952
+    ]
+  ],
+  "deployable_policy": true,
+  "freeze_id": "94e3a7dcbe2b6ccb3d0155018f04419a9513abce8f3752aaeb32f1c38d2d4596",
+  "history_statistics": [
+    {
+      "alpha": 11.0,
+      "beta": 11.0,
+      "cold_start": false,
+      "domain": "general",
+      "failures": 10,
+      "observation_count": 20,
+      "posterior_mean": 0.5,
+      "posterior_variance": 0.010869565217391306,
+      "successes": 10,
+      "verifier_name": "semantic"
+    },
+    {
+      "alpha": 1.0,
+      "beta": 1.0,
+      "cold_start": true,
+      "domain": "general",
+      "failures": 0,
+      "observation_count": 0,
+      "posterior_mean": 0.5,
+      "posterior_variance": 0.08333333333333333,
+      "successes": 0,
+      "verifier_name": "evidence"
+    },
+    {
+      "alpha": 1.0,
+      "beta": 1.0,
+      "cold_start": true,
+      "domain": "general",
+      "failures": 0,
+      "observation_count": 0,
+      "posterior_mean": 0.5,
+      "posterior_variance": 0.08333333333333333,
+      "successes": 0,
+      "verifier_name": "rule"
+    },
+    {
+      "alpha": 13.0,
+      "beta": 2.0,
+      "cold_start": false,
+      "domain": "general",
+      "failures": 1,
+      "observation_count": 13,
+      "posterior_mean": 0.8666666666666667,
+      "posterior_variance": 0.007222222222222222,
+      "successes": 12,
+      "verifier_name": "confidence"
+    }
+  ],
+  "maximum_clean_coverage": 0.6,
+  "minimum": 0.5,
+  "no_target_relaxation": true,
+  "reserved_collected": false,
+  "route": "explicit opt-in only",
+  "status": "optimal"
+}

@@ -1,0 +1,426 @@
+# Supported-category policies: primary integration package
+
+This is the current integration entry point. Historical handoffs remain snapshots
+of their original experiments. Nothing here activates the API, expands its outer
+allowlist, or authorizes repeating inference. Branch: `codex/flexible-verifier-teams`;
+base: `0b3595ef965d196f93916d10999c7fae63daf7af`. Original resource-compatible
+execution checkout: `2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f` with its retained
+uncommitted verifier-owner changes. Those changes are not included in this package.
+
+## Results and available policies
+
+### Scoped owned implementation and acceptance
+
+**Final owned outcome:** compound reserved evaluation is complete; reference is
+explicitly blocked by incompatible generation service and incomplete original data.
+The [reserved results](../artifacts/remaining-category-studies-v1/scoped-er-v1/reserved-results.json)
+report45/48 whole decisions (93.75%),0 false accepts,0 false rejects,3 uncertainties
+(6.25%),selective risk0 and decision loss0.0125. Factual-component coverage is87.5%
+(42/48), arithmetic100%. The policy exactly equals the matching development-best
+fixed E/R plan under every attack: forced support loss.75 (36 false accepts),
+forced rejection.25 (12 false rejects),confidence inflation0 and suppression.2.
+These are report-level shared-failure simulations, not independent upstream paths.
+No strategic superiority is demonstrated.
+
+[Entity-cluster uncertainty supplement](../artifacts/remaining-category-studies-v1/scoped-er-v1/uncertainty-supplement.json)
+retains all four variants per entity (12 clusters,1000 resamples,seed1102).
+The decision-loss95% percentile interval is0–.025. Test call means are Evidence
+155.146433ms and Rule.176025ms (48 calls each); these exclude initialization and
+resource-observation overhead and do not replace frozen training estimates or
+measure end-to-end API latency. Component `estimated_cost:0` fields in the inherited
+metrics represent absent component cost annotations, not zero-cost native calls.
+Use the explicit measured per-call timing fields.
+
+Owned code and offline evaluation/handoff are ready for publication review with
+reference's blocked status disclosed. API implementation/activation, frontend and
+DB work remain outside these deliverables. Restoring old reference service or
+approving the additional versioned transition campaign belongs to the resource/
+study owner; no reference policy or infeasibility conclusion is exported.
+
+The [scoped native adapter](../scripts/scoped_er_adapter.py) versions the required
+E/R resource contract and constructs only those native verifier objects. Evidence's
+`ClaimGenerator` uses local templates/regex; retrieval/embeddings and NLI are local,
+as is Rule. No answer generation or hidden Ollama call was found in that call graph.
+Inspection retains exact original E/R implementation/configuration hashes, model
+directory digests, corpus bytes, index files/build receipt and environment identity.
+The original adapter is not edited. Its full-roster/Confidence service checks remain
+enforced. Scoped execution forbids requests at the transport boundary, so absence
+of the unused service cannot be silently bypassed by a hidden request.
+
+[Scoped collection bridge](../scripts/scoped_compound_bridge.py),
+[pre-outcome transfer preparation](../scripts/prepare_scoped_compound.py),
+[scoped evaluator](../scripts/evaluate_scoped_compound.py), and
+[evaluation entry point](../scripts/finish_scoped_compound.py) are owned offline
+entry points. The evaluator validates actual scoped requests/observations separately;
+it does not relabel old recordings or substitute a scoped manifest into historical
+full-roster data. The original policy/certificate and payoff inputs remain unchanged.
+Transfer ID: `b6eef0e3b178bafb87368a2884a8209f45e7368448bf05ec82c215f01626d343`.
+
+The [reserved integrity record](../artifacts/remaining-category-studies-v1/scoped-er-v1/test/integrity.json)
+confirms96 new native calls,0 network requests and0 generations. Full rows include
+unexecuted roster slots; they do not count as calls. The reference60 starts remain
+separate, yielding156 cumulative verifier starts and72 generation starts in this
+remaining-category campaign. The unknown original Confidence duration remains
+explicitly null; no replacement or reference policy has been produced.
+
+Acceptance commands (no new inference):
+
+```text
+python -m scripts.replay_remaining_policies --output <fresh-replay-directory>
+python -m pytest tests/test_scoped_er_adapter.py -q
+python -m pytest tests/test_project_collection_adapter.py -k "factory_checks_live_service or resource_observer_rejects_changed_service or missing_and_incompatible_resources" -q
+```
+
+Eight scoped/recovery tests and15 existing native-adapter resource tests passed.
+A sandboxed FAISS import initially failed; the same tests passed outside the
+sandbox. No dependency installation or verifier algorithm change was used.
+Live API installation must adopt an explicit proof-aware scoped adapter/observer;
+passing a scoped observation directly to the old full-manifest runtime continues
+to fail closed. This is an API integration responsibility, not an authorization to
+change historical policy identities or disable that gate. The owned bridge and
+offline acceptance can be reviewed without implementing or activating the API.
+
+Current owned-work status: the scoped E/R factory and observer validate the exact
+required-resource projection without constructing Confidence or contacting Ollama.
+The [pre-outcome transfer proof](../artifacts/remaining-category-studies-v1/scoped-er-v1/transfer.json)
+binds the original frozen policy and scoped identities and freezes the collection
+and evaluation bridge. Historical policy bytes and observations remain unchanged.
+The original full-roster attempt stopped before dispatch; the scoped reserved run
+uses its own fresh directory and actual scoped recording identities.
+
+[Development acceptance replay](../artifacts/remaining-category-studies-v1/recovery-audit/development-replay/routing.json)
+demonstrates Rule/Evidence singletons and the fitted compound pair. Correct compound
+answers pass; all three incorrect variants reject. This is retained-report execution
+evidence, not held-out evaluation or API activation.
+
+Reference remains **resource-incompatible/incomplete**, not mathematically infeasible.
+[Authorized recovery amendment](../artifacts/remaining-category-studies-v1/recovery-audit/authorized-recovery-amendment.json)
+records the one replacement permission and revised241/302 cumulative ceilings.
+The original duration remains null/unknown and all60 starts,59 completions and72
+generation starts are retained. No replacement has been executed: Confidence
+server0.40.14 is not established equivalent to0.40.5. A coherent current-service
+campaign would require14 additional previously completed Confidence calls and70
+additional generations, reaching at most255/372 if all reserved work proceeds.
+That further campaign is outside authorization; no old/new Confidence mixture is
+used for fitting. Restore exact reviewed service or separately approve that narrow
+transition study. API/backend/frontend/DB owner work is outside owned completion.
+
+The arithmetic Rule and factual Evidence singleton policies and their completed
+held-out evaluations remain frozen. The compound experiment now has a **separate
+85% clean-development coverage configuration, explicitly chosen after observing
+development**. It is exploratory, not the original 90% preregistered configuration.
+The [amendment](../artifacts/remaining-category-studies-v1/compound-85/amendment.json)
+records exact equality of reconstructed payoffs and unchanged original matrix ID.
+The [original 90% infeasibility result](../artifacts/compound-study-36-v1/candidate/infeasible.json)
+remains unchanged. Its 43/48 development decisions (89.5833%) fail 90% and pass 85%.
+The five uncertain answers remain uncertain: no threshold, NLI output, contributor
+rule, component requirement, budget, loss or dependency was changed to rescue them.
+
+The [new compound policy](../artifacts/remaining-category-studies-v1/compound-85/candidate/policy.json),
+[contract](../artifacts/remaining-category-studies-v1/compound-85/candidate/contract.json),
+[matrix](../artifacts/remaining-category-studies-v1/compound-85/candidate/matrix.json),
+[freeze](../artifacts/remaining-category-studies-v1/compound-85/candidate/freeze.json),
+and [development results](../artifacts/remaining-category-studies-v1/compound-85/candidate/development-results.json)
+bind genuine history/development recordings and a validated numerical certificate.
+Both existing aggregation strategies were offered; neither was forced. Evidence
+for the source fact plus Rule for its calculation is the only distinct supported
+compound team. It is equivalent to the development-best fixed plan, not evidence
+of a minimax selection advantage. The 85% gate applies to development feasibility,
+not a guarantee of reserved-test coverage.
+
+The fresh [reference protocol](../artifacts/remaining-category-studies-v1/reference/protocol.json),
+[frames](../artifacts/remaining-category-studies-v1/reference/groups.json),
+[request](../artifacts/remaining-category-studies-v1/reference/request.json),
+and [precollection seal](../artifacts/remaining-category-studies-v1/reference/seal.json)
+define 30 new lexicalized frames: ten history, ten development and ten reserved,
+two answers each. Labels are independently specified predicate/argument, count,
+polarity and spatial equivalence. They are not cosine labels or verifier consensus.
+No model generated the frames. Both answer variants and related lexicalized
+entities/predicates/templates stay in one frame group. Broad structural families
+recur across partitions, so this does not establish unseen-template-family
+generalization or complete statistical independence of language constructions.
+The procedural reservation is not an externally blinded test set.
+
+The earlier [capability probes](../docs/capability_probe_findings.md) are excluded
+from fresh fitting and evaluation. Reference fitting retains a 90% coverage target,
+fresh Beta(1,1) history-only reputations, all genuinely eligible teams and both
+aggregations. Supplying semantic-comparison coverage does not automatically make
+a vote informative or independent. Any infeasible result is diagnostic only and
+leaves the reference route unavailable; reserved inference is skipped in that case.
+
+The result supplement and machine-readable package status are generated after
+the authorized collections and offline evaluations finish. They are the authority
+for actual reserved outcomes, call counts, identifiers and remaining blockers.
+
+## What selection means today
+
+`question → question-only analyzer → task/domain/requirement/difficulty/reference
+signature → explicit category/budget registry → compatible frozen policy → one
+sampled strategy → complete actual selected calls → finalized decision`.
+
+[`TaskQuestionAnalyzer`](../app/analysis/task_analyzer.py) preserves existing atomic
+rules. [`CapabilityProbeAnalyzer`](../app/analysis/capability_probe_analyzer.py)
+adds only explicitly versioned diagnostics. Compound classification uses the
+finite source-descriptor catalog in [`component_sources.py`](../app/game/component_sources.py);
+its signature includes two required checks and catalog identity. References have
+an explicit opt-in [`bounded_reference_frames_v1`](../app/analysis/reference_study_analyzer.py)
+category: a constant easy/.1 score, fixed before outputs, replaces accidental
+word-count score differences **for that explicitly allowed study only**. It is
+not a measured difficulty estimate or a change to the default analyzer.
+
+[`TaskPolicyRouter`](../app/game/task_conditioning.py) and the owned
+[`QuestionPolicyRouter`](../app/game/question_routing.py) select compatible
+registrations. They do not fit on an incoming answer or use answer correctness,
+verifier reports, test outcomes or reputation updates to invent a category.
+Within one supported signature and budget, every question receives the same
+strategy distribution. RNG sampling within that distribution is randomness,
+not further question adaptation. Atomic arithmetic and factual policies choose
+Rule alone and Evidence alone respectively with probability one. Compound selects
+the Evidence/Rule pair because both independent *requirements* must be covered;
+this does not imply independently failing implementations.
+
+The model supports enumerating team sizes 1–4. It does not promise a different
+size for each question, force pairs/triples to occur, or treat more names as more
+evidence. No real empirical policy selecting a triple has been demonstrated.
+Synthetic fixtures that exercise sizes three/four remain software tests only.
+
+## Scope, grammar and binding
+
+The owned study registry uses an explicit allowlist, separately from the untouched
+production prototype guard. Loadable artifacts do not authorize arbitrary inputs.
+Atomic policies cover their original narrow addition and pinned factual cohorts.
+New difference wording, general reasoning, unsupported compound operations,
+missing references and unknown categories must fail closed rather than borrow a
+similar policy. The source-known compound grammar is:
+
+```text
+What is the area of <catalog entity>, and what is that area plus <decimal> square kilometres? Give both values.
+What is the population of <catalog entity>, and what is that population plus <decimal>? Give both values.
+```
+
+The parser accepts only its finite bounded grammar and catalog. The acceptance
+registry further restricts it to exact study questions. Compound answers must be
+an object with exactly two **decimal strings**:
+
+```json
+{"base":"765","derived":"775"}
+```
+
+The above explains format only; Bahrain is excluded from the fresh empirical
+study because it was already probed. Duplicate, missing or extra fields, numeric
+JSON values and unsupported input fail answer binding. The fact check sees a
+bound factual question and submitted base value. Rule sees the submitted base
+plus increment and the submitted derived value. No gold base is substituted. A
+wrong base with internally correct arithmetic therefore needs the factual check;
+passing arithmetic cannot certify the whole answer.
+
+Reference questions are `Paraphrase this reference: <exact fixed reference>` with
+that legitimate text supplied as context. Only the 30 predeclared questions are
+allowed by the study registry. References never change after verifier outcomes.
+The existing Confidence provider receives its established question/answer inputs;
+prose context is not a list of externally supplied judgment labels. Retrieval
+corpus contents remain unchanged; these constructed frames are not indexed facts.
+
+## Execution, contributors and cost
+
+[`component_execution.py`](../app/game/component_execution.py) binds and samples
+one complete joint plan, scopes the selected native implementations and runs every
+scheduled call. [`execution.py`](../app/game/execution.py) and
+[`finalization.py`](../app/game/finalization.py) share runtime/replay public-decision
+semantics. Each component must satisfy its output coverage, informative history
+influence and .55 threshold. All components passing accepts the whole answer;
+any qualified component rejection rejects it; otherwise it is uncertain. Execution
+or provenance failures retain their distinct blocking reasons.
+
+Selected names, returned reports, achieved capabilities and informative contributors
+are distinct audit fields. Semantic cosine coverage alone is not a logical
+equivalence certificate or informative corroboration. A history mean of .5 gives
+zero log-odds influence. Shared dependency aggregation limits duplicated influence.
+History weights are task-specific, frozen before test, and are not answer-correctness
+probabilities. No held-out reputation update occurs.
+
+Compound schedules exactly one Evidence fact call and one Rule calculation call
+per answer. Cost sums **every call**, even if a future plan repeats the same name
+on different components; distinct-name count is not the billable/timing count.
+Current compound cost estimates are E 84.070561 ms and R .122528 ms, budget
+84.193090 ms, derived only from existing history/development calls. Reference
+costs use its measured history/development per-verifier means and sum-roster budget.
+Initialization and resource-observation overhead are excluded from verifier timers;
+these are engineering measurements, not prices or end-to-end latency guarantees.
+Test timing is reported separately and never recalibrates frozen costs.
+
+No game-mode early stopping uses a favorable prefix or chooses another team after
+seeing reports. The unrelated baseline adaptive pipeline remains its owner's
+responsibility. Fixed and existing greedy comparisons must use matching contracts,
+history, costs, coverage and complete selected calls; the greedy initial selection
+is not evidence for an independently defined compound greedy executor.
+
+## Runnable portable loading, registry and replay
+
+From a checkout with the repository's existing dependencies installed:
+
+```python
+from pathlib import Path
+from scripts.replay_remaining_policies import load_registry
+
+configuration, atomic_provider, compound_policy, atomic_artifacts = load_registry(Path("."))
+router = configuration.router()
+# Server-owned registry/provider/RNG/observer; request has question, answer, context.
+# router.run(selector, request, validation_id, provider=atomic_provider,
+#            rng=server_rng, resource_observer=trusted_observer)
+```
+
+```text
+python -m scripts.replay_remaining_policies --output <new-replay-directory>
+```
+
+[`replay_remaining_policies.py`](../scripts/replay_remaining_policies.py) loads
+typed atomic and component policies, validates IDs/certificates, constructs the
+explicit registry, and replays retained empirical reports through the real router
+and executor. It requires no paths under `<LOCAL_USER_HOME> model downloads, local
+service, database or model/index files merely to load/replay. Historical absolute
+path strings are preserved as identity/provenance and are not dereferenced by this
+loader. The full producer `load_candidate` additionally validates original source
+material and frozen code paths; it is an original-environment audit interface,
+not the portable deployment loader.
+
+Acceptance replay must demonstrate Rule singleton, Evidence singleton and the
+actual fitted compound pair; malformed/out-of-scope inputs, missing policy and
+deliberately changed resource observations must fail closed. Replayed observations
+are not live active-instance attestation. No claimed triple may be substituted
+with a synthetic fixture. Replay makes zero new live verifier/generation calls.
+
+## Implementations and reproduction boundaries
+
+Core files: [component parser](../app/game/component_binding.py),
+[validated source-backed parser](../app/game/component_sources.py),
+[component execution/contracts](../app/game/component_execution.py),
+[compound producer/finalizer replay](../app/game/offline/compound.py),
+[checkpoint wrapper](../app/game/offline/compound_journal.py),
+[recording collector](../app/game/offline/collection.py),
+[atomic development evaluation](../app/game/offline/evaluation.py),
+[coverage/reliability objective](../app/game/offline/reliability.py),
+[registry](../app/game/question_routing.py), and
+[bounded reference analyzer](../app/analysis/reference_study_analyzer.py).
+Relevant new orchestration is [85% fit](../scripts/fit_compound_85.py),
+[reference preparation](../scripts/reference_study.py),
+[reference collector](../scripts/collect_reference_study.py),
+[reference fit](../scripts/fit_reference_study.py),
+[conditional reference reserved path](../scripts/reference_reserved.py),
+[reserved bridge](../scripts/collect_reference_reserved.py), and
+[serialized compound collection](../scripts/collect_remaining_compound.py).
+These are explicit research commands, not new web/API endpoints.
+
+Software checks include [compound tests](../tests/test_compound_empirical.py),
+[component tests](../tests/test_component_execution.py),
+[reference category tests](../tests/test_reference_study.py),
+[flexible team tests](../tests/test_flexible_teams.py), and
+[held-out collector tests](../tests/test_heldout_collection.py).
+Exact execution dependency versions are recorded in the retained
+[measurement setup](../artifacts/compound-study-36-v1/preparation/setup.json).
+The package inventory records current source, tests, documentation and artifact
+hashes, rather than pretending a branch name alone captures dirty source bytes.
+
+Original compound collection/fit commands remain documented in the
+[36-group handoff](compound_study_36_integration.md). Fresh collection is bounded:
+compound at most96 new attempts/zero generations; reference at most240/300; total
+at most336/300. Hist/dev reference runs first (160 attempts/200 generations), then
+the frozen compound reserved collection, without overlapping verifier timing samples.
+Reference reserved collection is conditional on feasible development fitting and
+uses at most80/100. Existing fsynced started/completed journals preserve failures,
+abstentions and timing. There are no automatic or outcome-driven retries or
+replacement examples. Ambiguous starts forbid re-execution; drift stops affected
+collection. Independent offline work can continue.
+
+## Resource compatibility and owner tasks
+
+Full actual resource manifest:
+`e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb`.
+The verified E/R projection is
+`310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1`;
+each projected entry must match the full observation. It is not a second observed
+installation. The [local/live readiness](../artifacts/remaining-category-studies-v1/readiness/)
+and each collector's factory provenance and network journals retain actual checks.
+Model/file digests are checked around dispatch, with exact service metadata;
+unused roster slots are recorded separately from actual executions.
+
+The trusted observer must observe the **actual selected instances**, not merely
+files on disk or a separately initialized factory. Native collection's observer
+has no `snapshot_for` hook; its factory provenance and full pre/post manifest
+checks are empirical collection evidence, not generic API-instance attestation.
+Component runtime honors an optional `snapshot_for(selector)` hook and fails
+closed on full-manifest mismatch. The API owner must bind and test that hook for
+the installed native instances before activation.
+
+Excluded external resources and exact per-file hashes are in
+[external-resources.json](../artifacts/compound-study-36-v1/external-resources.json).
+Verify every installed file's SHA-256 and byte count and the canonical directory
+digest against this inventory, not a mutable model alias. Embedding snapshot:
+`sentence-transformers/all-MiniLM-L6-v2` at
+`1110a243fdf4706b3f48f1d95db1a4f5529b4d41`; NLI:
+`cross-encoder/nli-deberta-v3-small` at
+`fa2804872c3b4bd748f38c0185cc85775361e735`. Ollama server0.40.5,
+`llama3.2:3b` digest
+`sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72`.
+The FAISS/index bytes and receipts must match their inventory. The unchanged
+[portable raw inputs](../artifacts/compound-study-36-v1/portable-inputs/), revision
+and license notices are archival source material, not an index rebuild or corpus
+activation. Mutable upstream downloads need not match these pinned bytes.
+
+Original absolute resource paths are never silently rewritten to make a relocated
+installation appear compatible. Reconcile the separate inspected relocation branch
+`codex/game-resource-relocation-20261102` (last inspected `b03ace7`) with atomic
+and component execution, including active-instance binding and a narrowly verified
+index-only relocation exception. It is unmerged. Exact implementation/configuration
+or model mismatches require validated compatibility/transfer or new evaluation;
+changing expected digests is not a compatibility fix.
+
+Owner acceptance tasks, without edits here:
+
+1. API owner: explicitly install registry/provider, validate request schema and
+   scope guards, inject server-owned RNG/budgets and actual-instance observer,
+   test unsupported/missing/incompatible policies and resource diagnostics. Preserve
+   policy/strategy/context/resource IDs, per-call states and component reasons.
+2. Frontend owner: render decimal-string compound schema, selected versus
+   informative contributors, component coverage, uncertainty and execution failures.
+   Do not flatten independent obligations into an averaged score.
+3. DB owner: define persistence/audit migrations for those fields and frozen policy
+   identities; do not update reputation from reserved outcomes.
+4. Verifier/retrieval owners: separately review the five original factual-component
+   uncertainty cases with raw reports. A contradiction-looking top-level field is
+   insufficient when cited NLI coverage or score does not qualify. No scores,
+   algorithms, prompts, corpus/index, dependencies or decision thresholds changed here.
+5. Integration reviewer: run portable report replay, then separately approve and
+   exercise real-instance and relocated-resource acceptance before activation.
+
+Expected diagnostics include `unsupported_category`, `missing_policy`,
+`incompatible_policy`, answer-binding failure and `provenance_incompatible`.
+Resource checks must precede useful dispatch and retain pre/post observations.
+The package does not claim all categories run in one live API installation.
+
+## Experimental limits and publication boundary
+
+The dependency registry connects Evidence/Semantic through embeddings and
+Evidence/Confidence through NLI; unresolved risks put all four names in a shared
+unknown failure group. Report-corruption attacks may therefore corrupt all
+selected names together, including both compound components. Different verifier
+names are not independent failure paths. Forced-support vulnerability remains;
+these are simulated report-level attacks, not observed upstream compromises.
+
+Arithmetic/factual singleton equivalence to their best fixed baselines and
+compound pair equivalence are reported honestly. Larger teams need not improve
+the primary objective, coverage or cost. This source-known numeric/factual and
+short constructed-reference evidence cannot establish broad domain/difficulty
+adaptation, unrestricted compound support or a minimax advantage over fixed teams.
+Small-cluster bootstrap intervals describe the chosen cohort; degenerate intervals
+at zero observed errors do not prove zero population risk.
+
+Publication must exclude virtual environments, model caches/weights, index
+directories, Ollama files, DB/user data, credentials and unrelated original-checkout
+changes. In particular, `artifacts/compound-study-36-v1/local-custody/` contains an
+ignored original-execution source archive including unrelated owner work: **do not
+publish it**. Preserve it locally and retain its provenance record, without
+claiming the owned source alone reproduces that full application digest.
+Historical local paths in audit artifacts are retained intentionally and should
+be reviewed for identity disclosure before public release; do not rewrite frozen
+history. No commit, push, merge or activation has been performed.

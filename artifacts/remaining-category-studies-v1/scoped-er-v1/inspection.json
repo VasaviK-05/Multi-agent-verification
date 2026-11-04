@@ -1,0 +1,145 @@
+{
+  "ready": true,
+  "blockers": [],
+  "inventory": {
+    "embedding_snapshot": {
+      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+      "files": 11,
+      "bytes": 91578415
+    },
+    "nli_snapshot": {
+      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+      "files": 7,
+      "bytes": 578729785
+    },
+    "corpus": {
+      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+      "bytes": 9206
+    },
+    "index": {
+      "faiss.index": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+      "chunks.json": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+      "manifest.json": "9c5b705ed629d3d15745bb5c2bf3cc52ccfaaab045ce59909fb983db4b6e4711"
+    },
+    "index_provenance": {
+      "version": "observed_index_build_v1",
+      "embedding_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+      "corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+      "chunk_size": 500,
+      "index_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+      "chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33"
+    }
+  },
+  "hardware": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "logical_cpus": "16",
+    "device": "cpu",
+    "concurrency": "sequential",
+    "runtime": "3.11.5",
+    "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+    "physical_memory_bytes": "16876888064"
+  },
+  "ready_scope": "scoped_er_resources_v1; no generation service dependency",
+  "observed_setup": {
+    "resources": {
+      "version": "game_resource_manifest_v1",
+      "verifiers": [
+        {
+          "verifier_name": "evidence",
+          "resources": [
+            {
+              "resource_id": "evidence-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "evidence-corpus",
+              "kind": "corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "resource_id": "evidence-implementation",
+              "kind": "implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "resource_id": "evidence-index",
+              "kind": "index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "resource_id": "local-embedding-snapshot",
+              "kind": "model",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "resource_id": "local-nli-snapshot",
+              "kind": "model",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "resources": [
+            {
+              "resource_id": "rule-adapter-configuration",
+              "kind": "configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "resource_id": "rule-implementation",
+              "kind": "implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ]
+        }
+      ]
+    },
+    "environment": {
+      "os": "Windows-10-10.0.26200-SP0",
+      "architecture": "AMD64",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "logical_cpus": "16",
+      "device": "cpu",
+      "concurrency": "sequential",
+      "runtime": "3.11.5",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}",
+      "physical_memory_bytes": "16876888064"
+    },
+    "dependency_versions": {
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "sentence-transformers": "6.1.0",
+      "transformers": "5.17.0",
+      "torch": "2.14.0",
+      "faiss-cpu": "1.15.1",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.23.2",
+      "python": "3.11.5",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion"
+    },
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "evidence_kind": "empirical"
+  },
+  "observed_setup_fingerprint": "3629b6de793533f6ab076a28fa77df06b1a5f2d7daf5ab330f18e4d5816bf60f",
+  "downloads_performed": false,
+  "provider_requests_performed": 0,
+  "requirements": {
+    "downloads": "none allowed; missing snapshots require separately authorized provisioning",
+    "external_service": null,
+    "model": null,
+    "pricing": null,
+    "factory_metadata_get_requests": 0,
+    "pricing_reason": "no approved monetary pricing inputs supplied",
+    "memory": "CPU mode; model file sizes reported; peak RAM and service memory are not estimated"
+  }
+}

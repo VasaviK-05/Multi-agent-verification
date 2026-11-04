@@ -1,0 +1,353 @@
+{
+  "actual_retained_replay_counts": {
+    "confidence,semantic": 18,
+    "semantic": 2
+  },
+  "native_reserved_calls": 80,
+  "original90_result_preserved": true,
+  "post_development50": true,
+  "reference_completed_native_calls": 254,
+  "reference_cumulative_starts": 255,
+  "reference_generation_starts": 372,
+  "reserved": {
+    "actual_attempts": 80,
+    "cluster_bootstrap": {
+      "coverage_aware_greedy": {
+        "coverage": {
+          "interval95": [
+            0.65,
+            0.95
+          ],
+          "undefined_fraction": 0.0
+        },
+        "decision_loss": {
+          "interval95": [
+            0.01,
+            0.07
+          ],
+          "undefined_fraction": 0.0
+        },
+        "selective_risk": {
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "undefined_fraction": 0.0
+        }
+      },
+      "development_best_fixed": {
+        "coverage": {
+          "interval95": [
+            0.65,
+            0.95
+          ],
+          "undefined_fraction": 0.0
+        },
+        "decision_loss": {
+          "interval95": [
+            0.01,
+            0.07
+          ],
+          "undefined_fraction": 0.0
+        },
+        "selective_risk": {
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "undefined_fraction": 0.0
+        }
+      },
+      "policy": {
+        "coverage": {
+          "interval95": [
+            0.5416666666666667,
+            0.7916666666666669
+          ],
+          "undefined_fraction": 0.0
+        },
+        "decision_loss": {
+          "interval95": [
+            0.04166666666666663,
+            0.09166666666666666
+          ],
+          "undefined_fraction": 0.0
+        },
+        "selective_risk": {
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "undefined_fraction": 0.0
+        }
+      }
+    },
+    "freeze_id": "94e3a7dcbe2b6ccb3d0155018f04419a9513abce8f3752aaeb32f1c38d2d4596",
+    "groups": 10,
+    "limitations": "Ten procedurally reserved frame clusters; structural families shared. Zero empirical error is not population safety. No post-test refit or reputation updates.",
+    "measured_attempt_ms": {
+      "confidence": {
+        "count": 20,
+        "mean": 17903.41090999991
+      },
+      "evidence": {
+        "count": 20,
+        "mean": 54.540149999957066
+      },
+      "rule": {
+        "count": 20,
+        "mean": 0.1396749999912572
+      },
+      "semantic": {
+        "count": 20,
+        "mean": 60.484205000147995
+      }
+    },
+    "metrics": {
+      "coverage_aware_greedy": {
+        "clean": {
+          "correct_accept": 10.0,
+          "correct_reject": 6.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.04,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.13961448068409213,
+          "selective_risk": 0.0,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "confidence_inflation": {
+          "correct_accept": 10.0,
+          "correct_reject": 6.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.04,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.13961448068409213,
+          "selective_risk": 0.0,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "forced_rejection": {
+          "correct_accept": 0.0,
+          "correct_reject": 6.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.54,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 10.0,
+          "mean_loss": 0.6396144806840922,
+          "selective_risk": 0.625,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "forced_support": {
+          "correct_accept": 10.0,
+          "correct_reject": 0.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.33999999999999997,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 6.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.4396144806840921,
+          "selective_risk": 0.375,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "suppression": {
+          "correct_accept": 0.0,
+          "correct_reject": 0.0,
+          "decision_coverage": 0.0,
+          "decision_loss": 0.2,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.29961448068409213,
+          "selective_risk": null,
+          "uncertain": 20.0,
+          "unresolved": 20.0
+        }
+      },
+      "development_best_fixed": {
+        "clean": {
+          "correct_accept": 10.0,
+          "correct_reject": 6.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.04,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.13961448068409213,
+          "selective_risk": 0.0,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "confidence_inflation": {
+          "correct_accept": 10.0,
+          "correct_reject": 6.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.04,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.13961448068409213,
+          "selective_risk": 0.0,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "forced_rejection": {
+          "correct_accept": 0.0,
+          "correct_reject": 6.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.54,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 10.0,
+          "mean_loss": 0.6396144806840922,
+          "selective_risk": 0.625,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "forced_support": {
+          "correct_accept": 10.0,
+          "correct_reject": 0.0,
+          "decision_coverage": 0.8,
+          "decision_loss": 0.33999999999999997,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 6.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.4396144806840921,
+          "selective_risk": 0.375,
+          "uncertain": 4.0,
+          "unresolved": 0.0
+        },
+        "suppression": {
+          "correct_accept": 0.0,
+          "correct_reject": 0.0,
+          "decision_coverage": 0.0,
+          "decision_loss": 0.2,
+          "estimated_resource_cost": 16530.8084824979,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.29961448068409213,
+          "selective_risk": null,
+          "uncertain": 20.0,
+          "unresolved": 20.0
+        }
+      },
+      "policy": {
+        "clean": {
+          "correct_accept": 8.333333333333332,
+          "correct_reject": 5.0,
+          "decision_coverage": 0.6666666666666666,
+          "decision_loss": 0.06666666666666664,
+          "estimated_resource_cost": 13792.685628331243,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.1497812473939092,
+          "selective_risk": 0.0,
+          "uncertain": 6.666666666666663,
+          "unresolved": 0.0
+        },
+        "confidence_inflation": {
+          "correct_accept": 8.333333333333332,
+          "correct_reject": 5.0,
+          "decision_coverage": 0.6666666666666666,
+          "decision_loss": 0.06666666666666664,
+          "estimated_resource_cost": 13792.685628331243,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.1497812473939092,
+          "selective_risk": 0.0,
+          "uncertain": 6.666666666666663,
+          "unresolved": 0.0
+        },
+        "forced_rejection": {
+          "correct_accept": 0.0,
+          "correct_reject": 5.0,
+          "decision_coverage": 0.6666666666666666,
+          "decision_loss": 0.4833333333333332,
+          "estimated_resource_cost": 13792.685628331243,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 8.333333333333332,
+          "mean_loss": 0.5664479140605759,
+          "selective_risk": 0.625,
+          "uncertain": 6.666666666666663,
+          "unresolved": 0.0
+        },
+        "forced_support": {
+          "correct_accept": 8.333333333333332,
+          "correct_reject": 0.0,
+          "decision_coverage": 0.6666666666666666,
+          "decision_loss": 0.31666666666666665,
+          "estimated_resource_cost": 13792.685628331243,
+          "examples": 20,
+          "false_accept": 5.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.39978124739390924,
+          "selective_risk": 0.37500000000000006,
+          "uncertain": 6.666666666666663,
+          "unresolved": 0.0
+        },
+        "suppression": {
+          "correct_accept": 0.0,
+          "correct_reject": 0.0,
+          "decision_coverage": 0.0,
+          "decision_loss": 0.19999999999999998,
+          "estimated_resource_cost": 13792.685628331243,
+          "examples": 20,
+          "false_accept": 0.0,
+          "false_reject": 0.0,
+          "mean_loss": 0.28311458072724255,
+          "selective_risk": null,
+          "uncertain": 19.999999999999996,
+          "unresolved": 19.999999999999996
+        }
+      }
+    },
+    "resamples": 1000,
+    "seed": 1103
+  },
+  "selected_probabilities": [
+    {
+      "probability": 0.16666666666666663,
+      "strategy": {
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 102.07135749794816,
+        "strategy_id": "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+        "verifiers": [
+          "semantic"
+        ]
+      }
+    },
+    {
+      "probability": 0.8333333333333334,
+      "strategy": {
+        "aggregation": "reputation_weighted",
+        "estimated_cost": 16530.8084824979,
+        "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+        "verifiers": [
+          "confidence",
+          "semantic"
+        ]
+      }
+    }
+  ],
+  "underlying_verifier_quality_improved": false
+}

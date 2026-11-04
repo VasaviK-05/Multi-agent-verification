@@ -46,7 +46,7 @@ class ValidationContext:
     validation_id: str
     domain: str
     results: tuple[VerificationResult, ...]
-    decision: DecisionDetail
+    decision: DecisionDetail | None
     run_summary: dict
 
 
@@ -79,11 +79,11 @@ class ValidationOrchestrator:
 
         if execution_mode == "game":
             from app.game.execution import GameRuntime
-            from app.game.deployment import PrototypeGameRuntime
+            from app.game.deployment import FlexiblePolicyGameRuntime, PrototypeGameRuntime
 
             if not isinstance(
                 game_runtime,
-                (GameRuntime, PrototypeGameRuntime),
+                (GameRuntime, PrototypeGameRuntime, FlexiblePolicyGameRuntime),
             ):
                 raise ValueError(
                     "game mode requires a server-configured GameRuntime"
@@ -421,12 +421,14 @@ class ValidationOrchestrator:
                 raise ValueError(f"reserved metadata key {RUN_SUMMARY_KEY!r} already exists")
             metadata[RUN_SUMMARY_KEY] = deepcopy(summary)
             results[-1] = results[-1].model_copy(update={"metadata": metadata})
+        detail = getattr(run, "detail", None)
         self._contexts[validation_id] = ValidationContext(validation_id, analysis.domain,
-            _detach_results(results), run.detail, deepcopy(summary))
+            _detach_results(results), detail, deepcopy(summary))
         for result in results:
             self._result_binding[id(result)] = (result, validation_id)
         return ValidationResponse(results=results, final_status=run.public_status,
-            final_score=run.detail.score, signed_score=run.detail.raw_score,
+            final_score=None if detail is None else detail.score,
+            signed_score=None if detail is None else detail.raw_score,
             validation_id=validation_id, domain=analysis.domain, session_id=request.session_id,
             difficulty=analysis.difficulty, selected_verifiers=summary.get("team", []),
             early_stop_reason=summary.get("termination", "game_selection_failure"),

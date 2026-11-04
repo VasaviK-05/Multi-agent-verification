@@ -110,10 +110,14 @@ def rule_factory():
 
 
 class ProjectObserver:
-    def __init__(self, verifiers=None):
+    def __init__(self, verifiers=None, *, scoped_transfer_id=None):
         self._relocation_state = None
         self._last_configuration = None
         self._last_report = None
+        self._last_full_resources = None
+        self._last_scoped_resources = None
+        self._last_scoped_transfer_id = None
+        self._scoped_transfer_id = scoped_transfer_id
         self._active_verifiers = verifiers
 
     def snapshot(self):
@@ -132,7 +136,9 @@ class ProjectObserver:
             if self._active_verifiers is not None:
                 self._attest_active_verifiers(self._active_verifiers, configuration, report)
             from app.game.resource_provenance import ResourceManifest
-            return ResourceManifest.model_validate(report['observed_setup']['resources'])
+            resources = ResourceManifest.model_validate(report['observed_setup']['resources'])
+            self._last_full_resources = resources
+            return resources
         raise ValueError(json.dumps(report['blockers']))
 
     def snapshot_for(self, selector):
@@ -142,6 +148,75 @@ class ProjectObserver:
             raise ValueError('game selector does not expose its active configured verifier instances')
         self._active_verifiers = tuple(verifiers)
         return self.snapshot()
+
+    def snapshot_for_scope(self, selector, names, transfer):
+        """Observe only the explicitly transferred E/R scope using active instances.
+
+        This does not query Ollama: the published transfer excludes Confidence and
+        its service resource. The full local setup is still inspected, active
+        verifier instances are attested, and any Evidence index relocation is
+        validated separately before the scoped projection is authorized.
+        """
+        from app.benchmark.project_adapter import AdapterConfiguration, inspect_setup
+        from app.game.offline.calibration import read_json
+        from app.game.resource_provenance import ResourceManifest
+        from app.game.resource_transfer import TRANSFER_SCOPE, project_manifest
+
+        if tuple(names) != TRANSFER_SCOPE or not isinstance(transfer, dict):
+            raise ValueError('scoped observation requires the explicit Evidence/Rule transfer')
+        if (self._scoped_transfer_id is None
+                or transfer.get('transfer_id') != self._scoped_transfer_id):
+            raise ValueError('scoped observation transfer was not explicitly configured on this observer')
+        verifiers = getattr(selector, '_injected', None)
+        if verifiers is None:
+            raise ValueError('scoped observation requires the injected active verifier pool')
+        self._active_verifiers = tuple(verifiers)
+        by_name = {v.name: v for v in self._active_verifiers}
+        if set(by_name) != {'semantic', 'evidence', 'rule', 'confidence'}:
+            raise ValueError('active selector does not hold the attested verifier pool')
+        for name in TRANSFER_SCOPE:
+            if selector.resolve(name) is not by_name[name]:
+                raise ValueError('scoped verifier differs from the active injected selector instance')
+
+        configuration = AdapterConfiguration.model_validate(
+            read_json(os.environ['VERIFIER_COLLECTION_ADAPTER_CONFIG'])
+        )
+        report = inspect_setup(configuration)
+        self._relocation_state = report.get('_relocation_state')
+        self._last_configuration = configuration
+        self._last_report = report
+        if not report['ready']:
+            raise ValueError(json.dumps(report['blockers']))
+        self._attest_active_verifiers(self._active_verifiers, configuration, report)
+        full = ResourceManifest.model_validate(report['observed_setup']['resources'])
+        scoped = project_manifest(full, TRANSFER_SCOPE)
+        if transfer.get('version') != 'compound_required_resource_transfer_v1':
+            raise ValueError('unsupported scoped resource transfer')
+        self._last_full_resources = full
+        self._last_scoped_transfer_id = transfer.get('transfer_id')
+        self._last_scoped_resources = scoped
+        return scoped
+
+    def authorize_scoped_transfer(self, expected_full, observed_scoped, transfer):
+        """Validate the E/R transfer and, separately, any index relocation proof."""
+        from app.game.resource_provenance import ResourceManifest
+        from app.game.resource_transfer import authorize_scoped_observation
+
+        if (self._last_full_resources is None or self._last_scoped_resources is None
+                or self._last_scoped_transfer_id != transfer.get('transfer_id')
+                or ResourceManifest.model_validate(observed_scoped) != self._last_scoped_resources):
+            raise ValueError('scoped observation is not the latest observation bound to this transfer')
+        expected_full = ResourceManifest.model_validate(expected_full)
+        relocation = None
+        if self._last_full_resources != expected_full:
+            relocation = self.authorize_relocation(expected_full, self._last_full_resources)
+        return authorize_scoped_observation(
+            transfer,
+            expected_full,
+            self._last_full_resources,
+            self._last_scoped_resources,
+            relocation_authorization=relocation,
+        )
 
     def _attest_active_verifiers(self, verifiers, config, report):
         by_name = {v.name: v for v in verifiers}

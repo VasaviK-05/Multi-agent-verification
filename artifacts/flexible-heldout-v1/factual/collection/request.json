@@ -1,0 +1,2562 @@
+{
+  "cache_contract": "complete_team_independent_v1",
+  "candidates": [
+    {
+      "adapter": "semantic_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "semantic_comparison"
+        ],
+        "limitations": [
+          "Reference similarity is not factual correctness."
+        ],
+        "readiness": "unknown",
+        "requires_reference": true,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "semantic"
+    },
+    {
+      "adapter": "evidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "direct_fact",
+          "evidence_retrieval"
+        ],
+        "limitations": [
+          "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+          "Corpus/model readiness and claim coverage are unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "evidence"
+    },
+    {
+      "adapter": "rule_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "arithmetic"
+        ],
+        "limitations": [
+          "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+          "Other deterministic/structural checks do not establish general factual coverage."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "rule"
+    },
+    {
+      "adapter": "confidence_v1",
+      "capabilities": {
+        "expected_capabilities": [
+          "consistency"
+        ],
+        "limitations": [
+          "Generation/judgment agreement is not factual evidence or independence.",
+          "Provider readiness is unknown until execution."
+        ],
+        "readiness": "unknown",
+        "requires_reference": false,
+        "unavailable_reason": null
+      },
+      "capability_source": "builtin",
+      "registered": true,
+      "verifier_name": "confidence"
+    }
+  ],
+  "examples": [
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Andorra is 468 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "AD-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"AD\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 468}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Andorra?",
+      "question_id": "92b73ba62722f3d0396eeba260b2b6590f6fd21bfd86553427b43071f975f8dc",
+      "reference": "The area of Andorra is 468 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-AD-correct",
+      "split_identity": "multitask42-factual-AD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Andorra is 1468 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "AD-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"AD\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 468}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Andorra?",
+      "question_id": "92b73ba62722f3d0396eeba260b2b6590f6fd21bfd86553427b43071f975f8dc",
+      "reference": "The area of Andorra is 468 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-AD-incorrect",
+      "split_identity": "multitask42-factual-AD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Armenia is 29743 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "AM-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"AM\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 29743}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Armenia?",
+      "question_id": "8b0e3b2bfc7c0ba25ed64429cfdfefb24098e5d686eecdd052e75c967a6db005",
+      "reference": "The area of Armenia is 29743 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-AM-correct",
+      "split_identity": "multitask42-factual-AM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Armenia is 30743 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "AM-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"AM\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 29743}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Armenia?",
+      "question_id": "8b0e3b2bfc7c0ba25ed64429cfdfefb24098e5d686eecdd052e75c967a6db005",
+      "reference": "The area of Armenia is 29743 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-AM-incorrect",
+      "split_identity": "multitask42-factual-AM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Brazil is 8515767 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "BR-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"BR\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 8515767}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Brazil?",
+      "question_id": "171506344a56fc9fd5853c06968033e721157c3af613c70507c1b57a2cec6ec3",
+      "reference": "The area of Brazil is 8515767 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-BR-correct",
+      "split_identity": "multitask42-factual-BR"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Brazil is 8516767 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "BR-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"BR\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 8515767}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Brazil?",
+      "question_id": "171506344a56fc9fd5853c06968033e721157c3af613c70507c1b57a2cec6ec3",
+      "reference": "The area of Brazil is 8515767 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-BR-incorrect",
+      "split_identity": "multitask42-factual-BR"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Belarus is the Belarusian ruble.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "BY-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"BY\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Belarusian ruble\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Belarus?",
+      "question_id": "62a26bcbebe067719bd5fd6bf86469059b5d58c320b210bc98d845212f1e8b47",
+      "reference": "The currency of Belarus is the Belarusian ruble.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-BY-correct",
+      "split_identity": "multitask42-factual-BY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Belarus is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "BY-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"BY\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Belarusian ruble\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Belarus?",
+      "question_id": "62a26bcbebe067719bd5fd6bf86469059b5d58c320b210bc98d845212f1e8b47",
+      "reference": "The currency of Belarus is the Belarusian ruble.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-BY-incorrect",
+      "split_identity": "multitask42-factual-BY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Cameroon is 29879337.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "CM-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"CM\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 29879337}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Cameroon?",
+      "question_id": "385f78f1334b003e615f033563f433f802dcfbfd3dccb27038a4552cd1d721c0",
+      "reference": "The population of Cameroon is 29879337.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-CM-correct",
+      "split_identity": "multitask42-factual-CM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Cameroon is 29891682.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "CM-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"CM\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 29879337}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Cameroon?",
+      "question_id": "385f78f1334b003e615f033563f433f802dcfbfd3dccb27038a4552cd1d721c0",
+      "reference": "The population of Cameroon is 29879337.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-CM-incorrect",
+      "split_identity": "multitask42-factual-CM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Spain is the Euro.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "ES-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"ES\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Spain?",
+      "question_id": "996a271e1ae5647ffaddeac1e61d4546b507cfe1bcc83e2a9e2865dc81e83255",
+      "reference": "The currency of Spain is the Euro.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-ES-correct",
+      "split_identity": "multitask42-factual-ES"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Spain is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "ES-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"ES\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Spain?",
+      "question_id": "996a271e1ae5647ffaddeac1e61d4546b507cfe1bcc83e2a9e2865dc81e83255",
+      "reference": "The currency of Spain is the Euro.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-ES-incorrect",
+      "split_identity": "multitask42-factual-ES"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Ghana is the Ghanaian cedi.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "GH-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"GH\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Ghanaian cedi\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Ghana?",
+      "question_id": "c0cada36060d197870ce179d3c9da2ed2a6588410ada73e89faf9a0ee2eaecd3",
+      "reference": "The currency of Ghana is the Ghanaian cedi.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-GH-correct",
+      "split_identity": "multitask42-factual-GH"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Ghana is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "GH-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"GH\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Ghanaian cedi\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Ghana?",
+      "question_id": "c0cada36060d197870ce179d3c9da2ed2a6588410ada73e89faf9a0ee2eaecd3",
+      "reference": "The currency of Ghana is the Ghanaian cedi.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-GH-incorrect",
+      "split_identity": "multitask42-factual-GH"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kenya is 580367 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "KE-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"KE\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 580367}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Kenya?",
+      "question_id": "208c1ead75651de3a2ee1fcb84759e67a524f11af0342f3c02590838397398aa",
+      "reference": "The area of Kenya is 580367 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-KE-correct",
+      "split_identity": "multitask42-factual-KE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Kenya is 581367 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "KE-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"KE\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 580367}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Kenya?",
+      "question_id": "208c1ead75651de3a2ee1fcb84759e67a524f11af0342f3c02590838397398aa",
+      "reference": "The area of Kenya is 580367 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-KE-incorrect",
+      "split_identity": "multitask42-factual-KE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Laos is the Lao kip.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "LA-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"LA\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Lao kip\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Laos?",
+      "question_id": "fdf210f799a0fd90abf782c4f4e4e1e2ce8d25b6403ed73093afd25588c2c271",
+      "reference": "The currency of Laos is the Lao kip.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-LA-correct",
+      "split_identity": "multitask42-factual-LA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Laos is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "LA-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"LA\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Lao kip\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Laos?",
+      "question_id": "fdf210f799a0fd90abf782c4f4e4e1e2ce8d25b6403ed73093afd25588c2c271",
+      "reference": "The currency of Laos is the Lao kip.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-LA-incorrect",
+      "split_identity": "multitask42-factual-LA"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Luxembourg is the Euro.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "LU-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"LU\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Luxembourg?",
+      "question_id": "e87f0ac420b44dc24c6b9e08ce66e08c2417050aa09083d824b83ddadddf004f",
+      "reference": "The currency of Luxembourg is the Euro.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-LU-correct",
+      "split_identity": "multitask42-factual-LU"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Luxembourg is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "LU-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"LU\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Euro\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Luxembourg?",
+      "question_id": "e87f0ac420b44dc24c6b9e08ce66e08c2417050aa09083d824b83ddadddf004f",
+      "reference": "The currency of Luxembourg is the Euro.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-LU-incorrect",
+      "split_identity": "multitask42-factual-LU"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Moldova is 2360527.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "MD-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"MD\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 2360527}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Moldova?",
+      "question_id": "60bd65f4492ad74b133867de881b53e33e19499e7561ccfa8b26557effa76cbb",
+      "reference": "The population of Moldova is 2360527.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-MD-correct",
+      "split_identity": "multitask42-factual-MD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Moldova is 2372872.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "MD-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"MD\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 2360527}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Moldova?",
+      "question_id": "60bd65f4492ad74b133867de881b53e33e19499e7561ccfa8b26557effa76cbb",
+      "reference": "The population of Moldova is 2360527.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-MD-incorrect",
+      "split_identity": "multitask42-factual-MD"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Montenegro is 13812 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "ME-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"ME\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 13812}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Montenegro?",
+      "question_id": "72d4f7b3494a68083fbe546354c9c81852d23716bfcf790692c5468ee6879802",
+      "reference": "The area of Montenegro is 13812 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-ME-correct",
+      "split_identity": "multitask42-factual-ME"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Montenegro is 14812 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "ME-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"ME\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 13812}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Montenegro?",
+      "question_id": "72d4f7b3494a68083fbe546354c9c81852d23716bfcf790692c5468ee6879802",
+      "reference": "The area of Montenegro is 13812 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-ME-incorrect",
+      "split_identity": "multitask42-factual-ME"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Mauritius is 1243741.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "MU-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"MU\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 1243741}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Mauritius?",
+      "question_id": "923d670173e40ea7684c0d79f9fa3004c8c25d453e024718c0ba889354737f72",
+      "reference": "The population of Mauritius is 1243741.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-MU-correct",
+      "split_identity": "multitask42-factual-MU"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Mauritius is 1256086.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "MU-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"MU\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 1243741}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Mauritius?",
+      "question_id": "923d670173e40ea7684c0d79f9fa3004c8c25d453e024718c0ba889354737f72",
+      "reference": "The population of Mauritius is 1243741.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-MU-incorrect",
+      "split_identity": "multitask42-factual-MU"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Suriname is 639850.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "SR-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"SR\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 639850}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Suriname?",
+      "question_id": "2657729b243fa842f1aa990785442d66f2b5fd8d7253e38ed5f5464fbc6e8a06",
+      "reference": "The population of Suriname is 639850.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-SR-correct",
+      "split_identity": "multitask42-factual-SR"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Suriname is 652195.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "SR-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"SR\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 639850}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Suriname?",
+      "question_id": "2657729b243fa842f1aa990785442d66f2b5fd8d7253e38ed5f5464fbc6e8a06",
+      "reference": "The population of Suriname is 639850.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-SR-incorrect",
+      "split_identity": "multitask42-factual-SR"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Syria is 185180 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "SY-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"SY\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 185180}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Syria?",
+      "question_id": "e1b6bce92c7eda8ec1f37b158cb93cad1a22490ace8cc80e87e2de2f7670fdd6",
+      "reference": "The area of Syria is 185180 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-SY-correct",
+      "split_identity": "multitask42-factual-SY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Syria is 186180 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "SY-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"SY\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 185180}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Syria?",
+      "question_id": "e1b6bce92c7eda8ec1f37b158cb93cad1a22490ace8cc80e87e2de2f7670fdd6",
+      "reference": "The area of Syria is 185180 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-SY-incorrect",
+      "split_identity": "multitask42-factual-SY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Turkmenistan is 7618847.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "TM-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"TM\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 7618847}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Turkmenistan?",
+      "question_id": "dd28927a66d27bd359d81dc5ff945f43e06bc5a147d9f3248ea39e5c2e6ec75e",
+      "reference": "The population of Turkmenistan is 7618847.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-TM-correct",
+      "split_identity": "multitask42-factual-TM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Turkmenistan is 7631192.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "TM-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"TM\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 7618847}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Turkmenistan?",
+      "question_id": "dd28927a66d27bd359d81dc5ff945f43e06bc5a147d9f3248ea39e5c2e6ec75e",
+      "reference": "The population of Turkmenistan is 7618847.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-TM-incorrect",
+      "split_identity": "multitask42-factual-TM"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Tonga is the Tongan pa\u02bbanga.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "TO-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"TO\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Tongan pa\\u02bbanga\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Tonga?",
+      "question_id": "62f469e485ff3d8d9f2c0e8183a68646da0f29e2882156b6738f0391085fbbfd",
+      "reference": "The currency of Tonga is the Tongan pa\u02bbanga.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-TO-correct",
+      "split_identity": "multitask42-factual-TO"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Tonga is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "TO-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"TO\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Tongan pa\\u02bbanga\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Tonga?",
+      "question_id": "62f469e485ff3d8d9f2c0e8183a68646da0f29e2882156b6738f0391085fbbfd",
+      "reference": "The currency of Tonga is the Tongan pa\u02bbanga.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-TO-incorrect",
+      "split_identity": "multitask42-factual-TO"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Uganda is 51384894.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "UG-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"UG\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 51384894}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Uganda?",
+      "question_id": "f7d57b82adab082d9c52f5b5fcc6595324fb3193a3df210e3c38b0b5a7840f28",
+      "reference": "The population of Uganda is 51384894.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-UG-correct",
+      "split_identity": "multitask42-factual-UG"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The population of Uganda is 51397239.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "UG-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"UG\", \"kind\": \"population\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 51384894}"
+      },
+      "purpose": "heldout",
+      "question": "What is the population of Uganda?",
+      "question_id": "f7d57b82adab082d9c52f5b5fcc6595324fb3193a3df210e3c38b0b5a7840f28",
+      "reference": "The population of Uganda is 51384894.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-UG-incorrect",
+      "split_identity": "multitask42-factual-UG"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Uruguay is 181034 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "UY-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"UY\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 181034}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Uruguay?",
+      "question_id": "5e87b1db888fd9395827304245dfd855d5324e158a6f2d29bc29fdcb8a0f9706",
+      "reference": "The area of Uruguay is 181034 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-UY-correct",
+      "split_identity": "multitask42-factual-UY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The area of Uruguay is 182034 square kilometres.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "UY-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"UY\", \"kind\": \"area\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": 181034}"
+      },
+      "purpose": "heldout",
+      "question": "What is the area of Uruguay?",
+      "question_id": "5e87b1db888fd9395827304245dfd855d5324e158a6f2d29bc29fdcb8a0f9706",
+      "reference": "The area of Uruguay is 181034 square kilometres.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-UY-incorrect",
+      "split_identity": "multitask42-factual-UY"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Venezuela is the Venezuelan bol\u00edvar soberano.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "VE-correct",
+      "label": {
+        "answer_is_correct": true,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"VE\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Venezuelan bol\\u00edvar soberano\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Venezuela?",
+      "question_id": "97dfec33b3e2ae9916e69dfaa7fc4107a74a4d40a2cfef18b754469305f65627",
+      "reference": "The currency of Venezuela is the Venezuelan bol\u00edvar soberano.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-VE-correct",
+      "split_identity": "multitask42-factual-VE"
+    },
+    {
+      "analysis": {
+        "analysis_method": "heuristic",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "domain": "general",
+        "domain_candidates": [],
+        "domain_status": "unknown",
+        "fallback_reason": null,
+        "research_context": {
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "domain_status": "unknown",
+          "normalized_rubric": null,
+          "requirement_weights": {
+            "arithmetic": 0.0,
+            "consistency": 0.0,
+            "direct_fact": 1.0,
+            "evidence_retrieval": 0.0,
+            "logical_rule": 0.0,
+            "semantic_comparison": 0.0
+          },
+          "requirements_known": true,
+          "scoring_version": "explicit_task_questions_v1",
+          "verification_requirements": [
+            "direct_fact"
+          ]
+        },
+        "rubric_ratings": null,
+        "subject": "",
+        "verification_types": [
+          "direct_fact"
+        ]
+      },
+      "answer": "The currency of Venezuela is the United States dollar.",
+      "dataset_id": "multitask42-factual-final_test",
+      "example_id": "VE-incorrect",
+      "label": {
+        "answer_is_correct": false,
+        "label_method": "independent_ground_truth",
+        "label_source": "independent-factual-frames-v1",
+        "provenance": "{\"iso\": \"VE\", \"kind\": \"currency\", \"source_hashes\": {\"LICENSE\": \"a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc\", \"countries-revision.json\": \"102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7\", \"countries.json\": \"0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd\", \"geonames-countryInfo.txt\": \"5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671\"}, \"source_snapshot_truth\": true, \"value\": \"Venezuelan bol\\u00edvar soberano\"}"
+      },
+      "purpose": "heldout",
+      "question": "What is the currency of Venezuela?",
+      "question_id": "97dfec33b3e2ae9916e69dfaa7fc4107a74a4d40a2cfef18b754469305f65627",
+      "reference": "The currency of Venezuela is the Venezuelan bol\u00edvar soberano.",
+      "role": "final_test",
+      "run_id": "multitask42-factual-final_test-VE-incorrect",
+      "split_identity": "multitask42-factual-VE"
+    }
+  ],
+  "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "expected_setup": {
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "factory": "app.benchmark.project_adapter:create_recording_verifiers",
+  "final_test_reservation": {
+    "custody_record": "User request 40cf4c15-2260-48ef-b3a1-7154d0d47554: task-conditioned exploratory collection and reliability-first fits; procedural source-known reservation",
+    "dataset_id": "multitask42-factual-final_test",
+    "examples": [
+      {
+        "content_identity": "3966fb7cce8b272c379c576e6d32efd102ae9220734b833cdc6feaefaa7611f2",
+        "example_id": "AD-correct",
+        "question_id": "92b73ba62722f3d0396eeba260b2b6590f6fd21bfd86553427b43071f975f8dc",
+        "split_identity": "multitask42-factual-AD",
+        "validation_id": "multitask42-factual-final_test-AD-correct"
+      },
+      {
+        "content_identity": "e26991064acef9defe90a2c78408c71f43f72e8f55abbcbec8e96c72d1f4d44a",
+        "example_id": "AD-incorrect",
+        "question_id": "92b73ba62722f3d0396eeba260b2b6590f6fd21bfd86553427b43071f975f8dc",
+        "split_identity": "multitask42-factual-AD",
+        "validation_id": "multitask42-factual-final_test-AD-incorrect"
+      },
+      {
+        "content_identity": "f24f8c26fd1976b44fefb11398b9d7f7cc079f5d7fdde73f7450eb92260c11d8",
+        "example_id": "AM-correct",
+        "question_id": "8b0e3b2bfc7c0ba25ed64429cfdfefb24098e5d686eecdd052e75c967a6db005",
+        "split_identity": "multitask42-factual-AM",
+        "validation_id": "multitask42-factual-final_test-AM-correct"
+      },
+      {
+        "content_identity": "f06aabf7f6b8126ed0b4f4968a2a2193fecaae9503140d6236e2722e512e9fe3",
+        "example_id": "AM-incorrect",
+        "question_id": "8b0e3b2bfc7c0ba25ed64429cfdfefb24098e5d686eecdd052e75c967a6db005",
+        "split_identity": "multitask42-factual-AM",
+        "validation_id": "multitask42-factual-final_test-AM-incorrect"
+      },
+      {
+        "content_identity": "909e3a0dd9a90b2c48b5153912d2efa3eb8b71754bb98bdc05f4b3a5b65927c4",
+        "example_id": "BR-correct",
+        "question_id": "171506344a56fc9fd5853c06968033e721157c3af613c70507c1b57a2cec6ec3",
+        "split_identity": "multitask42-factual-BR",
+        "validation_id": "multitask42-factual-final_test-BR-correct"
+      },
+      {
+        "content_identity": "6c7c3ddd31f29d88c8a3c61b8209802f1c5541ed38acc66a016c683a756c620f",
+        "example_id": "BR-incorrect",
+        "question_id": "171506344a56fc9fd5853c06968033e721157c3af613c70507c1b57a2cec6ec3",
+        "split_identity": "multitask42-factual-BR",
+        "validation_id": "multitask42-factual-final_test-BR-incorrect"
+      },
+      {
+        "content_identity": "f634eb270792381213e0015876948de94934eeca5a8ee85d00f2351464b8ff4f",
+        "example_id": "BY-correct",
+        "question_id": "62a26bcbebe067719bd5fd6bf86469059b5d58c320b210bc98d845212f1e8b47",
+        "split_identity": "multitask42-factual-BY",
+        "validation_id": "multitask42-factual-final_test-BY-correct"
+      },
+      {
+        "content_identity": "a5817b22214a261e6964151c15377456255dcebaa0fe1f9a7dd990ae6412aa88",
+        "example_id": "BY-incorrect",
+        "question_id": "62a26bcbebe067719bd5fd6bf86469059b5d58c320b210bc98d845212f1e8b47",
+        "split_identity": "multitask42-factual-BY",
+        "validation_id": "multitask42-factual-final_test-BY-incorrect"
+      },
+      {
+        "content_identity": "5840265097cc48b12a385f2063f7a42d50fdbe922bb2394a9ee5d1e675898ac1",
+        "example_id": "CM-correct",
+        "question_id": "385f78f1334b003e615f033563f433f802dcfbfd3dccb27038a4552cd1d721c0",
+        "split_identity": "multitask42-factual-CM",
+        "validation_id": "multitask42-factual-final_test-CM-correct"
+      },
+      {
+        "content_identity": "71ec97163050d3a679ae8e16cdccd6a7fa84c9f14ef3136b3d3d9c00c51d312e",
+        "example_id": "CM-incorrect",
+        "question_id": "385f78f1334b003e615f033563f433f802dcfbfd3dccb27038a4552cd1d721c0",
+        "split_identity": "multitask42-factual-CM",
+        "validation_id": "multitask42-factual-final_test-CM-incorrect"
+      },
+      {
+        "content_identity": "43bbf6fbb4184a2198fbd32839bf2a02f3403bf10e87e87695ac989eddbae3bc",
+        "example_id": "ES-correct",
+        "question_id": "996a271e1ae5647ffaddeac1e61d4546b507cfe1bcc83e2a9e2865dc81e83255",
+        "split_identity": "multitask42-factual-ES",
+        "validation_id": "multitask42-factual-final_test-ES-correct"
+      },
+      {
+        "content_identity": "50b86c3e1df6bd610af91f2c83af0f56887b8024643bbf72dada2860642ff370",
+        "example_id": "ES-incorrect",
+        "question_id": "996a271e1ae5647ffaddeac1e61d4546b507cfe1bcc83e2a9e2865dc81e83255",
+        "split_identity": "multitask42-factual-ES",
+        "validation_id": "multitask42-factual-final_test-ES-incorrect"
+      },
+      {
+        "content_identity": "abea3f348d655c958afaaeecb2efd1b024e665ac98332176a82654b9a06d4db1",
+        "example_id": "GH-correct",
+        "question_id": "c0cada36060d197870ce179d3c9da2ed2a6588410ada73e89faf9a0ee2eaecd3",
+        "split_identity": "multitask42-factual-GH",
+        "validation_id": "multitask42-factual-final_test-GH-correct"
+      },
+      {
+        "content_identity": "10f255d0091f999e3cea71196b0e1617ff6c96b758f9e7cf98bedf20855294ad",
+        "example_id": "GH-incorrect",
+        "question_id": "c0cada36060d197870ce179d3c9da2ed2a6588410ada73e89faf9a0ee2eaecd3",
+        "split_identity": "multitask42-factual-GH",
+        "validation_id": "multitask42-factual-final_test-GH-incorrect"
+      },
+      {
+        "content_identity": "701bfd87ff86de6eb60b48511841500f9734c17268a54d7e14bd1b25fc71bc36",
+        "example_id": "KE-correct",
+        "question_id": "208c1ead75651de3a2ee1fcb84759e67a524f11af0342f3c02590838397398aa",
+        "split_identity": "multitask42-factual-KE",
+        "validation_id": "multitask42-factual-final_test-KE-correct"
+      },
+      {
+        "content_identity": "6d3a2ea9a83b08eb1c339b00627ca380e02666d17bd44be4bbba29473a51cabd",
+        "example_id": "KE-incorrect",
+        "question_id": "208c1ead75651de3a2ee1fcb84759e67a524f11af0342f3c02590838397398aa",
+        "split_identity": "multitask42-factual-KE",
+        "validation_id": "multitask42-factual-final_test-KE-incorrect"
+      },
+      {
+        "content_identity": "a18b83445c2ecc7850a701d20cc15a3b1260e3a4c2b86fc9bc430d43375ff5ac",
+        "example_id": "LA-correct",
+        "question_id": "fdf210f799a0fd90abf782c4f4e4e1e2ce8d25b6403ed73093afd25588c2c271",
+        "split_identity": "multitask42-factual-LA",
+        "validation_id": "multitask42-factual-final_test-LA-correct"
+      },
+      {
+        "content_identity": "e2c20d8354ea855dbbce5d89d5ea230d99d028073d6d8ab493a775f53664417d",
+        "example_id": "LA-incorrect",
+        "question_id": "fdf210f799a0fd90abf782c4f4e4e1e2ce8d25b6403ed73093afd25588c2c271",
+        "split_identity": "multitask42-factual-LA",
+        "validation_id": "multitask42-factual-final_test-LA-incorrect"
+      },
+      {
+        "content_identity": "a0e50352af043ce2929a0671601b028f5f4f6de10a3bfad55caa71b08c674203",
+        "example_id": "LU-correct",
+        "question_id": "e87f0ac420b44dc24c6b9e08ce66e08c2417050aa09083d824b83ddadddf004f",
+        "split_identity": "multitask42-factual-LU",
+        "validation_id": "multitask42-factual-final_test-LU-correct"
+      },
+      {
+        "content_identity": "80fbd9295cfb63984df195b7e53b4148945e35e458c74c3de3f7746b77584d71",
+        "example_id": "LU-incorrect",
+        "question_id": "e87f0ac420b44dc24c6b9e08ce66e08c2417050aa09083d824b83ddadddf004f",
+        "split_identity": "multitask42-factual-LU",
+        "validation_id": "multitask42-factual-final_test-LU-incorrect"
+      },
+      {
+        "content_identity": "30856f76dc4e6de62fc25ea825cedbd10a20891c6d2673490d65b2d1d4deffff",
+        "example_id": "MD-correct",
+        "question_id": "60bd65f4492ad74b133867de881b53e33e19499e7561ccfa8b26557effa76cbb",
+        "split_identity": "multitask42-factual-MD",
+        "validation_id": "multitask42-factual-final_test-MD-correct"
+      },
+      {
+        "content_identity": "b8e788093f783f39b6a2ed2fbdce4c0145138a8b047883286fe0cda76b6924ef",
+        "example_id": "MD-incorrect",
+        "question_id": "60bd65f4492ad74b133867de881b53e33e19499e7561ccfa8b26557effa76cbb",
+        "split_identity": "multitask42-factual-MD",
+        "validation_id": "multitask42-factual-final_test-MD-incorrect"
+      },
+      {
+        "content_identity": "be889ce795adfeb42bc4eb22ecc48419f120d4b44ec3d9beb49c8a2fcc482967",
+        "example_id": "ME-correct",
+        "question_id": "72d4f7b3494a68083fbe546354c9c81852d23716bfcf790692c5468ee6879802",
+        "split_identity": "multitask42-factual-ME",
+        "validation_id": "multitask42-factual-final_test-ME-correct"
+      },
+      {
+        "content_identity": "d40c6334264eeb28467ae1cb5e4a411afcf57c7f80b350afdaa48b09db087c85",
+        "example_id": "ME-incorrect",
+        "question_id": "72d4f7b3494a68083fbe546354c9c81852d23716bfcf790692c5468ee6879802",
+        "split_identity": "multitask42-factual-ME",
+        "validation_id": "multitask42-factual-final_test-ME-incorrect"
+      },
+      {
+        "content_identity": "d6eb95072369a5253a1cb148ec6f479852a461d1f720211241f36e0619e41c86",
+        "example_id": "MU-correct",
+        "question_id": "923d670173e40ea7684c0d79f9fa3004c8c25d453e024718c0ba889354737f72",
+        "split_identity": "multitask42-factual-MU",
+        "validation_id": "multitask42-factual-final_test-MU-correct"
+      },
+      {
+        "content_identity": "f9907e6e459365fce173e6b0762729bd06dea6a6a52e4faf3ec31cf0e9d464de",
+        "example_id": "MU-incorrect",
+        "question_id": "923d670173e40ea7684c0d79f9fa3004c8c25d453e024718c0ba889354737f72",
+        "split_identity": "multitask42-factual-MU",
+        "validation_id": "multitask42-factual-final_test-MU-incorrect"
+      },
+      {
+        "content_identity": "07aca0fc11349e68c1cf812a06bfe69c5af712b7e40d7e5f93db92eec42d4220",
+        "example_id": "SR-correct",
+        "question_id": "2657729b243fa842f1aa990785442d66f2b5fd8d7253e38ed5f5464fbc6e8a06",
+        "split_identity": "multitask42-factual-SR",
+        "validation_id": "multitask42-factual-final_test-SR-correct"
+      },
+      {
+        "content_identity": "ce8883725314742585875d063f08bef668f0b6b2a5c29660a4c38462b344b9c7",
+        "example_id": "SR-incorrect",
+        "question_id": "2657729b243fa842f1aa990785442d66f2b5fd8d7253e38ed5f5464fbc6e8a06",
+        "split_identity": "multitask42-factual-SR",
+        "validation_id": "multitask42-factual-final_test-SR-incorrect"
+      },
+      {
+        "content_identity": "56c69b17936942200f97130fe5eb6eda66deb0de434d324120c3eaecd7bbfe5f",
+        "example_id": "SY-correct",
+        "question_id": "e1b6bce92c7eda8ec1f37b158cb93cad1a22490ace8cc80e87e2de2f7670fdd6",
+        "split_identity": "multitask42-factual-SY",
+        "validation_id": "multitask42-factual-final_test-SY-correct"
+      },
+      {
+        "content_identity": "2169d8a57267d26dd73e5d8afb5aaac586e2f5e5c2647cc04580fdcc16140a7f",
+        "example_id": "SY-incorrect",
+        "question_id": "e1b6bce92c7eda8ec1f37b158cb93cad1a22490ace8cc80e87e2de2f7670fdd6",
+        "split_identity": "multitask42-factual-SY",
+        "validation_id": "multitask42-factual-final_test-SY-incorrect"
+      },
+      {
+        "content_identity": "2bb720c8267a4b9f22689aa99ad990695e371293c48f33db5f5a4ef584fecc08",
+        "example_id": "TM-correct",
+        "question_id": "dd28927a66d27bd359d81dc5ff945f43e06bc5a147d9f3248ea39e5c2e6ec75e",
+        "split_identity": "multitask42-factual-TM",
+        "validation_id": "multitask42-factual-final_test-TM-correct"
+      },
+      {
+        "content_identity": "d84bc4809f4c3530ccb5b150824ed7ed649d9b24f071ad2ba24446bd4b51522c",
+        "example_id": "TM-incorrect",
+        "question_id": "dd28927a66d27bd359d81dc5ff945f43e06bc5a147d9f3248ea39e5c2e6ec75e",
+        "split_identity": "multitask42-factual-TM",
+        "validation_id": "multitask42-factual-final_test-TM-incorrect"
+      },
+      {
+        "content_identity": "bdfa893d9e6fd94481d39b9d555734a61f8a9273b1ea24ef0919d4748ccb2cda",
+        "example_id": "TO-correct",
+        "question_id": "62f469e485ff3d8d9f2c0e8183a68646da0f29e2882156b6738f0391085fbbfd",
+        "split_identity": "multitask42-factual-TO",
+        "validation_id": "multitask42-factual-final_test-TO-correct"
+      },
+      {
+        "content_identity": "bd8689023546a7830172f3903ce8ec0fc2c4d02f9336e6c993d5dca248ecaaf0",
+        "example_id": "TO-incorrect",
+        "question_id": "62f469e485ff3d8d9f2c0e8183a68646da0f29e2882156b6738f0391085fbbfd",
+        "split_identity": "multitask42-factual-TO",
+        "validation_id": "multitask42-factual-final_test-TO-incorrect"
+      },
+      {
+        "content_identity": "708fccd433524ed0b270dcf8909a49b6672b3e8eda8dc3fc26a98af7c6ce4e41",
+        "example_id": "UG-correct",
+        "question_id": "f7d57b82adab082d9c52f5b5fcc6595324fb3193a3df210e3c38b0b5a7840f28",
+        "split_identity": "multitask42-factual-UG",
+        "validation_id": "multitask42-factual-final_test-UG-correct"
+      },
+      {
+        "content_identity": "922436db8ca1bce80f6a266c00f6d76d400870af8dd9c0bb0e4dabe7f7b90658",
+        "example_id": "UG-incorrect",
+        "question_id": "f7d57b82adab082d9c52f5b5fcc6595324fb3193a3df210e3c38b0b5a7840f28",
+        "split_identity": "multitask42-factual-UG",
+        "validation_id": "multitask42-factual-final_test-UG-incorrect"
+      },
+      {
+        "content_identity": "364931ffc730a045b7511f9330fbf9133b18879bba0d66529046be3b9a9a0d15",
+        "example_id": "UY-correct",
+        "question_id": "5e87b1db888fd9395827304245dfd855d5324e158a6f2d29bc29fdcb8a0f9706",
+        "split_identity": "multitask42-factual-UY",
+        "validation_id": "multitask42-factual-final_test-UY-correct"
+      },
+      {
+        "content_identity": "484ecd908272d50097adf3abfba8683c4d237ef7790ec86fdb4626097bfd24f7",
+        "example_id": "UY-incorrect",
+        "question_id": "5e87b1db888fd9395827304245dfd855d5324e158a6f2d29bc29fdcb8a0f9706",
+        "split_identity": "multitask42-factual-UY",
+        "validation_id": "multitask42-factual-final_test-UY-incorrect"
+      },
+      {
+        "content_identity": "c7ac2693dd1d513bc777f68ef84b049a6d9dd95b2e2a659c3d4dff3b71b619c5",
+        "example_id": "VE-correct",
+        "question_id": "97dfec33b3e2ae9916e69dfaa7fc4107a74a4d40a2cfef18b754469305f65627",
+        "split_identity": "multitask42-factual-VE",
+        "validation_id": "multitask42-factual-final_test-VE-correct"
+      },
+      {
+        "content_identity": "bcc085f6d606710c77aec469158ce79266f70876ab328a9331704c209c429508",
+        "example_id": "VE-incorrect",
+        "question_id": "97dfec33b3e2ae9916e69dfaa7fc4107a74a4d40a2cfef18b754469305f65627",
+        "split_identity": "multitask42-factual-VE",
+        "validation_id": "multitask42-factual-final_test-VE-incorrect"
+      }
+    ],
+    "role": "final_test",
+    "version": "final_test_reservation_v1"
+  },
+  "freeze_id": "bcba68b5bd2857246fb3c4d9248f0eb2af4fd891b5b694335799826942ae519e",
+  "intended_use": "heldout",
+  "permitted_datasets": [
+    [
+      "final_test",
+      "multitask42-factual-final_test"
+    ]
+  ],
+  "preparation_authorization": "User follow-up: bounded local inference for reserved arithmetic/factual partitions only",
+  "randomness_control": "Frozen temperature0.8; n5 existing sampler seeds0..4; no deterministic generation claim",
+  "study_approval": "User follow-up: bounded local inference for reserved arithmetic/factual partitions only",
+  "version": "offline_heldout_recording_v1"
+}

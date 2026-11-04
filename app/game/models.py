@@ -282,9 +282,23 @@ class PlanningContext(FrozenModel):
 
     @property
     def minimum_participant_count(self) -> int:
-        """Include the existing orchestrator's easy/medium execution floor."""
+        """Selected-team minimum; legacy contexts retain the difficulty floor."""
+        if self.execution_contract_json is not None:
+            from app.game.execution_contract import ExecutionContract
+            explicit = ExecutionContract.model_validate_json(self.execution_contract_json).team_requirements
+            if explicit is not None:
+                return explicit.minimum_selected
         plan = self.plan
         return plan.minimum_count if plan.difficulty == "hard" else max(2, plan.minimum_count)
+
+    @property
+    def minimum_informative_count(self) -> int:
+        if self.execution_contract_json is not None:
+            from app.game.execution_contract import ExecutionContract
+            explicit = ExecutionContract.model_validate_json(self.execution_contract_json).team_requirements
+            if explicit is not None:
+                return explicit.minimum_informative
+        return self.minimum_participant_count
 
     @property
     def reputation_snapshot_id(self) -> str:

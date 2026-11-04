@@ -1,0 +1,35 @@
+--- original-sealed-evaluator
++++ corrected-evaluator-v2
+@@ -19,6 +19,14 @@
+ def read(p):return json.loads(Path(p).read_text(encoding='utf-8'))
+ def save(p,d):Path(p).write_text(json.dumps(d,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++
++
++def validate_frozen_sources(freeze):
++    for name,digest in freeze['source_hashes'].items():
++        # The collector extension is separately sealed before collection. All
++        # decision and other source files must still match their original freeze.
++        if Path(name).as_posix()!='app/game/offline/collection.py' and sha(name)!=digest:
++            raise ValueError('frozen decision/source code changed: '+name)
+ 
+ 
+ def export_final(bundle,context,reservation):
+@@ -97,9 +105,14 @@
+     parser=argparse.ArgumentParser();parser.add_argument('--source',type=Path,required=True);parser.add_argument('--frozen',type=Path,required=True);a=parser.parse_args()
+     freeze=read(a.frozen/'freeze-manifest.json');seal=read(a.frozen/'precollection-seal.json')
+     evaluation_seal=read(a.frozen/'evaluation-code-seal.json')
+-    if sha(__file__)!=evaluation_seal['evaluator_sha256']:raise ValueError('sealed evaluation code changed')
+-    for name,digest in freeze['source_hashes'].items():
+-        if name!='app/game/offline/collection.py' and sha(name)!=digest:raise ValueError('frozen decision/source code changed: '+name)
++    if sha(__file__)!=evaluation_seal['evaluator_sha256']:
++        correction=read(a.frozen/'evaluation-code-correction-v2.json')
++        parent=read(a.frozen/'evaluation-code-correction.json')
++        if (correction['original_evaluator_sha256']!=evaluation_seal['evaluator_sha256']
++            or correction['parent_corrected_sha256']!=parent['corrected_evaluator_sha256']
++            or correction['corrected_evaluator_sha256']!=sha(__file__)):
++            raise ValueError('sealed evaluation code changed without the recorded implementation correction')
++    validate_frozen_sources(freeze)
+     for name,digest in seal['files'].items():
+         if sha(name)!=digest:raise ValueError('precollection seal changed')
+     for name,digest in freeze['frozen_file_hashes'].items():

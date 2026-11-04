@@ -23,6 +23,12 @@ class Settings:
         "GAME_POLICY_BUNDLE_PATH", ""
     ).strip()
 
+    # Explicit, separately validated flexible-policy package. This does not
+    # replace the prototype or single-artifact game deployment paths.
+    GAME_FLEXIBLE_POLICY_PACKAGE_PATH: str = os.getenv(
+        "GAME_FLEXIBLE_POLICY_PACKAGE_PATH", ""
+    ).strip()
+
     GAME_EPISODE_ID: str = os.getenv("GAME_EPISODE_ID", "production-episode").strip()
 
 

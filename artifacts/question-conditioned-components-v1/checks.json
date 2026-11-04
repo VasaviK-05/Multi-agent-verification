@@ -1,0 +1,39 @@
+{
+  "final_component_tests": {
+    "command": "python -m pytest tests/test_component_execution.py -q",
+    "failed": 0,
+    "passed": 25,
+    "seconds": 16.66
+  },
+  "full_regression": {
+    "collected": 684,
+    "command": "python -m pytest tests/test_game*.py tests/test_component_execution.py tests/test_flexible_teams.py tests/test_heldout_collection.py tests/test_capability_probe_analyzer.py tests/test_verifier_selector.py -q (PowerShell expands game test paths)",
+    "failed": 2,
+    "passed": 682,
+    "reason": "Both failures: existing test_game_build CLI tests hit Windows sandbox WinError5 on temporary atomic rename",
+    "seconds": 238.55
+  },
+  "git_diff_check": "passed",
+  "live_smoke": {
+    "all_returned": true,
+    "attempts": 16,
+    "confidence_generations": 0,
+    "correct_accepts": 2,
+    "evidence_calls": 8,
+    "examples": 8,
+    "incorrect_rejects": 6,
+    "metadata_gets": 8,
+    "resources_unchanged": true,
+    "retries": 0,
+    "rule_calls": 8
+  },
+  "old_policy_and_context_ids": "match held-out freeze manifest",
+  "prior_artifact_files_preserved": 130,
+  "remaining_failed_checks": 0,
+  "unrestricted_rerun": {
+    "command": "python -m pytest tests/test_game_build.py tests/test_component_execution.py tests/test_game_task_conditioning.py -q",
+    "failed": 0,
+    "passed": 64,
+    "seconds": 34.71
+  }
+}

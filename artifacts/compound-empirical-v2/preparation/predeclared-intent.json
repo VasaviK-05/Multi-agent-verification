@@ -1,0 +1,74 @@
+{
+  "authorization": "User attachment bc7596ea: bounded Evidence/Rule study; zero generation/downloads/index changes",
+  "budget_rule": "sum_component_mean_history_development_attempt_ms_v1",
+  "candidate_assignments": {
+    "base_fact": [
+      "evidence"
+    ],
+    "derived_sum": [
+      "rule"
+    ]
+  },
+  "coverage_minimum": 0.9,
+  "dependencies": {
+    "dependencies": [
+      {
+        "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "resource_id": "local-embedding-snapshot",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ]
+      },
+      {
+        "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "resource_id": "local-nli-snapshot",
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ]
+      }
+    ],
+    "unknown_treatment": "shared_unknown",
+    "unresolved": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "version": "multitask-observed-dependencies-v1"
+  },
+  "exclusions": [
+    "BH",
+    "BE"
+  ],
+  "group_rule": "all measures/increments/templates/variants sharing entity stay in one partition",
+  "groups": 48,
+  "loss": {
+    "cost_units": "ms",
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "resource_weight": 4.704037204857504e-06,
+    "uncertain": 0.2,
+    "version": "multitask-exploratory-loss-v1"
+  },
+  "max_attempts": 768,
+  "max_confidence_generations": 0,
+  "max_examples": 192,
+  "partitions": {
+    "development": 16,
+    "final_test": 16,
+    "history": 16
+  },
+  "planned_attempts_if_feasible": 384,
+  "source_known_exploratory": true,
+  "source_manifest_id": "a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167",
+  "threshold": 0.55,
+  "variants": [
+    "correct",
+    "wrong_math",
+    "wrong_base",
+    "both_wrong"
+  ],
+  "whole_label": "base_correct AND derived_equals_claimed_base_plus_increment"
+}

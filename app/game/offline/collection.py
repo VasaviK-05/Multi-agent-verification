@@ -127,6 +127,43 @@ class RecordingRequest(FrozenModel):
         return content_id(self.model_dump(mode='json'))
 
 
+class HeldoutExample(PreparationExample):
+    role: Literal['final_test'] = 'final_test'
+    purpose: Literal['heldout'] = 'heldout'
+
+
+class HeldoutRecordingRequest(RecordingRequest):
+    """Evaluation-only opt-in; never accepted as a training/calibration input."""
+    version: Literal['offline_heldout_recording_v1']
+    intended_use: Literal['heldout'] = 'heldout'
+    freeze_id: str = Field(pattern=r'^[0-9a-f]{64}$')
+    permitted_datasets: tuple[tuple[Literal['final_test'], Text], ...]
+    examples: tuple[HeldoutExample, ...] = Field(min_length=1)
+
+    @model_validator(mode='after')
+    def check(self):
+        if self.factory.count(':') != 1 or not self.study_approval:
+            raise ValueError('heldout collection requires factory and explicit authorization')
+        if len({c.verifier_name for c in self.candidates}) != len(self.candidates):
+            raise ValueError('duplicate candidate')
+        if self.permitted_datasets != (('final_test',self.final_test_reservation.dataset_id),):
+            raise ValueError('heldout dataset differs from reservation')
+        actual=tuple(sorted((ReservedExample(example_id=e.example_id,split_identity=e.split_identity,
+            question_id=e.question_id,content_identity=e.content_identity,validation_id=e.run_id)
+            for e in self.examples),key=lambda e:e.example_id))
+        if actual != self.final_test_reservation.examples or any(e.dataset_id!=self.final_test_reservation.dataset_id for e in self.examples):
+            raise ValueError('heldout examples differ from exact frozen reservation')
+        if self.expected_setup is None or self.execution_configuration_id != self.expected_setup.resources.manifest_id:
+            raise ValueError('heldout collection requires exact observed setup')
+        self.expected_setup.resources.require_candidates(c.verifier_name for c in self.candidates)
+        return self
+
+
+class HeldoutAttemptMeasurement(AttemptMeasurement):
+    role: Literal['final_test'] = 'final_test'
+    purpose: Literal['heldout'] = 'heldout'
+
+
 class DiagnosticExclusionRoster(FrozenModel):
     """Unwitnessed outcome-free exclusions; never a scientific reservation."""
     version: Literal['diagnostic_exclusion_roster_v1']
@@ -158,7 +195,8 @@ class DiagnosticRecordingRequest(RecordingRequest):
 
 def validate_recording_request(value):
     version = value.get('version') if isinstance(value, dict) else getattr(value, 'version', None)
-    schema = DiagnosticRecordingRequest if version == 'offline_diagnostic_recording_v1' else RecordingRequest
+    schema = (HeldoutRecordingRequest if version == 'offline_heldout_recording_v1' else
+              DiagnosticRecordingRequest if version == 'offline_diagnostic_recording_v1' else RecordingRequest)
     return schema.model_validate(value)
 
 
@@ -186,7 +224,7 @@ class CollectedAttempt(FrozenModel):
     executed: StrictBool
     duration_ms: float | None = Field(default=None, ge=0)
     timing_status: Literal['returned', 'failure', 'timeout', 'interrupted'] | None = None
-    measurement: AttemptMeasurement | None = None
+    measurement: AttemptMeasurement | HeldoutAttemptMeasurement | None = None
     after_resources_json: str | None = None
     returned_payload_json: str | None = None
     achieved_capabilities: tuple[str, ...] = ()
@@ -195,7 +233,7 @@ class CollectedAttempt(FrozenModel):
 
 class RecordingBundle(FrozenModel):
     version: Literal['offline_recording_bundle_v1'] = 'offline_recording_bundle_v1'
-    request: RecordingRequest | DiagnosticRecordingRequest
+    request: RecordingRequest | DiagnosticRecordingRequest | HeldoutRecordingRequest
     observed_setup: MeasurementSetup | None
     attempts: tuple[CollectedAttempt, ...]
 
@@ -243,8 +281,12 @@ class RecordingBundle(FrozenModel):
                         or m.split_identity != e.split_identity or m.dataset_id != e.dataset_id
                         or m.role != e.role or m.purpose != e.purpose):
                     raise ValueError('measurement/report link mismatch')
-                MeasurementInput(setup=setup, permitted_datasets=self.request.permitted_datasets,
-                    preparation_authorization=self.request.preparation_authorization, attempts=(m,))
+                if isinstance(self.request,HeldoutRecordingRequest):
+                    if (m.setup_fingerprint!=setup.fingerprint or m.verifier_fingerprint!=content_id(next(v for v in setup.resources.verifiers if v.verifier_name==a.candidate).model_dump(mode='json'))):
+                        raise ValueError('heldout timing setup/verifier differs')
+                else:
+                    MeasurementInput(setup=setup, permitted_datasets=self.request.permitted_datasets,
+                        preparation_authorization=self.request.preparation_authorization, attempts=(m,))
         return self
 
     @property
@@ -408,7 +450,8 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
             incompatible = adapter_incompatibility(attempt)
             if incompatible is not None:
                 issues.append('incompatible_attack_adapter:' + incompatible.expected_adapter)
-            measured = (AttemptMeasurement.model_validate(measurements[0])
+            measurement_schema = HeldoutAttemptMeasurement if isinstance(request,HeldoutRecordingRequest) else AttemptMeasurement
+            measured = (measurement_schema.model_validate(measurements[0])
                         if measurements and pre is not None and post is not None
                         and pre_issue is None and post_issue is None else None)
             result = CollectedAttempt(attempt_id=attempt_identity(request, e, c, request_id=request_id), example_id=e.example_id,
@@ -425,6 +468,8 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
 
 def measurement_input(bundle):
     bundle = RecordingBundle.model_validate(bundle)
+    if isinstance(bundle.request, HeldoutRecordingRequest):
+        raise ValueError("heldout timings cannot enter calibration")
     if isinstance(bundle.request, DiagnosticRecordingRequest):
         raise ValueError('diagnostic-only timings remain in linked attempts; study custody and calibration freeze are not approved')
     if bundle.observed_setup is None or any(a.executed and a.measurement is None for a in bundle.attempts):
@@ -449,6 +494,8 @@ def measurement_input(bundle):
 def export_training(bundle, context):
     """Bind only after explicit fit settings/history snapshot are available."""
     bundle = RecordingBundle.model_validate(bundle)
+    if isinstance(bundle.request,HeldoutRecordingRequest):
+        raise ValueError('heldout recordings cannot enter fitting')
     context = PlanningContext.model_validate(context)
     if not completeness(bundle)['complete']:
         raise ValueError('collection incomplete; retain/review every example before export')

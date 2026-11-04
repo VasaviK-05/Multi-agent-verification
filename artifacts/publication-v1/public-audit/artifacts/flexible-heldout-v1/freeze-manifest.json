@@ -1,0 +1,987 @@
+{
+  "authorization": "User follow-up: bounded local inference for reserved arithmetic/factual partitions only",
+  "base_commit": "0b3595ef965d196f93916d10999c7fae63daf7af",
+  "branch": "codex/flexible-verifier-teams",
+  "candidates": [
+    {
+      "attempts": 160,
+      "budget": 21258.33526502247,
+      "cohort": "arithmetic",
+      "context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+      "cost_units": "ms",
+      "examples": 40,
+      "groups": 20,
+      "history_development_overlap": "TrainingManifest validated all example/group/question/content/run identity exclusions",
+      "loss": {
+        "cost_units": "ms",
+        "false_accept": 1.0,
+        "false_reject": 1.0,
+        "resource_weight": 4.704037204857504e-06,
+        "uncertain": 0.2,
+        "version": "multitask-exploratory-loss-v1"
+      },
+      "minimum_informative": 1,
+      "minimum_selected": 1,
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "probabilities": [
+        [
+          "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          1.0
+        ],
+        [
+          "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+          0.0
+        ],
+        [
+          "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+          0.0
+        ],
+        [
+          "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+          0.0
+        ],
+        [
+          "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          0.0
+        ],
+        [
+          "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          0.0
+        ],
+        [
+          "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+          0.0
+        ],
+        [
+          "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+          0.0
+        ],
+        [
+          "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          0.0
+        ],
+        [
+          "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          0.0
+        ],
+        [
+          "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+          0.0
+        ],
+        [
+          "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+          0.0
+        ],
+        [
+          "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          0.0
+        ],
+        [
+          "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          0.0
+        ],
+        [
+          "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          0.0
+        ],
+        [
+          "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          0.0
+        ]
+      ],
+      "reputation_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+      "reservation_id": "09bd2069f06843fba120cf41c778bac5efccbcf643a6e9fe4a253a0090e47d02",
+      "reserved_examples": [
+        {
+          "content_identity": "0aef7f2c601bb89d497a81e0a832e9befcc66da0f9be2ea43686dcfa290bfa85",
+          "example_id": "addition-314-514-correct",
+          "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+          "split_identity": "multitask42-arithmetic-addition-314-514",
+          "validation_id": "multitask42-arithmetic-final_test-addition-314-514-correct"
+        },
+        {
+          "content_identity": "8d64e4b80b53fd43ecebc3eb24c27983dde2c4efe699cf6f5302751256461e78",
+          "example_id": "addition-314-514-incorrect",
+          "question_id": "7f6b577e0e4d0a12a1bbbe49d9c7056afffe0a4227244d3720daebb5a5484961",
+          "split_identity": "multitask42-arithmetic-addition-314-514",
+          "validation_id": "multitask42-arithmetic-final_test-addition-314-514-incorrect"
+        },
+        {
+          "content_identity": "3b3c2937cf2a2d98ad76d4639411435c8e67976c5393f646fa05e08c1b0b3d13",
+          "example_id": "addition-321-525-correct",
+          "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+          "split_identity": "multitask42-arithmetic-addition-321-525",
+          "validation_id": "multitask42-arithmetic-final_test-addition-321-525-correct"
+        },
+        {
+          "content_identity": "698e36f78a0bba54fec7f27582a5f3b90e1f084e6242da81f829218d256f79a4",
+          "example_id": "addition-321-525-incorrect",
+          "question_id": "f070182d70fb383f798a0004960c89b3a31f779f37679135533c9888a1d38ad1",
+          "split_identity": "multitask42-arithmetic-addition-321-525",
+          "validation_id": "multitask42-arithmetic-final_test-addition-321-525-incorrect"
+        },
+        {
+          "content_identity": "c37b9e3359da33465cd39676e0de31b12cec01928cc604a6195acbfa36054f56",
+          "example_id": "addition-342-558-correct",
+          "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+          "split_identity": "multitask42-arithmetic-addition-342-558",
+          "validation_id": "multitask42-arithmetic-final_test-addition-342-558-correct"
+        },
+        {
+          "content_identity": "0569aaee26ea3a2cbad3abe0c88f356e306741058345836845b9eb0ca4a211b7",
+          "example_id": "addition-342-558-incorrect",
+          "question_id": "c82a83ad03c390c49dcbda41947d532b04036dfc67b8cac5c7f0bfd3ce7cc640",
+          "split_identity": "multitask42-arithmetic-addition-342-558",
+          "validation_id": "multitask42-arithmetic-final_test-addition-342-558-incorrect"
+        },
+        {
+          "content_identity": "3c28edded8ce2c9031aca251dae0a8c263cfa9cf32716e449800103ec36c34cf",
+          "example_id": "addition-349-569-correct",
+          "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+          "split_identity": "multitask42-arithmetic-addition-349-569",
+          "validation_id": "multitask42-arithmetic-final_test-addition-349-569-correct"
+        },
+        {
+          "content_identity": "947c24afac67f3233b26772565f1989d03db4b457f6291679a0b8ef9edd43bdc",
+          "example_id": "addition-349-569-incorrect",
+          "question_id": "080ab3f4176f055df641f1959168a3b4ba1ca91a363438257cd948f245740cc4",
+          "split_identity": "multitask42-arithmetic-addition-349-569",
+          "validation_id": "multitask42-arithmetic-final_test-addition-349-569-incorrect"
+        },
+        {
+          "content_identity": "8a7a7df44641a3db1eaccd2fb4218d67af7218cc84630e88441bdd3238c67ab0",
+          "example_id": "addition-356-580-correct",
+          "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+          "split_identity": "multitask42-arithmetic-addition-356-580",
+          "validation_id": "multitask42-arithmetic-final_test-addition-356-580-correct"
+        },
+        {
+          "content_identity": "8bef68b764a6c42cd4c2b4cfaf9d12fa47fd5d17deb52a74d17aa645ed6a1e19",
+          "example_id": "addition-356-580-incorrect",
+          "question_id": "e5a908d0a65da2ec945deb2fa5b1a4d4a2001d2abb59c5425036282668221e86",
+          "split_identity": "multitask42-arithmetic-addition-356-580",
+          "validation_id": "multitask42-arithmetic-final_test-addition-356-580-incorrect"
+        },
+        {
+          "content_identity": "e09b4548d0552dae049f04bab1f8478d436befd0bc5d5fe6800fc316ecd56e6b",
+          "example_id": "addition-363-591-correct",
+          "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+          "split_identity": "multitask42-arithmetic-addition-363-591",
+          "validation_id": "multitask42-arithmetic-final_test-addition-363-591-correct"
+        },
+        {
+          "content_identity": "27e6dba0703f27ed5c0c4099a6896ebf32ae21689f67e3444f520006ff1e9c04",
+          "example_id": "addition-363-591-incorrect",
+          "question_id": "d921f132feed3ab3c7befb0dffa95309324d849e624e4796a4f2328131e26269",
+          "split_identity": "multitask42-arithmetic-addition-363-591",
+          "validation_id": "multitask42-arithmetic-final_test-addition-363-591-incorrect"
+        },
+        {
+          "content_identity": "a11bb5a6ca1cb37da306637d3805b76056447ddf03bf4321cd9fd9a723a8957e",
+          "example_id": "addition-398-646-correct",
+          "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+          "split_identity": "multitask42-arithmetic-addition-398-646",
+          "validation_id": "multitask42-arithmetic-final_test-addition-398-646-correct"
+        },
+        {
+          "content_identity": "20200df5d4bbda7fa6a15cc87bbdb2433f516e9af1825c578761f0b69f0ac092",
+          "example_id": "addition-398-646-incorrect",
+          "question_id": "734362c7e7666afddca397099a0e2b835aa3b210710b6b6e02ce9ba4299f42fe",
+          "split_identity": "multitask42-arithmetic-addition-398-646",
+          "validation_id": "multitask42-arithmetic-final_test-addition-398-646-incorrect"
+        },
+        {
+          "content_identity": "69290cfe34014c38557f97beeabe198f8ad9025d50ebb541c03887ae0219d752",
+          "example_id": "addition-405-657-correct",
+          "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+          "split_identity": "multitask42-arithmetic-addition-405-657",
+          "validation_id": "multitask42-arithmetic-final_test-addition-405-657-correct"
+        },
+        {
+          "content_identity": "4d234bd7092f4384e8b5ef3442219bc7674d16f59493a7135fc8ea37ddcf1114",
+          "example_id": "addition-405-657-incorrect",
+          "question_id": "594ee1d04fa2cdf158a3d05986d4013b73cbf87e8fcd3e18b8a51d1b2239bc0b",
+          "split_identity": "multitask42-arithmetic-addition-405-657",
+          "validation_id": "multitask42-arithmetic-final_test-addition-405-657-incorrect"
+        },
+        {
+          "content_identity": "9e2a5be3083ffd4c40b2eabeb2913e125ec25f908cd56339ab28d6251cd6c4ff",
+          "example_id": "addition-412-668-correct",
+          "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+          "split_identity": "multitask42-arithmetic-addition-412-668",
+          "validation_id": "multitask42-arithmetic-final_test-addition-412-668-correct"
+        },
+        {
+          "content_identity": "171eb0c163f2d7d80f9692b6a8d043e5f36b6eae9ddd63126f56df1493ec4060",
+          "example_id": "addition-412-668-incorrect",
+          "question_id": "4789755a550f30f68538356ced7679348b7976157288133206c584bef368550f",
+          "split_identity": "multitask42-arithmetic-addition-412-668",
+          "validation_id": "multitask42-arithmetic-final_test-addition-412-668-incorrect"
+        },
+        {
+          "content_identity": "846eb6e976d09e78040fafe947d735703f8ae4a865ac4719d78d45e5308845fc",
+          "example_id": "addition-426-690-correct",
+          "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+          "split_identity": "multitask42-arithmetic-addition-426-690",
+          "validation_id": "multitask42-arithmetic-final_test-addition-426-690-correct"
+        },
+        {
+          "content_identity": "a478b98bb765a6c276191ec6ed7840d9920ff2f467d49971a40c6fae9ca6590e",
+          "example_id": "addition-426-690-incorrect",
+          "question_id": "07a59248d7fb54c78b538610ddcddcfd942860d00d89cb7b432dec39dc393b91",
+          "split_identity": "multitask42-arithmetic-addition-426-690",
+          "validation_id": "multitask42-arithmetic-final_test-addition-426-690-incorrect"
+        },
+        {
+          "content_identity": "9f020e32a69f0b5adf8c95f162df895851e2eef3102b2158907f3a1c0155fc0a",
+          "example_id": "addition-496-800-correct",
+          "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+          "split_identity": "multitask42-arithmetic-addition-496-800",
+          "validation_id": "multitask42-arithmetic-final_test-addition-496-800-correct"
+        },
+        {
+          "content_identity": "11a71ca490df21f87b4c6359ac12090fc93e28f2e1119b9dcf904d5eafc15dac",
+          "example_id": "addition-496-800-incorrect",
+          "question_id": "c88815b5e445cec004160adac402c81057ba556cd629b81e86d3ab24289a5c7e",
+          "split_identity": "multitask42-arithmetic-addition-496-800",
+          "validation_id": "multitask42-arithmetic-final_test-addition-496-800-incorrect"
+        },
+        {
+          "content_identity": "cb67e77b2cab2808074ad652bbb7b2adb7d6e92e3392f05f3b420f8e347c1b78",
+          "example_id": "addition-545-877-correct",
+          "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+          "split_identity": "multitask42-arithmetic-addition-545-877",
+          "validation_id": "multitask42-arithmetic-final_test-addition-545-877-correct"
+        },
+        {
+          "content_identity": "a3623a3880c1a12207a7277e606c3c85c912d56fcab2bb5cfebbf2c7a0a10d13",
+          "example_id": "addition-545-877-incorrect",
+          "question_id": "81faea57ef046e12f05993edb9cd8e55c7d97c3bb90015c9d11329102c40c15c",
+          "split_identity": "multitask42-arithmetic-addition-545-877",
+          "validation_id": "multitask42-arithmetic-final_test-addition-545-877-incorrect"
+        },
+        {
+          "content_identity": "8fe24e09fca843dcecb5382b9b71fd915d559402c6310b47e60d7c778cbfab43",
+          "example_id": "addition-566-910-correct",
+          "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+          "split_identity": "multitask42-arithmetic-addition-566-910",
+          "validation_id": "multitask42-arithmetic-final_test-addition-566-910-correct"
+        },
+        {
+          "content_identity": "e40c4425c323eb4e23683bb7d9fd00772f800179a4ec7f78af61e79c32baa169",
+          "example_id": "addition-566-910-incorrect",
+          "question_id": "e6fce9b608ef3467e7142451b9adb8c0fcd49ed307f0f015c8a080afb9fd9c30",
+          "split_identity": "multitask42-arithmetic-addition-566-910",
+          "validation_id": "multitask42-arithmetic-final_test-addition-566-910-incorrect"
+        },
+        {
+          "content_identity": "d233341dd7f25c5008538728e5178c990b763c5548561c0568aa0b3a86879110",
+          "example_id": "addition-587-943-correct",
+          "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+          "split_identity": "multitask42-arithmetic-addition-587-943",
+          "validation_id": "multitask42-arithmetic-final_test-addition-587-943-correct"
+        },
+        {
+          "content_identity": "071b66100854caca2a9b222df781ca379287cec8d6dd7e7a799dfce006f902e6",
+          "example_id": "addition-587-943-incorrect",
+          "question_id": "a7156c7874688068aec330138728b7034418118dc59fef416970ee2c44cb9647",
+          "split_identity": "multitask42-arithmetic-addition-587-943",
+          "validation_id": "multitask42-arithmetic-final_test-addition-587-943-incorrect"
+        },
+        {
+          "content_identity": "c36827a1ace9e6966f836486d578f9b591420dfc6bfa82c258954badc01ea728",
+          "example_id": "addition-608-976-correct",
+          "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+          "split_identity": "multitask42-arithmetic-addition-608-976",
+          "validation_id": "multitask42-arithmetic-final_test-addition-608-976-correct"
+        },
+        {
+          "content_identity": "5c3003eae6384283259ab85cdba99a78c6e42625b64c950873f803b95c05ed9c",
+          "example_id": "addition-608-976-incorrect",
+          "question_id": "e1031f0567f909e7dc2cbafa338e6ef926c8fd904add93502dc4b55c25bc1134",
+          "split_identity": "multitask42-arithmetic-addition-608-976",
+          "validation_id": "multitask42-arithmetic-final_test-addition-608-976-incorrect"
+        },
+        {
+          "content_identity": "671e642c3945a6a7f32e58de1074f19b6d166bcf24ce6dea76236bb90851219c",
+          "example_id": "addition-629-1009-correct",
+          "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+          "split_identity": "multitask42-arithmetic-addition-629-1009",
+          "validation_id": "multitask42-arithmetic-final_test-addition-629-1009-correct"
+        },
+        {
+          "content_identity": "c3cbeeeea15bd9c2cde59551dffe1594b2902e6c7ea33cfb4f05f1c0e665bd06",
+          "example_id": "addition-629-1009-incorrect",
+          "question_id": "9f96e5542fdd966de8b9b8e37eb5d3424639cc80c9503ed15d490dd1f2c3ebac",
+          "split_identity": "multitask42-arithmetic-addition-629-1009",
+          "validation_id": "multitask42-arithmetic-final_test-addition-629-1009-incorrect"
+        },
+        {
+          "content_identity": "966aed767b066c41561ed931b9aa86d4a5336780caf7fb3d6df78b3177a4dc84",
+          "example_id": "addition-636-1020-correct",
+          "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+          "split_identity": "multitask42-arithmetic-addition-636-1020",
+          "validation_id": "multitask42-arithmetic-final_test-addition-636-1020-correct"
+        },
+        {
+          "content_identity": "70d98bfcc38d8fe9babd10ae5f43c6e166c7adb900b85a56e1efa28c1652a063",
+          "example_id": "addition-636-1020-incorrect",
+          "question_id": "51370071a8004e19046ed2f0a960931d3c15878622e8f9d08a040b475a3acef0",
+          "split_identity": "multitask42-arithmetic-addition-636-1020",
+          "validation_id": "multitask42-arithmetic-final_test-addition-636-1020-incorrect"
+        },
+        {
+          "content_identity": "de59ec06b0123170093f78313c953bd2c21100169d8b3b217fc0f8fdd0c92704",
+          "example_id": "addition-664-1064-correct",
+          "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+          "split_identity": "multitask42-arithmetic-addition-664-1064",
+          "validation_id": "multitask42-arithmetic-final_test-addition-664-1064-correct"
+        },
+        {
+          "content_identity": "a999f52a2a023e038015fb5bd8be2202f348760dbfb9e3d8675ef345eb0e4752",
+          "example_id": "addition-664-1064-incorrect",
+          "question_id": "d566a11b132ffc6001e3e7de729bedb3ab9bb47d3580393cf57e4d228aa82e08",
+          "split_identity": "multitask42-arithmetic-addition-664-1064",
+          "validation_id": "multitask42-arithmetic-final_test-addition-664-1064-incorrect"
+        },
+        {
+          "content_identity": "c123fb2c16fde24ff4d25bf830c23694ec3dae9df674175afeffe2172ec454d9",
+          "example_id": "addition-699-1119-correct",
+          "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+          "split_identity": "multitask42-arithmetic-addition-699-1119",
+          "validation_id": "multitask42-arithmetic-final_test-addition-699-1119-correct"
+        },
+        {
+          "content_identity": "ecc93eb8e5aa208f20aeccdc58e2d22a51b815d682d5a9517582235a0dd1b28b",
+          "example_id": "addition-699-1119-incorrect",
+          "question_id": "7ae5914131c356841305b99349290ddbbaa0e272a4e685e97024e800e843f5d8",
+          "split_identity": "multitask42-arithmetic-addition-699-1119",
+          "validation_id": "multitask42-arithmetic-final_test-addition-699-1119-incorrect"
+        },
+        {
+          "content_identity": "58cb2f9295d8a0f3db29551b556d74f2cddef0bcd8f0086f93854978359bd7cb",
+          "example_id": "addition-706-1130-correct",
+          "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+          "split_identity": "multitask42-arithmetic-addition-706-1130",
+          "validation_id": "multitask42-arithmetic-final_test-addition-706-1130-correct"
+        },
+        {
+          "content_identity": "0accedc1fa56e29fd57b7b98599b4062404fccb24663f5548e4332967044553b",
+          "example_id": "addition-706-1130-incorrect",
+          "question_id": "86e60c13f87fbbb83068f0530a19f4341915a628739c7ac95bc7e90064794157",
+          "split_identity": "multitask42-arithmetic-addition-706-1130",
+          "validation_id": "multitask42-arithmetic-final_test-addition-706-1130-incorrect"
+        }
+      ],
+      "resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "roster": [
+        "semantic",
+        "evidence",
+        "rule",
+        "confidence"
+      ],
+      "team_size_probabilities": {
+        "1": 1.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0
+      },
+      "threshold": 0.55,
+      "training_manifest_id": "3a0e3dae9e7ca6652178656942442495e076f9dc48f9d34f82f95c5971c39db3",
+      "training_sha256": "c87d65246015919c02d86c4c83f39e0ded6ede02d25aa551a034b66a738ed485"
+    },
+    {
+      "attempts": 160,
+      "budget": 15965.046464995248,
+      "cohort": "factual",
+      "context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "cost_units": "ms",
+      "examples": 40,
+      "groups": 20,
+      "history_development_overlap": "TrainingManifest validated all example/group/question/content/run identity exclusions",
+      "loss": {
+        "cost_units": "ms",
+        "false_accept": 1.0,
+        "false_reject": 1.0,
+        "resource_weight": 6.263683617787064e-06,
+        "uncertain": 0.2,
+        "version": "multitask-exploratory-loss-v1"
+      },
+      "minimum_informative": 1,
+      "minimum_selected": 1,
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "probabilities": [
+        [
+          "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          1.0
+        ],
+        [
+          "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+          0.0
+        ],
+        [
+          "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+          0.0
+        ],
+        [
+          "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+          0.0
+        ],
+        [
+          "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          0.0
+        ],
+        [
+          "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          0.0
+        ],
+        [
+          "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          0.0
+        ],
+        [
+          "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          0.0
+        ],
+        [
+          "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          0.0
+        ],
+        [
+          "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          0.0
+        ],
+        [
+          "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          0.0
+        ],
+        [
+          "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          0.0
+        ],
+        [
+          "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          0.0
+        ],
+        [
+          "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          0.0
+        ],
+        [
+          "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          0.0
+        ],
+        [
+          "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          0.0
+        ]
+      ],
+      "reputation_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+      "reservation_id": "e4c6b848bd1aa5c559873f29e3f666cce75ae0383dbc8e426159b9413f62094d",
+      "reserved_examples": [
+        {
+          "content_identity": "3966fb7cce8b272c379c576e6d32efd102ae9220734b833cdc6feaefaa7611f2",
+          "example_id": "AD-correct",
+          "question_id": "92b73ba62722f3d0396eeba260b2b6590f6fd21bfd86553427b43071f975f8dc",
+          "split_identity": "multitask42-factual-AD",
+          "validation_id": "multitask42-factual-final_test-AD-correct"
+        },
+        {
+          "content_identity": "e26991064acef9defe90a2c78408c71f43f72e8f55abbcbec8e96c72d1f4d44a",
+          "example_id": "AD-incorrect",
+          "question_id": "92b73ba62722f3d0396eeba260b2b6590f6fd21bfd86553427b43071f975f8dc",
+          "split_identity": "multitask42-factual-AD",
+          "validation_id": "multitask42-factual-final_test-AD-incorrect"
+        },
+        {
+          "content_identity": "f24f8c26fd1976b44fefb11398b9d7f7cc079f5d7fdde73f7450eb92260c11d8",
+          "example_id": "AM-correct",
+          "question_id": "8b0e3b2bfc7c0ba25ed64429cfdfefb24098e5d686eecdd052e75c967a6db005",
+          "split_identity": "multitask42-factual-AM",
+          "validation_id": "multitask42-factual-final_test-AM-correct"
+        },
+        {
+          "content_identity": "f06aabf7f6b8126ed0b4f4968a2a2193fecaae9503140d6236e2722e512e9fe3",
+          "example_id": "AM-incorrect",
+          "question_id": "8b0e3b2bfc7c0ba25ed64429cfdfefb24098e5d686eecdd052e75c967a6db005",
+          "split_identity": "multitask42-factual-AM",
+          "validation_id": "multitask42-factual-final_test-AM-incorrect"
+        },
+        {
+          "content_identity": "909e3a0dd9a90b2c48b5153912d2efa3eb8b71754bb98bdc05f4b3a5b65927c4",
+          "example_id": "BR-correct",
+          "question_id": "171506344a56fc9fd5853c06968033e721157c3af613c70507c1b57a2cec6ec3",
+          "split_identity": "multitask42-factual-BR",
+          "validation_id": "multitask42-factual-final_test-BR-correct"
+        },
+        {
+          "content_identity": "6c7c3ddd31f29d88c8a3c61b8209802f1c5541ed38acc66a016c683a756c620f",
+          "example_id": "BR-incorrect",
+          "question_id": "171506344a56fc9fd5853c06968033e721157c3af613c70507c1b57a2cec6ec3",
+          "split_identity": "multitask42-factual-BR",
+          "validation_id": "multitask42-factual-final_test-BR-incorrect"
+        },
+        {
+          "content_identity": "f634eb270792381213e0015876948de94934eeca5a8ee85d00f2351464b8ff4f",
+          "example_id": "BY-correct",
+          "question_id": "62a26bcbebe067719bd5fd6bf86469059b5d58c320b210bc98d845212f1e8b47",
+          "split_identity": "multitask42-factual-BY",
+          "validation_id": "multitask42-factual-final_test-BY-correct"
+        },
+        {
+          "content_identity": "a5817b22214a261e6964151c15377456255dcebaa0fe1f9a7dd990ae6412aa88",
+          "example_id": "BY-incorrect",
+          "question_id": "62a26bcbebe067719bd5fd6bf86469059b5d58c320b210bc98d845212f1e8b47",
+          "split_identity": "multitask42-factual-BY",
+          "validation_id": "multitask42-factual-final_test-BY-incorrect"
+        },
+        {
+          "content_identity": "5840265097cc48b12a385f2063f7a42d50fdbe922bb2394a9ee5d1e675898ac1",
+          "example_id": "CM-correct",
+          "question_id": "385f78f1334b003e615f033563f433f802dcfbfd3dccb27038a4552cd1d721c0",
+          "split_identity": "multitask42-factual-CM",
+          "validation_id": "multitask42-factual-final_test-CM-correct"
+        },
+        {
+          "content_identity": "71ec97163050d3a679ae8e16cdccd6a7fa84c9f14ef3136b3d3d9c00c51d312e",
+          "example_id": "CM-incorrect",
+          "question_id": "385f78f1334b003e615f033563f433f802dcfbfd3dccb27038a4552cd1d721c0",
+          "split_identity": "multitask42-factual-CM",
+          "validation_id": "multitask42-factual-final_test-CM-incorrect"
+        },
+        {
+          "content_identity": "43bbf6fbb4184a2198fbd32839bf2a02f3403bf10e87e87695ac989eddbae3bc",
+          "example_id": "ES-correct",
+          "question_id": "996a271e1ae5647ffaddeac1e61d4546b507cfe1bcc83e2a9e2865dc81e83255",
+          "split_identity": "multitask42-factual-ES",
+          "validation_id": "multitask42-factual-final_test-ES-correct"
+        },
+        {
+          "content_identity": "50b86c3e1df6bd610af91f2c83af0f56887b8024643bbf72dada2860642ff370",
+          "example_id": "ES-incorrect",
+          "question_id": "996a271e1ae5647ffaddeac1e61d4546b507cfe1bcc83e2a9e2865dc81e83255",
+          "split_identity": "multitask42-factual-ES",
+          "validation_id": "multitask42-factual-final_test-ES-incorrect"
+        },
+        {
+          "content_identity": "abea3f348d655c958afaaeecb2efd1b024e665ac98332176a82654b9a06d4db1",
+          "example_id": "GH-correct",
+          "question_id": "c0cada36060d197870ce179d3c9da2ed2a6588410ada73e89faf9a0ee2eaecd3",
+          "split_identity": "multitask42-factual-GH",
+          "validation_id": "multitask42-factual-final_test-GH-correct"
+        },
+        {
+          "content_identity": "10f255d0091f999e3cea71196b0e1617ff6c96b758f9e7cf98bedf20855294ad",
+          "example_id": "GH-incorrect",
+          "question_id": "c0cada36060d197870ce179d3c9da2ed2a6588410ada73e89faf9a0ee2eaecd3",
+          "split_identity": "multitask42-factual-GH",
+          "validation_id": "multitask42-factual-final_test-GH-incorrect"
+        },
+        {
+          "content_identity": "701bfd87ff86de6eb60b48511841500f9734c17268a54d7e14bd1b25fc71bc36",
+          "example_id": "KE-correct",
+          "question_id": "208c1ead75651de3a2ee1fcb84759e67a524f11af0342f3c02590838397398aa",
+          "split_identity": "multitask42-factual-KE",
+          "validation_id": "multitask42-factual-final_test-KE-correct"
+        },
+        {
+          "content_identity": "6d3a2ea9a83b08eb1c339b00627ca380e02666d17bd44be4bbba29473a51cabd",
+          "example_id": "KE-incorrect",
+          "question_id": "208c1ead75651de3a2ee1fcb84759e67a524f11af0342f3c02590838397398aa",
+          "split_identity": "multitask42-factual-KE",
+          "validation_id": "multitask42-factual-final_test-KE-incorrect"
+        },
+        {
+          "content_identity": "a18b83445c2ecc7850a701d20cc15a3b1260e3a4c2b86fc9bc430d43375ff5ac",
+          "example_id": "LA-correct",
+          "question_id": "fdf210f799a0fd90abf782c4f4e4e1e2ce8d25b6403ed73093afd25588c2c271",
+          "split_identity": "multitask42-factual-LA",
+          "validation_id": "multitask42-factual-final_test-LA-correct"
+        },
+        {
+          "content_identity": "e2c20d8354ea855dbbce5d89d5ea230d99d028073d6d8ab493a775f53664417d",
+          "example_id": "LA-incorrect",
+          "question_id": "fdf210f799a0fd90abf782c4f4e4e1e2ce8d25b6403ed73093afd25588c2c271",
+          "split_identity": "multitask42-factual-LA",
+          "validation_id": "multitask42-factual-final_test-LA-incorrect"
+        },
+        {
+          "content_identity": "a0e50352af043ce2929a0671601b028f5f4f6de10a3bfad55caa71b08c674203",
+          "example_id": "LU-correct",
+          "question_id": "e87f0ac420b44dc24c6b9e08ce66e08c2417050aa09083d824b83ddadddf004f",
+          "split_identity": "multitask42-factual-LU",
+          "validation_id": "multitask42-factual-final_test-LU-correct"
+        },
+        {
+          "content_identity": "80fbd9295cfb63984df195b7e53b4148945e35e458c74c3de3f7746b77584d71",
+          "example_id": "LU-incorrect",
+          "question_id": "e87f0ac420b44dc24c6b9e08ce66e08c2417050aa09083d824b83ddadddf004f",
+          "split_identity": "multitask42-factual-LU",
+          "validation_id": "multitask42-factual-final_test-LU-incorrect"
+        },
+        {
+          "content_identity": "30856f76dc4e6de62fc25ea825cedbd10a20891c6d2673490d65b2d1d4deffff",
+          "example_id": "MD-correct",
+          "question_id": "60bd65f4492ad74b133867de881b53e33e19499e7561ccfa8b26557effa76cbb",
+          "split_identity": "multitask42-factual-MD",
+          "validation_id": "multitask42-factual-final_test-MD-correct"
+        },
+        {
+          "content_identity": "b8e788093f783f39b6a2ed2fbdce4c0145138a8b047883286fe0cda76b6924ef",
+          "example_id": "MD-incorrect",
+          "question_id": "60bd65f4492ad74b133867de881b53e33e19499e7561ccfa8b26557effa76cbb",
+          "split_identity": "multitask42-factual-MD",
+          "validation_id": "multitask42-factual-final_test-MD-incorrect"
+        },
+        {
+          "content_identity": "be889ce795adfeb42bc4eb22ecc48419f120d4b44ec3d9beb49c8a2fcc482967",
+          "example_id": "ME-correct",
+          "question_id": "72d4f7b3494a68083fbe546354c9c81852d23716bfcf790692c5468ee6879802",
+          "split_identity": "multitask42-factual-ME",
+          "validation_id": "multitask42-factual-final_test-ME-correct"
+        },
+        {
+          "content_identity": "d40c6334264eeb28467ae1cb5e4a411afcf57c7f80b350afdaa48b09db087c85",
+          "example_id": "ME-incorrect",
+          "question_id": "72d4f7b3494a68083fbe546354c9c81852d23716bfcf790692c5468ee6879802",
+          "split_identity": "multitask42-factual-ME",
+          "validation_id": "multitask42-factual-final_test-ME-incorrect"
+        },
+        {
+          "content_identity": "d6eb95072369a5253a1cb148ec6f479852a461d1f720211241f36e0619e41c86",
+          "example_id": "MU-correct",
+          "question_id": "923d670173e40ea7684c0d79f9fa3004c8c25d453e024718c0ba889354737f72",
+          "split_identity": "multitask42-factual-MU",
+          "validation_id": "multitask42-factual-final_test-MU-correct"
+        },
+        {
+          "content_identity": "f9907e6e459365fce173e6b0762729bd06dea6a6a52e4faf3ec31cf0e9d464de",
+          "example_id": "MU-incorrect",
+          "question_id": "923d670173e40ea7684c0d79f9fa3004c8c25d453e024718c0ba889354737f72",
+          "split_identity": "multitask42-factual-MU",
+          "validation_id": "multitask42-factual-final_test-MU-incorrect"
+        },
+        {
+          "content_identity": "07aca0fc11349e68c1cf812a06bfe69c5af712b7e40d7e5f93db92eec42d4220",
+          "example_id": "SR-correct",
+          "question_id": "2657729b243fa842f1aa990785442d66f2b5fd8d7253e38ed5f5464fbc6e8a06",
+          "split_identity": "multitask42-factual-SR",
+          "validation_id": "multitask42-factual-final_test-SR-correct"
+        },
+        {
+          "content_identity": "ce8883725314742585875d063f08bef668f0b6b2a5c29660a4c38462b344b9c7",
+          "example_id": "SR-incorrect",
+          "question_id": "2657729b243fa842f1aa990785442d66f2b5fd8d7253e38ed5f5464fbc6e8a06",
+          "split_identity": "multitask42-factual-SR",
+          "validation_id": "multitask42-factual-final_test-SR-incorrect"
+        },
+        {
+          "content_identity": "56c69b17936942200f97130fe5eb6eda66deb0de434d324120c3eaecd7bbfe5f",
+          "example_id": "SY-correct",
+          "question_id": "e1b6bce92c7eda8ec1f37b158cb93cad1a22490ace8cc80e87e2de2f7670fdd6",
+          "split_identity": "multitask42-factual-SY",
+          "validation_id": "multitask42-factual-final_test-SY-correct"
+        },
+        {
+          "content_identity": "2169d8a57267d26dd73e5d8afb5aaac586e2f5e5c2647cc04580fdcc16140a7f",
+          "example_id": "SY-incorrect",
+          "question_id": "e1b6bce92c7eda8ec1f37b158cb93cad1a22490ace8cc80e87e2de2f7670fdd6",
+          "split_identity": "multitask42-factual-SY",
+          "validation_id": "multitask42-factual-final_test-SY-incorrect"
+        },
+        {
+          "content_identity": "2bb720c8267a4b9f22689aa99ad990695e371293c48f33db5f5a4ef584fecc08",
+          "example_id": "TM-correct",
+          "question_id": "dd28927a66d27bd359d81dc5ff945f43e06bc5a147d9f3248ea39e5c2e6ec75e",
+          "split_identity": "multitask42-factual-TM",
+          "validation_id": "multitask42-factual-final_test-TM-correct"
+        },
+        {
+          "content_identity": "d84bc4809f4c3530ccb5b150824ed7ed649d9b24f071ad2ba24446bd4b51522c",
+          "example_id": "TM-incorrect",
+          "question_id": "dd28927a66d27bd359d81dc5ff945f43e06bc5a147d9f3248ea39e5c2e6ec75e",
+          "split_identity": "multitask42-factual-TM",
+          "validation_id": "multitask42-factual-final_test-TM-incorrect"
+        },
+        {
+          "content_identity": "bdfa893d9e6fd94481d39b9d555734a61f8a9273b1ea24ef0919d4748ccb2cda",
+          "example_id": "TO-correct",
+          "question_id": "62f469e485ff3d8d9f2c0e8183a68646da0f29e2882156b6738f0391085fbbfd",
+          "split_identity": "multitask42-factual-TO",
+          "validation_id": "multitask42-factual-final_test-TO-correct"
+        },
+        {
+          "content_identity": "bd8689023546a7830172f3903ce8ec0fc2c4d02f9336e6c993d5dca248ecaaf0",
+          "example_id": "TO-incorrect",
+          "question_id": "62f469e485ff3d8d9f2c0e8183a68646da0f29e2882156b6738f0391085fbbfd",
+          "split_identity": "multitask42-factual-TO",
+          "validation_id": "multitask42-factual-final_test-TO-incorrect"
+        },
+        {
+          "content_identity": "708fccd433524ed0b270dcf8909a49b6672b3e8eda8dc3fc26a98af7c6ce4e41",
+          "example_id": "UG-correct",
+          "question_id": "f7d57b82adab082d9c52f5b5fcc6595324fb3193a3df210e3c38b0b5a7840f28",
+          "split_identity": "multitask42-factual-UG",
+          "validation_id": "multitask42-factual-final_test-UG-correct"
+        },
+        {
+          "content_identity": "922436db8ca1bce80f6a266c00f6d76d400870af8dd9c0bb0e4dabe7f7b90658",
+          "example_id": "UG-incorrect",
+          "question_id": "f7d57b82adab082d9c52f5b5fcc6595324fb3193a3df210e3c38b0b5a7840f28",
+          "split_identity": "multitask42-factual-UG",
+          "validation_id": "multitask42-factual-final_test-UG-incorrect"
+        },
+        {
+          "content_identity": "364931ffc730a045b7511f9330fbf9133b18879bba0d66529046be3b9a9a0d15",
+          "example_id": "UY-correct",
+          "question_id": "5e87b1db888fd9395827304245dfd855d5324e158a6f2d29bc29fdcb8a0f9706",
+          "split_identity": "multitask42-factual-UY",
+          "validation_id": "multitask42-factual-final_test-UY-correct"
+        },
+        {
+          "content_identity": "484ecd908272d50097adf3abfba8683c4d237ef7790ec86fdb4626097bfd24f7",
+          "example_id": "UY-incorrect",
+          "question_id": "5e87b1db888fd9395827304245dfd855d5324e158a6f2d29bc29fdcb8a0f9706",
+          "split_identity": "multitask42-factual-UY",
+          "validation_id": "multitask42-factual-final_test-UY-incorrect"
+        },
+        {
+          "content_identity": "c7ac2693dd1d513bc777f68ef84b049a6d9dd95b2e2a659c3d4dff3b71b619c5",
+          "example_id": "VE-correct",
+          "question_id": "97dfec33b3e2ae9916e69dfaa7fc4107a74a4d40a2cfef18b754469305f65627",
+          "split_identity": "multitask42-factual-VE",
+          "validation_id": "multitask42-factual-final_test-VE-correct"
+        },
+        {
+          "content_identity": "bcc085f6d606710c77aec469158ce79266f70876ab328a9331704c209c429508",
+          "example_id": "VE-incorrect",
+          "question_id": "97dfec33b3e2ae9916e69dfaa7fc4107a74a4d40a2cfef18b754469305f65627",
+          "split_identity": "multitask42-factual-VE",
+          "validation_id": "multitask42-factual-final_test-VE-incorrect"
+        }
+      ],
+      "resource_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "roster": [
+        "semantic",
+        "evidence",
+        "rule",
+        "confidence"
+      ],
+      "team_size_probabilities": {
+        "1": 1.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0
+      },
+      "threshold": 0.55,
+      "training_manifest_id": "071125d9bf7a870e9f79fb204181c10ceb17485c8f4b18de3b5cc0845c341d8a",
+      "training_sha256": "9be8da9773eaced47faae3ff49e4e1536391be21824bb29f1e2c664cf5fd6e3c"
+    }
+  ],
+  "created_utc": "2026-11-02T14:43:57.701310+00:00",
+  "freeze_id": "bcba68b5bd2857246fb3c4d9248f0eb2af4fd891b5b694335799826942ae519e",
+  "frozen_file_hashes": {
+    "arithmetic\\attacks.json": "27215dc8100ba426428a16f32d5aa12de1c0dfdd16f9f10ac19a9639c8a174b5",
+    "arithmetic\\baselines.json": "4df8b01eea2faf29e087003aa38be6e7818c8802f6cf28010d2abc5447eba899",
+    "arithmetic\\context.json": "e9cb06abdc7c3964af4bbaab900a274b8a7ca749bf3f721617d948d25b66ecd5",
+    "arithmetic\\contract.json": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+    "arithmetic\\policy.json": "4acd309726069c5878d35c99df5fa91c7de7b8159ae5d0c9fc18fbb87fb0c55d",
+    "arithmetic\\reservation.json": "e7de5ed6eea86d1ffe1a5c948d6827e8475bdef99b25be5cbbc202fff09c1c34",
+    "factual\\attacks.json": "27215dc8100ba426428a16f32d5aa12de1c0dfdd16f9f10ac19a9639c8a174b5",
+    "factual\\baselines.json": "fd474a5df8e799292d0e2e13eceac438b131fbc3c80e27145cf1c300482e74d8",
+    "factual\\context.json": "353daeea8491253dc64adbb672a096a0508a25ba48867d22901ec3b28311bcf5",
+    "factual\\contract.json": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+    "factual\\policy.json": "d4a69bb8f7f5e6fbfc87b7d4c900f22f191946d001d24655011296b404b2fc00",
+    "factual\\reservation.json": "e0c5bf3935f37e19e71c4012bef85127307aef22646d572f90df30ba504854cc"
+  },
+  "prior_artifact_hashes": {
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\context.json": "e9cb06abdc7c3964af4bbaab900a274b8a7ca749bf3f721617d948d25b66ecd5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\contract.json": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\enumeration.json": "6678a880abeb31a59cf7642e3f8e38dd27d991d4f09b7c55bcdbd5cd79c40311",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\matrix.json": "0c7afadfe78adbec0c25e5a8470e4fecdafb80c3422d866ccad414008d609fe8",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\policy.json": "4acd309726069c5878d35c99df5fa91c7de7b8159ae5d0c9fc18fbb87fb0c55d",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\solution.json": "edd57ad1647e51e143ed95f02b351ae84f3175d1ffa9ab2ded7162190eae0f27",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\strategy-diagnostics.json": "2d4bbeb960644ea98f7d311717b9a3f80016b1905cb75be8d65c0b33507473ba",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\summary.json": "865f587f8268f9596f2145a8959eefc35522779e23bf65022e098daf9f2664ed",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\context.json": "a98c47bbd1dc99e3e9b9b071236e62bb4298e0560a762b463cf99fe7e824653e",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\contract.json": "785208922e334a21569a29d37bc42f04d591d9b54588668c99a785927eaa79d5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\enumeration.json": "1e59955d96f895e4be072b926ff5e37a4552684407c86fc17ce7e19088640bc4",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\matrix.json": "f8a75368639adf4aa080798df9ba15a5390e28d4f762f6d6766942fe2409bab5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\solution.json": "eba0d5a2bb110f0a632456925147f2c52abd273ab7685d262582f0c3756af9c4",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\strategy-diagnostics.json": "e90ca7a482709336749172480010e097883adec336e5a27e3cdb31ad64fae6b6",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-2\\summary.json": "90ff9bf39c056e6898e3057b956fb2fc93891cf8401c59263928d62abe41e290",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\baseline-reproduction.json": "801b9f50d9bb25b114f1acfc3b87a813765dfad7502ca3a8eadfd027eaf6ff75",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\comparison.json": "cb8d357fa196d600d270b92a835499bc0900477ac702355d9d8fe0f39949d710",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\context.json": "353daeea8491253dc64adbb672a096a0508a25ba48867d22901ec3b28311bcf5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\contract.json": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\enumeration.json": "d1c5d4b17039e97c3883cbccc8a14f6662c08613c1e87b39817b16be44b761a9",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\matrix.json": "8306cd45bcd745938b02ce5fc73fe2b45f33b744505e5048e617255e3a2ccce0",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\policy.json": "d4a69bb8f7f5e6fbfc87b7d4c900f22f191946d001d24655011296b404b2fc00",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\solution.json": "a75f111b9d8ca5f042ddc9000b47763648b0f613a050948d7e1c77ab5212226d",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\strategy-diagnostics.json": "8223f0c9c4e13402b8042251485eb5291beab35d6a8e1f7ed4d9456daad193f5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\summary.json": "2c3f7bcd8310618c10dd42fead805bb17a2991ad19853da118516894fc01ff0e",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\context.json": "d5f446bc399e751df54970b5fff02127f640d4ba9925c6bafe39bd8b658034b8",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\contract.json": "785208922e334a21569a29d37bc42f04d591d9b54588668c99a785927eaa79d5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\enumeration.json": "98dce4506b2039ef7fffdbc892a7a08526c3c350bf3da5d0af6a222b4d8cf4f7",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\matrix.json": "e88c57b5ee6f1b4775c54cc975af13a51adde9cf75ec878380cc07c8776d5c19",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\solution.json": "9a46cfe70052374c0d73eb65fae76e431a8ce1b1cc69f55d0e9e56eb0677c883",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\strategy-diagnostics.json": "a37c68192b7a6bc4dca39f865213c6a72cf3a27cdcc1638f5fd9454b5301e9e3",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-2\\summary.json": "b24772f233ba280215870da044ee958193dff33304dc4b56ba40d4493a07e1b9",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\file-manifest.json": "bd8b0eb303a174e8a3eadaf3c81ab7552137851cbb06b886f35706daaaaa00c6",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\input-hashes.json": "9f07b9b2953c7916733669b0bb9c16d500ca43ae0ed27055ebc16d1233b766d0",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\context.json": "f2abf900f5aba15798b8af20ad4e71a11c289e76102db90daa98cdb35a3b70b1",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\contract.json": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\enumeration.json": "f75a1480b0e8c893abc85daaeee90de4f6e5a3273cff1de8f73d20e80290b886",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\matrix.json": "25192cee308452467f32e48f1c759ccc8828032be8909176a6bd8f871a56f12f",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\solution.json": "9770034e6dd53b0fca5459c93d1a88a8d8b82a84eba11013a2344a2c874c8a81",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\strategy-diagnostics.json": "32ee1ad2a54eaa1abfda1d51e6193a2caec9c1d7e63239d2740cbe21104c751f",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-1\\summary.json": "10fa75b482103e80214d2aba6fd73788e1026031b46a4457e562bd4b68dddc9f",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\context.json": "bede201efd32e2d2df220714807fb5447615ba404a07563220ed5caf5c6cd374",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\contract.json": "785208922e334a21569a29d37bc42f04d591d9b54588668c99a785927eaa79d5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\enumeration.json": "5131a327d1522dd43359eecbc4c0f5baca474d1df37273f6cad57404e37164c5",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\matrix.json": "a8ef6dd212e5884965a3262250e9500ddc38680a59588a97941dd8cc0dce7b61",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\solution.json": "62558d52e9916daa04c30947e795f548a2b73b67663475bf5e644781929fd9e1",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\strategy-diagnostics.json": "5f26061d8616cf172a583e5167ab06edb542ef06558b645b5e6dfda1defcb0fd",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\semantic-minimum-2\\summary.json": "28aba831a6f4772dc3cdf30de3f03c5eb3265bbb2fd56804ece38ac887e1dfc9",
+    "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\verification.json": "8ad4c9db8cd6ffb7e6f64bc258b4215f7b730923c99b12acd1b06b5cacbf4dcc"
+  },
+  "software_versions": {
+    "faiss-cpu": "1.15.1",
+    "numpy": "2.4.6",
+    "pydantic": "2.13.5",
+    "python": "3.11.5",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "scipy": "1.17.1",
+    "sentence-transformers": "6.1.0",
+    "tokenizers": "0.23.2",
+    "torch": "2.14.0",
+    "transformers": "5.17.0"
+  },
+  "source_hashes": {
+    "app\\__init__.py": "a6450036934bf60c5547c90663aa6be8d9d9920b35f41747787e6a659e73b407",
+    "app\\analysis\\__init__.py": "ca9d0fefff13992e5a96b1779f0f94c5c423404ca48cb6a8a122d0e40432fac9",
+    "app\\analysis\\evaluate_context.py": "266b86c69369ddf9aebb28bdcc53a76136729e2beec1b3ce1fd4cae1a9f4ad29",
+    "app\\analysis\\heuristic.py": "608b398295903a7204922e9dcc31c410ed032f973c10c3c9df9686f2807b3131",
+    "app\\analysis\\model_assessment.py": "dfb2079e10ba7db801fe7ea2b882592e6cb38201d610b591d9ddcbd7af3b1b2c",
+    "app\\analysis\\models.py": "89dc1437b53b3f951fc706f278964c487c0fb2c290383d20c6522ec5d2349658",
+    "app\\analysis\\question_analyzer.py": "4b201b90e0dae9a6921883428a58e6217ae218d39c0e8739f82c02a7913746b8",
+    "app\\analysis\\research_context.py": "6272bad8f53cc6956ae79cac47c674e36c943d91471cff1015159fb248e721cd",
+    "app\\analysis\\task_analyzer.py": "9536f5386d45a4743a4a6cb0233bf019c5a68ed08d6505d21b5e744ba9261154",
+    "app\\api\\__init__.py": "ab875dc57ecf7f21c560c505979d92546b47148747c801210fe8cd07e2baad2c",
+    "app\\api\\feedback_routes.py": "f8efcbebed9f414e739119b164e1a46f411b7e2ffd30de21f9433df874483379",
+    "app\\api\\routes.py": "71962ff49789c19d60aa283a00962fdbae48d6ff44e1ece431e76e26e4e95595",
+    "app\\benchmark\\__init__.py": "4866842fa21c5be56b2ebdc88edb18ef450d1f8580a44a8d652c4d211e5d2ef9",
+    "app\\benchmark\\collect_costs.py": "aa019f3c3460c88e9113de404d0f21003675aa8a098d21c94d9bf5af570eec78",
+    "app\\benchmark\\offline_benchmark.py": "e621735454034f11d6ef86933b55ba0435949351c9104509522bde77e4c0a306",
+    "app\\benchmark\\prepare_collection.py": "2f9b3ad3e4395a36b6c37c01c2f92983ff41391734645d7dd4e845afd459e438",
+    "app\\benchmark\\project_adapter.py": "0d2b1b82115def73b1b9d23f078f7a7aa4031e4ac78657cd662d990e653aa46b",
+    "app\\database\\__init__.py": "5c7c1ce3a39fe9cc5d0e726fd719dc8e0a895501157bff67d73454704032e516",
+    "app\\database\\audit_repository.py": "9897e7b9104b6b312f223b8a1a3f19a2ba468aee31de8eafd14afedb1b59c630",
+    "app\\database\\feedback_repository.py": "265adf251f5502d396c3b947728175bef286f21d701d55a8459687e2a778676b",
+    "app\\database\\models.py": "251fc6d3aafe8eb647f2dde130995ab5afec2fa3b917103506b0090a87f7e3d3",
+    "app\\database\\repository.py": "628b3096d45139807e83afdb3753d0e8cfdbe46b1276369541cdb9255f372750",
+    "app\\database\\reputation_repository.py": "33c891693e105613e4cfc0af18db2672927050ec3ef42df388fde2b30ec891c4",
+    "app\\database\\session_repository.py": "617664274d172952755d3d47a1bf0dc8557cd2d924ad936987030cef39765d0f",
+    "app\\database\\validation_repository.py": "f647c7b429c211744ddb6b343d12b2781381fa9d709fb12e09a17d920becd936",
+    "app\\database\\verifier_cost_repository.py": "d635f11493afca32964bc6928760603607ee6f26b20ce33523ee4179384ede44",
+    "app\\database\\verifier_repository.py": "ad4dd698e1b8a0b8c11e5bdc169ee69b8ec58cad771734391d530b0c2b60968f",
+    "app\\decision\\__init__.py": "b985937d12dd0891a97fa20dabae339da0cfd497632e3894b718d9aba40f0085",
+    "app\\decision\\coverage.py": "b90922034a33af9fad718643ce5f87caaff7a2048d92aa97392d5599a2852f29",
+    "app\\decision\\decision_engine.py": "9e00f8bb7d086fe059a5c1707a7ee740116416db7f458e0ce0b89aebce71e6c6",
+    "app\\decision\\dependency_aggregation.py": "ab0954b50cbc5c787c890c4ff2ff40a042f3135b969ecef7faed6455ebf5f645",
+    "app\\decision\\early_termination.py": "532606873694837f3383748e8486eca96644e320153a160d6e91df8d027ef956",
+    "app\\decision\\report_identity.py": "5ef741652ff9055736f13fceae3dbcd34377e127fe7729ad25552ffcb5ed3ef6",
+    "app\\decision\\vote_normalization.py": "6bfbf0f19debe0350925746107ce0f7efb7b6b85d58e4066c472ae265de598f3",
+    "app\\evaluation\\answer_correctness.py": "1ed0a9e23eb0ec4626b0d644623c605576e73f51a873148dfa99917a690764d0",
+    "app\\evaluation\\automatic_ground_truth.py": "b65942b9ec4e2b3d2372246c939b321387a60717585b248c6e2ee59695699844",
+    "app\\evaluation\\compare_similarity.py": "fde7cd436b54cf75a8d4fb0bf275754cf1d49c694c14401f6b15df233459da8c",
+    "app\\evaluation\\semantic_calibration.py": "3c01b1996b0ced45b1d359095e26eaf7c145652dfcf5792f7a4e79ce8403f780",
+    "app\\evaluation\\semantic_evaluation.py": "7df088e5f54423289d78e354c15ac9f7541376a048ff7960e6852a05da90724c",
+    "app\\feedback\\__init__.py": "5836e8797128faac7ee767aa484bdf1d3f33adba65d27201dfc80c8768255886",
+    "app\\feedback\\evaluation_service.py": "c3474c94ae46c75269a7b9ac6fa750dfd33a5bdeb719114eb7a2b912ebeed239",
+    "app\\game\\__init__.py": "4d05ede56d27993337acd09dde58ab56c1b41ac8b884785fed8b5a87bfcee0a0",
+    "app\\game\\artifacts.py": "e944979ff5c282125c438c1df2f027d278c461ef02fd8fb8b68502953f0ae2d2",
+    "app\\game\\coverage_contract.py": "3c28ec86e37ae12cf15a9f7bff16f46f9b895809654d1e42d7e66b429b517390",
+    "app\\game\\decision_inputs.py": "e2b047860316fcbb4abefaa4e5d256f569dcb4d5efc03aaef347530f486c4d50",
+    "app\\game\\dependencies.py": "9fff7b8e3c5e9f23ef75380ff5a3ccf06abde058f11d92806da0703cb06edc93",
+    "app\\game\\deployment.py": "649bf9284ba4284de8a1f0dfadec90148e4057fccf70744a9e2e0c5216d445b3",
+    "app\\game\\domain_routing.py": "1e438384f224481a9d226c664d96fff1035cca2dada5ffe8a1de005b8f9c2cce",
+    "app\\game\\execution.py": "f5dfb96641b119826f3db44ca373eba654c98f0dca01ad3ad7280cc0ece9b30c",
+    "app\\game\\execution_contract.py": "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432",
+    "app\\game\\finalization.py": "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b",
+    "app\\game\\frozen_planning.py": "8bb06dc8911d6895c16bb0e5dbc394c5f4c48d25146b3eb406ea85893f9e362a",
+    "app\\game\\models.py": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73",
+    "app\\game\\offline\\__init__.py": "775589a07778ba6335b331552f94f2af9aa807bad5e38e88ebe11b70039b286b",
+    "app\\game\\offline\\arithmetic_pilot.py": "3f2bd9b44bd1a55281f5f080675906927e25b26a0b16afceb59d6e071ca94ea2",
+    "app\\game\\offline\\attacks.py": "a616786735b415583a9dc2d9d7430e6bf1429ade30f3a82950400e1e7e5fbfa2",
+    "app\\game\\offline\\budget_sensitivity.py": "b559c0b6c77ce4b71c2d9f6b8c44e6c18992a90282eb2e5aad3becef239fcb4b",
+    "app\\game\\offline\\build.py": "57eef01b9e5f1c11018d6169ed339282e48d602a4a7af75fb5653ed933ba8079",
+    "app\\game\\offline\\calibration.py": "6d567bf35dd2c8a00636822ac95d3014e764fc1889b4a7d492498dae7d3d673f",
+    "app\\game\\offline\\collect.py": "7dd091841cee63da7e1c9dcf14619fd2e0a329c4fa79dbabb0fd754f4b8ef02f",
+    "app\\game\\offline\\collection.py": "2d0a99afa577c09f5680c01eb50b2780e47c96023ab6bf79cc88132c13b57ccf",
+    "app\\game\\offline\\coverage.py": "2e408a7fa2a32a245f50a53fb7c6397a2a32b67eb7bce5ebff21c8093d13862e",
+    "app\\game\\offline\\evaluation.py": "5bbf7314fa5f537843dcb7cc88cb176a08d6cfc0b7fa5a41a896b3806c348b1e",
+    "app\\game\\offline\\pilot_proposal.py": "e7a38d891b61bc33a52aa193ff7d6db5031f0036ba3599fdf3490938e0b15f15",
+    "app\\game\\offline\\pooling.py": "9576146aee16c9637129b01ab29321b6a975a2ef168761af9bad418d1929a6d4",
+    "app\\game\\offline\\prepare_calibrated_context.py": "269e82995fff0b28cc52bec4c3ad88b7636ea6adc67780d3d291559dbdd3ab30",
+    "app\\game\\offline\\prototype.py": "13d81171a3d15b62e4fc6b8bcc197e9647131e74f509a3c1c8fd9e287c7fc2e0",
+    "app\\game\\offline\\recording_adapters.py": "132188dceafadeb1d70db6af265cde0ed3bd73fe897f4fa1402fa62f2421d17f",
+    "app\\game\\offline\\records.py": "873dcd5e94ff6127aee83c09dceac8cc8a5fee192912fd16f7fcfb1942531fe3",
+    "app\\game\\offline\\reliability.py": "454f73534508e2c78d27bd51ff37a21365ccde47a7b619dee7347322106dd3cf",
+    "app\\game\\offline\\replay.py": "2d32c62f95fadf57383e9d341d0b4584a9c2f6e4ee7b7d07567899076e326f4e",
+    "app\\game\\offline\\timing.py": "10daa328ff2f2a6fc0e67d0c0d0f120a151fa02196590f32ef1c01c6294e9978",
+    "app\\game\\offline\\upstream.py": "567ffc8cb3da416e64455a4c52956806cd6867a93b1c630b0afeaf3ec88cfbd7",
+    "app\\game\\offline\\upstream_evaluation.py": "1f619936dd097a85bb844e4ca9ae37815e900c761f4008bdc2ab9abbba92868b",
+    "app\\game\\offline\\upstream_transfer.py": "ac7ee5495df27d292e45b2d57cd64d6211e8e02548cff2b3810e3222c2e846d1",
+    "app\\game\\policy.py": "133603e3dfe50e1c6b258221d81632326bc857f7757d62450258037a784706f3",
+    "app\\game\\pooling_contract.py": "d5745ca1a1ad51d30737ab97415c898ef8fe67ea2b66fd948c3864ff7b82def2",
+    "app\\game\\prototype_bundle.py": "65ca144556f7f4826ec85fbae75fb579132ef49fb97b234c53a735828aaa433e",
+    "app\\game\\reliability_contract.py": "46cacd608ad1cc5a61c80f038c2bcefc6ad2667b5453c8766fa710498b537dd5",
+    "app\\game\\research\\__init__.py": "8b37718e4bb8b67cea77b04fba4956348fd1a806d85b98c0524d876c095a5b7a",
+    "app\\game\\research\\__main__.py": "f00003e31cb6652869f9d4039f18101a9fe4f79b43e48f4ed25c2c47664586bc",
+    "app\\game\\research\\comparison.py": "1de1987191c7f42282b34f5da64f5a5676fcad87bb39234498dc730f36a1d9e6",
+    "app\\game\\research\\evidence_validation.py": "480d0d563ed37f2d9678bd9aed689e1a690b1b33ca7ec2b9102f64882142fcbd",
+    "app\\game\\research\\readiness.py": "5f1ca6196b0cbfc8740c20a35b0d0703790f31fa968e18cdcef4866a4116f874",
+    "app\\game\\research\\specification.py": "501cbf3aa287e1532f0f4ac0571f914b86c3412a2060a2851bca0e2d1b8f60ad",
+    "app\\game\\research\\uncertainty.py": "28116976ab49116e35dee81c39a657fcae105b5beb090badd511c3bb4dcb551b",
+    "app\\game\\resource_provenance.py": "4a09f2de086483555e0ba2741058e5cf4d12ad4f7f9b1eede82e63c03c41d860",
+    "app\\game\\solver.py": "1c41449e48a3a1815d21259520b2a4edf1e5b41c8571de91c84f6ac98b31c28e",
+    "app\\game\\strategies.py": "62d9e1a721a7546e9b17762c372c7bab910a82ae77d3097e50f1e29dff9fb772",
+    "app\\game\\task_conditioning.py": "cacfa851f794cbee3a38b7ca377adb8ecd1e58f9baf44c7458d4a9ffc11bab4a",
+    "app\\ground_truth\\models.py": "70263364833766418313ca5785dd368f33daaeda1e110b17d3bfa004798eebf3",
+    "app\\ground_truth\\service.py": "f5754f8e5c09f3fbf844c0f370ab73940152b4869f1bcd8a3be1fc667526969d",
+    "app\\ground_truth\\storage.py": "625801f976f3c98eeab6d1fdff919ef935dbc8049672e188f4efafa8573fc486",
+    "app\\ground_truth\\wikidata_client.py": "0156e41774ca12908650b60241f971dc59def8576a70f4c5e60a16479561c7c7",
+    "app\\main.py": "48a2efcf68d466a8029fee0b75ef64083934ad13b5b759cd302200644c24ea2c",
+    "app\\models\\__init__.py": "36d5424d932825e1c915cd5baf5f1293b9305d41256addb4ca0148fd5eb8dfa8",
+    "app\\models\\schemas.py": "2ddcb19b63af208c6b513de09016b5acccb21a72211b543f6449cad912528c53",
+    "app\\orchestration\\__init__.py": "22a9f0fd67038c16d6ecb81eb0b27f256aed5c673ccbc94e370bf652d9b9849a",
+    "app\\orchestration\\validation_orchestrator.py": "9300ded2a425114cd2f55a65db00d8220bd6f9d36cd9d034594ca87053022786",
+    "app\\reputation\\__init__.py": "bdf7d76b1cb2adcfc19f6960cc8110702bf813319e8024e0ed61616d5dc621b9",
+    "app\\reputation\\reputation_manager.py": "5eedc4a823447242c0e687f81a12b47cd87e44beb2bdc28510b036c6e746abc0",
+    "app\\selection\\__init__.py": "d83810f2af7d72184decb1c7039d05c3a24fea0cde73894af12b5fc410ac7cde",
+    "app\\selection\\capabilities.py": "3781e0dded2c3d57fabb6fa3e1cfa2c2d95c68236d15b2a7a594299f217cb3c2",
+    "app\\selection\\models.py": "b4406d6a6476564294f380bb780c0d48706370f70f87a0c39eb504a1701a62d8",
+    "app\\selection\\requirements.py": "66d12409804c6b3a3ca520766b70658385df12f7b7b6a287e8829cb3698ccbfc",
+    "app\\selection\\verifier_selector.py": "b14227e5d4c65b24939119d3c2afddb11281ab67352845bda683824a85fcf0a6",
+    "app\\services\\__init__.py": "2b178193b705a9ab99d7dae27a93b4870b4f5900b7cf4ee156bdae5e0946661e",
+    "app\\services\\validation_service.py": "60e3a683d1ec67cbfecd7c88cab72548ea55ce9c6a6e4b92c859d3ec0e8fbce5",
+    "app\\utils\\__init__.py": "45bb75b6d26e72f9fef717dc5d3d053b057541694f0763cd904cc50354e7b8f4",
+    "app\\utils\\config.py": "ed10efe089a977c373f65e3b220cf57e300ebbf79e203ca5bfbb2fa1c6c12214",
+    "app\\verifiers\\__init__.py": "3e4d911db4646beb066a6300a00d58408a641dbbb5e9014ef9d88ef5a0a86291",
+    "app\\verifiers\\base_verifier.py": "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899",
+    "app\\verifiers\\claim_generator.py": "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01",
+    "app\\verifiers\\confidence_verifier.py": "e05617149ea32f4f6136cc9ac8512296075acd285005d7d99670e4ab750ed94f",
+    "app\\verifiers\\evidence_retriever.py": "25fe2cb43df5e02034f657d5beb2d7f2cc7c952ff09a4313842c25aedf5a8e18",
+    "app\\verifiers\\evidence_verifier.py": "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c",
+    "app\\verifiers\\rule_verifier.py": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715",
+    "app\\verifiers\\self_consistency.py": "627b0e81bf9b57cd502f90a42c363af18d407e8c4465cae9fef25a39bc996ca4",
+    "app\\verifiers\\semantic_verifier.py": "c72cf7a6f34a66d16e36e360286ab6085000e1594e86dd1e124480aa43086bd8",
+    "app\\verifiers\\verification_trace.py": "fff89787d5360da44d72c68195487e030091190db57b32bac8a1ad02884a7e68"
+  },
+  "test_outcomes_inspected": false,
+  "test_payloads_opened": false,
+  "version": "flexible_heldout_freeze_v1",
+  "worktree": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams"
+}

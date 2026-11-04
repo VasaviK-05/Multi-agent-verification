@@ -1,0 +1,79 @@
+{
+  "activation_performed": false,
+  "component_entries": [],
+  "empirical_pairs_or_triples": false,
+  "preserve_existing_outer_prototype_allowlist": true,
+  "real_routes": [
+    {
+      "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+      "artifact_version": "deployable_game_policy_reliability_first_v1",
+      "context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+      "context_path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\context.json",
+      "contract_path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\contract.json",
+      "distribution": [
+        {
+          "aggregation": "reputation_weighted",
+          "probability": 1.0,
+          "team": [
+            "rule"
+          ]
+        }
+      ],
+      "family": "arithmetic",
+      "inference_performed": false,
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "policy_path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\arithmetic-minimum-1\\policy.json",
+      "question": "What is 328 + 536?",
+      "reference": "864",
+      "routed_episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+      "selection_uses_answer": false,
+      "selection_uses_label": false,
+      "signature": [
+        "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+        "easy",
+        0.12,
+        true
+      ]
+    },
+    {
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "artifact_version": "deployable_game_policy_reliability_first_v1",
+      "context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "context_path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\context.json",
+      "contract_path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\contract.json",
+      "distribution": [
+        {
+          "aggregation": "reputation_weighted",
+          "probability": 1.0,
+          "team": [
+            "evidence"
+          ]
+        }
+      ],
+      "family": "factual",
+      "inference_performed": false,
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "policy_path": "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\artifacts\\flexible-teams-v1\\factual-minimum-1\\policy.json",
+      "question": "What is the population of Belgium?",
+      "reference": "The population of Belgium is 11941781.",
+      "routed_episode_id": "registered-e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "selection_uses_answer": false,
+      "selection_uses_label": false,
+      "signature": [
+        "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+        "easy",
+        0.13,
+        true
+      ]
+    }
+  ],
+  "registered_artifact_ids": [
+    "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+    "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d"
+  ],
+  "unavailable": [
+    "reference comparison: no qualifying fitted policy",
+    "bounded difference wording: new analyzer version has no fitted policy",
+    "area/population compound: no jointly fitted empirical policy"
+  ]
+}

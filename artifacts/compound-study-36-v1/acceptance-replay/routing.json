@@ -1,0 +1,1166 @@
+{
+  "outcomes": [
+    {
+      "category": "arithmetic",
+      "question": "What is 328 + 536?",
+      "answer": "864",
+      "public_status": "passed",
+      "summary": {
+        "audit_version": "game_execution_audit_v1",
+        "execution_mode": "game",
+        "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "effective_configuration_fingerprint": "84c46ce4864c7c720c2f704c10f2afd975139eeb2ff742ef9a8fb87d02668b15",
+        "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+        "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+        "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+        "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+        "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+        "team": [
+          "rule"
+        ],
+        "aggregation": "reputation_weighted",
+        "threshold": 0.55,
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "coverage_version": "task_output_contract_v2",
+          "contributor_version": "informative_history_influence_v1",
+          "threshold": 0.55,
+          "failure_contract": "all_selected_returned",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "history_prior_alpha": 1.0,
+          "history_prior_beta": 1.0,
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "verifier_name": "confidence",
+                "resources": [
+                  {
+                    "resource_id": "confidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "confidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  },
+                  {
+                    "resource_id": "ollama-model",
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                  },
+                  {
+                    "resource_id": "self-consistency-short-answer",
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                  },
+                  {
+                    "resource_id": "ollama-service",
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "resources": [
+                  {
+                    "resource_id": "evidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "evidence-corpus",
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                  },
+                  {
+                    "resource_id": "evidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                  },
+                  {
+                    "resource_id": "evidence-index",
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "resources": [
+                  {
+                    "resource_id": "rule-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "rule-implementation",
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "semantic",
+                "resources": [
+                  {
+                    "resource_id": "semantic-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "semantic-implementation",
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  }
+                ]
+              }
+            ]
+          },
+          "team_requirements": {
+            "version": "flexible_team_requirements_v1",
+            "minimum_selected": 1,
+            "minimum_informative": 1
+          }
+        },
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "budget": 21258.33526502247,
+        "cost_units": "ms",
+        "estimated_selected_cost": 9.678209995036013,
+        "estimated_attempted_cost": 9.678209995036013,
+        "attempted_verifiers": [
+          "rule"
+        ],
+        "attempts": [
+          {
+            "verifier_name": "rule",
+            "estimated_attempt_cost": 9.678209995036013,
+            "state": "directional"
+          }
+        ],
+        "selection_status": "selected",
+        "selection_reasons": [],
+        "numerical_decision": {
+          "domain": "general",
+          "status": "passed",
+          "raw_score": 1.0,
+          "score": 1.0,
+          "threshold": 0.55,
+          "aggregation": "log_odds",
+          "votes": [
+            {
+              "verifier_name": "rule",
+              "abstained": false,
+              "passed": true,
+              "confidence": 1.0,
+              "reputation": 0.9761904761904762,
+              "weight": 3.7135720667043066,
+              "contribution": 3.7135720667043066,
+              "validation_id": "multitask42-arithmetic-history-addition-328-536-correct",
+              "normalized_strength": 1.0,
+              "reliability_strength": 0.9523809523809523,
+              "included": true,
+              "inclusion_reason": "included",
+              "failure_group_id": null
+            }
+          ],
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "validation_id": "multitask42-arithmetic-history-addition-328-536-correct",
+          "team": [
+            "rule"
+          ],
+          "missing_reports": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "dependency_assumptions": [],
+          "groups": [],
+          "fallback": null,
+          "lower_cut": -0.55,
+          "upper_cut": 0.55
+        },
+        "public_status": "passed",
+        "override_reasons": [],
+        "contributors": 1,
+        "minimum_contributors": 1,
+        "minimum_selected_team_size": 1,
+        "pooling_contract_json": null,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "required": [
+          "arithmetic"
+        ],
+        "achieved": [
+          "arithmetic"
+        ],
+        "unresolved": [],
+        "after_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "selection_plan": {
+          "policy_version": "coverage_greedy_v1",
+          "domain": "general",
+          "domain_status": "unknown",
+          "difficulty": "easy",
+          "difficulty_score": 0.12,
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "scoring_version": "explicit_task_questions_v1",
+          "reference_available": true,
+          "requirements": {
+            "source": "research_context",
+            "status": "known",
+            "requirements": [
+              "arithmetic"
+            ],
+            "weights": [
+              [
+                "arithmetic",
+                1.0
+              ]
+            ],
+            "requirements_known": true,
+            "legacy_hints": [
+              "arithmetic"
+            ],
+            "disagreements": [],
+            "unsupported": [],
+            "errors": [],
+            "legacy_unrecognized": [],
+            "weight_discrepancies": []
+          },
+          "lambda_cost": 0.15,
+          "lambda_latency": 0.1,
+          "lambda_suitability": 0.2,
+          "type_mapping": [
+            [
+              "arithmetic",
+              "rule"
+            ],
+            [
+              "logical_rule",
+              "rule"
+            ],
+            [
+              "direct_fact",
+              "evidence"
+            ],
+            [
+              "evidence_retrieval",
+              "evidence"
+            ],
+            [
+              "semantic_comparison",
+              "semantic"
+            ],
+            [
+              "consistency",
+              "confidence"
+            ]
+          ],
+          "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+          "minimum_count": 2,
+          "target_count": 2,
+          "candidates": [
+            {
+              "verifier_name": "rule",
+              "registration_order": 0,
+              "reputation": 0.97619,
+              "observation_count": 40,
+              "cold_start": false,
+              "cost": 0.2,
+              "latency": 0.2,
+              "resource_penalty": 0.05,
+              "suitability": 1.0,
+              "suitability_contribution": 0.2,
+              "utility": 1.12619,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "arithmetic"
+              ],
+              "requires_reference": false,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                "Other deterministic/structural checks do not establish general factual coverage."
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "registration_order": 1,
+              "reputation": 0.5,
+              "observation_count": 0,
+              "cold_start": true,
+              "cost": 0.8,
+              "latency": 0.9,
+              "resource_penalty": 0.21000000000000002,
+              "suitability": 0.0,
+              "suitability_contribution": 0.0,
+              "utility": 0.29,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "direct_fact",
+                "evidence_retrieval"
+              ],
+              "requires_reference": false,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                "Corpus/model readiness and claim coverage are unknown until execution."
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "registration_order": 2,
+              "reputation": 0.64,
+              "observation_count": 23,
+              "cold_start": false,
+              "cost": 0.3,
+              "latency": 0.4,
+              "resource_penalty": 0.085,
+              "suitability": 0.0,
+              "suitability_contribution": 0.0,
+              "utility": 0.555,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "semantic_comparison"
+              ],
+              "requires_reference": true,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Reference similarity is not factual correctness."
+              ]
+            },
+            {
+              "verifier_name": "confidence",
+              "registration_order": 3,
+              "reputation": 0.871795,
+              "observation_count": 37,
+              "cold_start": false,
+              "cost": 0.9,
+              "latency": 1.0,
+              "resource_penalty": 0.23500000000000001,
+              "suitability": 0.0,
+              "suitability_contribution": 0.0,
+              "utility": 0.636795,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "consistency"
+              ],
+              "requires_reference": false,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Generation/judgment agreement is not factual evidence or independence.",
+                "Provider readiness is unknown until execution."
+              ]
+            }
+          ],
+          "initial_selected": [
+            "rule",
+            "confidence"
+          ],
+          "fallback": [
+            "semantic",
+            "evidence"
+          ],
+          "expected_covered": [
+            "arithmetic"
+          ],
+          "expected_uncovered": [],
+          "coverage_status": "expected_only",
+          "exclusions": [],
+          "reputation_statistics": [
+            {
+              "verifier_name": "rule",
+              "domain": "general",
+              "alpha": 41.0,
+              "beta": 1.0,
+              "successes": 40,
+              "failures": 0,
+              "observation_count": 40,
+              "posterior_mean": 0.9761904761904762,
+              "posterior_variance": 0.0005405262880345942,
+              "cold_start": false
+            },
+            {
+              "verifier_name": "evidence",
+              "domain": "general",
+              "alpha": 1.0,
+              "beta": 1.0,
+              "successes": 0,
+              "failures": 0,
+              "observation_count": 0,
+              "posterior_mean": 0.5,
+              "posterior_variance": 0.08333333333333333,
+              "cold_start": true
+            },
+            {
+              "verifier_name": "semantic",
+              "domain": "general",
+              "alpha": 16.0,
+              "beta": 9.0,
+              "successes": 15,
+              "failures": 8,
+              "observation_count": 23,
+              "posterior_mean": 0.64,
+              "posterior_variance": 0.00886153846153846,
+              "cold_start": false
+            },
+            {
+              "verifier_name": "confidence",
+              "domain": "general",
+              "alpha": 34.0,
+              "beta": 5.0,
+              "successes": 33,
+              "failures": 4,
+              "observation_count": 37,
+              "posterior_mean": 0.8717948717948718,
+              "posterior_variance": 0.0027942143326758714,
+              "cold_start": false
+            }
+          ]
+        },
+        "termination": "complete_selected_team",
+        "early_stopping_enabled": false,
+        "fallback_enabled": false,
+        "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+        "task_route": "domain_requirements_task_v1"
+      },
+      "replay_calls": [
+        {
+          "name": "rule",
+          "question": "What is 328 + 536?",
+          "answer": "864",
+          "reference": "864"
+        }
+      ],
+      "new_live_verifier_calls": 0,
+      "resource_mode": "retained observation replay; not live attestation"
+    },
+    {
+      "category": "factual",
+      "question": "What is the population of Belgium?",
+      "answer": "The population of Belgium is 11941781.",
+      "public_status": "passed",
+      "summary": {
+        "audit_version": "game_execution_audit_v1",
+        "execution_mode": "game",
+        "episode_id": "registered-e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "effective_configuration_fingerprint": "e1391705ada45f63d379163edf66b0b75c1e672614a0deeb39e749d2659feabe",
+        "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+        "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+        "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+        "offline_evaluation_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+        "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        "team": [
+          "evidence"
+        ],
+        "aggregation": "reputation_weighted",
+        "threshold": 0.55,
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "coverage_version": "task_output_contract_v2",
+          "contributor_version": "informative_history_influence_v1",
+          "threshold": 0.55,
+          "failure_contract": "all_selected_returned",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "history_prior_alpha": 1.0,
+          "history_prior_beta": 1.0,
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "verifier_name": "confidence",
+                "resources": [
+                  {
+                    "resource_id": "confidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "confidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  },
+                  {
+                    "resource_id": "ollama-model",
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                  },
+                  {
+                    "resource_id": "self-consistency-short-answer",
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                  },
+                  {
+                    "resource_id": "ollama-service",
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "resources": [
+                  {
+                    "resource_id": "evidence-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "evidence-corpus",
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                  },
+                  {
+                    "resource_id": "evidence-implementation",
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                  },
+                  {
+                    "resource_id": "evidence-index",
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  },
+                  {
+                    "resource_id": "local-nli-snapshot",
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "resources": [
+                  {
+                    "resource_id": "rule-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "rule-implementation",
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                  }
+                ]
+              },
+              {
+                "verifier_name": "semantic",
+                "resources": [
+                  {
+                    "resource_id": "semantic-adapter-configuration",
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                  },
+                  {
+                    "resource_id": "semantic-implementation",
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                  },
+                  {
+                    "resource_id": "local-embedding-snapshot",
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                  }
+                ]
+              }
+            ]
+          },
+          "team_requirements": {
+            "version": "flexible_team_requirements_v1",
+            "minimum_selected": 1,
+            "minimum_informative": 1
+          }
+        },
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "budget": 15965.046464995248,
+        "cost_units": "ms",
+        "estimated_selected_cost": 188.79894875281025,
+        "estimated_attempted_cost": 188.79894875281025,
+        "attempted_verifiers": [
+          "evidence"
+        ],
+        "attempts": [
+          {
+            "verifier_name": "evidence",
+            "estimated_attempt_cost": 188.79894875281025,
+            "state": "directional"
+          }
+        ],
+        "selection_status": "selected",
+        "selection_reasons": [],
+        "numerical_decision": {
+          "domain": "general",
+          "status": "passed",
+          "raw_score": 0.9903382658958435,
+          "score": 0.990338,
+          "threshold": 0.55,
+          "aggregation": "log_odds",
+          "votes": [
+            {
+              "verifier_name": "evidence",
+              "abstained": false,
+              "passed": true,
+              "confidence": 0.9903382658958435,
+              "reputation": 0.9500000000000001,
+              "weight": 2.944438979166442,
+              "contribution": 2.915990592663822,
+              "validation_id": "multitask42-factual-history-BE-correct",
+              "normalized_strength": 0.9903382658958435,
+              "reliability_strength": 0.9000000000000001,
+              "included": true,
+              "inclusion_reason": "included",
+              "failure_group_id": null
+            }
+          ],
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "validation_id": "multitask42-factual-history-BE-correct",
+          "team": [
+            "evidence"
+          ],
+          "missing_reports": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "dependency_assumptions": [],
+          "groups": [],
+          "fallback": null,
+          "lower_cut": -0.55,
+          "upper_cut": 0.55
+        },
+        "public_status": "passed",
+        "override_reasons": [],
+        "contributors": 1,
+        "minimum_contributors": 1,
+        "minimum_selected_team_size": 1,
+        "pooling_contract_json": null,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "required": [
+          "direct_fact"
+        ],
+        "achieved": [
+          "direct_fact"
+        ],
+        "unresolved": [],
+        "after_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "selection_plan": {
+          "policy_version": "coverage_greedy_v1",
+          "domain": "general",
+          "domain_status": "unknown",
+          "difficulty": "easy",
+          "difficulty_score": 0.13,
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "scoring_version": "explicit_task_questions_v1",
+          "reference_available": true,
+          "requirements": {
+            "source": "research_context",
+            "status": "known",
+            "requirements": [
+              "direct_fact"
+            ],
+            "weights": [
+              [
+                "direct_fact",
+                1.0
+              ]
+            ],
+            "requirements_known": true,
+            "legacy_hints": [
+              "direct_fact"
+            ],
+            "disagreements": [],
+            "unsupported": [],
+            "errors": [],
+            "legacy_unrecognized": [],
+            "weight_discrepancies": []
+          },
+          "lambda_cost": 0.15,
+          "lambda_latency": 0.1,
+          "lambda_suitability": 0.2,
+          "type_mapping": [
+            [
+              "arithmetic",
+              "rule"
+            ],
+            [
+              "logical_rule",
+              "rule"
+            ],
+            [
+              "direct_fact",
+              "evidence"
+            ],
+            [
+              "evidence_retrieval",
+              "evidence"
+            ],
+            [
+              "semantic_comparison",
+              "semantic"
+            ],
+            [
+              "consistency",
+              "confidence"
+            ]
+          ],
+          "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+          "minimum_count": 2,
+          "target_count": 2,
+          "candidates": [
+            {
+              "verifier_name": "rule",
+              "registration_order": 0,
+              "reputation": 0.5,
+              "observation_count": 0,
+              "cold_start": true,
+              "cost": 0.2,
+              "latency": 0.2,
+              "resource_penalty": 0.05,
+              "suitability": 0.0,
+              "suitability_contribution": 0.0,
+              "utility": 0.45,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "arithmetic"
+              ],
+              "requires_reference": false,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                "Other deterministic/structural checks do not establish general factual coverage."
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "registration_order": 1,
+              "reputation": 0.95,
+              "observation_count": 38,
+              "cold_start": false,
+              "cost": 0.8,
+              "latency": 0.9,
+              "resource_penalty": 0.21000000000000002,
+              "suitability": 1.0,
+              "suitability_contribution": 0.2,
+              "utility": 0.94,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "direct_fact",
+                "evidence_retrieval"
+              ],
+              "requires_reference": false,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                "Corpus/model readiness and claim coverage are unknown until execution."
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "registration_order": 2,
+              "reputation": 0.5,
+              "observation_count": 40,
+              "cold_start": false,
+              "cost": 0.3,
+              "latency": 0.4,
+              "resource_penalty": 0.085,
+              "suitability": 0.0,
+              "suitability_contribution": 0.0,
+              "utility": 0.415,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "semantic_comparison"
+              ],
+              "requires_reference": true,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Reference similarity is not factual correctness."
+              ]
+            },
+            {
+              "verifier_name": "confidence",
+              "registration_order": 3,
+              "reputation": 0.733333,
+              "observation_count": 13,
+              "cold_start": false,
+              "cost": 0.9,
+              "latency": 1.0,
+              "resource_penalty": 0.23500000000000001,
+              "suitability": 0.0,
+              "suitability_contribution": 0.0,
+              "utility": 0.498333,
+              "registered": true,
+              "eligible": true,
+              "capability_source": "explicit",
+              "expected_capabilities": [
+                "consistency"
+              ],
+              "requires_reference": false,
+              "configured_readiness": "unknown",
+              "prerequisite_status": "unknown",
+              "exclusion_reason": null,
+              "limitations": [
+                "Generation/judgment agreement is not factual evidence or independence.",
+                "Provider readiness is unknown until execution."
+              ]
+            }
+          ],
+          "initial_selected": [
+            "evidence",
+            "confidence"
+          ],
+          "fallback": [
+            "rule",
+            "semantic"
+          ],
+          "expected_covered": [
+            "direct_fact"
+          ],
+          "expected_uncovered": [],
+          "coverage_status": "expected_only",
+          "exclusions": [],
+          "reputation_statistics": [
+            {
+              "verifier_name": "rule",
+              "domain": "general",
+              "alpha": 1.0,
+              "beta": 1.0,
+              "successes": 0,
+              "failures": 0,
+              "observation_count": 0,
+              "posterior_mean": 0.5,
+              "posterior_variance": 0.08333333333333333,
+              "cold_start": true
+            },
+            {
+              "verifier_name": "evidence",
+              "domain": "general",
+              "alpha": 38.0,
+              "beta": 2.0,
+              "successes": 37,
+              "failures": 1,
+              "observation_count": 38,
+              "posterior_mean": 0.9500000000000001,
+              "posterior_variance": 0.001158536585365852,
+              "cold_start": false
+            },
+            {
+              "verifier_name": "semantic",
+              "domain": "general",
+              "alpha": 21.0,
+              "beta": 21.0,
+              "successes": 20,
+              "failures": 20,
+              "observation_count": 40,
+              "posterior_mean": 0.5,
+              "posterior_variance": 0.005813953488372093,
+              "cold_start": false
+            },
+            {
+              "verifier_name": "confidence",
+              "domain": "general",
+              "alpha": 11.0,
+              "beta": 4.0,
+              "successes": 10,
+              "failures": 3,
+              "observation_count": 13,
+              "posterior_mean": 0.7333333333333333,
+              "posterior_variance": 0.012222222222222225,
+              "cold_start": false
+            }
+          ]
+        },
+        "termination": "complete_selected_team",
+        "early_stopping_enabled": false,
+        "fallback_enabled": false,
+        "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+        "task_route": "domain_requirements_task_v1"
+      },
+      "replay_calls": [
+        {
+          "name": "evidence",
+          "question": "What is the population of Belgium?",
+          "answer": "The population of Belgium is 11941781.",
+          "reference": "The population of Belgium is 11941781."
+        }
+      ],
+      "new_live_verifier_calls": 0,
+      "resource_mode": "retained observation replay; not live attestation"
+    }
+  ],
+  "missing_policy": "missing_policy",
+  "unsupported_question": "unsupported_category",
+  "incompatible_resource_fixture": {
+    "question": "What is 328 + 536?",
+    "answer": "864",
+    "public_status": "uncertain",
+    "summary": {
+      "audit_version": "game_execution_audit_v1",
+      "execution_mode": "game",
+      "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+      "effective_configuration_fingerprint": "84c46ce4864c7c720c2f704c10f2afd975139eeb2ff742ef9a8fb87d02668b15",
+      "artifact_id": null,
+      "policy_id": null,
+      "matrix_id": null,
+      "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+      "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+      "selected_strategy_id": null,
+      "team": [],
+      "aggregation": null,
+      "threshold": 0.55,
+      "execution_contract": {
+        "version": "offline_public_decision_v4",
+        "coverage_version": "task_output_contract_v2",
+        "contributor_version": "informative_history_influence_v1",
+        "threshold": 0.55,
+        "failure_contract": "all_selected_returned",
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "history_prior_alpha": 1.0,
+        "history_prior_beta": 1.0,
+        "resource_manifest": {
+          "version": "game_resource_manifest_v1",
+          "verifiers": [
+            {
+              "verifier_name": "confidence",
+              "resources": [
+                {
+                  "resource_id": "confidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "confidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                },
+                {
+                  "resource_id": "ollama-model",
+                  "kind": "model",
+                  "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                },
+                {
+                  "resource_id": "self-consistency-short-answer",
+                  "kind": "prompt",
+                  "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                },
+                {
+                  "resource_id": "ollama-service",
+                  "kind": "service",
+                  "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                }
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "resources": [
+                {
+                  "resource_id": "evidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "evidence-corpus",
+                  "kind": "corpus",
+                  "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                },
+                {
+                  "resource_id": "evidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                },
+                {
+                  "resource_id": "evidence-index",
+                  "kind": "index",
+                  "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                }
+              ]
+            },
+            {
+              "verifier_name": "rule",
+              "resources": [
+                {
+                  "resource_id": "rule-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "rule-implementation",
+                  "kind": "implementation",
+                  "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                }
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "resources": [
+                {
+                  "resource_id": "semantic-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "semantic-implementation",
+                  "kind": "implementation",
+                  "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                }
+              ]
+            }
+          ]
+        },
+        "team_requirements": {
+          "version": "flexible_team_requirements_v1",
+          "minimum_selected": 1,
+          "minimum_informative": 1
+        }
+      },
+      "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "dependency_assumptions": [
+        "configured compromise pathways; conservative connected components",
+        "unresolved verifiers share one unknown compromise pathway",
+        "observed provenance is audit-only and never rewrites this registry"
+      ],
+      "budget": 21258.33526502247,
+      "cost_units": "ms",
+      "estimated_selected_cost": 0.0,
+      "estimated_attempted_cost": 0.0,
+      "attempted_verifiers": [],
+      "attempts": [],
+      "selection_status": "provenance_incompatible",
+      "selection_reasons": [
+        "observed resources differ from evaluated resources"
+      ],
+      "numerical_decision": {
+        "domain": "general",
+        "status": "unknown",
+        "raw_score": 0.0,
+        "score": 0.0,
+        "threshold": 0.55,
+        "aggregation": "unknown",
+        "votes": []
+      },
+      "public_status": "uncertain",
+      "override_reasons": [
+        "selection_failure"
+      ],
+      "contributors": 0,
+      "minimum_contributors": 1,
+      "minimum_selected_team_size": 1,
+      "pooling_contract_json": null,
+      "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "observed_resource_manifest_id": "15227223eee305cc3ea23db42b43fb3ccf1df94e8acd98d130d6203d126f7b41",
+      "required": [
+        "arithmetic"
+      ],
+      "achieved": [],
+      "unresolved": [
+        "arithmetic"
+      ],
+      "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+      "task_route": "domain_requirements_task_v1"
+    },
+    "replay_calls": [],
+    "new_live_verifier_calls": 0,
+    "resource_mode": "retained observation replay; not live attestation"
+  },
+  "actual_policy_team_sizes": [
+    1
+  ],
+  "real_policy_selection_of_three": false,
+  "activation": false,
+  "scope": "explicit offline study allowlist; deployed prototype allowlist unchanged",
+  "all_categories_live_in_one_installation_demonstrated": false,
+  "new_live_calls": 0
+}

@@ -1,0 +1,22 @@
+{
+  "version": "reference_interrupted_attempt_recovery_authorized_v1",
+  "authorization": "User attachment2ebba2cc authorizes one separately identified replacement and cumulative241 verifier starts/302 generation requests.",
+  "original_attempt_id": "49f45a44a0c1503841dd30b95b72e9c5ea58b6b45a79b84ee50586694e6adbc6",
+  "original_state": "interrupted_unknown_outcome",
+  "original_duration_ms": null,
+  "original_duration_reason": "No authentic completion/timing record; unknown duration excluded from numerical timing estimates, explicitly counted as an invocation.",
+  "replacement_identity": "reference-recovery-v1-replacement-49f45a44",
+  "replacement_state": "not_executed_resource_incompatible",
+  "selection_rule": "Use only the single authorized replacement as usable report if original remains unavailable; never choose between outcomes.",
+  "completed_original_reports_unchanged": true,
+  "cumulative_starts_before_replacement": 60,
+  "cumulative_generation_starts_before_replacement": 72,
+  "reference_transition_assessment": "Same model digest does not establish Confidence generation equivalence across server0.40.5 and0.40.14. Exact old service not located; do not mix old and new Confidence reports.",
+  "minimum_current_service_campaign_if_approved": {
+    "additional_previously_completed_confidence_calls_to_replace": 14,
+    "additional_generations_beyond_authorized_recovery_plan": 70,
+    "minimum_cumulative_verifier_starts_if_all_reserved_work_proceeds": 255,
+    "minimum_cumulative_generation_requests_if_all_reserved_work_proceeds": 372,
+    "conditions": "Requires separately approved new-version study/transition and proof allowing reuse of unchanged E/R/S recordings; fixed labels, groups and90% target retained. Not authorized or executed here. Reserved calls remain conditional on feasible development fit."
+  }
+}

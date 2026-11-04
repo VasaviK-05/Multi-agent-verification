@@ -1,0 +1,22 @@
+{
+  "development_best": {
+    "aggregation": "reputation_weighted",
+    "estimated_cost": 188.79894875281025,
+    "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+    "verifiers": [
+      "evidence"
+    ]
+  },
+  "fixed_equals_flexible": true,
+  "fixed_selection_rule": "Eligible fixed strategies meet 0.90 development clean coverage; minimize worst development decision loss; within 1e-8 minimize estimated cost then strategy_id.",
+  "greedy": {
+    "aggregation": "reputation_weighted",
+    "estimated_cost": 15921.25526748423,
+    "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+    "verifiers": [
+      "confidence",
+      "evidence"
+    ]
+  },
+  "greedy_scope": "Existing coverage-aware selector initial_selected, reputation_weighted; complete selected team under matching minimum-one finalization. This isolates selection; it is not the separate adaptive non-game stopping pipeline."
+}

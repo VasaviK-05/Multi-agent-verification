@@ -1,0 +1,670 @@
+{
+  "freeze_id": null,
+  "requests": {
+    "base_fact": "b40ac7b22159251a0e1395b989b74681c3c005f8f266f5cdcb50c4fbfa80d32a",
+    "derived_sum": "8c6ca91327197d1ce7c6602d23bbf1adb157e987e214185499697941359d0a0b"
+  },
+  "role": "development",
+  "setup": {
+    "application_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+    "code_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+    "dependency_versions": {
+      "faiss-cpu": "1.15.1",
+      "numpy": "2.4.6",
+      "pydantic": "2.13.5",
+      "python": "3.11.5",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "sentence-transformers": "6.1.0",
+      "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "environment": {
+      "architecture": "AMD64",
+      "concurrency": "sequential",
+      "device": "cpu",
+      "host_fingerprint": "22668bd8248802aee39bf300193a1cc6bf4ecbbbafed60f64538e50fe31a2ec7",
+      "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+      "logical_cpus": "16",
+      "os": "Windows-10-10.0.26200-SP0",
+      "physical_memory_bytes": "16876888064",
+      "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+      "runtime": "3.11.5",
+      "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+    },
+    "evidence_kind": "empirical",
+    "resources": {
+      "verifiers": [
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "confidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "confidence-implementation",
+              "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            },
+            {
+              "kind": "model",
+              "resource_id": "ollama-model",
+              "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+            },
+            {
+              "kind": "prompt",
+              "resource_id": "self-consistency-short-answer",
+              "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+            },
+            {
+              "kind": "service",
+              "resource_id": "ollama-service",
+              "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+            }
+          ],
+          "verifier_name": "confidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "evidence-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "corpus",
+              "resource_id": "evidence-corpus",
+              "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "evidence-implementation",
+              "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+            },
+            {
+              "kind": "index",
+              "resource_id": "evidence-index",
+              "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-nli-snapshot",
+              "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+            }
+          ],
+          "verifier_name": "evidence"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "rule-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "rule-implementation",
+              "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+            }
+          ],
+          "verifier_name": "rule"
+        },
+        {
+          "resources": [
+            {
+              "kind": "configuration",
+              "resource_id": "semantic-adapter-configuration",
+              "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+            },
+            {
+              "kind": "implementation",
+              "resource_id": "semantic-implementation",
+              "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+            },
+            {
+              "kind": "model",
+              "resource_id": "local-embedding-snapshot",
+              "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+            }
+          ],
+          "verifier_name": "semantic"
+        }
+      ],
+      "version": "game_resource_manifest_v1"
+    }
+  },
+  "source_hashes": [
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\__init__.py",
+      "a6450036934bf60c5547c90663aa6be8d9d9920b35f41747787e6a659e73b407"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\__init__.py",
+      "ca9d0fefff13992e5a96b1779f0f94c5c423404ca48cb6a8a122d0e40432fac9"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\capability_probe_analyzer.py",
+      "ef3399e9727f940d21f020f362b6389d8918f0ffce8246b06d29fe5b1ae27af4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\evaluate_context.py",
+      "266b86c69369ddf9aebb28bdcc53a76136729e2beec1b3ce1fd4cae1a9f4ad29"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\heuristic.py",
+      "608b398295903a7204922e9dcc31c410ed032f973c10c3c9df9686f2807b3131"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\model_assessment.py",
+      "dfb2079e10ba7db801fe7ea2b882592e6cb38201d610b591d9ddcbd7af3b1b2c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\models.py",
+      "89dc1437b53b3f951fc706f278964c487c0fb2c290383d20c6522ec5d2349658"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\question_analyzer.py",
+      "4b201b90e0dae9a6921883428a58e6217ae218d39c0e8739f82c02a7913746b8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\research_context.py",
+      "6272bad8f53cc6956ae79cac47c674e36c943d91471cff1015159fb248e721cd"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\analysis\\task_analyzer.py",
+      "9536f5386d45a4743a4a6cb0233bf019c5a68ed08d6505d21b5e744ba9261154"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\api\\__init__.py",
+      "ab875dc57ecf7f21c560c505979d92546b47148747c801210fe8cd07e2baad2c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\api\\feedback_routes.py",
+      "f8efcbebed9f414e739119b164e1a46f411b7e2ffd30de21f9433df874483379"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\api\\routes.py",
+      "71962ff49789c19d60aa283a00962fdbae48d6ff44e1ece431e76e26e4e95595"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\__init__.py",
+      "4866842fa21c5be56b2ebdc88edb18ef450d1f8580a44a8d652c4d211e5d2ef9"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\collect_costs.py",
+      "aa019f3c3460c88e9113de404d0f21003675aa8a098d21c94d9bf5af570eec78"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\offline_benchmark.py",
+      "e621735454034f11d6ef86933b55ba0435949351c9104509522bde77e4c0a306"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\prepare_collection.py",
+      "2f9b3ad3e4395a36b6c37c01c2f92983ff41391734645d7dd4e845afd459e438"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\benchmark\\project_adapter.py",
+      "0d2b1b82115def73b1b9d23f078f7a7aa4031e4ac78657cd662d990e653aa46b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\__init__.py",
+      "5c7c1ce3a39fe9cc5d0e726fd719dc8e0a895501157bff67d73454704032e516"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\audit_repository.py",
+      "9897e7b9104b6b312f223b8a1a3f19a2ba468aee31de8eafd14afedb1b59c630"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\feedback_repository.py",
+      "265adf251f5502d396c3b947728175bef286f21d701d55a8459687e2a778676b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\models.py",
+      "251fc6d3aafe8eb647f2dde130995ab5afec2fa3b917103506b0090a87f7e3d3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\repository.py",
+      "628b3096d45139807e83afdb3753d0e8cfdbe46b1276369541cdb9255f372750"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\reputation_repository.py",
+      "33c891693e105613e4cfc0af18db2672927050ec3ef42df388fde2b30ec891c4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\session_repository.py",
+      "617664274d172952755d3d47a1bf0dc8557cd2d924ad936987030cef39765d0f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\validation_repository.py",
+      "f647c7b429c211744ddb6b343d12b2781381fa9d709fb12e09a17d920becd936"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\verifier_cost_repository.py",
+      "d635f11493afca32964bc6928760603607ee6f26b20ce33523ee4179384ede44"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\database\\verifier_repository.py",
+      "ad4dd698e1b8a0b8c11e5bdc169ee69b8ec58cad771734391d530b0c2b60968f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\__init__.py",
+      "b985937d12dd0891a97fa20dabae339da0cfd497632e3894b718d9aba40f0085"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\coverage.py",
+      "b90922034a33af9fad718643ce5f87caaff7a2048d92aa97392d5599a2852f29"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\decision_engine.py",
+      "9e00f8bb7d086fe059a5c1707a7ee740116416db7f458e0ce0b89aebce71e6c6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\dependency_aggregation.py",
+      "ab0954b50cbc5c787c890c4ff2ff40a042f3135b969ecef7faed6455ebf5f645"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\early_termination.py",
+      "532606873694837f3383748e8486eca96644e320153a160d6e91df8d027ef956"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\report_identity.py",
+      "5ef741652ff9055736f13fceae3dbcd34377e127fe7729ad25552ffcb5ed3ef6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\decision\\vote_normalization.py",
+      "6bfbf0f19debe0350925746107ce0f7efb7b6b85d58e4066c472ae265de598f3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\answer_correctness.py",
+      "1ed0a9e23eb0ec4626b0d644623c605576e73f51a873148dfa99917a690764d0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\automatic_ground_truth.py",
+      "b65942b9ec4e2b3d2372246c939b321387a60717585b248c6e2ee59695699844"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\compare_similarity.py",
+      "fde7cd436b54cf75a8d4fb0bf275754cf1d49c694c14401f6b15df233459da8c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\semantic_calibration.py",
+      "3c01b1996b0ced45b1d359095e26eaf7c145652dfcf5792f7a4e79ce8403f780"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\evaluation\\semantic_evaluation.py",
+      "7df088e5f54423289d78e354c15ac9f7541376a048ff7960e6852a05da90724c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\feedback\\__init__.py",
+      "5836e8797128faac7ee767aa484bdf1d3f33adba65d27201dfc80c8768255886"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\feedback\\evaluation_service.py",
+      "c3474c94ae46c75269a7b9ac6fa750dfd33a5bdeb719114eb7a2b912ebeed239"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\__init__.py",
+      "4d05ede56d27993337acd09dde58ab56c1b41ac8b884785fed8b5a87bfcee0a0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\artifacts.py",
+      "e944979ff5c282125c438c1df2f027d278c461ef02fd8fb8b68502953f0ae2d2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\component_binding.py",
+      "d6804f3bb8990f2835d7974d59d0e674545edd580a5ced8a87da0d5d50ba8522"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\component_execution.py",
+      "e89cb355ec23c633702277c11dd48f2ce7f688a0d2c277515ede917710fabe70"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\component_sources.py",
+      "c6e0e837ec8e114f72c0ebd5cc3fed13e75140266bfc0eb865b60d91433923e3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\coverage_contract.py",
+      "3c28ec86e37ae12cf15a9f7bff16f46f9b895809654d1e42d7e66b429b517390"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\decision_inputs.py",
+      "e2b047860316fcbb4abefaa4e5d256f569dcb4d5efc03aaef347530f486c4d50"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\dependencies.py",
+      "9fff7b8e3c5e9f23ef75380ff5a3ccf06abde058f11d92806da0703cb06edc93"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\deployment.py",
+      "649bf9284ba4284de8a1f0dfadec90148e4057fccf70744a9e2e0c5216d445b3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\domain_routing.py",
+      "1e438384f224481a9d226c664d96fff1035cca2dada5ffe8a1de005b8f9c2cce"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\execution.py",
+      "f5dfb96641b119826f3db44ca373eba654c98f0dca01ad3ad7280cc0ece9b30c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\execution_contract.py",
+      "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\finalization.py",
+      "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\frozen_planning.py",
+      "8bb06dc8911d6895c16bb0e5dbc394c5f4c48d25146b3eb406ea85893f9e362a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\models.py",
+      "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\__init__.py",
+      "775589a07778ba6335b331552f94f2af9aa807bad5e38e88ebe11b70039b286b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\arithmetic_pilot.py",
+      "3f2bd9b44bd1a55281f5f080675906927e25b26a0b16afceb59d6e071ca94ea2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\attacks.py",
+      "a616786735b415583a9dc2d9d7430e6bf1429ade30f3a82950400e1e7e5fbfa2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\budget_sensitivity.py",
+      "b559c0b6c77ce4b71c2d9f6b8c44e6c18992a90282eb2e5aad3becef239fcb4b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\build.py",
+      "57eef01b9e5f1c11018d6169ed339282e48d602a4a7af75fb5653ed933ba8079"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\calibration.py",
+      "6d567bf35dd2c8a00636822ac95d3014e764fc1889b4a7d492498dae7d3d673f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\collect.py",
+      "7dd091841cee63da7e1c9dcf14619fd2e0a329c4fa79dbabb0fd754f4b8ef02f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\collection.py",
+      "79023cafef880223ea800d86e43001d8ab0e35b05b49e3f76a782a1a7ddf954b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\compound.py",
+      "bf3d4161f88447e1345dc57b6ac033989c87b2b971d4ebe1ab807ba14281a8ab"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\compound_journal.py",
+      "58bfd039a962dc93a0f4b5591af3609972396544509c5d7aed1a398ff9983d70"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\coverage.py",
+      "2e408a7fa2a32a245f50a53fb7c6397a2a32b67eb7bce5ebff21c8093d13862e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\evaluation.py",
+      "5bbf7314fa5f537843dcb7cc88cb176a08d6cfc0b7fa5a41a896b3806c348b1e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\pilot_proposal.py",
+      "e7a38d891b61bc33a52aa193ff7d6db5031f0036ba3599fdf3490938e0b15f15"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\pooling.py",
+      "9576146aee16c9637129b01ab29321b6a975a2ef168761af9bad418d1929a6d4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\prepare_calibrated_context.py",
+      "269e82995fff0b28cc52bec4c3ad88b7636ea6adc67780d3d291559dbdd3ab30"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\prototype.py",
+      "13d81171a3d15b62e4fc6b8bcc197e9647131e74f509a3c1c8fd9e287c7fc2e0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\recording_adapters.py",
+      "132188dceafadeb1d70db6af265cde0ed3bd73fe897f4fa1402fa62f2421d17f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\records.py",
+      "873dcd5e94ff6127aee83c09dceac8cc8a5fee192912fd16f7fcfb1942531fe3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\reliability.py",
+      "454f73534508e2c78d27bd51ff37a21365ccde47a7b619dee7347322106dd3cf"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\replay.py",
+      "2d32c62f95fadf57383e9d341d0b4584a9c2f6e4ee7b7d07567899076e326f4e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\timing.py",
+      "10daa328ff2f2a6fc0e67d0c0d0f120a151fa02196590f32ef1c01c6294e9978"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\upstream.py",
+      "567ffc8cb3da416e64455a4c52956806cd6867a93b1c630b0afeaf3ec88cfbd7"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\upstream_evaluation.py",
+      "1f619936dd097a85bb844e4ca9ae37815e900c761f4008bdc2ab9abbba92868b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\offline\\upstream_transfer.py",
+      "ac7ee5495df27d292e45b2d57cd64d6211e8e02548cff2b3810e3222c2e846d1"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\policy.py",
+      "133603e3dfe50e1c6b258221d81632326bc857f7757d62450258037a784706f3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\pooling_contract.py",
+      "d5745ca1a1ad51d30737ab97415c898ef8fe67ea2b66fd948c3864ff7b82def2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\prototype_bundle.py",
+      "65ca144556f7f4826ec85fbae75fb579132ef49fb97b234c53a735828aaa433e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\question_routing.py",
+      "85e31e9608e19df09c778561761b7e1600a8948bcffc9c8853b4fcf05f07730a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\reliability_contract.py",
+      "46cacd608ad1cc5a61c80f038c2bcefc6ad2667b5453c8766fa710498b537dd5"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\__init__.py",
+      "8b37718e4bb8b67cea77b04fba4956348fd1a806d85b98c0524d876c095a5b7a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\__main__.py",
+      "f00003e31cb6652869f9d4039f18101a9fe4f79b43e48f4ed25c2c47664586bc"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\comparison.py",
+      "1de1987191c7f42282b34f5da64f5a5676fcad87bb39234498dc730f36a1d9e6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\evidence_validation.py",
+      "480d0d563ed37f2d9678bd9aed689e1a690b1b33ca7ec2b9102f64882142fcbd"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\readiness.py",
+      "5f1ca6196b0cbfc8740c20a35b0d0703790f31fa968e18cdcef4866a4116f874"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\specification.py",
+      "501cbf3aa287e1532f0f4ac0571f914b86c3412a2060a2851bca0e2d1b8f60ad"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\research\\uncertainty.py",
+      "28116976ab49116e35dee81c39a657fcae105b5beb090badd511c3bb4dcb551b"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\resource_provenance.py",
+      "4a09f2de086483555e0ba2741058e5cf4d12ad4f7f9b1eede82e63c03c41d860"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\solver.py",
+      "1c41449e48a3a1815d21259520b2a4edf1e5b41c8571de91c84f6ac98b31c28e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\strategies.py",
+      "62d9e1a721a7546e9b17762c372c7bab910a82ae77d3097e50f1e29dff9fb772"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\game\\task_conditioning.py",
+      "123eff948c28cc9fa6891aec586da0cb2fd3b90cbc40f4bade38267de778a0e0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\models.py",
+      "70263364833766418313ca5785dd368f33daaeda1e110b17d3bfa004798eebf3"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\service.py",
+      "f5754f8e5c09f3fbf844c0f370ab73940152b4869f1bcd8a3be1fc667526969d"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\storage.py",
+      "625801f976f3c98eeab6d1fdff919ef935dbc8049672e188f4efafa8573fc486"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\ground_truth\\wikidata_client.py",
+      "0156e41774ca12908650b60241f971dc59def8576a70f4c5e60a16479561c7c7"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\main.py",
+      "48a2efcf68d466a8029fee0b75ef64083934ad13b5b759cd302200644c24ea2c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\models\\__init__.py",
+      "36d5424d932825e1c915cd5baf5f1293b9305d41256addb4ca0148fd5eb8dfa8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\models\\schemas.py",
+      "2ddcb19b63af208c6b513de09016b5acccb21a72211b543f6449cad912528c53"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\orchestration\\__init__.py",
+      "22a9f0fd67038c16d6ecb81eb0b27f256aed5c673ccbc94e370bf652d9b9849a"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\orchestration\\validation_orchestrator.py",
+      "9300ded2a425114cd2f55a65db00d8220bd6f9d36cd9d034594ca87053022786"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\reputation\\__init__.py",
+      "bdf7d76b1cb2adcfc19f6960cc8110702bf813319e8024e0ed61616d5dc621b9"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\reputation\\reputation_manager.py",
+      "5eedc4a823447242c0e687f81a12b47cd87e44beb2bdc28510b036c6e746abc0"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\__init__.py",
+      "d83810f2af7d72184decb1c7039d05c3a24fea0cde73894af12b5fc410ac7cde"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\capabilities.py",
+      "3781e0dded2c3d57fabb6fa3e1cfa2c2d95c68236d15b2a7a594299f217cb3c2"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\models.py",
+      "b4406d6a6476564294f380bb780c0d48706370f70f87a0c39eb504a1701a62d8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\requirements.py",
+      "66d12409804c6b3a3ca520766b70658385df12f7b7b6a287e8829cb3698ccbfc"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\selection\\verifier_selector.py",
+      "b14227e5d4c65b24939119d3c2afddb11281ab67352845bda683824a85fcf0a6"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\services\\__init__.py",
+      "2b178193b705a9ab99d7dae27a93b4870b4f5900b7cf4ee156bdae5e0946661e"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\services\\validation_service.py",
+      "60e3a683d1ec67cbfecd7c88cab72548ea55ce9c6a6e4b92c859d3ec0e8fbce5"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\utils\\__init__.py",
+      "45bb75b6d26e72f9fef717dc5d3d053b057541694f0763cd904cc50354e7b8f4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\utils\\config.py",
+      "ed10efe089a977c373f65e3b220cf57e300ebbf79e203ca5bfbb2fa1c6c12214"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\__init__.py",
+      "3e4d911db4646beb066a6300a00d58408a641dbbb5e9014ef9d88ef5a0a86291"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\base_verifier.py",
+      "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\claim_generator.py",
+      "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\confidence_verifier.py",
+      "e05617149ea32f4f6136cc9ac8512296075acd285005d7d99670e4ab750ed94f"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\evidence_retriever.py",
+      "25fe2cb43df5e02034f657d5beb2d7f2cc7c952ff09a4313842c25aedf5a8e18"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\evidence_verifier.py",
+      "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\rule_verifier.py",
+      "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\self_consistency.py",
+      "627b0e81bf9b57cd502f90a42c363af18d407e8c4465cae9fef25a39bc996ca4"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\semantic_verifier.py",
+      "c72cf7a6f34a66d16e36e360286ab6085000e1594e86dd1e124480aa43086bd8"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\app\\verifiers\\verification_trace.py",
+      "fff89787d5360da44d72c68195487e030091190db57b32bac8a1ad02884a7e68"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\scripts\\collect_compound_partition.py",
+      "7502bcf9d54591cc3f9fd87b22e3ea4b467faef7954769aec8d1ade953ea29fc"
+    ],
+    [
+      "<LOCAL_USER_HOME>\\Multi-agent-verification\\build\\flexible-verifier-teams\\scripts\\compound_study.py",
+      "23315b7a9e14b9be679792c6558cf365822f197ad1f416bf3ba605ddc7320662"
+    ]
+  ],
+  "source_manifest_id": "a100da58392adc9c66d66657309946ae6ce0f7febaf2ca7abd771734bf748167",
+  "study_id": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6",
+  "study_sha256": "3b4096a9c9ffa92a6cd48bc04106c52425b610ec1582af337b64ded7b70f3b89"
+}

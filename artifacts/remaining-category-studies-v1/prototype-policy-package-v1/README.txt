@@ -1,0 +1,1 @@
+From repository baseline with existing dependencies: from scripts.policy_package import load; configuration, provider, compound = load("policies.json"). No model/service/private source paths are opened. Use explicit owned registry/observer integration; this is not API activation. Full supporting inventory is outside this minimal bundle.

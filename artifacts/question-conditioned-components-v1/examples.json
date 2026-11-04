@@ -1,0 +1,50 @@
+[
+  {
+    "answer": "{\"base\": \"765\", \"derived\": \"775\"}",
+    "example_id": "area-correct",
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "reference": "The area of Bahrain is 765 square kilometres."
+  },
+  {
+    "answer": "{\"base\": \"765\", \"derived\": \"774\"}",
+    "example_id": "area-wrong_math",
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "reference": "The area of Bahrain is 765 square kilometres."
+  },
+  {
+    "answer": "{\"base\": \"766\", \"derived\": \"776\"}",
+    "example_id": "area-wrong_base",
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "reference": "The area of Bahrain is 765 square kilometres."
+  },
+  {
+    "answer": "{\"base\": \"766\", \"derived\": \"774\"}",
+    "example_id": "area-both_wrong",
+    "question": "What is the area of Bahrain, and what is that area plus 10 square kilometres? Give both values.",
+    "reference": "The area of Bahrain is 765 square kilometres."
+  },
+  {
+    "answer": "{\"base\": \"11941781\", \"derived\": \"11942781\"}",
+    "example_id": "population-correct",
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "reference": "The population of Belgium is 11941781."
+  },
+  {
+    "answer": "{\"base\": \"11941781\", \"derived\": \"11942780\"}",
+    "example_id": "population-wrong_math",
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "reference": "The population of Belgium is 11941781."
+  },
+  {
+    "answer": "{\"base\": \"11941782\", \"derived\": \"11942782\"}",
+    "example_id": "population-wrong_base",
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "reference": "The population of Belgium is 11941781."
+  },
+  {
+    "answer": "{\"base\": \"11941782\", \"derived\": \"11942780\"}",
+    "example_id": "population-both_wrong",
+    "question": "What is the population of Belgium, and what is that population plus 1000? Give both values.",
+    "reference": "The population of Belgium is 11941781."
+  }
+]
