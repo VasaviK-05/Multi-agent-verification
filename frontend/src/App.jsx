@@ -358,7 +358,9 @@ function App() {
   };
 
   const isVerifierAbstention = (verifier, executionAudit) => {
-    const isGameMode = executionAudit?.execution_mode === "game";
+    const isGameMode = ["game", "flexible_game"].includes(
+      executionAudit?.execution_mode
+    );
     const decision = verifier.metadata?.decision?.toUpperCase?.();
     const attempts = Array.isArray(executionAudit?.attempts)
       ? executionAudit.attempts
@@ -384,8 +386,9 @@ function App() {
     return verifier.passed ? "passed" : "failed";
   };
 
-  const isGameModeResult =
-    result?.execution_audit?.execution_mode === "game";
+  const isGameModeResult = ["game", "flexible_game"].includes(
+    result?.execution_audit?.execution_mode
+  );
   const verifierResults = (Array.isArray(result?.results) ? result.results : [])
     .filter((verifier) =>
       isGameModeResult || verifier.metadata?.pipeline_role === "vote"
@@ -397,13 +400,48 @@ function App() {
   const auditTeam = Array.isArray(executionAudit?.team)
     ? executionAudit.team.filter(Boolean)
     : [];
+  const attemptedVerifiers = Array.isArray(executionAudit?.attempted_verifiers)
+    ? executionAudit.attempted_verifiers.filter(Boolean)
+    : [];
+  const auditAttempts = Array.isArray(executionAudit?.attempts)
+    ? executionAudit.attempts
+    : [];
+  const auditComponents = Array.isArray(executionAudit?.components)
+    ? executionAudit.components
+    : [];
+  const requiredCoverage = Array.isArray(executionAudit?.required)
+    ? executionAudit.required
+    : [];
+  const achievedCoverage = Array.isArray(executionAudit?.achieved)
+    ? executionAudit.achieved
+    : [];
+  const unresolvedCoverage = Array.isArray(executionAudit?.unresolved)
+    ? executionAudit.unresolved
+    : [];
+  const compatibilityProofs = [
+    ["Pre-dispatch", executionAudit?.pre_dispatch_compatibility_proof],
+    ["Component", executionAudit?.resource_compatibility],
+    ["Post-dispatch", executionAudit?.resource_compatibility_after],
+    ["Singleton", executionAudit?.singleton_resource_compatibility],
+    ["Reference", executionAudit?.reference_resource_compatibility],
+    ["Reference post-dispatch", executionAudit?.reference_resource_compatibility_after],
+  ].filter(([, proof]) => proof && typeof proof === "object");
   const hasExecutionDetails = Boolean(
     executionAudit &&
       (executionAudit.execution_mode ||
+        executionAudit.policy_bundle_id ||
         executionAudit.policy_id ||
         executionAudit.artifact_id ||
+        executionAudit.policy_category ||
         executionAudit.selected_strategy_id ||
         auditTeam.length > 0 ||
+        attemptedVerifiers.length > 0 ||
+        auditAttempts.length > 0 ||
+        auditComponents.length > 0 ||
+        requiredCoverage.length > 0 ||
+        achievedCoverage.length > 0 ||
+        unresolvedCoverage.length > 0 ||
+        compatibilityProofs.length > 0 ||
         executionAudit.aggregation ||
         overrideReasons.length > 0)
   );
@@ -942,6 +980,18 @@ function App() {
                       <strong>{executionAudit.execution_mode}</strong>
                     </div>
                   )}
+                  {executionAudit.policy_bundle_id && (
+                    <div className="execution-audit-item">
+                      <span>Policy bundle</span>
+                      <strong>{executionAudit.policy_bundle_id}</strong>
+                    </div>
+                  )}
+                  {executionAudit.policy_category && (
+                    <div className="execution-audit-item">
+                      <span>Policy category</span>
+                      <strong>{executionAudit.policy_category}</strong>
+                    </div>
+                  )}
                   {executionAudit.policy_id && (
                     <div className="execution-audit-item">
                       <span>Policy ID</span>
@@ -970,6 +1020,108 @@ function App() {
                     <div className="execution-audit-item">
                       <span>Aggregation</span>
                       <strong>{executionAudit.aggregation}</strong>
+                    </div>
+                  )}
+                  {attemptedVerifiers.length > 0 && (
+                    <div className="execution-audit-item">
+                      <span>Attempted verifiers</span>
+                      <strong>{attemptedVerifiers.join(", ")}</strong>
+                    </div>
+                  )}
+                  {(requiredCoverage.length > 0 ||
+                    achievedCoverage.length > 0 ||
+                    unresolvedCoverage.length > 0) && (
+                    <div className="execution-audit-item">
+                      <span>Coverage</span>
+                      <strong>
+                        Required: {requiredCoverage.join(", ") || "none"}
+                        {" · "}Achieved: {achievedCoverage.join(", ") || "none"}
+                        {unresolvedCoverage.length > 0
+                          ? ` · Unresolved: ${unresolvedCoverage.join(", ")}`
+                          : ""}
+                      </strong>
+                    </div>
+                  )}
+                  {executionAudit.routing_signature && (
+                    <div className="execution-audit-item">
+                      <span>Route signature</span>
+                      <strong>
+                        {Array.isArray(executionAudit.routing_signature)
+                          ? executionAudit.routing_signature.join(" · ")
+                          : String(executionAudit.routing_signature)}
+                      </strong>
+                    </div>
+                  )}
+                  {auditComponents.length > 0 && (
+                    <div className="execution-audit-item execution-audit-guards">
+                      <span>Component decisions and coverage</span>
+                      <ul>
+                        {auditComponents.map((component, index) => (
+                          <li key={component?.component_id || index}>
+                            {component?.component_id || "Component"}
+                            {component?.public_status
+                              ? `: ${component.public_status}`
+                              : ""}
+                            {component?.binding_id
+                              ? ` · binding ${component.binding_id}`
+                              : ""}
+                            {Array.isArray(component?.required)
+                              ? ` · required ${component.required.join(", ")}`
+                              : ""}
+                            {Array.isArray(component?.achieved)
+                              ? ` · achieved ${component.achieved.join(", ") || "none"}`
+                              : ""}
+                            {Array.isArray(component?.unresolved) &&
+                            component.unresolved.length > 0
+                              ? ` · unresolved ${component.unresolved.join(", ")}`
+                              : ""}
+                            {Array.isArray(component?.reasons) &&
+                            component.reasons.length > 0
+                              ? ` · guards ${component.reasons.join(", ")}`
+                              : ""}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {auditAttempts.length > 0 && (
+                    <div className="execution-audit-item execution-audit-guards">
+                      <span>Verifier attempts</span>
+                      <ul>
+                        {auditAttempts.map((attempt, index) => (
+                          <li key={attempt?.call_id || index}>
+                            {[attempt?.component_id, attempt?.verifier_name]
+                              .filter(Boolean)
+                              .join(" · ") || "Verifier attempt"}
+                            {attempt?.state ? `: ${attempt.state}` : ""}
+                            {attempt?.binding_id
+                              ? ` · binding ${attempt.binding_id}`
+                              : ""}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {compatibilityProofs.length > 0 && (
+                    <div className="execution-audit-item execution-audit-guards">
+                      <span>Resource compatibility proofs</span>
+                      <ul>
+                        {compatibilityProofs.map(([label, proof]) => (
+                          <li key={label}>
+                            {label}: {proof.proof_id || proof.binding_id || "verified"}
+                            {proof.historical_manifest_id
+                              ? ` · historical ${proof.historical_manifest_id}`
+                              : proof.historical_resource_manifest_id
+                              ? ` · historical ${proof.historical_resource_manifest_id}`
+                              : ""}
+                            {proof.observed_manifest_id
+                              ? ` · observed ${proof.observed_manifest_id}`
+                              : proof.observed_resource_manifest_id
+                              ? ` · observed ${proof.observed_resource_manifest_id}`
+                              : ""}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                   {overrideReasons.length > 0 && (
