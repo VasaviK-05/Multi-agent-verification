@@ -485,3 +485,37 @@ artifacts/compound-study-36-v1/file-manifest.json -text
 .gitignore -text
 artifacts/remaining-category-studies-v1/publication-acceptance/routing.json -text
 artifacts/remaining-category-studies-v1/publication-inventory-final-reference-v3.json -text
+
+# Reconciliation-specific reviewed checkout identities override publication defaults.
+# Historical measurement identities bind CRLF source bytes. Preserve those exact
+# reviewed checkout bytes across platforms; do not normalize fingerprints.
+app/benchmark/project_adapter.py text eol=crlf
+app/models/schemas.py text eol=crlf
+app/verifiers/base_verifier.py text eol=crlf
+app/verifiers/claim_generator.py text eol=crlf
+app/verifiers/confidence_verifier.py text eol=crlf
+app/verifiers/evidence_retriever.py text eol=crlf
+app/verifiers/evidence_verifier.py text eol=crlf
+app/verifiers/rule_verifier.py text eol=crlf
+app/verifiers/self_consistency.py text eol=crlf
+app/verifiers/semantic_verifier.py text eol=crlf
+# Frozen bundle bytes are copied verbatim from publication 9f774678.
+reconciliation/policies.json -text
+reconciliation/reference-service.json -text
+reconciliation/reference-source.json -text
+docs/policy-source-capsule-v2.json -text
+app/game/offline/resource_relocation.py text eol=crlf
+app/game/offline/recording_adapters.py text eol=crlf
+app/selection/verifier_selector.py text eol=crlf
+app/selection/capabilities.py text eol=crlf
+reconciliation/integration-dependencies.json -text
+# CR bytes are intentional in byte-preserved frozen JSON. A unified patch also
+# needs literal context-prefix spaces, including on otherwise empty lines.
+reconciliation/*.json whitespace=cr-at-eol
+docs/policy-source-capsule-v2.json whitespace=cr-at-eol
+reconciliation/source-review.patch -whitespace
+# Preserve the exact owned execution-adapter bytes tested by the bounded native
+# campaign. Existing historical verifier/dependency pins above remain unchanged.
+app/game/offline/reconciled_resources.py -text
+app/game/offline/singleton_compatibility.py -text
+scripts/framework_acceptance.py -text

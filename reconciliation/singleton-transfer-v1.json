@@ -1,0 +1,60 @@
+{
+  "version": "frozen_singleton_execution_transfer_v1",
+  "source_main": "68e2871f386468eb28620a6fd61bdf325d1dd498",
+  "original_bundle_sha256": "3ab4040b7df7b86eaa0b914459429bceefb129790073b60657ceb54ebffad184",
+  "bindings": [
+    {
+      "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+      "selected": "rule",
+      "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "aggregation": "reputation_weighted",
+      "probability": 1.0,
+      "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6"
+    },
+    {
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "selected": "evidence",
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "aggregation": "reputation_weighted",
+      "probability": 1.0,
+      "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01"
+    }
+  ],
+  "target_files": {
+    "app/benchmark/project_adapter.py": "6b7893a98510a5c4a487d8ae8b64590839195f52b228c4f7759923dee19c33a1",
+    "app/models/schemas.py": "2ddcb19b63af208c6b513de09016b5acccb21a72211b543f6449cad912528c53",
+    "app/verifiers/base_verifier.py": "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899",
+    "app/verifiers/claim_generator.py": "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01",
+    "app/verifiers/evidence_retriever.py": "d99f4377c68a1cc2d8b7d3a29bc682d95c135814ebd6792c035989dbbc9af774",
+    "app/verifiers/evidence_verifier.py": "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c",
+    "app/verifiers/rule_verifier.py": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715"
+  },
+  "old_files": {
+    "app/benchmark/project_adapter.py": "d6f7179d833f29851c5cfb1fe4b4c3a027695de2bff93b702eccf29f6ca6fd62",
+    "app/models/schemas.py": "1c03cb8be17816aa12eb2e65a9e70346d427a80a193c3f6ea7a4491f47a17124",
+    "app/verifiers/base_verifier.py": "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899",
+    "app/verifiers/claim_generator.py": "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01",
+    "app/verifiers/evidence_retriever.py": "25fe2cb43df5e02034f657d5beb2d7f2cc7c952ff09a4313842c25aedf5a8e18",
+    "app/verifiers/evidence_verifier.py": "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c",
+    "app/verifiers/rule_verifier.py": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715"
+  },
+  "implementation_transitions": {
+    "evidence": {
+      "old": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4",
+      "new": "5903359855c9fef4e92584643aceb8b4c494835907aaaa5106fa80c45b58119e"
+    },
+    "rule": {
+      "old": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f",
+      "new": "7522a6bcffe4234e3e0a23e0a944a197f831b7a496f905b049ffed552afd907d"
+    }
+  },
+  "source_review_provenance": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+  "invariants": [
+    "Original four-candidate planning context and all zero-probability strategies preserved",
+    "Only the unique probability-one native singleton can be resolved",
+    "No planning/selection/history/threshold/cost/budget/finalization changes",
+    "Resource observations describe only selected native execution closure",
+    "Source review facts reused; compound execution transfer is not authorization for these artifacts"
+  ],
+  "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87"
+}

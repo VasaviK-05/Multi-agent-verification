@@ -1,0 +1,53 @@
+{
+  "version": "local_reconciliation_acceptance_summary_v1",
+  "date": "2026-11-04",
+  "evidence_boundary": "this host, not teammate API deployment",
+  "compound": {
+    "action": "compound",
+    "complete": false,
+    "native_attempts": 0,
+    "confidence_generations": 0,
+    "error_type": "ValueError",
+    "error": "capabilities must map registered names to CapabilityDescriptor",
+    "post_run_fix": "selector capability registration now filtered to native pool; unit regression added; no native retry"
+  },
+  "reference": {
+    "action": "reference",
+    "complete": true,
+    "native_attempts": 0,
+    "confidence_generations": 0,
+    "mode": "native reference construction/binding only",
+    "proof": {
+      "version": "reference_source_resource_transition_v1",
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "intermediate_manifest_id": "bc0d5c4989b0e51294d161fee4131c5b87a2590bd11729f8c868b2ced41edbf1",
+      "observed_manifest_id": "055dbe02ae08d23a1573c33844c59abcb376dba0242226038a2d5557a48cbea4",
+      "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+      "relocation": null,
+      "index_observation": {
+        "version": "exact_index_observation_serialization_v1",
+        "physical_index_id": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "logical_index_id": "1120818b811644ee5fc343d63498355dd0beb49776e0fd8f5dbc484e4a922e7d",
+        "physical_manifest_sha256": "9c5b705ed629d3d15745bb5c2bf3cc52ccfaaab045ce59909fb983db4b6e4711",
+        "no_file_changes": true
+      },
+      "active_instances_checked": true,
+      "proof_id": "e2f9b2d3e5aac00face2c5213a9e9a322ebab01226a05815bc0ec375c3c9806d"
+    },
+    "after_manifest_id": "055dbe02ae08d23a1573c33844c59abcb376dba0242226038a2d5557a48cbea4"
+  },
+  "earlier_records_relabelled": false,
+  "earlier_record_hashes": {
+    "artifacts/policy-resource-reconciliation-v2/native-smoke/result.json": "4002d781e7b16f5a64a81a128bc87efb0df0214b581e837099659f6cb664343b",
+    "artifacts/policy-resource-reconciliation-v2/native-smoke-initialization-fixed/result.json": "dc78f01f8612448291cb34bb1b594803d24018b2f2d9ce8e3af8f228b073f2c1",
+    "artifacts/policy-resource-reconciliation-v2/reference-active-binding.json": "c61f1029b43273a5af9f5bd250ce8c9a6a734c3b701d4787b276c91461777475"
+  },
+  "software_verification": {
+    "regression_tests_passed": 134,
+    "capture_tests_passed": 1,
+    "publication_files_verified": 487,
+    "portable_replay_cases": 7,
+    "native_acceptance_retried": false
+  }
+}

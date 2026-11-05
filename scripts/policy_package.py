@@ -18,23 +18,6 @@ def load(path):
         component_entries=((compound.contract.question_signature,compound.contract.budget,True,compound),),
         allowlist=frozenset(value['allowed_questions']),reference_question_version=VERSION)
     return config,provider,compound
-
-def load_runtime_candidate(path, *, repository_root=None):
-    """Load a package only when its publisher has marked it deployment-active.
-
-    Typed loading and a valid digest are not deployment authorization. The
-    current published package is intentionally inactive and remains so.
-    """
-    value=json.loads(Path(path).read_text(encoding='utf-8'))
-    config,provider,compound=load(path)
-    if value.get('deployment_active') is not True:
-        raise ValueError('policy package is published for offline evaluation and is not deployment-active')
-    from app.game.resource_transfer import validate_compound_transfer
-    transfer=value.get('compound_transfer')
-    if transfer is None:
-        raise ValueError('deployment-active package is missing its required compound transfer proof')
-    transfer=validate_compound_transfer(transfer,compound,repository_root=repository_root)
-    return config,provider,compound,transfer,value['bundle_id']
 def build(repo,output):
     from scripts.replay_remaining_policies import load_registry
     config,_,compound,atomic=load_registry(repo)

@@ -27,49 +27,11 @@ class VerifierExecutionFailure(RuntimeError):
 
 
 def _snapshot_resources(observer, selector):
-    """Ask an observer to attest the active instances when it supports that API."""
+    """Let configuration-aware observers attest the selector's actual instances."""
     snapshot_for = getattr(observer, "snapshot_for", None)
-    return snapshot_for(selector) if snapshot_for is not None else observer.snapshot()
-
-
-def _authorize_verified_relocation(observer, expected, observed):
-    """Authorize only the existing, content-verified Evidence index relocation."""
-    expected_rows = {
-        (resource.kind, resource.resource_id): resource.sha256
-        for verifier in expected.verifiers for resource in verifier.resources
-    }
-    observed_rows = {
-        (resource.kind, resource.resource_id): resource.sha256
-        for verifier in observed.verifiers for resource in verifier.resources
-    }
-    changed = {
-        key for key in set(expected_rows) | set(observed_rows)
-        if expected_rows.get(key) != observed_rows.get(key)
-    }
-    if changed != {("index", "evidence-index")}:
-        mismatch_names = sorted(f"{kind}:{name}" for kind, name in changed)
-        raise ValueError(
-            "relocation can authorize only the evidence-index fingerprint; mismatches: "
-            + ", ".join(mismatch_names)
-        )
-    authorize = getattr(observer, "authorize_relocation", None)
-    if authorize is None:
-        raise ValueError("observed resources differ from evaluated resources")
-    authorization = authorize(expected, observed)
-    binding_id = authorization.get("binding_id") if isinstance(authorization, dict) else None
-    if (
-        not isinstance(authorization, dict)
-        or authorization.get("version") != "verified_resource_relocation_v1"
-        or not isinstance(binding_id, str)
-        or len(binding_id) != 64
-        or any(char not in "0123456789abcdef" for char in binding_id)
-        or authorization.get("expected_resource_manifest_id") != expected.manifest_id
-        or authorization.get("historical_resource_manifest_id") != expected.manifest_id
-        or authorization.get("observed_resource_manifest_id") != observed.manifest_id
-        or authorization.get("authorized_resource_ids") != ["index:evidence-index"]
-    ):
-        raise ValueError("relocation authorizer returned an invalid or unbound proof")
-    return authorization
+    if snapshot_for is not None:
+        return snapshot_for(selector)
+    return observer.snapshot()
 
 
 @dataclass(frozen=True)
@@ -200,18 +162,53 @@ class GameRuntime:
                 observed = ResourceManifest.model_validate(
                     _snapshot_resources(self.resource_observer, selector)
                 )
-                observed.require_candidates(c.verifier_name for c in current.plan.candidates)
+                from app.game.offline.singleton_compatibility import SingletonObserver
+                if isinstance(self.resource_observer, SingletonObserver):
+                    summary['singleton_resource_compatibility'] = self.resource_observer.authorize_artifact(artifact, observed)
+                    observed.require_candidates(self.resource_observer.last_proof['native_selected'])
+                else:
+                    observed.require_candidates(c.verifier_name for c in current.plan.candidates)
                 summary["observed_resource_manifest_id"] = observed.manifest_id
                 observation_audit = getattr(self.resource_observer, "audit", None)
                 if callable(observation_audit):
                     summary["resource_observation_audit"] = observation_audit()
                 if observed != contract.resource_manifest:
-                    try:
-                        summary["resource_relocation"] = _authorize_verified_relocation(
-                            self.resource_observer, contract.resource_manifest, observed
-                        )
-                    except (ValidationError, ValueError) as exc:
-                        return failed("provenance_incompatible", str(exc))
+                    from app.game.offline.reference_compatibility import ReferenceObserver
+                    if isinstance(self.resource_observer, SingletonObserver):
+                        # This separate proof preserves the entire captured plan;
+                        # it contracts only the unique certified dispatch closure.
+                        self.resource_observer.authorize_artifact(artifact, observed)
+                    elif isinstance(self.resource_observer, ReferenceObserver):
+                        summary['reference_resource_compatibility'] = self.resource_observer.authorize_artifact(artifact, observed)
+                    else:
+                        expected_rows = {(r.kind, r.resource_id): r.sha256
+                            for verifier in contract.resource_manifest.verifiers for r in verifier.resources}
+                        observed_rows = {(r.kind, r.resource_id): r.sha256
+                            for verifier in observed.verifiers for r in verifier.resources}
+                        changed = {key for key in set(expected_rows) | set(observed_rows)
+                            if expected_rows.get(key) != observed_rows.get(key)}
+                        if changed != {("index", "evidence-index")}:
+                            mismatches = sorted(f"{kind}:{name}" for kind, name in changed)
+                            return failed("provenance_incompatible",
+                                "relocation can authorize only the evidence-index fingerprint; mismatches: " + ", ".join(mismatches))
+                        authorize_relocation = getattr(self.resource_observer, "authorize_relocation", None)
+                        if authorize_relocation is None:
+                            return failed("provenance_incompatible", "observed resources differ from evaluated resources")
+                        try:
+                            authorization = authorize_relocation(contract.resource_manifest, observed)
+                            if (not isinstance(authorization, dict)
+                                    or authorization.get("version") != "verified_resource_relocation_v1"
+                                    or not isinstance(authorization.get("binding_id"), str)
+                                    or len(authorization["binding_id"]) != 64
+                                    or any(ch not in "0123456789abcdef" for ch in authorization["binding_id"])
+                                    or authorization.get("expected_resource_manifest_id") != contract.resource_manifest.manifest_id
+                                    or authorization.get("historical_resource_manifest_id") != contract.resource_manifest.manifest_id
+                                    or authorization.get("observed_resource_manifest_id") != observed.manifest_id
+                                    or authorization.get("authorized_resource_ids") != ["index:evidence-index"]):
+                                return failed("provenance_incompatible", "relocation authorizer returned an invalid or unbound proof")
+                            summary["resource_relocation"] = authorization
+                        except (ValidationError, ValueError) as exc:
+                            return failed("provenance_incompatible", str(exc))
             except (ValidationError, ValueError) as exc:
                 return failed("provenance_incompatible", str(exc))
         # Validation already certifies definitions/costs/budget. Recheck before RNG and dispatch.
@@ -256,6 +253,12 @@ class GameRuntime:
                 if callable(observation_audit):
                     summary["resource_observation_audit_after"] = observation_audit()
                 resource_drift = after != observed
+                if 'singleton_resource_compatibility' in summary:
+                    after_proof = self.resource_observer.authorize_artifact(artifact, after)
+                    summary['singleton_resource_compatibility_after'] = after_proof
+                    resource_drift = resource_drift or after_proof != summary['singleton_resource_compatibility']
+                if 'reference_resource_compatibility' in summary:
+                    resource_drift = resource_drift or self.resource_observer.authorize_artifact(artifact, after) != summary['reference_resource_compatibility']
             except (ValidationError, ValueError) as exc:
                 summary["resource_observation_error"] = str(exc)
                 resource_drift = True

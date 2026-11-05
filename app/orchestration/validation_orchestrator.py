@@ -413,8 +413,18 @@ class ValidationOrchestrator:
         # One server-configured runtime/episode per run; request metadata cannot replace it.
         runtime = self._game_runtime
         run = runtime.run(self._verifier_selector, analysis, request, validation_id)
-        results = list(run.results)
         summary = json.loads(json.dumps(run.summary, allow_nan=False))
+        run_results = getattr(run, "results", None)
+        if run_results is None:
+            # Component runs carry their native per-obligation reports in the
+            # router audit. Preserve those reports for the API/database path;
+            # do not aggregate them again as a flat baseline vote.
+            run_results = tuple(
+                VerificationResult.model_validate(attempt["report"])
+                for attempt in summary.get("attempts", ())
+                if isinstance(attempt, dict) and isinstance(attempt.get("report"), dict)
+            )
+        results = list(run_results)
         if results:
             metadata = dict(results[-1].metadata or {})
             if RUN_SUMMARY_KEY in metadata:

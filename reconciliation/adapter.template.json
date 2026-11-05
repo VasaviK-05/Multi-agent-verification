@@ -1,0 +1,17 @@
+{
+  "version": "project_collection_adapter_v1",
+  "embedding_snapshot": null,
+  "nli_snapshot": null,
+  "corpus_path": "build/local-resources/corpus.json",
+  "index_dir": "build/local-resources/index-v2",
+  "index_receipt": "build/local-resources/index-receipt.json",
+  "service_observation": "reconciliation/reference-service.json",
+  "resource_relocation_binding": null,
+  "ollama_url": "http://localhost:11434/api/generate",
+  "ollama_model": "llama3.2:3b",
+  "n_samples": 5,
+  "temperature": 0.8,
+  "timeout": 60.0,
+  "chunk_size": 500,
+  "device": "cpu"
+}

@@ -232,23 +232,18 @@ class ComponentPolicy(FrozenModel):
 class ComponentRun:
     public_status: str
     summary: dict
-    results: tuple = ()
-    detail: object = None
 
 
 def unavailable(reason):
     code, _, explanation=reason.partition(': ')
     return ComponentRun('uncertain', dict(public_status='uncertain', selection_status=code,
         selection_reasons=[explanation or reason],
-        attempts=[], components=[], termination='before_dispatch'), results=(), detail=None)
+        attempts=[], components=[], termination='before_dispatch'))
 
 
-def _snapshot_resources(observer, selector, *, resource_scope=None, resource_transfer=None):
-    if resource_scope is not None:
-        snapshot_for_scope = getattr(observer, 'snapshot_for_scope', None)
-        if snapshot_for_scope is None:
-            raise ValueError('scoped resource transfer requires an active-instance scoped observer')
-        return snapshot_for_scope(selector, resource_scope, resource_transfer)
+def _snapshot_resources(observer, selector):
+    # Compatible with upstream's active-instance attestation interface. Exact
+    # manifest equality remains required; no implicit relocation authorization.
     snapshot_for=getattr(observer,'snapshot_for',None)
     return snapshot_for(selector) if snapshot_for is not None else observer.snapshot()
 
@@ -295,8 +290,7 @@ def scoped_component_selector(selector,contract):
 
 
 def run_component_policy(policy, selector, question, answer, reference, validation_id, *,
-                         rng, resource_observer, resource_transfer=None,
-                         allow_synthetic_for_tests=False):
+                         rng, resource_observer, allow_synthetic_for_tests=False):
     """Production gate. Existing Policy/PolicyArtifact objects are rejected."""
     try:
         policy = ComponentPolicy.model_validate(policy)
@@ -307,36 +301,6 @@ def run_component_policy(policy, selector, question, answer, reference, validati
         return unavailable('incompatible_policy: ' + str(exc))
     if policy.evidence_kind != 'empirical' and not allow_synthetic_for_tests:
         return unavailable('incompatible_policy: synthetic fixtures require explicit test permission')
-    if resource_transfer is not None:
-        try:
-            from app.game.resource_transfer import validate_compound_transfer
-            resource_transfer = validate_compound_transfer(resource_transfer, policy)
-        except (TypeError, ValueError) as exc:
-            return unavailable('resource_incompatible: ' + str(exc))
-    # Match the atomic runtime's ordering: compatibility must pass before a
-    # strategy draw. The selected strategy is checked again immediately before
-    # dispatch and after execution to detect drift.
-    try:
-        from app.game.resource_provenance import ResourceManifest
-        expected = policy.contract.actual_resources or policy.contract.obligations[0].contract.resource_manifest
-        if resource_observer is None:
-            return unavailable('resource_incompatible: pre-dispatch observer is missing')
-        if policy.contract.binding_version == 'fact_plus_sum_binding_v2' and resource_transfer is not None:
-            from app.game.resource_transfer import TRANSFER_SCOPE
-            observed = ResourceManifest.model_validate(_snapshot_resources(
-                resource_observer, selector, resource_scope=TRANSFER_SCOPE,
-                resource_transfer=resource_transfer))
-            authorize = getattr(resource_observer, 'authorize_scoped_transfer', None)
-            if authorize is None:
-                return unavailable('resource_incompatible: observer cannot validate the scoped transfer')
-            authorize(expected, observed, resource_transfer)
-        else:
-            observed = ResourceManifest.model_validate(_snapshot_resources(resource_observer, selector))
-            if observed != expected:
-                from app.game.execution import _authorize_verified_relocation
-                _authorize_verified_relocation(resource_observer, expected, observed)
-    except (TypeError, ValueError) as exc:
-        return unavailable('resource_incompatible: ' + str(exc))
     draw = rng.random()
     if not math.isfinite(draw) or not 0 <= draw < 1:
         raise ValueError('rng must return a finite value in [0,1)')
@@ -352,9 +316,10 @@ def run_component_policy(policy, selector, question, answer, reference, validati
         selected=next(sid for sid,p in reversed(policy.solution.probabilities) if p>0)
     strategies = enumerate_component_strategies(policy.contract)
     strategy = next(s for s in strategies if s.strategy_id == selected)
-    result = _execute_component_strategy(policy.contract, strategy, selector, question, answer,
-        reference, validation_id, resource_observer=resource_observer,
-        resource_transfer=resource_transfer, execution_mode='component_policy')
+    result = run_component_diagnostic(policy.contract, strategy, selector, question, answer,
+        reference, validation_id, resource_observer=resource_observer, compatibility_policy_id=policy.policy_id)
+    if result.summary.get('selection_status')=='diagnostic':
+        result.summary['selection_status']='selected'
     result.summary.update(policy_id=policy.policy_id, evidence_kind=policy.evidence_kind,
         execution_mode='synthetic_policy_test' if policy.evidence_kind=='synthetic_test_fixture' else 'component_policy',
         joint_evidence_id=policy.joint_evidence_id)
@@ -362,16 +327,8 @@ def run_component_policy(policy, selector, question, answer, reference, validati
 
 
 def run_component_diagnostic(contract, strategy, selector, question, answer, reference,
-                             validation_id, *, resource_observer, resource_transfer=None):
+                             validation_id, *, resource_observer, compatibility_policy_id=None):
     """Explicit diagnostic harness. Does not fit, register or authorize a policy."""
-    return _execute_component_strategy(contract, strategy, selector, question, answer,
-        reference, validation_id, resource_observer=resource_observer,
-        resource_transfer=resource_transfer, execution_mode='diagnostic_no_policy')
-
-
-def _execute_component_strategy(contract, strategy, selector, question, answer, reference,
-                                 validation_id, *, resource_observer, resource_transfer=None,
-                                 execution_mode):
     from app.analysis.capability_probe_analyzer import CapabilityProbeAnalyzer
     from app.game.frozen_planning import frozen_selector
     from app.game.models import capture_context
@@ -405,27 +362,19 @@ def _execute_component_strategy(contract, strategy, selector, question, answer, 
             selectors.append(frozen)
         expected = contract.actual_resources or contract.obligations[0].contract.resource_manifest
         if resource_observer is None:
-            return unavailable('resource_incompatible: pre-dispatch observer is missing')
-        if contract.binding_version == 'fact_plus_sum_binding_v2' and resource_transfer is not None:
-            from app.game.resource_transfer import TRANSFER_SCOPE
-            observed = ResourceManifest.model_validate(_snapshot_resources(
-                resource_observer, selector, resource_scope=TRANSFER_SCOPE,
-                resource_transfer=resource_transfer))
-            authorize_scoped = getattr(resource_observer, 'authorize_scoped_transfer', None)
-            if authorize_scoped is None:
-                return unavailable('resource_incompatible: observer cannot validate the scoped transfer')
-            scoped_authorization = authorize_scoped(expected, observed, resource_transfer)
-        else:
-            observed = ResourceManifest.model_validate(_snapshot_resources(resource_observer, selector))
-            relocation_authorization = None
-            if observed != expected:
-                from app.game.execution import _authorize_verified_relocation
-                relocation_authorization = _authorize_verified_relocation(resource_observer, expected, observed)
+            return unavailable('resource_incompatible: observation required')
+        observed_before = ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector))
+        resource_proof = None
+        if observed_before != expected:
+            from app.game.offline.reconciled_resources import ReconciledERObserver
+            if compatibility_policy_id is None or not isinstance(resource_observer, ReconciledERObserver):
+                return unavailable('resource_incompatible: pre-dispatch observation differs')
+            resource_proof = resource_observer.authorize_component(compatibility_policy_id, expected, observed_before)
     except ValueError as exc:
         return unavailable(str(exc))
-    attempts, components, contributors, all_results = [], [], set(), []
+    attempts, components, contributors = [], [], set()
     resource_drift = False
-    after = None
+    observed_after, after_proof, post_observation_error = None, None, None
     for obligation, (_, atomic), component, cid, frozen in zip(
             contract.obligations, strategy.components, bound, ids, selectors):
         rows, states = [], []
@@ -449,7 +398,6 @@ def _execute_component_strategy(contract, strategy, selector, question, answer, 
                 row.metadata = {**(row.metadata or {}), 'validation_id': cid,
                     'component_id': component.component_id, 'binding_id': component.binding_id}
                 rows.append(row)
-                all_results.append(row)
                 event['report'] = row.model_dump(mode='json')
                 state = 'abstention' if is_abstention(row) else 'directional'
             event.update(state=state, elapsed_ms=(perf_counter()-start)*1000)
@@ -459,40 +407,29 @@ def _execute_component_strategy(contract, strategy, selector, question, answer, 
         contributors.update(influential)
         components.append(decision)
     try:
-        if contract.binding_version == 'fact_plus_sum_binding_v2' and resource_transfer is not None:
-            after = ResourceManifest.model_validate(_snapshot_resources(
-                resource_observer, selector, resource_scope=TRANSFER_SCOPE,
-                resource_transfer=resource_transfer))
-            authorize_scoped(expected, after, resource_transfer)
-        else:
-            after = ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector))
-            if after != expected:
-                from app.game.execution import _authorize_verified_relocation
-                _authorize_verified_relocation(resource_observer, expected, after)
-        resource_drift = after != observed
-    except (TypeError, ValueError):
+        observed_after = ResourceManifest.model_validate(_snapshot_resources(resource_observer,selector))
+        resource_drift = observed_after != observed_before
+        if resource_proof is not None:
+            after_proof = resource_observer.authorize_component(compatibility_policy_id, expected, observed_after)
+            resource_drift = resource_drift or after_proof != resource_proof
+    except ValueError as exc:
         resource_drift = True
+        post_observation_error = str(exc)
     status,reasons=join_components(contract,components,contributors,resource_drift=resource_drift)
-    return ComponentRun(status, dict(public_status=status, execution_mode=execution_mode,
-        selection_status='selected' if execution_mode == 'component_policy' else 'diagnostic',
-        contract_id=contract.compatibility_id,
+    return ComponentRun(status, dict(public_status=status, execution_mode='diagnostic_no_policy',
+        selection_status='diagnostic', contract_id=contract.compatibility_id,
         selected_strategy_id=strategy.strategy_id, plan_id=plan.plan_id,
         team=list(strategy.verifiers), attempts=attempts, components=components,
+        historical_resource_manifest_id=expected.manifest_id,
+        observed_resource_manifest_id=observed_before.manifest_id,
+        resource_compatibility=resource_proof,
+        after_resource_manifest_id=None if observed_after is None else observed_after.manifest_id,
+        resource_compatibility_after=after_proof, resource_observation_error=post_observation_error,
         contributors=sorted(contributors), contributor_count=len(contributors),
         dependency_assumptions=contract.obligations[0].context.dependencies.model_dump(mode='json'),
         estimated_selected_cost=strategy.estimated_cost,
         estimated_attempted_cost=math.fsum(a['estimated_cost'] for a in attempts),
-        override_reasons=reasons, termination='complete_selected_team', early_stopping_enabled=False,
-        expected_resource_manifest_id=expected.manifest_id,
-        observed_resource_manifest_id=observed.manifest_id,
-        resource_observation_audit=getattr(resource_observer, 'audit', lambda: None)(),
-        resource_scoped_transfer=scoped_authorization if contract.binding_version == 'fact_plus_sum_binding_v2'
-            and resource_transfer is not None else None,
-        resource_relocation=relocation_authorization if not (
-            contract.binding_version == 'fact_plus_sum_binding_v2' and resource_transfer is not None
-        ) else scoped_authorization.get('relocation_authorization'),
-        after_resource_manifest_id=None if after is None else after.manifest_id),
-        results=tuple(all_results), detail=None)
+        override_reasons=reasons, termination='complete_selected_team', early_stopping_enabled=False))
 
 
 def finalize_component(obligation,atomic,component,rows,states,cid):

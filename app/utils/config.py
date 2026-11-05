@@ -28,6 +28,21 @@ class Settings:
     GAME_FLEXIBLE_POLICY_PACKAGE_PATH: str = os.getenv(
         "GAME_FLEXIBLE_POLICY_PACKAGE_PATH", ""
     ).strip()
+    GAME_FLEXIBLE_ADAPTER_CONFIG_PATH: str = os.getenv(
+        "GAME_FLEXIBLE_ADAPTER_CONFIG_PATH", ""
+    ).strip()
+
+    # Route-scoped bindings are separate by design: factual singleton,
+    # compound E/R, and reference proofs cannot reuse one another.
+    GAME_FLEXIBLE_FACTUAL_RELOCATION_BINDING_PATH: str = os.getenv(
+        "GAME_FLEXIBLE_FACTUAL_RELOCATION_BINDING_PATH", ""
+    ).strip()
+    GAME_FLEXIBLE_COMPOUND_RELOCATION_BINDING_PATH: str = os.getenv(
+        "GAME_FLEXIBLE_COMPOUND_RELOCATION_BINDING_PATH", ""
+    ).strip()
+    GAME_FLEXIBLE_REFERENCE_RELOCATION_BINDING_PATH: str = os.getenv(
+        "GAME_FLEXIBLE_REFERENCE_RELOCATION_BINDING_PATH", ""
+    ).strip()
 
     GAME_EPISODE_ID: str = os.getenv("GAME_EPISODE_ID", "production-episode").strip()
 

@@ -116,34 +116,22 @@ class QuestionPolicyRouter:
         return kind, signature, (route, analysis)
 
     def run(self, selector, request, validation_id, *, provider, rng, resource_observer,
-            resource_transfer=None, budget=None, allow_synthetic_for_tests=False):
+            budget=None, allow_synthetic_for_tests=False):
         from app.game.component_execution import run_component_policy, unavailable
         kind, key, resolved = self.resolve(request.question, request.context, budget)
         if resolved is None:
-            result = unavailable(kind + ': ' + key)
-            result.summary.update(routing_category=kind, routing_signature=key)
-            return result
+            return unavailable(kind + ': ' + key)
         route, analysis = resolved
         if kind == 'atomic':
-            result = self.tasks.run(selector, analysis, request, validation_id, provider=provider,
+            return self.tasks.run(selector, analysis, request, validation_id, provider=provider,
                 rng=rng, resource_observer=resource_observer, budget=budget,
                 allow_synthetic_for_tests=allow_synthetic_for_tests)
-            result.summary.update(routing_category='atomic',
-                routing_signature=list(key))
-            return result
         matches = [p for sig, b, _, p in self.components if sig == key and b == route[1]]
         if len(matches) != 1:
-            result = unavailable('incompatible_policy: category registration type mismatch')
-            result.summary.update(routing_category=kind,
-                routing_signature=list(key))
-            return result
-        result = run_component_policy(matches[0], selector, request.question, request.answer,
+            return unavailable('incompatible_policy: category registration type mismatch')
+        return run_component_policy(matches[0], selector, request.question, request.answer,
             request.context, validation_id, rng=rng, resource_observer=resource_observer,
-            resource_transfer=resource_transfer,
             allow_synthetic_for_tests=allow_synthetic_for_tests)
-        result.summary.update(routing_category='component',
-            routing_signature=list(key))
-        return result
 
 
 def configuration_from_atomic_artifacts(artifacts, *, allowlist=None):

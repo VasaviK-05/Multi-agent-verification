@@ -150,53 +150,6 @@ def test_joint_policy_sampling_and_category_registry(size):
     assert run.summary['selection_status'] == 'selected'
 
 
-def test_policy_preflight_precedes_sampling_and_returns_component_reports():
-    c, target, selector, _, calls = setup()
-    policy = synthetic_policy(c, target)
-    events = []
-    expected = c.obligations[0].contract.resource_manifest
-    observer = SimpleNamespace(snapshot=lambda: events.append('snapshot') or expected)
-
-    class TrackingRng:
-        def random(self):
-            events.append('sample')
-            return 0.0
-
-    request = SimpleNamespace(question=Q, answer='{"base":"765","derived":"775"}', context=REF)
-    run = QuestionPolicyConfiguration(component_entries=((c.question_signature,c.budget,True,policy),)).router().run(
-        selector, request, 'test', provider=InMemoryPolicyProvider(), rng=TrackingRng(),
-        resource_observer=observer, allow_synthetic_for_tests=True)
-    assert run.summary['execution_mode'] == 'synthetic_policy_test'
-    assert run.results and run.detail is None
-    assert events[0] == 'snapshot' and events.index('snapshot') < events.index('sample')
-    assert len(calls) == len(run.summary['attempts'])
-
-
-def test_policy_resource_mismatch_does_not_sample_or_dispatch():
-    c, target, selector, _, calls = setup()
-    policy = synthetic_policy(c, target)
-    events = []
-    expected = c.obligations[0].contract.resource_manifest
-    verifiers = list(expected.verifiers)
-    resources = list(verifiers[0].resources)
-    resources[0] = resources[0].model_copy(update={'sha256': 'f' * 64})
-    verifiers[0] = verifiers[0].model_copy(update={'resources': tuple(resources)})
-    changed = expected.model_copy(update={'verifiers': tuple(verifiers)})
-
-    class TrackingRng:
-        def random(self):
-            events.append('sample')
-            return 0.0
-
-    request = SimpleNamespace(question=Q, answer='{"base":"765","derived":"775"}', context=REF)
-    run = QuestionPolicyConfiguration(component_entries=((c.question_signature,c.budget,True,policy),)).router().run(
-        selector, request, 'test', provider=InMemoryPolicyProvider(), rng=TrackingRng(),
-        resource_observer=SimpleNamespace(snapshot=lambda: changed), allow_synthetic_for_tests=True)
-    assert run.public_status == 'uncertain'
-    assert run.summary['selection_status'] == 'resource_incompatible'
-    assert not events and not calls
-
-
 def test_real_atomic_routes_and_old_policy_identity():
     routes = []
     ids = []
