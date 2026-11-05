@@ -74,8 +74,10 @@ suppression order, are `[.0208333333333, .75, .25, .0166666666667, .2]`.
 The optimizer selected reputation-weighted E+R with probability 1; the
 dependency-group alternative has probability 0. Selected strategy ID:
 `9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6`.
-Game value .75; worst action forced support; clean validation loss 1/48*.2;
-clean coverage 43/48; coverage slack .0458333333. Solver is optimal at 1e-8,
+Game value .75; worst action forced support. The 48 clean Development outcomes
+contain 12 correct accepts, 31 correct rejects, five uncertainties and zero
+incorrect decisions. Clean validation loss is **(5/48) × 0.2 = 0.0208333**;
+clean coverage is 43/48; coverage slack .0458333333. Solver is optimal at 1e-8,
 normalization residual and primal-dual gap zero. The matching fixed plan ties.
 
 No remaining fitting work exists. Portable cell reconstruction uses the sealed
@@ -317,3 +319,22 @@ Final focused suite: **71 passed, one original Windows-specific entry deselected
 196.68 seconds; its portable wrapper executes all original assertions.
 `git diff --check` and Python compilation passed. No new policy was exported,
 no inference or service requests were made, and nothing was merged or deployed.
+
+Publication recheck of the existing verification commit: the clean-loss
+explanation above was corrected from the recorded counts and frozen 1/1/.2
+penalties; the numerical policy/matrix values were already correct. The audit
+now emits those counts and recomputes decision loss from statuses and labels,
+checking each recorded penalty. A focused recorded-outcome regression was added.
+The machine-readable evidence includes these metrics and a separate
+`publication_recheck` entry, preserving the initial run results above.
+
+The publication recheck passed 19 focused tests (10.31 seconds), the recorded-fit
+verification, and both delivery/package identity audits. The unchanged portable
+wrapper calls the original transfer-test function with only separator-normalized
+path lookup; every original assertion runs. The broader 71-test suite above was
+not repeated because no fitting, runtime or production behavior changed. The
+handoff now points to this delivery branch and recognizes the already implemented
+`FlexiblePolicyGameRuntime`/`ValidationService` wiring. Remaining integration work
+is target configuration, same-instance/resource attestation and separately
+authorized API/DB-owner acceptance, not rebuilding the dispatcher. No remaining
+documentation/testing work is identified for this completed framework scope.

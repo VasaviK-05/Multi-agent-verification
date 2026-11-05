@@ -19,6 +19,39 @@ def read(path):
     return json.loads(Path(path).read_text(encoding='utf-8'))
 
 
+def compound_clean_metrics(policy, outcomes):
+    """Recompute selected clean decision loss from statuses and frozen penalties."""
+    selected = [(sid, weight) for sid, weight in policy['solution']['probabilities'] if weight > 0]
+    assert len(selected) == 1 and selected[0][1] == 1.0
+    sid = selected[0][0]
+    clean = policy['matrix']['attack_ids'][0]
+    cell = [o for o in outcomes if o['strategy_id'] == sid and o['attack_id'] == clean]
+    assert cell and len({o['example_id'] for o in cell}) == len(cell)
+    losses = [o['context']['loss_configuration'] for o in policy['contract']['obligations']]
+    assert all(loss == losses[0] for loss in losses)
+    loss = losses[0]
+    counts = dict(correct_accept=0, correct_reject=0, false_accept=0, false_reject=0, uncertain=0)
+    for outcome in cell:
+        status, correct = outcome['public_status'], outcome['answer_is_correct']
+        assert status in {'passed', 'failed', 'uncertain'}
+        if status == 'uncertain':
+            key, penalty = 'uncertain', loss['uncertain']
+        elif status == 'passed':
+            key, penalty = ('correct_accept', 0.0) if correct else ('false_accept', loss['false_accept'])
+        else:
+            key, penalty = ('false_reject', loss['false_reject']) if correct else ('correct_reject', 0.0)
+        counts[key] += 1
+        assert math.isclose(outcome['validation_loss'], penalty, rel_tol=0, abs_tol=1e-12)
+    value = (counts['false_accept'] * loss['false_accept'] + counts['false_reject'] * loss['false_reject']
+             + counts['uncertain'] * loss['uncertain']) / len(cell)
+    assert math.isclose(value, dict(policy['solution']['attack_losses'])[clean], rel_tol=0, abs_tol=1e-12)
+    return dict(examples=len(cell), **counts, decision_coverage=1 - counts['uncertain'] / len(cell),
+                uncertainty_penalty=loss['uncertain'], clean_validation_loss=value,
+                calculation='(5/48) × 0.2 = 0.0208333' if counts['uncertain'] == 5 and len(cell) == 48
+                and counts['false_accept'] == counts['false_reject'] == 0 and loss['uncertain'] == .2
+                else 'weighted incorrect-decision and uncertainty penalties / examples')
+
+
 def verify():
     from app.game.artifacts import PolicyArtifact
     from app.game.component_execution import ComponentPolicy, enumerate_component_strategies
@@ -91,6 +124,7 @@ def verify():
     metrics = summarize(tuple((o, weights[o.strategy_id]) for o in evaluation.outcomes if o.attack_id == clean), original.loss_configuration)
     return dict(version='compound_reference_existing_fit_audit_v1',
                 compound=dict(**summary(compound, enumerate_component_strategies(compound.contract)),
+                              clean_metrics=compound_clean_metrics(compound.model_dump(mode='json'), outcomes),
                               matrix_reconstruction='sealed finalized development outcomes',
                               checked_inventory_files=checked,
                               unavailable_canonical_inputs=['preparation/study.json', 'candidate/freeze.json']),

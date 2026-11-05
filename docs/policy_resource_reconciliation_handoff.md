@@ -334,8 +334,8 @@ retry or replacement. Reference reproduction is construction/binding only:
    historical branch:
 
    ```powershell
-   git fetch origin main codex/framework-local-acceptance-v1
-   git worktree add ../framework-review origin/codex/framework-local-acceptance-v1
+   git fetch origin main codex/verify-compound-reference-fitting-20261105
+   git worktree add ../framework-review origin/codex/verify-compound-reference-fitting-20261105
    ```
 
 2. Capture the actual target without importing its app or generating. The script
@@ -350,12 +350,17 @@ retry or replacement. Reference reproduction is construction/binding only:
    accepted by copying a historical manifest. Use already available matching
    resources and `reconciliation/adapter.template.json`; no auto-download exists.
 
-3. Connect the **same actual** factory-created selector/observer to the server's
-   owned policy dispatcher. Preserve the existing API/DB audit/persistence paths.
-   A separately constructed factory's proof is not actual server-instance proof.
-   The current orchestrator's game-runtime slot expects GameRuntime, not a
-   QuestionPolicyRouter object: the API owner must adapt its dispatch/response
-   wiring to the callable router above, not pass the wrong object type. Compound
+3. Configure and validate the existing server dispatch. As inspected on
+   2026-11-05 at `f86e606a5757a695042af98e484d546637e629b8`,
+   `FlexiblePolicyGameRuntime` already adapts the router to the orchestrator's
+   runtime interface, and `ValidationService` already selects it in configured
+   game mode. Do not rebuild that wiring. Set the reviewed flexible package and
+   target adapter paths, leave legacy deployment-source settings empty, and
+   supply route-specific relocation bindings when required. The dispatcher
+   constructs the actual route-specific selector/observer and checks
+   `snapshot_for(actual_selector)` before dispatch. Validate those same instances
+   in the target server; a separately constructed factory's proof is not actual
+   server-instance proof. Preserve existing API/DB audit/persistence paths. Compound
    component reports are in `summary.attempts`; preserve their component/binding/
    validation IDs and separate original/intermediate/observed proofs in storage.
    Request generation/frontend owners must provide the exact serialized answer
@@ -367,7 +372,7 @@ retry or replacement. Reference reproduction is construction/binding only:
    Target service/resource/source differences, if present, remain explicit blocks.
 
 There are **no remaining owned local policy/framework blockers for this fixed
-scope**. API wiring, target-machine instance/resource attestation, persistence,
+scope**. Target dispatch configuration/acceptance, instance/resource attestation, persistence,
 frontend/generation formatting and deployment acceptance belong to those owners.
 Known research limitations above remain limitations, not hidden implementation
 tasks or reasons to refit.

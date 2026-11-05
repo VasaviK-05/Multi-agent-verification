@@ -7,6 +7,18 @@
       "matrix.json",
       "policy.json"
     ],
+    "clean_metrics": {
+      "calculation": "(5/48) × 0.2 = 0.0208333",
+      "clean_validation_loss": 0.020833333333333332,
+      "correct_accept": 12,
+      "correct_reject": 31,
+      "decision_coverage": 0.8958333333333334,
+      "examples": 48,
+      "false_accept": 0,
+      "false_reject": 0,
+      "uncertain": 5,
+      "uncertainty_penalty": 0.2
+    },
     "dimensions": [
       2,
       5
@@ -167,6 +179,41 @@
     "sha256": "49007a9e8787d80716351c2acaa930a5ec8f999c9b483f0340577b304c53cd36"
   },
   "preservation": "All tracked historical artifacts unchanged; pinned original transfer test unchanged.",
+  "publication_recheck": {
+    "audit_sha256": "97f3cbe83a5694b6f5dd7f69a505dea91f7f665490a36fa9df7dca4fa20f40ea",
+    "base_verification_commit": "2efd1000c635170178d5c973c69f4b0a650f35b1",
+    "consistency": {
+      "compound_approved_post_development_floor": 0.85,
+      "compound_original_90_status": "infeasible",
+      "current_target_api_acceptance_proven": false,
+      "ollama_0_40_11_compatible": false,
+      "reference_approved_post_development_floor": 0.5,
+      "reference_original_90_status": "infeasible",
+      "required_reference_ollama_version": "0.40.14",
+      "server_dispatch_wiring": "FlexiblePolicyGameRuntime and ValidationService already exist; target configuration and acceptance remain"
+    },
+    "focused_tests": {
+      "failed": 0,
+      "files": [
+        "tests/test_compound_clean_loss_verification.py",
+        "tests/test_reference_50.py",
+        "tests/test_reference_transition_portable.py",
+        "tests/test_reconciliation_execution.py",
+        "tests/test_flexible_runtime_dispatch.py"
+      ],
+      "passed": 19,
+      "seconds": 10.31
+    },
+    "generations": 0,
+    "historical_artifacts_modified": false,
+    "identity_audits": {
+      "verify_framework_delivery": "passed",
+      "verify_reconciliation_package": "passed"
+    },
+    "native_verifier_calls": 0,
+    "recorded_fit_verification": "passed; no solve or native verifier calls",
+    "refitting": false
+  },
   "reference": {
     "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
     "clean_metrics": {
