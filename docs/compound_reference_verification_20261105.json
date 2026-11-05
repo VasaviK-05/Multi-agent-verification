@@ -1,0 +1,477 @@
+{
+  "compound": {
+    "checked_inventory_files": [
+      "contract.json",
+      "development-outcomes.json",
+      "development-results.json",
+      "matrix.json",
+      "policy.json"
+    ],
+    "clean_metrics": {
+      "calculation": "(5/48) × 0.2 = 0.0208333",
+      "clean_validation_loss": 0.020833333333333332,
+      "correct_accept": 12,
+      "correct_reject": 31,
+      "decision_coverage": 0.8958333333333334,
+      "examples": 48,
+      "false_accept": 0,
+      "false_reject": 0,
+      "uncertain": 5,
+      "uncertainty_penalty": 0.2
+    },
+    "dimensions": [
+      2,
+      5
+    ],
+    "matrix_id": "bd4918e38503ec6ab990c83d687c1bc648015823a5ca2fa9ad18473421ab9970",
+    "matrix_reconstruction": "sealed finalized development outcomes",
+    "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+    "selected": [
+      {
+        "probability": 1.0,
+        "strategy": {
+          "components": [
+            [
+              "base_fact",
+              {
+                "aggregation": "reputation_weighted",
+                "estimated_cost": 84.07056144642411,
+                "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+                "verifiers": [
+                  "evidence"
+                ]
+              }
+            ],
+            [
+              "derived_sum",
+              {
+                "aggregation": "reputation_weighted",
+                "estimated_cost": 0.12252813515563805,
+                "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                "verifiers": [
+                  "rule"
+                ]
+              }
+            ]
+          ],
+          "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+          "version": "component_strategy_v1"
+        }
+      }
+    ],
+    "solution": {
+      "attack_losses": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.020833333333333332
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.75
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.25
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.016666666666666666
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.19999999999999996
+        ]
+      ],
+      "attack_probabilities": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.0
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          1.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.0
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "constraint_residuals": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.7291666666666666
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.5
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.7333333333333333
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.55
+        ]
+      ],
+      "coverage_certificate": {
+        "achieved": 0.8958333333333334,
+        "multiplier": 0.0,
+        "residual": 0.04583333333333339,
+        "version": "clean_coverage_dual_v1"
+      },
+      "dual_lower_bound": 0.75,
+      "game_value": 0.75,
+      "matrix_id": "bd4918e38503ec6ab990c83d687c1bc648015823a5ca2fa9ad18473421ab9970",
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "minimum_probability": 0.0,
+      "normalization_residual": 0.0,
+      "optimality_basis": "highs_status_0_and_clean_coverage_primal_dual_certificate_v1",
+      "primal_dual_gap": 0.0,
+      "probabilities": [
+        [
+          "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+          1.0
+        ],
+        [
+          "4a1f4788418e20084c514f9e3b2634952bf5722e3e3b9f4495d22047d8ef4ecd",
+          0.0
+        ]
+      ],
+      "status": "optimal",
+      "tolerance": 1e-08,
+      "worst_case_attacks": [
+        "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245"
+      ]
+    },
+    "unavailable_canonical_inputs": [
+      "preparation/study.json",
+      "candidate/freeze.json"
+    ]
+  },
+  "generations": 0,
+  "heldout_payloads_read": false,
+  "identity_audits": {
+    "verify_framework_delivery": "passed after test fixture changes; all frozen publication artifacts and resource pins unchanged",
+    "verify_reconciliation_package": "passed; zero model constructions or service requests"
+  },
+  "inspected_main": "f86e606a5757a695042af98e484d546637e629b8",
+  "live_activation_proven": false,
+  "native_verifier_calls": 0,
+  "portable_replay": {
+    "cases": 7,
+    "compound_partition": "development",
+    "incompatible_fixture": "resource_incompatible",
+    "live_calls": 0,
+    "output": "build/compound-reference-replay-20261105/routing.json",
+    "sha256": "49007a9e8787d80716351c2acaa930a5ec8f999c9b483f0340577b304c53cd36"
+  },
+  "preservation": "All tracked historical artifacts unchanged; pinned original transfer test unchanged.",
+  "publication_recheck": {
+    "audit_sha256": "97f3cbe83a5694b6f5dd7f69a505dea91f7f665490a36fa9df7dca4fa20f40ea",
+    "base_verification_commit": "2efd1000c635170178d5c973c69f4b0a650f35b1",
+    "consistency": {
+      "compound_approved_post_development_floor": 0.85,
+      "compound_original_90_status": "infeasible",
+      "current_target_api_acceptance_proven": false,
+      "ollama_0_40_11_compatible": false,
+      "reference_approved_post_development_floor": 0.5,
+      "reference_original_90_status": "infeasible",
+      "required_reference_ollama_version": "0.40.14",
+      "server_dispatch_wiring": "FlexiblePolicyGameRuntime and ValidationService already exist; target configuration and acceptance remain"
+    },
+    "focused_tests": {
+      "failed": 0,
+      "files": [
+        "tests/test_compound_clean_loss_verification.py",
+        "tests/test_reference_50.py",
+        "tests/test_reference_transition_portable.py",
+        "tests/test_reconciliation_execution.py",
+        "tests/test_flexible_runtime_dispatch.py"
+      ],
+      "passed": 19,
+      "seconds": 10.31
+    },
+    "generations": 0,
+    "historical_artifacts_modified": false,
+    "identity_audits": {
+      "verify_framework_delivery": "passed",
+      "verify_reconciliation_package": "passed"
+    },
+    "native_verifier_calls": 0,
+    "recorded_fit_verification": "passed; no solve or native verifier calls",
+    "refitting": false
+  },
+  "reference": {
+    "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+    "clean_metrics": {
+      "correct_accept": 5.833333333333333,
+      "correct_reject": 4.166666666666667,
+      "decision_coverage": 0.5,
+      "estimated_resource_cost": 13792.685628331243,
+      "examples": 20,
+      "false_accept": 0.0,
+      "false_reject": 0.0,
+      "mean_loss": 0.18311458072724254,
+      "selective_risk": 0.0,
+      "uncertain": 9.999999999999998,
+      "unresolved": 0.0
+    },
+    "clean_validation_loss": 0.09999999999999999,
+    "dimensions": [
+      16,
+      5
+    ],
+    "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+    "matrix_reconstruction": "training-record replay",
+    "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+    "selected": [
+      {
+        "probability": 0.16666666666666663,
+        "strategy": {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 102.07135749794816,
+          "strategy_id": "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+          "verifiers": [
+            "semantic"
+          ]
+        }
+      },
+      {
+        "probability": 0.8333333333333334,
+        "strategy": {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 16530.8084824979,
+          "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+          "verifiers": [
+            "confidence",
+            "semantic"
+          ]
+        }
+      }
+    ],
+    "solution": {
+      "attack_losses": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.09999999999999999
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.3083333333333333
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          0.39166666666666666
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.09999999999999999
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.2
+        ]
+      ],
+      "attack_probabilities": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.0
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.0
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          1.0
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.0
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.0
+        ]
+      ],
+      "constraint_residuals": [
+        [
+          "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          0.2916666766666667
+        ],
+        [
+          "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+          0.08333334333333337
+        ],
+        [
+          "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+          9.999999994736442e-09
+        ],
+        [
+          "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+          0.2916666766666667
+        ],
+        [
+          "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+          0.19166667666666665
+        ]
+      ],
+      "dual_lower_bound": 0.39166666666666666,
+      "game_value": 0.39166666666666666,
+      "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+      "message": "Stage A and Stage B: Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "minimum_probability": 0.0,
+      "normalization_residual": 0.0,
+      "optimality_basis": "highs_validation_then_cost_two_stage_certificate_v1",
+      "primal_dual_gap": 0.0,
+      "probabilities": [
+        [
+          "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+          0.16666666666666663
+        ],
+        [
+          "c3273cb957fd4ae1a9e2d0b160ec808dc5755f4df842b14630c2bc02b65f12ea",
+          0.0
+        ],
+        [
+          "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+          0.8333333333333334
+        ],
+        [
+          "c29fd335d469ec5b3a677ce60bf87fe2c5cad8291a021d7d22b08222eace6bdf",
+          0.0
+        ],
+        [
+          "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          0.0
+        ],
+        [
+          "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          0.0
+        ],
+        [
+          "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+          0.0
+        ],
+        [
+          "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+          0.0
+        ],
+        [
+          "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          0.0
+        ],
+        [
+          "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          0.0
+        ],
+        [
+          "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+          0.0
+        ],
+        [
+          "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+          0.0
+        ],
+        [
+          "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          0.0
+        ],
+        [
+          "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          0.0
+        ],
+        [
+          "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          0.0
+        ],
+        [
+          "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          0.0
+        ]
+      ],
+      "reliability_certificate": {
+        "achieved_coverage": 0.5,
+        "attack_multipliers": [
+          [
+            "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+            0.0
+          ],
+          [
+            "a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245",
+            0.0
+          ],
+          [
+            "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469",
+            0.0
+          ],
+          [
+            "4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01",
+            0.0
+          ],
+          [
+            "068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad",
+            0.0
+          ]
+        ],
+        "cost_dual_lower_bound": 13792.68562833124,
+        "cost_primal_dual_gap": 3.637978807091713e-12,
+        "coverage_multiplier": 27381.228541666587,
+        "coverage_residual": 0.0,
+        "expected_cost": 13792.685628331245,
+        "reliability_cap": 0.39166667666666666,
+        "stage_a_json": "{\"status\":\"optimal\",\"message\":\"Optimization terminated successfully. (HiGHS Status 7: Optimal)\",\"tolerance\":1e-8,\"probabilities\":[[\"6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e\",0.16666666666666663],[\"c3273cb957fd4ae1a9e2d0b160ec808dc5755f4df842b14630c2bc02b65f12ea\",0.0],[\"9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955\",0.8333333333333334],[\"c29fd335d469ec5b3a677ce60bf87fe2c5cad8291a021d7d22b08222eace6bdf\",0.0],[\"ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a\",0.0],[\"6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8\",0.0],[\"4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95\",0.0],[\"a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f\",0.0],[\"9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a\",0.0],[\"fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9\",0.0],[\"af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd\",0.0],[\"e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad\",0.0],[\"0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8\",0.0],[\"93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273\",0.0],[\"3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04\",0.0],[\"a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80\",0.0]],\"game_value\":0.39166666666666666,\"constraint_residuals\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.2916666666666667],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.08333333333333337],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.2916666666666667],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.19166666666666665]],\"attack_losses\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.09999999999999999],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.3083333333333333],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",0.39166666666666666],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.09999999999999999],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.2]],\"worst_case_attacks\":[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\"],\"normalization_residual\":0.0,\"minimum_probability\":0.0,\"matrix_id\":\"8cd425f5acc1346eefb1818670365c15e6f42ae82195ebf2b3b1e9f9cbfddd80\",\"attack_probabilities\":[[\"f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782\",0.0],[\"a69c629a2584dc8681efde073abe5c0a14c7b8088ab9e7d89bab7f246b5c4245\",0.0],[\"25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469\",1.0],[\"4b28ec0c6fcd5c21a7d0625b9aeb6675c20f70afec214787f7d0cec1e2fd1f01\",0.0],[\"068f66d9b1c88d601073ca13144be8968c5e5cad17427c6a53fe89c5ae7a38ad\",0.0]],\"dual_lower_bound\":0.39166666666666666,\"primal_dual_gap\":0.0,\"optimality_basis\":\"highs_status_0_and_clean_coverage_primal_dual_certificate_v1\",\"coverage_certificate\":{\"version\":\"clean_coverage_dual_v1\",\"multiplier\":0.3833333333333333,\"achieved\":0.5,\"residual\":0.0}}",
+        "version": "validation_then_cost_certificate_v1"
+      },
+      "status": "optimal",
+      "tolerance": 1e-08,
+      "worst_case_attacks": [
+        "25bf123c7e8d7f003621ae90e5d6f6ea1420a388d2ef8ada6408c7d7cb7ce469"
+      ]
+    }
+  },
+  "repeat_audit_bytes_equal": true,
+  "repeat_audit_sha256": "2a6625b1eb24a4980f474ff02192c9d1e8ab64e27b4b8216b020842d09c27f58",
+  "test_environment": {
+    "numpy": "1.26.4",
+    "purpose": "isolated offline test environment, not collection/live compatibility attestation",
+    "pydantic": "2.11.3",
+    "python": "3.12",
+    "scipy": "1.15.2"
+  },
+  "tests": {
+    "after_portability_changes": {
+      "deselected": 1,
+      "note": "Original Windows-only test replaced by portable wrapper executing all its unchanged assertions; serialization fixture repaired.",
+      "passed": 15
+    },
+    "final_focused_suite": {
+      "deselected": 1,
+      "failed": 0,
+      "note": "Pinned Windows-specific original entry replaced by portable wrapper executing all unchanged assertions.",
+      "passed": 71,
+      "seconds": 196.68
+    },
+    "initial_focused_suite": {
+      "failed": 2,
+      "passed": 69,
+      "reason": "Windows path resolution in pinned transfer test; OS-dependent serialization fixture"
+    }
+  },
+  "verification_branch": "codex/verify-compound-reference-fitting-20261105",
+  "verification_note": "Existing optimality certificates validated; no new policy fitted or exported.",
+  "version": "compound_reference_existing_fit_audit_v1"
+}
