@@ -125,9 +125,20 @@ def test_changed_reference_prompt_source_rejects(tmp_path,monkeypatch):
 
 
 def test_reference_logical_serialization_does_not_excuse_other_resources(tmp_path,monkeypatch):
+    import json
     from tests.test_reconciled_resources import assets
     from app.game.offline import reference_compatibility as ref
     config,intermediate,current,hashes,receipt=assets(tmp_path)
+    # Make the physical/logical serialization difference explicit on every OS.
+    # Native write_text newline conversion previously supplied it only on Windows.
+    manifest_path=Path(config.index_dir)/'manifest.json'
+    manifest_path.write_bytes(json.dumps(current,separators=(',',':')).encode('utf-8'))
+    hashes['manifest.json']=a.file_digest(manifest_path)
+    physical=intermediate.model_dump(mode='json')
+    for verifier in physical['verifiers']:
+        for resource in verifier['resources']:
+            if resource['resource_id']=='evidence-index':resource['sha256']=content_id([hashes,receipt])
+    intermediate=ResourceManifest.model_validate(physical)
     logical=content_id([a._current_index_hashes(hashes,current),receipt])
     data=intermediate.model_dump(mode='json')
     for v in data['verifiers']:
