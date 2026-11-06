@@ -28,8 +28,84 @@ If any reference text is supplied to a verifier, label that condition **referenc
 
 ## Direct arithmetic and word problems
 
-GSM8K is a word-problem dataset. The current project does not contain a verified direct-arithmetic subset marker. If direct arithmetic questions are studied separately, create a Development-time annotation rubric (for example, whether the question supplies an explicit closed expression without narrative reasoning), annotate before evaluation, measure reviewer agreement, and keep those groups distinct from general word problems. Do not infer the subset from the rule verifier's success or failure, and do not use final-test performance to select its definition.
+GSM8K is a word-problem dataset. The current project does not contain a verified direct-arithmetic subset marker, annotation, or validated subset. For `research_v1`, direct arithmetic is excluded as a separate experimental population. No direct-arithmetic count is claimed, and no candidate label or group assignment was changed to create one.
+
+Rule Verifier success or failure does not identify direct arithmetic. Development scores and Final Test items must not be used to define that population.
+
+If a future study needs direct arithmetic, define it as a separate Development-time annotation task before evaluation. The task needs a written inclusion and exclusion rubric, annotation completed before any evaluation, measured reviewer agreement, and separate reporting from the GSM8K word-problem population. Do not select the definition from Final Test performance or from the Rule Verifier. Until that annotation is completed and validated, do not report a direct-arithmetic subset.
 
 ## Required record fields and exclusions
 
 At minimum preserve `dataset`, `dataset_version`, `source_split`, `original_id`, `group_id`, `question`, `candidate_answer`, `gold_label`, `label_provenance`, `candidate_source`, `adjudication_status`, `reference_context`, `evidence_resource_id`, and `skip_reason`. Keep original source metadata unchanged alongside normalized fields. Any excluded item remains in an audit ledger with its stable ID and reason.
+
+## research_v1 label distribution
+
+Counts below are the built `research_v1` candidate records in `evaluation/datasets/reconciled_candidates/research_v1/validation_summary.json` (`quality.combined` and `quality.benchmarks`) and the same totals in `manifest.json` `counts`. They describe automated source matching and construction rules. They are not human adjudication results. `manifest.json` `label_quality.human_adjudication_claimed` is false. Writing this protocol does not mean reviewers have applied it.
+
+| Label state | GSM8K | HotpotQA | Combined |
+|---|---:|---:|---:|
+| Verified correct | 464 | 500 | 964 |
+| Verified incorrect | 215 | 0 | 215 |
+| Unresolved | 321 | 550 | 871 |
+| Candidate records | 1,000 | 1,050 | 2,050 |
+
+These states are different kinds of evidence:
+
+- **Benchmark/source-derived correctness.** A GSM8K gold candidate is `verified_correct` only when the benchmark final answer and a complete replay of the tagged worked solution agree. A HotpotQA gold candidate is `verified_correct` only when it matches the benchmark answer and every supporting-fact reference maps to non-empty supplied context. That HotpotQA check uses the question's own source context. It is not a judgment that the shared Evidence Verifier corpus retrieves the answer.
+- **Narrow GSM8K gold+1 incorrect labels.** The 215 `verified_incorrect` GSM8K records are the subset of `synthetic_numeric_perturbation` candidates accepted by the manifest rule `narrow discrete-count +1 rule with independently replayed source equations`: an exact integer count, a discrete "how many" question, no ratio or rounding cues, a complete replay, and a candidate equal to `gold + 1`. The other gold+1 candidates stay unresolved. This rule does not estimate natural wrong answers.
+- **HotpotQA cross-example candidates.** Each question has a `synthetic_cross_example_answer` borrowed from another example. Borrowing does not establish that the answer is wrong for the target question. These 500 records remain unresolved. Exact match and token F1 are diagnostics only.
+- **Explicit-negation candidates.** research_v1 keeps 50 `explicit_negation_of_context_supported_benchmark_answer` records from the prior pilot. The manifest records `prior_explicit_negation_statuses_demoted_to_unresolved: 50`. A literal negation plus context presence is not, by itself, proof that the candidate is incorrect. They remain unresolved.
+- **Human-adjudicated labels.** None are claimed. No reviewer identity, blinded decision, or disagreement resolution is stored as a completed research_v1 adjudication.
+
+HotpotQA therefore has zero verified incorrect candidates in research_v1.
+
+## Why unresolved is not incorrect
+
+`unresolved` means the approved check did not establish either correctness or incorrectness. That includes failed or inapplicable construction rules, borrowed answers, demoted explicit negations, ambiguity, and missing evidence. An unresolved candidate has no binary `answer_is_correct` value. Counting it as incorrect would turn absence of a positive proof into a negative label. The original record stays in `unresolved_candidates.jsonl` with its construction method and prior notes.
+
+## Independent adjudication protocol for unresolved candidates
+
+This section specifies the review that is still required. It does not report that the review has been done. `evaluation/docs/candidate_answer_validation_audit.md` is not present in this checkout, so no audit file is cited as completed review.
+
+For each unresolved candidate:
+
+1. Use a blinded first pass where feasible. The reviewer sees the question, the candidate answer, and the permitted reference context for that question. The reviewer does not see framework predictions, `expected_correct`, the construction method, or another reviewer's decision. GSM8K worked solutions stay out of the blinded packet. HotpotQA may include the supplied supporting passages already stored with the question.
+2. The reviewer decides correctness independently of how the candidate was generated.
+3. The allowed outcomes are `correct`, `incorrect`, and `insufficient-evidence`. Insufficient evidence stays unresolved. It is not converted to incorrect.
+4. The reviewer records the evidence used and the reason for the outcome. Evidence is a derivation, the benchmark answer under the approved normalization rule, or a cited permitted passage. A verifier output is not admissible evidence.
+5. A second reviewer adjudicates disagreements. If the two independent outcomes differ, or if either outcome is insufficient evidence while the other is decisive, the second reviewer records a separate decision and rationale. Absent agreement on `correct` or `incorrect`, the candidate remains unresolved.
+6. Reviewer identities, decisions, evidence, timestamps, and the disagreement outcome remain auditable and are stored beside the original candidate record. They do not replace source fields.
+
+Only after this protocol is actually applied, and the resulting label is approved, may a formerly unresolved candidate enter a binary example.
+
+## Exclusion rules
+
+Exclusion requires an explicit reason code and a short explanation stored with the stable candidate ID, question group ID, and partition. The original candidate record is preserved. Exclusion does not delete it and does not rewrite its construction label. Permitted reason codes are `unresolved_pending_review`, `insufficient_evidence`, `ambiguous_after_adjudication`, `reviewer_disagreement_unresolved`, and `failed_identity_or_context_check`. A new reason code must be added to this list before it is used. Current research_v1 practice excludes unresolved candidates from binary offline examples for the reason that they have no binary label. That exclusion is recorded by the offline adapter; it is not a finding that those answers are wrong.
+
+## Binary offline examples
+
+Only approved verified labels enter binary offline examples. In the current build, that approved set is the 964 `verified_correct` and 215 `verified_incorrect` records produced by the source and construction rules above. The 871 unresolved records are written to the excluded-unresolved ledger and are absent from `prepared_labelled_candidates` (1,179). Human review outcomes do not yet add to or remove from that set, because no human adjudication is claimed. Structural acceptance of a label-method name by the offline schema is not scientific approval of that method.
+
+## Limits on false-acceptance and false-rejection evaluation
+
+False acceptance needs incorrect candidates that the system accepts. False rejection needs correct candidates that the system rejects. research_v1 can support those rates only inside the approved binary subset, and only with the following limits:
+
+- All 215 verified incorrect candidates are GSM8K gold+1 discrete-count items. A false-acceptance rate on that subset is a rate for this narrow construction, not for arbitrary wrong answers.
+- HotpotQA has no verified incorrect candidate, so HotpotQA false acceptance cannot be estimated from research_v1 binary labels.
+- The binary subset has 964 correct and 215 incorrect labels. That imbalance is a property of the construction rules. It is not an estimate of how often candidate answers are wrong in deployment.
+- Unresolved candidates cannot fill the missing negative class. Using them as incorrect would inflate false-acceptance denominators with unproven cases.
+- Abstention remains a third system outcome. It is not a rejection and does not convert an unresolved gold label into a negative.
+
+## Candidate Label Decisions and Remaining Actions
+
+| Item | Status | Decision or remaining action |
+|---|---|---|
+| Protocol for construction, provenance, and exclusions | Completed as documentation | The sections above state the rules. They do not record completed human review. |
+| research_v1 automated label counts | Completed | 964 verified correct, 215 verified incorrect, 871 unresolved, across 2,050 candidate records. |
+| HotpotQA verified incorrect candidates | Completed as a limitation | Zero. |
+| GSM8K verified incorrect scope | Completed as a limitation | 215 labels, only the narrow gold+1 discrete-count rule. |
+| Explicit-negation and cross-example HotpotQA answers | Completed as a limitation | 50 and 500 records respectively; both remain unresolved. |
+| Human adjudication | Not started | `human_adjudication_claimed` is false. No reviewer decisions are claimed. |
+| Remaining review workload | Open | 871 unresolved candidates: GSM8K 321 (History 199, Development 122) and HotpotQA 550 (History 340, Development 210). Each needs independent review under the protocol above. Disagreements need a second reviewer. |
+| Binary offline membership | Completed for the current files | Only the 1,179 approved verified labels are prepared. Unresolved records stay excluded with their reason. |
+| False-acceptance and false-rejection claims | Not supported as general results | No HotpotQA negative class, no natural-error sample, and no human-adjudicated negatives. GSM8K rates would cover only the narrow gold+1 subset. |

@@ -1,0 +1,50 @@
+# Current recorded state. Values are intentionally explicit and unapproved;
+# approval requires a reviewed edit with evidence and approver attribution.
+approved_benchmarks:
+  approved: false
+  observed_candidates: [GSM8K, HotpotQA]
+  note: Dataset selection recommends these populations but formal approval is not recorded.
+source_versions:
+  approved: false
+  recorded: true
+  final_test_sources_recorded: true
+  note: Provisional Final Test records GSM8K test main@740312add88f781978c0658806c59bc2815b9866 and HotpotQA distractor@1908d6afbbead072334abe2965f91bd2709910ab; source hashes are in the frozen provisional manifest. Formal source-population and license approval is pending.
+candidate_label_policy:
+  approved: false
+  final_test_policy_recorded: true
+  note: Provisional Final Test uses benchmark-gold-only candidates with deterministic source-backed validation; it has no negative class and has not received protocol approval.
+label_audit:
+  approved: false
+  human_adjudication_claimed: false
+  limitations: [narrow_gsm8k_gold_plus_one_rule, no_research_v1_hotpotqa_negatives]
+verifier_eligibility:
+  approved: false
+evidence_configuration:
+  approved: false
+loss_configuration:
+  approved: false
+threshold_configuration:
+  approved: false
+resource_budget:
+  approved: false
+attack_scenarios:
+  approved: false
+metrics_outcomes:
+  approved: false
+  definitions_documented: true
+statistical_analysis_plan:
+  approved: false
+development_pilot:
+  completed: false
+sample_size_justification:
+  approved: false
+  provisional_operational_allocation_recorded: true
+  note: 1319 groups per benchmark after exact exclusions; this is operationally capped by the fresh GSM8K test pool and is not a power calculation.
+attempts:
+  complete_count: 0
+offline_examples:
+  complete_count: 0
+policy_fitting_ready: false
+license_citation_status:
+  approved: false
+  note: Formal approval remains pending. Source snapshots and revisions are recorded for the provisional Final Test; license/citation approval is not inferred from local availability.
