@@ -14,11 +14,17 @@ MIGRATIONS = [
     "005_verifier_cost_measurements.sql",
     "006_ground_truth_idempotency.sql",
     "007_verifier_cost_estimate_idempotency.sql",
+    "008_live_verifier_recovery.sql",
+    "009_verifier_attempt_identity.sql",
+    "010_execution_lease_recovery.sql",
 ]
 
 APPLYABLE_MIGRATIONS = {
     "006_ground_truth_idempotency.sql",
     "007_verifier_cost_estimate_idempotency.sql",
+    "008_live_verifier_recovery.sql",
+    "009_verifier_attempt_identity.sql",
+    "010_execution_lease_recovery.sql",
 }
 
 # Required schema evidence for adopting migrations on an existing database.
@@ -77,6 +83,39 @@ REQUIRED_COLUMNS = {
             "source_attempt_ids", "calculated_at",
         },
     },
+    "008_live_verifier_recovery.sql": {
+        "validation_executions": {
+            "validation_id", "execution_status", "execution_mode",
+            "request_payload", "request_digest", "analysis_snapshot",
+            "plan_payload", "plan_digest", "final_response",
+            "final_response_digest", "failure_details", "block_reason",
+            "created_at", "updated_at", "completed_at",
+        },
+        "live_verifier_attempts": {
+            "attempt_id", "validation_id", "call_key", "execution_order",
+            "verifier_name", "component_id", "report_validation_id",
+            "lifecycle_status", "outcome", "report", "report_digest",
+            "error_type", "error_message", "started_at", "completed_at",
+            "duration_ms", "estimated_cost", "cost_units",
+            "created_at", "updated_at",
+        },
+    },
+    "009_verifier_attempt_identity.sql": {
+        "live_verifier_attempts": {
+            "identity_binding",
+        },
+        "verifier_outputs": {
+            "attempt_id",
+        },
+    },
+    "010_execution_lease_recovery.sql": {
+        "validation_executions": {
+            "lease_token",
+            "worker_id",
+            "heartbeat_at",
+            "lease_expires_at",
+        },
+    },
 }
 
 REQUIRED_CONSTRAINTS = {
@@ -127,6 +166,45 @@ REQUIRED_CONSTRAINTS = {
     "007_verifier_cost_estimate_idempotency.sql": {
         "verifier_cost_estimates_calibration_digest_unique",
     },
+    "008_live_verifier_recovery.sql": {
+        "validation_executions_pkey",
+        "validation_executions_validation_id_fkey",
+        "validation_executions_execution_status_check",
+        "validation_executions_request_payload_check",
+        "validation_executions_analysis_snapshot_check",
+        "validation_executions_plan_payload_check",
+        "validation_executions_final_response_check",
+        "validation_executions_failure_details_check",
+        "validation_executions_request_digest_valid",
+        "validation_executions_plan_digest_valid",
+        "validation_executions_response_digest_valid",
+        "validation_executions_plan_pair",
+        "validation_executions_response_pair",
+        "validation_executions_completed_response",
+
+        "live_verifier_attempts_pkey",
+        "live_verifier_attempts_validation_id_fkey",
+        "live_verifier_attempts_execution_order_check",
+        "live_verifier_attempts_lifecycle_status_check",
+        "live_verifier_attempts_outcome_check",
+        "live_verifier_attempts_report_check",
+        "live_verifier_attempts_duration_ms_check",
+        "live_verifier_attempts_estimated_cost_check",
+        "live_attempt_call_key_nonblank",
+        "live_attempt_verifier_nonblank",
+        "live_attempt_identity_unique",
+        "live_attempt_order_unique",
+        "live_attempt_report_pair",
+        "live_attempt_report_digest_valid",
+        "live_attempt_state_consistency",
+    },
+    "009_verifier_attempt_identity.sql": {
+        "fk_verifier_output_attempt",
+        "verifier_outputs_attempt_unique",
+    },
+    "010_execution_lease_recovery.sql": {
+        "validation_execution_lease_pair",
+    },
 }
 
 REQUIRED_INDEXES = {
@@ -141,6 +219,14 @@ REQUIRED_INDEXES = {
         "verifier_cost_attempts_setup_idx",
         "verifier_cost_attempts_verifier_time_idx",
         "verifier_cost_estimates_lookup_idx",
+    },
+    "008_live_verifier_recovery.sql": {
+        "idx_validation_executions_status",
+        "idx_live_attempts_validation_order",
+        "idx_live_attempts_status",
+    },
+    "010_execution_lease_recovery.sql": {
+        "idx_validation_executions_lease_expiry",
     },
 }
 

@@ -36,6 +36,9 @@ def test_migration_list_contains_existing_migrations():
         "005_verifier_cost_measurements.sql",
         "006_ground_truth_idempotency.sql",
         "007_verifier_cost_estimate_idempotency.sql",
+        "008_live_verifier_recovery.sql",
+        "009_verifier_attempt_identity.sql",
+        "010_execution_lease_recovery.sql",
     ]
 
 
@@ -197,4 +200,7 @@ def test_only_whitelisted_migration_can_be_applied():
     assert run_migrations.APPLYABLE_MIGRATIONS == {
         "006_ground_truth_idempotency.sql",
         "007_verifier_cost_estimate_idempotency.sql",
+        "008_live_verifier_recovery.sql",
+        "009_verifier_attempt_identity.sql",
+        "010_execution_lease_recovery.sql",
     }

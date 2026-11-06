@@ -140,3 +140,143 @@ def get_validation(validation_id: str) -> dict | None:
             cursor.close()
         if connection:
             connection.close()
+
+
+def create_validation_record(
+    validation_id: str,
+    question_id: int | None,
+    question: str,
+    generated_answer: str,
+    context: str | None,
+    session_id: str | None,
+    connection=None,
+):
+    """Create the parent validation record before execution starts."""
+
+    owns_connection = connection is None
+    cursor = None
+
+    try:
+        if owns_connection:
+            connection = get_connection()
+
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            INSERT INTO validation_records (
+                validation_id,
+                question_id,
+                question,
+                generated_answer,
+                context,
+                final_status,
+                final_score,
+                session_id,
+                selected_verifiers,
+                created_at
+            )
+            VALUES (%s, %s, %s, %s, %s, NULL, NULL, %s, %s::jsonb, NOW())
+            """,
+            (
+                validation_id,
+                question_id,
+                question,
+                generated_answer,
+                context,
+                session_id,
+                json.dumps([]),
+            ),
+        )
+
+        if owns_connection:
+            connection.commit()
+
+    except Exception:
+        if owns_connection and connection:
+            connection.rollback()
+        raise
+
+    finally:
+        if cursor:
+            cursor.close()
+        if owns_connection and connection:
+            connection.close()
+
+
+def update_validation_record(
+    validation_id: str,
+    question_id: int | None,
+    question: str,
+    generated_answer: str,
+    context: str | None,
+    final_status: str,
+    final_score: float | None,
+    session_id: str | None,
+    domain: str | None = None,
+    difficulty: str | None = None,
+    selected_verifiers: list[str] | None = None,
+    early_stop_reason: str | None = None,
+    signed_score: float | None = None,
+):
+    """Update an existing validation record with its final result."""
+
+    connection = None
+    cursor = None
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            UPDATE validation_records
+            SET
+                question_id = %s,
+                question = %s,
+                generated_answer = %s,
+                context = %s,
+                final_status = %s,
+                final_score = %s,
+                session_id = %s,
+                domain = %s,
+                difficulty = %s,
+                selected_verifiers = %s::jsonb,
+                early_stop_reason = %s,
+                signed_score = %s
+            WHERE validation_id = %s
+            """,
+            (
+                question_id,
+                question,
+                generated_answer,
+                context,
+                final_status,
+                final_score,
+                session_id,
+                domain,
+                difficulty,
+                json.dumps(selected_verifiers or []),
+                early_stop_reason,
+                signed_score,
+                validation_id,
+            ),
+        )
+
+        if cursor.rowcount != 1:
+            raise ValueError(
+                f"Validation record not found: {validation_id}"
+            )
+
+        connection.commit()
+
+    except Exception:
+        if connection:
+            connection.rollback()
+        raise
+
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()

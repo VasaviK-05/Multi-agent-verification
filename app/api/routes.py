@@ -13,7 +13,7 @@ from app.database.session_repository import (
     get_session_questions,
     get_sessions,
 )
-from app.database.validation_repository import save_validation
+from app.database.validation_repository import update_validation_record
 from app.database.verifier_repository import save_verifier_outputs
 from app.database.audit_repository import create_audit, update_audit
 from app.models.schemas import (
@@ -23,13 +23,16 @@ from app.models.schemas import (
     ValidationResponse,
 )
 from app.services.validation_service import ValidationService
-from database import get_connection
+from app.orchestration.validation_orchestrator import ValidationOrchestrator
+
 from llm_service import generate_answer
 from app.ground_truth.storage import save_ground_truth
 
 
 router = APIRouter()
-_validation_service = ValidationService()
+_validation_service = ValidationService(
+    orchestrator=ValidationOrchestrator(persist_execution=True)
+)
 
 
 @router.get("/health")
@@ -47,9 +50,16 @@ def validate(request: ValidationRequest):
     if result.validation_id is None:
         return result
 
+    orchestrator = _validation_service._orchestrator
+    attempt_ids = {
+        id(result_item): attempt_id
+        for result_item in result.results
+        if (attempt_id := orchestrator.get_attempt_id_for_result(result_item))
+    }
+
     # Persist validation first because the audit has a foreign key
     # referencing validation_records.
-    save_validation(
+    update_validation_record(
         validation_id=result.validation_id,
         question_id=request.question_id,
         question=request.question,
@@ -87,6 +97,7 @@ def validate(request: ValidationRequest):
             validation_id=result.validation_id,
             question_id=request.question_id,
             results=result.results,
+            attempt_ids=attempt_ids,
         )
 
         if result.ground_truth and request.question_id is not None:
@@ -317,8 +328,15 @@ def generate_and_validate(request: GenerateAndValidateRequest):
         if not validation_id:
             raise ValueError("Validation did not return a validation ID")
 
+        orchestrator = _validation_service._orchestrator
+        attempt_ids = {
+            id(result_item): attempt_id
+            for result_item in validation_result.results
+            if (attempt_id := orchestrator.get_attempt_id_for_result(result_item))
+        }
+
         # Persist validation before creating its audit.
-        save_validation(
+        update_validation_record(
             validation_id=validation_id,
             question_id=question_id,
             question=request.question,
@@ -356,6 +374,7 @@ def generate_and_validate(request: GenerateAndValidateRequest):
                 validation_id=validation_id,
                 question_id=question_id,
                 results=validation_result.results,
+                attempt_ids=attempt_ids,
             )
 
             if validation_result.ground_truth:

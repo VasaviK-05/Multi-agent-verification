@@ -8,6 +8,7 @@ def save_verifier_outputs(
     validation_id: str,
     question_id: int,
     results: list,
+    attempt_ids: dict[int, str] | None = None,
 ):
     connection = None
     cursor = None
@@ -30,11 +31,12 @@ def save_verifier_outputs(
                     latency_ms,
                     created_at,
                     execution_order,
-                    question_id
+                    question_id,
+                    attempt_id
                 )
                 VALUES (
                     %s, %s, %s, %s, %s,
-                    %s, %s::jsonb, %s, NOW(), %s, %s
+                    %s, %s::jsonb, %s, NOW(), %s, %s, %s
                 )
                 """,
                 (
@@ -48,6 +50,7 @@ def save_verifier_outputs(
                     None,
                     execution_order,
                     question_id,
+                    (attempt_ids or {}).get(id(result)),
                 ),
             )
 
