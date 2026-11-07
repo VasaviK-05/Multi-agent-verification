@@ -290,7 +290,8 @@ def scoped_component_selector(selector,contract):
 
 
 def run_component_policy(policy, selector, question, answer, reference, validation_id, *,
-                         rng, resource_observer, allow_synthetic_for_tests=False):
+                         rng, resource_observer, allow_synthetic_for_tests=False,
+                         execution_journal=None):
     """Production gate. Existing Policy/PolicyArtifact objects are rejected."""
     try:
         policy = ComponentPolicy.model_validate(policy)
@@ -316,8 +317,15 @@ def run_component_policy(policy, selector, question, answer, reference, validati
         selected=next(sid for sid,p in reversed(policy.solution.probabilities) if p>0)
     strategies = enumerate_component_strategies(policy.contract)
     strategy = next(s for s in strategies if s.strategy_id == selected)
+    if execution_journal is not None:
+        execution_journal.set_plan({"execution_mode": "component_game",
+            "policy_id": policy.policy_id, "contract_id": policy.contract.compatibility_id,
+            "strategy_id": strategy.strategy_id,
+            "components": [{"component_id": component, "verifiers": list(team.verifiers)}
+                           for component, team in strategy.components]})
     result = run_component_diagnostic(policy.contract, strategy, selector, question, answer,
-        reference, validation_id, resource_observer=resource_observer, compatibility_policy_id=policy.policy_id)
+        reference, validation_id, resource_observer=resource_observer,
+        compatibility_policy_id=policy.policy_id, execution_journal=execution_journal)
     if result.summary.get('selection_status')=='diagnostic':
         result.summary['selection_status']='selected'
     result.summary.update(policy_id=policy.policy_id, evidence_kind=policy.evidence_kind,
@@ -327,7 +335,8 @@ def run_component_policy(policy, selector, question, answer, reference, validati
 
 
 def run_component_diagnostic(contract, strategy, selector, question, answer, reference,
-                             validation_id, *, resource_observer, compatibility_policy_id=None):
+                             validation_id, *, resource_observer, compatibility_policy_id=None,
+                             execution_journal=None):
     """Explicit diagnostic harness. Does not fit, register or authorize a policy."""
     from app.analysis.capability_probe_analyzer import CapabilityProbeAnalyzer
     from app.game.frozen_planning import frozen_selector
@@ -384,11 +393,22 @@ def run_component_diagnostic(contract, strategy, selector, question, answer, ref
                 validation_id=cid, binding_id=component.binding_id,
                 call_id=content_id([cid, name]), question=component.question, answer=component.answer,
                 estimated_cost=dict(obligation.context.attempt_costs)[name])
+            journal_attempt = None
             try:
+                if execution_journal is not None:
+                    journal_attempt = execution_journal.start_attempt(
+                        verifier_name=name, component_id=component.component_id,
+                        report_validation_id=cid, binding_id=component.binding_id,
+                        call_id=event['call_id'], estimated_cost=event['estimated_cost'])
                 raw = frozen.resolve(name).verify(component.question, component.answer, reference)
             except (VerifierUnavailable, VerifierExecutionFailure) as exc:
                 state = 'unavailable' if isinstance(exc, VerifierUnavailable) else 'failed'
                 event['error'] = str(exc)
+                if journal_attempt is not None:
+                    if state == 'unavailable':
+                        execution_journal.unavailable_attempt(journal_attempt, reason=str(exc))
+                    else:
+                        execution_journal.failed_attempt(journal_attempt, error=exc)
             else:
                 checked, _, _ = canonical_reports([raw], team=(name,), validation_id=cid, deduplicate=False)
                 row = checked[0]
@@ -400,6 +420,11 @@ def run_component_diagnostic(contract, strategy, selector, question, answer, ref
                 rows.append(row)
                 event['report'] = row.model_dump(mode='json')
                 state = 'abstention' if is_abstention(row) else 'directional'
+                if journal_attempt is not None:
+                    execution_journal.complete_attempt(journal_attempt,
+                        report=row.model_dump(mode='json'), outcome=state)
+            if journal_attempt is not None:
+                event['journal_attempt_id'] = journal_attempt['attempt_id']
             event.update(state=state, elapsed_ms=(perf_counter()-start)*1000)
             attempts.append(event)
             states.append((name, state))

@@ -62,19 +62,21 @@ class GameRuntime:
             raise ValueError("domain routes must be unique")
         object.__setattr__(self, "domain_routes", routes)
 
-    def run(self, selector, analysis, request, validation_id):
+    def run(self, selector, analysis, request, validation_id, *, execution_journal=None):
         if self.domain_routes:
             route = next((r for r in self.domain_routes if r.domain == analysis.domain), None)
             if route is None:
                 # Empty provider guarantees no accidental execution via an anchor episode.
                 from app.game.artifacts import InMemoryPolicyProvider
                 run = GameRuntime(InMemoryPolicyProvider(), self.episode, self.rng,
-                    self.allow_synthetic_for_tests, self.resource_observer).run(selector, analysis, request, validation_id)
+                    self.allow_synthetic_for_tests, self.resource_observer).run(selector, analysis, request, validation_id,
+                    execution_journal=execution_journal)
                 run.summary.update(selection_status="unmapped_domain", selection_reasons=["no explicit domain route"])
                 return run
             episode = route.pooled_episode if route.is_sparse else route.direct_episode
             run = GameRuntime(self.provider, episode, self.rng, self.allow_synthetic_for_tests,
-                              self.resource_observer).run(selector, analysis, request, validation_id)
+                              self.resource_observer).run(selector, analysis, request, validation_id,
+                                  execution_journal=execution_journal)
             run.summary.update(policy_route="pooled" if route.is_sparse else "direct",
                 routing_domain=route.domain, routing_rule="minimum_eligible_candidate_history_v1",
                 routing_history_observations=route.history_observations,
@@ -221,24 +223,46 @@ class GameRuntime:
             matrix_id=artifact.policy.matrix.matrix_id, selected_strategy_id=strategy.strategy_id,
             team=list(strategy.verifiers), aggregation=strategy.aggregation,
             estimated_selected_cost=strategy.estimated_cost, selection_status="selected")
+        if execution_journal is not None:
+            execution_journal.set_plan({"execution_mode": "game", "episode_id": episode.episode_id,
+                "artifact_id": artifact.artifact_id, "policy_id": artifact.policy.policy_id,
+                "strategy_id": strategy.strategy_id, "team": list(strategy.verifiers),
+                "aggregation": strategy.aggregation, "compatibility_id": current.compatibility_id})
         results, states, attempts = [], [], []
         for name in strategy.verifiers:
             cost = dict(current.attempt_costs)[name]
-            record = dict(verifier_name=name, estimated_attempt_cost=cost)
+            record = dict(verifier_name=name, validation_id=validation_id,
+                          estimated_attempt_cost=cost)
+            journal_attempt = None
             try:
                 verifier = planned_selector.resolve(name)
+                if execution_journal is not None:
+                    journal_attempt = execution_journal.start_attempt(
+                        verifier_name=name, report_validation_id=validation_id,
+                        estimated_cost=cost)
                 raw = verifier.verify(request.question, request.answer, request.context)
             except VerifierUnavailable as exc:
                 state = "unavailable"
                 record["reason"] = str(exc)
+                if journal_attempt is not None:
+                    execution_journal.unavailable_attempt(journal_attempt, reason=str(exc))
             except VerifierExecutionFailure as exc:
                 state = "failed"
                 record["reason"] = str(exc)
+                if journal_attempt is not None:
+                    execution_journal.failed_attempt(journal_attempt, error=exc)
             else:
                 checked, _, _ = canonical_reports([raw], team=(name,), validation_id=validation_id, deduplicate=False)
                 raw = checked[0]
                 state = "abstention" if is_abstention(raw) else "directional"
+                if journal_attempt is not None:
+                    execution_journal.complete_attempt(journal_attempt,
+                        report=raw.model_dump(mode="json"), outcome=state)
+                    record["journal_attempt_id"] = journal_attempt["attempt_id"]
+                record["report"] = raw.model_dump(mode="json")
                 results.append(raw)
+            if journal_attempt is not None and state in {"unavailable", "failed"}:
+                record["journal_attempt_id"] = journal_attempt["attempt_id"]
             record["state"] = state
             states.append((name, state))
             attempts.append(record)

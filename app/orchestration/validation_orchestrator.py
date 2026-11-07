@@ -27,13 +27,108 @@ from app.decision.vote_normalization import (
     is_abstention,
     vote_confidence,
 )
-from app.database.validation_repository import get_validation
+from app.database.validation_repository import (
+    create_validation_record,
+    get_validation,
+)
+from app.database.execution_journal_repository import (
+    begin_validation,
+    mark_execution_ready,
+    mark_execution_running,
+    mark_execution_completed,
+    mark_execution_failed,
+    update_execution_plan,
+    create_verifier_attempt,
+    mark_verifier_attempt_started,
+    mark_verifier_attempt_completed,
+    mark_verifier_attempt_unavailable,
+    mark_verifier_attempt_failed,
+    mark_verifier_attempt_error,
+)
+from app.database.execution_lease import ExecutionLeaseHeartbeat
 from app.database.verifier_repository import get_verifier_outputs
 from app.models.schemas import ValidationRequest, ValidationResponse, VerificationResult
 from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
 from app.selection.capabilities import BUILTIN_CAPABILITIES
 from app.selection.models import VerifierUnavailable
+from database import get_connection
+from time import perf_counter
+
+
+class _GameExecutionJournal:
+    """Small callback passed to game call sites; never wraps verifier objects."""
+    def __init__(self, validation_id, lease_token, heartbeat):
+        self.validation_id = validation_id
+        self.lease_token = lease_token
+        self.heartbeat = heartbeat
+        self.order = 0
+        self.attempts = []
+
+    def set_plan(self, plan):
+        self.heartbeat.assert_owned()
+        update_execution_plan(validation_id=self.validation_id,
+                              plan_payload=plan, lease_token=self.lease_token)
+
+    def start_attempt(self, *, verifier_name, component_id=None,
+                       report_validation_id=None, binding_id=None,
+                       call_id=None, estimated_cost=None):
+        self.heartbeat.assert_owned()
+        order = self.order
+        self.order += 1
+        identity = {}
+        if binding_id is not None:
+            identity["binding_id"] = binding_id
+        if call_id is not None:
+            identity["call_id"] = call_id
+        if component_id is not None:
+            identity["component_id"] = component_id
+        attempt = create_verifier_attempt(
+            validation_id=self.validation_id,
+            call_key=call_id or f"game:{order}:{verifier_name}",
+            execution_order=order,
+            verifier_name=verifier_name,
+            component_id=component_id,
+            report_validation_id=report_validation_id,
+            identity_binding=identity,
+            lease_token=self.lease_token,
+        )
+        self.heartbeat.assert_owned()
+        mark_verifier_attempt_started(
+            attempt_id=attempt["attempt_id"], lease_token=self.lease_token
+        )
+        token = {"attempt_id": attempt["attempt_id"],
+                 "started": perf_counter(), "estimated_cost": estimated_cost,
+                 "verifier_name": verifier_name, "component_id": component_id,
+                 "report_validation_id": report_validation_id,
+                 "binding_id": binding_id}
+        self.attempts.append(token)
+        return token
+
+    def complete_attempt(self, token, *, report, outcome):
+        self.heartbeat.assert_owned()
+        return mark_verifier_attempt_completed(
+            attempt_id=token["attempt_id"], report=report,
+            outcome=outcome, duration_ms=(perf_counter()-token["started"])*1000,
+            estimated_cost=token["estimated_cost"], lease_token=self.lease_token,
+        )
+
+    def unavailable_attempt(self, token, *, reason):
+        self.heartbeat.assert_owned()
+        return mark_verifier_attempt_unavailable(
+            attempt_id=token["attempt_id"], reason=reason,
+            duration_ms=(perf_counter()-token["started"])*1000,
+            estimated_cost=token["estimated_cost"], lease_token=self.lease_token,
+        )
+
+    def failed_attempt(self, token, *, error):
+        self.heartbeat.assert_owned()
+        return mark_verifier_attempt_failed(
+            attempt_id=token["attempt_id"], error_type=type(error).__name__,
+            error_message=str(error) or type(error).__name__,
+            duration_ms=(perf_counter()-token["started"])*1000,
+            estimated_cost=token["estimated_cost"], lease_token=self.lease_token,
+        )
 
 
 @dataclass(frozen=True)
@@ -72,6 +167,7 @@ class ValidationOrchestrator:
         *,
         execution_mode: str = "baseline",
         game_runtime=None,
+        persist_execution: bool = False,
     ) -> None:
         
         if execution_mode not in {"baseline", "game"}:
@@ -93,6 +189,7 @@ class ValidationOrchestrator:
             raise ValueError("game runtime requires explicit game mode")
 
         self._execution_mode = execution_mode
+        self._persist_execution = persist_execution
         self._game_runtime = game_runtime
 
         if question_analyzer is not None:
@@ -110,6 +207,7 @@ class ValidationOrchestrator:
         # Strong refs to the result objects validate() returned. Lookup checks
         # identity with ``is``; the id is only a slot. Snapshots stay separate.
         self._result_binding: dict[int, tuple[VerificationResult, str]] = {}
+        self._attempt_binding: dict[int, tuple[VerificationResult, str]] = {}
         # Serialize this orchestrator's learning and absolute posterior writes.
         # Dirty pairs survive a failed save, not a process restart.
         self._feedback_lock = threading.RLock()
@@ -214,7 +312,80 @@ class ValidationOrchestrator:
         validation_id = str(uuid4())
         if self._execution_mode == "game":
             return self._validate_game(request, analysis, validation_id)
-        plan = self._verifier_selector.plan(analysis, request.context)
+
+        if self._persist_execution:
+            connection = get_connection()
+            try:
+                create_validation_record(
+                    validation_id=validation_id,
+                    question_id=request.question_id,
+                    question=request.question,
+                    generated_answer=request.answer,
+                    context=request.context,
+                    session_id=request.session_id,
+                    connection=connection,
+                )
+
+                begin_validation(
+                    validation_id=validation_id,
+                    execution_mode="baseline",
+                    request_payload={
+                        "question": request.question,
+                        "answer": request.answer,
+                        "context": request.context,
+                        "question_id": request.question_id,
+                        "session_id": request.session_id,
+                    },
+                    connection=connection,
+                )
+
+                connection.commit()
+            except Exception:
+                connection.rollback()
+                raise
+            finally:
+                connection.close()
+
+        lease_token = None
+        heartbeat = None
+
+        try:
+            plan = self._verifier_selector.plan(analysis, request.context)
+
+            if self._persist_execution:
+                mark_execution_ready(
+                    validation_id=validation_id,
+                    plan_payload=plan.to_dict(),
+                    analysis_snapshot={
+                        "domain": analysis.domain,
+                        "difficulty": analysis.difficulty,
+                    },
+                )
+
+                running_execution = mark_execution_running(
+                    validation_id=validation_id,
+                    worker_id=f"worker-{uuid4()}",
+                )
+                lease_token = running_execution["lease_token"]
+
+                heartbeat = ExecutionLeaseHeartbeat(
+                    validation_id=validation_id,
+                    lease_token=lease_token,
+                ).start()
+
+        except Exception as exc:
+            if self._persist_execution:
+                mark_execution_failed(
+                    validation_id=validation_id,
+                    lease_token=lease_token,
+                    failure_details={
+                        "error_type": type(exc).__name__,
+                        "error_message": str(exc) or type(exc).__name__,
+                        "stage": "verifier_planning",
+                    },
+                )
+            raise
+
         minimum = plan.minimum_count
         if analysis.difficulty != "hard":
             minimum = max(2, minimum)
@@ -248,34 +419,138 @@ class ValidationOrchestrator:
         unavailable = []
         runtime_availability = {row.verifier_name: "unobserved" for row in plan.candidates}
         stopping_policy_vetoes = []
+        attempt_records = {}
+
+        if self._persist_execution:
+            try:
+                for execution_order, name in enumerate(names):
+                    attempt_records[name] = create_verifier_attempt(
+                        validation_id=validation_id,
+                        call_key=f"{execution_order}:{name}",
+                        execution_order=execution_order,
+                        verifier_name=name,
+                        lease_token=lease_token,
+                    )
+            except Exception as exc:
+                mark_execution_failed(
+                    validation_id=validation_id,
+                    lease_token=lease_token,
+                    failure_details={
+                        "error_type": type(exc).__name__,
+                        "error_message": str(exc) or type(exc).__name__,
+                        "stage": "attempt_creation",
+                    },
+                )
+                raise
+
         for name in names:
             attempted.append(name)
+            attempt_id = (
+                attempt_records[name]["attempt_id"]
+                if self._persist_execution
+                else None
+            )
+
+            if self._persist_execution:
+                heartbeat.assert_owned()
+                mark_verifier_attempt_started(
+                    attempt_id=attempt_id,
+                    lease_token=lease_token,
+                )
+
             try:
                 verifier = self._verifier_selector.resolve(name)
-                raw = verifier.verify(request.question, request.answer, request.context)
+                raw = verifier.verify(
+                    request.question, request.answer, request.context
+                )
             except VerifierUnavailable as exc:
+                if self._persist_execution:
+                    mark_verifier_attempt_unavailable(
+                        attempt_id=attempt_id,
+                        reason=str(exc),
+                        lease_token=lease_token,
+                    )
+
                 unavailable.append({"verifier": name, "reason": str(exc)})
                 runtime_availability[name] = "unavailable"
                 for row in coverage.values():
                     if name in row["unattempted"]:
                         row["unattempted"].remove(name)
                         row["runtime_unavailable"].append(name)
-                        row["attempts"].append({"verifier": name, "state": "unavailable"})
+                        row["attempts"].append(
+                            {"verifier": name, "state": "unavailable"}
+                        )
                 continue
+
+            except Exception as exc:
+                if self._persist_execution:
+                    mark_verifier_attempt_error(
+                        attempt_id=attempt_id,
+                        error_type=type(exc).__name__,
+                        error_message=str(exc) or type(exc).__name__,
+                        lease_token=lease_token,
+                    )
+                    mark_execution_failed(
+                        validation_id=validation_id,
+                        lease_token=lease_token,
+                        failure_details={
+                            "error_type": type(exc).__name__,
+                            "error_message": str(exc) or type(exc).__name__,
+                        },
+                    )
+                raise
+
             if raw.verifier_name != name:
-                raise ValueError("returned verifier_name does not match planned candidate")
+                if self._persist_execution:
+                    mark_verifier_attempt_error(
+                        attempt_id=attempt_id,
+                        error_type="VerifierIdentityMismatch",
+                        error_message="returned verifier_name does not match planned candidate",
+                        lease_token=lease_token,
+                    )
+                    mark_execution_failed(
+                        validation_id=validation_id,
+                        lease_token=lease_token,
+                        failure_details={
+                            "error_type": "VerifierIdentityMismatch",
+                            "error_message": "returned verifier_name does not match planned candidate",
+                        },
+                    )
+                raise ValueError(
+                    "returned verifier_name does not match planned candidate"
+                )
+
             runtime_availability[name] = "returned_result"
             abstention = is_abstention(raw)
-            annotated = _annotate(raw, abstained_before=list(abstained), abstention=abstention)
+
+            if self._persist_execution:
+                heartbeat.assert_owned()
+                mark_verifier_attempt_completed(
+                    attempt_id=attempt_id,
+                    report=raw.model_dump(mode="json"),
+                    outcome="abstention" if abstention else "directional",
+                    lease_token=lease_token,
+                )
+
+            annotated = _annotate(
+                raw, abstained_before=list(abstained), abstention=abstention
+            )
             results.append(annotated)
+
+            if self._persist_execution and attempt_id is not None:
+                self._attempt_binding[id(annotated)] = (annotated, attempt_id)
+
             if abstention:
                 abstained.append(raw.verifier_name)
+
             _track_coverage(coverage, raw)
             assessment = self._early_termination.should_terminate(
-                results, analysis, minimum, decision_engine=self._decision_engine,
+                results, analysis, minimum,
+                decision_engine=self._decision_engine,
             )
             last_assessment = assessment["reason"]
             vetoes = []
+
             if assessment["terminate"]:
                 if plan.requirements.status == "invalid":
                     vetoes.append("invalid_requirement_context")
@@ -289,18 +564,25 @@ class ValidationOrchestrator:
                     vetoes.append("hard_question")
                 for capability, row in coverage.items():
                     if not row["directional"]:
-                        prefix = ("missing_achieved_coverage" if row["achieved_contract"]
-                                  else "no_achieved_coverage_contract")
+                        prefix = (
+                            "missing_achieved_coverage"
+                            if row["achieved_contract"]
+                            else "no_achieved_coverage_contract"
+                        )
                         vetoes.append(f"{prefix}:{capability}")
                 if vetoes:
                     stopping_policy_vetoes.append({
-                        "after_verifier": name, "result_count": len(results),
-                        "numerical_assessment": assessment["reason"], "reasons": vetoes,
+                        "after_verifier": name,
+                        "result_count": len(results),
+                        "numerical_assessment": assessment["reason"],
+                        "reasons": vetoes,
                     })
+
             if assessment["terminate"] and not vetoes:
                 detail = assessment["decision"]
                 reason = "approved_early_stop"
                 break
+
         if detail is None:
             detail = self._decision_engine.decide_detailed(results, domain=analysis.domain)
         contributors = self._early_termination.contributor_count(detail, results)
@@ -372,7 +654,20 @@ class ValidationOrchestrator:
             if RUN_SUMMARY_KEY in metadata:
                 raise ValueError(f"reserved metadata key {RUN_SUMMARY_KEY!r} already exists")
             metadata[RUN_SUMMARY_KEY] = deepcopy(summary)
-            results[-1] = results[-1].model_copy(update={"metadata": metadata})
+            original_result = results[-1]
+            updated_result = original_result.model_copy(
+                update={"metadata": metadata}
+            )
+            results[-1] = updated_result
+
+            attempt_binding = self._attempt_binding.pop(
+                id(original_result), None
+            )
+            if attempt_binding is not None:
+                self._attempt_binding[id(updated_result)] = (
+                    updated_result,
+                    attempt_binding[1],
+                )
 
         ground_truth = self._automatic_ground_truth.evaluate(
         question=request.question,
@@ -393,7 +688,7 @@ class ValidationOrchestrator:
         for result in results:
             self._result_binding[id(result)] = (result, validation_id)
 
-        return ValidationResponse(
+        response = ValidationResponse(
             results=results,
             final_status=final_status,
             final_score=final_score,
@@ -408,11 +703,94 @@ class ValidationOrchestrator:
             signed_score=signed_score,
             execution_audit=deepcopy(summary),
         )
+        if self._persist_execution:
+            heartbeat.assert_owned()
+            mark_execution_completed(
+                validation_id=validation_id,
+                final_response=response.model_dump(mode="json"),
+                lease_token=lease_token,
+            )
+
+        return response
 
     def _validate_game(self, request, analysis, validation_id):
         # One server-configured runtime/episode per run; request metadata cannot replace it.
         runtime = self._game_runtime
-        run = runtime.run(self._verifier_selector, analysis, request, validation_id)
+        journal = None
+        heartbeat = None
+        lease_token = None
+        if self._persist_execution:
+            connection = get_connection()
+            try:
+                create_validation_record(
+                    validation_id=validation_id,
+                    question_id=request.question_id,
+                    question=request.question,
+                    generated_answer=request.answer,
+                    context=request.context,
+                    session_id=request.session_id,
+                    connection=connection,
+                )
+                begin_validation(
+                    validation_id=validation_id,
+                    execution_mode="game",
+                    request_payload={
+                        "question": request.question,
+                        "answer": request.answer,
+                        "context": request.context,
+                        "question_id": request.question_id,
+                        "session_id": request.session_id,
+                    },
+                    connection=connection,
+                )
+                connection.commit()
+            except Exception:
+                connection.rollback()
+                raise
+            finally:
+                connection.close()
+            try:
+                mark_execution_ready(
+                    validation_id=validation_id,
+                    plan_payload={"phase": "game_route_resolution"},
+                    analysis_snapshot={"domain": analysis.domain,
+                                       "difficulty": analysis.difficulty},
+                )
+                running = mark_execution_running(
+                    validation_id=validation_id,
+                    worker_id=f"worker-{uuid4()}",
+                )
+                lease_token = running["lease_token"]
+                heartbeat = ExecutionLeaseHeartbeat(
+                    validation_id=validation_id, lease_token=lease_token
+                ).start()
+                journal = _GameExecutionJournal(validation_id, lease_token, heartbeat)
+            except Exception as exc:
+                mark_execution_failed(
+                    validation_id=validation_id, lease_token=lease_token,
+                    failure_details={"error_type": type(exc).__name__,
+                                     "error_message": str(exc) or type(exc).__name__,
+                                     "stage": "game_journal_start"},
+                )
+                raise
+        try:
+            if journal is None:
+                run = runtime.run(self._verifier_selector, analysis, request, validation_id)
+            else:
+                run = runtime.run(self._verifier_selector, analysis, request,
+                                  validation_id, execution_journal=journal)
+        except Exception as exc:
+            if journal is not None:
+                try:
+                    mark_execution_failed(
+                        validation_id=validation_id, lease_token=lease_token,
+                        failure_details={"error_type": type(exc).__name__,
+                                         "error_message": str(exc) or type(exc).__name__,
+                                         "stage": "game_execution"},
+                    )
+                finally:
+                    heartbeat.stop()
+            raise
         summary = json.loads(json.dumps(run.summary, allow_nan=False))
         run_results = getattr(run, "results", None)
         if run_results is None:
@@ -436,7 +814,7 @@ class ValidationOrchestrator:
             _detach_results(results), detail, deepcopy(summary))
         for result in results:
             self._result_binding[id(result)] = (result, validation_id)
-        return ValidationResponse(results=results, final_status=run.public_status,
+        response = ValidationResponse(results=results, final_status=run.public_status,
             final_score=None if detail is None else detail.score,
             signed_score=None if detail is None else detail.raw_score,
             validation_id=validation_id, domain=analysis.domain, session_id=request.session_id,
@@ -448,6 +826,52 @@ class ValidationOrchestrator:
                 else []
             ),
             execution_audit=deepcopy(summary))
+        if journal is not None:
+            try:
+                heartbeat.assert_owned()
+                # Journal completion precedes API audit/output persistence by design.
+                mark_execution_completed(
+                    validation_id=validation_id,
+                    final_response=response.model_dump(mode="json"),
+                    lease_token=lease_token,
+                )
+                events = summary.get("attempts", [])
+                attempt_by_identity = {}
+                for event in events:
+                    attempt_id = event.get("journal_attempt_id")
+                    if not attempt_id:
+                        continue
+                    key = (event.get("verifier_name"), event.get("validation_id"),
+                           event.get("component_id"), event.get("binding_id"))
+                    attempt_by_identity[key] = attempt_id
+                attempt_ids_by_name = {}
+                for event in events:
+                    if event.get("journal_attempt_id"):
+                        attempt_ids_by_name.setdefault(event.get("verifier_name"), []).append(
+                            event["journal_attempt_id"]
+                        )
+                for result in response.results:
+                    metadata = result.metadata or {}
+                    key = (result.verifier_name, metadata.get("validation_id"),
+                           metadata.get("component_id"), metadata.get("binding_id"))
+                    attempt_id = attempt_by_identity.get(key)
+                    if attempt_id is None:
+                        candidates = attempt_ids_by_name.get(result.verifier_name, [])
+                        if len(candidates) == 1:
+                            attempt_id = candidates[0]
+                    if attempt_id:
+                        self._attempt_binding[id(result)] = (result, attempt_id)
+            except Exception as exc:
+                mark_execution_failed(
+                    validation_id=validation_id, lease_token=lease_token,
+                    failure_details={"error_type": type(exc).__name__,
+                                     "error_message": str(exc) or type(exc).__name__,
+                                     "stage": "game_journal_completion"},
+                )
+                raise
+            finally:
+                heartbeat.stop()
+        return response
 
     def validation_context(self, validation_id: str) -> ValidationContext:
         """Return a detached copy of one validation's domain and results."""
@@ -682,6 +1106,22 @@ class ValidationOrchestrator:
         if stored is not result:
             return None
         return validation_id
+
+    def get_attempt_id_for_result(
+        self,
+        result: VerificationResult,
+    ) -> str | None:
+        slot = self._attempt_binding.get(id(result))
+
+        if slot is None:
+            return None
+
+        stored_result, attempt_id = slot
+
+        if stored_result is not result:
+            return None
+
+        return attempt_id
 
 
 def _detach_results(

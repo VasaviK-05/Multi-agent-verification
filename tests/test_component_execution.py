@@ -109,6 +109,36 @@ def test_failure_resource_checks_and_unrelated_support():
     assert run.public_status == 'uncertain' and not calls
 
 
+def test_component_journal_callback_preserves_binding_identity_and_typed_failure():
+    c,s,selector,observer,calls = setup('failure')
+    class Journal:
+        def __init__(self): self.rows = []
+        def set_plan(self, plan): self.plan = plan
+        def start_attempt(self, **identity):
+            token = {"attempt_id": f"attempt-{len(self.rows)}", **identity}
+            self.rows.append([token, "started", None])
+            return token
+        def complete_attempt(self, token, **result):
+            next(row for row in self.rows if row[0] is token)[1:] = ["completed", result]
+        def failed_attempt(self, token, **failure):
+            next(row for row in self.rows if row[0] is token)[1:] = ["execution_failed", failure]
+        def unavailable_attempt(self, token, **failure):
+            next(row for row in self.rows if row[0] is token)[1:] = ["unavailable", failure]
+    journal = Journal()
+    run = run_component_diagnostic(c,s,selector,Q,'{"base":"765","derived":"775"}',REF,
+        'test',resource_observer=observer,execution_journal=journal)
+    assert run.public_status == 'uncertain'
+    assert [row[1] for row in journal.rows] == ['execution_failed', 'completed']
+    assert journal.rows[0][0]['component_id'] == 'base_fact'
+    assert journal.rows[0][0]['binding_id'] == run.summary['attempts'][0]['binding_id']
+    assert journal.rows[0][0]['report_validation_id'] == run.summary['attempts'][0]['validation_id']
+    from app.game.execution import VerifierExecutionFailure
+    assert isinstance(journal.rows[0][2]['error'], VerifierExecutionFailure)
+    assert run.summary['components'][0]['states'][0][1] == 'failed'
+    assert run.summary['components'][1]['public_status'] == 'passed'
+    assert len(calls) == 2
+
+
 def test_repeated_verifier_cost_and_distinct_contributors():
     c,_,selector,observer,calls = setup()
     s = next(s for s in enumerate_component_strategies(c)

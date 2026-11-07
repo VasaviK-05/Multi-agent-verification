@@ -15,8 +15,16 @@ MIGRATION_FILES = [
     "005_verifier_cost_measurements.sql",
     "006_ground_truth_idempotency.sql",
     "007_verifier_cost_estimate_idempotency.sql",
-    "008_reputation_snapshot_id_text.sql",
+    "008_live_verifier_recovery.sql",
+    "009_verifier_attempt_identity.sql",
+    "010_execution_lease_recovery.sql",
+    "011_reputation_snapshot_id_text.sql",
+    "012_report_validation_id_text.sql",
 ]
+
+LEGACY_MIGRATION_ALIASES = {
+    "008_reputation_snapshot_id_text.sql": "011_reputation_snapshot_id_text.sql",
+}
 
 REQUIRED_COLUMNS = {
     "001_review_updates.sql": {
@@ -72,11 +80,40 @@ REQUIRED_COLUMNS = {
             "source_attempt_ids", "calculated_at",
         },
     },
+    "008_live_verifier_recovery.sql": {
+        "validation_executions": {
+            "validation_id", "execution_status", "execution_mode",
+            "request_payload", "request_digest", "analysis_snapshot",
+            "plan_payload", "plan_digest", "final_response",
+            "final_response_digest", "failure_details", "block_reason",
+            "created_at", "updated_at", "completed_at",
+        },
+        "live_verifier_attempts": {
+            "attempt_id", "validation_id", "call_key", "execution_order",
+            "verifier_name", "component_id", "report_validation_id",
+            "lifecycle_status", "outcome", "report", "report_digest",
+            "error_type", "error_message", "started_at", "completed_at",
+            "duration_ms", "estimated_cost", "cost_units",
+            "created_at", "updated_at",
+        },
+    },
+    "009_verifier_attempt_identity.sql": {
+        "live_verifier_attempts": {"identity_binding"},
+        "verifier_outputs": {"attempt_id"},
+    },
+    "010_execution_lease_recovery.sql": {
+        "validation_executions": {
+            "lease_token", "worker_id", "heartbeat_at", "lease_expires_at",
+        },
+    },
 }
 
 REQUIRED_COLUMN_TYPES = {
-    "008_reputation_snapshot_id_text.sql": {
+    "011_reputation_snapshot_id_text.sql": {
         ("validation_audits", "reputation_snapshot_id"): "text",
+    },
+    "012_report_validation_id_text.sql": {
+        ("live_verifier_attempts", "report_validation_id"): "text",
     },
 }
 
@@ -123,6 +160,44 @@ REQUIRED_CONSTRAINTS = {
         "verifier_cost_estimate_counts_valid",
         "verifier_cost_estimate_durations_nonnegative",
     },
+    "008_live_verifier_recovery.sql": {
+        "validation_executions_pkey",
+        "validation_executions_validation_id_fkey",
+        "validation_executions_execution_status_check",
+        "validation_executions_request_payload_check",
+        "validation_executions_analysis_snapshot_check",
+        "validation_executions_plan_payload_check",
+        "validation_executions_final_response_check",
+        "validation_executions_failure_details_check",
+        "validation_executions_request_digest_valid",
+        "validation_executions_plan_digest_valid",
+        "validation_executions_response_digest_valid",
+        "validation_executions_plan_pair",
+        "validation_executions_response_pair",
+        "validation_executions_completed_response",
+        "live_verifier_attempts_pkey",
+        "live_verifier_attempts_validation_id_fkey",
+        "live_verifier_attempts_execution_order_check",
+        "live_verifier_attempts_lifecycle_status_check",
+        "live_verifier_attempts_outcome_check",
+        "live_verifier_attempts_report_check",
+        "live_verifier_attempts_duration_ms_check",
+        "live_verifier_attempts_estimated_cost_check",
+        "live_attempt_call_key_nonblank",
+        "live_attempt_verifier_nonblank",
+        "live_attempt_identity_unique",
+        "live_attempt_order_unique",
+        "live_attempt_report_pair",
+        "live_attempt_report_digest_valid",
+        "live_attempt_state_consistency",
+    },
+    "009_verifier_attempt_identity.sql": {
+        "fk_verifier_output_attempt",
+        "verifier_outputs_attempt_unique",
+    },
+    "010_execution_lease_recovery.sql": {
+        "validation_execution_lease_pair",
+    },
 }
 
 REQUIRED_INDEXES = {
@@ -137,6 +212,14 @@ REQUIRED_INDEXES = {
         "verifier_cost_attempts_setup_idx",
         "verifier_cost_attempts_verifier_time_idx",
         "verifier_cost_estimates_lookup_idx",
+    },
+    "008_live_verifier_recovery.sql": {
+        "idx_validation_executions_status",
+        "idx_live_attempts_validation_order",
+        "idx_live_attempts_status",
+    },
+    "010_execution_lease_recovery.sql": {
+        "idx_validation_executions_lease_expiry",
     },
 }
 
@@ -217,6 +300,11 @@ def verify_migration(filename, columns, constraints, indexes, column_types):
     return problems
 
 
+def unknown_migration_records(recorded):
+    """Return history entries that are neither current nor explicit aliases."""
+    return set(recorded) - set(MIGRATION_FILES) - set(LEGACY_MIGRATION_ALIASES)
+
+
 def main():
     load_dotenv(ROOT / ".env")
 
@@ -280,7 +368,7 @@ def main():
                 )
                 recorded = {row[0] for row in cursor.fetchall()}
 
-                unknown = recorded - set(MIGRATION_FILES)
+                unknown = unknown_migration_records(recorded)
                 if unknown:
                     raise RuntimeError(
                         "Unknown migration records found; refusing to "

@@ -65,7 +65,11 @@ def test_migration_list_contains_existing_migrations():
         "005_verifier_cost_measurements.sql",
         "006_ground_truth_idempotency.sql",
         "007_verifier_cost_estimate_idempotency.sql",
-        "008_reputation_snapshot_id_text.sql",
+        "008_live_verifier_recovery.sql",
+        "009_verifier_attempt_identity.sql",
+        "010_execution_lease_recovery.sql",
+        "011_reputation_snapshot_id_text.sql",
+        "012_report_validation_id_text.sql",
     ]
 
 
@@ -92,13 +96,14 @@ def test_fresh_schema_path_includes_and_verifies_snapshot_text_migration(
 
     migration_sql = (
         run_migrations.MIGRATIONS_DIR
-        / "008_reputation_snapshot_id_text.sql"
+        / "011_reputation_snapshot_id_text.sql"
     ).read_text(encoding="utf-8")
     assert any(
         query == migration_sql
         for query, _ in connection.cursor_instance.executed
     )
-    assert verified.count("008_reputation_snapshot_id_text.sql") == 2
+    assert verified.count("011_reputation_snapshot_id_text.sql") == 2
+    assert verified.count("012_report_validation_id_text.sql") == 2
 
 
 def test_verify_migration_schema_rejects_missing_columns(monkeypatch):
@@ -171,7 +176,7 @@ def test_verify_migration_schema_rejects_wrong_required_column_type(
 
     with pytest.raises(RuntimeError, match=expected_error):
         run_migrations.verify_migration_schema(
-            cursor, "008_reputation_snapshot_id_text.sql"
+            cursor, "011_reputation_snapshot_id_text.sql"
         )
 
 
@@ -195,8 +200,54 @@ def test_verify_migration_schema_accepts_required_text_column_type(monkeypatch):
     )
 
     run_migrations.verify_migration_schema(
-        cursor, "008_reputation_snapshot_id_text.sql"
+        cursor, "011_reputation_snapshot_id_text.sql"
     )
+
+
+@pytest.mark.parametrize("module", [run_migrations, reconcile_migration_history])
+def test_migration_012_requires_report_validation_id_text(module, monkeypatch):
+    columns = {"live_verifier_attempts": {"report_validation_id"}}
+    types = {("live_verifier_attempts", "report_validation_id"): "text"}
+    cursor = FakeCursor()
+    if module is run_migrations:
+        monkeypatch.setattr(module, "get_existing_columns", lambda cursor: columns)
+        monkeypatch.setattr(module, "get_existing_column_types", lambda cursor: types)
+        monkeypatch.setattr(module, "get_existing_constraints", lambda cursor: set())
+        monkeypatch.setattr(module, "get_existing_indexes", lambda cursor: set())
+        module.verify_migration_schema(cursor, "012_report_validation_id_text.sql")
+    else:
+        assert module.verify_migration(
+            "012_report_validation_id_text.sql", columns, set(), set(),
+            types,
+        ) == []
+
+
+@pytest.mark.parametrize("module", [run_migrations, reconcile_migration_history])
+def test_migration_012_rejects_uuid_report_validation_id(module, monkeypatch):
+    columns = {"live_verifier_attempts": {"report_validation_id"}}
+    types = {("live_verifier_attempts", "report_validation_id"): "uuid"}
+    cursor = FakeCursor()
+    if module is run_migrations:
+        monkeypatch.setattr(module, "get_existing_columns", lambda cursor: columns)
+        monkeypatch.setattr(module, "get_existing_column_types", lambda cursor: types)
+        monkeypatch.setattr(module, "get_existing_constraints", lambda cursor: set())
+        monkeypatch.setattr(module, "get_existing_indexes", lambda cursor: set())
+        with pytest.raises(RuntimeError, match="expected text, found uuid"):
+            module.verify_migration_schema(cursor, "012_report_validation_id_text.sql")
+    else:
+        assert any("expected text, found uuid" in problem for problem in module.verify_migration(
+            "012_report_validation_id_text.sql", columns, set(), set(), types
+        ))
+
+
+def test_migration_012_converts_uuid_and_leaves_text_unchanged():
+    migration = (
+        run_migrations.MIGRATIONS_DIR / "012_report_validation_id_text.sql"
+    ).read_text(encoding="utf-8")
+    assert "existing_type = 'uuid'" in migration
+    assert "USING report_validation_id::TEXT" in migration
+    assert "existing_type <> 'text'" in migration
+    assert "existing_type IS NULL" in migration
 
 
 def test_recorded_migration_is_verified_not_executed(monkeypatch):
@@ -321,12 +372,49 @@ def test_only_whitelisted_migration_can_be_applied():
     assert run_migrations.APPLYABLE_MIGRATIONS == {
         "006_ground_truth_idempotency.sql",
         "007_verifier_cost_estimate_idempotency.sql",
-        "008_reputation_snapshot_id_text.sql",
+        "008_live_verifier_recovery.sql",
+        "009_verifier_attempt_identity.sql",
+        "010_execution_lease_recovery.sql",
+        "011_reputation_snapshot_id_text.sql",
+        "012_report_validation_id_text.sql",
     }
 
 
 def test_migration_history_reconciler_tracks_current_migrations():
     assert reconcile_migration_history.MIGRATION_FILES == run_migrations.MIGRATIONS
+
+
+@pytest.mark.parametrize("module", [run_migrations, reconcile_migration_history])
+def test_legacy_008_snapshot_migration_history_is_recognized(module):
+    legacy = "008_reputation_snapshot_id_text.sql"
+    assert module.LEGACY_MIGRATION_ALIASES[legacy] == "011_reputation_snapshot_id_text.sql"
+    assert module.unknown_migration_records({legacy}) == set()
+    assert module.unknown_migration_records({"999_unrecognized.sql"}) == {
+        "999_unrecognized.sql"
+    }
+
+
+def test_recorded_legacy_snapshot_migration_adopts_011_without_rewriting_history(
+    monkeypatch,
+):
+    cursor = FakeCursor()
+    recorded = {"008_reputation_snapshot_id_text.sql"}
+    verify = Mock()
+    monkeypatch.setattr(run_migrations, "verify_migration_schema", verify)
+
+    run_migrations.process_migration(
+        cursor,
+        "011_reputation_snapshot_id_text.sql",
+        recorded,
+    )
+
+    assert recorded == {
+        "008_reputation_snapshot_id_text.sql",
+        "011_reputation_snapshot_id_text.sql",
+    }
+    assert "INSERT INTO schema_migrations" in cursor.executed[0][0]
+    assert cursor.executed[0][1] == ("011_reputation_snapshot_id_text.sql",)
+    verify.assert_called_once_with(cursor, "011_reputation_snapshot_id_text.sql")
 
 
 @pytest.mark.parametrize(
@@ -345,7 +433,7 @@ def test_migration_history_reconciler_rejects_wrong_snapshot_id_type(
         else {}
     )
     problems = reconcile_migration_history.verify_migration(
-        "008_reputation_snapshot_id_text.sql",
+        "011_reputation_snapshot_id_text.sql",
         {"validation_audits": {"reputation_snapshot_id"}},
         set(),
         set(),
@@ -356,7 +444,7 @@ def test_migration_history_reconciler_rejects_wrong_snapshot_id_type(
 
 def test_migration_history_reconciler_accepts_text_snapshot_id():
     problems = reconcile_migration_history.verify_migration(
-        "008_reputation_snapshot_id_text.sql",
+        "011_reputation_snapshot_id_text.sql",
         {"validation_audits": {"reputation_snapshot_id"}},
         set(),
         set(),

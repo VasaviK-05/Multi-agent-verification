@@ -390,6 +390,65 @@ def test_decisive_numerical_result_is_overridden_by_actual_coverage_gap():
     assert response.execution_audit['unresolved'] == ['arithmetic']
 
 
+def test_selected_game_attempts_are_journaled_at_the_verifier_boundary(monkeypatch):
+    import app.orchestration.validation_orchestrator as module
+
+    calls = []
+    class Connection:
+        def commit(self): calls.append(("commit",))
+        def rollback(self): calls.append(("rollback",))
+        def close(self): calls.append(("close",))
+    class Heartbeat:
+        def __init__(self, **kwargs): self.kwargs = kwargs
+        def start(self): return self
+        def assert_owned(self): calls.append(("lease",))
+        def stop(self): calls.append(("stop",))
+
+    monkeypatch.setattr(module, "get_connection", Connection)
+    monkeypatch.setattr(module, "create_validation_record", lambda **kw: calls.append(("parent",)))
+    monkeypatch.setattr(module, "begin_validation", lambda **kw: calls.append(("begin", kw["execution_mode"])))
+    monkeypatch.setattr(module, "mark_execution_ready", lambda **kw: calls.append(("ready", kw["plan_payload"])))
+    monkeypatch.setattr(module, "mark_execution_running", lambda **kw: {"lease_token": "00000000-0000-0000-0000-000000000001"})
+    monkeypatch.setattr(module, "ExecutionLeaseHeartbeat", Heartbeat)
+    monkeypatch.setattr(module, "update_execution_plan", lambda **kw: calls.append(("plan", kw["plan_payload"])))
+    def create_attempt(**kw):
+        attempt_id = f"00000000-0000-0000-0000-{len([c for c in calls if c[0] == 'create']) + 1:012d}"
+        calls.append(("create", kw["verifier_name"], kw.get("component_id"), kw.get("identity_binding")))
+        return {"attempt_id": attempt_id}
+    monkeypatch.setattr(module, "create_verifier_attempt", create_attempt)
+    monkeypatch.setattr(module, "mark_verifier_attempt_started", lambda **kw: calls.append(("started", kw["attempt_id"])))
+    monkeypatch.setattr(module, "mark_verifier_attempt_completed", lambda **kw: calls.append(("completed", kw["attempt_id"], kw["outcome"], kw["report"])))
+    monkeypatch.setattr(module, "mark_verifier_attempt_unavailable", lambda **kw: calls.append(("unavailable", kw["attempt_id"])))
+    monkeypatch.setattr(module, "mark_verifier_attempt_failed", lambda **kw: calls.append(("failed", kw["attempt_id"], kw["error_type"])))
+    monkeypatch.setattr(module, "mark_execution_completed", lambda **kw: calls.append(("execution-completed", kw["final_response"]["execution_audit"]["execution_mode"])))
+    monkeypatch.setattr(module, "mark_execution_failed", lambda **kw: calls.append(("execution-failed",)))
+
+    unpersisted, checkers, manager, _ = runtime_fixture(
+        behaviors={"a": VerifierExecutionFailure("controlled failure")}
+    )
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=unpersisted._question_analyzer,
+        verifier_selector=unpersisted.verifier_selector,
+        reputation_manager=manager,
+        execution_mode="game", game_runtime=unpersisted._game_runtime,
+        persist_execution=True,
+    )
+    response = orchestrator.validate(ValidationRequest(question="fixture question", answer="fixture answer"))
+
+    selected = response.execution_audit["team"]
+    assert response.execution_audit["selection_status"] == "selected"
+    assert [row[1] for row in calls if row[0] == "create"] == selected
+    assert len([row for row in calls if row[0] == "started"]) == len(selected)
+    assert len([row for row in calls if row[0] == "completed"]) == len(selected) - 1
+    assert len([row for row in calls if row[0] == "failed"]) == 1
+    assert response.final_status == "uncertain"
+    assert all(checker.calls == (1 if checker.name in selected else 0) for checker in checkers)
+    assert any(row[0] == "plan" and row[1].get("strategy_id") == response.execution_audit["selected_strategy_id"] for row in calls)
+    assert any(row[0] == "execution-completed" for row in calls)
+    assert orchestrator.get_attempt_id_for_result(response.results[0]) is not None
+    assert all(checker.calls == (1 if checker.name in selected else 0) for checker in checkers)
+
+
 def test_budget_failure_does_not_construct_any_default_verifier(monkeypatch):
     from app.selection.verifier_selector import DEFAULT_VERIFIER_ORDER
     import app.selection.verifier_selector as selectors
@@ -537,7 +596,7 @@ def test_validation_service_uses_baseline_mode(monkeypatch):
     service = validation_service.ValidationService()
 
     assert isinstance(service._orchestrator, FakeOrchestrator)
-    assert created["kwargs"] == {}
+    assert created["kwargs"] == {"persist_execution": False}
 
 
 def test_validation_service_uses_game_mode(monkeypatch):
@@ -570,8 +629,33 @@ def test_validation_service_uses_game_mode(monkeypatch):
 
     assert isinstance(service._orchestrator, FakeOrchestrator)
     assert created["kwargs"]["execution_mode"] == "game"
+    assert created["kwargs"]["persist_execution"] is False
     assert created["kwargs"]["game_runtime"] is fake_runtime
     assert created["kwargs"]["verifier_selector"]._injected == configured_verifiers
+
+
+def test_validation_service_keeps_game_selection_when_persistence_enabled(monkeypatch):
+    from app.services import validation_service
+    from app.game import deployment
+    from app.benchmark import project_adapter
+
+    runtime = object.__new__(deployment.FlexiblePolicyGameRuntime)
+    created = {}
+
+    class FakeOrchestrator:
+        def __init__(self, *args, **kwargs):
+            created.update(kwargs)
+
+    monkeypatch.setattr(validation_service.settings, "EXECUTION_MODE", "game")
+    monkeypatch.setattr(deployment, "create_game_runtime", lambda: runtime)
+    monkeypatch.setattr(validation_service, "ValidationOrchestrator", FakeOrchestrator)
+
+    validation_service.ValidationService(persist_execution=True)
+
+    assert created["execution_mode"] == "game"
+    assert created["game_runtime"] is runtime
+    assert created["persist_execution"] is True
+    assert created["verifier_selector"]._injected == []
 
 
 def test_validation_service_rejects_invalid_execution_mode(monkeypatch):

@@ -27,7 +27,7 @@ class PrototypeGameRuntime:
         self._provider = prototype.provider()
         self._rng = random.Random()
 
-    def run(self, selector, analysis, request, validation_id):
+    def run(self, selector, analysis, request, validation_id, *, execution_journal=None):
         return self._router.run(
             selector,
             analysis,
@@ -37,6 +37,7 @@ class PrototypeGameRuntime:
             rng=self._rng,
             resource_observer=ProjectObserver(),
             allow_synthetic_for_tests=False,
+            execution_journal=execution_journal,
         )
 
 
@@ -75,7 +76,7 @@ class FlexiblePolicyGameRuntime:
             "resource_relocation_binding": binding_setting or None,
         })
 
-    def run(self, selector, analysis, request, validation_id):
+    def run(self, selector, analysis, request, validation_id, *, execution_journal=None):
         from app.game.component_execution import unavailable
         from app.game.offline.reconciled_resources import create_scoped
         from app.game.offline.singleton_compatibility import create_singleton, transfer_for
@@ -94,6 +95,10 @@ class FlexiblePolicyGameRuntime:
             return run
 
         route = resolved[0]
+        if execution_journal is not None:
+            execution_journal.set_plan({"execution_mode": "flexible_game",
+                "policy_category": kind, "routing_signature": routing_signature,
+                "route_status": "resolved"})
         observer = None
         actual_selector = selector
         artifact = None
@@ -145,6 +150,7 @@ class FlexiblePolicyGameRuntime:
             actual_selector, request, validation_id, provider=self._provider,
             rng=self._rng, resource_observer=observer,
             allow_synthetic_for_tests=False,
+            execution_journal=execution_journal,
         )
         run.summary.setdefault('policy_execution_mode', run.summary.get('execution_mode'))
         run.summary['execution_mode'] = 'flexible_game'

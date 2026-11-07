@@ -116,7 +116,7 @@ class QuestionPolicyRouter:
         return kind, signature, (route, analysis)
 
     def run(self, selector, request, validation_id, *, provider, rng, resource_observer,
-            budget=None, allow_synthetic_for_tests=False):
+            budget=None, allow_synthetic_for_tests=False, execution_journal=None):
         from app.game.component_execution import run_component_policy, unavailable
         kind, key, resolved = self.resolve(request.question, request.context, budget)
         if resolved is None:
@@ -125,13 +125,15 @@ class QuestionPolicyRouter:
         if kind == 'atomic':
             return self.tasks.run(selector, analysis, request, validation_id, provider=provider,
                 rng=rng, resource_observer=resource_observer, budget=budget,
-                allow_synthetic_for_tests=allow_synthetic_for_tests)
+                allow_synthetic_for_tests=allow_synthetic_for_tests,
+                execution_journal=execution_journal)
         matches = [p for sig, b, _, p in self.components if sig == key and b == route[1]]
         if len(matches) != 1:
             return unavailable('incompatible_policy: category registration type mismatch')
         return run_component_policy(matches[0], selector, request.question, request.answer,
             request.context, validation_id, rng=rng, resource_observer=resource_observer,
-            allow_synthetic_for_tests=allow_synthetic_for_tests)
+            allow_synthetic_for_tests=allow_synthetic_for_tests,
+            execution_journal=execution_journal)
 
 
 def configuration_from_atomic_artifacts(artifacts, *, allowlist=None):

@@ -12,7 +12,10 @@ class ValidationService:
     """Thin service layer wrapping the validation orchestrator."""
 
     def __init__(
-        self, orchestrator: ValidationOrchestrator | None = None
+        self,
+        orchestrator: ValidationOrchestrator | None = None,
+        *,
+        persist_execution: bool = False,
     ) -> None:
         if orchestrator is not None:
             self._orchestrator = orchestrator
@@ -20,7 +23,9 @@ class ValidationService:
 
         mode = settings.EXECUTION_MODE
         if mode == "baseline":
-            self._orchestrator = ValidationOrchestrator()
+            self._orchestrator = ValidationOrchestrator(
+                persist_execution=persist_execution
+            )
         elif mode == "game":
             from app.game.deployment import FlexiblePolicyGameRuntime, create_game_runtime
             from app.selection.capabilities import BUILTIN_CAPABILITIES
@@ -53,6 +58,7 @@ class ValidationService:
                 verifier_selector=selector,
                 execution_mode="game",
                 game_runtime=runtime,
+                persist_execution=persist_execution,
             )
         else:
             raise ValueError(
