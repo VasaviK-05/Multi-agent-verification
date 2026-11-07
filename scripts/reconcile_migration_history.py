@@ -13,6 +13,9 @@ MIGRATION_FILES = [
     "003_validation_audit.sql",
     "004_audit_execution_metadata.sql",
     "005_verifier_cost_measurements.sql",
+    "006_ground_truth_idempotency.sql",
+    "007_verifier_cost_estimate_idempotency.sql",
+    "008_reputation_snapshot_id_text.sql",
 ]
 
 REQUIRED_COLUMNS = {
@@ -71,6 +74,12 @@ REQUIRED_COLUMNS = {
     },
 }
 
+REQUIRED_COLUMN_TYPES = {
+    "008_reputation_snapshot_id_text.sql": {
+        ("validation_audits", "reputation_snapshot_id"): "text",
+    },
+}
+
 REQUIRED_CONSTRAINTS = {
     "001_review_updates.sql": {
         "fk_validation_question",
@@ -91,6 +100,12 @@ REQUIRED_CONSTRAINTS = {
         "validation_audits_coverage_object",
         "validation_audits_costs_object",
         "validation_audits_failures_array",
+    },
+    "006_ground_truth_idempotency.sql": {
+        "ground_truth_validation_id_unique",
+    },
+    "007_verifier_cost_estimate_idempotency.sql": {
+        "verifier_cost_estimates_calibration_digest_unique",
     },
     "005_verifier_cost_measurements.sql": {
         "verifier_measurement_setups_pkey",
@@ -136,6 +151,16 @@ def read_schema_inventory(cursor):
         columns.setdefault(table, set()).add(column)
 
     cursor.execute("""
+        SELECT table_name, column_name, data_type
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+    """)
+    column_types = {
+        (table, column): data_type
+        for table, column, data_type in cursor.fetchall()
+    }
+
+    cursor.execute("""
         SELECT conname
         FROM pg_constraint
         WHERE connamespace = 'public'::regnamespace
@@ -149,10 +174,10 @@ def read_schema_inventory(cursor):
     """)
     indexes = {row[0] for row in cursor.fetchall()}
 
-    return columns, constraints, indexes
+    return columns, column_types, constraints, indexes
 
 
-def verify_migration(filename, columns, constraints, indexes):
+def verify_migration(filename, columns, constraints, indexes, column_types):
     problems = []
 
     for table, required in REQUIRED_COLUMNS.get(filename, {}).items():
@@ -171,6 +196,14 @@ def verify_migration(filename, columns, constraints, indexes):
     missing_indexes = REQUIRED_INDEXES.get(filename, set()) - indexes
     if missing_indexes:
         problems.append(f"missing indexes {sorted(missing_indexes)}")
+
+    for key, expected_type in REQUIRED_COLUMN_TYPES.get(filename, {}).items():
+        actual_type = column_types.get(key)
+        if actual_type != expected_type:
+            problems.append(
+                f"{key[0]}.{key[1]} type expected {expected_type}, "
+                f"found {actual_type or 'missing'}"
+            )
 
     if filename == "002_reputation_state.sql":
         # The migration creates a singleton state table with validation checks.
@@ -214,13 +247,13 @@ def main():
                         "history for an existing database."
                     )
 
-                columns, constraints, indexes = read_schema_inventory(cursor)
+                columns, column_types, constraints, indexes = read_schema_inventory(cursor)
 
                 # Validate every migration before writing any history.
                 errors = {}
                 for filename in MIGRATION_FILES:
                     problems = verify_migration(
-                        filename, columns, constraints, indexes
+                        filename, columns, constraints, indexes, column_types
                     )
                     if problems:
                         errors[filename] = problems

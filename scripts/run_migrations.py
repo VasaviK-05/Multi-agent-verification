@@ -14,11 +14,13 @@ MIGRATIONS = [
     "005_verifier_cost_measurements.sql",
     "006_ground_truth_idempotency.sql",
     "007_verifier_cost_estimate_idempotency.sql",
+    "008_reputation_snapshot_id_text.sql",
 ]
 
 APPLYABLE_MIGRATIONS = {
     "006_ground_truth_idempotency.sql",
     "007_verifier_cost_estimate_idempotency.sql",
+    "008_reputation_snapshot_id_text.sql",
 }
 
 # Required schema evidence for adopting migrations on an existing database.
@@ -144,6 +146,12 @@ REQUIRED_INDEXES = {
     },
 }
 
+REQUIRED_COLUMN_TYPES = {
+    "008_reputation_snapshot_id_text.sql": {
+        ("validation_audits", "reputation_snapshot_id"): "text",
+    },
+}
+
 def get_existing_columns(cursor):
     cursor.execute("""
         SELECT table_name, column_name
@@ -154,6 +162,17 @@ def get_existing_columns(cursor):
     for table_name, column_name in cursor.fetchall():
         columns.setdefault(table_name, set()).add(column_name)
     return columns
+
+def get_existing_column_types(cursor):
+    cursor.execute("""
+        SELECT table_name, column_name, data_type
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+    """)
+    return {
+        (table_name, column_name): data_type
+        for table_name, column_name, data_type in cursor.fetchall()
+    }
 
 def get_existing_constraints(cursor):
     cursor.execute("""
@@ -173,6 +192,7 @@ def get_existing_indexes(cursor):
 
 def verify_migration_schema(cursor, filename):
     columns = get_existing_columns(cursor)
+    column_types = get_existing_column_types(cursor)
     constraints = get_existing_constraints(cursor)
     indexes = get_existing_indexes(cursor)
     missing = []
@@ -180,6 +200,13 @@ def verify_migration_schema(cursor, filename):
         absent = expected - columns.get(table, set())
         if absent:
             missing.append(f"{table} columns: {sorted(absent)}")
+    for key, expected_type in REQUIRED_COLUMN_TYPES.get(filename, {}).items():
+        actual_type = column_types.get(key)
+        if actual_type != expected_type:
+            missing.append(
+                f"{key[0]}.{key[1]} type: expected {expected_type}, "
+                f"found {actual_type or 'missing'}"
+            )
     absent_constraints = (
         REQUIRED_CONSTRAINTS.get(filename, set()) - constraints
     )
