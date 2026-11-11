@@ -123,7 +123,7 @@ The code default can differ from the process environment. Title overlap with eit
 | GSM8K incorrect-candidate rule | Completed as a limitation | Only the narrow gold+1 discrete-count rule can mark a candidate `verified_incorrect`. |
 | HotpotQA verified incorrect candidates | Completed as a limitation | Zero in research_v1. |
 | Unresolved candidates | Completed as a limitation | 871 unresolved records stay unresolved and are excluded from binary examples. |
-| Final Test | Completed for this version | Disabled. No final-test identities were accessed. A protected holdout is still required before confirmatory evaluation. |
+| Final Test | Provisional partition exists | research_v1 itself accessed no final-test identities. A separate provisional Final Test (1,319 GSM8K test + 1,319 HotpotQA validation groups, all benchmark-gold) was generated afterwards; it is disabled, `NOT_AUTHORIZED`, without independent custody, and has no negative class. See `final_test_manifest.md`. |
 | Source version strings | Completed | Manifest `source_versions` as listed above. |
 | License and citation text | Pending | Local `dataset_info.json` fields are empty. Confirm from the benchmark releases. |
 | Direct arithmetic as its own population | Completed | Excluded for research_v1. No verified subset or marker exists. GSM8K stays a word-problem population. |
@@ -131,3 +131,4 @@ The code default can differ from the process environment. Title overlap with eit
 | Scientific acceptance of automated labels | Pending approval | No human adjudication is claimed. |
 | Evidence Verifier corpus and index for a run | Pending approval | Identity must be pinned to the resource actually loaded. research_v1 does not choose one. |
 | Verifier attempts and policy fitting | Unresolved | Zero complete attempts and zero complete offline examples. `policy_fitting_ready` is false. |
+| Machine verification of the above | Completed 2026-11-11 | `python -m evaluation.data_preparation.person1_validation validate` recomputes population counts, label counts, generation methods, source versions, both corpus SHA-256 values, and every hash in the research_v1 manifest (all PASS). |

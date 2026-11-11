@@ -8,6 +8,19 @@
 
 > Does jointly selecting a verifier team and an aggregation strategy through a reputation-aware game-theoretic framework improve AI answer validation under declared resource constraints and adversarial report manipulation, while maintaining acceptable performance on clean inputs?
 
+### Central claim to evaluate (Person 1 protocol wording)
+
+> Evaluate whether joint verifier-team and aggregation selection provides a useful verification-loss, coverage, and cost tradeoff under declared resource limits and report-corruption scenarios.
+
+This wording is the protocol's working claim. Formal approval of the research claim is recorded as pending in `person1_approval_checklist.md`.
+
+### Primary and supporting outcomes
+
+- **Primary outcome:** worst-case expected validation loss across the declared clean and report-corruption scenarios, computed per method from policy-probability-weighted outcomes on the same eligible groups.
+- **Supporting outcomes:** clean expected loss; false acceptance and false rejection (counts and rates); decision coverage; uncertainty rate; selective risk (undefined at zero coverage); estimated verifier-attempt cost; execution failures; unresolved coverage; verifier inclusion frequencies and strategy probabilities.
+
+**Estimand gap that needs a decision:** `app/game/research/comparison.py:_score` sets `worst_case_expected_loss = max(mean_loss)` over attack columns, and `Metrics.mean_loss` is the cost-augmented value `decision loss + resource_weight × cost`. The pure decision loss is `Metrics.validation_loss(loss)`. The two coincide only when `resource_weight = 0`. Before confirmatory reporting, the team must declare whether the primary outcome is the cost-augmented worst case (what the code computes) or the decision-only worst case (which would be computed from the same per-attack `Metrics` with `validation_loss`). No code was changed.
+
 This is an empirical question, not an assumption that the game policy must beat every baseline. “Improve” must be interpreted from the declared loss, coverage, cost, clean-input performance, and attack results together. Comparisons must use compatible inputs, resource limits, labels, and evaluation rules.
 
 Evaluate and report:
@@ -141,6 +154,36 @@ The existing attack enumerator targets a configured dependency/failure group and
 
 The repository does not establish empirically which verifiers share evidence sources, models, prompts, data, or failure modes. The pilot proposal declares no known dependency pathways and places all verifier names in `unresolved` with `unknown_treatment='shared_unknown'`, which conservatively treats them as one unknown group. This is an explicit proposal assumption, not verified dependence evidence. The team must document which components may be shared, how evidence supports those assignments, how unknowns are grouped, and whether these assumptions remain fixed for each comparison. Do not claim robustness beyond these declared report-level scenarios and dependency assumptions.
 
+## Code verification of the protocol mechanics (2026-11-11)
+
+Each statement below was checked by reading the cited code and running its existing tests. The run of `tests/test_game_offline.py`, `test_game_research.py`, `test_game_foundation.py`, `test_game_build.py`, `test_game_completion.py`, and `test_pilot_abstention_contract.py` passed together with the dataset suites (counts in `person1_compliance_matrix.md`).
+
+| Mechanic | Code | Verified behaviour | Test evidence |
+|---|---|---|---|
+| Loss per outcome | `offline/evaluation.py:outcome_loss` | passed+incorrect → false-accept weight; failed+correct → false-reject weight; any non-definitive status → uncertain weight | `test_game_offline.py` replay/metric tests |
+| Zero coverage | `offline/evaluation.py:summarize` | `selective_risk = None` when no decisive outcome; coverage reported as 0 | `test_mixed_metrics_are_expectations_and_zero_coverage_risk_undefined` |
+| Mixed policies | `summarize`, `comparison.py:_score` | outcomes weighted by strategy probabilities; weights must sum to 1 per example; no best-strategy selection | same test; `ResearchPolicy.validate_distribution` |
+| Worst case | `comparison.py:_score` | maximum over declared attack columns of the probability-weighted `mean_loss`; ties listed | `test_game_research.py` line 277 assertion; `test_best_deterministic_uses_worst_column_and_stable_ties` |
+| Minimum contributors | `finalization.py:finalize_decision` | usable contributors below `PlanningContext.minimum_participant_count` force `uncertain` with reason `minimum_contributors` | `test_pilot_abstention_contract.py` |
+| Coverage constraint | `strategies.py:enumerate_strategies`, `finalize_decision` | team feasibility uses expected capabilities; finalization forces `uncertain` on `missing_achieved_coverage` | `test_minimum_budget_and_coverage_constraints`, `test_pilot_abstention_contract.py` |
+| Budget | `PlanningContext.budget`, `enumerate_strategies` | strategies above budget are infeasible; greedy cannot relax budget or minimum | `test_greedy_cannot_relax_budget_or_minimum` |
+| Attacks | `offline/attacks.py` | `Attack.kind` ∈ {clean, forced_support, forced_rejection, confidence_inflation, suppression}; suppression maps to `unavailable` or `abstention` per specification; existing abstentions preserved | `test_explicit_suppression_semantics`, `test_directional_attacks_preserve_non_directional_outcomes`, `test_inflation_does_not_create_new_claim_coverage` |
+| Dependency / failure assumptions | `dependencies.py:DependencyRegistry` | connected failure components; unresolved verifiers grouped by declared `unknown_treatment` | `test_game_foundation.py` |
+
+### Comparison machinery
+
+`app/game/research/comparison.py:METHODS` defines the frozen comparison roster. Mapping to the protocol's named comparators:
+
+| Protocol comparator | Repository method | Selection basis |
+|---|---|---|
+| Full game policy | `full_minimax` | Development minimax certificate |
+| Coverage-aware greedy | `coverage_aware_greedy` | captured selector team, feasible under the same budget/minimum |
+| Development-selected fixed strategies | `deterministic_minimax` (best worst-column pure strategy), `clean_development` (best clean-column pure strategy) | Development matrix only |
+| Uniform feasible strategies | `uniform` | equal probability over every feasible strategy row |
+| Aggregation-restricted games | `fixed_reputation_weighted`, `fixed_dependency_group` | minimax certificate on the restricted row set |
+
+`prepare_comparison` requires `development` role data; `score_frozen_final` performs no fitting or selection. None of these methods has been run on research_v1 because no verifier Attempts exist.
+
 ## Research protocol decisions
 
 | Decision | Current repository status | Research status |
@@ -155,6 +198,7 @@ The repository does not establish empirically which verifiers share evidence sou
 | Dependency assumptions | Registry supports known pathways and shared unknown groups; pilot proposal groups all names as unresolved | Document evidence and assumptions, then freeze; current relationships are not verified |
 | Failure and unresolved loss | No dedicated penalty field; non-definitive public results receive uncertainty loss in offline evaluation | Decide whether additional failure/unresolved treatment is needed; keep supporting counts visible |
 | Scenario aggregation | Offline fitting forms one payoff column per enumerated attack and solves the game; final reporting rule still needs a declared estimand | Confirm worst-case versus weighted-scenario reporting and how policy randomization enters it |
+| Primary-outcome cost treatment | Code's `worst_case_expected_loss` is cost-augmented (`mean_loss`) | Pending: declare cost-augmented or decision-only worst case |
 
 ## Research integrity and data separation
 
@@ -168,6 +212,8 @@ The repository does not establish empirically which verifiers share evidence sou
 
 The current repository audit documentation records that `evaluation/datasets/unified/final_test.json` and some of its candidate/reference information were previously inspected during candidate-answer auditing and pilot preparation. It therefore cannot be described as an unseen protected holdout retroactively. Preserve and disclose that exposure; use a custodian-controlled unseen holdout if the capstone requires a protected confirmatory final evaluation.
 
+A fresh provisional Final Test (`research_v1_final_test_provisional_v1`, 1,319 GSM8K test + 1,319 HotpotQA validation groups) now exists, is disabled and `NOT_AUTHORIZED`, and has passed hash and exact-leakage validation. It lacks independent custody and a negative class; see `final_test_manifest.md`.
+
 ## Repository references inspected
 
 - Loss schema: `app/game/models.py:LossConfiguration`.
@@ -177,4 +223,5 @@ The current repository audit documentation records that `evaluation/datasets/uni
 - Team legality and contributors: `app/game/models.py:PlanningContext.minimum_participant_count`; `app/game/strategies.py:enumerate_strategies`; `app/game/finalization.py:finalize_decision`; `app/selection/verifier_selector.py:DEFAULT_DIFFICULTY_RANGE`, `VerifierSelector.minimum_count`.
 - Runtime coverage and uncertainty guards: `app/orchestration/validation_orchestrator.py:ValidationOrchestrator.validate`; `app/decision/coverage.py:factual_capabilities`.
 - Attack/dependency definitions: `app/game/offline/attacks.py`; `app/game/dependencies.py:DependencyRegistry`; `app/decision/dependency_aggregation.py:aggregate_dependency_groups`.
-- Prior dataset and holdout audit: `evaluation/docs/dataset_audit.md`, `evaluation/docs/candidate_answer_validation_audit.md`, and `evaluation/docs/existing_split_research_readiness.md`.
+- Prior dataset and holdout audit: `evaluation/docs/dataset_audit.md` and `evaluation/docs/existing_split_research_readiness.md`. (`candidate_answer_validation_audit.md` is cited in older notes but does not exist in this checkout.)
+- Comparison roster and worst case: `app/game/research/comparison.py:METHODS`, `prepare_comparison`, `_score`.

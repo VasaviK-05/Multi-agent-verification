@@ -122,3 +122,7 @@ Do not edit research_v1 in place. Do not drop rows because of a score.
 ## Confirmation
 
 No dataset records, questions, candidate answers, labels, group IDs, split assignments, hashes, or manifest counts were modified. The only file written by this audit is this report.
+
+## Automated reproduction (2026-11-11)
+
+`evaluation/data_preparation/person1_validation.py:history_development_leakage` now recomputes this audit on every `validate` run. Its result matches the counts above: every identity overlap is 0 for both benchmarks, including cross-partition donors; there are 25 shared context hashes (15 History and 15 Development groups); 14 shared paragraph texts and 14 shared titles (9 groups per side); and 2 shared supporting facts (`Magic Dirt#0`, `Tom Clancy#0`). Any drift fails the "HotpotQA shared-context counts reproduced" check. The provisional Final Test was also checked against both partitions: every exact comparison is 0 (`final_test_manifest.md`). The verdict remains a **conditional pass**.

@@ -8,6 +8,10 @@ The Development feasibility pilot is recorded as blocked before verifier executi
 
 A provisional Final Test partition now exists at `evaluation/datasets/final_test_research_v1_eval_v1/`, with its separated label payload in `evaluation/datasets/_custodian/final_test_research_v1_v1/`. It has 1,319 groups per benchmark, benchmark-gold candidates only, and a passing exact leakage audit. Its status remains `NOT_AUTHORIZED`, `enabled: false`, and `PROVISIONALLY_FROZEN_AFTER_HASH_AND_AUDIT`. The label directory is Git-ignored but its Windows ACL inherits broad user read/modify access; no independent custodian exists. It is not genuinely protected and must not be used for confirmatory evaluation.
 
+### Person 1 data readiness (2026-11-11)
+
+The dataset side is validated: `python -m evaluation.data_preparation.person1_validation validate` reports 17 PASS, 0 FAIL, and 3 BLOCKED (Final Test custody, the unlocated "700 results", and policy-fitting readiness). The Development eligible roster (387 groups / 478 candidates), the ordered Person 2 and live-runtime rosters, the unresolved review queue, and the experiment input contracts exist in `evaluation/datasets/person1/research_v1_person1_v1/`. The full status is in `person1_compliance_matrix.md` and decision owners are in `person1_approval_checklist.md`. Data readiness does not change the overall assessment above. Experiments remain blocked on verifier Attempts (adapter configuration unset) and on approvals.
+
 ## Readiness checks
 
 The machine-readable configuration is `evaluation/config/protocol_readiness.yaml`. The validator checks:

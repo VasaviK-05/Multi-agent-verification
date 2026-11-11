@@ -30,6 +30,28 @@ Compare methods on the same held-out examples and resource condition. Calculate 
 
 An abstention is a valid system outcome indicating insufficient confidence/evidence or a policy choice not to decide. An execution failure means the intended computation did not complete. Report both and state the primary loss treatment for each. Do not score abstention as rejection. Do not silently remove failures from operational coverage or cost. When there are no definitive decisions, report selective risk as undefined and show zero coverage, counts, and unresolved rate.
 
+## Primary outcome and its implementation
+
+The protocol's primary outcome is worst-case expected validation loss across the declared scenarios (`research_objective.md`). In code, `app/game/research/comparison.py:_score` reports `worst_case_expected_loss = max over attacks of Metrics.mean_loss`. `mean_loss` includes `resource_weight × estimated cost`; `Metrics.validation_loss(loss)` excludes it. Report which one is primary once the team decides; until then, report both from the same per-attack `Metrics`.
+
+## Which metrics research_v1 can support
+
+Recomputed from research_v1 labels by `person1_validation` (machine-readable copy in `experiment_contracts.json` → `estimability`). "After Attempts" means the metric becomes computable only once real verifier Attempts are recorded; currently there are 0.
+
+| Partition:benchmark | Correct / incorrect / unresolved | False acceptance | False rejection | Coverage, abstention, selective risk | Loss, cost, worst case |
+|---|---|---|---|---|---|
+| History:GSM8K | 277 / 124 / 199 | after Attempts | after Attempts | after Attempts | blocked (loss weights, Person 2 costs, Attempts) |
+| History:HotpotQA | 300 / 0 / 340 | **not estimable** (0 incorrect) | after Attempts | after Attempts | blocked |
+| Development:GSM8K | 187 / 91 / 122 | after Attempts | after Attempts | after Attempts | blocked |
+| Development:HotpotQA | 200 / 0 / 210 | **not estimable** (0 incorrect) | after Attempts | after Attempts | blocked |
+| Final Test (provisional) | 2,638 / 0 / 0 (manifest aggregate) | **not estimable** (0 incorrect) | after authorization | after authorization | blocked |
+
+Consequences:
+
+- HotpotQA reputation from History can only reflect behaviour on correct candidates, so it cannot learn false-acceptance tendencies on that benchmark.
+- Any pooled false-acceptance figure on research_v1 is GSM8K-only and must be labelled as such.
+- Unresolved candidates are excluded from binary metrics and never counted as incorrect.
+
 ## Still requiring approval
 
 Approve loss values, any scenario weights or worst-case aggregation, denominator treatment in the primary estimand, cost schedule, interval level/bootstrap draws, mixed-strategy evaluation method, and handling of missing labels/evidence before the confirmatory comparison.
