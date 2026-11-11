@@ -1,13 +1,14 @@
 # Exploratory Development and Final Test v2 (provisional automated labels)
 
-Built 2026-11-11 under **temporary research mode**. Human approval, human adjudication and manual verification were out of scope. Both datasets therefore use reproducible automated labels, and every incorrect label is **SYNTHETIC_INCORRECT**. No label here is human verified, and no reviewer decision, approval or custody was recorded.
+Built 2026-11-11 under **temporary research mode**. Human approval, human adjudication and manual verification were out of scope. Both datasets therefore use reproducible automated labels, and every incorrect label is **SYNTHETIC_INCORRECT**. No label here is human verified. Final Test v2 now has a designated custodian (the dataset creator, not an independent custodian). That appointment is not an evaluation approval.
 
 | Item | Status |
 |---|---|
 | Human approval of the synthetic-negative protocol | **DEFERRED** |
 | Human adjudication of negatives or unresolved candidates | **DEFERRED** |
-| Independent custodian for Final Test v2 | **PENDING** (none named) |
+| Final Test v2 custodian | **DESIGNATED, NOT INDEPENDENT** — dataset creator Raunak (`final_test_custody_protocol.md`) |
 | Final Test v2 label release | **NOT AUTHORIZED** |
+| Final Test v2 evaluation authorization | **PENDING** |
 | Confirmatory Experiment 1 | **NOT RUN, NOT AUTHORIZED** |
 
 ## Label classes
@@ -110,11 +111,12 @@ Those files will never be scored, so this is reported, not blocking. The binding
 
 | Field | Value |
 |---|---|
-| Manifest SHA-256 | `478001c764dd17424127652cfc6b587a12e94e30aa5f74b4871dd3e0cb499031` |
+| Manifest SHA-256 | `e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee` |
 | Roster SHA-256 | `3f8fcbf1e698174a9a7cf6c586ec51048bcc07ca11154b36fdef0dadc7796208` |
 | Label file SHA-256 | `35b126ba350a942f42f11d1845e16e01fd755516d20b53faf3aaf616143858a6` |
-| Reservation SHA-256 | `adc199f6eb77e62b53b72121bb021642c663f8e57ccf7b72c6ce6ac7b3b9d1e8` |
-| Status | `NOT_AUTHORIZED`, `enabled: false`, custody `PENDING_NO_INDEPENDENT_CUSTODIAN` |
+| Reservation SHA-256 | `e7cea941837697093bd18e499f2d78f8bea550a33fee4a9dff2e9738995d7611` |
+| Status | `NOT_AUTHORIZED`, `enabled: false`, custody `DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR` (not independent) |
+| Evaluation authorization | `PENDING`. Custody does not authorize evaluation |
 
 ### Selection
 
@@ -145,7 +147,7 @@ Those files will never be scored, so this is reported, not blocking. The binding
   - two candidates per group.
 
   Verifier recording (`run_verifier_attempts`) and Offline Example building accept only `history`/`development` partitions. The feasibility pilot rejects any path containing `final_test`. `TrainingManifest` rejects History/Development examples that share any reservation identity.
-- **Readiness gate** (`final_test_workflow readiness --manifest …/final_test_research_v1_eval_v2/manifest.json`): `NOT APPROVED`, with the single reason `no_confirmatory_authorization_record`, and `final_test_negatives_synthetic_only: true`. Confirmatory readiness stays BLOCKED.
+- **Readiness gate** (`final_test_workflow readiness --manifest …/final_test_research_v1_eval_v2/manifest.json`): `NOT APPROVED`, reasons `evaluation_authorization_pending` and `no_confirmatory_authorization_record`. `final_test_negatives_synthetic_only` is true. Confirmatory readiness stays BLOCKED. The custodian appointment does not change this.
 - **Retired Final Test:** not reused. Its files are byte-identical before and after this build.
 
 ## Limitations of synthetic labels
@@ -156,5 +158,5 @@ Those files will never be scored, so this is reported, not blocking. The binding
 - **HotpotQA format signal.** Distractor titles are entity names that can differ in answer type from the gold. Mean answer length is 16.3 characters for SYNTHETIC_INCORRECT vs 14.8 for VERIFIED_CORRECT (v2), and initial capital 79% vs 66%. See `class_format_audit.json` and the exploratory `audit.json`.
 - **HotpotQA negatives inside the evidence.** A distractor title appears in the evidence context by construction, so evidence-matching verifiers could find it "supported".
 - **Benchmark gold is trusted.** VERIFIED_CORRECT means the benchmark gold, not a human-checked answer. Benchmark label noise carries over.
-- **No custody.** The labels sit in a Git-ignored directory of the same workspace, with no independent custodian and no operating-system protection. This is custody preparation, not custody.
+- **Custody is not independent.** The dataset creator is the designated custodian. The labels sit in a Git-ignored directory of the same workspace, and there is no operating-system protection. Verifier developers and Development experiment runners are refused by the label gate. Evaluation authorization remains pending.
 - **Exploratory only.** No human approved the rules, the GSM8K train source, or the 300-group cap. Results on these datasets are exploratory and must report the synthetic label basis.

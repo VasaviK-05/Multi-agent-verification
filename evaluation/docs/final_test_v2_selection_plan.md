@@ -8,7 +8,7 @@
 >   - seed 20261111;
 >   - 300 groups per benchmark;
 >   - groups without a negative skipped.
-> - All negatives are SYNTHETIC_INCORRECT. Human approval and adjudication are DEFERRED, custody is PENDING, and the manifest stays NOT_AUTHORIZED.
+> - All negatives are SYNTHETIC_INCORRECT. Human approval and adjudication are DEFERRED. Custody is `DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR` (the dataset creator, not an independent custodian). Evaluation authorization stays PENDING, and the manifest stays NOT_AUTHORIZED.
 >
 > The plan text below is unchanged and still describes what a confirmatory v2 would need.
 

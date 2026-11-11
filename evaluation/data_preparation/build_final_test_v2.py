@@ -28,6 +28,7 @@ from app.game.offline.records import FinalTestReservation, ReservedExample
 from evaluation.data_preparation.build_exploratory_development import OUTPUT as EXPLORATORY_DIR, raw_hotpot_context
 from evaluation.data_preparation.build_research_dataset import SOURCE_VERSION
 from evaluation.data_preparation.experiment1_preparation import OUTPUT as PREPARATION_DIR
+from evaluation.data_preparation.final_test_custody import APPOINTMENT_PATH, CUSTODY_STATUS, load_appointment
 from evaluation.data_preparation.final_test_workflow import (
     DEVELOPMENT, HISTORY, ROOT, _hotpot_support_valid, canonical_bytes, context_hashes, exposure_audit,
     exposure_files, final_test_gate, jsonl_bytes, load_retirements, norm_question, read_jsonl, read_records,
@@ -57,8 +58,13 @@ CUSTODIAN_FILES = ("labels.jsonl", "manifest.json", "class_format_audit.json", "
 
 def load_config(path: Path = CONFIG) -> dict:
     config = yaml.safe_load(path.read_text(encoding="utf-8"))
+    appointment = load_appointment()
     if config.get("human_approval") != "DEFERRED" or config.get("label_protocol") != PROTOCOL:
         raise ValueError("Final Test v2 config must keep human approval DEFERRED under the provisional protocol")
+    if config.get("custody_record") != appointment["custody_record"]:
+        raise ValueError("Config custody record must match the custodian appointment")
+    if config.get("evaluation_authorization") != "PENDING":
+        raise ValueError("Final Test v2 evaluation authorization must stay pending")
     return config
 
 
@@ -414,6 +420,7 @@ def compute(root: Path = ROOT, config_path: Path = CONFIG) -> dict[tuple[str, st
         raise ValueError("Final Test v2 failed exposure, leakage or isolation audit: "
                          + json.dumps({"exposure": exposure["passed"], "leakage": leakage["passed"],
                                        "isolation": isolation["passed"]}))
+    appointment = load_appointment()
     reservation = FinalTestReservation(
         version="final_test_reservation_v1", role="final_test", dataset_id=config["dataset_version"],
         custody_record=config["custody_record"],
@@ -430,14 +437,21 @@ def compute(root: Path = ROOT, config_path: Path = CONFIG) -> dict[tuple[str, st
         "dataset_version": config["dataset_version"], "partition": "final_test", "status": "NOT_AUTHORIZED",
         "enabled": False, "label_protocol": PROTOCOL, "human_verified_labels": 0,
         "human_approval": "DEFERRED", "human_adjudication": "DEFERRED",
-        "custody_status": "PENDING_NO_INDEPENDENT_CUSTODIAN", "confirmatory_use": "NOT_AUTHORIZED",
+        "custody_status": CUSTODY_STATUS, "custody_independence": appointment["custody_independence"],
+        "custodian": appointment["appointee"],
+        "custodian_roles": appointment["roles"],
+        "custodian_appointment": relative(APPOINTMENT_PATH, root),
+        "custodian_appointment_sha256": sha256_file(APPOINTMENT_PATH),
+        "evaluation_authorization": "PENDING", "label_release": "NOT_AUTHORIZED",
+        "operating_system_label_protection": False,
+        "confirmatory_use": "NOT_AUTHORIZED",
         "label_basis": "VERIFIED_CORRECT = raw benchmark gold; SYNTHETIC_INCORRECT = deterministic transformation; "
                        "no human verification",
         "seed": config["seed"], "config_path": relative(config_path, root), "config_sha256": sha256_file(config_path),
         "generator_sha256": sha256_file(Path(__file__)),
         "dependency_sha256": {name: sha256_file(module_dir / name) for name in
                               ("synthetic_negatives.py", "label_classes.py", "final_test_workflow.py",
-                               "build_exploratory_development.py")},
+                               "final_test_custody.py", "build_exploratory_development.py")},
         "source_versions": {b: SOURCE_VERSION[b] for b in BENCHMARKS},
         "source_sha256": raw_source_hashes(config, root),
         "prior_partition_sha256": {name: c["sha256"] for name, c in leakage["comparisons"].items()},
@@ -456,18 +470,26 @@ def compute(root: Path = ROOT, config_path: Path = CONFIG) -> dict[tuple[str, st
     }
     manifest["manifest_sha256"] = sha256_bytes(canonical_bytes(manifest))
     manifest_bytes = canonical_bytes(manifest)
-    custody = {"status": "PENDING_NO_INDEPENDENT_CUSTODIAN", "custodian": None, "approver": None,
+    custody = {"status": CUSTODY_STATUS, "custody_independence": "NOT_INDEPENDENT",
+               "custodian": appointment["appointee"], "custodian_roles": appointment["roles"],
+               "independent_custodian": False, "approver": None,
                "custody_record": config["custody_record"], "manifest_sha256": manifest["manifest_sha256"],
+               "appointment": relative(APPOINTMENT_PATH, root),
+               "appointment_sha256": sha256_file(APPOINTMENT_PATH),
                "label_file": f"{config['paths']['custodian']}/labels.jsonl", "label_file_sha256": manifest["label_file_sha256"],
-               "label_release": "NOT_AUTHORIZED", "human_approval": "DEFERRED", "human_adjudication": "DEFERRED",
-               "access_control": "none; the labels sit in a Git-ignored directory of the same workspace. This is "
-                                 "custody preparation, not custody, and gives no operating-system protection.",
+               "label_release": "NOT_AUTHORIZED", "evaluation_authorization": "PENDING",
+               "protocol_freeze": "PENDING", "human_approval": "DEFERRED", "human_adjudication": "DEFERRED",
+               "responsibilities": appointment["responsibilities"],
+               "access_control": "Python callers refuse verifier_developer and development_experiment_runner, and refuse "
+                                 "label release while evaluation authorization is pending. The labels remain in a "
+                                 "Git-ignored directory of the same workspace. This is not operating-system protection "
+                                 "and not independent custody.",
                "forbidden_uses": config["forbidden_uses"],
                "required_before_confirmatory_use": [
-                   "an independent custodian takes the label file and verifies label_file_sha256",
-                   "human approval of the synthetic-negative protocol, or human adjudication of the negatives",
-                   "an authorization record (approved, manifest_sha256, approver, custodian) passed to "
-                   "final_test_workflow readiness --authorization"]}
+                   "protocol freeze of the synthetic-negative rules, source split, and sample size",
+                   "human approval of that protocol, or human adjudication of the negatives",
+                   "an authorization record (approved, protocol_frozen, manifest_sha256, approver, custodian) "
+                   "that is not the custodian appointment, passed to final_test_workflow readiness --authorization"]}
     format_audit = class_format_audit(roster, labels)
     evaluation = {"evaluation_roster.jsonl": roster_bytes, "manifest.json": manifest_bytes,
                   "leakage_audit.json": canonical_bytes(leakage), "isolation_audit.json": canonical_bytes(isolation),

@@ -5,7 +5,8 @@
 The partition passed hash, composition and exact-leakage validation, but only against research_v1 History and Development. It is **disabled**, **NOT_AUTHORIZED** and **not protected**: no independent custodian exists, and the label directory inherits broad Windows read/modify ACLs. The retirement registry (`evaluation/config/final_test_retirements.json`) makes `read_custodian_labels` refuse it and makes readiness report it as BLOCKED. Every file below is preserved unchanged. Its questions and paragraphs count as exposed for any future Final Test (`final_test_v2_selection_plan.md`).
 
 **Successor (exploratory only):** `research_v1_final_test_v2_exploratory_v1`.
-- Manifest `478001c764dd17424127652cfc6b587a12e94e30aa5f74b4871dd3e0cb499031`.
+- Manifest `e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee`.
+- Custody: `DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR` (dataset creator Raunak; not independent). Evaluation authorization remains `PENDING`.
 - Directories: `evaluation/datasets/final_test_research_v1_eval_v2/` and `_custodian/final_test_research_v1_v2/`.
 - 600 fresh groups, each with one VERIFIED_CORRECT and one SYNTHETIC_INCORRECT candidate.
 - 0 overlap with this retired set or any exposed file.

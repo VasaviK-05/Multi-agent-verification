@@ -17,7 +17,11 @@ groups_without_negative: skipped before selection completes; never kept gold-onl
 paths:
   evaluation: evaluation/datasets/final_test_research_v1_eval_v2
   custodian: evaluation/datasets/_custodian/final_test_research_v1_v2
-custody_record: PENDING_NO_INDEPENDENT_CUSTODIAN:custody_preparation_v1
+# Custody identity updated when the dataset creator accepted designated custody.
+# Not a selection input. Not independent custody. Does not authorize evaluation.
+custody_record: DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR:Raunak
+custody_status: DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR
+evaluation_authorization: PENDING
 human_approval: DEFERRED
 human_adjudication: DEFERRED
 forbidden_uses:
@@ -26,4 +30,4 @@ forbidden_uses:
   - threshold, loss, budget or hyperparameter tuning
   - policy or team selection
   - label release without an authorization record bound to the manifest SHA-256
-  - confirmatory Experiment 1 while labels are synthetic and custody is pending
+  - confirmatory Experiment 1 while evaluation authorization is pending

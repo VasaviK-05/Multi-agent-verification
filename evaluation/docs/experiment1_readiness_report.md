@@ -11,18 +11,18 @@ Status values used here:
 
 ## Update 2026-11-11: temporary research mode
 
-Human approval, human adjudication and manual verification were declared out of scope for this preparation phase. Automated, provisional labels now give both benchmarks an incorrect class (`exploratory_dataset_and_final_test_v2.md`). **Exploratory Experiment 1 work can use these datasets.** Confirmatory Experiment 1 remains blocked: the labels are synthetic, custody is pending, and no authorization exists.
+Human approval, human adjudication and manual verification were declared out of scope for this preparation phase. Automated, provisional labels now give both benchmarks an incorrect class (`exploratory_dataset_and_final_test_v2.md`). **Exploratory Experiment 1 work can use these datasets.** Confirmatory Experiment 1 remains blocked: the labels are synthetic, and evaluation authorization is pending. Custody is now designated to the dataset creator and is not independent.
 
 | Item | Status | Evidence |
 |---|---|---|
 | Label-source taxonomy (VERIFIED_CORRECT / SYNTHETIC_INCORRECT / HUMAN_VERIFIED_INCORRECT / UNRESOLVED) in data and game layer | COMPLETED | `label_classes.py`; `Example.label_class`; `label_composition` in readiness, comparison and Final Test evaluation |
 | Exploratory Development `research_v1_exploratory_v1` | COMPLETED (provisional labels) | Development: GSM8K 187 correct / 187 synthetic incorrect; HotpotQA 200 / 200. History: GSM8K 277 / 277; HotpotQA 300 / 299. 0 human-verified |
-| Final Test v2 `research_v1_final_test_v2_exploratory_v1` | COMPLETED (provisional labels) | 600 fresh groups: 300 GSM8K train and 300 HotpotQA validation, each 1 correct + 1 synthetic incorrect. Exposure, leakage and isolation audits pass. Manifest `478001c7…b499031` |
+| Final Test v2 `research_v1_final_test_v2_exploratory_v1` | COMPLETED (provisional labels) | 600 fresh groups: 300 GSM8K train and 300 HotpotQA validation, each 1 correct + 1 synthetic incorrect. Exposure, leakage and isolation audits pass. Manifest `e572093a…d3319ee` |
 | `FinalTestReservation` for v2 | COMPLETED (label-free) | `final_test_research_v1_eval_v2/final_test_reservation.json`, 1,200 examples |
-| Final Test v2 custody | PENDING | `custody_preparation.json`: no custodian named, no OS protection, label release NOT AUTHORIZED |
+| Final Test v2 custody | DESIGNATED, NOT INDEPENDENT | Dataset creator Raunak is the designated custodian (`final_test_v2_custodian_appointment.json`). No independent custodian and no OS protection. Previous status `PENDING_NO_INDEPENDENT_CUSTODIAN` |
 | Human approval of synthetic rules, GSM8K train source and 300-group cap | DEFERRED | Out of scope in temporary research mode |
 | Human adjudication of negatives and the 871 unresolved candidates | DEFERRED | Unresolved candidates stay separate and unlabelled |
-| Final Test v2 readiness gate | NOT APPROVED | Only reason: `no_confirmatory_authorization_record`; `final_test_negatives_synthetic_only: true` |
+| Final Test v2 evaluation authorization | PENDING | Gate reasons: `evaluation_authorization_pending`, `no_confirmatory_authorization_record`. Custody does not authorize evaluation. Manifest `e572093a…d3319ee` stays `NOT_AUTHORIZED` |
 
 Checks run for this update:
 - New tests: `tests/test_synthetic_negatives.py` (10) and `tests/test_final_test_v2.py` (14). They cover negative generation, label provenance, class balance, exposure exclusion, split leakage, reservation integrity and Final Test isolation.
@@ -32,6 +32,8 @@ Checks run for this update:
   - `build_exploratory_development validate` and `build_final_test_v2 validate`: 0 mismatches.
   - `person1_validation validate`: 17 PASS, 3 BLOCKED, no drift.
   - `experiment1_preparation validate`: 0 stored-hash mismatches. Its exposure-dependent outputs now recompute differently because the exposure scan includes the two new datasets. The v1 outputs remain the frozen snapshot, and v2 reproduced their pool hashes using the snapshot's file set.
+
+Custody check after the appointment: `tests/test_final_test_v2_custody.py` (6). It checks the designated-creator status, refusal of verifier developers and Development runners, preservation of the label, roster, and reservation-entry hashes, and that the appointment does not authorize evaluation.
 
 Rows 4, 5a and 8j in the table below are superseded by this update for exploratory work only. Every other row is unchanged: Attempts, cost calibration, the dependency registry and the approvals are still missing.
 

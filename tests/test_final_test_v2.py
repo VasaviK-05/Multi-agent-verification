@@ -214,15 +214,21 @@ def test_exploratory_artifact_reproduces():
 @needs_v2
 def test_final_test_v2_artifact_integrity_and_gate():
     result = ft2.validate(recompute=False)
+    assert result["gate"][0] == "NOT APPROVED"
+    assert "evaluation_authorization_pending" in result["gate"][1]
     assert result["stored_hash_mismatches"] == [] and result["artifacts"]["passed"]
     manifest = json.loads((V2_EVAL / "manifest.json").read_text(encoding="utf-8"))
     assert manifest["status"] == "NOT_AUTHORIZED" and manifest["enabled"] is False
-    assert manifest["custody_status"] == "PENDING_NO_INDEPENDENT_CUSTODIAN" and manifest["human_verified_labels"] == 0
+    assert manifest["custody_status"] == "DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR"
+    assert manifest["custody_independence"] == "NOT_INDEPENDENT"
+    assert manifest["evaluation_authorization"] == "PENDING" and manifest["label_release"] == "NOT_AUTHORIZED"
+    assert manifest["human_verified_labels"] == 0
     assert manifest["exposure_audit"]["passed"] and manifest["leakage_audit"]["passed"]
     assert manifest["retired_final_test_reused"] is False and manifest["manifest_sha256"] not in load_retirements()
     assert all(v["VERIFIED_CORRECT"] == v["SYNTHETIC_INCORRECT"] == 300 and v["HUMAN_VERIFIED_INCORRECT"] == 0
                for v in manifest["label_counts"].values())
-    assert final_test_gate(manifest, None, load_retirements()) == ("NOT APPROVED", ["no_confirmatory_authorization_record"])
+    assert final_test_gate(manifest, None, load_retirements()) == (
+        "NOT APPROVED", ["evaluation_authorization_pending", "no_confirmatory_authorization_record"])
     assert all(r["eligible_source_id_sha256_matches_plan"] for r in manifest["selection_plan_reproduction"].values())
 
 

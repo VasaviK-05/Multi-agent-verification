@@ -643,13 +643,24 @@ def build(config_path: Path) -> dict:
             "integrity_receipt": receipt, "excluded_group_count": len(exclusion_reasons)}
 
 
-def read_custodian_labels(label_file: Path, authorization_file: Path, access_log: Path, *, person: str, purpose: str, expected_manifest_sha256: str, retirements: Path = RETIREMENTS) -> list[dict]:
-    """Access labels only after explicit authorization; log before reading payload."""
+def read_custodian_labels(label_file: Path, authorization_file: Path, access_log: Path, *, person: str, purpose: str, expected_manifest_sha256: str, retirements: Path = RETIREMENTS, role: str | None = None) -> list[dict]:
+    """Access labels only after explicit authorization; log before reading payload.
+
+    A custodian appointment is not authorization. Verifier developers and Development
+    experiment runners are refused before any label file is opened.
+    """
+    from evaluation.data_preparation.final_test_custody import DENIED_ROLES, denied_activities, is_appointment, release_block
     if not person.strip() or not purpose.strip():
         raise PermissionError("Named person and evaluation purpose are required")
+    if role in DENIED_ROLES:
+        raise PermissionError("Final Test labels are withheld: role_denied")
+    if denied_activities(purpose):
+        raise PermissionError("Final Test labels are withheld: activity_denied")
     if expected_manifest_sha256 in load_retirements(retirements):
         raise PermissionError("Final Test is retired; label access for evaluation is permanently denied")
     auth = json.loads(authorization_file.read_text(encoding="utf-8"))
+    if is_appointment(auth):
+        raise PermissionError("Custodian appointment is not evaluation authorization")
     if auth.get("approved") is not True or auth.get("person") != person or auth.get("purpose") != purpose or auth.get("manifest_sha256") != expected_manifest_sha256:
         raise PermissionError("Final Test label access is not authorized")
     manifest_file = label_file.parent / "manifest.json"
@@ -658,6 +669,9 @@ def read_custodian_labels(label_file: Path, authorization_file: Path, access_log
     manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
     if manifest.get("manifest_sha256") != expected_manifest_sha256:
         raise PermissionError("Final Test manifest identity mismatch; label access denied")
+    blocked = release_block(manifest, auth, role=role, purpose=purpose)
+    if blocked:
+        raise PermissionError(f"Final Test labels are withheld: {blocked}")
     roster_file = Path(manifest.get("evaluation_roster_path", ""))
     if roster_file.parts and not roster_file.is_absolute():
         roster_file = ROOT / roster_file
@@ -764,11 +778,21 @@ def final_test_gate(manifest: dict, authorization: dict | None, retirements: dic
         reasons.append("missing_passing_content_level_exposure_audit")
     if reasons:
         return "BLOCKED", reasons
+    from evaluation.data_preparation.final_test_custody import CUSTODY_STATUS, is_appointment
+    pending = []
+    if manifest.get("evaluation_authorization") == "PENDING":
+        pending.append("evaluation_authorization_pending")
     if not authorization:
-        return "NOT APPROVED", ["no_confirmatory_authorization_record"]
-    if (authorization.get("approved") is not True or authorization.get("manifest_sha256") != digest
+        pending.append("no_confirmatory_authorization_record")
+    elif is_appointment(authorization):
+        pending.append("custodian_appointment_is_not_evaluation_authorization")
+    elif (authorization.get("approved") is not True or authorization.get("manifest_sha256") != digest
             or not str(authorization.get("approver", "")).strip() or not str(authorization.get("custodian", "")).strip()):
         return "BLOCKED", ["authorization_record_incomplete_or_mismatched"]
+    elif manifest.get("custody_status") == CUSTODY_STATUS and authorization.get("protocol_frozen") is not True:
+        pending.append("protocol_not_frozen")
+    if pending:
+        return "NOT APPROVED", pending
     return "APPROVED", []
 
 
@@ -798,6 +822,8 @@ def validate_readiness(config_path: Path, manifest_path: Path | None = None, aut
     checks["final_test_partition_and_custody"] = manifest.get("status") if manifest else None
     label_bases = {b: label_basis(v) for b, v in sorted((manifest.get("label_counts") or {}).items())}
     return {"exploratory_readiness": "LIMITED" if any(v in {"BLOCKED", "NOT APPROVED"} for v in statuses.values()) else "READY", "confirmatory_readiness": "BLOCKED" if any(v != "APPROVED" for v in statuses.values()) else "READY", "checks": statuses, "observed_values": checks, "final_test_gate_reasons": final_reasons,
+            "final_test_custody_status": manifest.get("custody_status"),
+            "final_test_evaluation_authorization": manifest.get("evaluation_authorization"),
             "final_test_label_basis": label_bases,
             "final_test_negatives_synthetic_only": bool(label_bases) and all(
                 v["incorrect"] and v["incorrect_by_label_source"]["synthetic"] == v["incorrect"] for v in label_bases.values())}

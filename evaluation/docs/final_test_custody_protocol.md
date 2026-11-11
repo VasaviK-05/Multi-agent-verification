@@ -1,6 +1,36 @@
 # Final Test custody and partition record
 
-## Current status
+## Final Test v2 custody (2026-11-11)
+
+The dataset creator, Raunak, is the designated Final Test custodian for `research_v1_final_test_v2_exploratory_v1`. There is no independent custodian. This appointment does not authorize evaluation or label release.
+
+| Field | Value |
+|---|---|
+| Previous status | `PENDING_NO_INDEPENDENT_CUSTODIAN` |
+| Custody status | `DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR` |
+| Independence | `NOT_INDEPENDENT` |
+| Appointment | `evaluation/config/final_test_v2_custodian_appointment.json` |
+| Custody record | `DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR:Raunak` |
+| Evaluation authorization | `PENDING` |
+| Label release | `NOT_AUTHORIZED` |
+| Protocol freeze | `PENDING` |
+| Manifest status | `NOT_AUTHORIZED`, `enabled: false` |
+| Manifest SHA-256 | `e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee` |
+
+The custodian's recorded responsibilities are:
+
+- Maintain label confidentiality.
+- Prevent Final Test leakage into Development, training, tuning, reputation fitting, or policy selection.
+- Preserve the existing Final Test v2 dataset and its hashes.
+- Release labels only after protocol freeze and explicit authorization.
+
+Label protection is a caller gate, not an operating-system boundary. `read_custodian_labels` refuses `verifier_developer` and `development_experiment_runner`, refuses Development, training, tuning, reputation-fitting, policy-selection, and verifier-development purposes, and refuses every caller while `evaluation_authorization` is `PENDING`. The custodian appointment cannot be passed as the authorization record. The labels stay in `evaluation/datasets/_custodian/final_test_research_v1_v2/`. A process with direct filesystem access can still read that Git-ignored directory. No OS ACL boundary is claimed.
+
+The custody update did not change candidate labels, question text, candidate IDs, reservation entries, or example content hashes. Preserved hashes: label file `35b126ba350a942f42f11d1845e16e01fd755516d20b53faf3aaf616143858a6`, roster `3f8fcbf1e698174a9a7cf6c586ec51048bcc07ca11154b36fdef0dadc7796208`, reservation entries `a33be6afcd2233479a05ee9c9444d1457d5b98d07c0c10e5bbef5191fab4d496`. The reservation file hash changed from `adc199f6eb77e62b53b72121bb021642c663f8e57ccf7b72c6ce6ac7b3b9d1e8` to `e7cea941837697093bd18e499f2d78f8bea550a33fee4a9dff2e9738995d7611` because its `custody_record` field was updated. The previous manifest hash was `478001c764dd17424127652cfc6b587a12e94e30aa5f74b4871dd3e0cb499031`.
+
+`final_test_workflow readiness` on this manifest stays **NOT APPROVED** (`evaluation_authorization_pending`). Confirmatory readiness stays **BLOCKED** until the protocol approvals and readiness checks are complete and a separate authorization record is signed. Custody does not clear that gate.
+
+## Retired provisional partition
 
 **The provisional `research_v1_final_test_provisional_v1` partition is retired (2026-11-11) and must never be used for confirmatory evaluation.** 807 of its groups were previously exposed (`final_test_contamination_audit.md`), and `read_custodian_labels` now refuses its manifest. It was generated from GSM8K test and HotpotQA validation source rows, audited against research_v1 History and Development only, and hash-validated. It remains **disabled and NOT_AUTHORIZED**. It is **not genuinely protected**: Windows ACL inspection shows inherited `NT AUTHORITY\Authenticated Users` Modify permission and `BUILTIN\Users` read permission on the custodian directory. There is no independent custodian identity configured. An ordinary process with filesystem access can bypass the Python authorization gate and read the labels. Do not use these files for confirmatory evaluation or treat the answers as secret.
 
