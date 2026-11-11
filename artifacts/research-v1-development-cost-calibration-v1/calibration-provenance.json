@@ -1,0 +1,64 @@
+{
+  "version": "research_v1_development_calibration_input_provenance_v1",
+  "scope": "Development-only offline direct-verifier cost calibration input provenance",
+  "measurement_artifact": {
+    "path": "evaluation/datasets/development_pilot/runs/research_v1_exploratory_v1_direct_cost_seed20261110_v3_warmup_first/measurements.json",
+    "sha256": "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+    "attempt_count": 488
+  },
+  "development_identity": {
+    "dataset_id": "research_v1_exploratory_v1",
+    "permitted_datasets": [
+      [
+        "development",
+        "research_v1_exploratory_v1"
+      ]
+    ]
+  },
+  "runtime_identity": {
+    "resource_manifest_id": "754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c",
+    "setup_fingerprint": "83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee"
+  },
+  "required_verifiers": [
+    "semantic",
+    "evidence",
+    "rule",
+    "confidence"
+  ],
+  "calibration": {
+    "include_warmups": false,
+    "method": "mean_attempt_wall_time_ms_v1",
+    "cost_units": "ms",
+    "eligible_attempts": 480,
+    "eligible_per_verifier": {
+      "semantic": 120,
+      "evidence": 120,
+      "rule": 120,
+      "confidence": 120
+    },
+    "excluded_warmup_attempts": 8,
+    "excluded_warmups_per_verifier": {
+      "semantic": 2,
+      "evidence": 2,
+      "rule": 2,
+      "confidence": 2
+    },
+    "included_nonreturned_attempts": 0
+  },
+  "reservation_guard": {
+    "source_path": "evaluation/datasets/development_pilot/runs/research_v1_exploratory_v1_direct_cost_seed20261110_v3_warmup_first/collection-request.json",
+    "reservation_content_id": "4b0d708b997175bc61ec34a829fb7df2ead42bf9e64cb559c2b42552e1610bc4",
+    "use": "metadata-only leakage/overlap guard; no Final Test payloads included"
+  },
+  "authorization_context": {
+    "source": "Vasavi authorization relayed in the current task instructions",
+    "scope": "Development-only offline calibration of the completed Dev v1 measurements",
+    "claim_limit": "This is not an external witness, Final Test authorization, or global project freeze."
+  },
+  "freeze_scope": "Local provenance reference for the selected Dev v1 calibration inputs and settings only.",
+  "global_project_freeze": false,
+  "external_witness_claimed": false,
+  "final_test_execution_authorized": false,
+  "record_id": "rv1_dev_v1_calibration_input_e2970024e7550fbf67b0ce0513bab7cc248710f281ba3d833f4aa38d1190ad9d",
+  "freeze_record_value": "rv1_dev_v1_calibration_input_e2970024e7550fbf67b0ce0513bab7cc248710f281ba3d833f4aa38d1190ad9d"
+}

@@ -1,0 +1,84 @@
+{
+    "version":  "research_v1_development_cost_calibration_freeze_v1",
+    "purpose":  "Freeze validated Development-only direct-verifier cost measurements and calibration as versioned research inputs.",
+    "freeze_scope":  "Development-only cost-calibration freeze.",
+    "scope_statements":  {
+                             "development_only":  true,
+                             "not_full_or_global_research_freeze":  true,
+                             "final_test_access_or_execution_authorized":  false,
+                             "policy_fitting_or_budget_selection_authorized_by_this_freeze":  false
+                         },
+    "authorization":  {
+                          "approver":  "Vasavi",
+                          "approved_scope":  "Cost-calibration freeze only.",
+                          "source":  "Explicit approval in the task instruction."
+                      },
+    "frozen_files":  [
+                         {
+                             "path":  "measurements.json",
+                             "source_path":  "evaluation/datasets/development_pilot/runs/research_v1_exploratory_v1_direct_cost_seed20261110_v3_warmup_first/measurements.json",
+                             "sha256":  "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+                             "size_bytes":  427057
+                         },
+                         {
+                             "path":  "calibration.json",
+                             "source_path":  "evaluation/datasets/development_pilot/runs/research_v1_exploratory_v1_direct_cost_seed20261110_v4_calibration/calibration.json",
+                             "sha256":  "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+                             "size_bytes":  885049
+                         },
+                         {
+                             "path":  "calibration-provenance.json",
+                             "source_path":  "evaluation/datasets/development_pilot/runs/research_v1_exploratory_v1_direct_cost_seed20261110_v4_calibration/calibration-provenance.json",
+                             "sha256":  "391094b7a74b6da2c6b617a7f6bf27fbc71e94ad56855df7106e618a9d5c5637",
+                             "size_bytes":  2565
+                         }
+                     ],
+    "calibration":  {
+                        "artifact_path":  "calibration.json",
+                        "artifact_id":  "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+                        "sha256":  "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+                        "input_digest":  "543991e00c2c3d19b31f30d226167021a22a27d78cf6c3d0cab3645e9ebed629",
+                        "method":  "mean_attempt_wall_time_ms_v1",
+                        "include_warmups":  false,
+                        "cost_units":  "ms",
+                        "existing_calibration_input_provenance_reference":  "rv1_dev_v1_calibration_input_e2970024e7550fbf67b0ce0513bab7cc248710f281ba3d833f4aa38d1190ad9d",
+                        "calibration_input_provenance_path":  "calibration-provenance.json"
+                    },
+    "measurement":  {
+                        "path":  "measurements.json",
+                        "sha256":  "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+                        "source_path":  "evaluation/datasets/development_pilot/runs/research_v1_exploratory_v1_direct_cost_seed20261110_v3_warmup_first/measurements.json",
+                        "attempt_count":  488,
+                        "calibration_eligible_attempts":  480,
+                        "excluded_warmup_attempts":  8
+                    },
+    "dataset":  {
+                    "collection_level_dataset_id":  "research_v1_exploratory_v1",
+                    "permitted_pairs":  [
+                                            "development",
+                                            "research_v1_exploratory_v1"
+                                        ]
+                },
+    "required_verifiers":  [
+                               "semantic",
+                               "evidence",
+                               "rule",
+                               "confidence"
+                           ],
+    "runtime":  {
+                    "resource_manifest_id":  "754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c",
+                    "setup_fingerprint":  "83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee",
+                    "confidence":  {
+                                       "model":  "llama3.2:3b",
+                                       "n_samples":  5
+                                   }
+                },
+    "freeze_record_distinction":  {
+                                      "calibration_input_reference":  "rv1_dev_v1_calibration_input_e2970024e7550fbf67b0ce0513bab7cc248710f281ba3d833f4aa38d1190ad9d",
+                                      "calibration_input_reference_meaning":  "Existing Development calibration-input provenance reference embedded in CalibrationRequest; not the artifact-freeze identifier.",
+                                      "artifact_freeze_record":  "This freeze-manifest.json, identified immutably by its containing Git commit and path after commit.",
+                                      "external_witness_claimed":  false,
+                                      "global_project_freeze":  false
+                                  },
+    "manifest_self_reference":  "The manifest cannot contain its own SHA-256 without a recursive definition; its hash and byte size are reported externally and it is bound by the containing immutable Git commit and path."
+}
