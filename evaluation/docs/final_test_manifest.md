@@ -1,6 +1,17 @@
-# Final Test manifest — provisional, disabled, NOT_AUTHORIZED
+# Final Test manifest — provisional, RETIRED, NOT_AUTHORIZED
 
-**Status:** a provisional Final Test partition exists and passed hash, composition, and exact-leakage validation. It is **disabled**, **NOT_AUTHORIZED**, and **not protected**: no independent custodian exists and the label directory inherits broad Windows read/modify ACLs. It must not be used for tuning, policy fitting, threshold selection, reputation estimation, or configuration decisions, and it is not yet approved for confirmatory evaluation.
+**Status: RETIRED (2026-11-11). Confirmatory use is permanently forbidden.** A content-level audit found 807 of its 2,638 groups (GSM8K 500, HotpotQA 307) in previously exposed datasets, Development files, baseline outputs or verifier outputs (`final_test_contamination_audit.md`). It also has no verified incorrect candidates.
+
+The partition passed hash, composition and exact-leakage validation, but only against research_v1 History and Development. It is **disabled**, **NOT_AUTHORIZED** and **not protected**: no independent custodian exists, and the label directory inherits broad Windows read/modify ACLs. The retirement registry (`evaluation/config/final_test_retirements.json`) makes `read_custodian_labels` refuse it and makes readiness report it as BLOCKED. Every file below is preserved unchanged. Its questions and paragraphs count as exposed for any future Final Test (`final_test_v2_selection_plan.md`).
+
+**Successor (exploratory only):** `research_v1_final_test_v2_exploratory_v1`.
+- Manifest `478001c764dd17424127652cfc6b587a12e94e30aa5f74b4871dd3e0cb499031`.
+- Directories: `evaluation/datasets/final_test_research_v1_eval_v2/` and `_custodian/final_test_research_v1_v2/`.
+- 600 fresh groups, each with one VERIFIED_CORRECT and one SYNTHETIC_INCORRECT candidate.
+- 0 overlap with this retired set or any exposed file.
+- NOT_AUTHORIZED, with custody PENDING and human approval DEFERRED.
+
+Details are in `exploratory_dataset_and_final_test_v2.md`. This retired set was not reused.
 
 The older `evaluation/datasets/unified/final_test.json` (2,000 rows) and `processed/final_test.json` (1,000 rows) are exposed development artifacts and are not this partition.
 
@@ -36,6 +47,8 @@ All eight recorded source-file hashes match. Both integrity receipts are identic
 ## Leakage against research_v1 History and Development
 
 `person1_validation` reran `final_test_workflow.audit_leakage` on the evaluation roster (no labels) against the current History and Development candidate files. Every comparison is 0 and equals the frozen audit: candidate IDs, contexts, donor source IDs, donors, group IDs, question IDs, normalized questions, source IDs, supporting facts. No Development eligible-roster candidate appears in the Final Test. Semantic and paraphrase leakage is **not audited**.
+
+This check does not cover other exposed files. The manifest field `previously_exposed_final_test_reused: false` reflects the configured source path only. By content, 500 GSM8K and 88 HotpotQA groups are in `unified/final_test.json`, 83 HotpotQA groups are in `processed/final_test.json`, 149 HotpotQA groups are in unified or processed Development files, and 30 HotpotQA groups were already run by the baseline experiment.
 
 ## Label isolation
 

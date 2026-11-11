@@ -124,7 +124,8 @@ def test_rendering_and_manifest_hashes_are_reproducible():
 def test_example_contract_requires_recordings_and_limits_label_method():
     fields = Example.model_fields
     assert {"attempts", "validation_id", "execution_configuration_id"}.issubset(fields)
-    assert set(adapter.CONTRACT_LABEL_METHODS) == {"independent_human", "independent_ground_truth"}
+    assert set(adapter.CONTRACT_LABEL_METHODS) == {"independent_human", "independent_ground_truth",
+                                                   "synthetic_transformation"}
     # Adapter preparation never creates an Example or invents those required fields.
     assert adapter.REQUIRED_RECORDING_FIELDS == (
         "domain", "planning_category", "validation_id", "execution_configuration_id", "cache_contract", "attempts"

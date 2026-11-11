@@ -132,4 +132,4 @@ def test_readiness_keeps_policy_fitting_blocked():
     result = validate_readiness(pilot.ROOT / "evaluation/config/protocol_readiness.yaml")
     assert result["confirmatory_readiness"] == "BLOCKED"
     assert result["checks"]["policy_fitting_readiness"] == "BLOCKED"
-    assert result["checks"]["attempts_availability"] == "NOT APPROVED"
+    assert result["checks"]["attempts_availability"] == "BLOCKED"

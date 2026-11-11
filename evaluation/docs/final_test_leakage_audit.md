@@ -1,8 +1,10 @@
 # Final Test leakage audit record
 
+> **Correction (2026-11-11): this audit was not a full leakage check, and the provisional Final Test is retired.** It compared the roster only with research_v1 History and Development candidate files. "The exposed unified `final_test.json` was not opened or used" was true only of the build's source path. Its content was never compared, and neither were the processed files, adjudication queues or result files. A content-level audit found 807 of 2,638 groups previously exposed (GSM8K 500, HotpotQA 307). See `final_test_contamination_audit.md`. The record below is kept as the original description of the narrower check.
+
 ## Executed audit
 
-The audit was run as part of generating `research_v1_final_test_provisional_v1` on 2026-11-06 UTC using the fresh local source snapshots and frozen `research_v1` History/Development candidate files. It passed, and was rerun during artifact validation against the current History and Development records. The machine-readable result is `evaluation/datasets/final_test_research_v1_eval_v1/leakage_audit.json` (SHA-256 `1d32e0f685a4016f6a2a377175bd8bc7f84a07f43ced824bf253ee030e9f5bb0`). The exposed unified `final_test.json` was not opened or used.
+The audit was run as part of generating `research_v1_final_test_provisional_v1` on 2026-11-06 UTC using local source snapshots and frozen `research_v1` History/Development candidate files. It passed against those two files only, and was rerun during artifact validation against the current History and Development records. The machine-readable result is `evaluation/datasets/final_test_research_v1_eval_v1/leakage_audit.json` (SHA-256 `1d32e0f685a4016f6a2a377175bd8bc7f84a07f43ced824bf253ee030e9f5bb0`). The exposed unified `final_test.json` was not used as a source path; its content was not compared (see the correction above).
 
 ### Partition and sources
 
@@ -40,4 +42,4 @@ Labels are constructed only from benchmark-gold source answers. GSM8K uses extra
 
 Normalized-question matching is exact after canonical normalization. Semantic similarity, paraphrases, translation, entity-level duplication, and transformed/partial evidence are not assessed. `semantic_paraphrase_leakage` is `NOT AUDITED`. Exact context hashes do not prove independent evidence origins. Supporting-fact comparison uses exact source title/sentence references. Donor checks are limited by missing donor metadata in prior inputs. The audit therefore passes exact identity/provenance checks but does not establish broad semantic independence or statistical independence.
 
-Final Test remains disabled and unauthorized. The passing audit is necessary, not sufficient, for confirmatory use. Review source license/citation, benchmark and label-policy approval, semantic leakage limitations, sample-size rationale, and custody separately.
+Final Test remains disabled and unauthorized, and is now retired (`evaluation/config/final_test_retirements.json`). The History/Development audit was necessary but not sufficient; the content-level exposure audit failed. Review source license/citation, benchmark and label-policy approval, semantic leakage limitations, sample-size rationale, and custody separately.

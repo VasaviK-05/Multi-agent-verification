@@ -4,6 +4,7 @@ from app.game.dependencies import FrozenModel
 from app.game.models import Strategy
 from app.game.offline.attacks import Attack, AdapterIncompatibility, adapter_incompatibility, enumerate_attacks
 from app.game.offline.evaluation import bind_evaluation
+from app.game.offline.records import DatasetManifest, label_composition
 from app.game.offline.replay import category_id
 from app.game.strategies import enumerate_strategies
 from app.game.research.specification import ExperimentSpecification, PolicyBuildSpecification
@@ -49,6 +50,8 @@ class ReadinessReport(FrozenModel):
     greedy_strategy_id: str | None
     evidence_failures: tuple[str, ...]
     resource_blockers: tuple[ResourceReadinessBlocker, ...] = ()
+    # (role, label class, count) for every labelled partition; synthetic labels stay visible.
+    label_composition: tuple[tuple[str, str, int], ...] = ()
 
 
 def check_readiness(spec, *, actual_code_revision):
@@ -63,6 +66,8 @@ def check_readiness(spec, *, actual_code_revision):
         blockers.append("pooled_context_requires_explicit_multi_domain_workflow")
     if manifest.evidence_kind == "empirical" and spec.contract.resource_manifest is None:
         blockers.append("empirical_study_requires_resource_bound_execution_v2")
+    if manifest.evidence_kind == "empirical" and isinstance(manifest, DatasetManifest):
+        blockers.append("empirical_study_requires_final_test_reservation")
     if actual_code_revision != spec.code_revision:
         blockers.append("code_revision_mismatch")
     try:
@@ -125,7 +130,9 @@ def check_readiness(spec, *, actual_code_revision):
         unsupported_achieved=unsupported, strategies=enumeration.strategies,
         attacks=enumerate_attacks(context.dependencies, spec.attacks),
         greedy_strategy_id=greedy.strategy_id if greedy else None, evidence_failures=EVIDENCE_FAILURES,
-        resource_blockers=tuple(resource_blockers))
+        resource_blockers=tuple(resource_blockers),
+        label_composition=tuple((part.role, name, count) for part in manifest.partitions
+                                for name, count in label_composition(part.examples)))
 
 
 def require_ready(spec, *, actual_code_revision):

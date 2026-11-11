@@ -2,7 +2,7 @@
 
 ## Current status
 
-The provisional `research_v1_final_test_provisional_v1` partition has been generated from fresh GSM8K test and HotpotQA validation source rows, audited against History and Development, and hash-validated. It remains **disabled and NOT_AUTHORIZED**. It is **not genuinely protected**: Windows ACL inspection shows inherited `NT AUTHORITY\Authenticated Users` Modify permission and `BUILTIN\Users` read permission on the custodian directory. There is no independent custodian identity configured. An ordinary process with filesystem access can bypass the Python authorization gate and read the labels. Do not use these files for confirmatory evaluation or treat the answers as secret.
+**The provisional `research_v1_final_test_provisional_v1` partition is retired (2026-11-11) and must never be used for confirmatory evaluation.** 807 of its groups were previously exposed (`final_test_contamination_audit.md`), and `read_custodian_labels` now refuses its manifest. It was generated from GSM8K test and HotpotQA validation source rows, audited against research_v1 History and Development only, and hash-validated. It remains **disabled and NOT_AUTHORIZED**. It is **not genuinely protected**: Windows ACL inspection shows inherited `NT AUTHORITY\Authenticated Users` Modify permission and `BUILTIN\Users` read permission on the custodian directory. There is no independent custodian identity configured. An ordinary process with filesystem access can bypass the Python authorization gate and read the labels. Do not use these files for confirmatory evaluation or treat the answers as secret.
 
 ## Generated artifacts and freeze record
 

@@ -13,6 +13,7 @@ from app.game.artifacts import PolicyArtifact
 from app.game.dependencies import FrozenModel, identifier
 from app.game.models import PayoffMatrix, SolverResult, content_id
 from app.game.offline.evaluation import Evaluation, Metrics, construct_payoffs, summarize
+from app.game.offline.records import DatasetManifest, TrainingManifest, label_composition
 from app.game.offline.replay import replay
 from app.game.research.readiness import greedy_strategy, require_ready
 from app.game.research.specification import ExperimentSpecification
@@ -208,21 +209,50 @@ class ComparisonResult(FrozenModel):
     planning_category: str
     evidence_kind: str
     methods: tuple[MethodResult, ...]
+    reservation_id: str | None = None
+    final_payload_id: str | None = None
+    label_composition: tuple[tuple[str, int], ...] = ()
 
 
-def _score(spec, frozen, role, actual_code_revision):
+def role_examples(spec, role, final_partition=None):
+    """Return (examples, reservation_id, final_payload_id) for one scored role.
+
+    A reserved final test is scored only from a separately released payload that
+    matches its frozen reservation exactly; development never accepts a payload.
+    """
+    if role == "development":
+        if final_partition is not None:
+            raise ValueError("development scoring never accepts a final-test payload")
+        return spec.manifest.partition("development").examples, None, None
+    if not isinstance(spec.manifest, TrainingManifest):
+        if final_partition is not None:
+            raise ValueError("legacy manifest already binds its final-test payload")
+        return spec.manifest.partition("final_test").examples, None, None
+    if final_partition is None:
+        raise ValueError("reserved final test requires the separately released payload")
+    reservation = spec.manifest.final_test_reservation
+    final = reservation.validate_payload(final_partition)
+    released = DatasetManifest(version="released_final_payload_v1", evidence_kind=spec.manifest.evidence_kind,
+                               partitions=(*spec.manifest.partitions, final))
+    # Recheck split constraints and label-source declarations on the released records.
+    ExperimentSpecification.model_validate({**spec.model_dump(), "manifest": released})
+    return final.examples, reservation.reservation_id, content_id(final.model_dump(mode="json"))
+
+
+def _score(spec, frozen, role, actual_code_revision, final_partition=None):
     spec, frozen = validate_frozen(spec, frozen, actual_code_revision=actual_code_revision)
     readiness = require_ready(spec, actual_code_revision=actual_code_revision)
+    examples, reservation_id, final_payload_id = role_examples(spec, role, final_partition)
     # One common outcome cube; every declared example is retained for every row/action.
     outcomes = {(s.strategy_id, a.attack_id, e.example_id):
         replay(spec.context, s, a, spec.attacks, spec.contract, e)
         for s in frozen.full_artifact.policy.strategies for a in readiness.attacks
-        for e in spec.manifest.partition(role).examples}
+        for e in examples}
     methods = []
     for policy in frozen.policies:
         metrics = tuple((a.attack_id, summarize(tuple(
             (outcomes[s, a.attack_id, e.example_id], p) for s, p in policy.probabilities
-            for e in spec.manifest.partition(role).examples), spec.context.loss_configuration)) for a in readiness.attacks)
+            for e in examples), spec.context.loss_configuration)) for a in readiness.attacks)
         worst = max(m.mean_loss for _, m in metrics)
         methods.append(MethodResult(method=policy.method, attack_metrics=metrics,
             clean_attack_id=readiness.attacks[0].attack_id, worst_case_expected_loss=worst,
@@ -230,13 +260,15 @@ def _score(spec, frozen, role, actual_code_revision):
     return ComparisonResult(run_kind="frozen_final" if role == "final_test" else "development_pilot",
         specification_id=spec.specification_id, comparison_id=frozen.comparison_id, manifest_id=spec.manifest.manifest_id,
         code_revision=actual_code_revision, planning_category=readiness.planning_category,
-        evidence_kind=spec.manifest.evidence_kind, methods=tuple(methods))
+        evidence_kind=spec.manifest.evidence_kind, methods=tuple(methods),
+        reservation_id=reservation_id, final_payload_id=final_payload_id,
+        label_composition=label_composition(examples))
 
 
 def score_development_pilot(spec, frozen, *, actual_code_revision):
     return _score(spec, frozen, "development", actual_code_revision)
 
 
-def score_frozen_final(spec, frozen, *, actual_code_revision):
+def score_frozen_final(spec, frozen, *, actual_code_revision, final_partition=None):
     """Separate explicit final-test entry; no selection, fitting or optimization."""
-    return _score(spec, frozen, "final_test", actual_code_revision)
+    return _score(spec, frozen, "final_test", actual_code_revision, final_partition)

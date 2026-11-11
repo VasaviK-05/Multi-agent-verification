@@ -212,7 +212,7 @@ Each statement below was checked by reading the cited code and running its exist
 
 The current repository audit documentation records that `evaluation/datasets/unified/final_test.json` and some of its candidate/reference information were previously inspected during candidate-answer auditing and pilot preparation. It therefore cannot be described as an unseen protected holdout retroactively. Preserve and disclose that exposure; use a custodian-controlled unseen holdout if the capstone requires a protected confirmatory final evaluation.
 
-A fresh provisional Final Test (`research_v1_final_test_provisional_v1`, 1,319 GSM8K test + 1,319 HotpotQA validation groups) now exists, is disabled and `NOT_AUTHORIZED`, and has passed hash and exact-leakage validation. It lacks independent custody and a negative class; see `final_test_manifest.md`.
+The provisional Final Test (`research_v1_final_test_provisional_v1`, 1,319 GSM8K test + 1,319 HotpotQA validation groups) is **retired**. It passed hash validation and exact-leakage checks against research_v1 History/Development only. A content-level audit found 807 previously exposed groups, and it has no negative class. See `final_test_contamination_audit.md`; a mixed-label v2 is planned in `final_test_v2_selection_plan.md`.
 
 ## Repository references inspected
 

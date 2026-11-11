@@ -24,6 +24,10 @@ ROOT = Path(__file__).resolve().parents[2]
 EXPOSED_FINAL_TEST = ROOT / "evaluation/datasets/unified/final_test.json"
 HISTORY = ROOT / "evaluation/datasets/reconciled_candidates/research_v1/history_candidates.jsonl"
 DEVELOPMENT = ROOT / "evaluation/datasets/reconciled_candidates/research_v1/development_candidates.jsonl"
+RETIREMENTS = ROOT / "evaluation/config/final_test_retirements.json"
+EXPOSURE_ROOTS = ("evaluation/datasets", "evaluation/results", "data/test_benchmark.jsonl")
+EXPOSURE_METHOD = "normalized_question_text_v1"
+CONFIRMATORY_USE_FORBIDDEN = "PERMANENTLY_FORBIDDEN"
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -179,6 +183,100 @@ def audit_leakage(proposed: list[dict], history: list[dict], development: list[d
             "prior_borrowed_candidates_missing_donor_provenance": missing_donors,
             "limitations": ["Exact normalized question comparison does not identify semantic or paraphrase duplicates.",
                             "Some unresolved borrowed History/Development candidate records lack donor IDs; those records were not assigned a donor identity by this audit."]}
+
+
+def iter_question_texts(value: Any) -> Iterable[str]:
+    """Yield every string stored under a ``question`` key, at any nesting depth."""
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key == "question" and isinstance(item, str):
+                yield item
+            else:
+                yield from iter_question_texts(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from iter_question_texts(item)
+
+
+def read_records(path: Path) -> Iterable[Any]:
+    if path.suffix == ".jsonl":
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                if line.strip():
+                    yield json.loads(line)
+    else:
+        yield json.loads(path.read_text(encoding="utf-8"))
+
+
+def exposure_files(root: Path = ROOT, exclude: Iterable[Path] = (), roots: Iterable[str] = EXPOSURE_ROOTS) -> list[Path]:
+    """Every JSON/JSONL record file that may have been read, run or reviewed.
+
+    Custodian label directories are never opened; they hold no question text that
+    is absent from their evaluation roster.
+    """
+    excluded = [Path(p).resolve() for p in exclude]
+    found = set()
+    for relative in roots:
+        base = root / relative
+        candidates = [base] if base.is_file() else base.rglob("*") if base.is_dir() else []
+        for path in candidates:
+            if path.suffix not in {".json", ".jsonl"} or not path.is_file() or "_custodian" in path.parts:
+                continue
+            resolved = path.resolve()
+            if any(resolved == e or e in resolved.parents for e in excluded):
+                continue
+            found.add(path)
+    return sorted(found)
+
+
+def exposure_index(files: Iterable[Path], root: Path = ROOT) -> dict[str, set[str]]:
+    """Map normalized question text to the repository-relative files containing it."""
+    index: dict[str, set[str]] = collections.defaultdict(set)
+    for path in files:
+        name = str(path.relative_to(root)).replace("\\", "/") if path.is_relative_to(root) else str(path)
+        for record in read_records(path):
+            for question in iter_question_texts(record):
+                normalized = norm_question(question)
+                if normalized:
+                    index[normalized].add(name)
+    return dict(index)
+
+
+def exposure_reasons(row: dict, index: dict[str, set[str]]) -> list[str]:
+    return ["previously_exposed_question"] if norm_question(row.get("question", "")) in index else []
+
+
+def exposure_audit(rows: list[dict], index: dict[str, set[str]], files: list[Path], root: Path = ROOT) -> dict:
+    """Content-level exposure of a roster against every scanned record file."""
+    overlaps: dict[str, list[str]] = {}
+    for row in rows:
+        sources = index.get(norm_question(row.get("question", "")))
+        if sources:
+            overlaps[str(row.get("related_group_id"))] = sorted(sources)
+    names = [str(p.relative_to(root)).replace("\\", "/") if p.is_relative_to(root) else str(p) for p in files]
+    return {"method": EXPOSURE_METHOD, "passed": not overlaps, "files_checked": len(names),
+            "file_list_sha256": sha256_bytes(canonical_bytes(names)),
+            "overlapping_group_count": len(overlaps),
+            "overlap_counts_by_file": dict(sorted(collections.Counter(s for v in overlaps.values() for s in v).items())),
+            "limitations": ["Exact normalized question text only; paraphrases and shared passages are not detected."]}
+
+
+def load_retirements(path: Path = RETIREMENTS) -> dict[str, dict]:
+    """Retired Final Test manifests keyed by manifest SHA-256; malformed entries fail closed."""
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("version") != "final_test_retirement_registry_v1":
+        raise ValueError("Unsupported Final Test retirement registry version")
+    entries: dict[str, dict] = {}
+    for entry in data.get("retired", []):
+        digest = str(entry.get("manifest_sha256", ""))
+        if not re.fullmatch(r"[0-9a-f]{64}", digest) or digest in entries:
+            raise ValueError("Retirement entries require unique manifest SHA-256 values")
+        if entry.get("confirmatory_use") != CONFIRMATORY_USE_FORBIDDEN or not str(entry.get("reason", "")).strip():
+            raise ValueError("Retirement entries must forbid confirmatory use and state a reason")
+        entries[digest] = entry
+    return entries
 
 
 def _leakage_overlap_values(test: dict[str, set[str]], prior: dict[str, set[str]]) -> dict[str, set[str]]:
@@ -374,6 +472,10 @@ def build(config_path: Path) -> dict:
     history_sets = _identity_sets(history, "history")
     development_sets = _identity_sets(development, "development")
     prior_sets = {key: history_sets[key] | development_sets[key] for key in history_sets}
+    output = (ROOT / config["output"]).resolve()
+    label_dir = (ROOT / config["custodian_label_output"]).resolve()
+    scanned = exposure_files(exclude=(output, label_dir))
+    exposed = exposure_index(scanned)
     seed = int(config.get("seed", 20261107))
     exclusion_reasons: dict[str, list[str]] = {}
     clean_pool: dict[str, list[dict]] = {benchmark: [] for benchmark in versions}
@@ -394,6 +496,7 @@ def build(config_path: Path) -> dict:
             current = _identity_sets([row], "final_test_candidate_pool")
             overlaps = _leakage_overlap_values(current, prior_sets)
             reasons.extend(f"history_development_overlap:{key}" for key, values in overlaps.items() if values)
+            reasons.extend(exposure_reasons(row, exposed))
             if reasons:
                 exclusion_reasons[row["related_group_id"]] = reasons
             else:
@@ -438,6 +541,9 @@ def build(config_path: Path) -> dict:
     audit_rows = [{**row, "label_provenance": all_labels[row["candidate_id"]]["label_provenance"],
                    "correctness_status": all_labels[row["candidate_id"]]["correctness_status"]} for row in roster]
     audit = audit_leakage(roster, history, development)
+    exposure = exposure_audit(roster, exposed, scanned)
+    if not exposure["passed"]:
+        raise ValueError("Final Test exposure detected: " + str(exposure["overlapping_group_count"]))
     summary = validate_partition(audit_rows, labels, sizes)
     audit["within_final_test_exact_context_overlap_groups"] = 0
     audit["within_final_test_supporting_fact_overlap_groups"] = 0
@@ -450,8 +556,6 @@ def build(config_path: Path) -> dict:
         b: sum(any(reason.startswith("within_final_test_") for reason in reasons)
                for group, reasons in exclusion_reasons.items()
                if group.startswith("gsm8k-" if b == "GSM8K" else "hotpotqa-")) for b in versions}
-    output = (ROOT / config["output"]).resolve()
-    label_dir = (ROOT / config["custodian_label_output"]).resolve()
     if output.exists() and any(output.iterdir()) or label_dir.exists() and any(label_dir.iterdir()):
         raise FileExistsError("Refusing to overwrite non-empty versioned Final Test output")
     if output == label_dir or output in label_dir.parents or label_dir in output.parents:
@@ -509,7 +613,8 @@ def build(config_path: Path) -> dict:
                              "source_id": next((row["source_id"] for benchmark_rows in all_rows.values()
                                                 for row in benchmark_rows if row["related_group_id"] == group), None),
                              "reasons": reasons} for group, reasons in sorted(exclusion_reasons.items())],
-        "previously_exposed_final_test_reused": False, "human_adjudication_claimed": False,
+        "exposure_audit": exposure,
+        "previously_exposed_final_test_reused": not exposure["passed"], "human_adjudication_claimed": False,
         "custody": custody_status, "known_limitations": ["semantic and paraphrase leakage not audited",
             "all candidates are benchmark-gold; no verified incorrect class is present",
             "shared context exclusions are exact-text only",
@@ -538,10 +643,12 @@ def build(config_path: Path) -> dict:
             "integrity_receipt": receipt, "excluded_group_count": len(exclusion_reasons)}
 
 
-def read_custodian_labels(label_file: Path, authorization_file: Path, access_log: Path, *, person: str, purpose: str, expected_manifest_sha256: str) -> list[dict]:
+def read_custodian_labels(label_file: Path, authorization_file: Path, access_log: Path, *, person: str, purpose: str, expected_manifest_sha256: str, retirements: Path = RETIREMENTS) -> list[dict]:
     """Access labels only after explicit authorization; log before reading payload."""
     if not person.strip() or not purpose.strip():
         raise PermissionError("Named person and evaluation purpose are required")
+    if expected_manifest_sha256 in load_retirements(retirements):
+        raise PermissionError("Final Test is retired; label access for evaluation is permanently denied")
     auth = json.loads(authorization_file.read_text(encoding="utf-8"))
     if auth.get("approved") is not True or auth.get("person") != person or auth.get("purpose") != purpose or auth.get("manifest_sha256") != expected_manifest_sha256:
         raise PermissionError("Final Test label access is not authorized")
@@ -552,6 +659,8 @@ def read_custodian_labels(label_file: Path, authorization_file: Path, access_log
     if manifest.get("manifest_sha256") != expected_manifest_sha256:
         raise PermissionError("Final Test manifest identity mismatch; label access denied")
     roster_file = Path(manifest.get("evaluation_roster_path", ""))
+    if roster_file.parts and not roster_file.is_absolute():
+        roster_file = ROOT / roster_file
     if not roster_file.is_file():
         raise PermissionError("Final Test evaluation roster is unavailable; label access denied")
     validate_artifacts(roster_file, label_file, manifest_file)
@@ -612,9 +721,63 @@ def validate_artifacts(roster_file: Path, label_file: Path, manifest_file: Path)
     return {"passed": True, "manifest_sha256": expected, "evaluation_roster_sha256": manifest["evaluation_roster_sha256"], "label_file_sha256": manifest["label_file_sha256"]}
 
 
-def validate_readiness(config_path: Path, manifest_path: Path | None = None) -> dict:
+CORRECT_LABEL_KEYS = ("verified_correct", "VERIFIED_CORRECT")
+INCORRECT_LABEL_KEYS = {"verified_incorrect": "legacy_unspecified", "HUMAN_VERIFIED_INCORRECT": "human_verified",
+                        "SYNTHETIC_INCORRECT": "synthetic"}
+
+
+def label_basis(values: dict | None) -> dict:
+    """Correct/incorrect totals for one benchmark, keeping synthetic and human-verified negatives apart."""
+    values = values or {}
+    by_source = {source: int(values.get(key) or 0) for key, source in INCORRECT_LABEL_KEYS.items()}
+    return {"correct": sum(int(values.get(k) or 0) for k in CORRECT_LABEL_KEYS),
+            "incorrect": sum(by_source.values()), "incorrect_by_label_source": by_source}
+
+
+def final_test_gate(manifest: dict, authorization: dict | None, retirements: dict[str, dict]) -> tuple[str, list[str]]:
+    """Confirmatory Final Test status from the frozen manifest plus a separate authorization record.
+
+    The manifest stays NOT_AUTHORIZED forever (``validate_artifacts`` enforces it), so
+    approval can only come from an external record bound to the manifest hash.
+    """
+    if not manifest:
+        return "BLOCKED", ["no_final_test_manifest"]
+    reasons = []
+    digest = manifest.get("manifest_sha256")
+    core = {k: v for k, v in manifest.items() if k != "manifest_sha256"}
+    if not digest or sha256_bytes(canonical_bytes(core)) != digest:
+        reasons.append("manifest_hash_mismatch")
+    if digest in retirements:
+        reasons.append("retired_permanently_forbidden_for_confirmatory_use")
+    if manifest.get("partition") != "final_test" or manifest.get("status") != "NOT_AUTHORIZED" or manifest.get("enabled") is not False:
+        reasons.append("manifest_not_a_frozen_unauthorized_final_test")
+    counts = manifest.get("label_counts") or {}
+    if not counts:
+        reasons.append("missing_label_counts")
+    for benchmark, values in sorted(counts.items()):
+        basis = label_basis(values)
+        for side in ("correct", "incorrect"):
+            if not basis[side]:
+                reasons.append(f"no_{side}_candidates:{benchmark}")
+    exposure = manifest.get("exposure_audit")
+    if not isinstance(exposure, dict) or exposure.get("method") != EXPOSURE_METHOD or exposure.get("passed") is not True:
+        reasons.append("missing_passing_content_level_exposure_audit")
+    if reasons:
+        return "BLOCKED", reasons
+    if not authorization:
+        return "NOT APPROVED", ["no_confirmatory_authorization_record"]
+    if (authorization.get("approved") is not True or authorization.get("manifest_sha256") != digest
+            or not str(authorization.get("approver", "")).strip() or not str(authorization.get("custodian", "")).strip()):
+        return "BLOCKED", ["authorization_record_incomplete_or_mismatched"]
+    return "APPROVED", []
+
+
+def validate_readiness(config_path: Path, manifest_path: Path | None = None, authorization_path: Path | None = None,
+                       retirements: Path = RETIREMENTS) -> dict:
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path and manifest_path.exists() else {}
+    authorization = json.loads(authorization_path.read_text(encoding="utf-8")) if authorization_path and authorization_path.exists() else None
+    final_status, final_reasons = final_test_gate(manifest, authorization, load_retirements(retirements))
     checks = {
         "approved_benchmark_population": config.get("approved_benchmarks"), "source_versions": config.get("source_versions"),
         "candidate_label_policy": config.get("candidate_label_policy"), "label_audit_and_limitations": config.get("label_audit"),
@@ -624,9 +787,20 @@ def validate_readiness(config_path: Path, manifest_path: Path | None = None) -> 
         "statistical_analysis_plan": config.get("statistical_analysis_plan"), "development_pilot_completion": config.get("development_pilot"),
         "sample_size_justification": config.get("sample_size_justification"), "attempts_availability": config.get("attempts"),
         "offline_examples_availability": config.get("offline_examples"), "policy_fitting_readiness": config.get("policy_fitting_ready"),
-        "final_test_partition_and_custody": manifest.get("status") if manifest else None, "dataset_license_citation_status": config.get("license_citation_status")}
+        "dataset_license_citation_status": config.get("license_citation_status")}
     statuses = {k: ("APPROVED" if v is True or isinstance(v, dict) and v.get("approved") is True else "BLOCKED" if v is None or v is False or v == {} else "NOT APPROVED") for k, v in checks.items()}
-    return {"exploratory_readiness": "LIMITED" if any(v in {"BLOCKED", "NOT APPROVED"} for v in statuses.values()) else "READY", "confirmatory_readiness": "BLOCKED" if any(v != "APPROVED" for v in statuses.values()) else "READY", "checks": statuses, "observed_values": checks}
+    # Missing data cannot be cleared by sign-off alone.
+    for key, field in (("development_pilot_completion", "completed"), ("attempts_availability", "complete_count"),
+                       ("offline_examples_availability", "complete_count")):
+        if not (isinstance(checks[key], dict) and checks[key].get(field)):
+            statuses[key] = "BLOCKED"
+    statuses["final_test_partition_and_custody"] = final_status
+    checks["final_test_partition_and_custody"] = manifest.get("status") if manifest else None
+    label_bases = {b: label_basis(v) for b, v in sorted((manifest.get("label_counts") or {}).items())}
+    return {"exploratory_readiness": "LIMITED" if any(v in {"BLOCKED", "NOT APPROVED"} for v in statuses.values()) else "READY", "confirmatory_readiness": "BLOCKED" if any(v != "APPROVED" for v in statuses.values()) else "READY", "checks": statuses, "observed_values": checks, "final_test_gate_reasons": final_reasons,
+            "final_test_label_basis": label_bases,
+            "final_test_negatives_synthetic_only": bool(label_bases) and all(
+                v["incorrect"] and v["incorrect_by_label_source"]["synthetic"] == v["incorrect"] for v in label_bases.values())}
 
 
 def main() -> None:
@@ -634,8 +808,9 @@ def main() -> None:
     sub = parser.add_subparsers(dest="command", required=True)
     b = sub.add_parser("build"); b.add_argument("--config", type=Path, required=True)
     r = sub.add_parser("readiness"); r.add_argument("--config", type=Path, required=True); r.add_argument("--manifest", type=Path)
+    r.add_argument("--authorization", type=Path)
     args = parser.parse_args()
-    result = build(args.config) if args.command == "build" else validate_readiness(args.config, args.manifest)
+    result = build(args.config) if args.command == "build" else validate_readiness(args.config, args.manifest, args.authorization)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

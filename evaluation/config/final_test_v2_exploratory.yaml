@@ -1,0 +1,29 @@
+# Final Test v2 (exploratory, provisional automated labels). Read by build_final_test_v2.py.
+# Every value here was fixed before any group was drawn.
+dataset_version: research_v1_final_test_v2_exploratory_v1
+label_protocol: provisional_automated_labeling_v1
+seed: 20261111
+id_namespace: ft2
+sources:
+  GSM8K: {split: train, path: evaluation/datasets/raw/gsm8k/train}
+  HotpotQA: {split: validation, path: evaluation/datasets/raw/hotpotqa/validation}
+# Provisional cap, not a power or precision justification (sample size remains PENDING).
+groups_per_benchmark: 300
+candidate_design: one benchmark-gold candidate plus one SYNTHETIC_INCORRECT candidate per group (paired)
+negative_rules:
+  GSM8K: gold_plus_one (synthetic_negatives_v1); groups where it cannot be formed are skipped
+  HotpotQA: yes_no_complement > comparison_other_entity > numeric_increment > distractor_paragraph_title (synthetic_negatives_v1)
+groups_without_negative: skipped before selection completes; never kept gold-only
+paths:
+  evaluation: evaluation/datasets/final_test_research_v1_eval_v2
+  custodian: evaluation/datasets/_custodian/final_test_research_v1_v2
+custody_record: PENDING_NO_INDEPENDENT_CUSTODIAN:custody_preparation_v1
+human_approval: DEFERRED
+human_adjudication: DEFERRED
+forbidden_uses:
+  - policy fitting or calibration
+  - verifier recordings or attempts before confirmatory authorization
+  - threshold, loss, budget or hyperparameter tuning
+  - policy or team selection
+  - label release without an authorization record bound to the manifest SHA-256
+  - confirmatory Experiment 1 while labels are synthetic and custody is pending

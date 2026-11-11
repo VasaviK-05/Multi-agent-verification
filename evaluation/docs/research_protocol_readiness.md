@@ -6,7 +6,7 @@
 
 The Development feasibility pilot is recorded as blocked before verifier execution because no adapter configuration was available. It produced no real verifier Attempts and no Offline Examples. Policy fitting remains disabled.
 
-A provisional Final Test partition now exists at `evaluation/datasets/final_test_research_v1_eval_v1/`, with its separated label payload in `evaluation/datasets/_custodian/final_test_research_v1_v1/`. It has 1,319 groups per benchmark, benchmark-gold candidates only, and a passing exact leakage audit. Its status remains `NOT_AUTHORIZED`, `enabled: false`, and `PROVISIONALLY_FROZEN_AFTER_HASH_AND_AUDIT`. The label directory is Git-ignored but its Windows ACL inherits broad user read/modify access; no independent custodian exists. It is not genuinely protected and must not be used for confirmatory evaluation.
+The provisional Final Test (`evaluation/datasets/final_test_research_v1_eval_v1/`, labels in `evaluation/datasets/_custodian/final_test_research_v1_v1/`) is **retired** and permanently forbidden for confirmatory use. Its exact leakage audit passed only against research_v1 History and Development. A content-level audit found 807 of 2,638 groups previously exposed (`final_test_contamination_audit.md`). It also has benchmark-gold candidates only. Its files are preserved unchanged. A mixed-label v2 is planned (`final_test_v2_selection_plan.md`) but not built. The current Experiment 1 status is in `experiment1_readiness_report.md`.
 
 ### Person 1 data readiness (2026-11-11)
 
@@ -33,5 +33,11 @@ An accountable protocol owner must approve the benchmark/source population, sour
 Run the validator with:
 
 ```powershell
-.\.venv\Scripts\python.exe -m evaluation.data_preparation.final_test_workflow readiness --config evaluation/config/protocol_readiness.yaml --manifest evaluation/datasets/_custodian/final_test_research_v1_v1/manifest.json
+.\.venv\Scripts\python.exe -m evaluation.data_preparation.final_test_workflow readiness --config evaluation/config/protocol_readiness.yaml --manifest evaluation/datasets/final_test_research_v1_eval_v1/manifest.json
 ```
+
+The Final Test item is decided by `final_test_gate`:
+- **BLOCKED** if the manifest is retired, fails its self-hash, lacks verified correct or verified incorrect candidates for any benchmark, or lacks a passing content-level `exposure_audit`.
+- **NOT APPROVED** until an authorization record is supplied with `--authorization` (fields `approved`, `manifest_sha256`, `approver`, `custodian`).
+
+The frozen manifest itself always stays `NOT_AUTHORIZED`. Missing data (Development pilot, Attempts, Offline Examples) is reported as BLOCKED, not as awaiting approval.

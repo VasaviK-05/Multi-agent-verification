@@ -19,9 +19,20 @@ Research write-ups for this repository live in this directory. Dataset files und
 | [research_v1_inventory_and_provenance.md](research_v1_inventory_and_provenance.md) | Artifact inventory, sources, corpus identity, result-file compatibility |
 | [research_v1_label_audit.md](research_v1_label_audit.md) | Label counts, methods, consistency checks, unresolved reasons |
 | [research_v1_development_roster.md](research_v1_development_roster.md) | Development eligible roster, ordered collection rosters, hashes |
-| [final_test_manifest.md](final_test_manifest.md) | Provisional Final Test identity, hashes, isolation |
+| [final_test_manifest.md](final_test_manifest.md) | Retired provisional Final Test identity, hashes, isolation |
 
 Re-run the validation with `python -m evaluation.data_preparation.person1_validation validate`.
+
+## Experiment 1 preparation
+
+| Record | Purpose |
+|---|---|
+| [experiment1_readiness_report.md](experiment1_readiness_report.md) | COMPLETED / BLOCKED / PENDING HUMAN APPROVAL status, Development label balance, next actions |
+| [final_test_contamination_audit.md](final_test_contamination_audit.md) | Content-level contamination of the provisional Final Test and its retirement |
+| [final_test_v2_selection_plan.md](final_test_v2_selection_plan.md) | Label-free eligible pools and candidate design for a mixed-label Final Test v2 |
+| [exploratory_dataset_and_final_test_v2.md](exploratory_dataset_and_final_test_v2.md) | Exploratory Development with synthetic negatives and the exploratory Final Test v2: label classes, exact counts, audits, synthetic-label limitations (human approval DEFERRED) |
+
+Re-run with `python -m evaluation.data_preparation.experiment1_preparation validate`.
 
 The baseline report describes the full orchestrator. The single-verifier scripts are separate measurements and are not substitutes for it.
 

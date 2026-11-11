@@ -15,6 +15,8 @@ Executed 2026-11-11 on Git HEAD `13174aa` plus the uncommitted Person 1 changes 
 
 Validation receipt: `evaluation/datasets/person1/research_v1_person1_v1/manifest.json` (generator SHA-256 `2a590b6d…56a0`; `validation_summary.json` SHA-256 `adcce2fb…be2d`).
 
+> **Correction (2026-11-11, later the same day).** The Final Test leakage and isolation rows below were marked PASS on the basis of exact comparisons against research_v1 History and Development only. A content-level audit against every exposed dataset, Development file, baseline output and verifier output found that 807 of the 2,638 provisional Final Test groups (GSM8K 500, HotpotQA 307) had previously been exposed. Those rows are now FAIL, and the provisional Final Test is retired. The frozen `person1_validation` output is unchanged and still reports PASS for its narrower check. See `final_test_contamination_audit.md` and `experiment1_readiness_report.md`.
+
 ## Step 1 — research objective
 
 | Requirement | Status | Evidence |
@@ -54,7 +56,8 @@ Validation receipt: `evaluation/datasets/person1/research_v1_person1_v1/manifest
 | 13-candidate rehearsal distinguished | PASS (as far as evidence allows) | no 13-candidate rehearsal artifact exists in the workspace; the only "13" is the 13 ineligible GSM8K groups, documented as such |
 | Person 2 cost-collection roster | PASS | `person2_cost_collection_order.jsonl`, label-free, group-complete, size pending; no costs collected |
 | Provisional Final Test verified without opening labels | PASS | 1,319 + 1,319 groups, 2,638 benchmark-gold candidates, all hashes and receipts verified, label payload byte-hashed only |
-| Final Test leakage audit | PASS | recomputed comparisons all 0 and equal to the frozen audit |
+| Final Test leakage audit against research_v1 History/Development | PASS | recomputed comparisons all 0 and equal to the frozen audit |
+| Final Test content-level exposure (all exposed datasets, Development files, baseline and verifier outputs) | FAIL | 807 contaminated groups; provisional Final Test retired (`final_test_contamination_audit.md`) |
 | Final Test disabled / NOT_AUTHORIZED | PASS | manifest fields |
 | Final Test independent custody | BLOCKED | no custodian; broad inherited ACLs |
 | Leakage counts 25 / 14 / 14 / 2, others 0 | PASS | reproduced automatically |
@@ -74,7 +77,8 @@ Validation receipt: `evaluation/datasets/person1/research_v1_person1_v1/manifest
 |---|---|
 | Duplicate IDs, composition, provenance, manifest hashes | PASS |
 | History/Development leakage | PASS |
-| Final Test isolation (hashes, receipt, no label fields, no Development overlap, disabled) | PASS |
+| Final Test isolation (hashes, receipt, no label fields, no research_v1 Development overlap, disabled) | PASS (narrow) |
+| Final Test freedom from prior exposure | FAIL (retired) |
 | Readiness | BLOCKED (reported, not overridden) |
 | Teammate compatibility | BLOCKED (700-result artifact absent; available files checked) |
 | Versioning: write-once output; `validate` detects drift | PASS (`test_generate_refuses_existing_output`; tamper test) |
@@ -106,7 +110,7 @@ Validation receipt: `evaluation/datasets/person1/research_v1_person1_v1/manifest
 **Person 1 substantially completed, with named blockers.** Every safely implementable data, split, validation, roster, and documentation requirement is implemented and verified. The remaining items need external inputs:
 
 1. Approvals 1–20 in `person1_approval_checklist.md`.
-2. An independent Final Test custodian with OS-level protection.
+2. A new uncontaminated, mixed-label Final Test (v2; see `final_test_v2_selection_plan.md`) and an independent custodian with OS-level protection. The provisional Final Test is retired.
 3. The owner's path or run ID for the "700 results".
 4. Human review of the 871 unresolved candidates.
 5. Verifier execution (adapter configuration), which in turn blocks Attempts and every experiment.

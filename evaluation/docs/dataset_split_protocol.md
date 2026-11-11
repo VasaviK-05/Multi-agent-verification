@@ -43,7 +43,7 @@ The guidance above predates the current partitions. This section records what no
 - **Grouping:** `exact_normalized_question_with_source_id_preserved`; group ID = benchmark prefix + first 16 hex characters of SHA-256 of the lowercased alphanumeric question. Every stored group ID matches the recomputed value. Splits were made on whole groups.
 - **History/Development disjointness:** 0 shared group IDs, dataset IDs, candidate IDs, raw or normalized questions, source IDs, or cross-partition donors for both benchmarks.
 - **Known shared HotpotQA context (conditional pass):** 25 shared stored context hashes (15 History and 15 Development groups), 14 identical paragraph texts and 14 shared titles (9 groups per side), and 2 shared supporting facts (`Magic Dirt` sentence 0, `Tom Clancy` sentence 0). See `research_v1_group_leakage_audit.md`.
-- **Final Test isolation:** every exact comparison against History and Development is 0 and matches the frozen audit; see `final_test_manifest.md`.
+- **Final Test isolation:** every exact comparison against research_v1 History and Development is 0 and matches the frozen audit. The content-level audit against all exposed files failed (807 groups), and the provisional Final Test is retired; see `final_test_contamination_audit.md`.
 - **Semantic/paraphrase leakage:** not audited for any partition.
 
 ### Canonical Development identity
