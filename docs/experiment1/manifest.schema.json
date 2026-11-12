@@ -1,0 +1,4506 @@
+{
+  "$defs": {
+    "AtomicEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "bindings": {
+          "additionalProperties": true,
+          "title": "Bindings",
+          "type": "object"
+        },
+        "cohort": {
+          "enum": [
+            "arithmetic",
+            "factual",
+            "reference"
+          ],
+          "title": "Cohort",
+          "type": "string"
+        },
+        "comparison": {
+          "$ref": "#/$defs/FrozenComparison"
+        },
+        "kind": {
+          "const": "atomic",
+          "default": "atomic",
+          "title": "Kind",
+          "type": "string"
+        },
+        "specification": {
+          "$ref": "#/$defs/PolicyBuildSpecification"
+        }
+      },
+      "required": [
+        "cohort",
+        "specification",
+        "comparison",
+        "bindings"
+      ],
+      "title": "AtomicEntry",
+      "type": "object"
+    },
+    "AttackSpecification": {
+      "additionalProperties": false,
+      "properties": {
+        "suppression": {
+          "enum": [
+            "unavailable",
+            "abstention"
+          ],
+          "title": "Suppression",
+          "type": "string"
+        },
+        "version": {
+          "const": "report_corruption_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "suppression"
+      ],
+      "title": "AttackSpecification",
+      "type": "object"
+    },
+    "Attempt": {
+      "additionalProperties": false,
+      "properties": {
+        "adapter": {
+          "enum": [
+            "generic_v1",
+            "rule_v1",
+            "evidence_v1",
+            "confidence_v1",
+            "semantic_v1"
+          ],
+          "title": "Adapter",
+          "type": "string"
+        },
+        "configuration_id": {
+          "title": "Configuration Id",
+          "type": "string"
+        },
+        "execution_id": {
+          "title": "Execution Id",
+          "type": "string"
+        },
+        "observed_resources_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed Resources Json"
+        },
+        "report_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Report Json"
+        },
+        "report_provenance": {
+          "title": "Report Provenance",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "directional",
+            "abstention",
+            "unavailable",
+            "failed",
+            "missing"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "verifier_name": {
+          "title": "Verifier Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verifier_name",
+        "state",
+        "execution_id",
+        "configuration_id",
+        "report_provenance",
+        "adapter"
+      ],
+      "title": "Attempt",
+      "type": "object"
+    },
+    "AttemptMeasurement": {
+      "additionalProperties": false,
+      "properties": {
+        "content_identity": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Identity",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "duration_ms": {
+          "minimum": 0,
+          "title": "Duration Ms",
+          "type": "number"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "purpose": {
+          "enum": [
+            "warmup",
+            "calibration"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "setup_fingerprint": {
+          "title": "Setup Fingerprint",
+          "type": "string"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "returned",
+            "failure",
+            "timeout",
+            "interrupted"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "verifier_fingerprint": {
+          "title": "Verifier Fingerprint",
+          "type": "string"
+        },
+        "verifier_name": {
+          "title": "Verifier Name",
+          "type": "string"
+        },
+        "version": {
+          "const": "verifier_attempt_wall_time_v1",
+          "default": "verifier_attempt_wall_time_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "example_id",
+        "split_identity",
+        "question_id",
+        "content_identity",
+        "dataset_id",
+        "role",
+        "purpose",
+        "verifier_name",
+        "setup_fingerprint",
+        "verifier_fingerprint",
+        "duration_ms",
+        "status"
+      ],
+      "title": "AttemptMeasurement",
+      "type": "object"
+    },
+    "BlockedEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "cohort": {
+          "enum": [
+            "arithmetic",
+            "factual",
+            "original_semantic",
+            "compound",
+            "reference"
+          ],
+          "title": "Cohort",
+          "type": "string"
+        },
+        "expected_policy_id": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Policy Id"
+        },
+        "kind": {
+          "const": "blocked",
+          "default": "blocked",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "cohort",
+        "reason"
+      ],
+      "title": "BlockedEntry",
+      "type": "object"
+    },
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "adapter": {
+          "enum": [
+            "generic_v1",
+            "rule_v1",
+            "evidence_v1",
+            "confidence_v1",
+            "semantic_v1"
+          ],
+          "title": "Adapter",
+          "type": "string"
+        },
+        "capabilities": {
+          "$ref": "#/$defs/CapabilityDescriptor"
+        },
+        "capability_source": {
+          "enum": [
+            "builtin",
+            "explicit"
+          ],
+          "title": "Capability Source",
+          "type": "string"
+        },
+        "registered": {
+          "title": "Registered",
+          "type": "boolean"
+        },
+        "verifier_name": {
+          "title": "Verifier Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verifier_name",
+        "adapter",
+        "registered",
+        "capability_source",
+        "capabilities"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "CapabilityDescriptor": {
+      "properties": {
+        "expected_capabilities": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Expected Capabilities",
+          "type": "array"
+        },
+        "limitations": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "readiness": {
+          "default": "unknown",
+          "title": "Readiness",
+          "type": "string"
+        },
+        "requires_reference": {
+          "default": false,
+          "title": "Requires Reference",
+          "type": "boolean"
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unavailable Reason"
+        }
+      },
+      "title": "CapabilityDescriptor",
+      "type": "object"
+    },
+    "CleanCoverageConstraint": {
+      "additionalProperties": false,
+      "properties": {
+        "minimum": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Minimum",
+          "type": "number"
+        },
+        "parent_matrix_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Parent Matrix Id",
+          "type": "string"
+        },
+        "source_evaluation_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Evaluation Id",
+          "type": "string"
+        },
+        "strategy_coverage": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Strategy Coverage",
+          "type": "array"
+        },
+        "training_binding_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Training Binding Id",
+          "type": "string"
+        },
+        "version": {
+          "const": "finalized_clean_development_coverage_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "minimum",
+        "strategy_coverage",
+        "parent_matrix_id",
+        "training_binding_id",
+        "source_evaluation_id"
+      ],
+      "title": "CleanCoverageConstraint",
+      "type": "object"
+    },
+    "CollectedAttempt": {
+      "additionalProperties": false,
+      "properties": {
+        "achieved_capabilities": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Achieved Capabilities",
+          "type": "array"
+        },
+        "after_resources_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "After Resources Json"
+        },
+        "attempt": {
+          "$ref": "#/$defs/Attempt"
+        },
+        "attempt_id": {
+          "title": "Attempt Id",
+          "type": "string"
+        },
+        "candidate": {
+          "title": "Candidate",
+          "type": "string"
+        },
+        "duration_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Ms"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "executed": {
+          "title": "Executed",
+          "type": "boolean"
+        },
+        "issues": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AttemptMeasurement"
+            },
+            {
+              "$ref": "#/$defs/HeldoutAttemptMeasurement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Measurement"
+        },
+        "planning_json": {
+          "title": "Planning Json",
+          "type": "string"
+        },
+        "returned_payload_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Returned Payload Json"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "timing_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "returned",
+                "failure",
+                "timeout",
+                "interrupted"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Timing Status"
+        }
+      },
+      "required": [
+        "attempt_id",
+        "example_id",
+        "run_id",
+        "candidate",
+        "planning_json",
+        "attempt",
+        "executed"
+      ],
+      "title": "CollectedAttempt",
+      "type": "object"
+    },
+    "ComponentContract": {
+      "additionalProperties": false,
+      "properties": {
+        "actual_resources": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResourceManifest"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "binding_version": {
+          "default": "fact_plus_sum_binding_v1",
+          "enum": [
+            "fact_plus_sum_binding_v1",
+            "fact_plus_sum_binding_v2"
+          ],
+          "title": "Binding Version",
+          "type": "string"
+        },
+        "budget": {
+          "minimum": 0,
+          "title": "Budget",
+          "type": "number"
+        },
+        "category": {
+          "enum": [
+            "area",
+            "population",
+            "numeric_fact"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "component_assignments": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Assignments"
+        },
+        "contributor_semantics": {
+          "const": "distinct_influential_verifier_union_v1",
+          "default": "distinct_influential_verifier_union_v1",
+          "title": "Contributor Semantics",
+          "type": "string"
+        },
+        "decision_semantics": {
+          "const": "all_required_pass_any_qualified_reject_v1",
+          "default": "all_required_pass_any_qualified_reject_v1",
+          "title": "Decision Semantics",
+          "type": "string"
+        },
+        "descriptor_catalog_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Descriptor Catalog Json"
+        },
+        "fitting_configuration": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CompoundFittingConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "minimum_distinct_contributors": {
+          "default": 1,
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Minimum Distinct Contributors",
+          "type": "integer"
+        },
+        "minimum_selected": {
+          "default": 1,
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Minimum Selected",
+          "type": "integer"
+        },
+        "obligations": {
+          "items": {
+            "$ref": "#/$defs/Obligation"
+          },
+          "title": "Obligations",
+          "type": "array"
+        },
+        "question_signature": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "title": "Question Signature",
+          "type": "array"
+        },
+        "version": {
+          "const": "component_complete_team_v1",
+          "default": "component_complete_team_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "category",
+        "question_signature",
+        "obligations",
+        "budget"
+      ],
+      "title": "ComponentContract",
+      "type": "object"
+    },
+    "ComponentEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "bindings": {
+          "additionalProperties": true,
+          "title": "Bindings",
+          "type": "object"
+        },
+        "cohort": {
+          "const": "compound",
+          "default": "compound",
+          "title": "Cohort",
+          "type": "string"
+        },
+        "comparison": {
+          "$ref": "#/$defs/FrozenComponentComparison"
+        },
+        "kind": {
+          "const": "component",
+          "default": "component",
+          "title": "Kind",
+          "type": "string"
+        },
+        "original_freeze_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Original Freeze Id",
+          "type": "string"
+        },
+        "resource_transfer": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Transfer"
+        },
+        "training": {
+          "$ref": "#/$defs/Training"
+        }
+      },
+      "required": [
+        "training",
+        "comparison",
+        "bindings",
+        "original_freeze_id"
+      ],
+      "title": "ComponentEntry",
+      "type": "object"
+    },
+    "ComponentMethod": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SolverResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "development_matrix": {
+          "$ref": "#/$defs/PayoffMatrix"
+        },
+        "method": {
+          "title": "Method",
+          "type": "string"
+        },
+        "probabilities": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Probabilities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "method",
+        "development_matrix",
+        "probabilities"
+      ],
+      "title": "ComponentMethod",
+      "type": "object"
+    },
+    "ComponentPolicy": {
+      "additionalProperties": false,
+      "description": "Joint compound game, not a product of independently sampled atomic policies.\n\nGeneric minimax certificates are reused. No atomic recording-to-compound\npayoff conversion is provided. Empirical collection/fitting is a later study.",
+      "properties": {
+        "contract": {
+          "$ref": "#/$defs/ComponentContract"
+        },
+        "evidence_kind": {
+          "enum": [
+            "synthetic_test_fixture",
+            "empirical"
+          ],
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "joint_development": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/JointDevelopmentBinding"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "joint_evidence_id": {
+          "title": "Joint Evidence Id",
+          "type": "string"
+        },
+        "matrix": {
+          "$ref": "#/$defs/PayoffMatrix"
+        },
+        "solution": {
+          "$ref": "#/$defs/SolverResult"
+        },
+        "version": {
+          "const": "component_game_policy_v1",
+          "default": "component_game_policy_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract",
+        "matrix",
+        "solution",
+        "evidence_kind",
+        "joint_evidence_id"
+      ],
+      "title": "ComponentPolicy",
+      "type": "object"
+    },
+    "CompoundFittingConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "authorization": {
+          "title": "Authorization",
+          "type": "string"
+        },
+        "chosen_after_development": {
+          "const": true,
+          "default": true,
+          "title": "Chosen After Development",
+          "type": "boolean"
+        },
+        "minimum_clean_coverage": {
+          "const": 0.85,
+          "default": 0.85,
+          "title": "Minimum Clean Coverage",
+          "type": "number"
+        },
+        "original_study_id": {
+          "title": "Original Study Id",
+          "type": "string"
+        },
+        "version": {
+          "const": "post_development_85_exploratory_v1",
+          "default": "post_development_85_exploratory_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "original_study_id",
+        "authorization"
+      ],
+      "title": "CompoundFittingConfiguration",
+      "type": "object"
+    },
+    "CoverageCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "achieved": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Achieved",
+          "type": "number"
+        },
+        "multiplier": {
+          "minimum": 0,
+          "title": "Multiplier",
+          "type": "number"
+        },
+        "residual": {
+          "title": "Residual",
+          "type": "number"
+        },
+        "version": {
+          "const": "clean_coverage_dual_v1",
+          "default": "clean_coverage_dual_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "multiplier",
+        "achieved",
+        "residual"
+      ],
+      "title": "CoverageCertificate",
+      "type": "object"
+    },
+    "DatasetDescription": {
+      "additionalProperties": false,
+      "properties": {
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "declared_label_sources": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Declared Label Sources",
+          "type": "array"
+        },
+        "grouping_protocol": {
+          "title": "Grouping Protocol",
+          "type": "string"
+        },
+        "independent_label_provenance": {
+          "title": "Independent Label Provenance",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development",
+            "final_test"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "dataset_id",
+        "version",
+        "source",
+        "independent_label_provenance",
+        "declared_label_sources",
+        "grouping_protocol"
+      ],
+      "title": "DatasetDescription",
+      "type": "object"
+    },
+    "Dependency": {
+      "additionalProperties": false,
+      "properties": {
+        "compromise_pathway": {
+          "title": "Compromise Pathway",
+          "type": "string"
+        },
+        "resource_id": {
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "verifiers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Verifiers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "resource_id",
+        "compromise_pathway",
+        "verifiers"
+      ],
+      "title": "Dependency",
+      "type": "object"
+    },
+    "DependencyRegistry": {
+      "additionalProperties": false,
+      "properties": {
+        "dependencies": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Dependency"
+          },
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "unknown_treatment": {
+          "default": "shared_unknown",
+          "title": "Unknown Treatment",
+          "type": "string"
+        },
+        "unresolved": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Unresolved",
+          "type": "array"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version"
+      ],
+      "title": "DependencyRegistry",
+      "type": "object"
+    },
+    "Descriptor": {
+      "additionalProperties": false,
+      "properties": {
+        "entity": {
+          "title": "Entity",
+          "type": "string"
+        },
+        "measure": {
+          "enum": [
+            "area",
+            "population"
+          ],
+          "title": "Measure",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "entity",
+        "measure"
+      ],
+      "title": "Descriptor",
+      "type": "object"
+    },
+    "DiagnosticExample": {
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/$defs/QuestionAnalysis"
+        },
+        "answer": {
+          "title": "Answer",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "label": {
+          "default": null,
+          "title": "Label",
+          "type": "null"
+        },
+        "purpose": {
+          "enum": [
+            "warmup",
+            "calibration"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "example_id",
+        "split_identity",
+        "question_id",
+        "run_id",
+        "dataset_id",
+        "role",
+        "purpose",
+        "question",
+        "answer",
+        "reference",
+        "analysis"
+      ],
+      "title": "DiagnosticExample",
+      "type": "object"
+    },
+    "DiagnosticExclusionRoster": {
+      "additionalProperties": false,
+      "description": "Unwitnessed outcome-free exclusions; never a scientific reservation.",
+      "properties": {
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/ReservedExample"
+          },
+          "minItems": 1,
+          "title": "Examples",
+          "type": "array"
+        },
+        "role": {
+          "const": "final_test",
+          "title": "Role",
+          "type": "string"
+        },
+        "version": {
+          "const": "diagnostic_exclusion_roster_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "role",
+        "dataset_id",
+        "examples"
+      ],
+      "title": "DiagnosticExclusionRoster",
+      "type": "object"
+    },
+    "DiagnosticRecordingRequest": {
+      "additionalProperties": false,
+      "description": "Same dispatch/recording, with no ground truth or custody approval claim.",
+      "properties": {
+        "cache_contract": {
+          "const": "diagnostic_observation_only",
+          "default": "diagnostic_observation_only",
+          "title": "Cache Contract",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "minItems": 1,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/DiagnosticExample"
+          },
+          "minItems": 1,
+          "title": "Examples",
+          "type": "array"
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "expected_setup": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementSetup"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "factory": {
+          "title": "Factory",
+          "type": "string"
+        },
+        "final_test_reservation": {
+          "$ref": "#/$defs/DiagnosticExclusionRoster"
+        },
+        "intended_use": {
+          "const": "smoke",
+          "default": "smoke",
+          "title": "Intended Use",
+          "type": "string"
+        },
+        "permitted_datasets": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "enum": [
+                  "history",
+                  "development"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Permitted Datasets",
+          "type": "array"
+        },
+        "preparation_authorization": {
+          "title": "Preparation Authorization",
+          "type": "string"
+        },
+        "randomness_control": {
+          "title": "Randomness Control",
+          "type": "string"
+        },
+        "study_approval": {
+          "default": null,
+          "title": "Study Approval",
+          "type": "null"
+        },
+        "version": {
+          "const": "offline_diagnostic_recording_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "preparation_authorization",
+        "randomness_control",
+        "execution_configuration_id",
+        "factory",
+        "expected_setup",
+        "final_test_reservation",
+        "permitted_datasets",
+        "candidates",
+        "examples"
+      ],
+      "title": "DiagnosticRecordingRequest",
+      "type": "object"
+    },
+    "EvidenceProbe": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "title": "Case Id",
+          "type": "string"
+        },
+        "report_json": {
+          "title": "Report Json",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "report_json"
+      ],
+      "title": "EvidenceProbe",
+      "type": "object"
+    },
+    "EvidenceValidation": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "$ref": "#/$defs/VerifierResources"
+        },
+        "before": {
+          "$ref": "#/$defs/VerifierResources"
+        },
+        "probes": {
+          "items": {
+            "$ref": "#/$defs/EvidenceProbe"
+          },
+          "title": "Probes",
+          "type": "array"
+        },
+        "version": {
+          "const": "evidence_public_contract_validation_v2",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "before",
+        "after",
+        "probes"
+      ],
+      "title": "EvidenceValidation",
+      "type": "object"
+    },
+    "Example": {
+      "additionalProperties": false,
+      "properties": {
+        "answer": {
+          "title": "Answer",
+          "type": "string"
+        },
+        "answer_is_correct": {
+          "title": "Answer Is Correct",
+          "type": "boolean"
+        },
+        "attempts": {
+          "items": {
+            "$ref": "#/$defs/Attempt"
+          },
+          "title": "Attempts",
+          "type": "array"
+        },
+        "cache_contract": {
+          "const": "complete_team_independent_v1",
+          "title": "Cache Contract",
+          "type": "string"
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "label_method": {
+          "enum": [
+            "independent_human",
+            "independent_ground_truth"
+          ],
+          "title": "Label Method",
+          "type": "string"
+        },
+        "label_source": {
+          "title": "Label Source",
+          "type": "string"
+        },
+        "planning_category": {
+          "title": "Planning Category",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        },
+        "validation_id": {
+          "title": "Validation Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "example_id",
+        "split_identity",
+        "question_id",
+        "question",
+        "answer",
+        "reference",
+        "domain",
+        "planning_category",
+        "answer_is_correct",
+        "label_source",
+        "label_method",
+        "validation_id",
+        "execution_configuration_id",
+        "cache_contract",
+        "attempts"
+      ],
+      "title": "Example",
+      "type": "object"
+    },
+    "ExecutionContract": {
+      "additionalProperties": false,
+      "properties": {
+        "contributor_version": {
+          "enum": [
+            "baseline_log_odds_active_group_v1",
+            "informative_history_influence_v1"
+          ],
+          "title": "Contributor Version",
+          "type": "string"
+        },
+        "coverage_version": {
+          "enum": [
+            "factual_output_contract_v1",
+            "task_output_contract_v2"
+          ],
+          "title": "Coverage Version",
+          "type": "string"
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "failure_contract": {
+          "enum": [
+            "all_selected_returned",
+            "allow_failed_if_covered"
+          ],
+          "title": "Failure Contract",
+          "type": "string"
+        },
+        "history_prior_alpha": {
+          "exclusiveMinimum": 0,
+          "title": "History Prior Alpha",
+          "type": "number"
+        },
+        "history_prior_beta": {
+          "exclusiveMinimum": 0,
+          "title": "History Prior Beta",
+          "type": "number"
+        },
+        "resource_manifest": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResourceManifest"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "team_requirements": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TeamRequirements"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "threshold": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "version": {
+          "enum": [
+            "offline_public_decision_v1",
+            "offline_public_decision_v2",
+            "offline_public_decision_v3",
+            "offline_public_decision_v4"
+          ],
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "coverage_version",
+        "contributor_version",
+        "threshold",
+        "failure_contract",
+        "execution_configuration_id",
+        "history_prior_alpha",
+        "history_prior_beta"
+      ],
+      "title": "ExecutionContract",
+      "type": "object"
+    },
+    "FinalTestReservation": {
+      "additionalProperties": false,
+      "properties": {
+        "custody_record": {
+          "title": "Custody Record",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/ReservedExample"
+          },
+          "minItems": 1,
+          "title": "Examples",
+          "type": "array"
+        },
+        "role": {
+          "const": "final_test",
+          "title": "Role",
+          "type": "string"
+        },
+        "version": {
+          "const": "final_test_reservation_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "role",
+        "dataset_id",
+        "custody_record",
+        "examples"
+      ],
+      "title": "FinalTestReservation",
+      "type": "object"
+    },
+    "FrozenComparison": {
+      "additionalProperties": false,
+      "properties": {
+        "code_revision": {
+          "title": "Code Revision",
+          "type": "string"
+        },
+        "freeze_record": {
+          "title": "Freeze Record",
+          "type": "string"
+        },
+        "full_artifact": {
+          "$ref": "#/$defs/PolicyArtifact"
+        },
+        "manifest_id": {
+          "title": "Manifest Id",
+          "type": "string"
+        },
+        "policies": {
+          "items": {
+            "$ref": "#/$defs/ResearchPolicy"
+          },
+          "title": "Policies",
+          "type": "array"
+        },
+        "specification_id": {
+          "title": "Specification Id",
+          "type": "string"
+        },
+        "unavailable_methods": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/UnavailableMethod"
+          },
+          "title": "Unavailable Methods",
+          "type": "array"
+        },
+        "version": {
+          "const": "frozen_research_comparison_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "specification_id",
+        "code_revision",
+        "manifest_id",
+        "full_artifact",
+        "policies",
+        "freeze_record"
+      ],
+      "title": "FrozenComparison",
+      "type": "object"
+    },
+    "FrozenComponentComparison": {
+      "additionalProperties": false,
+      "properties": {
+        "development_outcomes_id": {
+          "title": "Development Outcomes Id",
+          "type": "string"
+        },
+        "freeze_record": {
+          "title": "Freeze Record",
+          "type": "string"
+        },
+        "full_policy": {
+          "$ref": "#/$defs/ComponentPolicy"
+        },
+        "methods": {
+          "items": {
+            "$ref": "#/$defs/ComponentMethod"
+          },
+          "title": "Methods",
+          "type": "array"
+        },
+        "training_binding_id": {
+          "title": "Training Binding Id",
+          "type": "string"
+        },
+        "unavailable_methods": {
+          "items": {
+            "$ref": "#/$defs/UnavailableMethod"
+          },
+          "title": "Unavailable Methods",
+          "type": "array"
+        },
+        "version": {
+          "const": "frozen_component_comparison_v1",
+          "default": "frozen_component_comparison_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "full_policy",
+        "training_binding_id",
+        "development_outcomes_id",
+        "freeze_record",
+        "methods",
+        "unavailable_methods"
+      ],
+      "title": "FrozenComponentComparison",
+      "type": "object"
+    },
+    "Group": {
+      "additionalProperties": false,
+      "properties": {
+        "increment": {
+          "title": "Increment",
+          "type": "string"
+        },
+        "measure": {
+          "enum": [
+            "area",
+            "population"
+          ],
+          "title": "Measure",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development",
+            "final_test"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "measure",
+        "role",
+        "increment"
+      ],
+      "title": "Group",
+      "type": "object"
+    },
+    "HeldoutAttemptMeasurement": {
+      "additionalProperties": false,
+      "properties": {
+        "content_identity": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Identity",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "duration_ms": {
+          "minimum": 0,
+          "title": "Duration Ms",
+          "type": "number"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "purpose": {
+          "const": "heldout",
+          "default": "heldout",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "role": {
+          "const": "final_test",
+          "default": "final_test",
+          "title": "Role",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "setup_fingerprint": {
+          "title": "Setup Fingerprint",
+          "type": "string"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "returned",
+            "failure",
+            "timeout",
+            "interrupted"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "verifier_fingerprint": {
+          "title": "Verifier Fingerprint",
+          "type": "string"
+        },
+        "verifier_name": {
+          "title": "Verifier Name",
+          "type": "string"
+        },
+        "version": {
+          "const": "verifier_attempt_wall_time_v1",
+          "default": "verifier_attempt_wall_time_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "example_id",
+        "split_identity",
+        "question_id",
+        "content_identity",
+        "dataset_id",
+        "verifier_name",
+        "setup_fingerprint",
+        "verifier_fingerprint",
+        "duration_ms",
+        "status"
+      ],
+      "title": "HeldoutAttemptMeasurement",
+      "type": "object"
+    },
+    "HeldoutExample": {
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/$defs/QuestionAnalysis"
+        },
+        "answer": {
+          "title": "Answer",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "label": {
+          "$ref": "#/$defs/IndependentLabel"
+        },
+        "purpose": {
+          "const": "heldout",
+          "default": "heldout",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "role": {
+          "const": "final_test",
+          "default": "final_test",
+          "title": "Role",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "example_id",
+        "split_identity",
+        "question_id",
+        "run_id",
+        "dataset_id",
+        "question",
+        "answer",
+        "reference",
+        "analysis",
+        "label"
+      ],
+      "title": "HeldoutExample",
+      "type": "object"
+    },
+    "HeldoutRecordingRequest": {
+      "additionalProperties": false,
+      "description": "Evaluation-only opt-in; never accepted as a training/calibration input.",
+      "properties": {
+        "cache_contract": {
+          "const": "complete_team_independent_v1",
+          "title": "Cache Contract",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "minItems": 1,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/HeldoutExample"
+          },
+          "minItems": 1,
+          "title": "Examples",
+          "type": "array"
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "expected_setup": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementSetup"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "factory": {
+          "title": "Factory",
+          "type": "string"
+        },
+        "final_test_reservation": {
+          "$ref": "#/$defs/FinalTestReservation"
+        },
+        "freeze_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Freeze Id",
+          "type": "string"
+        },
+        "intended_use": {
+          "const": "heldout",
+          "default": "heldout",
+          "title": "Intended Use",
+          "type": "string"
+        },
+        "permitted_datasets": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "const": "final_test",
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Permitted Datasets",
+          "type": "array"
+        },
+        "preparation_authorization": {
+          "title": "Preparation Authorization",
+          "type": "string"
+        },
+        "randomness_control": {
+          "title": "Randomness Control",
+          "type": "string"
+        },
+        "study_approval": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Study Approval"
+        },
+        "version": {
+          "const": "offline_heldout_recording_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "study_approval",
+        "preparation_authorization",
+        "cache_contract",
+        "randomness_control",
+        "execution_configuration_id",
+        "factory",
+        "expected_setup",
+        "final_test_reservation",
+        "permitted_datasets",
+        "candidates",
+        "examples",
+        "freeze_id"
+      ],
+      "title": "HeldoutRecordingRequest",
+      "type": "object"
+    },
+    "IndependentLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "answer_is_correct": {
+          "title": "Answer Is Correct",
+          "type": "boolean"
+        },
+        "label_method": {
+          "enum": [
+            "independent_human",
+            "independent_ground_truth"
+          ],
+          "title": "Label Method",
+          "type": "string"
+        },
+        "label_source": {
+          "title": "Label Source",
+          "type": "string"
+        },
+        "provenance": {
+          "title": "Provenance",
+          "type": "string"
+        }
+      },
+      "required": [
+        "answer_is_correct",
+        "label_source",
+        "label_method",
+        "provenance"
+      ],
+      "title": "IndependentLabel",
+      "type": "object"
+    },
+    "InfeasibleEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "cohort": {
+          "const": "original_semantic",
+          "default": "original_semantic",
+          "title": "Cohort",
+          "type": "string"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        },
+        "kind": {
+          "const": "infeasible",
+          "default": "infeasible",
+          "title": "Kind",
+          "type": "string"
+        },
+        "matrix": {
+          "$ref": "#/$defs/PayoffMatrix"
+        },
+        "solution": {
+          "$ref": "#/$defs/SolverResult"
+        }
+      },
+      "required": [
+        "matrix",
+        "solution",
+        "explanation"
+      ],
+      "title": "InfeasibleEntry",
+      "type": "object"
+    },
+    "JointDevelopmentBinding": {
+      "additionalProperties": false,
+      "description": "Deployment provenance from a separately reviewed joint development study.\n\nLike atomic task/history bindings, this is a frozen provenance declaration,\nnot a proof that labels are correct. The offline study must validate/seal its\nsource manifests before exporting it. Atomic provenance is not this type.",
+      "properties": {
+        "attack_specification_id": {
+          "title": "Attack Specification Id",
+          "type": "string"
+        },
+        "binding_version": {
+          "default": "fact_plus_sum_binding_v1",
+          "enum": [
+            "fact_plus_sum_binding_v1",
+            "fact_plus_sum_binding_v2"
+          ],
+          "title": "Binding Version",
+          "type": "string"
+        },
+        "collection_protocol": {
+          "const": "complete_bound_component_calls_v1",
+          "default": "complete_bound_component_calls_v1",
+          "title": "Collection Protocol",
+          "type": "string"
+        },
+        "contract_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Contract Id",
+          "type": "string"
+        },
+        "development_dataset_id": {
+          "title": "Development Dataset Id",
+          "type": "string"
+        },
+        "development_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Development Manifest Sha256",
+          "type": "string"
+        },
+        "final_test_reservation_id": {
+          "title": "Final Test Reservation Id",
+          "type": "string"
+        },
+        "grouped_partition_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Grouped Partition Sha256",
+          "type": "string"
+        },
+        "history_dataset_id": {
+          "title": "History Dataset Id",
+          "type": "string"
+        },
+        "history_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "History Manifest Sha256",
+          "type": "string"
+        },
+        "label_protocol_id": {
+          "title": "Label Protocol Id",
+          "type": "string"
+        },
+        "matrix_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Matrix Id",
+          "type": "string"
+        },
+        "version": {
+          "const": "joint_component_development_v1",
+          "default": "joint_component_development_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_id",
+        "matrix_id",
+        "history_dataset_id",
+        "development_dataset_id",
+        "final_test_reservation_id",
+        "history_manifest_sha256",
+        "development_manifest_sha256",
+        "grouped_partition_sha256",
+        "label_protocol_id",
+        "attack_specification_id"
+      ],
+      "title": "JointDevelopmentBinding",
+      "type": "object"
+    },
+    "JointRecordings": {
+      "additionalProperties": false,
+      "properties": {
+        "bundles": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/RecordingBundle"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Bundles",
+          "type": "array"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development",
+            "final_test"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "study_id": {
+          "title": "Study Id",
+          "type": "string"
+        },
+        "version": {
+          "const": "component_bound_recordings_v2",
+          "default": "component_bound_recordings_v2",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "study_id",
+        "role",
+        "bundles"
+      ],
+      "title": "JointRecordings",
+      "type": "object"
+    },
+    "LossConfiguration": {
+      "additionalProperties": false,
+      "description": "Application-chosen penalties, not scientifically calibrated constants.",
+      "properties": {
+        "cost_units": {
+          "title": "Cost Units",
+          "type": "string"
+        },
+        "false_accept": {
+          "minimum": 0,
+          "title": "False Accept",
+          "type": "number"
+        },
+        "false_reject": {
+          "minimum": 0,
+          "title": "False Reject",
+          "type": "number"
+        },
+        "resource_weight": {
+          "minimum": 0,
+          "title": "Resource Weight",
+          "type": "number"
+        },
+        "uncertain": {
+          "minimum": 0,
+          "title": "Uncertain",
+          "type": "number"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "false_accept",
+        "false_reject",
+        "uncertain",
+        "resource_weight",
+        "cost_units"
+      ],
+      "title": "LossConfiguration",
+      "type": "object"
+    },
+    "MeasurementSetup": {
+      "additionalProperties": false,
+      "properties": {
+        "application_source_digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Application Source Digest",
+          "type": "string"
+        },
+        "code_revision": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Code Revision",
+          "type": "string"
+        },
+        "dependency_versions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "minProperties": 1,
+          "title": "Dependency Versions",
+          "type": "object"
+        },
+        "environment": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "minProperties": 1,
+          "title": "Environment",
+          "type": "object"
+        },
+        "evidence_kind": {
+          "enum": [
+            "empirical",
+            "synthetic_test_fixture"
+          ],
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "resources": {
+          "$ref": "#/$defs/ResourceManifest"
+        }
+      },
+      "required": [
+        "resources",
+        "environment",
+        "dependency_versions",
+        "code_revision",
+        "application_source_digest",
+        "evidence_kind"
+      ],
+      "title": "MeasurementSetup",
+      "type": "object"
+    },
+    "Obligation": {
+      "additionalProperties": false,
+      "properties": {
+        "component_id": {
+          "enum": [
+            "base_fact",
+            "derived_sum"
+          ],
+          "title": "Component Id",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/PlanningContext"
+        },
+        "contract": {
+          "$ref": "#/$defs/ExecutionContract"
+        }
+      },
+      "required": [
+        "component_id",
+        "context",
+        "contract"
+      ],
+      "title": "Obligation",
+      "type": "object"
+    },
+    "Partition": {
+      "additionalProperties": false,
+      "properties": {
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/Example"
+          },
+          "title": "Examples",
+          "type": "array"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development",
+            "final_test"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "dataset_id",
+        "examples"
+      ],
+      "title": "Partition",
+      "type": "object"
+    },
+    "PartitionSizes": {
+      "additionalProperties": false,
+      "properties": {
+        "development": {
+          "minimum": 1,
+          "title": "Development",
+          "type": "integer"
+        },
+        "final_test": {
+          "minimum": 1,
+          "title": "Final Test",
+          "type": "integer"
+        },
+        "history": {
+          "minimum": 1,
+          "title": "History",
+          "type": "integer"
+        },
+        "version": {
+          "enum": [
+            "original_48_v1",
+            "amended_36_v1"
+          ],
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "history",
+        "development",
+        "final_test"
+      ],
+      "title": "PartitionSizes",
+      "type": "object"
+    },
+    "PayoffMatrix": {
+      "additionalProperties": false,
+      "properties": {
+        "attack_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Attack Ids",
+          "type": "array"
+        },
+        "clean_coverage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CleanCoverageConstraint"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "compatibility_id": {
+          "title": "Compatibility Id",
+          "type": "string"
+        },
+        "reliability_first": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReliabilityFirst"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "strategy_definitions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Strategy"
+          },
+          "title": "Strategy Definitions",
+          "type": "array"
+        },
+        "strategy_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Strategy Ids",
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array"
+          },
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "strategy_ids",
+        "attack_ids",
+        "values",
+        "compatibility_id"
+      ],
+      "title": "PayoffMatrix",
+      "type": "object"
+    },
+    "PayoffProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "attack_specification": {
+          "title": "Attack Specification",
+          "type": "string"
+        },
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "category_kind": {
+          "default": "domain",
+          "title": "Category Kind",
+          "type": "string"
+        },
+        "development_dataset": {
+          "title": "Development Dataset",
+          "type": "string"
+        },
+        "evidence_kind": {
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "final_test_dataset": {
+          "title": "Final Test Dataset",
+          "type": "string"
+        },
+        "history_dataset": {
+          "title": "History Dataset",
+          "type": "string"
+        },
+        "loss_configuration": {
+          "title": "Loss Configuration",
+          "type": "string"
+        },
+        "matrix_version": {
+          "title": "Matrix Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "attack_specification",
+        "history_dataset",
+        "development_dataset",
+        "final_test_dataset",
+        "matrix_version",
+        "loss_configuration",
+        "category",
+        "evidence_kind"
+      ],
+      "title": "PayoffProvenance",
+      "type": "object"
+    },
+    "PlanningContext": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation_versions": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Aggregation Versions",
+          "type": "array"
+        },
+        "analyzer_provenance": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Analyzer Provenance",
+          "type": "array"
+        },
+        "attempt_costs": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Attempt Costs",
+          "type": "array"
+        },
+        "budget": {
+          "minimum": 0,
+          "title": "Budget",
+          "type": "number"
+        },
+        "clean_coverage_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clean Coverage Json"
+        },
+        "cost_units": {
+          "title": "Cost Units",
+          "type": "string"
+        },
+        "dependencies": {
+          "$ref": "#/$defs/DependencyRegistry"
+        },
+        "execution_contract_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Execution Contract Json"
+        },
+        "loss_configuration": {
+          "$ref": "#/$defs/LossConfiguration"
+        },
+        "offline_evaluation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Offline Evaluation Id"
+        },
+        "pooling_contract_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pooling Contract Json"
+        },
+        "provenance": {
+          "$ref": "#/$defs/PayoffProvenance"
+        },
+        "reliability_first_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reliability First Json"
+        },
+        "selection_json": {
+          "title": "Selection Json",
+          "type": "string"
+        },
+        "task_conditioning_json": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Task Conditioning Json"
+        },
+        "version": {
+          "default": "game_context_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "selection_json",
+        "attempt_costs",
+        "budget",
+        "cost_units",
+        "loss_configuration",
+        "analyzer_provenance",
+        "dependencies",
+        "aggregation_versions",
+        "provenance"
+      ],
+      "title": "PlanningContext",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "compatibility_id": {
+          "title": "Compatibility Id",
+          "type": "string"
+        },
+        "matrix": {
+          "$ref": "#/$defs/PayoffMatrix"
+        },
+        "provenance": {
+          "$ref": "#/$defs/PayoffProvenance"
+        },
+        "solution": {
+          "$ref": "#/$defs/SolverResult"
+        },
+        "strategies": {
+          "items": {
+            "$ref": "#/$defs/Strategy"
+          },
+          "title": "Strategies",
+          "type": "array"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "compatibility_id",
+        "provenance",
+        "matrix",
+        "solution",
+        "strategies"
+      ],
+      "title": "Policy",
+      "type": "object"
+    },
+    "PolicyArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "applicable_domain": {
+          "title": "Applicable Domain",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/PlanningContext"
+        },
+        "contract": {
+          "$ref": "#/$defs/ExecutionContract"
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "policy": {
+          "$ref": "#/$defs/Policy"
+        },
+        "version": {
+          "default": "deployable_game_policy_v1",
+          "enum": [
+            "deployable_game_policy_v1",
+            "deployable_game_policy_clean_coverage_v1",
+            "deployable_game_policy_informative_v1",
+            "deployable_game_policy_reliability_first_v1"
+          ],
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "policy",
+        "context",
+        "contract",
+        "execution_configuration_id",
+        "applicable_domain"
+      ],
+      "title": "PolicyArtifact",
+      "type": "object"
+    },
+    "PolicyBuildSpecification": {
+      "additionalProperties": false,
+      "description": "Dedicated fitting schema; research readiness CLI retains its full schema.",
+      "properties": {
+        "attacks": {
+          "$ref": "#/$defs/AttackSpecification"
+        },
+        "code_revision": {
+          "title": "Code Revision",
+          "type": "string"
+        },
+        "configuration_version": {
+          "title": "Configuration Version",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/PlanningContext"
+        },
+        "contract": {
+          "$ref": "#/$defs/ExecutionContract"
+        },
+        "datasets": {
+          "items": {
+            "$ref": "#/$defs/DatasetDescription"
+          },
+          "title": "Datasets",
+          "type": "array"
+        },
+        "final_test_custody_and_freeze_protocol": {
+          "title": "Final Test Custody And Freeze Protocol",
+          "type": "string"
+        },
+        "greedy_aggregation": {
+          "enum": [
+            "reputation_weighted",
+            "dependency_group"
+          ],
+          "title": "Greedy Aggregation",
+          "type": "string"
+        },
+        "manifest": {
+          "$ref": "#/$defs/TrainingManifest"
+        },
+        "matched_coverage_plan": {
+          "title": "Matched Coverage Plan",
+          "type": "string"
+        },
+        "optimizer_tolerance": {
+          "exclusiveMinimum": 0,
+          "maximum": 0.001,
+          "title": "Optimizer Tolerance",
+          "type": "number"
+        },
+        "policy_sampling_repetitions": {
+          "minimum": 1,
+          "title": "Policy Sampling Repetitions",
+          "type": "integer"
+        },
+        "policy_sampling_seeds": {
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Policy Sampling Seeds",
+          "type": "array"
+        },
+        "primary_outcomes": {
+          "items": {
+            "enum": [
+              "mean_loss",
+              "worst_case_expected_loss",
+              "decision_coverage",
+              "selective_risk"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Primary Outcomes",
+          "type": "array"
+        },
+        "primary_specification_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Primary Specification Id"
+        },
+        "recording": {
+          "$ref": "#/$defs/RecordingConfiguration"
+        },
+        "scientific_scope": {
+          "title": "Scientific Scope",
+          "type": "string"
+        },
+        "sensitivity_plan": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sensitivity Plan",
+          "type": "array"
+        },
+        "setting_role": {
+          "enum": [
+            "primary",
+            "sensitivity"
+          ],
+          "title": "Setting Role",
+          "type": "string"
+        },
+        "study_id": {
+          "title": "Study Id",
+          "type": "string"
+        },
+        "uncertainty": {
+          "$ref": "#/$defs/UncertaintyDesign"
+        },
+        "unknown_dependency_treatment": {
+          "const": "shared_unknown",
+          "title": "Unknown Dependency Treatment",
+          "type": "string"
+        },
+        "version": {
+          "const": "offline_policy_build_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "study_id",
+        "configuration_version",
+        "code_revision",
+        "setting_role",
+        "primary_specification_id",
+        "scientific_scope",
+        "primary_outcomes",
+        "sensitivity_plan",
+        "matched_coverage_plan",
+        "final_test_custody_and_freeze_protocol",
+        "datasets",
+        "recording",
+        "context",
+        "manifest",
+        "contract",
+        "attacks",
+        "unknown_dependency_treatment",
+        "greedy_aggregation",
+        "policy_sampling_seeds",
+        "policy_sampling_repetitions",
+        "uncertainty",
+        "optimizer_tolerance"
+      ],
+      "title": "PolicyBuildSpecification",
+      "type": "object"
+    },
+    "PreparationExample": {
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/$defs/QuestionAnalysis"
+        },
+        "answer": {
+          "title": "Answer",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "label": {
+          "$ref": "#/$defs/IndependentLabel"
+        },
+        "purpose": {
+          "enum": [
+            "warmup",
+            "calibration"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "role": {
+          "enum": [
+            "history",
+            "development"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "example_id",
+        "split_identity",
+        "question_id",
+        "run_id",
+        "dataset_id",
+        "role",
+        "purpose",
+        "question",
+        "answer",
+        "reference",
+        "analysis",
+        "label"
+      ],
+      "title": "PreparationExample",
+      "type": "object"
+    },
+    "QuestionAnalysis": {
+      "properties": {
+        "analysis_method": {
+          "default": "heuristic",
+          "title": "Analysis Method",
+          "type": "string"
+        },
+        "difficulty": {
+          "title": "Difficulty",
+          "type": "string"
+        },
+        "difficulty_score": {
+          "default": 0.0,
+          "title": "Difficulty Score",
+          "type": "number"
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string"
+        },
+        "domain_candidates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Domain Candidates",
+          "type": "array"
+        },
+        "domain_status": {
+          "default": "unknown",
+          "title": "Domain Status",
+          "type": "string"
+        },
+        "fallback_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fallback Reason"
+        },
+        "research_context": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionResearchContext"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "rubric_ratings": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rubric Ratings"
+        },
+        "subject": {
+          "default": "",
+          "title": "Subject",
+          "type": "string"
+        },
+        "verification_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Verification Types",
+          "type": "array"
+        }
+      },
+      "required": [
+        "domain",
+        "difficulty"
+      ],
+      "title": "QuestionAnalysis",
+      "type": "object"
+    },
+    "QuestionResearchContext": {
+      "properties": {
+        "analysis_method": {
+          "title": "Analysis Method",
+          "type": "string"
+        },
+        "context_version": {
+          "title": "Context Version",
+          "type": "string"
+        },
+        "domain_status": {
+          "title": "Domain Status",
+          "type": "string"
+        },
+        "normalized_rubric": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized Rubric"
+        },
+        "requirement_weights": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Requirement Weights",
+          "type": "object"
+        },
+        "requirements_known": {
+          "title": "Requirements Known",
+          "type": "boolean"
+        },
+        "scoring_version": {
+          "title": "Scoring Version",
+          "type": "string"
+        },
+        "verification_requirements": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Verification Requirements",
+          "type": "array"
+        }
+      },
+      "required": [
+        "context_version",
+        "verification_requirements",
+        "requirement_weights",
+        "requirements_known",
+        "normalized_rubric",
+        "domain_status",
+        "analysis_method",
+        "scoring_version"
+      ],
+      "title": "QuestionResearchContext",
+      "type": "object"
+    },
+    "RecordingBundle": {
+      "additionalProperties": false,
+      "properties": {
+        "attempts": {
+          "items": {
+            "$ref": "#/$defs/CollectedAttempt"
+          },
+          "title": "Attempts",
+          "type": "array"
+        },
+        "observed_setup": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementSetup"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "request": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RecordingRequest"
+            },
+            {
+              "$ref": "#/$defs/DiagnosticRecordingRequest"
+            },
+            {
+              "$ref": "#/$defs/HeldoutRecordingRequest"
+            }
+          ],
+          "title": "Request"
+        },
+        "version": {
+          "const": "offline_recording_bundle_v1",
+          "default": "offline_recording_bundle_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request",
+        "observed_setup",
+        "attempts"
+      ],
+      "title": "RecordingBundle",
+      "type": "object"
+    },
+    "RecordingConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "collection_protocol": {
+          "const": "complete_team_independent_v1",
+          "title": "Collection Protocol",
+          "type": "string"
+        },
+        "corpus_fingerprints": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Corpus Fingerprints",
+          "type": "array"
+        },
+        "evidence_validation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EvidenceValidation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "model_fingerprints": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Model Fingerprints",
+          "type": "array"
+        },
+        "prompt_and_adapter_fingerprints": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Prompt And Adapter Fingerprints",
+          "type": "array"
+        }
+      },
+      "required": [
+        "execution_configuration_id",
+        "model_fingerprints",
+        "corpus_fingerprints",
+        "prompt_and_adapter_fingerprints",
+        "collection_protocol"
+      ],
+      "title": "RecordingConfiguration",
+      "type": "object"
+    },
+    "RecordingRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "cache_contract": {
+          "const": "complete_team_independent_v1",
+          "title": "Cache Contract",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "minItems": 1,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "examples": {
+          "items": {
+            "$ref": "#/$defs/PreparationExample"
+          },
+          "minItems": 1,
+          "title": "Examples",
+          "type": "array"
+        },
+        "execution_configuration_id": {
+          "title": "Execution Configuration Id",
+          "type": "string"
+        },
+        "expected_setup": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementSetup"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "factory": {
+          "title": "Factory",
+          "type": "string"
+        },
+        "final_test_reservation": {
+          "$ref": "#/$defs/FinalTestReservation"
+        },
+        "intended_use": {
+          "enum": [
+            "smoke",
+            "pilot",
+            "study"
+          ],
+          "title": "Intended Use",
+          "type": "string"
+        },
+        "permitted_datasets": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "enum": [
+                  "history",
+                  "development"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Permitted Datasets",
+          "type": "array"
+        },
+        "preparation_authorization": {
+          "title": "Preparation Authorization",
+          "type": "string"
+        },
+        "randomness_control": {
+          "title": "Randomness Control",
+          "type": "string"
+        },
+        "study_approval": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Study Approval"
+        },
+        "version": {
+          "const": "offline_recording_request_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "intended_use",
+        "study_approval",
+        "preparation_authorization",
+        "cache_contract",
+        "randomness_control",
+        "execution_configuration_id",
+        "factory",
+        "expected_setup",
+        "final_test_reservation",
+        "permitted_datasets",
+        "candidates",
+        "examples"
+      ],
+      "title": "RecordingRequest",
+      "type": "object"
+    },
+    "ReliabilityCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "achieved_coverage": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Achieved Coverage",
+          "type": "number"
+        },
+        "attack_multipliers": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Attack Multipliers",
+          "type": "array"
+        },
+        "cost_dual_lower_bound": {
+          "title": "Cost Dual Lower Bound",
+          "type": "number"
+        },
+        "cost_primal_dual_gap": {
+          "title": "Cost Primal Dual Gap",
+          "type": "number"
+        },
+        "coverage_multiplier": {
+          "minimum": 0,
+          "title": "Coverage Multiplier",
+          "type": "number"
+        },
+        "coverage_residual": {
+          "title": "Coverage Residual",
+          "type": "number"
+        },
+        "expected_cost": {
+          "minimum": 0,
+          "title": "Expected Cost",
+          "type": "number"
+        },
+        "reliability_cap": {
+          "title": "Reliability Cap",
+          "type": "number"
+        },
+        "stage_a_json": {
+          "title": "Stage A Json",
+          "type": "string"
+        },
+        "version": {
+          "const": "validation_then_cost_certificate_v1",
+          "default": "validation_then_cost_certificate_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stage_a_json",
+        "reliability_cap",
+        "attack_multipliers",
+        "coverage_multiplier",
+        "achieved_coverage",
+        "coverage_residual",
+        "expected_cost",
+        "cost_dual_lower_bound",
+        "cost_primal_dual_gap"
+      ],
+      "title": "ReliabilityCertificate",
+      "type": "object"
+    },
+    "ReliabilityFirst": {
+      "additionalProperties": false,
+      "properties": {
+        "cost_tolerance": {
+          "exclusiveMinimum": 0,
+          "maximum": 0.001,
+          "title": "Cost Tolerance",
+          "type": "number"
+        },
+        "epsilon": {
+          "exclusiveMinimum": 0,
+          "maximum": 0.001,
+          "title": "Epsilon",
+          "type": "number"
+        },
+        "parent_matrix_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Parent Matrix Id",
+          "type": "string"
+        },
+        "validation_values": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array"
+          },
+          "title": "Validation Values",
+          "type": "array"
+        },
+        "version": {
+          "const": "validation_then_attempt_cost_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "epsilon",
+        "cost_tolerance",
+        "parent_matrix_id",
+        "validation_values"
+      ],
+      "title": "ReliabilityFirst",
+      "type": "object"
+    },
+    "ResearchPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SolverResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "development_matrix": {
+          "$ref": "#/$defs/PayoffMatrix"
+        },
+        "method": {
+          "enum": [
+            "full_minimax",
+            "uniform",
+            "deterministic_minimax",
+            "clean_development",
+            "fixed_reputation_weighted",
+            "fixed_dependency_group",
+            "coverage_aware_greedy"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "optimality_claim": {
+          "enum": [
+            "none",
+            "full_game_numerical_certificate",
+            "declared_action_set_numerical_certificate"
+          ],
+          "title": "Optimality Claim",
+          "type": "string"
+        },
+        "probabilities": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Probabilities",
+          "type": "array"
+        },
+        "selection_basis": {
+          "enum": [
+            "development_minimax",
+            "development_clean",
+            "protocol_uniform",
+            "captured_selector"
+          ],
+          "title": "Selection Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "development_matrix",
+        "probabilities",
+        "selection_basis",
+        "optimality_claim",
+        "certificate"
+      ],
+      "title": "ResearchPolicy",
+      "type": "object"
+    },
+    "ReservedExample": {
+      "additionalProperties": false,
+      "description": "Outcome-free split keys, prepared and witnessed by the dataset custodian.",
+      "properties": {
+        "content_identity": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Content Identity",
+          "type": "string"
+        },
+        "example_id": {
+          "title": "Example Id",
+          "type": "string"
+        },
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "split_identity": {
+          "title": "Split Identity",
+          "type": "string"
+        },
+        "validation_id": {
+          "title": "Validation Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "example_id",
+        "split_identity",
+        "question_id",
+        "content_identity",
+        "validation_id"
+      ],
+      "title": "ReservedExample",
+      "type": "object"
+    },
+    "ResourceFingerprint": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "implementation",
+            "configuration",
+            "model",
+            "corpus",
+            "index",
+            "prompt",
+            "service"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "resource_id": {
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "resource_id",
+        "kind",
+        "sha256"
+      ],
+      "title": "ResourceFingerprint",
+      "type": "object"
+    },
+    "ResourceManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "verifiers": {
+          "items": {
+            "$ref": "#/$defs/VerifierResources"
+          },
+          "title": "Verifiers",
+          "type": "array"
+        },
+        "version": {
+          "const": "game_resource_manifest_v1",
+          "default": "game_resource_manifest_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verifiers"
+      ],
+      "title": "ResourceManifest",
+      "type": "object"
+    },
+    "SolverResult": {
+      "additionalProperties": false,
+      "properties": {
+        "attack_losses": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Attack Losses",
+          "type": "array"
+        },
+        "attack_probabilities": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Attack Probabilities",
+          "type": "array"
+        },
+        "constraint_residuals": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Constraint Residuals",
+          "type": "array"
+        },
+        "coverage_certificate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoverageCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "dual_lower_bound": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dual Lower Bound"
+        },
+        "game_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Game Value"
+        },
+        "matrix_id": {
+          "title": "Matrix Id",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "minimum_probability": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum Probability"
+        },
+        "normalization_residual": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalization Residual"
+        },
+        "optimality_basis": {
+          "default": "not_verified",
+          "title": "Optimality Basis",
+          "type": "string"
+        },
+        "primal_dual_gap": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Primal Dual Gap"
+        },
+        "probabilities": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Probabilities",
+          "type": "array"
+        },
+        "reliability_certificate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReliabilityCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "tolerance": {
+          "exclusiveMinimum": 0,
+          "maximum": 0.001,
+          "title": "Tolerance",
+          "type": "number"
+        },
+        "worst_case_attacks": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Worst Case Attacks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "tolerance",
+        "matrix_id"
+      ],
+      "title": "SolverResult",
+      "type": "object"
+    },
+    "SourceFact": {
+      "additionalProperties": false,
+      "properties": {
+        "corpus_row_json": {
+          "title": "Corpus Row Json",
+          "type": "string"
+        },
+        "descriptor": {
+          "$ref": "#/$defs/Descriptor"
+        },
+        "independent_country_json": {
+          "title": "Independent Country Json",
+          "type": "string"
+        },
+        "independent_source_line": {
+          "title": "Independent Source Line",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "descriptor",
+        "value",
+        "corpus_row_json",
+        "independent_source_line",
+        "independent_country_json"
+      ],
+      "title": "SourceFact",
+      "type": "object"
+    },
+    "SourceManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "corpus_sha256": {
+          "title": "Corpus Sha256",
+          "type": "string"
+        },
+        "evidence_kind": {
+          "enum": [
+            "empirical",
+            "synthetic_test_fixture"
+          ],
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "facts": {
+          "items": {
+            "$ref": "#/$defs/SourceFact"
+          },
+          "title": "Facts",
+          "type": "array"
+        },
+        "independent_countries_sha256": {
+          "title": "Independent Countries Sha256",
+          "type": "string"
+        },
+        "independent_source_sha256": {
+          "title": "Independent Source Sha256",
+          "type": "string"
+        },
+        "version": {
+          "const": "compound_sources_v2",
+          "default": "compound_sources_v2",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_kind",
+        "corpus_sha256",
+        "independent_source_sha256",
+        "independent_countries_sha256",
+        "facts"
+      ],
+      "title": "SourceManifest",
+      "type": "object"
+    },
+    "Statistics": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence_level": {
+          "const": 0.95,
+          "default": 0.95,
+          "title": "Confidence Level",
+          "type": "number"
+        },
+        "resamples": {
+          "default": 5000,
+          "minimum": 2,
+          "title": "Resamples",
+          "type": "integer"
+        },
+        "seed": {
+          "default": 20261112,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "undefined_rule": {
+          "const": "omit_interval_if_any_resample_undefined",
+          "default": "omit_interval_if_any_resample_undefined",
+          "title": "Undefined Rule",
+          "type": "string"
+        },
+        "version": {
+          "const": "paired_group_pcg64_percentile_v1",
+          "default": "paired_group_pcg64_percentile_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "title": "Statistics",
+      "type": "object"
+    },
+    "Strategy": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "title": "Aggregation",
+          "type": "string"
+        },
+        "estimated_cost": {
+          "minimum": 0,
+          "title": "Estimated Cost",
+          "type": "number"
+        },
+        "strategy_id": {
+          "title": "Strategy Id",
+          "type": "string"
+        },
+        "verifiers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Verifiers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "strategy_id",
+        "verifiers",
+        "aggregation",
+        "estimated_cost"
+      ],
+      "title": "Strategy",
+      "type": "object"
+    },
+    "Study": {
+      "additionalProperties": false,
+      "properties": {
+        "attack_specification": {
+          "$ref": "#/$defs/AttackSpecification"
+        },
+        "authorization": {
+          "title": "Authorization",
+          "type": "string"
+        },
+        "budget_rule": {
+          "const": "sum_component_mean_history_development_attempt_ms_v1",
+          "default": "sum_component_mean_history_development_attempt_ms_v1",
+          "title": "Budget Rule",
+          "type": "string"
+        },
+        "coverage_minimum": {
+          "default": 0.9,
+          "title": "Coverage Minimum",
+          "type": "number"
+        },
+        "dependencies": {
+          "$ref": "#/$defs/DependencyRegistry"
+        },
+        "excluded_entities": {
+          "default": [
+            "BH",
+            "BE"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "title": "Excluded Entities",
+          "type": "array"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/$defs/Group"
+          },
+          "title": "Groups",
+          "type": "array"
+        },
+        "history_rule": {
+          "const": "first_directional_per_component_bound_input_v2",
+          "default": "first_directional_per_component_bound_input_v2",
+          "title": "History Rule",
+          "type": "string"
+        },
+        "loss": {
+          "$ref": "#/$defs/LossConfiguration"
+        },
+        "objective": {
+          "const": "worst_validation_then_equal_plan_cost_v1",
+          "default": "worst_validation_then_equal_plan_cost_v1",
+          "title": "Objective",
+          "type": "string"
+        },
+        "partition_sizes": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PartitionSizes"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "prior_alpha": {
+          "default": 1.0,
+          "title": "Prior Alpha",
+          "type": "number"
+        },
+        "prior_beta": {
+          "default": 1.0,
+          "title": "Prior Beta",
+          "type": "number"
+        },
+        "source_files": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Source Files",
+          "type": "array"
+        },
+        "sources": {
+          "$ref": "#/$defs/SourceManifest"
+        },
+        "threshold": {
+          "default": 0.55,
+          "title": "Threshold",
+          "type": "number"
+        },
+        "version": {
+          "default": "grouped_compound_study_v2",
+          "enum": [
+            "grouped_compound_study_v2",
+            "grouped_compound_study_v3"
+          ],
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sources",
+        "groups",
+        "loss",
+        "dependencies",
+        "attack_specification",
+        "authorization"
+      ],
+      "title": "Study",
+      "type": "object"
+    },
+    "TeamRequirements": {
+      "additionalProperties": false,
+      "description": "Explicit game-only minima, independent of difficulty and greedy routing.",
+      "properties": {
+        "minimum_informative": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Minimum Informative",
+          "type": "integer"
+        },
+        "minimum_selected": {
+          "maximum": 4,
+          "minimum": 1,
+          "title": "Minimum Selected",
+          "type": "integer"
+        },
+        "version": {
+          "const": "flexible_team_requirements_v1",
+          "default": "flexible_team_requirements_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "minimum_selected",
+        "minimum_informative"
+      ],
+      "title": "TeamRequirements",
+      "type": "object"
+    },
+    "Training": {
+      "additionalProperties": false,
+      "properties": {
+        "development": {
+          "$ref": "#/$defs/JointRecordings"
+        },
+        "history": {
+          "$ref": "#/$defs/JointRecordings"
+        },
+        "setup": {
+          "$ref": "#/$defs/MeasurementSetup"
+        },
+        "study": {
+          "$ref": "#/$defs/Study"
+        }
+      },
+      "required": [
+        "study",
+        "setup",
+        "history",
+        "development"
+      ],
+      "title": "Training",
+      "type": "object"
+    },
+    "TrainingManifest": {
+      "additionalProperties": false,
+      "description": "Fitting input: no final outcomes or final outcome paths are representable.",
+      "properties": {
+        "evidence_kind": {
+          "enum": [
+            "empirical",
+            "synthetic_test_fixture"
+          ],
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "final_test_reservation": {
+          "$ref": "#/$defs/FinalTestReservation"
+        },
+        "partitions": {
+          "items": {
+            "$ref": "#/$defs/Partition"
+          },
+          "title": "Partitions",
+          "type": "array"
+        },
+        "version": {
+          "const": "game_training_manifest_v1",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "evidence_kind",
+        "partitions",
+        "final_test_reservation"
+      ],
+      "title": "TrainingManifest",
+      "type": "object"
+    },
+    "UnavailableMethod": {
+      "additionalProperties": false,
+      "properties": {
+        "development_matrix": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PayoffMatrix"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "method": {
+          "title": "Method",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "solver_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SolverResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "status": {
+          "enum": [
+            "infeasible",
+            "solver_failure",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "status",
+        "reason"
+      ],
+      "title": "UnavailableMethod",
+      "type": "object"
+    },
+    "UncertaintyDesign": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence_level": {
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Confidence Level",
+          "type": "number"
+        },
+        "method": {
+          "const": "paired_split_identity_cluster_percentile_v1",
+          "title": "Method",
+          "type": "string"
+        },
+        "resamples": {
+          "minimum": 2,
+          "title": "Resamples",
+          "type": "integer"
+        },
+        "seed": {
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "method",
+        "resamples",
+        "confidence_level",
+        "seed"
+      ],
+      "title": "UncertaintyDesign",
+      "type": "object"
+    },
+    "VerifierResources": {
+      "additionalProperties": false,
+      "properties": {
+        "resources": {
+          "items": {
+            "$ref": "#/$defs/ResourceFingerprint"
+          },
+          "title": "Resources",
+          "type": "array"
+        },
+        "verifier_name": {
+          "title": "Verifier Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verifier_name",
+        "resources"
+      ],
+      "title": "VerifierResources",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "cohorts": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "atomic": "#/$defs/AtomicEntry",
+            "blocked": "#/$defs/BlockedEntry",
+            "component": "#/$defs/ComponentEntry",
+            "infeasible": "#/$defs/InfeasibleEntry"
+          },
+          "propertyName": "kind"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/AtomicEntry"
+          },
+          {
+            "$ref": "#/$defs/ComponentEntry"
+          },
+          {
+            "$ref": "#/$defs/InfeasibleEntry"
+          },
+          {
+            "$ref": "#/$defs/BlockedEntry"
+          }
+        ]
+      },
+      "title": "Cohorts",
+      "type": "array"
+    },
+    "experiment_id": {
+      "minLength": 1,
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "interpretation": {
+      "const": "previously_exposed_tests_no_new_confirmatory_claim",
+      "default": "previously_exposed_tests_no_new_confirmatory_claim",
+      "title": "Interpretation",
+      "type": "string"
+    },
+    "pooling": {
+      "const": "forbidden_report_each_cohort_separately",
+      "default": "forbidden_report_each_cohort_separately",
+      "title": "Pooling",
+      "type": "string"
+    },
+    "reporting_environment": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Reporting Environment",
+      "type": "object"
+    },
+    "source_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "title": "Source Commit",
+      "type": "string"
+    },
+    "source_fingerprint": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Fingerprint",
+      "type": "string"
+    },
+    "statistics": {
+      "$ref": "#/$defs/Statistics",
+      "default": {
+        "confidence_level": 0.95,
+        "resamples": 5000,
+        "seed": 20261112,
+        "undefined_rule": "omit_interval_if_any_resample_undefined",
+        "version": "paired_group_pcg64_percentile_v1"
+      }
+    },
+    "status": {
+      "const": "retrospective_exploratory",
+      "default": "retrospective_exploratory",
+      "title": "Status",
+      "type": "string"
+    },
+    "version": {
+      "const": "retrospective_experiment1_v1",
+      "default": "retrospective_experiment1_v1",
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "source_commit",
+    "source_fingerprint",
+    "cohorts"
+  ],
+  "title": "ExperimentManifest",
+  "type": "object"
+}

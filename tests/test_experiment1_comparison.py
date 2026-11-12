@@ -277,3 +277,93 @@ def test_legacy_freeze_serialization_does_not_add_empty_availability_field():
     frozen, _, _ = frozen_study(study())
     assert 'unavailable_methods' not in frozen.model_dump()
     assert FrozenComparison.model_validate_json(frozen.model_dump_json()).comparison_id == frozen.comparison_id
+
+
+def reporting_entry():
+    from app.game.research.experiment1.manifest import AtomicEntry, atomic_bindings
+    spec, development, artifact = latest_fixture()
+    comparison = prepare_comparison(spec, development, artifact, freeze_record='SYNTHETIC retrospective', actual_code_revision=REVISION)
+    return AtomicEntry(cohort='arithmetic', specification=spec, comparison=comparison,
+        bindings=atomic_bindings(spec, comparison))
+
+
+def test_experiment1_atomic_adapter_manifest_and_readiness_do_not_select_or_score(monkeypatch):
+    from app.game.research.experiment1.manifest import ExperimentManifest, BlockedEntry, readiness, AtomicEntry
+    from app.game.research.experiment1.runner import atomic_cube
+    from app.game.research.experiment1.metrics import point_report
+    entry = reporting_entry()
+    before = entry.model_dump_json()
+    import app.game.research.comparison as comparison
+    import app.game.research.experiment1.runner as runner
+    def forbidden(*args, **kwargs): raise AssertionError('readiness attempted optimization/replay')
+    monkeypatch.setattr(comparison, 'solve_minimax', forbidden)
+    monkeypatch.setattr(comparison, 'construct_payoffs', forbidden)
+    actual_replay = runner.replay
+    monkeypatch.setattr(runner, 'replay', forbidden)
+    manifest = ExperimentManifest(experiment_id='SYNTHETIC', source_commit=REVISION, source_fingerprint='a'*64,
+        cohorts=(entry, *(BlockedEntry(cohort=n, reason='SYNTHETIC missing canonical inputs')
+            for n in ('factual', 'reference', 'compound', 'original_semantic'))))
+    assert ExperimentManifest.model_validate_json(manifest.model_dump_json()) == manifest
+    result = readiness(manifest, actual_commit=REVISION, actual_source_fingerprint='a'*64)
+    assert not result['ready'] and result['cohorts'][0]['ready']
+    assert result['final_payloads_read'] is False and result['optimization_calls'] == 0
+    assert 'source_bytes_mismatch' in readiness(manifest, actual_commit=REVISION, actual_source_fingerprint='b'*64)['blockers']
+    monkeypatch.setattr(runner, 'replay', actual_replay)
+    cube = atomic_cube(entry, 'development')
+    report = point_report(cube)
+    assert {m['method'] for m in report} == {p.method for p in entry.comparison.policies}
+    assert next(m for m in report if m['method'] == 'full_minimax')['probabilities'] == entry.comparison.full_artifact.policy.solution.probabilities
+    assert entry.model_dump_json() == before
+    data = entry.model_dump()
+    data['bindings']['resource_id'] = 'invented'
+    with pytest.raises(ValueError, match='identities'): AtomicEntry(**data)
+    data = entry.model_dump()
+    data['specification']['manifest']['partitions'][0]['role'] = 'final_test'
+    with pytest.raises(ValueError): AtomicEntry(**data)
+    with pytest.raises(ValueError, match='released final'): atomic_cube(entry, 'final_test')
+
+
+def test_experiment1_component_adapter_keeps_joint_decisions_and_provenance(recorded):
+    from app.game.offline.compound import fit
+    from app.game.research.component_comparison import prepare_component_comparison
+    from app.game.research.experiment1.manifest import ComponentEntry, component_bindings
+    from app.game.research.experiment1.runner import component_cube
+    from app.game.research.experiment1.metrics import point_report
+    _, training, _, _ = recorded
+    policy = fit(training)['policy']  # synthetic fixture only
+    comparison = prepare_component_comparison(policy, training, freeze_record='SYNTHETIC component reporting')
+    entry = ComponentEntry(training=training, comparison=comparison, original_freeze_id='a'*64,
+        bindings=component_bindings(training, comparison))
+    assert ComponentEntry.model_validate_json(entry.model_dump_json()) == entry
+    before = entry.model_dump_json()
+    cube = component_cube(entry, 'development')
+    assert all(len(__import__('json').loads(o.components_json)) == 2 for o in cube.outcomes)
+    assert all(len(o.executions) == 2 for o in cube.outcomes)
+    assert all({e.call_id for e in o.executions} == {'base_fact/evidence', 'derived_sum/rule'} for o in cube.outcomes)
+    assert len(cube.example_groups) == 64 and len({g for _, g in cube.example_groups}) == 16
+    report = point_report(cube)
+    clean = report[0]['attacks'][0]['metrics']
+    assert clean['correct_accept'] == 16 and clean['correct_reject'] == 48
+    assert clean['false_accept'] == clean['false_reject'] == 0
+    assert all(m['method'] != 'coverage_aware_greedy' for m in report)
+    assert entry.model_dump_json() == before
+    # End-to-end public reporting API, using synthetic DEVELOPMENT only.
+    from app.game.research.experiment1.manifest import ExperimentManifest, AtomicEntry, InfeasibleEntry
+    from app.game.research.experiment1.metrics import Statistics
+    from app.game.research.experiment1.runner import report_cohort
+    from tests.test_game_clean_coverage import covered_matrix
+    atomic = reporting_entry()
+    infeasible_matrix = covered_matrix(.9, (0., .5))
+    dispositions = (atomic, *(AtomicEntry(**{**atomic.model_dump(), 'cohort': c}) for c in ('factual', 'reference')),
+        entry, InfeasibleEntry(matrix=infeasible_matrix, solution=solve_minimax(infeasible_matrix), explanation='SYNTHETIC infeasible'))
+    manifest = ExperimentManifest(experiment_id='SYNTHETIC complete development report', source_commit=REVISION,
+        source_fingerprint='a'*64, statistics=Statistics(resamples=4), cohorts=dispositions)
+    result = report_cohort(manifest, 'arithmetic', actual_commit=REVISION, actual_source_fingerprint='a'*64)
+    assert result['status'] == 'retrospective_exploratory' and result['role'] == 'development'
+    assert result['released_payload_id'] is None and result['paired_differences']
+    assert result['reporting_environment'] == manifest.reporting_environment
+    assert result['manifest_id'] == manifest.manifest_id
+    with pytest.raises(ValueError, match='released final'): component_cube(entry, 'final_test')
+    data = entry.model_dump()
+    data['resource_transfer'] = dict(scoped_setup=training.setup.model_dump(), transfer_id='b'*64)
+    with pytest.raises(ValueError): ComponentEntry(**data)
