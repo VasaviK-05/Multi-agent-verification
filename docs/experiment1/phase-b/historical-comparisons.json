@@ -1,0 +1,141 @@
+{
+  "cohorts": {
+    "arithmetic": {
+      "baselines": {
+        "development_best": {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 9.678209995036013,
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "verifiers": [
+            "rule"
+          ]
+        },
+        "fixed_equals_flexible": true,
+        "fixed_selection_rule": "Eligible fixed strategies meet 0.90 development clean coverage; minimize worst development decision loss; within 1e-8 minimize estimated cost then strategy_id.",
+        "greedy": {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 21137.283848738298,
+          "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+          "verifiers": [
+            "confidence",
+            "rule"
+          ]
+        },
+        "greedy_scope": "Existing coverage-aware selector initial_selected, reputation_weighted; complete selected team under matching minimum-one finalization. This isolates selection; it is not the separate adaptive non-game stopping pipeline."
+      },
+      "classification": "original_three_method_internal_freeze_documentation; canonical_custody_verification_blocked",
+      "methods": [
+        "frozen_flexible",
+        "development_best_fixed",
+        "coverage_aware_greedy_complete_team"
+      ],
+      "metric_definitions": {
+        "accept_reject_uncertain": "counts / all 40 examples per cohort",
+        "cost": "measured individual attempt durations excluding initialization; historical selected-team estimates; full-roster collection is not singleton end-to-end latency",
+        "coverage": "decided / all examples",
+        "decision_loss": "(FA + FR + 0.2 * uncertain) / all examples; no resource penalty",
+        "execution_failures": "failed/unavailable selected attempts, and cases affected, with missing recordings distinguished",
+        "false_accept": "incorrect accepted / all 40, plus incorrect accepted / 20 incorrect examples",
+        "false_reject": "correct rejected / all 40, plus correct rejected / 20 correct examples",
+        "selective_risk": "(FA + FR) / decided; null if no decided examples"
+      },
+      "source": "artifacts/flexible-heldout-v1/evaluation-specification.json",
+      "statistics": {
+        "interval": 0.95,
+        "method": "Paired cluster percentile bootstrap, resample 20 split_identity groups with replacement, retaining both correct/incorrect answers and paired methods",
+        "replicates": 10000,
+        "seed": 20261102,
+        "zero_decision_samples": "risk undefined; disclose undefined fraction and omit risk CI if any bootstrap sample undefined"
+      }
+    },
+    "compound": {
+      "classification": "exploratory_post_development_85_percent",
+      "greedy": "excluded_no_independently_defined_comparable_component_executor",
+      "methods": [
+        "full_frozen_joint_policy",
+        "development_best_fixed_joint_plan"
+      ],
+      "statistics": {
+        "repetitions": 1000,
+        "seed": 1102
+      }
+    },
+    "factual": {
+      "baselines": {
+        "development_best": {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 188.79894875281025,
+          "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          "verifiers": [
+            "evidence"
+          ]
+        },
+        "fixed_equals_flexible": true,
+        "fixed_selection_rule": "Eligible fixed strategies meet 0.90 development clean coverage; minimize worst development decision loss; within 1e-8 minimize estimated cost then strategy_id.",
+        "greedy": {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 15921.25526748423,
+          "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        },
+        "greedy_scope": "Existing coverage-aware selector initial_selected, reputation_weighted; complete selected team under matching minimum-one finalization. This isolates selection; it is not the separate adaptive non-game stopping pipeline."
+      },
+      "classification": "original_three_method_internal_freeze_documentation; canonical_custody_verification_blocked",
+      "methods": [
+        "frozen_flexible",
+        "development_best_fixed",
+        "coverage_aware_greedy_complete_team"
+      ],
+      "metric_definitions": {
+        "accept_reject_uncertain": "counts / all 40 examples per cohort",
+        "cost": "measured individual attempt durations excluding initialization; historical selected-team estimates; full-roster collection is not singleton end-to-end latency",
+        "coverage": "decided / all examples",
+        "decision_loss": "(FA + FR + 0.2 * uncertain) / all examples; no resource penalty",
+        "execution_failures": "failed/unavailable selected attempts, and cases affected, with missing recordings distinguished",
+        "false_accept": "incorrect accepted / all 40, plus incorrect accepted / 20 incorrect examples",
+        "false_reject": "correct rejected / all 40, plus correct rejected / 20 correct examples",
+        "selective_risk": "(FA + FR) / decided; null if no decided examples"
+      },
+      "source": "artifacts/flexible-heldout-v1/evaluation-specification.json",
+      "statistics": {
+        "interval": 0.95,
+        "method": "Paired cluster percentile bootstrap, resample 20 split_identity groups with replacement, retaining both correct/incorrect answers and paired methods",
+        "replicates": 10000,
+        "seed": 20261102,
+        "zero_decision_samples": "risk undefined; disclose undefined fraction and omit risk CI if any bootstrap sample undefined"
+      }
+    },
+    "reference": {
+      "captured_greedy": [
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 16530.8084824979,
+          "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+          "verifiers": [
+            "confidence",
+            "semantic"
+          ]
+        }
+      ],
+      "classification": "original_reference_exploratory_post_development_floor",
+      "fixed_rule": "Development-best coverage-eligible fixed team; valid existing greedy under identical contract if feasible.",
+      "fixed_strategy_identity": "unverified_without_canonical_fit/freeze.json",
+      "methods": [
+        "full_frozen_policy",
+        "development_best_fixed",
+        "captured_greedy"
+      ],
+      "statistics": {
+        "method": "group bootstrap",
+        "resamples": 1000,
+        "seed": 1103
+      }
+    }
+  },
+  "inventory_id": "636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91",
+  "no_new_preregistration_claim": true,
+  "version": "historical_comparisons_metadata_only_v1"
+}

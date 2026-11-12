@@ -1,0 +1,19 @@
+{
+  "candidates": [
+    "experiment1-candidate.json",
+    "arithmetic-candidate.json",
+    "factual-candidate.json",
+    "reference-candidate.json",
+    "compound-candidate.json",
+    "original_semantic-candidate.json"
+  ],
+  "expected_disposition": {
+    "arithmetic": "blocked",
+    "compound": "blocked",
+    "factual": "blocked",
+    "original_semantic": "infeasible_excluded",
+    "reference": "blocked"
+  },
+  "inventory_id": "636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91",
+  "no_final_payload_access": true
+}
