@@ -22,6 +22,7 @@ MIGRATIONS = [
 ]
 
 APPLYABLE_MIGRATIONS = {
+    "005_verifier_cost_measurements.sql",
     "006_ground_truth_idempotency.sql",
     "007_verifier_cost_estimate_idempotency.sql",
     "008_live_verifier_recovery.sql",
@@ -319,6 +320,79 @@ def verify_migration_schema(cursor, filename):
             + "; ".join(missing)
         )
 
+def validate_005_apply_preconditions(cursor):
+    """
+    Permit migration 005 only when all target tables are absent
+    and every prerequisite for its foreign keys and UUID defaults
+    is satisfied.
+    """
+    target_tables = {
+        "verifier_measurement_setups",
+        "verifier_cost_attempts",
+        "verifier_cost_estimates",
+    }
+
+    existing_tables = set(get_existing_columns(cursor))
+    present_tables = target_tables & existing_tables
+
+    if present_tables:
+        raise RuntimeError(
+            "Cannot apply migration 005 because some or all target "
+            f"tables already exist: {sorted(present_tables)}. "
+            "Inspect the existing schema before recovery."
+        )
+
+    cursor.execute("""
+        SELECT EXISTS (
+            SELECT 1
+            FROM information_schema.columns
+            WHERE table_schema = 'public'
+              AND table_name = 'verifier_outputs'
+              AND column_name = 'verifier_result_id'
+              AND data_type = 'uuid'
+        )
+    """)
+
+    if not cursor.fetchone()[0]:
+        raise RuntimeError(
+            "Cannot apply migration 005: "
+            "verifier_outputs.verifier_result_id is missing "
+            "or is not UUID."
+        )
+
+    cursor.execute("""
+        SELECT EXISTS (
+            SELECT 1
+            FROM pg_constraint c
+            JOIN pg_class t ON t.oid = c.conrelid
+            JOIN pg_namespace n ON n.oid = t.relnamespace
+            JOIN pg_attribute a
+                ON a.attrelid = t.oid
+               AND a.attname = 'verifier_result_id'
+            WHERE n.nspname = 'public'
+              AND t.relname = 'verifier_outputs'
+              AND c.contype IN ('p', 'u')
+              AND c.conkey = ARRAY[a.attnum]::smallint[]
+        )
+    """)
+
+    if not cursor.fetchone()[0]:
+        raise RuntimeError(
+            "Cannot apply migration 005: "
+            "verifier_outputs.verifier_result_id must have "
+            "a primary-key or single-column unique constraint."
+        )
+
+    cursor.execute(
+        "SELECT to_regprocedure('gen_random_uuid()')"
+    )
+
+    if cursor.fetchone()[0] is None:
+        raise RuntimeError(
+            "Cannot apply migration 005: "
+            "gen_random_uuid() is unavailable."
+        )
+
 def process_migration(cursor, filename, recorded, allow_apply=False):
     """
     Verify recorded migrations, adopt existing schema changes,
@@ -328,8 +402,10 @@ def process_migration(cursor, filename, recorded, allow_apply=False):
         verify_migration_schema(cursor, filename)
         print(f"Already recorded and verified: {filename}")
         return
+
     try:
         verify_migration_schema(cursor, filename)
+
     except RuntimeError:
         if not allow_apply:
             raise RuntimeError(
@@ -337,10 +413,18 @@ def process_migration(cursor, filename, recorded, allow_apply=False):
                 "its schema is incomplete. Refusing to rerun a "
                 "historical migration."
             )
+
+        if filename == "005_verifier_cost_measurements.sql":
+            validate_005_apply_preconditions(cursor)
+
         sql_path = MIGRATIONS_DIR / filename
+
         print(f"Applying pending migration: {filename}")
+
         cursor.execute(sql_path.read_text(encoding="utf-8"))
+
         verify_migration_schema(cursor, filename)
+
         cursor.execute(
             """
             INSERT INTO schema_migrations (migration_name)
@@ -348,8 +432,10 @@ def process_migration(cursor, filename, recorded, allow_apply=False):
             """,
             (filename,),
         )
+
         recorded.add(filename)
         print(f"Applied and recorded: {filename}")
+
     else:
         cursor.execute(
             """
@@ -358,6 +444,7 @@ def process_migration(cursor, filename, recorded, allow_apply=False):
             """,
             (filename,),
         )
+
         recorded.add(filename)
         print(f"Adopted existing migration: {filename}")
 

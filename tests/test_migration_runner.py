@@ -370,6 +370,7 @@ def test_historical_migration_is_not_reexecuted(monkeypatch):
 
 def test_only_whitelisted_migration_can_be_applied():
     assert run_migrations.APPLYABLE_MIGRATIONS == {
+        "005_verifier_cost_measurements.sql",
         "006_ground_truth_idempotency.sql",
         "007_verifier_cost_estimate_idempotency.sql",
         "008_live_verifier_recovery.sql",
@@ -451,3 +452,45 @@ def test_migration_history_reconciler_accepts_text_snapshot_id():
         {("validation_audits", "reputation_snapshot_id"): "text"},
     )
     assert problems == []
+
+def test_005_preconditions_allow_application_when_tables_are_absent(
+    monkeypatch,
+):
+    cursor = FakeCursor()
+    cursor.result = ("verifier_outputs",)
+
+    monkeypatch.setattr(
+        run_migrations,
+        "get_existing_columns",
+        lambda cursor: {
+            "verifier_outputs": set(),
+            "questions_answers": set(),
+        },
+    )
+
+    run_migrations.validate_005_apply_preconditions(cursor)
+
+
+def test_005_preconditions_reject_partial_tables(monkeypatch):
+    cursor = FakeCursor()
+    cursor.result = ("verifier_outputs",)
+
+    monkeypatch.setattr(
+        run_migrations,
+        "get_existing_columns",
+        lambda cursor: {
+            "verifier_outputs": set(),
+            "verifier_measurement_setups": set(),
+        },
+    )
+
+    with pytest.raises(RuntimeError, match="target tables already exist"):
+        run_migrations.validate_005_apply_preconditions(cursor)
+
+
+def test_005_preconditions_require_verifier_outputs():
+    cursor = FakeCursor()
+    cursor.result = (None,)
+
+    with pytest.raises(RuntimeError, match="verifier_outputs"):
+        run_migrations.validate_005_apply_preconditions(cursor)
