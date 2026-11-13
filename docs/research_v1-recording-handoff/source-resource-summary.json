@@ -1,0 +1,212 @@
+{
+  "status": "HISTORICAL_EVIDENCE_ONLY_NOT_A_LIVE_CERTIFICATE",
+  "dataset_version": "research_v1_exploratory_v1",
+  "proposed_scope_counts": {
+    "history": {
+      "examples": 1153,
+      "groups": 577,
+      "by_benchmark": {
+        "GSM8K": {
+          "examples": 554,
+          "groups": 277
+        },
+        "HotpotQA": {
+          "examples": 599,
+          "groups": 300
+        }
+      }
+    },
+    "development": {
+      "examples": 774,
+      "groups": 387,
+      "by_benchmark": {
+        "GSM8K": {
+          "examples": 374,
+          "groups": 187
+        },
+        "HotpotQA": {
+          "examples": 400,
+          "groups": 200
+        }
+      }
+    }
+  },
+  "approved_example_count": 0,
+  "source_member_sha256": {
+    "audit.json": "6db71d73f99734af695b9b016571500ca2d14915a5430eb964b62bbf62487402",
+    "development_candidates.jsonl": "3e1bef891d4a279b433511a9f91a5b170b14eaf4973091941d42ab5b78344d24",
+    "development_verifier_inputs.jsonl": "51e001863d7622819c1f0a69755f041b476d89d28989a2054c04d1ab9675ad42",
+    "history_candidates.jsonl": "0669e5709397a2b95993dcbe65a075e0d1f64420af3c473932e8084b85d14887",
+    "history_verifier_inputs.jsonl": "4f1838f03a126e4be58d1bfe546d8b2433122998e67beee8b9cf2e562b6cf967",
+    "skipped_groups.jsonl": "6d1a0de5260959ead20f393f23155f602fec13e0e16f6076eb59e93560368fd7",
+    "unresolved_candidates.jsonl": "ea2f496da84778bd96c5934fc646e430e7826a2b046d99ed6cd10d1d661f4cf0"
+  },
+  "source_label_protocol": "provisional_automated_labeling_v1",
+  "human_verified_label_count": 0,
+  "historical_resource_manifest_id": "754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c",
+  "historical_setup_fingerprint": "83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee",
+  "historical_code_revision": "662bd5cdbf2c8b2dc9885f6bb80e42abf7c5205e",
+  "historical_application_source_digest": "ecb12d8934a3d55dd745887ecf9b3c164ea308f3b07eaa895a6d69f246e87e6c",
+  "resources": {
+    "version": "game_resource_manifest_v1",
+    "verifiers": [
+      {
+        "verifier_name": "confidence",
+        "resources": [
+          {
+            "resource_id": "confidence-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "resource_id": "confidence-implementation",
+            "kind": "implementation",
+            "sha256": "1492ddd2562e338a8a1a84dc8edc01ffd997ae1701ab436bc2fec0613e3683f6"
+          },
+          {
+            "resource_id": "local-nli-snapshot",
+            "kind": "model",
+            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+          },
+          {
+            "resource_id": "ollama-model",
+            "kind": "model",
+            "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+          },
+          {
+            "resource_id": "self-consistency-short-answer",
+            "kind": "prompt",
+            "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+          },
+          {
+            "resource_id": "ollama-service",
+            "kind": "service",
+            "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+          }
+        ]
+      },
+      {
+        "verifier_name": "evidence",
+        "resources": [
+          {
+            "resource_id": "evidence-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "resource_id": "evidence-corpus",
+            "kind": "corpus",
+            "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+          },
+          {
+            "resource_id": "evidence-implementation",
+            "kind": "implementation",
+            "sha256": "5903359855c9fef4e92584643aceb8b4c494835907aaaa5106fa80c45b58119e"
+          },
+          {
+            "resource_id": "evidence-index",
+            "kind": "index",
+            "sha256": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98"
+          },
+          {
+            "resource_id": "local-embedding-snapshot",
+            "kind": "model",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          },
+          {
+            "resource_id": "local-nli-snapshot",
+            "kind": "model",
+            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+          }
+        ]
+      },
+      {
+        "verifier_name": "rule",
+        "resources": [
+          {
+            "resource_id": "rule-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "resource_id": "rule-implementation",
+            "kind": "implementation",
+            "sha256": "7522a6bcffe4234e3e0a23e0a944a197f831b7a496f905b049ffed552afd907d"
+          }
+        ]
+      },
+      {
+        "verifier_name": "semantic",
+        "resources": [
+          {
+            "resource_id": "semantic-adapter-configuration",
+            "kind": "configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "resource_id": "semantic-implementation",
+            "kind": "implementation",
+            "sha256": "cddd1bf8b3b8de71453647ff5d58ef65acc5ff18a7c643b216edff3cb8cda2a6"
+          },
+          {
+            "resource_id": "local-embedding-snapshot",
+            "kind": "model",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          }
+        ]
+      }
+    ]
+  },
+  "calibration_id": "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+  "cost_units": "ms",
+  "cost_estimates": [
+    {
+      "verifier_name": "confidence",
+      "attempt_cost": 14925.820978323463,
+      "attempts": 120,
+      "failures": 0,
+      "mean_ms": 14925.820978323463,
+      "median_ms": 13753.990900004283,
+      "p95_nearest_rank_ms": 24120.17620005645
+    },
+    {
+      "verifier_name": "evidence",
+      "attempt_cost": 107.93551665459138,
+      "attempts": 120,
+      "failures": 0,
+      "mean_ms": 107.93551665459138,
+      "median_ms": 63.834649859927595,
+      "p95_nearest_rank_ms": 340.4300999827683
+    },
+    {
+      "verifier_name": "rule",
+      "attempt_cost": 0.09707332161876063,
+      "attempts": 120,
+      "failures": 0,
+      "mean_ms": 0.09707332161876063,
+      "median_ms": 0.07880001794546843,
+      "p95_nearest_rank_ms": 0.2321999054402113
+    },
+    {
+      "verifier_name": "semantic",
+      "attempt_cost": 70.4728633359385,
+      "attempts": 120,
+      "failures": 0,
+      "mean_ms": 70.4728633359385,
+      "median_ms": 38.655450101941824,
+      "p95_nearest_rank_ms": 189.06880007125437
+    }
+  ],
+  "known_confidence_settings": {
+    "model": "llama3.2:3b",
+    "n_samples": 5
+  },
+  "actual_live_values": null,
+  "compatibility_certified": false,
+  "historical_input_mismatches": {
+    "exact_rows": 464,
+    "unresolved_rows": 24,
+    "verified_canonicalizations": 0
+  },
+  "note": "Full raw dataset/reference/label/History payloads, service relocation records, host metadata and logs remain local and are excluded from public commit. Hashes are preserved unchanged."
+}

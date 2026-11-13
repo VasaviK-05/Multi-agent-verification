@@ -8,6 +8,7 @@ from app.decision.report_identity import canonical_reports
 from app.decision.vote_normalization import is_abstention
 from app.game.dependencies import FrozenModel, identifier
 from app.game.models import canonical_json, content_id
+from app.game.offline.input_contract import QuestionText
 from app.models.schemas import VerificationResult
 from app.reputation.reputation_manager import ReputationManager
 
@@ -58,7 +59,7 @@ class Example(FrozenModel):
     example_id: str
     split_identity: str
     question_id: str
-    question: str
+    question: QuestionText
     answer: str
     reference: str | None
     domain: str
@@ -74,7 +75,7 @@ class Example(FrozenModel):
 
     @model_validator(mode="after")
     def check(self):
-        for value in (self.example_id, self.split_identity, self.question_id, self.question,
+        for value in (self.example_id, self.split_identity, self.question_id,
                       self.domain, self.planning_category, self.label_source,
                       self.validation_id, self.execution_configuration_id):
             identifier(value)

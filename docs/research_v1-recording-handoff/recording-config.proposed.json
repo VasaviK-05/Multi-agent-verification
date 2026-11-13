@@ -1,0 +1,240 @@
+{
+  "status": "PROPOSED_NOT_APPROVED_NOT_EXECUTABLE",
+  "research_id": "research_v1",
+  "collection_authorized": false,
+  "fitting_authorized": false,
+  "freeze_id": null,
+  "proposal_schema": "research_v1_recording_handoff_proposal_v1",
+  "note": "Canonical proposal worksheet; null approvals remain blockers. Historical source/resource/setup identities are unchanged audit references, not the setup of this edited source or test environment.",
+  "source_commit": "4c2a2eb9ea1afd953e44f5194b2cc1a6e9b95a1a",
+  "authentic_sources": {
+    "dataset": "source ZIP manifest.json",
+    "costs": "cost ZIP calibration.json#/result",
+    "resource_setup": "cost ZIP measurements.json#/setup",
+    "rehearsal": "rehearsal ZIP pilot_manifest.json"
+  },
+  "collection": {
+    "dataset": "research_v1_exploratory_v1",
+    "split": "development",
+    "scope": "All 774 source candidates / 387 groups proposed; zero approved.",
+    "candidate_roster": [
+      "confidence",
+      "evidence",
+      "rule",
+      "semantic"
+    ],
+    "candidate_source": "calibration-provenance.json#/required_verifiers; pilot_manifest.json#/verifiers",
+    "adapters": {
+      "confidence": "confidence_v1",
+      "evidence": "evidence_v1",
+      "rule": "rule_v1",
+      "semantic": "semantic_v1"
+    },
+    "eligible_calls": "Execute every approved eligible verifier per example, independently of future strategy budget. Retain explicit unavailable outcome for ineligible semantic without reference.",
+    "reference": {
+      "approved_value": null,
+      "proposal": "GSM8K null; HotpotQA deterministic rendering of permitted evidence_context only, pending exact serialization approval",
+      "source_or_reason": "source evidence_context; app/selection/capabilities.py",
+      "approval": "PENDING"
+    },
+    "factory": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "Tabmayee must supply prerequisite-aware factory: module:function",
+      "approval": "PENDING"
+    },
+    "expected_setup": null,
+    "randomness_control": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "Raunak/Tabmayee must pin seeds, sample settings, order, concurrency, reset rules",
+      "approval": "PENDING"
+    },
+    "operational_limits": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "Tabmayee must propose call timeout, rate/concurrency, retry and run spending limits",
+      "approval": "PENDING"
+    },
+    "study_approval": null,
+    "preparation_authorization": null,
+    "final_test_reservation": null,
+    "checkpoint_readiness": "Local synthetic boundary tests PASS; actual collection platform/route remains unapproved and unverified.",
+    "cache_contract": "complete_team_independent_v1",
+    "early_termination": false,
+    "strategy_fallback": false,
+    "candidate_policy_selection_during_recording": false,
+    "historical_setup_reference": "source-resource-summary.json#/historical_setup_fingerprint",
+    "study_purpose_mapping": {
+      "approved_value": null,
+      "proposal": "Existing schema accepts purpose=calibration under intended_use=study, or a separately reviewed purpose extension; owner must decide explicitly.",
+      "approval": "PENDING"
+    }
+  },
+  "planning": {
+    "analyzer": {
+      "approved_value": null,
+      "proposal": "Pin label-free question-derived QuestionAnalysis and question_context_v1; do not infer task from benchmark name alone",
+      "source_or_reason": "app/analysis/research_context.py; app/analysis/models.py",
+      "approval": "PENDING"
+    },
+    "domain_task_requirements": {
+      "approved_value": null,
+      "proposal": "Review GSM8K arithmetic; HotpotQA direct_fact + evidence_retrieval per question, preserving unsupported/unknown states",
+      "source_or_reason": "app/selection/requirements.py; app/game/task_conditioning.py",
+      "approval": "PENDING"
+    },
+    "candidate_capabilities": {
+      "rule": [
+        "arithmetic"
+      ],
+      "evidence": [
+        "direct_fact",
+        "evidence_retrieval"
+      ],
+      "semantic": [
+        "semantic_comparison"
+      ],
+      "confidence": [
+        "consistency"
+      ]
+    },
+    "capability_source": "app/selection/capabilities.py BUILTIN_CAPABILITIES; expectations are not achieved coverage",
+    "minimum_selected": {
+      "approved_value": null,
+      "proposal": 1,
+      "source_or_reason": "app/game/execution_contract.py TeamRequirements",
+      "approval": "PENDING"
+    },
+    "minimum_informative": {
+      "approved_value": null,
+      "proposal": 1,
+      "source_or_reason": "app/game/finalization.py",
+      "approval": "PENDING"
+    },
+    "achieved_coverage": {
+      "approved_value": null,
+      "proposal": "All declared requirements must be achieved or final status uncertain; semantic similarity alone is not direct_fact",
+      "source_or_reason": "app/game/finalization.py",
+      "approval": "PENDING"
+    },
+    "execution_contract": {
+      "approved_value": null,
+      "proposal": "offline_public_decision_v4 + task_output_contract_v2 + informative_history_influence_v1; ReplayContract aliases ExecutionContract",
+      "source_or_reason": "app/game/execution_contract.py",
+      "approval": "PENDING"
+    },
+    "decision_threshold": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "ExecutionContract threshold strictly (0,1); engine default is not study approval",
+      "approval": "PENDING"
+    },
+    "aggregation_versions": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "PlanningContext requires both reputation_weighted and dependency_group identities",
+      "approval": "PENDING"
+    },
+    "history": {
+      "approved_value": null,
+      "proposal": "History-only labelled report-bearing data; task-isolated snapshots and explicit Beta priors; no Development feedback",
+      "source_or_reason": "app/game/offline/records.py; app/game/task_conditioning.py",
+      "approval": "PENDING"
+    },
+    "dependency_registry": {
+      "approved_value": null,
+      "proposal": "Model shared embedding: semantic/evidence; shared NLI: evidence/confidence; audit other source/config pathways before approving full connected components; unresolved use shared_unknown",
+      "source_or_reason": "app/game/dependencies.py",
+      "approval": "PENDING"
+    },
+    "failure_contract": {
+      "approved_value": null,
+      "proposal": "all_selected_returned; unavailable/failed must never become abstention",
+      "source_or_reason": "app/game/execution_contract.py",
+      "approval": "PENDING"
+    },
+    "budget_ms": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "No approved research_v1 numeric budget found",
+      "approval": "PENDING"
+    },
+    "cost_coefficient": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "No approved research_v1 cost coefficient found",
+      "approval": "PENDING"
+    },
+    "costs": [
+      {
+        "verifier_name": "confidence",
+        "attempt_cost": 14925.820978323463,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 14925.820978323463,
+        "median_ms": 13753.990900004283,
+        "p95_nearest_rank_ms": 24120.17620005645
+      },
+      {
+        "verifier_name": "evidence",
+        "attempt_cost": 107.93551665459138,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 107.93551665459138,
+        "median_ms": 63.834649859927595,
+        "p95_nearest_rank_ms": 340.4300999827683
+      },
+      {
+        "verifier_name": "rule",
+        "attempt_cost": 0.09707332161876063,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 0.09707332161876063,
+        "median_ms": 0.07880001794546843,
+        "p95_nearest_rank_ms": 0.2321999054402113
+      },
+      {
+        "verifier_name": "semantic",
+        "attempt_cost": 70.4728633359385,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 70.4728633359385,
+        "median_ms": 38.655450101941824,
+        "p95_nearest_rank_ms": 189.06880007125437
+      }
+    ],
+    "cost_units": "ms",
+    "loss_weights": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "No approved research_v1 false_accept/false_reject/uncertain penalties found",
+      "approval": "PENDING"
+    },
+    "clean_coverage_floor": {
+      "approved_value": null,
+      "proposal": null,
+      "source_or_reason": "app/game/coverage_contract.py; separate from per-example coverage",
+      "approval": "PENDING"
+    },
+    "attack_specification": {
+      "approved_value": null,
+      "proposal": "report_corruption_v1; clean plus forced_support, forced_rejection, confidence_inflation and suppression per full dependency group; suppression choice unavailable versus abstention requires approval; preserve missing/nonreturned/abstention semantics. No attacks during recording.",
+      "source_or_reason": "app/game/offline/attacks.py",
+      "approval": "PENDING"
+    }
+  },
+  "proposal_lineage": {
+    "package_a": "archive/package-a/TECHNICAL-VALIDATION.md",
+    "package_b_base": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+    "package_b": "archive/package-b/recording-config.proposed.json",
+    "archive_manifest": "evidence-index.json (digests only); complete originals preserved locally under archive/"
+  },
+  "technical_profile": {
+    "question_input_contract": "verbatim_question_text_v1",
+    "scope": "Offline PreparationExample and replay Example content only; no stripping, identifier/API/verifier/label changes.",
+    "approval": "Engineering proposal; no study scope approval",
+    "source_inventory": "Local-only validation/engineering-source-manifest.json; future reviewed commit/source digest must bind the actual request.",
+    "filesystem_contract": "filesystem-support.md"
+  }
+}

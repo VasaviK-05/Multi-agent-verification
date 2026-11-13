@@ -1,0 +1,121 @@
+{
+  "status": "INDEPENDENT_REVIEW_RESULTS_NOT_COLLECTION_AUTHORIZATION",
+  "historical_base": "4c2a2eb9ea1afd953e44f5194b2cc1a6e9b95a1a",
+  "reviewed_latest_main": "3e8769075420b4bf3e565bf46854f55a77a4a35f",
+  "full_local_evidence_profile": {
+    "suites": {
+      "filesystem": {
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0,
+        "deselected": 0,
+        "plain_assert_evaluations": 45,
+        "direct_unittest_assertion_calls": 0
+      },
+      "handoff": {
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "deselected": 0,
+        "plain_assert_evaluations": 0,
+        "direct_unittest_assertion_calls": 5569
+      },
+      "planning": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "deselected": 88,
+        "plain_assert_evaluations": 85,
+        "direct_unittest_assertion_calls": 0
+      },
+      "input": {
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0,
+        "deselected": 0,
+        "plain_assert_evaluations": 172,
+        "direct_unittest_assertion_calls": 0
+      },
+      "boundaries": {
+        "passed": 18,
+        "failed": 0,
+        "skipped": 0,
+        "deselected": 0,
+        "plain_assert_evaluations": 75,
+        "direct_unittest_assertion_calls": 0
+      },
+      "existing-boundaries": {
+        "passed": 20,
+        "failed": 0,
+        "skipped": 0,
+        "deselected": 3,
+        "plain_assert_evaluations": 84,
+        "direct_unittest_assertion_calls": 0
+      }
+    },
+    "passed_total": 115,
+    "failed": 0,
+    "skipped": 0,
+    "additional_policy_regression_cases": 11,
+    "total_including_policy_regressions": 126
+  },
+  "latest_main_public_only_profile": {
+    "raw_datasets_or_archives_present": false,
+    "schema_import": "PASS",
+    "synthetic_boundaries_passed": 18,
+    "failed": 0,
+    "skipped": 0
+  },
+  "public_optional_input_absence_profile": {
+    "passed": 6,
+    "skipped": 3,
+    "failed": 0,
+    "meaning": "Private-metadata-only checks explicitly skip; no assertion that real Development inputs were validated in this profile."
+  },
+  "environment": {
+    "python": "3.12.0",
+    "os": "macOS",
+    "architecture": "x86_64",
+    "filesystem_tested": "local APFS",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "transformers": "4.48.3",
+    "sentence-transformers": "3.4.1",
+    "pydantic": "2.14.3",
+    "httpx": "0.28.1",
+    "pytest": "9.2.0",
+    "faiss-cpu": "1.16.0",
+    "production_requirements_modified": false,
+    "psycopg2-binary": "2.9.13"
+  },
+  "limits": [
+    "No live verifiers/models/services or empirical collection",
+    "No policy/calibration fitting",
+    "No Final Test payload access",
+    "Windows, actual deployment, physical power loss and exactly-once external effects unverified",
+    "Full local logs are not proposed for public commit"
+  ],
+  "checked_client_date": "2026-11-13",
+  "backward_compatibility_profile": {
+    "cases_passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "tests": [
+      "tests/test_policy_package.py",
+      "tests/test_policy_source_compatibility.py"
+    ],
+    "database_connections": "blocked by test runner",
+    "fitting": "blocked by test runner"
+  },
+  "policy_artifact_verification": {
+    "files_checked": 40,
+    "matches_latest_main_bytes": true,
+    "unchanged_before_after_tests": true,
+    "scope": "Existing policy/configuration/solution/snapshot files and packaged policy ZIP; no outcome payloads evaluated"
+  },
+  "portability_scan": {
+    "approved_files": 37,
+    "literal_machine_path_hits": 0,
+    "production_files_modified_for_dependency_fix": false
+  }
+}

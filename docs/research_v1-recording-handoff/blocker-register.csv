@@ -1,0 +1,18 @@
+id,stage,status,remaining_action,owner,evidence
+E01,code_review,RESOLVED_LOCAL,Review additive verbatim offline content acceptance; no tuple normalization,Game owner,input-contract.md; tests/test_research_v1_inputs.py
+E02,code_review,RESOLVED_LOCAL,Review base-relative committed/staged/unstaged/untracked ownership check,Game owner,ownership.py; owned-files.json; tests/test_research_v1_ownership.py
+E03,code_review,RESOLVED_LOCAL,Keep compatible isolated test environment distinct from production/calibration,Game owner/environment owner,environment.md; validation/import-compatible.log
+E04,code_review,TESTED_LOCAL,Review synthetic collector/CLI boundaries and intended platform limits,Game owner,validation/boundaries.log; validation/existing-boundaries.log
+B01,historical_compatibility,BLOCKED,Supply exact 662bd5c application inventory and custody or approve prospective source profile,Historical producer/Raunak where producer + lead,archive/package-a/source-custody-resolution.md
+B02,historical_compatibility,PENDING,Supply immutable producer/freeze commit/path or custody record,Producers + lead,archive/package-a/technical-blocker-register.csv
+B03,collection,PENDING,Approve exact dataset population and provisional-label limitations; no approval documented,Vasavi + dataset custodian,development-scope.json; decisions-required.md
+B04,calibration_portability,BLOCKED,Supply actual cost request/call tuple ledger for 24 unresolved timing rows; no retrospective stripping,Cost producer + lead,archive/package-a/calibration-identity-investigation.md
+B05,fitting,BLOCKED,Supply authentic History report-bearing records or separately authorize their future collection,History producer + game owner + lead,archive/package-a/history-completeness-assessment.md
+B06,collection,BLOCKED,Verify actual implementation/model/prompt/corpus/index/service/receipt/setup and task suitability,Tabmayee + Raunak/resource custodians,source-resource-checklist.md; resource-compatibility.json
+B07,collection,PENDING,Approve reference/analyzer/roster/labels and study-purpose mapping; technical whitespace conflict resolved,Game owner + Tabmayee + lead,recording-config.proposed.json; input-contract.md
+B08,collection_platform,BLOCKED,Select and validate actual recording platform/route; external runner must adopt lifecycle if used,Tabmayee + game offline owner,filesystem-support.md; validation/filesystem.log
+B09,collection,PENDING,Approve typed exception/timeout boundary and unexpected-error disposition; synthetic mappings tested,Tabmayee + game owner,recording-contract.md; validation/existing-boundaries.log
+B10,engineering_environment,RESOLVED_LOCAL,Actual imports work in isolated compatible test resolution; not a live-resource certificate,Environment owner + game owner,environment.md; validation/test-environment.freeze.txt
+B11,replay_fitting,PENDING,Approve minima/versions/dependencies/History priors/threshold/losses/budget/lambda/coverage/attacks,Vasavi + game owner,decisions-required.md
+B12,collection,BLOCKED,Provide independent outcome-free reservation and exposure/shared-context custody disposition,Named custodian + Vasavi,source-resource-checklist.md
+B13,collection,BLOCKED,Validate concrete immutable study request/factory/operational caps and obtain explicit action authorization,Vasavi + Tabmayee + game owner,tabmayee-handoff.md; recording-config.proposed.json
