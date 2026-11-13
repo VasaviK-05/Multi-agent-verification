@@ -1,0 +1,19 @@
+{
+  "base_commit": "3e8769075420b4bf3e565bf46854f55a77a4a35f",
+  "allowed_prefixes": [
+    "docs/research_v1-recording-handoff/"
+  ],
+  "allowed_files": [
+    "app/game/offline/collect.py",
+    "app/game/offline/collection.py",
+    "app/game/offline/file_journal.py",
+    "app/game/offline/input_contract.py",
+    "app/game/offline/records.py",
+    "tests/test_offline_file_journal.py",
+    "tests/test_research_v1_inputs.py",
+    "tests/test_research_v1_boundaries.py",
+    "tests/test_research_v1_ownership.py"
+  ],
+  "historical_base_commit": "4c2a2eb9ea1afd953e44f5194b2cc1a6e9b95a1a",
+  "comparison": "merge-base of HEAD and reviewed remote main; upstream-only changes excluded, feature/worktree changes still checked"
+}
