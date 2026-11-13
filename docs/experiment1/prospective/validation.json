@@ -1,0 +1,58 @@
+{
+  "base_commit": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+  "broad_suite": {
+    "errors": 0,
+    "failures": 0,
+    "note": "Combined suite before final four prospective guard cases; includes 146 unchanged existing regression cases and 41 prospective cases.",
+    "seconds": 274.088,
+    "tests": 187
+  },
+  "distinct_final_cases": 191,
+  "draft_readiness_exit": 2,
+  "draft_stages": {
+    "final_test_authorization_review": {
+      "ready": false
+    },
+    "final_test_scoring": {
+      "ready": false
+    },
+    "history_development_collection": {
+      "ready": false
+    },
+    "policy_fitting": {
+      "ready": false
+    },
+    "protocol_review": {
+      "ready": true
+    }
+  },
+  "empirical_policy_fitting": false,
+  "environment": "Existing isolated dependency path; optional model construction forbidden; socket and psycopg2 connections forbidden by pytest plugin; no dependency manifest edited",
+  "feature_branch": "codex/experiment1-prospective-game",
+  "final_prospective_suite": {
+    "errors": 0,
+    "failures": 0,
+    "seconds": 15.125,
+    "tests": 45
+  },
+  "initial_failures": "Initial sparse checkout omitted unchanged root database.py import shim (included, not edited); existing synthetic fixture omitted required nullable field (fixed). Final broad and targeted runs pass.",
+  "live_verifier_collection": false,
+  "metadata_readiness_inference_calls": 0,
+  "metadata_readiness_optimization_calls": 0,
+  "original_worktree_status": "## codex/evidence-poisoning-phase1\n M app/game/offline/collect.py\n M app/game/offline/collection.py\n M tests/preparation_fixtures.py\n?? app/game/offline/file_journal.py\n?? app/game/research/prospective.py\n?? docs/experiment1/phase-c-followup/\n?? docs/experiment1/phase-c/\n?? docs/research_v1-precollection-proposal/\n?? research/\n?? tests/test_offline_file_journal.py\n?? tests/test_prospective_collection.py\n?? tests/test_prospective_evaluation.py",
+  "overlapping_runs_not_added": true,
+  "preservation": {
+    "historical_four_policies": true,
+    "historical_source_ref": true,
+    "original_index": true,
+    "original_sources_and_fixture": true,
+    "phase_c_13_audit_files": true
+  },
+  "push_or_pr_change": false,
+  "real_final_test_payload_access": false,
+  "recorded_case_scope": "All generated study/policy/report fixtures are explicitly synthetic; tiny synthetic LPs are software tests, not real policy fitting.",
+  "scientific_results_produced": false,
+  "source_regression": "All existing app/scripts/artifacts bytes unchanged; only new prospective package added",
+  "test_fixture_repair": "Explicit nullable resource_relocation_binding added to pre-existing synthetic adapter fixture; active-worktree fixture untouched",
+  "version": "prospective_experiment1_implementation_validation_v1"
+}

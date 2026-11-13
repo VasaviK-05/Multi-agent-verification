@@ -1,0 +1,13 @@
+# Pre-collection ownership handoff
+
+| Owner | Concrete prerequisite / next action | Acceptance check |
+|---|---|---|
+| Vasavi — game/research | Review this protocol/interface; decide explicit minima, coverage, objectives, costs, priors, dependencies, suppression and statistics; later fit **new** policies and prepare baselines under separate authorization | No inherited settings; exact protocol/fitting/manifest IDs, fixed probabilities/certificates, common fair replay contracts and publication metric mapping |
+| Raunak — verifiers/resources | Establish genuine Rule support for the chosen arithmetic population, grounded Evidence corpus/scope, Semantic references and Confidence model/prompt/service compatibility; supply actual resource and calibration/source-input evidence | Resource-bound task-support and resource/calibration records; no inference of capability from a benchmark label or old hash alone |
+| Tanmayee — runtime/collection | Construct exact prerequisite-aware requests and factory/observer; validate input/reference identity, exception boundary, durable acknowledgment/restart and intended platform | Versioned source/setup/request IDs; full roster outcomes and explicit exclusions; original reports, observations and timings; incomplete/ambiguous work remains blocked |
+| Research preparation owner | Independent label adjudication/provenance, History/Development eligibility, related groups and preserved quarantine, independent Final Test custody/exposure record; exact-manifest action approvals | Outcome-free reviewed roster and evidence, no provisional-to-human casts, no split overlap, trusted approvals/hashes; never expose Final Test before release |
+| Samika — database | No database work is required for this offline file-based study | Any later application-persistence claim needs separate scope/approval; persistence must not trigger verifier retries |
+
+The 744/372 research_v1 Development eligibility approval remains recognized. It authorizes neither this collection nor fitting. Existing pilot/calibration data are not silently imported or promoted to authenticated complete study evidence. The evidence-poisoning Development-transfer implementation, historical policies and audit PR #37 stay separate and unchanged.
+
+Shortest next step: resolve the supported population and truthful independent-label/input/reference contract, assemble source/resource/collector review records and an outcome-free split reservation, then obtain collection-ID-specific History/Development recording authorization. Once reports and compatible calibration exist, freeze the remaining numerical decisions and obtain fitting-ID-specific approval. No empirical fit or live inference has been run by this implementation.
