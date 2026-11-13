@@ -52,7 +52,8 @@ if kind=='handoff':
     except SystemExit as exc:code=int(exc.code or 0)
 else:
     import pytest
-    files={'regression':['tests/test_policy_package.py','tests/test_policy_source_compatibility.py'],
+    files={'eligibility':['tests/test_research_v1_eligibility.py'],
+           'regression':['tests/test_policy_package.py','tests/test_policy_source_compatibility.py'],
            'filesystem':['tests/test_offline_file_journal.py'],
            'input':['tests/test_research_v1_inputs.py'],
            'boundaries':['tests/test_research_v1_boundaries.py','tests/test_research_v1_ownership.py'],

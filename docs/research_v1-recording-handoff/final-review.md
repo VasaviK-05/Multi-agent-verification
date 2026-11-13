@@ -1,3 +1,5 @@
+> Historical PR35 document. Current approved-eligibility compatibility and Handoff A: [eligibility-approved-v1/tabmayee-handoff.md](eligibility-approved-v1/tabmayee-handoff.md). Original text below is preserved; original identity is pinned in [historical-identities.json](eligibility-approved-v1/historical-identities.json).
+
 # Final game-side review and PR preparation
 
 **13 November 2026 continuation:** public portability is repaired using documented environment variables and repository-relative paths. The isolated Psycopg driver import gap is resolved without production changes; all 11 policy regressions and all 115 local checks pass. All 40 policy/configuration/solution/snapshot artifact hashes remain identical to current main. The latest user instruction authorizes the guarded 37-file commit/push/PR workflow, but never merging, collection or fitting. This is the pre-commit verification snapshot; Git execution results belong in the PR description.

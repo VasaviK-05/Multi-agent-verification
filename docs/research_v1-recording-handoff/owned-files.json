@@ -1,5 +1,5 @@
 {
-  "base_commit": "3e8769075420b4bf3e565bf46854f55a77a4a35f",
+  "base_commit": "9c38f4de402d510bb13111da592a4f29abe03a24",
   "allowed_prefixes": [
     "docs/research_v1-recording-handoff/"
   ],
@@ -12,8 +12,11 @@
     "tests/test_offline_file_journal.py",
     "tests/test_research_v1_inputs.py",
     "tests/test_research_v1_boundaries.py",
-    "tests/test_research_v1_ownership.py"
+    "tests/test_research_v1_ownership.py",
+    "app/game/offline/eligibility.py",
+    "tests/test_research_v1_eligibility.py"
   ],
   "historical_base_commit": "4c2a2eb9ea1afd953e44f5194b2cc1a6e9b95a1a",
-  "comparison": "merge-base of HEAD and reviewed remote main; upstream-only changes excluded, feature/worktree changes still checked"
+  "comparison": "merge-base of HEAD and reviewed remote main; upstream-only changes excluded, feature/worktree changes still checked",
+  "previous_reviewed_main": "3e8769075420b4bf3e565bf46854f55a77a4a35f"
 }
