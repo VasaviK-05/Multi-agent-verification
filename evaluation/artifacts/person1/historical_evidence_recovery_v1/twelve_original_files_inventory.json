@@ -1,0 +1,112 @@
+{
+  "designation": "The research_v1 manifest fields output_sha256 (7) and offline_output_sha256 (5). evaluation/docs/research_v1_inventory_and_provenance.md names these 12 output hashes. They are not the 15 source_sha256 inputs.",
+  "designation_date_on_manifest": "2026-11-02",
+  "manifest_path": "evaluation/datasets/reconciled_candidates/research_v1/manifest.json",
+  "manifest_sha256_recorded": "8cc984bef54b1d7b9436524ffc9cd0d2081fbb9dc6f3c109cc7b5cc901a7c1d1",
+  "git_blob": "NOT_IN_GIT_HISTORY",
+  "cohort": "research_v1",
+  "files": [
+    {
+      "ordinal": 1,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/README.md",
+      "manifest_field": "output_sha256",
+      "sha256": "1bcfeef09527ab3f0c6edb681d7e2483f85ddc013d7edccd57f5276371c51a85",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 2,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/development_candidates.jsonl",
+      "manifest_field": "output_sha256",
+      "sha256": "2c6272ae74a68e56ef9476716ce651c593dbe3ea5639ff0fde427cad926b55e3",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "cohort_partition": "development",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 3,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/gsm8k_reconciled.jsonl",
+      "manifest_field": "output_sha256",
+      "sha256": "2a1f50ef275ebd6cd3873e567103bbe4b0a1a3f84a9e2d06f4f973bd6a1515f8",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "benchmark": "GSM8K",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 4,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/history_candidates.jsonl",
+      "manifest_field": "output_sha256",
+      "sha256": "5896b6d0559b7e48e96be19251bf9a44265bf429f83729bdf5bb423261788bd2",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "cohort_partition": "history",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 5,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/hotpotqa_reconciled.jsonl",
+      "manifest_field": "output_sha256",
+      "sha256": "5ffba24efbfaf4108198e6d19f95560f902e5f3406b42ea125b87af07091154d",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "benchmark": "HotpotQA",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 6,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/unresolved_candidates.jsonl",
+      "manifest_field": "output_sha256",
+      "sha256": "55585950511518ccd2ee1a4dba070b6a928f33e65084b4c6c0601ac8a78c2c3e",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 7,
+      "original_path": "evaluation/datasets/reconciled_candidates/research_v1/validation_summary.json",
+      "manifest_field": "output_sha256",
+      "sha256": "0a043b22c956840e17f2fd38976e979846e24670653c658061a9a58e10009174",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "zip_member_matches": "evaluation/datasets/reconciled_candidates/research_v1.zip"
+    },
+    {
+      "ordinal": 8,
+      "original_path": "evaluation/datasets/offline_examples/research_v1/README.md",
+      "manifest_field": "offline_output_sha256",
+      "sha256": "fbe4c51ec4ca7cf75595a1877c85291f50a25ed4be3ac67e7eea3213befc610d",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "zip_member_matches": "evaluation/datasets/offline_examples/research_v1.zip"
+    },
+    {
+      "ordinal": 9,
+      "original_path": "evaluation/datasets/offline_examples/research_v1/development_prepared.jsonl",
+      "manifest_field": "offline_output_sha256",
+      "sha256": "323aaf326f07ae5d999bb3db46e5d761f418e9bc22615d4b5ddd25102ab8cd7f",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "cohort_partition": "development",
+      "zip_member_matches": "evaluation/datasets/offline_examples/research_v1.zip"
+    },
+    {
+      "ordinal": 10,
+      "original_path": "evaluation/datasets/offline_examples/research_v1/excluded_unresolved.jsonl",
+      "manifest_field": "offline_output_sha256",
+      "sha256": "19744b4138033d321a3a4b6359c348c7815a5be13d31c04bf7030a97b7200ff3",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "zip_member_matches": "evaluation/datasets/offline_examples/research_v1.zip"
+    },
+    {
+      "ordinal": 11,
+      "original_path": "evaluation/datasets/offline_examples/research_v1/history_prepared.jsonl",
+      "manifest_field": "offline_output_sha256",
+      "sha256": "651f10b54ba2f59674a17e2abcf2ccfded468e5dbb908f4a16307a440e261cb4",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "cohort_partition": "history",
+      "zip_member_matches": "evaluation/datasets/offline_examples/research_v1.zip"
+    },
+    {
+      "ordinal": 12,
+      "original_path": "evaluation/datasets/offline_examples/research_v1/validation_summary.json",
+      "manifest_field": "offline_output_sha256",
+      "sha256": "cb65e27e09b6472264064803282d3c4ff6997d10d32837ca533f9af421af2dfb",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "zip_member_matches": "evaluation/datasets/offline_examples/research_v1.zip"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": "final_test_retirement_registry_v1",
+  "retired": [
+    {
+      "dataset_version": "research_v1_final_test_provisional_v1",
+      "manifest_sha256": "cc186376c9d884ecadbfed342e9ea40773840cc305e11c2d7327f42e1db87e46",
+      "evaluation_roster_sha256": "5af06474035ec00d0009b9fd5b9e232120500fc236302637238c74ee98f823c4",
+      "label_file_sha256": "22a6274ded455acbf4a13f0456b2c7a47c056249d9c32793bf2f84f7eb567b93",
+      "evaluation_directory": "evaluation/datasets/final_test_research_v1_eval_v1",
+      "custodian_directory": "evaluation/datasets/_custodian/final_test_research_v1_v1",
+      "retired_on": "2026-11-11",
+      "confirmatory_use": "PERMANENTLY_FORBIDDEN",
+      "reason": "Content-level contamination: 807 of 2,638 question groups (GSM8K 500, HotpotQA 307) appear in previously exposed datasets, Development files, baseline outputs or verifier outputs. All candidates are benchmark-gold, so false acceptance is not estimable.",
+      "evidence": "evaluation/docs/final_test_contamination_audit.md",
+      "artifacts_preserved_unchanged": true,
+      "questions_and_paragraphs_excluded_from_future_final_tests": true
+    }
+  ]
+}

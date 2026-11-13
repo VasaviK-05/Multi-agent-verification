@@ -80,7 +80,9 @@ class ExperimentSpecification(FrozenModel):
     datasets: tuple[DatasetDescription, ...]
     recording: RecordingConfiguration
     context: PlanningContext
-    manifest: DatasetManifest
+    # Empirical studies must use TrainingManifest so final outcomes stay outside the
+    # specification; readiness blocks an empirical DatasetManifest.
+    manifest: DatasetManifest | TrainingManifest
     contract: ExecutionContract
     attacks: AttackSpecification
     unknown_dependency_treatment: Literal["shared_unknown"]

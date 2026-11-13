@@ -4,6 +4,7 @@ from app.game.dependencies import FrozenModel
 from app.game.models import Strategy
 from app.game.offline.attacks import Attack, AdapterIncompatibility, adapter_incompatibility, enumerate_attacks
 from app.game.offline.evaluation import bind_evaluation
+from app.game.offline.records import DatasetManifest, label_composition
 from app.game.offline.replay import category_id
 from app.game.strategies import enumerate_strategies
 from app.game.research.specification import ExperimentSpecification, PolicyBuildSpecification
@@ -64,6 +65,8 @@ def check_readiness(spec, *, actual_code_revision):
         blockers.append("pooled_context_requires_explicit_multi_domain_workflow")
     if manifest.evidence_kind == "empirical" and spec.contract.resource_manifest is None:
         blockers.append("empirical_study_requires_resource_bound_execution_v2")
+    if manifest.evidence_kind == "empirical" and isinstance(manifest, DatasetManifest):
+        blockers.append("empirical_study_requires_final_test_reservation")
     if actual_code_revision != spec.code_revision:
         blockers.append("code_revision_mismatch")
     try:

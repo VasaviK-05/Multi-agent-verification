@@ -29,7 +29,7 @@ from app.selection.requirements import requirement_inputs
 class IndependentLabel(FrozenModel):
     answer_is_correct: StrictBool
     label_source: Text
-    label_method: Literal['independent_human', 'independent_ground_truth']
+    label_method: Literal['independent_human', 'independent_ground_truth', 'synthetic_transformation']
     provenance: Text
 
 

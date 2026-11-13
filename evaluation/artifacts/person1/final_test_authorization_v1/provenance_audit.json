@@ -1,0 +1,27 @@
+{
+  "labels_opened": false,
+  "roster_opened": false,
+  "leakage_audit_method": "final_test_v2_identity_disjointness_v1",
+  "leakage_audit_passed": true,
+  "retired_final_test_labels_opened_by_that_audit": false,
+  "identity_overlap_counts": {
+    "research_v1_history": 0,
+    "research_v1_development": 0,
+    "research_v1_exploratory_v1_history": 0,
+    "research_v1_exploratory_v1_development": 0,
+    "research_v1_exploratory_v1_unresolved": 0,
+    "retired_final_test_v1_roster": 0
+  },
+  "overlap_fields": ["candidate_ids", "content_identities", "group_ids", "normalized_questions", "paragraph_hashes", "question_ids", "supporting_facts", "validation_ids"],
+  "within_test": {
+    "duplicate_normalized_questions": 0,
+    "groups_sharing_paragraphs": 0,
+    "groups_sharing_supporting_facts": 0
+  },
+  "source_versions_recorded_on_research_v1": {
+    "GSM8K": "openai/gsm8k main@740312add88f781978c0658806c59bc2815b9866",
+    "HotpotQA": "hotpotqa/hotpot_qa distractor@1908d6afbbead072334abe2965f91bd2709910ab"
+  },
+  "fifteen_research_v1_source_hashes_recomputed": "all 15 match source_sha256",
+  "semantic_leakage": "NOT_CLAIMED"
+}

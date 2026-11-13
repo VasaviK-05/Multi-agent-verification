@@ -1,0 +1,41 @@
+dataset_version: research_v1
+seed: 42
+
+benchmarks:
+  gsm8k:
+    history_groups: 300
+    development_groups: 200
+  hotpotqa:
+    history_groups: 300
+    development_groups: 200
+
+candidate_generation:
+  correct_candidates_per_question: 1
+  incorrect_candidates_per_question: 1
+  include_controlled_negatives: true
+  hotpotqa_negative_method: synthetic_cross_example_answer
+
+quality_control:
+  retain_unresolved: true
+  exclude_unresolved_from_binary_examples: true
+  deduplicate_questions: true
+  grouping_method: exact_normalized_question_with_source_id_preserved
+
+incremental:
+  enabled: true
+  base_dataset_dir: evaluation/datasets/reconciled_candidates/v1
+  preserve_existing_ids: true
+
+sources:
+  unified_history: evaluation/datasets/unified/history.json
+  unified_development: evaluation/datasets/unified/development.json
+  gsm8k_train: evaluation/datasets/raw/gsm8k/train
+  hotpotqa_train: evaluation/datasets/raw/hotpotqa/train
+
+output:
+  reconciled_dir: evaluation/datasets/reconciled_candidates/research_v1
+  offline_preparation_dir: evaluation/datasets/offline_examples/research_v1
+
+final_test:
+  enabled: false
+  source: null

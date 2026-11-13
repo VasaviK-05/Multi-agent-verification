@@ -5,7 +5,7 @@ import random
 from app.game.dependencies import FrozenModel
 from app.game.offline.evaluation import summarize
 from app.game.offline.replay import replay
-from app.game.research.comparison import validate_frozen
+from app.game.research.comparison import role_examples, validate_frozen
 from app.game.research.readiness import require_ready
 
 
@@ -40,10 +40,10 @@ def _quantile(values, q):
     return values[lower] + (position - lower) * (values[upper] - values[lower])
 
 
-def _bootstrap(spec, frozen, role, actual_code_revision):
+def _bootstrap(spec, frozen, role, actual_code_revision, final_partition=None):
     spec, frozen = validate_frozen(spec, frozen, actual_code_revision=actual_code_revision)
     report = require_ready(spec, actual_code_revision=actual_code_revision)
-    examples = spec.manifest.partition(role).examples
+    examples, _, _ = role_examples(spec, role, final_partition)
     groups = {}
     for example in examples:
         groups.setdefault(example.split_identity, []).append(example)
@@ -103,6 +103,6 @@ def bootstrap_development_pilot(spec, frozen, *, actual_code_revision):
     return _bootstrap(spec, frozen, "development", actual_code_revision)
 
 
-def bootstrap_frozen_final(spec, frozen, *, actual_code_revision):
+def bootstrap_frozen_final(spec, frozen, *, actual_code_revision, final_partition=None):
     """Explicit final-test uncertainty entry, using already frozen policies."""
-    return _bootstrap(spec, frozen, "final_test", actual_code_revision)
+    return _bootstrap(spec, frozen, "final_test", actual_code_revision, final_partition)

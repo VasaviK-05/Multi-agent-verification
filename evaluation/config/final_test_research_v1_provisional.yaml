@@ -1,0 +1,24 @@
+dataset_version: research_v1_final_test_provisional_v1
+research_protocol_version: research_objective_v1
+seed: 20261107
+
+# Provisional operational cap: all GSM8K test groups; HotpotQA is balanced
+# down to the same count after exact leakage and shared-context exclusions.
+# This is not a power calculation or approval.
+sample_size:
+  strategy: largest_balanced_after_exact_exclusions
+  per_benchmark_cap: 1319
+
+previously_exposed_final_test_reuse: false
+source_splits:
+  GSM8K: test
+  HotpotQA: validation
+source_versions:
+  GSM8K: openai/gsm8k main@740312add88f781978c0658806c59bc2815b9866
+  HotpotQA: hotpotqa/hotpot_qa distractor@1908d6afbbead072334abe2965f91bd2709910ab
+source_paths:
+  GSM8K: evaluation/datasets/raw/gsm8k/test
+  HotpotQA: evaluation/datasets/raw/hotpotqa/validation
+
+output: evaluation/datasets/final_test_research_v1_eval_v1
+custodian_label_output: evaluation/datasets/_custodian/final_test_research_v1_v1

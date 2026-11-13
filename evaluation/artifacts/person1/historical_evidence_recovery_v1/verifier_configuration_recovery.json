@@ -1,0 +1,103 @@
+{
+  "record_type": "verifier_configuration_recovery_v1",
+  "rule": "Missing historical values stay UNKNOWN. Current code defaults are not copied into historical rows.",
+  "cohorts": [
+    {
+      "cohort": "research_v1",
+      "execution": "manifest complete_verifier_attempt_records is 0",
+      "configuration_status": "NO_HISTORICAL_VERIFIER_RUN",
+      "fields": {
+        "verifier_identity": {"status": "UNKNOWN", "value": null},
+        "model_name": {"status": "UNKNOWN", "value": null},
+        "model_weight_snapshot_hash": {"status": "UNKNOWN", "value": null},
+        "prompt_template_hash": {"status": "UNKNOWN", "value": null},
+        "thresholds": {"status": "UNKNOWN", "value": null},
+        "evidence_corpus": {"status": "ORIGINAL_RECORDED_AS_UNBOUND", "value": "research_v1 binds neither corpus"},
+        "collection_adapter": {"status": "NOT_FOUND", "value": null}
+      }
+    },
+    {
+      "cohort": "research_v1_exploratory_v1",
+      "execution": "no attempt directory",
+      "configuration_status": "NO_HISTORICAL_VERIFIER_RUN",
+      "fields": {
+        "verifier_identity": {"status": "UNKNOWN", "value": null},
+        "model_weight_snapshot_hash": {"status": "UNKNOWN", "value": null},
+        "evidence_corpus": {"status": "ORIGINAL_RECORDED_AS_UNBOUND", "value": "snapshot does not select a corpus"},
+        "collection_adapter": {"status": "NOT_FOUND", "value": null}
+      }
+    },
+    {
+      "cohort": "baseline_unified_development",
+      "source": "evaluation/docs/baseline_evaluation.md and evaluation/results/baseline/baseline_results.jsonl",
+      "configuration_status": "PARTIALLY_RECORDED",
+      "fields": {
+        "verifier_identity": {"status": "ORIGINAL_DOCUMENTED", "value": "ValidationOrchestrator defaults, execution_mode baseline"},
+        "evidence_corpus_path": {"status": "ORIGINAL_DOCUMENTED", "value": "data/articles_13083.json"},
+        "evidence_corpus_sha256": {"status": "ORIGINAL_VERIFIED_IN_PLACE", "value": "b26539d013201a0435884098ae8bd3544342d0a815964bf104b9524808e9bfa8"},
+        "index_version": {"status": "ORIGINAL_VERIFIED_IN_PLACE", "value": "idx-6d28c9c49dac"},
+        "embedding_model_name": {"status": "ORIGINAL_INDEX_MANIFEST", "value": "all-MiniLM-L6-v2"},
+        "embedding_weight_snapshot_hash": {"status": "UNKNOWN", "value": null},
+        "nli_model_name": {"status": "UNKNOWN", "value": null, "note": "The baseline text says constructors used defaults. The default name in current code is not back-filled."},
+        "prompt_template_hash": {"status": "UNKNOWN", "value": null},
+        "decision_threshold": {"status": "UNKNOWN", "value": null, "note": "Documented as unchanged defaults, not a recorded number."},
+        "seed": {"status": "ORIGINAL_DOCUMENTED", "value": 0},
+        "hardware": {"status": "UNKNOWN", "value": null},
+        "source_revision": {"status": "UNKNOWN", "value": null},
+        "collection_adapter": {"status": "NOT_FOUND", "value": null}
+      }
+    },
+    {
+      "cohort": "evidence_hotpotqa_five_example_run",
+      "source": "evaluation/results/evidence_hotpotqa_results.json metadata only",
+      "configuration_status": "PARTIALLY_RECORDED",
+      "fields": {
+        "verifier_identity": {"status": "ORIGINAL_RECORDED", "value": "EvidenceVerifier"},
+        "dataset": {"status": "ORIGINAL_RECORDED", "value": "evaluation/datasets/unified/development.json"},
+        "max_examples": {"status": "ORIGINAL_RECORDED", "value": 5},
+        "top_k": {"status": "ORIGINAL_RECORDED", "value": 3},
+        "corpus_policy": {"status": "ORIGINAL_RECORDED", "value": "Each example uses only its own HotpotQA context paragraphs."},
+        "shared_corpus_hash": {"status": "UNKNOWN", "value": null},
+        "model_weight_snapshot_hash": {"status": "UNKNOWN", "value": null},
+        "prompt_template_hash": {"status": "UNKNOWN", "value": null},
+        "source_revision": {"status": "UNKNOWN", "value": null}
+      }
+    },
+    {
+      "cohort": "rule_gsm8k_unified_development",
+      "source": "evaluation/results/rule_gsm8k_results.json summary only",
+      "configuration_status": "PARTIALLY_RECORDED",
+      "fields": {
+        "verifier_identity": {"status": "ORIGINAL_RECORDED", "value": "RuleVerifier"},
+        "examples": {"status": "ORIGINAL_RECORDED", "value": 500},
+        "model_name": {"status": "NOT_APPLICABLE", "value": null},
+        "model_weight_snapshot_hash": {"status": "NOT_APPLICABLE", "value": null},
+        "rule_version_hash": {"status": "UNKNOWN", "value": null},
+        "source_revision": {"status": "UNKNOWN", "value": null}
+      }
+    },
+    {
+      "cohort": "experiment3_synthetic_fixture",
+      "source": "evaluation/experiments/experiment3/synthetic/protocol.json",
+      "configuration_status": "SYNTHETIC_FIXTURE_NOT_A_HISTORICAL_VERIFIER_CONFIG",
+      "fields": {
+        "output_class": {"status": "ORIGINAL_RECORDED", "value": "SYNTHETIC"},
+        "empirical_claim": {"status": "ORIGINAL_RECORDED", "value": false},
+        "model_weight_snapshot_hash": {"status": "NOT_APPLICABLE", "value": null}
+      }
+    },
+    {
+      "cohort": "current_code_defaults",
+      "configuration_status": "CURRENT_NOT_HISTORICAL",
+      "fields": {
+        "embedding_model_name": {"status": "CURRENT_CODE", "value": "all-MiniLM-L6-v2"},
+        "nli_model_name": {"status": "CURRENT_CODE", "value": "cross-encoder/nli-deberta-v3-small"},
+        "min_retrieval_score": {"status": "CURRENT_CODE", "value": 0.45},
+        "min_nli_score": {"status": "CURRENT_CODE", "value": 0.5},
+        "relevance_gate_described_in_verifier": {"status": "CURRENT_CODE", "value": 0.78},
+        "model_weight_snapshot_hash": {"status": "UNKNOWN", "value": null},
+        "note": "These numbers are the current source defaults. They were not written into the historical cohort rows."
+      }
+    }
+  ]
+}

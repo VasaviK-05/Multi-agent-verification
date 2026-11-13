@@ -1,0 +1,21 @@
+{
+  "answer_fields_in_corpus": false,
+  "contamination": {
+    "counts": {
+      "articles": 1844,
+      "candidate_answer_shorter_than_4_characters": 185,
+      "corpus_contains_answer_fields": 0,
+      "gold_answer_shorter_than_4_characters": 8,
+      "gold_answer_string_occurs_in_own_reference_paragraph": 177
+    },
+    "method": "casefold_substring_length_at_least_4_against_the_question_own_paragraphs",
+    "questions_checked": 185,
+    "statement": "Answer strings were not copied into corpus fields. A substring hit means the benchmark paragraph already contains that string. Short answers are counted separately and are not treated as field embedding."
+  },
+  "final_test_labels_opened": false,
+  "final_test_questions_used": false,
+  "history_overlap": {
+    "excluded_history_overlap_paragraphs": [],
+    "history_overlap_count": 0
+  }
+}

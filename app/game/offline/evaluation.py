@@ -7,7 +7,7 @@ from app.game.models import PlanningContext, PayoffMatrix, content_id
 from app.game.policy import build_policy, validate_policy
 from app.game.strategies import enumerate_strategies
 from app.game.offline.attacks import AttackSpecification, enumerate_attacks
-from app.game.offline.records import TrainingManifest, validate_manifest, history_reputation
+from app.game.offline.records import TrainingManifest, label_composition, validate_manifest, history_reputation
 from app.game.offline.replay import ReplayContract, ReplayOutcome, replay
 
 
@@ -190,6 +190,7 @@ class PolicyEvaluation(FrozenModel):
     reservation_id: str | None = None
     final_payload_id: str | None = None
     freeze_record: str | None = None
+    label_composition: tuple[tuple[str, int], ...] = ()
 
 
 def evaluate_final_test(policy, context, manifest, contract, specification, *, final_partition=None):
@@ -226,7 +227,8 @@ def evaluate_final_test(policy, context, manifest, contract, specification, *, f
         metrics.append((attack.attack_id, summarize(tuple(weighted), context.loss_configuration)))
     return PolicyEvaluation(role="final_test", policy_id=policy.policy_id, manifest_id=manifest.manifest_id,
         outcomes=tuple(outcomes), probabilities=policy.solution.probabilities, attack_metrics=tuple(metrics),
-        reservation_id=reservation_id, final_payload_id=final_payload_id)
+        reservation_id=reservation_id, final_payload_id=final_payload_id,
+        label_composition=label_composition(final.examples))
 
 
 def evaluate_reserved_final(artifact, specification, final_partition, *, actual_code_revision, freeze_record):

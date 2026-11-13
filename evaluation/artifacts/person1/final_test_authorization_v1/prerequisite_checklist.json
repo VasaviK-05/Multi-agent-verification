@@ -1,0 +1,18 @@
+{
+  "decision": "NOT_READY_FOR_AUTHORIZATION",
+  "items": [
+    {"id": "manifest_identified", "met": true, "evidence": "research_v1_final_test_v2_exploratory_v1"},
+    {"id": "content_hash_recorded", "met": true, "evidence": "e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee"},
+    {"id": "file_hash_recomputed", "met": true, "evidence": "58c55bf8d10f9f5a1ba847de93eccfde2f3edd87b79417f87c22bb9bb429bb69"},
+    {"id": "exact_identity_leakage_audit", "met": true, "evidence": "passed true; counted overlaps are 0"},
+    {"id": "semantic_leakage_audit", "met": false, "evidence": "NOT_CLAIMED"},
+    {"id": "independent_custody", "met": false, "evidence": "NOT_INDEPENDENT"},
+    {"id": "operating_system_protection", "met": false, "evidence": "appointment operating_system_protection false"},
+    {"id": "protocol_freeze", "met": false, "evidence": "appointment protocol_freeze PENDING; settings proposal unapproved"},
+    {"id": "evaluation_authorization", "met": false, "evidence": "PENDING"},
+    {"id": "label_release", "met": false, "evidence": "NOT_AUTHORIZED"},
+    {"id": "human_approval", "met": false, "evidence": "DEFERRED"},
+    {"id": "collection_adapter", "met": false, "evidence": "NOT_FOUND"},
+    {"id": "development_corpus_freeze", "met": false, "evidence": "development_evidence_corpus_v1 remains PROPOSAL_NOT_APPROVED"}
+  ]
+}

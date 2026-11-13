@@ -1,0 +1,15 @@
+{
+  "record_type": "final_test_authorization_template_v1",
+  "eligibility": "NOT_ELIGIBLE_UNTIL_BLOCKERS_CLEAR",
+  "status": "NOT_AN_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "manifest_id": "research_v1_final_test_v2_exploratory_v1",
+  "manifest_path": "evaluation/datasets/final_test_research_v1_eval_v2/manifest.json",
+  "manifest_content_sha256": "e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee",
+  "manifest_file_sha256": "58c55bf8d10f9f5a1ba847de93eccfde2f3edd87b79417f87c22bb9bb429bb69",
+  "scope": "Would cover confirmatory use of this manifest only, after every blocker in authorization_readiness.json is closed.",
+  "does_not_authorize": ["label release", "verifier collection", "policy fitting", "execution"],
+  "signature": null
+}

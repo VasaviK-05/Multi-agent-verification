@@ -1,0 +1,1454 @@
+{
+  "code_revision": "d9fd453afe9bfe601ace8e1d30b80a9e593c8484",
+  "configurations": {
+    "controlled_synthetic_two_group": {
+      "attack_columns": [
+        {
+          "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          "group_id": null,
+          "kind": "clean",
+          "members": []
+        },
+        {
+          "attack_id": "790be3234730bdc97adc2949287ed69615104363ff53efea1528997ea4b47d29",
+          "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+          "kind": "forced_support",
+          "members": [
+            "a"
+          ]
+        },
+        {
+          "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+          "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+          "kind": "forced_rejection",
+          "members": [
+            "a"
+          ]
+        },
+        {
+          "attack_id": "6de03a6e3420f73c695878b2699e3adc818016abaab73300c36e881ffc0774dd",
+          "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+          "kind": "confidence_inflation",
+          "members": [
+            "a"
+          ]
+        },
+        {
+          "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+          "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+          "kind": "suppression",
+          "members": [
+            "a"
+          ]
+        },
+        {
+          "attack_id": "238031c891f69bc0a346dbdbc280c51a4b3db4185bb66cdfcd6eabe8efb22335",
+          "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+          "kind": "forced_support",
+          "members": [
+            "b",
+            "c"
+          ]
+        },
+        {
+          "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+          "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+          "kind": "forced_rejection",
+          "members": [
+            "b",
+            "c"
+          ]
+        },
+        {
+          "attack_id": "969c03385cc67e837690d6e929ca4afec4ab8b0f5ddc3786b55faf4af5a008e2",
+          "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+          "kind": "confidence_inflation",
+          "members": [
+            "b",
+            "c"
+          ]
+        },
+        {
+          "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+          "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+          "kind": "suppression",
+          "members": [
+            "b",
+            "c"
+          ]
+        }
+      ],
+      "dependency_configuration": "controlled_synthetic_two_group",
+      "dependency_status": "controlled_assumption_not_empirically_established",
+      "evidence_label": "SYNTHETIC",
+      "methods": {
+        "fixed_dependency_group": {
+          "aggregation_selection_frequencies": {
+            "dependency_group": 1.0
+          },
+          "attacks": [
+            {
+              "attack": {
+                "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                "group_id": null,
+                "kind": "clean",
+                "members": []
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "790be3234730bdc97adc2949287ed69615104363ff53efea1528997ea4b47d29",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "forced_support",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "forced_rejection",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "6de03a6e3420f73c695878b2699e3adc818016abaab73300c36e881ffc0774dd",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "confidence_inflation",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "suppression",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "238031c891f69bc0a346dbdbc280c51a4b3db4185bb66cdfcd6eabe8efb22335",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "forced_support",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "forced_rejection",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "969c03385cc67e837690d6e929ca4afec4ab8b0f5ddc3786b55faf4af5a008e2",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "confidence_inflation",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "suppression",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            }
+          ],
+          "verifier_inclusion_frequencies": {
+            "a": 1.0,
+            "b": 0.0,
+            "c": 1.0
+          },
+          "worst_case_attacks": [
+            {
+              "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "forced_rejection",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "suppression",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "forced_rejection",
+              "members": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "suppression",
+              "members": [
+                "b",
+                "c"
+              ]
+            }
+          ],
+          "worst_case_expected_loss": 0.4
+        },
+        "fixed_reputation_weighted": {
+          "aggregation_selection_frequencies": {
+            "reputation_weighted": 1.0
+          },
+          "attacks": [
+            {
+              "attack": {
+                "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                "group_id": null,
+                "kind": "clean",
+                "members": []
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "790be3234730bdc97adc2949287ed69615104363ff53efea1528997ea4b47d29",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "forced_support",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "forced_rejection",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "6de03a6e3420f73c695878b2699e3adc818016abaab73300c36e881ffc0774dd",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "confidence_inflation",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "suppression",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "238031c891f69bc0a346dbdbc280c51a4b3db4185bb66cdfcd6eabe8efb22335",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "forced_support",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "forced_rejection",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "969c03385cc67e837690d6e929ca4afec4ab8b0f5ddc3786b55faf4af5a008e2",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "confidence_inflation",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "suppression",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            }
+          ],
+          "verifier_inclusion_frequencies": {
+            "a": 1.0,
+            "b": 1.0,
+            "c": 0.0
+          },
+          "worst_case_attacks": [
+            {
+              "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              "group_id": null,
+              "kind": "clean",
+              "members": []
+            },
+            {
+              "attack_id": "790be3234730bdc97adc2949287ed69615104363ff53efea1528997ea4b47d29",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "forced_support",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "forced_rejection",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "6de03a6e3420f73c695878b2699e3adc818016abaab73300c36e881ffc0774dd",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "confidence_inflation",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "suppression",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "238031c891f69bc0a346dbdbc280c51a4b3db4185bb66cdfcd6eabe8efb22335",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "forced_support",
+              "members": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "forced_rejection",
+              "members": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "969c03385cc67e837690d6e929ca4afec4ab8b0f5ddc3786b55faf4af5a008e2",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "confidence_inflation",
+              "members": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "suppression",
+              "members": [
+                "b",
+                "c"
+              ]
+            }
+          ],
+          "worst_case_expected_loss": 0.4
+        },
+        "full_minimax": {
+          "aggregation_selection_frequencies": {
+            "dependency_group": 0.0,
+            "reputation_weighted": 1.0
+          },
+          "attacks": [
+            {
+              "attack": {
+                "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                "group_id": null,
+                "kind": "clean",
+                "members": []
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "790be3234730bdc97adc2949287ed69615104363ff53efea1528997ea4b47d29",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "forced_support",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "forced_rejection",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "6de03a6e3420f73c695878b2699e3adc818016abaab73300c36e881ffc0774dd",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "confidence_inflation",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+                "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+                "kind": "suppression",
+                "members": [
+                  "a"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "238031c891f69bc0a346dbdbc280c51a4b3db4185bb66cdfcd6eabe8efb22335",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "forced_support",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "forced_rejection",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "969c03385cc67e837690d6e929ca4afec4ab8b0f5ddc3786b55faf4af5a008e2",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "confidence_inflation",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+                "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+                "kind": "suppression",
+                "members": [
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            }
+          ],
+          "verifier_inclusion_frequencies": {
+            "a": 1.0,
+            "b": 0.0,
+            "c": 1.0
+          },
+          "worst_case_attacks": [
+            {
+              "attack_id": "4f26095dd496d3c5351df6742af253f7c5ee5f8aacf73c43a9aad11d382716a3",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "forced_rejection",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "bdbf3eda22b780cceabb52918a0e5bc227c8129ee4ddc573e8344cdd3bbe9aaf",
+              "group_id": "0eb5b8d6f81bc677da8a08567cc4fa9a06a57e9ec8da85ed73a7f62727996002",
+              "kind": "suppression",
+              "members": [
+                "a"
+              ]
+            },
+            {
+              "attack_id": "7a3cc73a635cb4b6ae7b6ccb4c9b1fb25c7fb571d16efe937fa173514b9db9c9",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "forced_rejection",
+              "members": [
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "130fb80f588a2547577c17cfacf12cf2de568db0e7f35598ef8f212663fa85bd",
+              "group_id": "2e42d67888ff96b92b614e3ba05d2f8fdf6288e2150f86fcb6021251f7bb0700",
+              "kind": "suppression",
+              "members": [
+                "b",
+                "c"
+              ]
+            }
+          ],
+          "worst_case_expected_loss": 0.4
+        }
+      },
+      "registry": {
+        "dependencies": [
+          {
+            "compromise_pathway": "controlled_synthetic_assumption_not_empirically_established",
+            "resource_id": "synthetic_group_a",
+            "verifiers": [
+              "a"
+            ]
+          },
+          {
+            "compromise_pathway": "controlled_synthetic_assumption_not_empirically_established",
+            "resource_id": "synthetic_group_b",
+            "verifiers": [
+              "b",
+              "c"
+            ]
+          }
+        ],
+        "unknown_treatment": "shared_unknown",
+        "unresolved": [],
+        "version": "synthetic_controlled_two_group_v1"
+      },
+      "reports_digest": "f70b482ae88b0661f03624c0b2d62bc50102d82d094ccc1d8391b9aae3948915",
+      "scenarios": {
+        "all_correct": {
+          "attack_kind": "clean",
+          "attack_members": [],
+          "attempts": [
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "a"
+            },
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "b"
+            },
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "c"
+            }
+          ],
+          "evidence_label": "SYNTHETIC",
+          "public_status": {
+            "dependency_group": "passed",
+            "reputation_weighted": "passed"
+          },
+          "scenario": "all_correct"
+        },
+        "compromised_dependency_group": {
+          "attack_kind": "forced_rejection",
+          "attack_members": [
+            "b",
+            "c"
+          ],
+          "attempts": [
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "a"
+            },
+            {
+              "passed": false,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "b"
+            },
+            {
+              "passed": false,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "c"
+            }
+          ],
+          "evidence_label": "SYNTHETIC",
+          "scenario": "compromised_dependency_group"
+        },
+        "conflicting_reports": {
+          "attack_kind": "clean",
+          "attack_members": [],
+          "attempts": [
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "a"
+            },
+            {
+              "passed": false,
+              "recorded_passed": false,
+              "state": "directional",
+              "verifier": "b"
+            },
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "c"
+            }
+          ],
+          "evidence_label": "SYNTHETIC",
+          "public_status": {
+            "dependency_group": "passed",
+            "reputation_weighted": "passed"
+          },
+          "scenario": "conflicting_reports"
+        },
+        "execution_failures": {
+          "attack_kind": "clean",
+          "attack_members": [],
+          "attempts": [
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "a"
+            },
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "b"
+            },
+            {
+              "passed": null,
+              "recorded_passed": null,
+              "state": "failed",
+              "verifier": "c"
+            }
+          ],
+          "evidence_label": "SYNTHETIC",
+          "public_status": "uncertain",
+          "reasons": [
+            "minimum_contributors",
+            "selected_execution_incomplete"
+          ],
+          "scenario": "execution_failures"
+        },
+        "missing_reports": {
+          "evidence_label": "SYNTHETIC",
+          "rejected": "missing recording: evaluation input incomplete",
+          "scenario": "missing_reports"
+        },
+        "multiple_dependent_verifiers_failing_together": {
+          "attack_kind": "clean",
+          "attack_members": [],
+          "attempts": [
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "a"
+            },
+            {
+              "passed": false,
+              "recorded_passed": false,
+              "state": "directional",
+              "verifier": "b"
+            },
+            {
+              "passed": false,
+              "recorded_passed": false,
+              "state": "directional",
+              "verifier": "c"
+            }
+          ],
+          "evidence_label": "SYNTHETIC",
+          "scenario": "multiple_dependent_verifiers_failing_together"
+        },
+        "one_verifier_failing_independently": {
+          "attack_kind": "clean",
+          "attack_members": [],
+          "attempts": [
+            {
+              "passed": false,
+              "recorded_passed": false,
+              "state": "directional",
+              "verifier": "a"
+            },
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "b"
+            },
+            {
+              "passed": true,
+              "recorded_passed": true,
+              "state": "directional",
+              "verifier": "c"
+            }
+          ],
+          "evidence_label": "SYNTHETIC",
+          "scenario": "one_verifier_failing_independently"
+        }
+      }
+    },
+    "shared_unknown": {
+      "attack_columns": [
+        {
+          "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+          "group_id": null,
+          "kind": "clean",
+          "members": []
+        },
+        {
+          "attack_id": "75d414d084b5a7ceb803da178002c598128dd679c9c0454ca87244e37e37e4e0",
+          "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+          "kind": "forced_support",
+          "members": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+          "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+          "kind": "forced_rejection",
+          "members": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "attack_id": "1cfcf3c0f92478c9d196cca781652b9be154e4589166ef533b6e317e1783c6ef",
+          "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+          "kind": "confidence_inflation",
+          "members": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "attack_id": "9ba8733971bdc81ebb95b44654b1d2fc4d4580b4946f241159ab634501bfbfea",
+          "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+          "kind": "suppression",
+          "members": [
+            "a",
+            "b",
+            "c"
+          ]
+        }
+      ],
+      "dependency_configuration": "shared_unknown",
+      "dependency_status": "existing_shared_unknown_treatment",
+      "evidence_label": "SYNTHETIC",
+      "methods": {
+        "fixed_dependency_group": {
+          "aggregation_selection_frequencies": {
+            "dependency_group": 1.0
+          },
+          "attacks": [
+            {
+              "attack": {
+                "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                "group_id": null,
+                "kind": "clean",
+                "members": []
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "75d414d084b5a7ceb803da178002c598128dd679c9c0454ca87244e37e37e4e0",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "forced_support",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "forced_rejection",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 1.0,
+              "loss": 1.2,
+              "selective_risk": 1.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "1cfcf3c0f92478c9d196cca781652b9be154e4589166ef533b6e317e1783c6ef",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "confidence_inflation",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 1.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.2,
+              "selective_risk": 0.0,
+              "uncertainty": 0.0
+            },
+            {
+              "attack": {
+                "attack_id": "9ba8733971bdc81ebb95b44654b1d2fc4d4580b4946f241159ab634501bfbfea",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "suppression",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            }
+          ],
+          "verifier_inclusion_frequencies": {
+            "a": 1.0,
+            "b": 1.0,
+            "c": 0.0
+          },
+          "worst_case_attacks": [
+            {
+              "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "forced_rejection",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            }
+          ],
+          "worst_case_expected_loss": 1.2
+        },
+        "fixed_reputation_weighted": {
+          "aggregation_selection_frequencies": {
+            "reputation_weighted": 1.0
+          },
+          "attacks": [
+            {
+              "attack": {
+                "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                "group_id": null,
+                "kind": "clean",
+                "members": []
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "75d414d084b5a7ceb803da178002c598128dd679c9c0454ca87244e37e37e4e0",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "forced_support",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "forced_rejection",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "1cfcf3c0f92478c9d196cca781652b9be154e4589166ef533b6e317e1783c6ef",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "confidence_inflation",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "9ba8733971bdc81ebb95b44654b1d2fc4d4580b4946f241159ab634501bfbfea",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "suppression",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            }
+          ],
+          "verifier_inclusion_frequencies": {
+            "a": 1.0,
+            "b": 1.0,
+            "c": 0.0
+          },
+          "worst_case_attacks": [
+            {
+              "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              "group_id": null,
+              "kind": "clean",
+              "members": []
+            },
+            {
+              "attack_id": "75d414d084b5a7ceb803da178002c598128dd679c9c0454ca87244e37e37e4e0",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "forced_support",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "forced_rejection",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "1cfcf3c0f92478c9d196cca781652b9be154e4589166ef533b6e317e1783c6ef",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "confidence_inflation",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "9ba8733971bdc81ebb95b44654b1d2fc4d4580b4946f241159ab634501bfbfea",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "suppression",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            }
+          ],
+          "worst_case_expected_loss": 0.4
+        },
+        "full_minimax": {
+          "aggregation_selection_frequencies": {
+            "dependency_group": 0.0,
+            "reputation_weighted": 1.0
+          },
+          "attacks": [
+            {
+              "attack": {
+                "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+                "group_id": null,
+                "kind": "clean",
+                "members": []
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "75d414d084b5a7ceb803da178002c598128dd679c9c0454ca87244e37e37e4e0",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "forced_support",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "forced_rejection",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "1cfcf3c0f92478c9d196cca781652b9be154e4589166ef533b6e317e1783c6ef",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "confidence_inflation",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            },
+            {
+              "attack": {
+                "attack_id": "9ba8733971bdc81ebb95b44654b1d2fc4d4580b4946f241159ab634501bfbfea",
+                "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+                "kind": "suppression",
+                "members": [
+                  "a",
+                  "b",
+                  "c"
+                ]
+              },
+              "cost": 2.0,
+              "coverage": 0.0,
+              "false_acceptance": 0.0,
+              "false_rejection": 0.0,
+              "loss": 0.4,
+              "selective_risk": null,
+              "uncertainty": 1.0
+            }
+          ],
+          "verifier_inclusion_frequencies": {
+            "a": 1.0,
+            "b": 1.0,
+            "c": 0.0
+          },
+          "worst_case_attacks": [
+            {
+              "attack_id": "f6db1d60fc8e415c1096942bad534779d546f9d4c58ea8c082c9b1825a22e782",
+              "group_id": null,
+              "kind": "clean",
+              "members": []
+            },
+            {
+              "attack_id": "75d414d084b5a7ceb803da178002c598128dd679c9c0454ca87244e37e37e4e0",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "forced_support",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "bb2108f3396397ad7f035603ff5ce12b80c6ef633cf33a4f4574ba137beeb227",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "forced_rejection",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "1cfcf3c0f92478c9d196cca781652b9be154e4589166ef533b6e317e1783c6ef",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "confidence_inflation",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "attack_id": "9ba8733971bdc81ebb95b44654b1d2fc4d4580b4946f241159ab634501bfbfea",
+              "group_id": "fa1844c2988ad15ab7b49e0ece09684500fad94df916859fb9a43ff85f5bb477",
+              "kind": "suppression",
+              "members": [
+                "a",
+                "b",
+                "c"
+              ]
+            }
+          ],
+          "worst_case_expected_loss": 0.4
+        }
+      },
+      "registry": {
+        "dependencies": [],
+        "unknown_treatment": "shared_unknown",
+        "unresolved": [
+          "a",
+          "b",
+          "c"
+        ],
+        "version": "shared_unknown_v1"
+      },
+      "reports_digest": "f70b482ae88b0661f03624c0b2d62bc50102d82d094ccc1d8391b9aae3948915"
+    }
+  },
+  "empirical_claim": false,
+  "output_class": "SYNTHETIC",
+  "protocol": {
+    "complete_development_attempts_outside_fixture": 0,
+    "configurations": [
+      "shared_unknown",
+      "controlled_synthetic_two_group"
+    ],
+    "dependency_statement": "The two-group registry is a controlled synthetic assumption. It is not an empirically established dependency, and shared_unknown is unchanged.",
+    "empirical_claim": false,
+    "methods": [
+      "full_minimax",
+      "fixed_reputation_weighted",
+      "fixed_dependency_group"
+    ],
+    "not_claimed": [
+      "real verifier dependencies",
+      "empirical robustness improvement",
+      "Development result",
+      "confirmatory Final Test result"
+    ],
+    "output_class": "SYNTHETIC",
+    "within_configuration": "joint, fixed reputation, and fixed dependency aggregation share one report cube and one attack-column list"
+  }
+}

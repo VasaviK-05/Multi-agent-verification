@@ -1,0 +1,45 @@
+{
+  "record_type": "final_test_v2_custodian_appointment_v1",
+  "dataset_version": "research_v1_final_test_v2_exploratory_v1",
+  "appointee": "Raunak",
+  "roles": [
+    "dataset_creator",
+    "designated_final_test_custodian"
+  ],
+  "independent_custodian": false,
+  "custody_independence": "NOT_INDEPENDENT",
+  "custody_status": "DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR",
+  "custody_record": "DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR:Raunak",
+  "previous_custody_status": "PENDING_NO_INDEPENDENT_CUSTODIAN",
+  "evaluation_authorization": "PENDING",
+  "evaluation_authorized": false,
+  "label_release": "NOT_AUTHORIZED",
+  "protocol_freeze": "PENDING",
+  "operating_system_protection": false,
+  "appointed_on": "2026-11-11",
+  "responsibilities": [
+    "Maintain label confidentiality.",
+    "Prevent Final Test leakage into Development, training, tuning, reputation fitting, or policy selection.",
+    "Preserve the existing Final Test v2 dataset and its hashes.",
+    "Release labels only after protocol freeze and explicit authorization."
+  ],
+  "label_access": {
+    "denied_roles": [
+      "verifier_developer",
+      "development_experiment_runner"
+    ],
+    "denied_activities": [
+      "development",
+      "training",
+      "tuning",
+      "reputation_fitting",
+      "policy_selection",
+      "verifier_development"
+    ],
+    "release_requires": [
+      "protocol_freeze",
+      "explicit_evaluation_authorization"
+    ]
+  },
+  "statement": "The dataset creator is the designated Final Test custodian. There is no independent custodian. This appointment does not authorize Final Test evaluation or label release."
+}

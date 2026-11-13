@@ -1,0 +1,22 @@
+{
+  "complete_development_attempts_outside_fixture": 0,
+  "configurations": [
+    "shared_unknown",
+    "controlled_synthetic_two_group"
+  ],
+  "dependency_statement": "The two-group registry is a controlled synthetic assumption. It is not an empirically established dependency, and shared_unknown is unchanged.",
+  "empirical_claim": false,
+  "methods": [
+    "full_minimax",
+    "fixed_reputation_weighted",
+    "fixed_dependency_group"
+  ],
+  "not_claimed": [
+    "real verifier dependencies",
+    "empirical robustness improvement",
+    "Development result",
+    "confirmatory Final Test result"
+  ],
+  "output_class": "SYNTHETIC",
+  "within_configuration": "joint, fixed reputation, and fixed dependency aggregation share one report cube and one attack-column list"
+}
