@@ -1,0 +1,765 @@
+{
+  "allowed_inputs": {
+    "artifacts/compound-study-36-v1/development/joint.json": {
+      "bytes": 3334850,
+      "matches_publication_inventory": true,
+      "publication_sha256": "4c383907ee72b8cdb87efa8510fd93a75c7f27fa5bb193928946e786c497be5f",
+      "role": "canonical_metadata_or_training",
+      "sha256": "4c383907ee72b8cdb87efa8510fd93a75c7f27fa5bb193928946e786c497be5f"
+    },
+    "artifacts/compound-study-36-v1/execution-source-custody.json": {
+      "bytes": 13360,
+      "matches_publication_inventory": true,
+      "publication_sha256": "25b5e4f329df7d9791452fc2de4ea10d20578169e6d391c2a2e4b2dcbc21eec8",
+      "role": "canonical_metadata_or_training",
+      "sha256": "25b5e4f329df7d9791452fc2de4ea10d20578169e6d391c2a2e4b2dcbc21eec8"
+    },
+    "artifacts/compound-study-36-v1/history/joint.json": {
+      "bytes": 3350016,
+      "matches_publication_inventory": true,
+      "publication_sha256": "5823db55600e4e1d934aab0acdfd776e03d937ce33eb29ce6114564fd548a6e8",
+      "role": "canonical_metadata_or_training",
+      "sha256": "5823db55600e4e1d934aab0acdfd776e03d937ce33eb29ce6114564fd548a6e8"
+    },
+    "artifacts/compound-study-36-v1/preparation/predeclared-intent.json": {
+      "bytes": 2504,
+      "matches_publication_inventory": true,
+      "publication_sha256": "f2253e1a96dd30781e01660f4cf4a7683dcab8018bc9572a3525b2a4dda0f1a1",
+      "role": "canonical_metadata_or_training",
+      "sha256": "f2253e1a96dd30781e01660f4cf4a7683dcab8018bc9572a3525b2a4dda0f1a1"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/attacks.json": {
+      "bytes": 76,
+      "matches_publication_inventory": true,
+      "publication_sha256": "27215dc8100ba426428a16f32d5aa12de1c0dfdd16f9f10ac19a9639c8a174b5",
+      "role": "canonical_metadata_or_training",
+      "sha256": "27215dc8100ba426428a16f32d5aa12de1c0dfdd16f9f10ac19a9639c8a174b5"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/baselines.json": {
+      "bytes": 974,
+      "matches_publication_inventory": true,
+      "publication_sha256": "4df8b01eea2faf29e087003aa38be6e7818c8802f6cf28010d2abc5447eba899",
+      "role": "canonical_metadata_or_training",
+      "sha256": "4df8b01eea2faf29e087003aa38be6e7818c8802f6cf28010d2abc5447eba899"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/collection/observed-setup.json": {
+      "bytes": 5204,
+      "matches_publication_inventory": true,
+      "publication_sha256": "359aadbb3d5704461be318d9f9eb290df052256efa0eec8d61b9ef268743d32c",
+      "role": "canonical_metadata_or_training",
+      "sha256": "359aadbb3d5704461be318d9f9eb290df052256efa0eec8d61b9ef268743d32c"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/context.json": {
+      "bytes": 13469,
+      "matches_publication_inventory": true,
+      "publication_sha256": "e9cb06abdc7c3964af4bbaab900a274b8a7ca749bf3f721617d948d25b66ecd5",
+      "role": "canonical_metadata_or_training",
+      "sha256": "e9cb06abdc7c3964af4bbaab900a274b8a7ca749bf3f721617d948d25b66ecd5"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/contract.json": {
+      "bytes": 4488,
+      "matches_publication_inventory": true,
+      "publication_sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+      "role": "canonical_metadata_or_training",
+      "sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/policy.json": {
+      "bytes": 26837,
+      "matches_publication_inventory": true,
+      "publication_sha256": "4acd309726069c5878d35c99df5fa91c7de7b8159ae5d0c9fc18fbb87fb0c55d",
+      "role": "canonical_metadata_or_training",
+      "sha256": "4acd309726069c5878d35c99df5fa91c7de7b8159ae5d0c9fc18fbb87fb0c55d"
+    },
+    "artifacts/flexible-heldout-v1/arithmetic/reservation.json": {
+      "bytes": 16518,
+      "matches_publication_inventory": true,
+      "publication_sha256": "e7de5ed6eea86d1ffe1a5c948d6827e8475bdef99b25be5cbbc202fff09c1c34",
+      "role": "canonical_metadata_or_training",
+      "sha256": "e7de5ed6eea86d1ffe1a5c948d6827e8475bdef99b25be5cbbc202fff09c1c34"
+    },
+    "artifacts/flexible-heldout-v1/evaluation-specification.json": {
+      "bytes": 42707,
+      "matches_publication_inventory": true,
+      "publication_sha256": "4ba2a6ab966be8f7b92f3017717b199ac77b9a6ac25d5d0f7121af66834366ef",
+      "role": "canonical_metadata_or_training",
+      "sha256": "4ba2a6ab966be8f7b92f3017717b199ac77b9a6ac25d5d0f7121af66834366ef"
+    },
+    "artifacts/flexible-heldout-v1/factual/attacks.json": {
+      "bytes": 76,
+      "matches_publication_inventory": true,
+      "publication_sha256": "27215dc8100ba426428a16f32d5aa12de1c0dfdd16f9f10ac19a9639c8a174b5",
+      "role": "canonical_metadata_or_training",
+      "sha256": "27215dc8100ba426428a16f32d5aa12de1c0dfdd16f9f10ac19a9639c8a174b5"
+    },
+    "artifacts/flexible-heldout-v1/factual/baselines.json": {
+      "bytes": 982,
+      "matches_publication_inventory": true,
+      "publication_sha256": "fd474a5df8e799292d0e2e13eceac438b131fbc3c80e27145cf1c300482e74d8",
+      "role": "canonical_metadata_or_training",
+      "sha256": "fd474a5df8e799292d0e2e13eceac438b131fbc3c80e27145cf1c300482e74d8"
+    },
+    "artifacts/flexible-heldout-v1/factual/collection/observed-setup.json": {
+      "bytes": 5204,
+      "matches_publication_inventory": true,
+      "publication_sha256": "359aadbb3d5704461be318d9f9eb290df052256efa0eec8d61b9ef268743d32c",
+      "role": "canonical_metadata_or_training",
+      "sha256": "359aadbb3d5704461be318d9f9eb290df052256efa0eec8d61b9ef268743d32c"
+    },
+    "artifacts/flexible-heldout-v1/factual/context.json": {
+      "bytes": 13471,
+      "matches_publication_inventory": true,
+      "publication_sha256": "353daeea8491253dc64adbb672a096a0508a25ba48867d22901ec3b28311bcf5",
+      "role": "canonical_metadata_or_training",
+      "sha256": "353daeea8491253dc64adbb672a096a0508a25ba48867d22901ec3b28311bcf5"
+    },
+    "artifacts/flexible-heldout-v1/factual/contract.json": {
+      "bytes": 4488,
+      "matches_publication_inventory": true,
+      "publication_sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+      "role": "canonical_metadata_or_training",
+      "sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee"
+    },
+    "artifacts/flexible-heldout-v1/factual/policy.json": {
+      "bytes": 26893,
+      "matches_publication_inventory": true,
+      "publication_sha256": "d4a69bb8f7f5e6fbfc87b7d4c900f22f191946d001d24655011296b404b2fc00",
+      "role": "canonical_metadata_or_training",
+      "sha256": "d4a69bb8f7f5e6fbfc87b7d4c900f22f191946d001d24655011296b404b2fc00"
+    },
+    "artifacts/flexible-heldout-v1/factual/reservation.json": {
+      "bytes": 14565,
+      "matches_publication_inventory": true,
+      "publication_sha256": "e0c5bf3935f37e19e71c4012bef85127307aef22646d572f90df30ba504854cc",
+      "role": "canonical_metadata_or_training",
+      "sha256": "e0c5bf3935f37e19e71c4012bef85127307aef22646d572f90df30ba504854cc"
+    },
+    "artifacts/flexible-teams-v1/semantic-minimum-1/context.json": {
+      "bytes": 13613,
+      "matches_publication_inventory": true,
+      "publication_sha256": "f2abf900f5aba15798b8af20ad4e71a11c289e76102db90daa98cdb35a3b70b1",
+      "role": "canonical_metadata_or_training",
+      "sha256": "f2abf900f5aba15798b8af20ad4e71a11c289e76102db90daa98cdb35a3b70b1"
+    },
+    "artifacts/flexible-teams-v1/semantic-minimum-1/contract.json": {
+      "bytes": 4488,
+      "matches_publication_inventory": true,
+      "publication_sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee",
+      "role": "canonical_metadata_or_training",
+      "sha256": "e959de251b5def972384dcc048772cdd9326a19da49d74143e6dfce3874769ee"
+    },
+    "artifacts/flexible-teams-v1/semantic-minimum-1/matrix.json": {
+      "bytes": 12453,
+      "matches_publication_inventory": true,
+      "publication_sha256": "25192cee308452467f32e48f1c759ccc8828032be8909176a6bd8f871a56f12f",
+      "role": "canonical_metadata_or_training",
+      "sha256": "25192cee308452467f32e48f1c759ccc8828032be8909176a6bd8f871a56f12f"
+    },
+    "artifacts/flexible-teams-v1/semantic-minimum-1/solution.json": {
+      "bytes": 544,
+      "matches_publication_inventory": true,
+      "publication_sha256": "9770034e6dd53b0fca5459c93d1a88a8d8b82a84eba11013a2344a2c874c8a81",
+      "role": "canonical_metadata_or_training",
+      "sha256": "9770034e6dd53b0fca5459c93d1a88a8d8b82a84eba11013a2344a2c874c8a81"
+    },
+    "artifacts/publication-v1/file-hashes-v3.json": {
+      "bytes": 88044,
+      "matches_publication_inventory": null,
+      "publication_sha256": null,
+      "role": "canonical_metadata_or_training",
+      "sha256": "717d7a69aa6ceaa10a919e24ee1de31137f838f02b89bba4b84104eeaff90b70"
+    },
+    "artifacts/publication-v1/owned-files.json": {
+      "bytes": 65980,
+      "matches_publication_inventory": true,
+      "publication_sha256": "9002ab2a12902ff19b475bd8deb7a387da9384bef711ec629a16af0055c46042",
+      "role": "canonical_metadata_or_training",
+      "sha256": "9002ab2a12902ff19b475bd8deb7a387da9384bef711ec629a16af0055c46042"
+    },
+    "artifacts/publication-v1/public-audit/artifacts/flexible-heldout-v1/freeze-manifest.json": {
+      "bytes": 65483,
+      "matches_publication_inventory": true,
+      "publication_sha256": "77ffc786961c476d63cfe879b4e42e47c09a9c40391c925e222c007b2cab210d",
+      "role": "noncanonical_locator_only",
+      "sha256": "77ffc786961c476d63cfe879b4e42e47c09a9c40391c925e222c007b2cab210d"
+    },
+    "artifacts/publication-v1/publication-record.json": {
+      "bytes": 1200,
+      "matches_publication_inventory": true,
+      "publication_sha256": "df9753f54ff254723d223442873cab266e7a536435dfc18b567df016584fc637",
+      "role": "canonical_metadata_or_training",
+      "sha256": "df9753f54ff254723d223442873cab266e7a536435dfc18b567df016584fc637"
+    },
+    "artifacts/remaining-category-studies-v1/compound-85/amendment.json": {
+      "bytes": 888,
+      "matches_publication_inventory": true,
+      "publication_sha256": "f466786f6d9645bff93ba4b680aeb423eb561f4b37d89c4afde512243b526355",
+      "role": "canonical_metadata_or_training",
+      "sha256": "f466786f6d9645bff93ba4b680aeb423eb561f4b37d89c4afde512243b526355"
+    },
+    "artifacts/remaining-category-studies-v1/compound-85/candidate/inventory.json": {
+      "bytes": 548,
+      "matches_publication_inventory": true,
+      "publication_sha256": "d7a5ea236390a9854dbd043eab2a6cc222600ce96ee6719dfdc8395bcf317503",
+      "role": "canonical_metadata_or_training",
+      "sha256": "d7a5ea236390a9854dbd043eab2a6cc222600ce96ee6719dfdc8395bcf317503"
+    },
+    "artifacts/remaining-category-studies-v1/compound-85/candidate/policy.json": {
+      "bytes": 36921,
+      "matches_publication_inventory": true,
+      "publication_sha256": "bf7477b3be59923a97d452bb50b48780464b6fac2b686004538e6134803d7ad3",
+      "role": "canonical_metadata_or_training",
+      "sha256": "bf7477b3be59923a97d452bb50b48780464b6fac2b686004538e6134803d7ad3"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/amendment.json": {
+      "bytes": 453,
+      "matches_publication_inventory": true,
+      "publication_sha256": "c8dbb026d32ee1f0d3260cd1d251848b1b81643ce0d6b33eea37fcaaa25d6a7c",
+      "role": "canonical_metadata_or_training",
+      "sha256": "c8dbb026d32ee1f0d3260cd1d251848b1b81643ce0d6b33eea37fcaaa25d6a7c"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/fit/contract.json": {
+      "bytes": 4486,
+      "matches_publication_inventory": true,
+      "publication_sha256": "a8205d187666bfd85159159cecf947875f7f7d8c0c7e489207e3279be16e3ee8",
+      "role": "canonical_metadata_or_training",
+      "sha256": "a8205d187666bfd85159159cecf947875f7f7d8c0c7e489207e3279be16e3ee8"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/fit/development-evaluation.json": {
+      "bytes": 7151232,
+      "matches_publication_inventory": true,
+      "publication_sha256": "4d20b75699e20044377e9fc99afa0469fc30c82a71b75e7e0d3503a662584376",
+      "role": "canonical_metadata_or_training",
+      "sha256": "4d20b75699e20044377e9fc99afa0469fc30c82a71b75e7e0d3503a662584376"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/fit/policy.json": {
+      "bytes": 47615,
+      "matches_publication_inventory": true,
+      "publication_sha256": "962d0cbcdcb679cfdf62a3e73b680d89a7b1f8a966a0a200471c8c6b44fc4e6f",
+      "role": "canonical_metadata_or_training",
+      "sha256": "962d0cbcdcb679cfdf62a3e73b680d89a7b1f8a966a0a200471c8c6b44fc4e6f"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/fit/training-manifest.json": {
+      "bytes": 560092,
+      "matches_publication_inventory": true,
+      "publication_sha256": "38ea06bdf2797cb8e0bf0230f63ad08f7ba1120d81f006211392d809e2a63e8f",
+      "role": "canonical_metadata_or_training",
+      "sha256": "38ea06bdf2797cb8e0bf0230f63ad08f7ba1120d81f006211392d809e2a63e8f"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/protocol.json": {
+      "bytes": 3526,
+      "matches_publication_inventory": true,
+      "publication_sha256": "dda153c9b0d49bf77bec2868f5d18641ba0827948373376f0c3e09900d31f7f4",
+      "role": "canonical_metadata_or_training",
+      "sha256": "dda153c9b0d49bf77bec2868f5d18641ba0827948373376f0c3e09900d31f7f4"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/reserved-seal.json": {
+      "bytes": 264,
+      "matches_publication_inventory": true,
+      "publication_sha256": "ba8c4f22fda3e707704b9413d6eea86be1fad898e8830f51c5f010cde0ac6790",
+      "role": "canonical_metadata_or_training",
+      "sha256": "ba8c4f22fda3e707704b9413d6eea86be1fad898e8830f51c5f010cde0ac6790"
+    },
+    "artifacts/remaining-category-studies-v1/reference-50-v1/training/reference/bundle.json": {
+      "bytes": 1723058,
+      "matches_publication_inventory": true,
+      "publication_sha256": "38808b498b4cf394c01a54693a7b32dd6498e4d1590ec067c9c30e189db38386",
+      "role": "canonical_metadata_or_training",
+      "sha256": "38808b498b4cf394c01a54693a7b32dd6498e4d1590ec067c9c30e189db38386"
+    },
+    "artifacts/remaining-category-studies-v1/scoped-er-v1/transfer.json": {
+      "bytes": 4893,
+      "matches_publication_inventory": true,
+      "publication_sha256": "aec6b30a92f00db88c4a12410cc650ca556b11a9ff4c599c02c0c3cc397cd73b",
+      "role": "canonical_metadata_or_training",
+      "sha256": "aec6b30a92f00db88c4a12410cc650ca556b11a9ff4c599c02c0c3cc397cd73b"
+    }
+  },
+  "changes_since_phase_b": [],
+  "final_payloads_read": false,
+  "inference_calls": 0,
+  "optimization_calls": 0,
+  "results": [
+    {
+      "candidate": "experiment1-candidate.json",
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "app.game.research.experiment1",
+        "readiness",
+        "docs/experiment1/phase-b/experiment1-candidate.json"
+      ],
+      "exit_code": 2,
+      "report": {
+        "blockers": [
+          "source_commit_mismatch",
+          "source_bytes_mismatch",
+          "arithmetic:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "factual:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "compound:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "reference:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+        ],
+        "cohorts": [
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "arithmetic",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "factual",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "compound",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "reference",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [],
+            "cohort": "original_semantic",
+            "kind": "infeasible",
+            "ready": true,
+            "unavailable_methods": []
+          }
+        ],
+        "final_payloads_read": false,
+        "inference_calls": 0,
+        "manifest_id": "37f689c7129a213da9ce3ea0d2b8bb888e57504f76c8b61b108718ac65052fdd",
+        "optimization_calls": 0,
+        "ready": false,
+        "statistics": {
+          "confidence_level": 0.95,
+          "resamples": 5000,
+          "seed": 20261112,
+          "undefined_rule": "omit_interval_if_any_resample_undefined",
+          "version": "paired_group_pcg64_percentile_v1"
+        },
+        "status": "retrospective_exploratory"
+      }
+    },
+    {
+      "candidate": "arithmetic-candidate.json",
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "app.game.research.experiment1",
+        "readiness",
+        "docs/experiment1/phase-b/arithmetic-candidate.json"
+      ],
+      "exit_code": 2,
+      "report": {
+        "blockers": [
+          "source_commit_mismatch",
+          "source_bytes_mismatch",
+          "arithmetic:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "factual:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "compound:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "reference:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+        ],
+        "cohorts": [
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "arithmetic",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "factual",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "compound",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "reference",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [],
+            "cohort": "original_semantic",
+            "kind": "infeasible",
+            "ready": true,
+            "unavailable_methods": []
+          }
+        ],
+        "final_payloads_read": false,
+        "inference_calls": 0,
+        "manifest_id": "61815f06b9b2817607dd1723e56c96ffd147117382da83f86580ca9cb45f5dbc",
+        "optimization_calls": 0,
+        "ready": false,
+        "statistics": {
+          "confidence_level": 0.95,
+          "resamples": 5000,
+          "seed": 20261112,
+          "undefined_rule": "omit_interval_if_any_resample_undefined",
+          "version": "paired_group_pcg64_percentile_v1"
+        },
+        "status": "retrospective_exploratory"
+      }
+    },
+    {
+      "candidate": "factual-candidate.json",
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "app.game.research.experiment1",
+        "readiness",
+        "docs/experiment1/phase-b/factual-candidate.json"
+      ],
+      "exit_code": 2,
+      "report": {
+        "blockers": [
+          "source_commit_mismatch",
+          "source_bytes_mismatch",
+          "arithmetic:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "factual:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "compound:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "reference:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+        ],
+        "cohorts": [
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "arithmetic",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "factual",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "compound",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "reference",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [],
+            "cohort": "original_semantic",
+            "kind": "infeasible",
+            "ready": true,
+            "unavailable_methods": []
+          }
+        ],
+        "final_payloads_read": false,
+        "inference_calls": 0,
+        "manifest_id": "4467e1c809d958df6bdb30fc656f7c95830731c8fb816c920350f0ff5c7866f2",
+        "optimization_calls": 0,
+        "ready": false,
+        "statistics": {
+          "confidence_level": 0.95,
+          "resamples": 5000,
+          "seed": 20261112,
+          "undefined_rule": "omit_interval_if_any_resample_undefined",
+          "version": "paired_group_pcg64_percentile_v1"
+        },
+        "status": "retrospective_exploratory"
+      }
+    },
+    {
+      "candidate": "reference-candidate.json",
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "app.game.research.experiment1",
+        "readiness",
+        "docs/experiment1/phase-b/reference-candidate.json"
+      ],
+      "exit_code": 2,
+      "report": {
+        "blockers": [
+          "source_commit_mismatch",
+          "source_bytes_mismatch",
+          "arithmetic:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "factual:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "compound:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "reference:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+        ],
+        "cohorts": [
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "arithmetic",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "factual",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "compound",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "reference",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [],
+            "cohort": "original_semantic",
+            "kind": "infeasible",
+            "ready": true,
+            "unavailable_methods": []
+          }
+        ],
+        "final_payloads_read": false,
+        "inference_calls": 0,
+        "manifest_id": "c2e4d5dfbaa98324dadb7b0856fa58b2162b863e569536f61c668a10c7a4208d",
+        "optimization_calls": 0,
+        "ready": false,
+        "statistics": {
+          "confidence_level": 0.95,
+          "resamples": 5000,
+          "seed": 20261112,
+          "undefined_rule": "omit_interval_if_any_resample_undefined",
+          "version": "paired_group_pcg64_percentile_v1"
+        },
+        "status": "retrospective_exploratory"
+      }
+    },
+    {
+      "candidate": "compound-candidate.json",
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "app.game.research.experiment1",
+        "readiness",
+        "docs/experiment1/phase-b/compound-candidate.json"
+      ],
+      "exit_code": 2,
+      "report": {
+        "blockers": [
+          "source_commit_mismatch",
+          "source_bytes_mismatch",
+          "arithmetic:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "factual:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "compound:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "reference:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+        ],
+        "cohorts": [
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "arithmetic",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "factual",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "compound",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "reference",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [],
+            "cohort": "original_semantic",
+            "kind": "infeasible",
+            "ready": true,
+            "unavailable_methods": []
+          }
+        ],
+        "final_payloads_read": false,
+        "inference_calls": 0,
+        "manifest_id": "3a814eb06817d20e414f3d4ad7a47ea03e83ed4e0c44935ecfad790495f88fab",
+        "optimization_calls": 0,
+        "ready": false,
+        "statistics": {
+          "confidence_level": 0.95,
+          "resamples": 5000,
+          "seed": 20261112,
+          "undefined_rule": "omit_interval_if_any_resample_undefined",
+          "version": "paired_group_pcg64_percentile_v1"
+        },
+        "status": "retrospective_exploratory"
+      }
+    },
+    {
+      "candidate": "original_semantic-candidate.json",
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "-m",
+        "app.game.research.experiment1",
+        "readiness",
+        "docs/experiment1/phase-b/original_semantic-candidate.json"
+      ],
+      "exit_code": 2,
+      "report": {
+        "blockers": [
+          "source_commit_mismatch",
+          "source_bytes_mismatch",
+          "arithmetic:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "factual:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "compound:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized.",
+          "reference:input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+        ],
+        "cohorts": [
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "arithmetic",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_and_development_inputs_missing; canonical_internal_freeze_and_seals_missing; reviewed_training_only_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "factual",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_study_and_preparation_seal_missing; canonical_candidate_freeze_missing; expanded_component_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "compound",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [
+              "input-inventory.json#636d4a441656e2bd45e1de0b4102bbc4ce290aab3fdaa5e2a199968c2bc2ff91: canonical_training_seal_and_policy_freeze_missing; reviewed_research_specification_missing; expanded_frozen_comparison_missing. Canonical records must be supplied; no fitting or redaction substitution is authorized."
+            ],
+            "cohort": "reference",
+            "kind": "blocked",
+            "ready": false,
+            "unavailable_methods": []
+          },
+          {
+            "blockers": [],
+            "cohort": "original_semantic",
+            "kind": "infeasible",
+            "ready": true,
+            "unavailable_methods": []
+          }
+        ],
+        "final_payloads_read": false,
+        "inference_calls": 0,
+        "manifest_id": "3be695241981c44fe71b5318b800589f0829faf2fc35a6ed9415e4ff73becde7",
+        "optimization_calls": 0,
+        "ready": false,
+        "statistics": {
+          "confidence_level": 0.95,
+          "resamples": 5000,
+          "seed": 20261112,
+          "undefined_rule": "omit_interval_if_any_resample_undefined",
+          "version": "paired_group_pcg64_percentile_v1"
+        },
+        "status": "retrospective_exploratory"
+      }
+    }
+  ],
+  "source_commit": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+  "source_fingerprint": "ae5f0f93a1c9d5f4b895d9e93d018e43e0701539383e5200bd370a3487aa853c"
+}

@@ -1,0 +1,54 @@
+{
+  "canonical_paths_materialized": false,
+  "current_branch": "codex/evidence-poisoning-phase1",
+  "current_head": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+  "database_modifications": false,
+  "exact_originals_recovered": 2,
+  "final_payloads_opened": false,
+  "focused_test_failures": 0,
+  "forbidden_actions_performed": [],
+  "git_status_before_local_audit_commit": "## codex/evidence-poisoning-phase1\n M app/game/offline/collect.py\n M app/game/offline/collection.py\n M tests/preparation_fixtures.py\n?? app/game/offline/file_journal.py\n?? app/game/research/prospective.py\n?? docs/experiment1/phase-c/\n?? docs/research_v1-precollection-proposal/\n?? research/\n?? tests/test_offline_file_journal.py\n?? tests/test_prospective_collection.py\n?? tests/test_prospective_evaluation.py",
+  "live_verifier_calls": 0,
+  "metadata_readiness_exit_codes": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "missing_execution_custody_zip": true,
+  "real_index_sha256": "2f255b9b8431150ffd41618d19cf21d62ea8337c842258e7264b132ef0fb1184",
+  "scoped_commit_plan": {
+    "branch": "refs/heads/codex/experiment1-phase-c-audit",
+    "parent": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+    "path_prefix": "docs/experiment1/phase-c/"
+  },
+  "source_and_fixture_hashes": {
+    "app/game/offline/collect.py": "e238f010654a8c0d799836f444334bd13d0cfb66a6f8f9929f65fa4462564d7d",
+    "app/game/offline/collection.py": "3eea07eff4bc7b8ca7d2bdf468e642e4b6c8f35c8d2e2f959e2ac95a11e2b9bd",
+    "app/game/offline/file_journal.py": "8c30ce5e73fe5e72403336fb30c23f169739099d62e1555ab479c418afc588f7",
+    "app/game/research/prospective.py": "397c28d7d7fba922cc0658823da79d6dc43f271f5dd78ec784c526c37a077dc4",
+    "tests/preparation_fixtures.py": "ea993be17a5851b26afd8038d09e94e7c3edaf82c9a842130613aec10a3f534b"
+  },
+  "tests": [
+    {
+      "files": [
+        "tests/test_experiment1_comparison.py",
+        "tests/test_experiment1_reporting.py",
+        "tests/test_experiment1_phase_b_inputs.py"
+      ],
+      "passed": 38,
+      "seconds": 272.92
+    },
+    {
+      "deselected": 42,
+      "file": "tests/test_game_research.py",
+      "passed": 2,
+      "seconds": 4.32,
+      "selection": "single_cluster_does_not_invent_uncertainty or cluster_bootstrap_is_paired_reproducible_and_keeps_related_examples"
+    }
+  ],
+  "unresolved_originals": 10,
+  "version": "experiment1_phase_c_continuation_validation_v1"
+}

@@ -1,0 +1,1774 @@
+{
+  "classification": "Existing contracts only, not a newly authored scientific comparison specification",
+  "cohorts": {
+    "arithmetic": {
+      "budget": 21258.33526502247,
+      "clean_coverage": {
+        "minimum": 0.9,
+        "parent_matrix_id": "1e710803f7a46dfb56c6c2dfbee8efc7baf29de9f3755077a5b9959ff94db264",
+        "source_evaluation_id": "a59218d2a00b4f09c4ef6e444682d3e20381ebd45b8c5bc76a89b923ed6658df",
+        "strategy_coverage": [
+          [
+            "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            1.0
+          ],
+          [
+            "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+            1.0
+          ],
+          [
+            "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+            0.875
+          ],
+          [
+            "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+            0.875
+          ],
+          [
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            1.0
+          ],
+          [
+            "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            1.0
+          ],
+          [
+            "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+            1.0
+          ],
+          [
+            "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+            1.0
+          ],
+          [
+            "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            0.875
+          ],
+          [
+            "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            0.875
+          ],
+          [
+            "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+            0.875
+          ],
+          [
+            "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+            0.875
+          ],
+          [
+            "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            1.0
+          ],
+          [
+            "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            1.0
+          ],
+          [
+            "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            0.875
+          ],
+          [
+            "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+            0.875
+          ]
+        ],
+        "training_binding_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+        "version": "finalized_clean_development_coverage_v1"
+      },
+      "coverage_floor": 0.9,
+      "feasible_strategies": [
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 9.678209995036013,
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "verifiers": [
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 9.678209995036013,
+          "strategy_id": "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+          "verifiers": [
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 21137.283848738298,
+          "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+          "verifiers": [
+            "confidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 21137.283848738298,
+          "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+          "verifiers": [
+            "confidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 91.13092127081472,
+          "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          "verifiers": [
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 91.13092127081472,
+          "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          "verifiers": [
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 49.27691500342917,
+          "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+          "verifiers": [
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 49.27691500342917,
+          "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+          "verifiers": [
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 21218.736560014077,
+          "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 21218.736560014077,
+          "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 21176.88255374669,
+          "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+          "verifiers": [
+            "confidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 21176.88255374669,
+          "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+          "verifiers": [
+            "confidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 130.72962627920788,
+          "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 130.72962627920788,
+          "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 21258.33526502247,
+          "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 21258.33526502247,
+          "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        }
+      ],
+      "feasible_strategy_count": 16,
+      "historical_comparison": {
+        "baselines": {
+          "development_best": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 9.678209995036013,
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "verifiers": [
+              "rule"
+            ]
+          },
+          "fixed_equals_flexible": true,
+          "fixed_selection_rule": "Eligible fixed strategies meet 0.90 development clean coverage; minimize worst development decision loss; within 1e-8 minimize estimated cost then strategy_id.",
+          "greedy": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 21137.283848738298,
+            "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+            "verifiers": [
+              "confidence",
+              "rule"
+            ]
+          },
+          "greedy_scope": "Existing coverage-aware selector initial_selected, reputation_weighted; complete selected team under matching minimum-one finalization. This isolates selection; it is not the separate adaptive non-game stopping pipeline."
+        },
+        "classification": "original_three_method_internal_freeze_documentation; canonical_custody_verification_blocked",
+        "methods": [
+          "frozen_flexible",
+          "development_best_fixed",
+          "coverage_aware_greedy_complete_team"
+        ],
+        "metric_definitions": {
+          "accept_reject_uncertain": "counts / all 40 examples per cohort",
+          "cost": "measured individual attempt durations excluding initialization; historical selected-team estimates; full-roster collection is not singleton end-to-end latency",
+          "coverage": "decided / all examples",
+          "decision_loss": "(FA + FR + 0.2 * uncertain) / all examples; no resource penalty",
+          "execution_failures": "failed/unavailable selected attempts, and cases affected, with missing recordings distinguished",
+          "false_accept": "incorrect accepted / all 40, plus incorrect accepted / 20 incorrect examples",
+          "false_reject": "correct rejected / all 40, plus correct rejected / 20 correct examples",
+          "selective_risk": "(FA + FR) / decided; null if no decided examples"
+        },
+        "source": "artifacts/flexible-heldout-v1/evaluation-specification.json",
+        "statistics": {
+          "interval": 0.95,
+          "method": "Paired cluster percentile bootstrap, resample 20 split_identity groups with replacement, retaining both correct/incorrect answers and paired methods",
+          "replicates": 10000,
+          "seed": 20261102,
+          "zero_decision_samples": "risk undefined; disclose undefined fraction and omit risk CI if any bootstrap sample undefined"
+        }
+      },
+      "loss": {
+        "cost_units": "ms",
+        "false_accept": 1.0,
+        "false_reject": 1.0,
+        "resource_weight": 4.704037204857504e-06,
+        "uncertain": 0.2,
+        "version": "multitask-exploratory-loss-v1"
+      },
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "positive_probabilities": [
+        {
+          "definition": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 9.678209995036013,
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "verifiers": [
+              "rule"
+            ]
+          },
+          "probability": 1.0,
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac"
+        }
+      ],
+      "reliability_first": {
+        "cost_tolerance": 1e-08,
+        "epsilon": 1e-08,
+        "parent_matrix_id": "5d5eb70e16770e8034db23b6f72c575e3b20cb7f8308a4b3f1967cc0745bba1c",
+        "validation_values": [
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.035,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.2
+          ],
+          [
+            0.0,
+            0.5,
+            0.5,
+            0.035,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ],
+          [
+            0.025,
+            0.5,
+            0.5,
+            0.025,
+            0.2
+          ]
+        ],
+        "version": "validation_then_attempt_cost_v1"
+      },
+      "retrospective_comparison": {
+        "classification": "expanded_methods_are_retrospective_not_preregistered",
+        "complete_comparison_freeze": "missing",
+        "restricted_games": "no_saved_certificates_found; optimization_not_authorized_in_Phase_B",
+        "uniform": "not_instantiated"
+      },
+      "team_requirements": {
+        "minimum_informative": 1,
+        "minimum_selected": 1,
+        "version": "flexible_team_requirements_v1"
+      },
+      "threshold": 0.55
+    },
+    "compound": {
+      "clean_coverage": {
+        "minimum": 0.85,
+        "parent_matrix_id": "f91963a18ddeeff501066aac8b5d7613e1b49828a7dddb509fc94e5fc7c05253",
+        "source_evaluation_id": "788549a185bd5a62eac092cfa09e36a665f6d9a0a035be45d177a200fd57f8c5",
+        "strategy_coverage": [
+          [
+            "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+            0.8958333333333334
+          ],
+          [
+            "4a1f4788418e20084c514f9e3b2634952bf5722e3e3b9f4495d22047d8ef4ecd",
+            0.8958333333333334
+          ]
+        ],
+        "training_binding_id": "7e6f1c357dac0441dc03f84edad70c5744222a0634566d3afd8d41efb27cb510",
+        "version": "finalized_clean_development_coverage_v1"
+      },
+      "component_contracts": [
+        {
+          "component_id": "base_fact",
+          "context": {
+            "aggregation_versions": [
+              [
+                "dependency_group",
+                "groups_v1"
+              ],
+              [
+                "reputation_weighted",
+                "log_odds_v1"
+              ]
+            ],
+            "analyzer_provenance": [
+              [
+                "analysis_method",
+                "heuristic"
+              ],
+              [
+                "context_version",
+                "question_context_v1"
+              ],
+              [
+                "domain_status",
+                "unknown"
+              ],
+              [
+                "research_context_presence",
+                "present"
+              ],
+              [
+                "scoring_version",
+                "source_backed_component_questions_v2"
+              ]
+            ],
+            "attempt_costs": [
+              [
+                "evidence",
+                84.07056144642411
+              ],
+              [
+                "rule",
+                0.12252813515563805
+              ]
+            ],
+            "budget": 84.19308958157974,
+            "cost_units": "ms",
+            "dependencies": {
+              "dependencies": [
+                {
+                  "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "resource_id": "local-embedding-snapshot",
+                  "verifiers": [
+                    "evidence",
+                    "semantic"
+                  ]
+                },
+                {
+                  "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "resource_id": "local-nli-snapshot",
+                  "verifiers": [
+                    "confidence",
+                    "evidence"
+                  ]
+                }
+              ],
+              "unknown_treatment": "shared_unknown",
+              "unresolved": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "version": "multitask-observed-dependencies-v1"
+            },
+            "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"}],\"version\":\"game_resource_manifest_v1\"},\"team_requirements\":{\"minimum_informative\":1,\"minimum_selected\":1,\"version\":\"flexible_team_requirements_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}",
+            "loss_configuration": {
+              "cost_units": "ms",
+              "false_accept": 1.0,
+              "false_reject": 1.0,
+              "resource_weight": 4.704037204857504e-06,
+              "uncertain": 0.2,
+              "version": "multitask-exploratory-loss-v1"
+            },
+            "offline_evaluation_id": null,
+            "provenance": {
+              "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+              "category": "general",
+              "category_kind": "domain",
+              "development_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development",
+              "evidence_kind": "empirical",
+              "final_test_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-reserved-test",
+              "history_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history",
+              "loss_configuration": "multitask-exploratory-loss-v1",
+              "matrix_version": "compound_joint_v2"
+            },
+            "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":24,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.961538,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":0.951538,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.45,\"verifier_name\":\"rule\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.13,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"direct_fact\"],\"expected_uncovered\":[],\"fallback\":[],\"initial_selected\":[\"evidence\",\"rule\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":false,\"reputation_statistics\":[{\"alpha\":25.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":24,\"posterior_mean\":0.9615384615384615,\"posterior_variance\":0.0013697129081744496,\"successes\":24,\"verifier_name\":\"evidence\"},{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"rule\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"direct_fact\"],\"legacy_unrecognized\":[],\"requirements\":[\"direct_fact\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"direct_fact\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"source_backed_component_questions_v2\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+            "version": "game_context_v1"
+          },
+          "contract": {
+            "contributor_version": "informative_history_influence_v1",
+            "coverage_version": "task_output_contract_v2",
+            "execution_configuration_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "failure_contract": "all_selected_returned",
+            "history_prior_alpha": 1.0,
+            "history_prior_beta": 1.0,
+            "resource_manifest": {
+              "verifiers": [
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "resource_id": "evidence-adapter-configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "kind": "corpus",
+                      "resource_id": "evidence-corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                    },
+                    {
+                      "kind": "implementation",
+                      "resource_id": "evidence-implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                    },
+                    {
+                      "kind": "index",
+                      "resource_id": "evidence-index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                    },
+                    {
+                      "kind": "model",
+                      "resource_id": "local-embedding-snapshot",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    },
+                    {
+                      "kind": "model",
+                      "resource_id": "local-nli-snapshot",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    }
+                  ],
+                  "verifier_name": "evidence"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "resource_id": "rule-adapter-configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "kind": "implementation",
+                      "resource_id": "rule-implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                    }
+                  ],
+                  "verifier_name": "rule"
+                }
+              ],
+              "version": "game_resource_manifest_v1"
+            },
+            "team_requirements": {
+              "minimum_informative": 1,
+              "minimum_selected": 1,
+              "version": "flexible_team_requirements_v1"
+            },
+            "threshold": 0.55,
+            "version": "offline_public_decision_v4"
+          }
+        },
+        {
+          "component_id": "derived_sum",
+          "context": {
+            "aggregation_versions": [
+              [
+                "dependency_group",
+                "groups_v1"
+              ],
+              [
+                "reputation_weighted",
+                "log_odds_v1"
+              ]
+            ],
+            "analyzer_provenance": [
+              [
+                "analysis_method",
+                "heuristic"
+              ],
+              [
+                "context_version",
+                "question_context_v1"
+              ],
+              [
+                "domain_status",
+                "unknown"
+              ],
+              [
+                "research_context_presence",
+                "present"
+              ],
+              [
+                "scoring_version",
+                "source_backed_component_questions_v2"
+              ]
+            ],
+            "attempt_costs": [
+              [
+                "evidence",
+                84.07056144642411
+              ],
+              [
+                "rule",
+                0.12252813515563805
+              ]
+            ],
+            "budget": 84.19308958157974,
+            "cost_units": "ms",
+            "dependencies": {
+              "dependencies": [
+                {
+                  "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "resource_id": "local-embedding-snapshot",
+                  "verifiers": [
+                    "evidence",
+                    "semantic"
+                  ]
+                },
+                {
+                  "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "resource_id": "local-nli-snapshot",
+                  "verifiers": [
+                    "confidence",
+                    "evidence"
+                  ]
+                }
+              ],
+              "unknown_treatment": "shared_unknown",
+              "unresolved": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "version": "multitask-observed-dependencies-v1"
+            },
+            "execution_contract_json": "{\"contributor_version\":\"informative_history_influence_v1\",\"coverage_version\":\"task_output_contract_v2\",\"execution_configuration_id\":\"310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1\",\"failure_contract\":\"all_selected_returned\",\"history_prior_alpha\":1.0,\"history_prior_beta\":1.0,\"resource_manifest\":{\"verifiers\":[{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"evidence-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"corpus\",\"resource_id\":\"evidence-corpus\",\"sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\"},{\"kind\":\"implementation\",\"resource_id\":\"evidence-implementation\",\"sha256\":\"0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4\"},{\"kind\":\"index\",\"resource_id\":\"evidence-index\",\"sha256\":\"e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b\"},{\"kind\":\"model\",\"resource_id\":\"local-embedding-snapshot\",\"sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\"},{\"kind\":\"model\",\"resource_id\":\"local-nli-snapshot\",\"sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\"}],\"verifier_name\":\"evidence\"},{\"resources\":[{\"kind\":\"configuration\",\"resource_id\":\"rule-adapter-configuration\",\"sha256\":\"5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8\"},{\"kind\":\"implementation\",\"resource_id\":\"rule-implementation\",\"sha256\":\"2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f\"}],\"verifier_name\":\"rule\"}],\"version\":\"game_resource_manifest_v1\"},\"team_requirements\":{\"minimum_informative\":1,\"minimum_selected\":1,\"version\":\"flexible_team_requirements_v1\"},\"threshold\":0.55,\"version\":\"offline_public_decision_v4\"}",
+            "loss_configuration": {
+              "cost_units": "ms",
+              "false_accept": 1.0,
+              "false_reject": 1.0,
+              "resource_weight": 4.704037204857504e-06,
+              "uncertain": 0.2,
+              "version": "multitask-exploratory-loss-v1"
+            },
+            "offline_evaluation_id": null,
+            "provenance": {
+              "attack_specification": "32f2a39fe86daffa35d48f5ca548729555f6294ea766b4e23428a1452eda8c97",
+              "category": "general",
+              "category_kind": "domain",
+              "development_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-development",
+              "evidence_kind": "empirical",
+              "final_test_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-reserved-test",
+              "history_dataset": "86d17f7baa56a0a7c3a1ffcfb4b5914aba643fa59c99d17e64f1a7f1f00431f6-history",
+              "loss_configuration": "multitask-exploratory-loss-v1",
+              "matrix_version": "compound_joint_v2"
+            },
+            "selection_json": "{\"analysis_method\":\"heuristic\",\"candidates\":[{\"capability_source\":\"explicit\",\"cold_start\":true,\"configured_readiness\":\"unknown\",\"cost\":0.8,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"direct_fact\",\"evidence_retrieval\"],\"latency\":0.9,\"limitations\":[\"Retrieval is limited to the configured evidence corpus and relevance/NLI gates.\",\"Corpus/model readiness and claim coverage are unknown until execution.\"],\"observation_count\":0,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":0,\"reputation\":0.5,\"requires_reference\":false,\"resource_penalty\":0.21000000000000002,\"suitability\":0.0,\"suitability_contribution\":0.0,\"utility\":0.29,\"verifier_name\":\"evidence\"},{\"capability_source\":\"explicit\",\"cold_start\":false,\"configured_readiness\":\"unknown\",\"cost\":0.2,\"eligible\":true,\"exclusion_reason\":null,\"expected_capabilities\":[\"arithmetic\"],\"latency\":0.2,\"limitations\":[\"Only implemented arithmetic patterns; no arbitrary logical_rule capability.\",\"Other deterministic/structural checks do not establish general factual coverage.\"],\"observation_count\":48,\"prerequisite_status\":\"unknown\",\"registered\":true,\"registration_order\":1,\"reputation\":0.98,\"requires_reference\":false,\"resource_penalty\":0.05,\"suitability\":1.0,\"suitability_contribution\":0.2,\"utility\":1.13,\"verifier_name\":\"rule\"}],\"context_version\":\"question_context_v1\",\"coverage_status\":\"expected_only\",\"difficulty\":\"easy\",\"difficulty_score\":0.12,\"domain\":\"general\",\"domain_status\":\"unknown\",\"exclusions\":[],\"expected_covered\":[\"arithmetic\"],\"expected_uncovered\":[],\"fallback\":[],\"initial_selected\":[\"rule\",\"evidence\"],\"lambda_cost\":0.15,\"lambda_latency\":0.1,\"lambda_suitability\":0.2,\"minimum_count\":2,\"policy_version\":\"coverage_greedy_v1\",\"reference_available\":false,\"reputation_statistics\":[{\"alpha\":1.0,\"beta\":1.0,\"cold_start\":true,\"domain\":\"general\",\"failures\":0,\"observation_count\":0,\"posterior_mean\":0.5,\"posterior_variance\":0.08333333333333333,\"successes\":0,\"verifier_name\":\"evidence\"},{\"alpha\":49.0,\"beta\":1.0,\"cold_start\":false,\"domain\":\"general\",\"failures\":0,\"observation_count\":48,\"posterior_mean\":0.98,\"posterior_variance\":0.0003843137254901964,\"successes\":48,\"verifier_name\":\"rule\"}],\"requirements\":{\"disagreements\":[],\"errors\":[],\"legacy_hints\":[\"arithmetic\"],\"legacy_unrecognized\":[],\"requirements\":[\"arithmetic\"],\"requirements_known\":true,\"source\":\"research_context\",\"status\":\"known\",\"unsupported\":[],\"weight_discrepancies\":[],\"weights\":[[\"arithmetic\",1.0]]},\"resource_units\":\"dimensionless relative estimates in [0,1]; uncalibrated\",\"scoring_version\":\"source_backed_component_questions_v2\",\"target_count\":2,\"type_mapping\":[[\"arithmetic\",\"rule\"],[\"logical_rule\",\"rule\"],[\"direct_fact\",\"evidence\"],[\"evidence_retrieval\",\"evidence\"],[\"semantic_comparison\",\"semantic\"],[\"consistency\",\"confidence\"]]}",
+            "version": "game_context_v1"
+          },
+          "contract": {
+            "contributor_version": "informative_history_influence_v1",
+            "coverage_version": "task_output_contract_v2",
+            "execution_configuration_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "failure_contract": "all_selected_returned",
+            "history_prior_alpha": 1.0,
+            "history_prior_beta": 1.0,
+            "resource_manifest": {
+              "verifiers": [
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "resource_id": "evidence-adapter-configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "kind": "corpus",
+                      "resource_id": "evidence-corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                    },
+                    {
+                      "kind": "implementation",
+                      "resource_id": "evidence-implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                    },
+                    {
+                      "kind": "index",
+                      "resource_id": "evidence-index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                    },
+                    {
+                      "kind": "model",
+                      "resource_id": "local-embedding-snapshot",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    },
+                    {
+                      "kind": "model",
+                      "resource_id": "local-nli-snapshot",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    }
+                  ],
+                  "verifier_name": "evidence"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "resource_id": "rule-adapter-configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "kind": "implementation",
+                      "resource_id": "rule-implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                    }
+                  ],
+                  "verifier_name": "rule"
+                }
+              ],
+              "version": "game_resource_manifest_v1"
+            },
+            "team_requirements": {
+              "minimum_informative": 1,
+              "minimum_selected": 1,
+              "version": "flexible_team_requirements_v1"
+            },
+            "threshold": 0.55,
+            "version": "offline_public_decision_v4"
+          }
+        }
+      ],
+      "coverage_floor": 0.85,
+      "feasible_strategies": [
+        {
+          "components": [
+            [
+              "base_fact",
+              {
+                "aggregation": "reputation_weighted",
+                "estimated_cost": 84.07056144642411,
+                "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+                "verifiers": [
+                  "evidence"
+                ]
+              }
+            ],
+            [
+              "derived_sum",
+              {
+                "aggregation": "reputation_weighted",
+                "estimated_cost": 0.12252813515563805,
+                "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                "verifiers": [
+                  "rule"
+                ]
+              }
+            ]
+          ],
+          "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+          "version": "component_strategy_v1"
+        },
+        {
+          "components": [
+            [
+              "base_fact",
+              {
+                "aggregation": "dependency_group",
+                "estimated_cost": 84.07056144642411,
+                "strategy_id": "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+                "verifiers": [
+                  "evidence"
+                ]
+              }
+            ],
+            [
+              "derived_sum",
+              {
+                "aggregation": "dependency_group",
+                "estimated_cost": 0.12252813515563805,
+                "strategy_id": "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+                "verifiers": [
+                  "rule"
+                ]
+              }
+            ]
+          ],
+          "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+          "version": "component_strategy_v1"
+        }
+      ],
+      "historical_comparison": {
+        "classification": "exploratory_post_development_85_percent",
+        "greedy": "excluded_no_independently_defined_comparable_component_executor",
+        "methods": [
+          "full_frozen_joint_policy",
+          "development_best_fixed_joint_plan"
+        ],
+        "statistics": {
+          "repetitions": 1000,
+          "seed": 1102
+        }
+      },
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "positive_probabilities": [
+        {
+          "definition": {
+            "components": [
+              [
+                "base_fact",
+                {
+                  "aggregation": "reputation_weighted",
+                  "estimated_cost": 84.07056144642411,
+                  "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+                  "verifiers": [
+                    "evidence"
+                  ]
+                }
+              ],
+              [
+                "derived_sum",
+                {
+                  "aggregation": "reputation_weighted",
+                  "estimated_cost": 0.12252813515563805,
+                  "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                  "verifiers": [
+                    "rule"
+                  ]
+                }
+              ]
+            ],
+            "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+            "version": "component_strategy_v1"
+          },
+          "probability": 1.0,
+          "strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6"
+        }
+      ],
+      "retrospective_comparison": {
+        "classification": "expanded_comparison_not_preregistered",
+        "complete_comparison_freeze": "missing",
+        "greedy": "unavailable"
+      }
+    },
+    "factual": {
+      "budget": 15965.046464995248,
+      "clean_coverage": {
+        "minimum": 0.9,
+        "parent_matrix_id": "ff820aef5976ffaf153d2ed06031002286b0cfaa2c61f0fa284824146d5e1472",
+        "source_evaluation_id": "ee242866bcaff592167ec3ba21723c82c916b576b49187c27dbc7b643a04effc",
+        "strategy_coverage": [
+          [
+            "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            0.975
+          ],
+          [
+            "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+            0.975
+          ],
+          [
+            "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+            0.9
+          ],
+          [
+            "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+            0.9
+          ],
+          [
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+            0.975
+          ],
+          [
+            "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            0.975
+          ],
+          [
+            "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+            0.975
+          ],
+          [
+            "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+            0.975
+          ],
+          [
+            "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+            0.9
+          ],
+          [
+            "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+            0.9
+          ],
+          [
+            "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+            0.9
+          ],
+          [
+            "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+            0.9
+          ],
+          [
+            "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            0.975
+          ],
+          [
+            "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            0.975
+          ],
+          [
+            "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            0.9
+          ],
+          [
+            "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+            0.9
+          ]
+        ],
+        "training_binding_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+        "version": "finalized_clean_development_coverage_v1"
+      },
+      "coverage_floor": 0.9,
+      "feasible_strategies": [
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 188.79894875281025,
+          "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          "verifiers": [
+            "evidence"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 188.79894875281025,
+          "strategy_id": "a7d50d9162f708b9a6e3f2d3191d411016000821fc8a570ce867a3e922b05a53",
+          "verifiers": [
+            "evidence"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 15921.25526748423,
+          "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 15921.25526748423,
+          "strategy_id": "3a041262d6b0e951a3d2234de194f118dabb0c771712a30c9d4b96fd4fe7b109",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 188.90355375187937,
+          "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          "verifiers": [
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 188.90355375187937,
+          "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          "verifiers": [
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 232.48554126475938,
+          "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 232.48554126475938,
+          "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 15921.3598724833,
+          "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 15921.3598724833,
+          "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 15964.94185999618,
+          "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 15964.94185999618,
+          "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 232.5901462638285,
+          "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 232.5901462638285,
+          "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 15965.046464995248,
+          "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 15965.046464995248,
+          "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        }
+      ],
+      "feasible_strategy_count": 16,
+      "historical_comparison": {
+        "baselines": {
+          "development_best": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 188.79894875281025,
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "verifiers": [
+              "evidence"
+            ]
+          },
+          "fixed_equals_flexible": true,
+          "fixed_selection_rule": "Eligible fixed strategies meet 0.90 development clean coverage; minimize worst development decision loss; within 1e-8 minimize estimated cost then strategy_id.",
+          "greedy": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 15921.25526748423,
+            "strategy_id": "521d922d91e2367835123c62acfae9d81b982483fd5d4ef79bb63ec38e1704be",
+            "verifiers": [
+              "confidence",
+              "evidence"
+            ]
+          },
+          "greedy_scope": "Existing coverage-aware selector initial_selected, reputation_weighted; complete selected team under matching minimum-one finalization. This isolates selection; it is not the separate adaptive non-game stopping pipeline."
+        },
+        "classification": "original_three_method_internal_freeze_documentation; canonical_custody_verification_blocked",
+        "methods": [
+          "frozen_flexible",
+          "development_best_fixed",
+          "coverage_aware_greedy_complete_team"
+        ],
+        "metric_definitions": {
+          "accept_reject_uncertain": "counts / all 40 examples per cohort",
+          "cost": "measured individual attempt durations excluding initialization; historical selected-team estimates; full-roster collection is not singleton end-to-end latency",
+          "coverage": "decided / all examples",
+          "decision_loss": "(FA + FR + 0.2 * uncertain) / all examples; no resource penalty",
+          "execution_failures": "failed/unavailable selected attempts, and cases affected, with missing recordings distinguished",
+          "false_accept": "incorrect accepted / all 40, plus incorrect accepted / 20 incorrect examples",
+          "false_reject": "correct rejected / all 40, plus correct rejected / 20 correct examples",
+          "selective_risk": "(FA + FR) / decided; null if no decided examples"
+        },
+        "source": "artifacts/flexible-heldout-v1/evaluation-specification.json",
+        "statistics": {
+          "interval": 0.95,
+          "method": "Paired cluster percentile bootstrap, resample 20 split_identity groups with replacement, retaining both correct/incorrect answers and paired methods",
+          "replicates": 10000,
+          "seed": 20261102,
+          "zero_decision_samples": "risk undefined; disclose undefined fraction and omit risk CI if any bootstrap sample undefined"
+        }
+      },
+      "loss": {
+        "cost_units": "ms",
+        "false_accept": 1.0,
+        "false_reject": 1.0,
+        "resource_weight": 6.263683617787064e-06,
+        "uncertain": 0.2,
+        "version": "multitask-exploratory-loss-v1"
+      },
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "positive_probabilities": [
+        {
+          "definition": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 188.79894875281025,
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "verifiers": [
+              "evidence"
+            ]
+          },
+          "probability": 1.0,
+          "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3"
+        }
+      ],
+      "reliability_first": {
+        "cost_tolerance": 1e-08,
+        "epsilon": 1e-08,
+        "parent_matrix_id": "623188085489fdedf8b5d7fd2afb80d0f7aaefbf2d26bc40d38db5de93eb68d5",
+        "validation_values": [
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.03,
+            0.5,
+            0.5,
+            0.03,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ],
+          [
+            0.045,
+            0.5,
+            0.5,
+            0.045,
+            0.2
+          ]
+        ],
+        "version": "validation_then_attempt_cost_v1"
+      },
+      "retrospective_comparison": {
+        "classification": "expanded_methods_are_retrospective_not_preregistered",
+        "complete_comparison_freeze": "missing",
+        "restricted_games": "no_saved_certificates_found; optimization_not_authorized_in_Phase_B",
+        "uniform": "not_instantiated"
+      },
+      "team_requirements": {
+        "minimum_informative": 1,
+        "minimum_selected": 1,
+        "version": "flexible_team_requirements_v1"
+      },
+      "threshold": 0.55
+    },
+    "reference": {
+      "budget": 16594.78458249673,
+      "clean_coverage": {
+        "minimum": 0.5,
+        "parent_matrix_id": "8a3488405cbc980f5d826d38942b2e179754e8c712edfcca2be2a37d96e93fe6",
+        "source_evaluation_id": "55ef4225d5cc793335de1240bb795572953c58a2a2f4633b418b8e7ccd309525",
+        "strategy_coverage": [
+          [
+            "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+            0.0
+          ],
+          [
+            "c3273cb957fd4ae1a9e2d0b160ec808dc5755f4df842b14630c2bc02b65f12ea",
+            0.0
+          ],
+          [
+            "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+            0.6
+          ],
+          [
+            "c29fd335d469ec5b3a677ce60bf87fe2c5cad8291a021d7d22b08222eace6bdf",
+            0.6
+          ],
+          [
+            "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+            0.0
+          ],
+          [
+            "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+            0.0
+          ],
+          [
+            "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+            0.0
+          ],
+          [
+            "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+            0.0
+          ],
+          [
+            "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+            0.6
+          ],
+          [
+            "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+            0.6
+          ],
+          [
+            "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+            0.6
+          ],
+          [
+            "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+            0.6
+          ],
+          [
+            "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+            0.0
+          ],
+          [
+            "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+            0.0
+          ],
+          [
+            "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+            0.6
+          ],
+          [
+            "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+            0.6
+          ]
+        ],
+        "training_binding_id": "a588ccb4a7c750a66da49be09229969312be5c2034a3885f92f6ddc8df241e73",
+        "version": "finalized_clean_development_coverage_v1"
+      },
+      "coverage_floor": 0.5,
+      "feasible_strategies": [
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 102.07135749794816,
+          "strategy_id": "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+          "verifiers": [
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 102.07135749794816,
+          "strategy_id": "c3273cb957fd4ae1a9e2d0b160ec808dc5755f4df842b14630c2bc02b65f12ea",
+          "verifiers": [
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 16530.8084824979,
+          "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+          "verifiers": [
+            "confidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 16530.8084824979,
+          "strategy_id": "c29fd335d469ec5b3a677ce60bf87fe2c5cad8291a021d7d22b08222eace6bdf",
+          "verifiers": [
+            "confidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 165.89802500559472,
+          "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 165.89802500559472,
+          "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 102.22078998913275,
+          "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+          "verifiers": [
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 102.22078998913275,
+          "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+          "verifiers": [
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 16594.635150005546,
+          "strategy_id": "9875cf55b78231dd008cd3a76c2cad530d6c4e58235977c28238a5b481d1366a",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 16594.635150005546,
+          "strategy_id": "fceafaec57a919b560281d9bc960f5ced93866d6c58139b7c6d28ee25c4c5be9",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 16530.957914989085,
+          "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+          "verifiers": [
+            "confidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 16530.957914989085,
+          "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+          "verifiers": [
+            "confidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 166.04745749677932,
+          "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 166.04745749677932,
+          "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+          "verifiers": [
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "reputation_weighted",
+          "estimated_cost": 16594.78458249673,
+          "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        },
+        {
+          "aggregation": "dependency_group",
+          "estimated_cost": 16594.78458249673,
+          "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+          "verifiers": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        }
+      ],
+      "feasible_strategy_count": 16,
+      "historical_comparison": {
+        "captured_greedy": [
+          {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 16530.8084824979,
+            "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+            "verifiers": [
+              "confidence",
+              "semantic"
+            ]
+          }
+        ],
+        "classification": "original_reference_exploratory_post_development_floor",
+        "fixed_rule": "Development-best coverage-eligible fixed team; valid existing greedy under identical contract if feasible.",
+        "fixed_strategy_identity": "unverified_without_canonical_fit/freeze.json",
+        "methods": [
+          "full_frozen_policy",
+          "development_best_fixed",
+          "captured_greedy"
+        ],
+        "statistics": {
+          "method": "group bootstrap",
+          "resamples": 1000,
+          "seed": 1103
+        }
+      },
+      "loss": {
+        "cost_units": "ms",
+        "false_accept": 1.0,
+        "false_reject": 1.0,
+        "resource_weight": 6.025989641677816e-06,
+        "uncertain": 0.2,
+        "version": "reference-fresh-loss-v1"
+      },
+      "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+      "positive_probabilities": [
+        {
+          "definition": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 102.07135749794816,
+            "strategy_id": "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+            "verifiers": [
+              "semantic"
+            ]
+          },
+          "probability": 0.16666666666666663,
+          "strategy_id": "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e"
+        },
+        {
+          "definition": {
+            "aggregation": "reputation_weighted",
+            "estimated_cost": 16530.8084824979,
+            "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+            "verifiers": [
+              "confidence",
+              "semantic"
+            ]
+          },
+          "probability": 0.8333333333333334,
+          "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955"
+        }
+      ],
+      "reliability_first": {
+        "cost_tolerance": 1e-08,
+        "epsilon": 1e-08,
+        "parent_matrix_id": "595c9dd483ab6847a29745a83c62a42c98aebc87112fc81cfa09af1fc1eb3b3d",
+        "validation_values": [
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ],
+          [
+            0.08,
+            0.32999999999999996,
+            0.43,
+            0.08,
+            0.2
+          ]
+        ],
+        "version": "validation_then_attempt_cost_v1"
+      },
+      "retrospective_comparison": {
+        "classification": "expanded_comparison_not_preregistered",
+        "complete_comparison_freeze": "missing"
+      },
+      "team_requirements": {
+        "minimum_informative": 1,
+        "minimum_selected": 1,
+        "version": "flexible_team_requirements_v1"
+      },
+      "threshold": 0.55
+    }
+  },
+  "historical_chronology_limit": "Protocol/amendment metadata names pre-final freezes; missing canonical seals prevent complete independent chronology authentication.",
+  "no_final_payload_reads": true,
+  "no_fitting": true
+}
