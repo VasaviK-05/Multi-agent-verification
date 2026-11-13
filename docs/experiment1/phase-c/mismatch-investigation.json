@@ -1,0 +1,72 @@
+{
+  "changed_source_files": [
+    {
+      "expected_sha256": "06de808a7e950aa3cec1904275ee13947a3c015b6ee7fa5807d95505a419319a",
+      "head_sha256": "06de808a7e950aa3cec1904275ee13947a3c015b6ee7fa5807d95505a419319a",
+      "observed_sha256": "e238f010654a8c0d799836f444334bd13d0cfb66a6f8f9929f65fa4462564d7d",
+      "path": "app/game/offline/collect.py",
+      "status": "modified_working_tree"
+    },
+    {
+      "expected_sha256": "79023cafef880223ea800d86e43001d8ab0e35b05b49e3f76a782a1a7ddf954b",
+      "head_sha256": "79023cafef880223ea800d86e43001d8ab0e35b05b49e3f76a782a1a7ddf954b",
+      "observed_sha256": "3eea07eff4bc7b8ca7d2bdf468e642e4b6c8f35c8d2e2f959e2ac95a11e2b9bd",
+      "path": "app/game/offline/collection.py",
+      "status": "modified_working_tree"
+    },
+    {
+      "expected_sha256": null,
+      "head_sha256": null,
+      "observed_sha256": "8c30ce5e73fe5e72403336fb30c23f169739099d62e1555ab479c418afc588f7",
+      "path": "app/game/offline/file_journal.py",
+      "status": "added_untracked"
+    },
+    {
+      "expected_sha256": null,
+      "head_sha256": null,
+      "observed_sha256": "397c28d7d7fba922cc0658823da79d6dc43f271f5dd78ec784c526c37a077dc4",
+      "path": "app/game/research/prospective.py",
+      "status": "added_untracked"
+    }
+  ],
+  "committed_diff": " docs/experiment1/phase-b/README.md                 |  274 ++\n docs/experiment1/phase-b/arithmetic-candidate.json |  559 +++\n docs/experiment1/phase-b/assemble_inputs.py        |  350 ++\n docs/experiment1/phase-b/check_readiness.py        |   31 +\n docs/experiment1/phase-b/compound-candidate.json   |  559 +++\n .../experiment1/phase-b/experiment1-candidate.json |  559 +++\n docs/experiment1/phase-b/factual-candidate.json    |  559 +++\n .../phase-b/historical-comparisons.json            |  141 +\n docs/experiment1/phase-b/input-inventory.json      | 4591 ++++++++++++++++++++\n .../phase-b/original_semantic-candidate.json       |  559 +++\n docs/experiment1/phase-b/readiness-inputs.json     |   19 +\n docs/experiment1/phase-b/readiness-results.json    |  474 ++\n docs/experiment1/phase-b/reference-candidate.json  |  559 +++\n tests/test_experiment1_phase_b_inputs.py           |   62 +\n 14 files changed, 9296 insertions(+)\n",
+  "crlf_checkout_paths": [
+    "app/benchmark/project_adapter.py",
+    "app/game/offline/recording_adapters.py",
+    "app/game/offline/resource_relocation.py",
+    "app/models/schemas.py",
+    "app/selection/capabilities.py",
+    "app/selection/verifier_selector.py",
+    "app/verifiers/base_verifier.py",
+    "app/verifiers/claim_generator.py",
+    "app/verifiers/confidence_verifier.py",
+    "app/verifiers/evidence_retriever.py",
+    "app/verifiers/evidence_verifier.py",
+    "app/verifiers/rule_verifier.py",
+    "app/verifiers/self_consistency.py",
+    "app/verifiers/semantic_verifier.py"
+  ],
+  "expected_commit": "9f8b64aa18cbd25292699888b2ee1f5ff0ca554e",
+  "expected_fingerprint": "411491fc3951e75328299896118842778f755401f87c297659ad8b163baa0c4b",
+  "expected_reporting_environment": {
+    "numpy": "2.1.3",
+    "pydantic": "2.11.3",
+    "python": "3.12.0",
+    "scipy": "1.15.2"
+  },
+  "expected_revision_fingerprint": "411491fc3951e75328299896118842778f755401f87c297659ad8b163baa0c4b",
+  "head_revision_fingerprint": "411491fc3951e75328299896118842778f755401f87c297659ad8b163baa0c4b",
+  "observed_commit": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+  "observed_fingerprint": "ae5f0f93a1c9d5f4b895d9e93d018e43e0701539383e5200bd370a3487aa853c",
+  "observed_reporting_environment": {
+    "numpy": "2.1.3",
+    "pydantic": "2.11.3",
+    "python": "3.12.0",
+    "scipy": "1.15.2"
+  },
+  "original_collection_source_revision": "2c9f697439d1d1c2ed7c0a92645848c0f07f7e3f",
+  "original_execution_custody_archive_sha256": "f3a1d6109a94d394d93ab0deacb1e839489f65154265d0d298878f9344062896",
+  "original_execution_source_digest": "daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a",
+  "raw_git_blob_fingerprint": "98a7e37ace90f7833c3229da7f32a92adee93b1189baaebc07b04aa710887309",
+  "resource_status": "Recorded fingerprints validate; actual models/services not inspected or attested. Unknown current compatibility, not a measured resource failure."
+}
