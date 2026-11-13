@@ -1,0 +1,1178 @@
+{
+  "evidence_label": "SYNTHETIC",
+  "empirical_claim": false,
+  "measured_dependence": false,
+  "sample": "one hand-built development example per assumption, not the 372 Development groups",
+  "loss_definition": "Engine Metrics.mean_loss: decision loss plus resource_weight times estimated attempt cost.",
+  "loss_configuration": {
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "uncertain": 0.2,
+    "resource_weight": 0.1,
+    "cost_units": "estimated_attempt_units"
+  },
+  "attacks": [
+    "clean",
+    "forced_support",
+    "forced_rejection",
+    "confidence_inflation"
+  ],
+  "methods": [
+    "full_minimax",
+    "fixed_reputation_weighted",
+    "fixed_dependency_group"
+  ],
+  "scenarios": [
+    {
+      "assumption": "independent",
+      "statement": "Semantic, evidence, rule, and confidence are separate failure groups.",
+      "measured_dependence": false,
+      "groups": [
+        [
+          "confidence"
+        ],
+        [
+          "evidence"
+        ],
+        [
+          "rule"
+        ],
+        [
+          "semantic"
+        ]
+      ]
+    },
+    {
+      "assumption": "correlated_semantic_evidence",
+      "statement": "Semantic and evidence share one failure group. Rule and confidence are separate.",
+      "measured_dependence": false,
+      "groups": [
+        [
+          "confidence"
+        ],
+        [
+          "evidence",
+          "semantic"
+        ],
+        [
+          "rule"
+        ]
+      ]
+    },
+    {
+      "assumption": "fully_correlated",
+      "statement": "All four verifiers share one failure group.",
+      "measured_dependence": false,
+      "groups": [
+        [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ]
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "clean",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 0.30000000000000004,
+      "group_losses": [
+        0.30000000000000004,
+        0.30000000000000004,
+        0.30000000000000004,
+        0.30000000000000004
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.30000000000000004
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "clean",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 0.30000000000000004,
+      "group_losses": [
+        0.30000000000000004,
+        0.30000000000000004,
+        0.30000000000000004,
+        0.30000000000000004
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.30000000000000004
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "clean",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 0.30000000000000004,
+      "group_losses": [
+        0.30000000000000004,
+        0.30000000000000004,
+        0.30000000000000004,
+        0.30000000000000004
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.30000000000000004
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.30000000000000004
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "independent",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "evidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "clean",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 0.33333333333333337,
+      "group_losses": [
+        0.33333333333333337,
+        0.33333333333333337,
+        0.33333333333333337
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.33333333333333337
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.33333333333333337
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.33333333333333337
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "clean",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 0.33333333333333337,
+      "group_losses": [
+        0.33333333333333337,
+        0.33333333333333337,
+        0.33333333333333337
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.33333333333333337
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.33333333333333337
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.33333333333333337
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "clean",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "forced_support",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 0.33333333333333337,
+      "group_losses": [
+        0.33333333333333337,
+        0.33333333333333337,
+        0.33333333333333337
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.33333333333333337
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.33333333333333337
+        },
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.33333333333333337
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "correlated_semantic_evidence",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.2,
+      "group_losses": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "evidence",
+            "semantic"
+          ],
+          "validation_loss": 0.2
+        },
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "rule"
+          ],
+          "validation_loss": 0.2
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "clean",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 1.1,
+      "group_losses": [
+        1.1
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 1.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "full_minimax",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "clean",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 1.1,
+      "group_losses": [
+        1.1
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 1.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "clean",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "clean",
+          "members": [],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "forced_support",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "forced_support",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "forced_rejection",
+      "validation_loss": 1.1,
+      "group_losses": [
+        1.1
+      ],
+      "attacks": [
+        {
+          "attack": "forced_rejection",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 1.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    },
+    {
+      "dependency_assumption": "fully_correlated",
+      "aggregation_method": "fixed_dependency_group",
+      "attack_condition": "confidence_inflation",
+      "validation_loss": 0.1,
+      "group_losses": [
+        0.1
+      ],
+      "attacks": [
+        {
+          "attack": "confidence_inflation",
+          "members": [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ],
+          "validation_loss": 0.1
+        }
+      ],
+      "reduction": "worst group loss for this attack kind",
+      "evidence_label": "SYNTHETIC"
+    }
+  ],
+  "scoring_path": "fit_policy, restricted_matrix, and solve_minimax. The research readiness gate is not used because an evidence adapter requires a resource-bound validation this fixture does not have. No resource observation was invented. The schema-required final_test partition is synthetic and is not scored.",
+  "existing_synthetic_results_modified": false
+}

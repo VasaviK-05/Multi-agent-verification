@@ -5,7 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 
 from evaluation.analysis.experiment3 import (
-    METHODS, SCENARIOS, aggregation_comparison, paired_loss_differences, validate_rows,
+    METHODS, SCENARIOS, aggregation_comparison, coverage_risk_points, method_metrics,
+    paired_loss_differences, validate_rows,
 )
 
 METHOD_LABELS = {
@@ -23,7 +24,8 @@ def _escape(value) -> str:
 def assert_figure_destination(rows: list[dict], destination: Path) -> None:
     validate_rows(rows)
     text = destination.as_posix().lower()
-    if rows[0]["evidence_label"] == "SYNTHETIC" and ("/results" in text or "empirical" in text):
+    synthetic = rows[0]["evidence_label"] == "SYNTHETIC" or rows[0].get("result_class") in {"SYNTHETIC", "HYPOTHETICAL"}
+    if synthetic and ("/results" in text or "empirical" in text):
         raise ValueError("synthetic figure cannot be written to an empirical result directory")
 
 
@@ -146,5 +148,139 @@ def paired_difference_plot(rows: list[dict], destination: Path, *, resamples=Non
     parts.append('<text x="24" y="340" font-size="12">Positive values are worse loss than the full game. Negative values are an improvement. Zero is identical loss.</text>')
     parts.append('<text x="24" y="360" font-size="12">The interval is a paired bootstrap when its settings are supplied. The mean is the practical effect and is reported separately from that interval.</text>')
     parts.append(f'<text x="24" y="390" font-size="12">Caption: {_escape(label)} paired contrasts against full joint minimax. Independent means are not compared.</text>')
+    parts.append("</svg>")
+    return _write(destination, "".join(parts), evidence_label=label)
+
+
+def coverage_risk_plot(rows: list[dict], destination: Path) -> Path:
+    assert_figure_destination(rows, destination)
+    points = coverage_risk_points(rows)
+    label = rows[0]["evidence_label"]
+    width, height = 760, 480
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+             '<rect width="100%" height="100%" fill="white"/>',
+             f'<text x="24" y="28" font-size="18">Coverage-risk tradeoff ({_escape(label)})</text>',
+             '<text x="24" y="50" font-size="12">Coverage is the recorded decision coverage. Selective risk is errors among decisive classified decisions.</text>',
+             '<line x1="80" y1="360" x2="680" y2="360" stroke="#666"/>',
+             '<line x1="80" y1="80" x2="80" y2="360" stroke="#666"/>',
+             '<text x="300" y="390" font-size="12">Coverage (fraction)</text>',
+             '<text x="16" y="230" font-size="12" transform="rotate(-90 16 230)">Selective risk</text>']
+    plotted = [point for point in points if point["coverage"] is not None and point["selective_risk"] is not None]
+    if not plotted:
+        parts.append('<text x="100" y="200" font-size="16">No decisive classified decisions. Selective risk is unavailable.</text>')
+    for point in plotted:
+        x = 80 + 560 * max(0.0, min(1.0, float(point["coverage"])))
+        y = 360 - 250 * max(0.0, min(1.0, float(point["selective_risk"])))
+        parts.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6" fill="{COLORS[point["aggregation_method"]]}"/>')
+        parts.append(f'<text x="{x + 8:.1f}" y="{y:.1f}" font-size="10">{_escape(point["attack_condition"])} n={point["sample_size"]}</text>')
+    for index, method in enumerate(METHODS):
+        parts.append(f'<rect x="{80 + index * 210}" y="420" width="14" height="14" fill="{COLORS[method]}"/>')
+        parts.append(f'<text x="{100 + index * 210}" y="432" font-size="12">{_escape(METHOD_LABELS[method])}</text>')
+    parts.append("</svg>")
+    return _write(destination, "".join(parts), evidence_label=label)
+
+
+def _png(destination: Path, width: int, height: int, pixels: bytes, *, method: str) -> Path:
+    import struct
+    import zlib
+    def chunk(tag: bytes, data: bytes) -> bytes:
+        return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
+    raw = b"".join(b"\x00" + pixels[y * width * 3:(y + 1) * width * 3] for y in range(height))
+    note = f"SYNTHETIC {method}".encode("latin-1")
+    image = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0))
+    image += chunk(b"tEXt", b"Description\x00" + note)
+    image += chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b"")
+    destination.write_bytes(image)
+    return destination
+
+
+def _heat(value: float, low: float, high: float) -> tuple[int, int, int]:
+    span = high - low or 1.0
+    mix = max(0.0, min(1.0, (value - low) / span))
+    return int(255 - 180 * mix), int(245 - 160 * mix), int(230 - 40 * mix)
+
+
+def assumption_heatmap(payload: dict, destination: Path, *, method: str) -> Path:
+    """One aggregation method. Rows are dependency assumptions and columns are attacks."""
+    if payload.get("evidence_label") != "SYNTHETIC":
+        raise ValueError("dependency assumption heatmap is synthetic only")
+    text = destination.as_posix().lower()
+    if "empirical" in text or "/results" in text:
+        raise ValueError("synthetic figure cannot be written to an empirical result directory")
+    rows = [row["assumption"] for row in payload["scenarios"]]
+    columns = list(payload["attacks"])
+    cells = [cell for cell in payload["cells"] if cell["aggregation_method"] == method]
+    if not cells:
+        raise ValueError("heatmap data is empty")
+    values = [cell["validation_loss"] for cell in cells]
+    low, high = min(values), max(values)
+    labels = {"independent": "Independent verifiers", "correlated_semantic_evidence": "Semantic + evidence correlated",
+              "fully_correlated": "Fully correlated", "clean": "Clean", "forced_support": "Forced support",
+              "forced_rejection": "Forced rejection", "confidence_inflation": "Confidence inflation",
+              "full_minimax": "Full joint minimax", "fixed_reputation_weighted": "Fixed reputation-weighted",
+              "fixed_dependency_group": "Fixed dependency-group"}
+    if destination.suffix.lower() == ".png":
+        width, height = 980, 420
+        canvas = bytearray(b"\xff" * (width * height * 3))
+        header = {"full_minimax": (27, 79, 114), "fixed_reputation_weighted": (185, 119, 14), "fixed_dependency_group": (25, 111, 61)}
+        def paint(x0, y0, x1, y1, color):
+            for y in range(max(0, y0), min(height, y1)):
+                for x in range(max(0, x0), min(width, x1)):
+                    offset = (y * width + x) * 3
+                    canvas[offset:offset + 3] = bytes(color)
+        paint(0, 0, width, 36, header.get(method, (27, 79, 114)))
+        for row_index, assumption in enumerate(rows):
+            for column, attack in enumerate(columns):
+                cell = next(item for item in cells if item["dependency_assumption"] == assumption and item["attack_condition"] == attack)
+                paint(250 + column * 170, 80 + row_index * 90, 400 + column * 170, 150 + row_index * 90, _heat(cell["validation_loss"], low, high))
+        return _png(destination, width, height, bytes(canvas), method=method)
+    width, height = 980, 460
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+             '<rect width="100%" height="100%" fill="white"/>',
+             f'<text x="24" y="28" font-size="18">Synthetic dependency robustness ({_escape(labels.get(method, method))})</text>',
+             '<text x="24" y="50" font-size="12">Rows are dependency assumptions. Columns are attack conditions. Cells are validation loss. SYNTHETIC fixture, not measured dependence.</text>',
+             '<text x="430" y="78" font-size="13">Attack condition</text>',
+             '<text x="18" y="230" font-size="13" transform="rotate(-90 18 230)">Dependency assumption</text>']
+    for column, attack in enumerate(columns):
+        parts.append(f'<text x="{250 + column * 170}" y="100" font-size="12">{_escape(labels.get(attack, attack))}</text>')
+    for row_index, assumption in enumerate(rows):
+        parts.append(f'<text x="36" y="{150 + row_index * 90}" font-size="12">{_escape(labels.get(assumption, assumption))}</text>')
+        for column, attack in enumerate(columns):
+            cell = next(item for item in cells if item["dependency_assumption"] == assumption and item["attack_condition"] == attack)
+            red, green, blue = _heat(cell["validation_loss"], low, high)
+            x, y = 250 + column * 170, 112 + row_index * 90
+            parts.append(f'<rect x="{x}" y="{y}" width="150" height="64" fill="rgb({red},{green},{blue})" stroke="#1b4f72"/>')
+            parts.append(f'<text x="{x + 10}" y="{y + 28}" font-size="16">{cell["validation_loss"]:.3f}</text>')
+            parts.append(f'<text x="{x + 10}" y="{y + 48}" font-size="11">worst of {len(cell["group_losses"])} group(s)</text>')
+    parts.append('<text x="24" y="420" font-size="12">Validation loss is the game mean loss: decision loss plus 0.1 times estimated attempt cost. A cell with several groups uses the worst group.</text>')
+    parts.append('<text x="24" y="442" font-size="12">SYNTHETIC. One hand-built example. This does not estimate Development robustness.</text>')
+    parts.append("</svg>")
+    return _write(destination, "".join(parts), evidence_label="SYNTHETIC")
+
+
+def attack_stratified_plot(rows: list[dict], destination: Path) -> Path:
+    assert_figure_destination(rows, destination)
+    summaries = [row for row in method_metrics(rows) if row["status"] == "available"]
+    label = rows[0]["evidence_label"]
+    conditions = sorted({row["attack_condition"] for row in summaries})
+    width, height = 880, 420
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+             '<rect width="100%" height="100%" fill="white"/>',
+             f'<text x="24" y="28" font-size="18">Attack-stratified validation loss ({_escape(label)})</text>',
+             '<text x="24" y="50" font-size="12">Each bar is mean validation loss. Suppression is shown only when a row records that attack.</text>']
+    values = [row["validation_loss"] for row in summaries if row["validation_loss"] is not None]
+    scale = max(values) if values else 1
+    for index, condition in enumerate(conditions):
+        for method_index, method in enumerate(METHODS):
+            row = next((item for item in summaries if item["attack_condition"] == condition and item["aggregation_method"] == method), None)
+            value = 0 if row is None or row["validation_loss"] is None else row["validation_loss"]
+            bar_height = 0 if not scale else 180 * value / scale
+            x = 70 + index * 150 + method_index * 28
+            y = 280 - bar_height
+            parts.append(f'<rect x="{x}" y="{y:.1f}" width="24" height="{bar_height:.1f}" fill="{COLORS[method]}"/>')
+        parts.append(f'<text x="{70 + index * 150}" y="310" font-size="11">{_escape(condition)}</text>')
+    for index, method in enumerate(METHODS):
+        parts.append(f'<rect x="24" y="{340 + index * 20}" width="14" height="14" fill="{COLORS[method]}"/>')
+        parts.append(f'<text x="44" y="{352 + index * 20}" font-size="12">{_escape(METHOD_LABELS[method])}</text>')
     parts.append("</svg>")
     return _write(destination, "".join(parts), evidence_label=label)

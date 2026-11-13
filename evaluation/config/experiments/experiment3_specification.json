@@ -87,6 +87,22 @@
     "evidence_label_required": "EMPIRICAL"
   },
   "pending_approval": ["loss_weights", "resource_coefficient", "decision_threshold", "budget", "attack_suppression", "bootstrap_resamples", "confidence_level", "bootstrap_seed", "sample_size_justification", "dependency_configuration", "evidence_corpus"],
+  "proposed_settings_not_approved": {
+    "source": "evaluation/config/experiments/experiment3_settings_proposal.json",
+    "status": "PROPOSED_PENDING_APPROVAL",
+    "false_acceptance_loss": 1.0,
+    "false_rejection_loss": 1.0,
+    "uncertainty_loss": 0.2,
+    "decision_threshold": 0.55,
+    "suppression_mode": "unavailable",
+    "bootstrap_resamples": 2000,
+    "confidence_level": 0.95,
+    "bootstrap_seed": 20261113,
+    "sample": "all 372 approved Development groups",
+    "resource_coefficient": null,
+    "verifier_budget": null,
+    "these_values_are_not_approved_settings": true
+  },
   "synthetic_fixture": {
     "path": "evaluation/experiments/experiment3/synthetic/",
     "evidence_label": "SYNTHETIC",

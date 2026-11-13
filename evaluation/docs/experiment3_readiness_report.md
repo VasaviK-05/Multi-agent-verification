@@ -1,12 +1,12 @@
 # Experiment 3 readiness report
 
-Empirical Experiment 3 was not run. Final Test labels were not opened. The working-tree corpus matches the recorded LF bytes. The corpus is not approved or frozen. Collection is not authorized. This chat is not a research-lead approval.
+Empirical Experiment 3 was not run. Final Test labels were not opened. The working-tree corpus matches the recorded LF bytes. The corpus is not approved or frozen. Collection is not authorized. This chat is not a research-lead approval. On 2026-11-13 the collection gate returned `READY_FOR_APPROVAL` and `collection_started` false.
 
 ## Current status
 
 `assess()` returns `READY_FOR_APPROVAL`. `protocol_complete` is true. Analysis blockers are the pending statistical settings and the absent empirical result rows. Empirical recordings are 0, costs are unavailable, and Person 3 observations are 0. Development collection is not authorized.
 
-`tests/test_experiment3_prerequisites.py` and `tests/test_experiment3_visualizations.py`: 25 passed. The tests check that a missing approval, a wrong artifact hash, a proposal used as an approval, a freeze without a signed record, and a collection authorization without protocol and corpus approval all stay blocked. They also check that a Final Test path is refused and that a synthetic recording cannot satisfy the empirical requirement.
+`evaluation/tests/test_experiment3_execution_gate.py`, `tests/test_experiment3_prerequisites.py`, `tests/test_experiment3_visualizations.py`, and `tests/test_research_readiness.py`: 45 passed. `tests/test_experiment3_synthetic.py` cannot be collected. `app.game.dependencies` does not define `controlled_two_group_registry`, `shared_unknown_registry`, or `CONTROLLED_SYNTHETIC_ASSUMPTION`, and the preserved runner bytecode cannot be executed. The existing `synthetic/results.json` was not overwritten.
 
 ## Proposed settings
 
@@ -47,7 +47,7 @@ No paired failure recording exists. The decision package does not claim measured
 
 These files require an approver role, a date, the artifact identifier, the artifact SHA-256, a decision, a scope, and conditions. None of those identities or dates is filled.
 
-1. `evaluation/config/experiments/approvals/experiment3_protocol_approval_record.json` — specification `c5710213a59ca4bab38c86f84e329072523c2f9bb5e4c56d5df35ec51ea1dc17`.
+1. `evaluation/config/experiments/approvals/experiment3_protocol_approval_record.json` — specification `f64b47cfe206548c57f60d48ebf2404dacce65b46ed05e4210fe68fb8250f529`.
 2. `evaluation/config/experiments/approvals/experiment3_corpus_approval_record.json` — corpus `f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b`.
 3. `evaluation/config/experiments/approvals/experiment3_dependency_approval_record.json` — dependency configuration `39d94f453f199c51d9a387c71d4f6fe2bf8cbe6bd63c5cac1267d79a1a8f0a34`.
 4. `evaluation/config/experiments/approvals/experiment3_collection_authorization_record.json` — collection configuration `089b99427a8a02b92ad03d98e2a88a525850484d3d90b8079aeca29538294811`.

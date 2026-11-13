@@ -40,6 +40,7 @@ def validate_rows(rows: list[dict]) -> None:
             raise ValueError(f"result row is missing {missing}")
         if row["aggregation_method"] not in METHODS:
             raise ValueError("unknown aggregation method")
+        _result_class_conflict(row)
 
 
 def binary_correctness(row: dict) -> str | None:
@@ -236,6 +237,87 @@ def paired_loss_differences(rows: list[dict], *, resamples=None, confidence_leve
             "statistical_interval_available": interval["lower"] is not None,
         })
     return results
+
+
+def _result_class_conflict(row: dict) -> None:
+    kind = row.get("result_class")
+    if kind in {"SYNTHETIC", "HYPOTHETICAL"} and row.get("evidence_label") == "EMPIRICAL":
+        raise ValueError("synthetic or hypothetical rows cannot be labeled empirical")
+    if kind == "EMPIRICAL" and row.get("evidence_label") != "EMPIRICAL":
+        raise ValueError("empirical result class requires an empirical evidence label")
+
+
+def method_metrics(rows: list[dict]) -> list[dict]:
+    """Matched rates. Unresolved labels and failed executions stay out of the rates."""
+    validate_rows(rows)
+    buckets: dict[tuple, list[dict]] = defaultdict(list)
+    for row in rows:
+        _result_class_conflict(row)
+        buckets[(row["benchmark"], row["attack_condition"], row["aggregation_method"], row["dependency_model"])].append(row)
+    summaries = []
+    for key in sorted(buckets):
+        chosen = buckets[key]
+        analyzable = [row for row in chosen if _analyzable(row)]
+        classified = [label for label in (binary_correctness(row) for row in chosen) if label is not None]
+        covered = list(classified)
+        errors = [label for label in covered if label.startswith("false_")]
+        negative = classified.count("false_acceptance") + classified.count("correct_rejection")
+        positive = classified.count("false_rejection") + classified.count("correct_acceptance")
+        costs = []
+        for row in analyzable:
+            for item in row.get("verifier_costs") or []:
+                if isinstance(item, dict) and item.get("cost") is not None:
+                    costs.append(float(item["cost"]))
+        decisions = [row.get("decision") for row in chosen if row.get("execution_status") == "complete"]
+        frequencies: dict[str, list[float]] = defaultdict(list)
+        for row in analyzable:
+            recorded = row.get("aggregation_frequencies")
+            if isinstance(recorded, dict):
+                for name, value in recorded.items():
+                    frequencies[name].append(float(value))
+        summaries.append({
+            "benchmark": key[0],
+            "attack_condition": key[1],
+            "aggregation_method": key[2],
+            "dependency_model": key[3],
+            "evidence_label": rows[0]["evidence_label"],
+            "result_class": chosen[0].get("result_class"),
+            "rows": len(chosen),
+            "analyzable_rows": len(analyzable),
+            "validation_loss": _mean([row["validation_loss"] for row in analyzable]),
+            "coverage": _mean([float(row["coverage"]) for row in analyzable]),
+            "uncertainty_rate": _mean([float(row["uncertainty"]) for row in analyzable]),
+            "classified_decisions": len(classified),
+            "correct_acceptance_count": classified.count("correct_acceptance"),
+            "correct_rejection_count": classified.count("correct_rejection"),
+            "false_acceptance_count": classified.count("false_acceptance"),
+            "false_rejection_count": classified.count("false_rejection"),
+            "false_acceptance_rate": None if negative == 0 else classified.count("false_acceptance") / negative,
+            "false_rejection_rate": None if positive == 0 else classified.count("false_rejection") / positive,
+            "selective_risk": None if not covered else len(errors) / len(covered),
+            "execution_failures": sum(row.get("execution_status") != "complete" for row in chosen),
+            "unresolved_or_unauthorized": sum(row.get("gold_label") in {None, "UNRESOLVED", "UNAUTHORIZED"} for row in chosen),
+            "mean_recorded_attempt_cost": _mean(costs),
+            "uncertain_decision_count": decisions.count("uncertain"),
+            "aggregation_frequencies": {name: _mean(values) for name, values in sorted(frequencies.items())} or None,
+            "status": "available" if analyzable else "unavailable",
+            "imputed": 0,
+        })
+    return summaries
+
+
+def coverage_risk_points(rows: list[dict]) -> list[dict]:
+    return [{
+        "aggregation_method": row["aggregation_method"],
+        "attack_condition": row["attack_condition"],
+        "benchmark": row["benchmark"],
+        "dependency_model": row["dependency_model"],
+        "evidence_label": row["evidence_label"],
+        "coverage": row["coverage"],
+        "selective_risk": row["selective_risk"],
+        "sample_size": row["classified_decisions"],
+        "status": "available" if row["selective_risk"] is not None else "unavailable",
+    } for row in method_metrics(rows)]
 
 
 def protocol_gaps(spec: dict) -> list[str]:

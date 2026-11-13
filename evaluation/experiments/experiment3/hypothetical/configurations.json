@@ -1,0 +1,33 @@
+{
+  "evidence_class": "HYPOTHETICAL_STRESS_TEST",
+  "approved": false,
+  "measured_dependence": false,
+  "empirical_loss": null,
+  "reason": "No paired verifier-failure recordings exist, and the research lead has not approved these alternatives. Loss cells are not filled.",
+  "configurations": [
+    {
+      "name": "provisional_shared_unknown_v1",
+      "role": "named in the protocol heatmap as the one-group model",
+      "groups": [["semantic", "evidence", "rule", "confidence"]],
+      "limitation": "One failure group cannot separate independent and correlated failures."
+    },
+    {
+      "name": "hypothetical_independent_verifiers",
+      "role": "assumption",
+      "groups": [["semantic"], ["evidence"], ["rule"], ["confidence"]],
+      "limitation": "Not a measured dependency."
+    },
+    {
+      "name": "hypothetical_shared_text_verifiers",
+      "role": "assumption",
+      "groups": [["semantic", "evidence"], ["rule"], ["confidence"]],
+      "limitation": "Not a measured dependency."
+    }
+  ],
+  "recorded_unapproved_configuration_file": {
+    "name": "structural_shared_resource_v1",
+    "path": "evaluation/config/experiments/experiment3_dependency_configuration.json",
+    "status": "PROVISIONAL",
+    "approved": false
+  }
+}

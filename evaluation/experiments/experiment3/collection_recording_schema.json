@@ -1,0 +1,32 @@
+{
+  "record_type": "experiment3_development_recording_schema_v1",
+  "status": "TEMPLATE_NOT_DATA",
+  "evidence_label_required": "EMPIRICAL",
+  "recordings_included": false,
+  "rows": [],
+  "required_row_fields": [
+    "related_group_id",
+    "benchmark",
+    "attack_condition",
+    "dependency_model",
+    "dependency_scenario",
+    "aggregation_method",
+    "decision",
+    "gold_label",
+    "validation_loss",
+    "coverage",
+    "uncertainty",
+    "verifier_reports",
+    "verifier_costs",
+    "execution_status",
+    "provenance",
+    "configuration_id",
+    "evidence_label"
+  ],
+  "attack_conditions": ["clean", "forced_support", "forced_rejection", "confidence_inflation"],
+  "suppression": "unavailable until an implementation is approved",
+  "aggregation_methods": ["full_minimax", "fixed_reputation_weighted", "fixed_dependency_group"],
+  "prohibited": ["final_test labels", "synthetic fixture rows labeled empirical", "imputed decisions"],
+  "person2_fields_still_unknown": ["model_weight_snapshot_hashes", "prompt_hashes", "hardware", "software_lock", "collection_seed", "cost_unit", "verifier_budget", "timeout_seconds", "retries"],
+  "person3_fields_still_unknown": ["reputation_initialization", "update_rule", "smoothing", "observations", "exported_policy_path"]
+}

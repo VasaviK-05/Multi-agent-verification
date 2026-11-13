@@ -1,0 +1,845 @@
+{
+  "evidence_label": "SYNTHETIC",
+  "empirical_claim": false,
+  "sample": "one hand-built fixture, not the 372 Development groups",
+  "source": "evaluation/experiments/experiment3/synthetic/results.json",
+  "results_file_unchanged": true,
+  "rows": [
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "clean",
+      "members": [],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "forced_support",
+      "members": [
+        "a"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "forced_rejection",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "confidence_inflation",
+      "members": [
+        "a"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "suppression",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "forced_support",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "forced_rejection",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "confidence_inflation",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "suppression",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "clean",
+      "members": [],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "forced_support",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "forced_rejection",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "confidence_inflation",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "suppression",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "forced_support",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "forced_rejection",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "confidence_inflation",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "suppression",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "clean",
+      "members": [],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "forced_support",
+      "members": [
+        "a"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "forced_rejection",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "confidence_inflation",
+      "members": [
+        "a"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "suppression",
+      "members": [
+        "a"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "forced_support",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "forced_rejection",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "confidence_inflation",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "controlled_synthetic_two_group",
+      "aggregation_method": "full_minimax",
+      "attack": "suppression",
+      "members": [
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "clean",
+      "members": [],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 1.2,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "forced_support",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 1.2,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "forced_rejection",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 1.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 1.0,
+      "selective_risk": 1.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 1.2,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "confidence_inflation",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.2,
+      "coverage": 1.0,
+      "uncertainty": 0.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": 0.0,
+      "cost": 2.0,
+      "worst_case_expected_loss": 1.2,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_dependency_group",
+      "attack": "suppression",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 1.2,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "clean",
+      "members": [],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "forced_support",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "forced_rejection",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "confidence_inflation",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "fixed_reputation_weighted",
+      "attack": "suppression",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "full_minimax",
+      "attack": "clean",
+      "members": [],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "full_minimax",
+      "attack": "forced_support",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "full_minimax",
+      "attack": "forced_rejection",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "full_minimax",
+      "attack": "confidence_inflation",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    },
+    {
+      "configuration": "shared_unknown",
+      "aggregation_method": "full_minimax",
+      "attack": "suppression",
+      "members": [
+        "a",
+        "b",
+        "c"
+      ],
+      "loss": 0.4,
+      "coverage": 0.0,
+      "uncertainty": 1.0,
+      "false_acceptance": 0.0,
+      "false_rejection": 0.0,
+      "selective_risk": null,
+      "cost": 2.0,
+      "worst_case_expected_loss": 0.4,
+      "aggregation_selection_frequencies": {
+        "dependency_group": 0.0,
+        "reputation_weighted": 1.0
+      }
+    }
+  ]
+}

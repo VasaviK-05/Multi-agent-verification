@@ -1,0 +1,62 @@
+{
+  "labels_opened": false,
+  "final_test_accessed": false,
+  "corpus_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+  "corpus_sha256_matches": true,
+  "cr_byte_count": 0,
+  "article_count": 1844,
+  "unique_article_ids": 1844,
+  "article_ids_sorted": true,
+  "index_version": "idx-c1dc6980912b",
+  "index_version_matches": true,
+  "index_corpus_sha256_matches": true,
+  "index_file_hashes_match": {
+    "manifest.json": true,
+    "chunks.json": true,
+    "faiss.index": true
+  },
+  "eligibility_body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+  "eligibility_body_matches": true,
+  "eligible_groups_recorded": 372,
+  "eligible_candidates_recorded": 744,
+  "group_assignment_count": 387,
+  "eligible_group_ids": 372,
+  "ineligible_group_ids": 15,
+  "eligible_and_ineligible_overlap": 0,
+  "output_lf_normalized_hashes_match": {
+    "development_eligible.jsonl": true,
+    "development_excluded.jsonl": true,
+    "group_assignments.jsonl": true,
+    "label_validation.jsonl": true,
+    "leakage_audit.json": true
+  },
+  "output_hash_note": "Working-tree JSONL files contain CR bytes. Their LF-normalized SHA-256 matches the manifest. The files were not rewritten.",
+  "output_hashes": {
+    "development_eligible.jsonl": {
+      "present": true,
+      "matches_manifest": false
+    },
+    "development_excluded.jsonl": {
+      "present": true,
+      "matches_manifest": false
+    },
+    "group_assignments.jsonl": {
+      "present": true,
+      "matches_manifest": false
+    },
+    "label_validation.jsonl": {
+      "present": true,
+      "matches_manifest": false
+    },
+    "leakage_audit.json": {
+      "present": true,
+      "matches_manifest": false
+    }
+  },
+  "leakage_clearance": "NOT_CLAIMED",
+  "recorded_corpus_limitation": "The corpus approval template says gold-answer strings remain in reference paragraphs and the corpus is not leakage-free.",
+  "git_commit": "65115a530d2939ecc35b7e214f4b32c3e800fab0",
+  "python": "3.12.1",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "hardware": "UNKNOWN"
+}

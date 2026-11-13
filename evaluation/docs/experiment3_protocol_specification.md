@@ -1,6 +1,6 @@
 # Experiment 3 protocol specification
 
-Status: `PENDING_APPROVAL`. This is not a frozen `ExperimentSpecification`. `specification_id` is null. Collection and the empirical run are not authorized. The synthetic fixture is not this specification's result.
+Status: `PENDING_APPROVAL`. This is not a frozen `ExperimentSpecification`. `specification_id` is null. Collection and the empirical run are not authorized. The synthetic fixture is not this specification's result. Specification SHA-256: `f64b47cfe206548c57f60d48ebf2404dacce65b46ed05e4210fe68fb8250f529`. The protocol approval template cites that hash and remains `NOT_AN_APPROVAL`.
 
 Machine-readable copy: `evaluation/config/experiments/experiment3_specification.json`.
 
@@ -51,7 +51,9 @@ Each ablation is compared with `full_minimax` inside the same `related_group_id`
 
 Each analyzed row keeps `related_group_id`, benchmark, attack condition, dependency model, dependency scenario, aggregation method, decision, gold label, validation loss, coverage, uncertainty, verifier reports, verifier costs, execution status, provenance, and configuration id. The evidence label is `SYNTHETIC` or `EMPIRICAL`. Final Test rows are refused. `UNRESOLVED` gold labels are not binary correctness outcomes.
 
-`PENDING_APPROVAL`: loss weights, resource coefficient, decision threshold, budget, suppression mode, bootstrap resamples, confidence level, bootstrap seed, and the sample-size justification. Those fields stay null in the specification. Recommendations, including the ones left without a number, are in `evaluation/config/experiments/experiment3_settings_proposal.json` and are marked `PROPOSED_PENDING_APPROVAL`. The approval templates under `evaluation/config/experiments/approvals/` are not approvals.
+`PENDING_APPROVAL`: loss weights, resource coefficient, decision threshold, budget, suppression mode, bootstrap resamples, confidence level, bootstrap seed, and the sample-size justification. Those fields stay null in the specification's analysis block. The same file records the proposal under `proposed_settings_not_approved`: false-acceptance loss 1.0, false-rejection loss 1.0, uncertainty loss 0.2, decision threshold 0.55, suppression unavailable, 2,000 bootstrap resamples, confidence 0.95, seed 20261113, and all 372 approved Development groups. Resource coefficient and verifier budget stay null. `these_values_are_not_approved_settings` is true. The approval templates under `evaluation/config/experiments/approvals/` are not approvals.
+
+The heatmap name `provisional_shared_unknown_v1` puts every verifier in one failure group, so it cannot separate independent and correlated failures. The dependency configuration file records a different unapproved model, `structural_shared_resource_v1`. Hypothetical alternatives are stored in `evaluation/experiments/experiment3/hypothetical/configurations.json` with no loss values.
 
 ## Synthetic separation
 
