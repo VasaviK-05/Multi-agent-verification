@@ -261,7 +261,9 @@ def test_training_completeness_reference_and_failed_outcomes(prepared):
     incomplete=changed_training(lambda e:e['attempts'][0].update(state='missing',report_json=None))
     assert any(b['code']=='incomplete_recordings' for b in stage(check(incomplete),'policy_fitting')['blockers'])
     failed=changed_training(lambda e:e['attempts'][0].update(state='failed',report_json=None))
-    assert stage(check(failed),'policy_fitting')['ready']  # Complete terminal failure, not informative success.
+    # Terminal failure is complete, but actual fitting context must still be supplied.
+    assert not any(b['code']=='incomplete_recordings' for b in stage(check(failed),'policy_fitting')['blockers'])
+    assert any(b['code']=='fitting_specification_missing' for b in stage(check(failed),'policy_fitting')['blockers'])
     assert failed.cohort('arithmetic').training.partitions[0].examples[0].attempts[0].state=='failed'
     reference=changed_training(lambda e:e.update(reference='different caller reference'))
     assert any(b['code']=='input_or_label_provenance_mismatch' for b in stage(check(reference),'policy_fitting')['blockers'])
@@ -451,3 +453,34 @@ def test_verified_correct_producer_class_is_not_independent_adjudication(prepare
     m,_=prepared
     changed=mutate(m,lambda d:d['cohorts'][0]['population']['members'][0]['label'].update(producer_protocol='provisional_automated_labeling_v1'))
     assert any(b['code']=='independent_label_review_missing' for b in stage(check(changed),'history_development_collection')['blockers'])
+
+
+def test_actual_prefit_context_required_and_can_pass_without_a_policy(prepared):
+    from app.game.models import PlanningContext
+    from app.game.offline.evaluation import bind_evaluation
+    from app.game.research.specification import PolicyBuildSpecification
+    m,_=prepared;c=m.cohort('arithmetic');old=c.frozen.specification
+    no_policy=mutate(m,lambda d:d['cohorts'][0].update(frozen=None))
+    assert any(b['code']=='fitting_specification_missing' for b in stage(check(no_policy),'policy_fitting')['blockers'])
+    base=PlanningContext.model_validate({**old.context.model_dump(),'clean_coverage_json':None,'reliability_first_json':None})
+    base=bind_evaluation(base,c.training,old.contract,old.attacks)
+    specification=PolicyBuildSpecification.model_validate({**old.model_dump(),'context':base})
+    prefit=mutate(no_policy,lambda d:d['cohorts'][0].update(specification=specification.model_dump()))
+    assert stage(check(prefit),'policy_fitting')['ready'],stage(check(prefit),'policy_fitting')['blockers']
+    assert not stage(check(prefit),'final_test_authorization_review')['ready']
+    assert prefit.protocol_id==m.protocol_id
+    assert prefit.fitting_id('arithmetic')==m.fitting_id('arithmetic')
+    assert stage(check(prefit,auth_for(m)),'policy_fitting')['ready']
+    changed=mutate(prefit,lambda d:d['cohorts'][0]['specification'].update(configuration_version='SYNTHETIC-new-reviewed-input-version'))
+    assert any(b['code']=='fitting_authorization_missing' for b in stage(check(changed,auth_for(prefit)),'policy_fitting')['blockers'])
+
+
+def test_original_fit_approval_survives_only_legitimate_derived_overlays(prepared):
+    from app.game.research.experiment1.prospective.models import fitting_specification
+    m,_=prepared
+    original_input=fitting_specification(m.cohort('arithmetic').frozen.specification)
+    retained=mutate(m,lambda d:d['cohorts'][0].update(specification=original_input.model_dump()))
+    assert retained.fitting_id('arithmetic')==m.fitting_id('arithmetic')
+    assert stage(check(retained,auth_for(m)),'final_test_authorization_review')['ready']
+    with pytest.raises(ValueError,match='fitting specification'):
+        mutate(retained,lambda d:d['cohorts'][0]['specification'].update(configuration_version='different-frozen-input'))

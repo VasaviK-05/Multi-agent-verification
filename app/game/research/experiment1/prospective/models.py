@@ -17,6 +17,7 @@ from app.game.offline.attacks import AttackSpecification
 from app.game.offline.collection import Candidate
 from app.game.offline.records import TrainingManifest
 from app.game.research.experiment1.manifest import AtomicEntry
+from app.game.research.specification import PolicyBuildSpecification
 from app.game.research.__main__ import _object, _nonfinite
 from app.game.resource_provenance import ResourceManifest
 
@@ -172,6 +173,18 @@ class Evidence(FrozenModel):
     record: ReviewedText
 
 
+def fitting_specification(spec):
+    """Recover the approved input without changing any fitted policy/comparison.
+
+    Only the two explicitly derived matrix overlays differ after preparation.
+    Keep the original input for approval; do not authorize a refit of that output.
+    """
+    data = spec.model_dump()
+    data['context']['clean_coverage_json'] = None
+    data['context']['reliability_first_json'] = None
+    return PolicyBuildSpecification.model_validate(data)
+
+
 class Cohort(FrozenModel):
     name: CohortName
     population_kind: Literal['bounded_arithmetic', 'grounded_direct_fact', 'unresolved'] = 'unresolved'
@@ -186,13 +199,18 @@ class Cohort(FrozenModel):
     choices: Choices = Field(default_factory=Choices)
     evidence: tuple[Evidence, ...] = ()
     training: TrainingManifest | None = None
+    specification: PolicyBuildSpecification | None = None
     frozen: AtomicEntry | None = None
 
     @model_validator(mode='after')
     def check(self):
         if len({c.verifier_name for c in self.candidates}) != len(self.candidates):
             raise ValueError('duplicate candidate')
+        if self.specification is not None and self.specification.manifest != self.training:
+            raise ValueError('fitting specification must bind the exact prospective training input')
         if self.frozen is not None:
+            if self.specification is not None and self.specification != fitting_specification(self.frozen.specification):
+                raise ValueError('prepared comparison changed the declared fitting specification')
             if self.frozen.cohort != self.name:
                 raise ValueError('cohort differs from frozen comparison')
             if self.frozen.comparison.full_artifact.policy.policy_id in HISTORICAL_POLICIES:
@@ -249,7 +267,7 @@ class Manifest(FrozenModel):
     def protocol_id(self):
         data = self.model_dump(mode='json')
         for c in data['cohorts']:
-            for field in ('evidence', 'training', 'frozen', 'final_exposure'):
+            for field in ('evidence', 'training', 'specification', 'frozen', 'final_exposure'):
                 c.pop(field)
         return content_id(data)
 
@@ -266,6 +284,7 @@ class Manifest(FrozenModel):
         c = self.cohort(name)
         return content_id(dict(protocol_id=self.protocol_id, cohort=name,
             training_id=c.training.manifest_id if c.training else None,
+            specification_id=(c.specification or fitting_specification(c.frozen.specification)).specification_id if c.specification is not None or c.frozen is not None else None,
             calibration=[e.model_dump(mode='json') for e in c.evidence if e.kind == 'calibration']))
 
     @property

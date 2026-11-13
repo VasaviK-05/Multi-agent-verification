@@ -3,6 +3,7 @@ import hashlib
 
 from app.game.offline.attacks import adapter_incompatibility
 from app.game.research.comparison import validate_frozen
+from app.game.research.readiness import check_readiness
 from app.game.research.experiment1.manifest import reporting_environment
 from app.game.resource_provenance import VerifierResources
 from .models import Manifest, Authorizations, reviewed_record
@@ -69,18 +70,19 @@ def training_issues(c):
     return problems
 
 
-def frozen_issues(manifest, c, actual_commit):
+def specification_issues(manifest, c, actual_commit):
     problems = []
     def add(code, check):
-        problems.append(issue(code, 'game', 'Exact prospective frozen policy/comparison/specification', check))
-    if c.frozen is None:
-        add('frozen_comparison_missing', 'No selection or fitting is performed by readiness/reporting')
+        problems.append(issue(code, 'game', 'Actual bound prospective PolicyBuildSpecification', check))
+    s = c.specification or (c.frozen.specification if c.frozen else None)
+    if s is None:
+        add('fitting_specification_missing', 'captured context and History/resource/contract bindings are required before fitting')
         return problems
-    s, f = c.frozen.specification, c.frozen.comparison
-    try:
-        validate_frozen(s, f, actual_code_revision=actual_commit)
-    except ValueError as exc:
-        add('frozen_comparison_incompatible', str(exc))
+    status = check_readiness(s, actual_code_revision=actual_commit)
+    for blocker in status.blockers:
+        add('fitting_specification_incompatible', blocker)
+    if c.frozen is None and (s.context.clean_coverage_json is not None or s.context.reliability_first_json is not None):
+        add('prepared_context_not_a_new_fit_input', 'provide the original unconstrained bound context, not a refit of an existing prepared policy')
     if s.study_id != manifest.study_id + ':' + c.name:
         add('study_lineage_mismatch', 'new prospective study/cohort identity')
     required = ('arithmetic',) if c.name == 'arithmetic' else ('direct_fact',)
@@ -108,6 +110,23 @@ def frozen_issues(manifest, c, actual_commit):
         add('loss_or_threshold_mismatch', '1/1/0.2 and threshold 0.55')
     if (x.budget, loss.resource_weight, x.cost_units, dict(x.attempt_costs), k.failure_contract, k.history_prior_alpha, k.history_prior_beta, s.optimizer_tolerance) != (choices.budget, choices.resource_coefficient, choices.cost_units, dict(choices.attempt_costs or ()), choices.failure_contract, choices.history_prior_alpha, choices.history_prior_beta, choices.optimizer_tolerance):
         add('objective_or_cost_contract_mismatch', 'frozen common budget/cost/priors/failure/tolerance')
+    if manifest.statistics is None or (s.uncertainty.resamples, s.uncertainty.seed, s.uncertainty.confidence_level) != (manifest.statistics.resamples, manifest.statistics.seed, .95):
+        add('statistical_design_mismatch', 'explicit prospective paired 95% design')
+    return problems
+
+
+def frozen_issues(manifest, c, actual_commit):
+    problems = []
+    def add(code, check):
+        problems.append(issue(code, 'game', 'Exact prospective frozen policy/comparison/specification', check))
+    if c.frozen is None:
+        add('frozen_comparison_missing', 'No selection or fitting is performed by readiness/reporting')
+        return problems
+    s, f, choices = c.frozen.specification, c.frozen.comparison, c.choices
+    try:
+        validate_frozen(s, f, actual_code_revision=actual_commit)
+    except ValueError as exc:
+        add('frozen_comparison_incompatible', str(exc))
     matrix = f.full_artifact.policy.matrix
     if matrix.clean_coverage is None or matrix.clean_coverage.minimum != choices.development_coverage_floor:
         add('development_coverage_mismatch', 'floor constrains Development, never guaranteed on held-out data')
@@ -117,8 +136,6 @@ def frozen_issues(manifest, c, actual_commit):
             add('objective_mismatch', 'validation first, then declared attempt cost tie-break')
     elif reliability is not None:
         add('objective_mismatch', 'cost-inclusive objective cannot be relabelled validation-first')
-    if manifest.statistics is None or (s.uncertainty.resamples, s.uncertainty.seed, s.uncertainty.confidence_level) != (manifest.statistics.resamples, manifest.statistics.seed, .95):
-        add('statistical_design_mismatch', 'explicit prospective paired 95% design')
     return problems
 
 
@@ -183,6 +200,7 @@ def readiness(manifest, *, actual_commit, actual_source_fingerprint, authorizati
         if c.training is not None and c.training.evidence_kind != manifest.evidence_kind:
             fitting.append(issue('evidence_kind_mismatch', 'data', 'Consistent empirical or synthetic evidence kind', 'synthetic fixtures cannot authenticate empirical studies'))
         fitting.extend(training_issues(c))
+        fitting.extend(specification_issues(manifest, c, actual_commit))
         final_review = list(fitting) + frozen_issues(manifest, c, actual_commit)
         if c.final_exposure != 'untouched_reserved':
             final_review.append(issue('final_exposure_unverified', 'data', 'Independent untouched-Final-Test exposure attestation', 'known Development overlap or unknown exposure is not a new held-out population'))

@@ -37,7 +37,7 @@ Three identities deliberately have different lifecycles:
 
 1. `collection_id(cohort)` binds study/cohort, exact executable source, outcome-free population (all split and excluded identities), resources, captured candidate capabilities/prerequisites and input/reference contract. Fitting-only numerical decisions can remain unresolved while raw recording prerequisites are reviewed.
 2. `protocol_id` additionally freezes all scientific choices, dependency/attack definitions and statistical design. It excludes later reports/policies, exposure attestations and review records so they can be attached without circular approvals.
-3. `fitting_id(cohort)` binds the protocol plus the exact TrainingManifest and calibration evidence. Changing reports, labels or calibration invalidates a stale fitting approval. `manifest_id` binds the entire assembled scientific package including frozen distributions and evidence.
+3. `fitting_id(cohort)` binds the protocol plus the exact TrainingManifest, actual captured PolicyBuildSpecification and calibration evidence. Changing reports, labels, captured inputs or calibration invalidates a stale fitting approval. The original unconstrained input specification remains authoritative after freezing: only explicitly derived clean-coverage/reliability matrix overlays are removed when linking a prepared comparison back to that approved input. Legitimate preparation does not require a new fitting approval or authorize a refit; any other specification change fails the link. `manifest_id` binds the entire assembled scientific package including frozen distributions and evidence.
 
 External collection approval targets collection ID; protocol approval targets protocol ID; fitting approval targets fitting ID. A `FinalRelease` must name exact manifest ID, cohort, reservation ID, payload SHA-256, authority and decision record. Readiness inspects release metadata only. `report_final` verifies all upstream gates **before invoking** the caller's payload loader, then verifies exact bytes, typed reservation, labels/reference provenance, complete recording roster and observed resources before replay.
 
@@ -83,7 +83,7 @@ Stages, independently reported per cohort:
 
 1. **Protocol review:** structurally valid draft and explicit unresolved decisions; not scientific approval.
 2. **History/Development collection:** exact source, reviewed populations/labels/task support/input/reference/resources/collector and scoped collection authorization. Does not require a policy, budget, floor or loss optimization first.
-3. **Policy fitting:** additionally actual complete training inputs, calibration, all scientific decisions, protocol and exact fitting-input approval. No solver is called by readiness; a later legitimate solve may still be infeasible.
+3. **Policy fitting:** additionally actual complete training inputs, an actual captured and bound `PolicyBuildSpecification`, calibration, all scientific decisions, protocol and exact fitting-input approval. A readiness checker does not synthesize a PlanningContext from a roster; the context must pass existing History/resource/requirement checks. Before a new fit it must be the unconstrained bound context, not an existing prepared policy context. No solver is called by readiness; a later legitimate solve may still be infeasible.
 4. **Final Test authorization review:** additionally exact new frozen policy/baselines/statistics and independent outcome-free custody with explicit `untouched_reserved` exposure status. Unknown or previously exposed populations fail closed. No outcomes or scoring permission implied.
 5. **Final Test scoring:** additionally external exact-manifest/reservation/payload release. Readiness remains outcome-free.
 
@@ -94,7 +94,7 @@ Current real status: protocol/interface review can proceed. Collection, fitting,
 
 ## Validation and completion boundary
 
-The final focused prospective suite passed **45 tests**. The combined regression run passed **187 tests**, including **146 existing** game/research/reporting/input/coverage/reliability/flexible-team/Evidence tests and 41 overlapping prospective cases. After the final custody/exposure and producer-label guards, the 45-case prospective suite passed again. This covers **191 distinct final cases**; overlapping runs are not added together. Exact timings, preservation checks and limitations are in `validation.json`.
+The final focused prospective suite passed **47 tests**. The combined regression run passed **187 tests**, including **146 existing** game/research/reporting/input/coverage/reliability/flexible-team/Evidence tests and 41 overlapping prospective cases. After the final custody/exposure, producer-label and actual fitting-input guards, the 47-case prospective suite passed again. This covers **193 distinct final cases**; overlapping runs are not added together. Exact timings, preservation checks and limitations are in `validation.json`.
 
 The initial sparse test checkout omitted the unchanged root `database.py` import shim; adding it to the sparse checkout resolved that import without a database change. An existing synthetic adapter fixture omitted the explicitly required nullable `resource_relocation_binding`; only that one game-owned test-fixture field was added. No production schema, collector, verifier, API, runtime or database file changed.
 
