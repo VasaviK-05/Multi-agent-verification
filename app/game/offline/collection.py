@@ -18,6 +18,7 @@ from app.game.offline.calibration import Text, MeasurementSetup, MeasurementInpu
 from app.game.offline.records import Attempt, Example, Partition, TrainingManifest, FinalTestReservation, ReservedExample
 from app.game.offline.replay import category_id
 from app.game.offline.timing import TimedVerifier
+from app.game.offline.input_contract import QuestionText
 from app.game.resource_provenance import ResourceManifest
 from app.models.schemas import VerificationResult
 from app.selection.capabilities import CapabilityDescriptor, BUILTIN_CAPABILITIES, prerequisite_status
@@ -54,7 +55,7 @@ class PreparationExample(FrozenModel):
     dataset_id: Text
     role: Literal['history', 'development']
     purpose: Literal['warmup', 'calibration']
-    question: Text
+    question: QuestionText
     answer: str
     reference: str | None
     analysis: QuestionAnalysis
@@ -460,9 +461,9 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
                 timing_status=measurements[0]['status'] if measurements else None,
                 measurement=measured, after_resources_json=None if post is None else post.model_dump_json(),
                 returned_payload_json=payload, achieved_capabilities=achieved, issues=tuple(issues))
-            results.append(result)
             if sink is not None:
                 sink(result)
+            results.append(result)
     return RecordingBundle(request=request, observed_setup=setup, attempts=tuple(results))
 
 

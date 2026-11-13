@@ -6,6 +6,9 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from app.game.offline.file_journal import (AttemptJournal, atomic_write_text,
+    create_run_directory, read_jsonl, recovery_state)
+
 from app.game.models import PlanningContext
 from app.game.offline.calibration import read_json
 from app.game.offline.collection import (RecordingRequest, RecordingBundle, CollectedAttempt,
@@ -23,9 +26,8 @@ def load_bundle(path):
     rows = []
     journal = path / 'attempts.jsonl'
     if journal.exists():
-        for line in journal.read_text(encoding='utf-8').splitlines():
-            if line.strip():
-                rows.append(CollectedAttempt.model_validate_json(line))
+        for row in read_jsonl(journal):
+            rows.append(CollectedAttempt.model_validate(row))
     return RecordingBundle(request=request, observed_setup=setup, attempts=tuple(rows))
 
 
@@ -66,11 +68,7 @@ def main(argv=None):
             if args.resume_from is not None:
                 prior=load_bundle(args.resume_from)
                 if prior.request!=request:raise ValueError('resume request identity changed')
-                ledger=args.resume_from/'started.jsonl'
-                if not ledger.exists():raise ValueError('no start ledger: cannot safely infer unattempted work')
-                started={json.loads(line)['attempt_id'] for line in ledger.read_text(encoding='utf-8').splitlines() if line.strip()}
-                recorded={a.attempt_id for a in prior.attempts if a.executed}
-                if started-recorded:raise ValueError('in-flight attempt lacks completion; do not retry: '+str(sorted(started-recorded)))
+                recovery_state(args.resume_from)
             if args.command == 'validate':
                 print(json.dumps(dict(valid=True, request_id=request.request_id,
                     intended_use=request.intended_use, examples=len(request.examples),
@@ -79,9 +77,9 @@ def main(argv=None):
                 return 0
             if args.output_dir is None:
                 raise ValueError('collect requires --output-dir (new directory)')
-            args.output_dir.mkdir(parents=True, exist_ok=False)
+            create_run_directory(args.output_dir)
             destination = args.output_dir
-            (destination / 'request.json').write_text(request.model_dump_json(indent=2), encoding='utf-8')
+            atomic_write_text(destination / 'request.json', request.model_dump_json(indent=2), replace=False)
             module, separator, function = request.factory.partition(':')
             if not separator or not module or not function:
                 raise ValueError('factory must be module:function')
@@ -94,24 +92,26 @@ def main(argv=None):
                 if setup is None or prior.observed_setup!=MeasurementSetup.model_validate(setup):
                     raise ValueError('resume resource/setup fingerprint changed')
             observer = loaded[2] if len(loaded) == 3 else None
-            (destination / 'observed-setup.json').write_text(
+            atomic_write_text(destination / 'observed-setup.json',
                 'null' if setup is None else json.dumps(setup.model_dump(mode='json')
-                    if hasattr(setup, 'model_dump') else setup, indent=2), encoding='utf-8')
-            with (destination / 'attempts.jsonl').open('x', encoding='utf-8') as journal, (destination/'started.jsonl').open('x',encoding='utf-8') as starts:
-                import os
+                    if hasattr(setup, 'model_dump') else setup, indent=2), replace=False)
+            with AttemptJournal(destination) as journal:
                 if prior is not None:
-                    (destination/'resume-provenance.json').write_text(json.dumps(dict(prior_path=str(args.resume_from),prior_bundle_id=prior.bundle_id)),encoding='utf-8')
-                    for a in prior.attempts:
-                        if a.executed:starts.write(json.dumps(dict(attempt_id=a.attempt_id))+'\n')
-                    starts.flush();os.fsync(starts.fileno())
-                def begin(identity):
-                    starts.write(json.dumps(dict(attempt_id=identity))+'\n');starts.flush();os.fsync(starts.fileno())
+                    atomic_write_text(destination / 'resume-provenance.json', json.dumps(dict(
+                        prior_path=str(args.resume_from), prior_bundle_id=prior.bundle_id)), replace=False)
+                    retained = [row for row in prior.attempts
+                                if row.executed or row.attempt.state != 'missing']
+                    for row in retained:
+                        if row.executed:
+                            journal.start(row.attempt_id)
+                        journal.terminal(row.model_dump_json())
+                copied = set() if prior is None else {row.attempt_id for row in retained}
                 def save(row):
-                    journal.write(row.model_dump_json() + '\n')
-                    journal.flush()
+                    if row.attempt_id not in copied:
+                        journal.terminal(row.model_dump_json())
                 bundle = collect(request, list(verifiers), setup, observer, sink=save,
-                    completed=() if prior is None else prior.attempts,on_start=begin)
-            (destination / 'recordings.json').write_text(bundle.model_dump_json(indent=2), encoding='utf-8')
+                    completed=() if prior is None else prior.attempts, on_start=journal.start)
+            atomic_write_text(destination / 'recordings.json', bundle.model_dump_json(indent=2), replace=False)
             report = completeness(bundle)
             report['request_id'], report['bundle_id'] = request.request_id, bundle.bundle_id
             try:
@@ -119,8 +119,8 @@ def main(argv=None):
             except ValueError as exc:
                 report['measurement_export_blocker'] = str(exc)
             else:
-                (destination / 'measurements.json').write_text(measurements.model_dump_json(indent=2), encoding='utf-8')
-            (destination / 'collection-report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+                atomic_write_text(destination / 'measurements.json', measurements.model_dump_json(indent=2), replace=False)
+            atomic_write_text(destination / 'collection-report.json', json.dumps(report, indent=2))
         elif args.command == 'check':
             report = completeness(load_bundle(args.input))
         else:
@@ -128,8 +128,7 @@ def main(argv=None):
                 raise ValueError('export requires --context and --output')
             bundle = load_bundle(args.input)
             manifest = export_training(bundle, PlanningContext.model_validate(read_json(args.context)))
-            with args.output.open('x', encoding='utf-8') as handle:
-                handle.write(manifest.model_dump_json(indent=2))
+            atomic_write_text(args.output, manifest.model_dump_json(indent=2), replace=False)
             report = dict(complete=True, manifest_id=manifest.manifest_id,
                 evidence_kind=manifest.evidence_kind, output=str(args.output), policy_created=False)
         print(json.dumps(report, indent=2))
@@ -140,7 +139,7 @@ def main(argv=None):
         if isinstance(exc, ValidationError):
             report['input_errors'] = exc.errors(include_url=False, include_input=False, include_context=False)
         if destination is not None:
-            (destination / 'collection-report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+            atomic_write_text(destination / 'collection-report.json', json.dumps(report, indent=2))
         print(json.dumps(report, indent=2))
         return 130 if isinstance(exc, KeyboardInterrupt) else 2
 

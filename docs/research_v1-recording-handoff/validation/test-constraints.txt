@@ -1,0 +1,8 @@
+# Isolated Intel macOS Python 3.12 engineering tests only; not production or calibration.
+# torch 2.2.2 is the available Intel Mac wheel; Transformers 5 requires >=2.6.
+# ST 3.4.1 declares torch>=1.11 and transformers>=4.41,<5; use that compatible line.
+# NumPy 1.26.4 matches the torch 2.2.2 NumPy 1.x ABI.
+torch==2.2.2
+numpy==1.26.4
+transformers==4.48.3
+sentence-transformers==3.4.1
