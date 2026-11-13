@@ -1,0 +1,16 @@
+{
+  "record_type": "experiment3_reputation_policy_inputs_v1",
+  "status": "PENDING_PERSON3",
+  "approved": false,
+  "observations_count": 0,
+  "reputation_source": null,
+  "permitted_history": "History partition labels and recorded attempts only, after an approved update rule. Development outcomes are not a reputation source for this experiment.",
+  "initialization": "PENDING_APPROVAL",
+  "update_rule": "PENDING_APPROVAL",
+  "smoothing": "PENDING_APPROVAL",
+  "synthetic_fixture_reputations_are_empirical": false,
+  "policy_fitting_inputs": ["approved eligibility roster", "empirical Development reports", "Person 2 cost measurements", "approved loss and threshold"],
+  "exported_policy_format": "PENDING_APPROVAL",
+  "exported_policy_path": null,
+  "required_provenance": ["source revision", "roster hash", "report digest", "cost-measurement id", "update-rule version"]
+}

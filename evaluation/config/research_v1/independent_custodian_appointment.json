@@ -1,0 +1,23 @@
+{
+  "record_type": "independent_final_test_custodian_appointment_v1",
+  "status": "CUSTODY_VERIFICATION_PENDING",
+  "established": false,
+  "independent_custodian_id": null,
+  "roles": [],
+  "dataset_creator_appointment": "evaluation/config/final_test_v2_custodian_appointment.json",
+  "distinguished_roles": [
+    "dataset_creator",
+    "developer",
+    "researcher",
+    "independent_custodian",
+    "research_lead",
+    "authorized_scorer"
+  ],
+  "identity_verification": "PENDING",
+  "identity_mechanism": "The independent custodian id must be a stable non-secret token different from the dataset-creator appointee. Verification is an external signed statement. A chat claim, this file, and a self-declared boolean are not evidence.",
+  "os_access_control": "PENDING",
+  "signature": null,
+  "approver": null,
+  "approval_date": null,
+  "note": "The preserved designated-creator appointment is not this record. Custody is not established."
+}

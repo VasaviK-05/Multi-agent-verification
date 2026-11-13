@@ -6,7 +6,7 @@
 
 The Development feasibility pilot is recorded as blocked before verifier execution because no adapter configuration was available. It produced no real verifier Attempts and no Offline Examples. Policy fitting remains disabled.
 
-The provisional Final Test (`evaluation/datasets/final_test_research_v1_eval_v1/`, labels in `evaluation/datasets/_custodian/final_test_research_v1_v1/`) is **retired** and permanently forbidden for confirmatory use. Its exact leakage audit passed only against research_v1 History and Development. A content-level audit found 807 of 2,638 groups previously exposed (`final_test_contamination_audit.md`). It also has benchmark-gold candidates only. Its files are preserved unchanged. A mixed-label v2 is planned (`final_test_v2_selection_plan.md`) but not built. The current Experiment 1 status is in `experiment1_readiness_report.md`.
+The provisional Final Test (`evaluation/datasets/final_test_research_v1_eval_v1/`, labels in `evaluation/datasets/_custodian/final_test_research_v1_v1/`) is **retired** and permanently forbidden for confirmatory use. Its exact leakage audit passed only against research_v1 History and Development. A content-level audit found 807 of 2,638 groups previously exposed (`final_test_contamination_audit.md`). It also has benchmark-gold candidates only. Its files are preserved unchanged. Final Test v2 exists as `research_v1_final_test_v2_exploratory_v1` and remains `NOT_AUTHORIZED`. Existence is not authorization. The current Experiment 1 status is in `experiment1_readiness_report.md`. The canonical Development eligibility roster is 372 groups, with HotpotQA 185 after quarantine.
 
 ### Person 1 data readiness (2026-11-11)
 

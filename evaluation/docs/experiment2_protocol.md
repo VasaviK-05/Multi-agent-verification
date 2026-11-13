@@ -1,19 +1,23 @@
-# Experiment 2 protocol proposal
+# Experiment 2 protocol
 
-Status: `PENDING_PERSON2_COSTS_AND_APPROVAL`. Proposal ID `proposal:experiment2:research_protocol_v1`. Budget values are null. There is no frozen specification.
+Status: `PENDING_PERSON2_COSTS_AND_APPROVAL`. Budget values are null. Collection is not authorized.
 
-## Procedure
+## Question and hypothesis
 
-Person 2 measures attempt cost on Development under a declared model, prompt, corpus, hardware, warm-up, timeout, and cost-unit definition. Person 1 does not invent those measurements. From the measurements, the research lead and Person 2 choose about three budgets that change which teams are feasible, then approve them in a new settings record. Each approved budget gets its own fitted and frozen policy. The resource coefficient stays fixed across those budgets. `0.1 / budget` is not the proposal.
+Isolate the contribution of reputation by comparing the same feasible teams with and without reputation weights, at approved budgets. A difference is attributable to reputation only when reports, costs, loss, threshold, attacks, and the roster stay matched.
 
-## Comparison
+## Population
 
-At each budget, compare only feasible matched baselines. Report strategy probabilities, verifier inclusion frequencies, clean and attacked loss, coverage, and estimated cost. A method that cannot meet the contributor minimum and expected coverage is reported infeasible. Guards are not relaxed. A baseline over the budget may be shown only as an unconstrained reference.
+The same approved Development roster as Experiment 1: 372 groups, GSM8K 187, HotpotQA 185. History may supply reputation observations after collection is authorized. Final Test is prohibited. The pre-quarantine HotpotQA count of 200 is not the roster.
 
-## Runtime
+## Conditions
 
-Actual execution cost and latency on a representative live subset belong to Experiment 4 and require Person 2 timing plus a Person 3 policy. They are not substituted for the estimated attempt cost.
+Person 2 measures attempt cost on Development under the declared verifier configuration, including model, prompt, corpus hash, hardware, warm-up, timeout, and cost unit. Those fields are still `UNKNOWN` or null. No coefficient is invented here. About three budgets are chosen only after those measurements exist, in a new settings record. `0.1 / budget` is not the proposal.
 
-## Data
+## Methods
 
-Budget selection uses Development only. Final Test outcomes are not an input. Collection is not authorized.
+At each approved budget, compare feasible matched baselines, including a no-reputation baseline and the reputation-weighted policy. A method that cannot meet the contributor minimum is reported infeasible. Guards are not relaxed.
+
+## Analysis and stop
+
+Report strategy probabilities, verifier inclusion, clean and attacked loss, coverage, and estimated cost. Strategy probabilities are not superiority. Do not run this experiment, and do not score Final Test, until costs exist and collection is authorized.

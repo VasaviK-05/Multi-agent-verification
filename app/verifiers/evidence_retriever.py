@@ -88,7 +88,12 @@ def default_corpus_path() -> str:
         load_dotenv()
     except ImportError:
         pass
-    return os.getenv("EVIDENCE_CORPUS_PATH", DEFAULT_CORPUS_PATH)
+    configured = os.getenv("EVIDENCE_CORPUS_PATH", DEFAULT_CORPUS_PATH)
+    path = Path(configured)
+    nested = path / "corpus.json"
+    if path.is_dir() and nested.is_file():
+        return str(nested)
+    return configured
 
 
 def file_sha256(path: Path) -> str:

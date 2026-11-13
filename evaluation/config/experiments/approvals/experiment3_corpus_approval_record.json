@@ -1,0 +1,27 @@
+{
+  "record_type": "experiment3_corpus_approval_record_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "frozen": false,
+  "freeze_status": "NOT_FROZEN",
+  "approver": null,
+  "approval_date": null,
+  "corpus_identifier": "development_evidence_corpus_v1",
+  "artifact": "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json",
+  "artifact_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+  "index_identifier": "idx-c1dc6980912b",
+  "index_hashes": {
+    "manifest.json": "2a7ce5a45101e26c73bd4a8c3255d4c743166b24e9339f4d8f5fe983a9ab8521",
+    "chunks.json": "1d207b208905a3ce3a85c4c567ecc5cc8b24106d43964ebda046a7da51963bc7",
+    "faiss.index": "037e4923b2c69c86b5f7fb83c8589c6b89ed7fe714d7cbb70581a7700aacb7d8"
+  },
+  "preparation_report": "evaluation/docs/development_evidence_corpus_preparation.md",
+  "provenance_reconciliation": "evaluation/docs/experiment3_corpus_provenance_reconciliation.md",
+  "line_endings": "LF bytes restored. text eol=lf is set for this path.",
+  "article_count": 1844,
+  "limitations": ["One HotpotQA retrieval miss remains.", "Gold-answer strings of length at least 4 occur in 177 reference paragraphs.", "Embedding weight snapshot is UNKNOWN.", "GSM8K does not use this factual corpus.", "The corpus is not leakage-free."],
+  "scope": "Development Evidence corpus identity only. Freeze is a separate decision on this record.",
+  "conditions": ["Freeze requires freeze_status FROZEN, a named approver, and a date. This template has none of those."],
+  "approver_note": "This template is not a research-lead approval."
+}

@@ -19,7 +19,7 @@ Recorded by `evaluation/config/research_dataset.yaml`, `evaluation/datasets/reco
 | Item | Recorded value |
 |---|---|
 | History question groups | 600 (GSM8K 300, HotpotQA 300) |
-| Development question groups | 400 (GSM8K 200, HotpotQA 200) |
+| Development question groups | 400 (GSM8K 200, HotpotQA 200). This is the built research_v1 population. The later approved exploratory eligibility roster is 372 groups, HotpotQA 185, and is a different artifact. |
 | Question groups total | 1,000 |
 | Candidate records | 2,050 |
 | Prepared binary-labelled candidates | 1,179 |

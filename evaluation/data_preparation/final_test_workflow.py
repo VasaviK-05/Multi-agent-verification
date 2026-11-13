@@ -650,6 +650,8 @@ def read_custodian_labels(label_file: Path, authorization_file: Path, access_log
     experiment runners are refused before any label file is opened.
     """
     from evaluation.data_preparation.final_test_custody import DENIED_ROLES, denied_activities, is_appointment, release_block
+    from evaluation.research_readiness.v2_authorization import refuse_sealed_label_without_release
+    refuse_sealed_label_without_release(label_file)
     if not person.strip() or not purpose.strip():
         raise PermissionError("Named person and evaluation purpose are required")
     if role in DENIED_ROLES:

@@ -1,8 +1,10 @@
 # Experiment 1 readiness report
 
-Experiment 1: clean and attacked performance against strong baselines (`research_objective.md` § Experiment 1). Assessed 2026-11-11 on branch `raunak-research-evaluation`.
+Correction, 2026-11-13: the approved exploratory eligibility roster is 372 groups, GSM8K 187 and HotpotQA 185, after 15 groups were quarantined. The HotpotQA 200 / 200 figure below is the pre-quarantine snapshot. It is not the canonical roster. Final Test v2 exists and stays `NOT_AUTHORIZED`.
 
-**Overall: Experiment 1 cannot start.** The pipeline code is ready and tested on synthetic Development data, but no real verifier recordings exist and no valid Final Test exists. Most scientific settings also still await human approval.
+Experiment 1: clean and attacked performance against strong baselines (`research_objective.md` § Experiment 1). Assessed 2026-11-11.
+
+**Overall: Experiment 1 cannot start.** The pipeline code is ready and tested on synthetic Development data, but no real verifier recordings exist. Final Test v2 exists and is not authorized for scoring. Most scientific settings also still await human approval.
 
 Status values used here:
 - **COMPLETED:** implemented and verified in this repository.

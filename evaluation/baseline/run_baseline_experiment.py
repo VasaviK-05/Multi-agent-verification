@@ -327,6 +327,10 @@ def main() -> None:
         help="Run a deterministic smoke subset. 5 selects 2 FEVER, 2 GSM8K, and 1 HotpotQA examples.",
     )
     args = parser.parse_args()
+    from evaluation.research_readiness.v2_authorization import CustodyAuthorizationError, is_sealed_label_path
+    dataset_text = str(args.dataset).replace("\\", "/")
+    if is_sealed_label_path(args.dataset) or "final_test_research_v1_v2" in dataset_text:
+        raise CustodyAuthorizationError("Final Test v2 cannot be used as a baseline dataset.")
     rows = load_rows(args.dataset)
     items = list(iter_dataset(rows))
     skipped = [

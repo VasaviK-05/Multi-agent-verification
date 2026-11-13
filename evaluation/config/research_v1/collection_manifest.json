@@ -1,0 +1,22 @@
+{
+  "record_type": "research_v1_collection_manifest_v1",
+  "status": "PENDING_AUTHORIZATION",
+  "approved": false,
+  "collection_authorized": false,
+  "approver": null,
+  "approval_date": null,
+  "partitions_requested": ["history", "development"],
+  "partition_prohibited": ["final_test"],
+  "eligibility_manifest": "research_v1_exploratory_eligibility_approved_v1",
+  "eligibility_manifest_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+  "dataset_version": "research_v1_exploratory_v1",
+  "verifier_config": "evaluation/config/research_v1/verifier_config.json",
+  "resource_config": "evaluation/config/research_v1/resource_config.json",
+  "environment_manifest": "evaluation/config/research_v1/environment_manifest.json",
+  "recording_schema": ["attempt_id", "related_group_id", "question_id", "benchmark", "partition", "verifier_name", "configuration_hash", "corpus_sha256", "index_id", "decision", "task_support", "execution_status", "latency_ms", "estimated_cost", "failure_reason", "evidence_label"],
+  "cost_unit": "UNKNOWN",
+  "timeout_policy": "Use the verifier config timeout when it is set. A missing timeout stays null and must be approved before collection.",
+  "failure_handling": "Record the failure. Do not impute a decision.",
+  "synthetic_fixture_is_not_a_recording": true,
+  "research_recordings_present": false
+}

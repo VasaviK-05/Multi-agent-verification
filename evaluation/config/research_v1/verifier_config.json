@@ -1,0 +1,57 @@
+{
+  "record_type": "research_v1_verifier_config_v1",
+  "status": "DECLARED_PENDING_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "task_compatibility_module": "app/verifiers/task_compatibility.py",
+  "verifiers": {
+    "semantic": {
+      "implementation": "app.verifiers.semantic_verifier.SemanticVerifier",
+      "source_sha256": "c72cf7a6f34a66d16e36e360286ab6085000e1594e86dd1e124480aa43086bd8",
+      "embedding_model": "all-MiniLM-L6-v2",
+      "model_weight_snapshot_hash": "UNKNOWN",
+      "reference_required": true,
+      "score_meaning": "Cosine similarity. Not factual correctness.",
+      "support_threshold": 0.5,
+      "reject_threshold": 0.3,
+      "thresholds_calibrated": false
+    },
+    "evidence": {
+      "implementation": "app.verifiers.evidence_verifier.EvidenceVerifier",
+      "source_sha256": "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c",
+      "nli_model": "cross-encoder/nli-deberta-v3-small",
+      "embedding_model": "all-MiniLM-L6-v2",
+      "model_weight_snapshot_hash": "UNKNOWN",
+      "min_retrieval_score": 0.45,
+      "relevance_gate_cosine": 0.78,
+      "min_nli_score": 0.5,
+      "chunk_size_words": 500,
+      "prompt_identity": "question text only for template claims; claim text is not added to the first retrieval query",
+      "prompt_hash": "UNKNOWN",
+      "insufficient_evidence_decision": "UNSURE"
+    },
+    "rule": {
+      "implementation": "app.verifiers.rule_verifier.RuleVerifier",
+      "source_sha256": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715",
+      "model": null,
+      "rule_version_hash": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715",
+      "capabilities": ["arithmetic_addition", "arithmetic_subtraction", "arithmetic_multiplication", "arithmetic_division", "greater_than", "less_than", "equality", "adult_status", "format_validity"],
+      "gsm8k_word_problems": "UNSUPPORTED",
+      "unsupported_decision": "UNSURE"
+    },
+    "confidence": {
+      "implementation": "app.verifiers.confidence_verifier.ConfidenceVerifier",
+      "source_sha256": "e05617149ea32f4f6136cc9ac8512296075acd285005d7d99670e4ab750ed94f",
+      "generator_model": "llama3.2:3b",
+      "generator_model_digest": "UNKNOWN",
+      "research_collection_generator": "UNKNOWN",
+      "prompt_sha256": "4dbe792282a6f23c12621441fed52b72b9c94a6cd0d8fdfd015d9878a00ef9f7",
+      "samples": 5,
+      "temperature": 0.8,
+      "timeout_seconds": 60,
+      "score_meaning": "Agreement fraction. Not correctness.",
+      "ollama_url": "http://localhost:11434/api/generate"
+    }
+  }
+}

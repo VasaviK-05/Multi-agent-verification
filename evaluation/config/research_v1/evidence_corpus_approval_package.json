@@ -1,0 +1,23 @@
+{
+  "record_type": "research_v1_evidence_corpus_approval_package_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "frozen": false,
+  "freeze_status": "NOT_FROZEN",
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json",
+  "artifact_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+  "index_id": "idx-c1dc6980912b",
+  "preparation_report": "evaluation/docs/development_evidence_corpus_preparation.md",
+  "provenance_report": "evaluation/docs/experiment3_corpus_provenance_reconciliation.md",
+  "suitability_report": "evaluation/docs/evidence_corpus_readiness.md",
+  "limitations": [
+    "19 of 185 HotpotQA questions have a retrieved supporting title at cosine >= 0.78.",
+    "One HotpotQA question is a retrieval miss.",
+    "FEVER evidence was not included.",
+    "GSM8K does not use this corpus.",
+    "Embedding weight hash is UNKNOWN."
+  ]
+}

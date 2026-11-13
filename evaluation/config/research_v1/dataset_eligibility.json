@@ -1,0 +1,20 @@
+{
+  "record_type": "research_v1_dataset_eligibility_pointer_v1",
+  "status": "POINTS_AT_EXISTING_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "note": "This file is not a second approval. The approval is the eligibility manifest it cites.",
+  "eligibility_manifest": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+  "eligibility_manifest_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+  "eligible_candidates": 744,
+  "eligible_groups": 372,
+  "gsm8k_verified_correct": 187,
+  "gsm8k_synthetic_incorrect": 187,
+  "hotpotqa_verified_correct": 185,
+  "hotpotqa_synthetic_incorrect": 185,
+  "quarantined_shared_context_groups": 15,
+  "pre_quarantine_hotpotqa_groups": 200,
+  "collection_authorized": false,
+  "final_test_authorized": false
+}

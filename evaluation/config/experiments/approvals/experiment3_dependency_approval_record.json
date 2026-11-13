@@ -1,0 +1,17 @@
+{
+  "record_type": "experiment3_dependency_approval_record_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/config/experiments/experiment3_dependency_configuration.json",
+  "artifact_sha256": "c7dc14f867bedd8345184869fa8c10f7fabb554d843ed44df4d8606e993d7c2d",
+  "decision_package": "evaluation/config/experiments/experiment3_dependency_decision.json",
+  "scope": "Dependency model used for Experiment 3. Approval of the provisional model is not a measured-dependence claim.",
+  "conditions": [
+    "Empirical heatmap rows require a later recorded alternative or an explicitly labeled hypothetical stress test."
+  ],
+  "limitations": "Groups follow shared models, not measured correlations. No paired failure recordings exist.",
+  "approver_note": "This template is not a research-lead approval."
+}

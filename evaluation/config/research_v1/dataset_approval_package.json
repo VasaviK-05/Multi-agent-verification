@@ -1,0 +1,21 @@
+{
+  "record_type": "research_v1_dataset_approval_package_v1",
+  "status": "PENDING",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "scope": "Broader dataset approval beyond the existing Development eligibility decision.",
+  "already_approved": {
+    "artifact": "research_v1_exploratory_eligibility_approved_v1",
+    "scope": "Development eligibility only",
+    "body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d"
+  },
+  "decisions_still_required": [
+    "Approve GSM8K and HotpotQA as the benchmark population.",
+    "Decide whether FEVER and MultiNLI remain out of scope.",
+    "Accept provisional synthetic incorrect labels or require adjudication.",
+    "Authorize collection separately."
+  ],
+  "conditions": ["UNRESOLVED stays unresolved. This package does not adjudicate candidates."]
+}

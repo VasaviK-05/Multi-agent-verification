@@ -1,0 +1,37 @@
+{
+  "record_type": "experiment3_dependency_decision_v1",
+  "status": "PROPOSED_PENDING_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "empirical_evidence": "none",
+  "declared_model": {
+    "configuration_version": "structural_shared_resource_v1",
+    "path": "evaluation/config/experiments/experiment3_dependency_configuration.json",
+    "structure": "Rule stands alone. Semantic and evidence share the embedding model. Evidence and confidence share the NLI model. Confidence also depends on an unpinned generator.",
+    "what_it_supports": "A primary aggregation ablation, plus a labeled stress test of shared-resource failure. It is not a measured correlation.",
+    "what_it_cannot_support": "An empirical claim that failures are independent or correlated. No paired failure recordings exist."
+  },
+  "alternatives": [
+    {
+      "name": "hypothetical_independent_verifiers",
+      "evidence_class": "HYPOTHETICAL_STRESS_TEST",
+      "assumption": "Each verifier is its own dependency group.",
+      "conclusion_limit": "A loss change shows sensitivity to that assumption. It is not a measured dependence."
+    },
+    {
+      "name": "hypothetical_shared_text_verifiers",
+      "evidence_class": "HYPOTHETICAL_STRESS_TEST",
+      "assumption": "Semantic and evidence share one group because both use text. Rule and confidence remain separate. This follows a shared-input hypothesis, not a failure correlation.",
+      "conclusion_limit": "Useful only as a labeled stress test. It must not be described as an empirical dependency."
+    },
+    {
+      "name": "controlled_synthetic_two_group",
+      "evidence_class": "SYNTHETIC",
+      "assumption": "The existing synthetic fixture splits verifiers into two groups.",
+      "conclusion_limit": "It checks the scoring code. It is not an alternative for the empirical heatmap."
+    }
+  ],
+  "recommendation": "Use the structural shared-resource groups for the aggregation ablation. Keep every heatmap cell that needs a measured correlation marked not estimable until paired failure recordings exist. Hypothetical rows stay labeled HYPOTHETICAL_STRESS_TEST.",
+  "measured_dependence_claim": false
+}

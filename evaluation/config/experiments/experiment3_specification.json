@@ -1,0 +1,109 @@
+{
+  "specification_id": null,
+  "record_type": "experiment3_protocol_specification_v1",
+  "status": "PENDING_APPROVAL",
+  "approved": false,
+  "frozen": false,
+  "approver": null,
+  "approval_date": null,
+  "collection_authorized": false,
+  "empirical_run_authorized": false,
+  "final_test_authorized": false,
+  "dataset_version_for_development": "research_v1_exploratory_v1",
+  "eligibility_manifest": "research_v1_exploratory_eligibility_approved_v1",
+  "eligibility_manifest_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+  "prohibited_partitions": ["final_test"],
+  "research_questions": {
+    "aggregation": "Effect of aggregation strategy while verifier reports and the other controlled inputs stay fixed.",
+    "dependency": "Effect of the declared dependency structure on attack targets and decisions."
+  },
+  "comparison_methods": ["full_minimax", "fixed_reputation_weighted", "fixed_dependency_group"],
+  "controlled_variables": ["question_groups", "verifier_reports", "reputation_inputs", "verifier_cost_measurements", "loss_function", "coverage_and_decision_threshold", "attack_scenarios", "budget"],
+  "experimental_variables": ["aggregation_policy", "dependency_configuration"],
+  "outcomes": ["correct_acceptance", "correct_rejection", "false_acceptance", "false_rejection", "coverage", "uncertainty", "selective_risk", "validation_loss", "estimated_attempt_cost", "unresolved_cases", "execution_failures", "aggregation_frequencies", "verifier_inclusion_frequencies"],
+  "analysis": {
+    "design": "paired comparison on related_group_id",
+    "aggregation": "report by benchmark and attack",
+    "pairing_keys": ["related_group_id", "attack_condition"],
+    "paired_contrast": "ablation_validation_loss_minus_full_minimax",
+    "paired_procedure": "Resample related_group_id with replacement and recompute the mean of the paired differences inside the drawn groups. Do not compare independent method means.",
+    "uncertainty_method": "PENDING_APPROVAL",
+    "bootstrap_resamples": null,
+    "confidence_level": null,
+    "bootstrap_seed": null,
+    "sample_size_justification": "PENDING_APPROVAL",
+    "eligible_group_count_operational": 372,
+    "power_calculation": null,
+    "missing_data": "Unresolved labels stay excluded from binary correctness. Execution failures are reported and are not imputed as correct or incorrect. A pair missing either full_minimax or the ablation method is excluded from the mean and counted.",
+    "strategy_probabilities": "Aggregation frequencies are descriptive. They are not evidence that one aggregation is superior."
+  },
+  "result_schema": {
+    "required_fields": ["related_group_id", "benchmark", "attack_condition", "dependency_model", "dependency_scenario", "aggregation_method", "decision", "gold_label", "validation_loss", "coverage", "uncertainty", "verifier_reports", "verifier_costs", "execution_status", "provenance", "configuration_id", "evidence_label"],
+    "binary_correctness": "Computed only for an authorized Development gold label and a passed or failed decision. UNRESOLVED is excluded.",
+    "prohibited_partitions": ["final_test"]
+  },
+  "visualizations": {
+    "aggregation_ablation_grouped_bars": {
+      "methods": ["full_minimax", "fixed_reputation_weighted", "fixed_dependency_group"],
+      "panels": ["validation_loss", "coverage"],
+      "grouping": ["attack_condition", "benchmark"],
+      "uncertainty_intervals": "only when the paired bootstrap settings are approved"
+    },
+    "dependency_robustness_heatmap": {
+      "columns": ["independent_failures", "correlated_failures"],
+      "rows": ["declared_dependency_model", "alternative_dependency_assumption"],
+      "cell_value": "validation_loss",
+      "aggregation_held_fixed": true,
+      "declared_model": "provisional_shared_unknown_v1",
+      "alternative_models_recorded": false,
+      "heatmap_estimable": false,
+      "not_estimable_reason": "Only the provisional shared-unknown model is declared for empirical comparison. The synthetic two-group registry is not an empirical alternative.",
+      "limited_discrimination_when_one_group": true
+    },
+    "paired_ablation_effect_difference": {
+      "reference": "full_minimax",
+      "contrast": "ablation_validation_loss_minus_full_minimax",
+      "positive_means": "worse loss than the full game",
+      "zero_means": "identical loss",
+      "interval": "paired bootstrap of related_group_id",
+      "zero_reference_line": true
+    }
+  },
+  "plot_configuration": {
+    "module": "evaluation/analysis/visualization/experiment3.py",
+    "format": "svg",
+    "empirical_output_directory": null,
+    "synthetic_figures_are_empirical": false,
+    "synthetic_empirical_separation": "Synthetic figures stay out of empirical result directories and carry evidence_label SYNTHETIC."
+  },
+  "dependency_scenarios": {
+    "columns": ["independent_failures", "correlated_failures"],
+    "declared_model": "provisional_shared_unknown_v1",
+    "alternative_models_recorded": false,
+    "heatmap_estimable": false
+  },
+  "empirical_results": {
+    "path": null,
+    "evidence_label_required": "EMPIRICAL"
+  },
+  "pending_approval": ["loss_weights", "resource_coefficient", "decision_threshold", "budget", "attack_suppression", "bootstrap_resamples", "confidence_level", "bootstrap_seed", "sample_size_justification", "dependency_configuration", "evidence_corpus"],
+  "synthetic_fixture": {
+    "path": "evaluation/experiments/experiment3/synthetic/",
+    "evidence_label": "SYNTHETIC",
+    "satisfies_empirical_recording_requirement": false
+  },
+  "settings_record": "evaluation/config/research_settings_proposal_v1.json",
+  "settings_proposal": "evaluation/config/experiments/experiment3_settings_proposal.json",
+  "research_configuration": {
+    "verifier_config": "evaluation/config/research_v1/verifier_config.json",
+    "resource_config": "evaluation/config/research_v1/resource_config.json",
+    "environment_manifest": "evaluation/config/research_v1/environment_manifest.json",
+    "note": "Pointers only. These files are not approved settings."
+  },
+  "approval_records": {
+    "protocol": "evaluation/config/experiments/approvals/experiment3_protocol_approval_record.json",
+    "corpus": "evaluation/config/experiments/approvals/experiment3_corpus_approval_record.json",
+    "dependency": "evaluation/config/experiments/approvals/experiment3_dependency_approval_record.json",
+    "collection": "evaluation/config/experiments/approvals/experiment3_collection_authorization_record.json"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "record_type": "research_v1_collection_authorization_package_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_AUTHORIZED",
+  "approved": false,
+  "collection_authorized": false,
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/config/research_v1/collection_manifest.json",
+  "scope": "History and Development collection. Not Final Test scoring.",
+  "conditions": [
+    "Protocol, corpus, and dependency approvals must be signed first.",
+    "Person 2 must replace UNKNOWN model, prompt, hardware, seed, timeout, and cost fields.",
+    "Eligibility approval does not authorize collection."
+  ]
+}

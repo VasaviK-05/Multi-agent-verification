@@ -1,0 +1,49 @@
+{
+  "record_type": "experiment3_dependency_configuration_v1",
+  "configuration_version": "structural_shared_resource_v1",
+  "status": "PROVISIONAL",
+  "approved": false,
+  "empirical_evidence": "none",
+  "measured_dependence_claim": false,
+  "unknown_treatment": "structural_shared_resource",
+  "verifiers": ["semantic", "evidence", "rule", "confidence"],
+  "groups": [
+    {
+      "group_id": "deterministic_rule",
+      "members": ["rule"],
+      "basis": "No model. Failure is pattern coverage, not a shared model outage.",
+      "confidence": "STRUCTURAL",
+      "assumption": "not_a_measured_correlation"
+    },
+    {
+      "group_id": "embedding_minilm",
+      "members": ["semantic", "evidence"],
+      "basis": "Both use all-MiniLM-L6-v2. A bad embedding snapshot affects semantic similarity and evidence retrieval together.",
+      "confidence": "STRUCTURAL",
+      "assumption": "not_a_measured_correlation"
+    },
+    {
+      "group_id": "nli_deberta",
+      "members": ["evidence", "confidence"],
+      "basis": "Evidence NLI and the confidence labeler for non-numeric answers both use cross-encoder/nli-deberta-v3-small.",
+      "confidence": "STRUCTURAL",
+      "assumption": "not_a_measured_correlation"
+    },
+    {
+      "group_id": "ollama_generator",
+      "members": ["confidence"],
+      "basis": "Confidence samples a generator. The research collection hash for that generator is UNKNOWN.",
+      "confidence": "UNKNOWN",
+      "assumption": "not_a_measured_correlation"
+    }
+  ],
+  "unknown_dependencies": ["semantic", "evidence", "rule", "confidence"],
+  "not_an_empirical_claim": true,
+  "replaces": "provisional_shared_unknown_v1 one-group assignment, which could not separate independent and correlated failures.",
+  "synthetic_two_group_registry": {
+    "status": "CONTROLLED_SYNTHETIC_ASSUMPTION",
+    "evidence_label": "SYNTHETIC",
+    "path": "evaluation/experiments/experiment3/synthetic/",
+    "usable_as_empirical_dependency": false
+  }
+}

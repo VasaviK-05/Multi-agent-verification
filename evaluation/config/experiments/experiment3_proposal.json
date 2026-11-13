@@ -5,6 +5,7 @@
   "status": "PENDING_APPROVAL",
   "approved": false,
   "specification_id": null,
+  "prerequisite_specification": "evaluation/config/experiments/experiment3_specification.json",
   "frozen": false,
   "questions": {
     "aggregation_choice": ["full_minimax", "fixed_reputation_weighted", "fixed_dependency_group"],

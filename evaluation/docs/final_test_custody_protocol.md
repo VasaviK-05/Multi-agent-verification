@@ -1,5 +1,23 @@
 # Final Test custody and partition record
 
+## Current seal
+
+Final Test v2 exists and is sealed. `evaluation/scripts/validate_final_test_custody.py` reads manifest metadata and does not open the label file. Status remains `NOT_AUTHORIZED`. Custody remains the dataset creator and is not independent. This document does not appoint an independent custodian and does not authorize release or scoring. Collection scripts must refuse any path or partition that contains `final_test`.
+
+The release template is `evaluation/config/research_v1/final_test_release_authorization_template.json`. It is `NOT_AUTHORIZED`.
+
+## Code enforcement added for independent custody
+
+The designated-creator appointment is unchanged. A separate pending record, `evaluation/config/research_v1/independent_custodian_appointment.json`, cannot establish custody by itself. `evaluation/research_readiness/v2_authorization.py` rejects a custodian id that matches the dataset creator, conflicting roles, unsigned records, hash mismatches, expiry, and revocation. Release and scoring stay separate.
+
+`read_custodian_labels` refuses the sealed v2 label path until a signed release record binds the manifest, label, and roster hashes. `evaluation/scripts/score_final_test_v2.py` is the scoring entry point and refuses before any label read. The baseline runner refuses a dataset path that is the sealed v2 label file. These are application checks. They do not stop a direct filesystem read.
+
+`python -m evaluation.scripts.verify_independent_custody` reports the custody state and whether this account can read the label path. It does not parse labels. `--hash-bytes` hashes the label file in chunks and still records independent verification as `PENDING`. Custody tests:
+
+`python -m pytest evaluation/tests/test_v2_custody_enforcement.py`
+
+An independent person still has to take possession of the label file, deny this developer account read access, and supply a signed identity that is not the dataset creator. Protocol freeze, release, and scoring each remain unsigned.
+
 ## Final Test v2 custody (2026-11-11)
 
 The dataset creator, Raunak, is the designated Final Test custodian for `research_v1_final_test_v2_exploratory_v1`. There is no independent custodian. This appointment does not authorize evaluation or label release.

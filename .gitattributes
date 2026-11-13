@@ -519,3 +519,14 @@ reconciliation/source-review.patch -whitespace
 app/game/offline/reconciled_resources.py -text
 app/game/offline/singleton_compatibility.py -text
 scripts/framework_acceptance.py -text
+
+# Development evidence corpus recorded bytes are LF canonical JSON.
+# text eol=lf overrides core.autocrlf so checkout keeps those SHA-256 values.
+evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/source_manifest.json text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/source_provenance.jsonl text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/coverage_new_corpus.jsonl text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/coverage_articles_13083.jsonl text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/coverage_evidence_corpus_500.jsonl text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/leakage_audit.json text eol=lf
+evaluation/artifacts/person1/development_evidence_corpus_v1/preparation_summary.json text eol=lf

@@ -13,7 +13,7 @@ from app.verifiers import (
 def test_all_verifiers_inherit_base():
     verifiers = [
         SemanticVerifier(),
-        EvidenceVerifier(),
+        EvidenceVerifier(corpus_path="data/test_evidence_corpus.json"),
         RuleVerifier(),
         ConfidenceVerifier(),
     ]

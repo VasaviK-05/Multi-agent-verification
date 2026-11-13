@@ -2,6 +2,8 @@
 
 Status: `PROPOSAL_NOT_APPROVED`. This corpus is a Development coverage resource for the approved exploratory roster. It is not frozen, not a confirmatory result, and not a Final Test corpus. Collection and verifier-attempt recording remain unauthorized. Final Test labels were not opened.
 
+The canonical configured path is the corpus file, not the directory: `evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json`. `data/evidence_corpus.json` and `data/articles_13083.json` are historical corpora.
+
 Corpus version: `development_evidence_corpus_v1`
 
 Directory: `evaluation/artifacts/person1/development_evidence_corpus_v1/`

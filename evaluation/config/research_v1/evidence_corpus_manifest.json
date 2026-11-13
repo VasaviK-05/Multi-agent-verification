@@ -1,0 +1,21 @@
+{
+  "record_type": "research_v1_evidence_corpus_manifest_v1",
+  "status": "PROPOSAL_NOT_APPROVED",
+  "approved": false,
+  "frozen": false,
+  "approver": null,
+  "approval_date": null,
+  "version": "development_evidence_corpus_v1",
+  "path": "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json",
+  "sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+  "articles": 1844,
+  "index_id": "idx-c1dc6980912b",
+  "index_manifest_sha256": "2a7ce5a45101e26c73bd4a8c3255d4c743166b24e9339f4d8f5fe983a9ab8521",
+  "chunks_sha256": "1d207b208905a3ce3a85c4c567ecc5cc8b24106d43964ebda046a7da51963bc7",
+  "faiss_index_sha256": "037e4923b2c69c86b5f7fb83c8589c6b89ed7fe714d7cbb70581a7700aacb7d8",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_weight_snapshot_hash": "UNKNOWN",
+  "chunk_size_words": 500,
+  "source": "HotpotQA reference paragraphs for the 185 eligible Development questions. GSM8K solutions were not added. FEVER sentences were not added.",
+  "rebuild": "evaluation/data_preparation/development_evidence_corpus.py refuses overwrite. Do not instantiate EvidenceRetriever on this corpus; a path or mtime difference rewrites the index manifest."
+}

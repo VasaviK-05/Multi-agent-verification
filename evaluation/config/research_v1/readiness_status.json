@@ -1,0 +1,175 @@
+{
+  "overall_status": "READY_FOR_APPROVAL",
+  "execution_ready": false,
+  "empirically_complete": false,
+  "experiment3_status": "READY_FOR_APPROVAL",
+  "development_collection_authorized": false,
+  "final_test_scoring_authorized": false,
+  "packages_do_not_self_approve": true,
+  "requirements": {
+    "supported_task_populations": {
+      "status": "TECHNICALLY_READY",
+      "approval": "PENDING",
+      "authorization": "NOT_APPLICABLE",
+      "matrix_complete": true
+    },
+    "verifier_resource_configuration": {
+      "status": "READY_FOR_APPROVAL",
+      "approval": "PENDING",
+      "authorization": "NOT_AUTHORIZED",
+      "canonical_corpus_path_is_file": true,
+      "all_verifiers_in_one_failure_group": false,
+      "model_weight_hashes": "UNKNOWN"
+    },
+    "datasets_and_labels": {
+      "status": "READY_FOR_APPROVAL",
+      "approval": "ELIGIBILITY_APPROVED_COLLECTION_NOT_APPROVED",
+      "authorization": "NOT_AUTHORIZED",
+      "blockers": []
+    },
+    "development_evidence_corpus": {
+      "status": "READY_FOR_APPROVAL",
+      "approval": "PENDING",
+      "authorization": "NOT_AUTHORIZED",
+      "blockers": [],
+      "hotpotqa_any_chunk_at_or_above_0_78": 20
+    },
+    "final_test_custody": {
+      "status": "NOT_AUTHORIZED",
+      "approval": "PENDING",
+      "authorization": "NOT_AUTHORIZED",
+      "independent_custody": false,
+      "blockers": []
+    },
+    "scientific_protocols": {
+      "status": "READY_FOR_APPROVAL",
+      "approval": "PENDING",
+      "authorization": "NOT_AUTHORIZED",
+      "experiments": {
+        "experiment1": {
+          "document": "evaluation/docs/experiment1_protocol.md",
+          "status": "PENDING_APPROVAL",
+          "approved": false
+        },
+        "experiment2": {
+          "document": "evaluation/docs/experiment2_protocol.md",
+          "status": "PENDING_PERSON2_COSTS_AND_APPROVAL",
+          "approved": false
+        },
+        "experiment3": {
+          "document": "evaluation/docs/experiment3_protocol.md",
+          "specification": "evaluation/docs/experiment3_protocol_specification.md",
+          "status": "READY_FOR_APPROVAL",
+          "approved": false,
+          "collection_authorized": false
+        },
+        "experiment4": {
+          "document": "evaluation/docs/experiment4_protocol.md",
+          "status": "PENDING_PERSON2_AND_PERSON3",
+          "approved": false
+        }
+      }
+    },
+    "collection_and_scoring": {
+      "status": "NOT_AUTHORIZED",
+      "approval": "PENDING",
+      "authorization": "NOT_AUTHORIZED",
+      "research_recordings_created": false
+    }
+  },
+  "dataset_audit": {
+    "unified": {
+      "history": {
+        "rows": 8000,
+        "benchmarks": {
+          "MultiNLI": 2000,
+          "HotpotQA": 2000,
+          "FEVER": 2000,
+          "GSM8K": 2000
+        }
+      },
+      "development": {
+        "rows": 2000,
+        "benchmarks": {
+          "MultiNLI": 500,
+          "HotpotQA": 500,
+          "GSM8K": 500,
+          "FEVER": 500
+        }
+      },
+      "final_test": {
+        "rows": 2000,
+        "benchmarks": {
+          "GSM8K": 500,
+          "MultiNLI": 500,
+          "HotpotQA": 500,
+          "FEVER": 500
+        }
+      }
+    },
+    "unified_id_overlap": {
+      "history_development": 0,
+      "history_final_test": 0,
+      "development_final_test": 0
+    },
+    "eligibility": {
+      "candidates": 744,
+      "groups": 372,
+      "gsm8k_groups": 187,
+      "hotpotqa_groups": 185,
+      "approval_status": "APPROVED_BY_RESEARCH_LEAD",
+      "collection_authorized": false,
+      "exact_overlap": {
+        "candidate_id": 0,
+        "content_identity": 0,
+        "normalized_question": 0,
+        "question_id": 0,
+        "related_group_id": 0,
+        "source_dataset_id": 0
+      },
+      "semantic_clearance": "NOT_CLAIMED"
+    },
+    "sealed_final_test_id_overlap": 0,
+    "unresolved_policy": "UNRESOLVED labels are not converted to verified labels by this audit.",
+    "blockers": []
+  },
+  "corpus_audit": {
+    "corpus_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+    "hotpotqa_any_chunk_at_or_above_0_78": 20,
+    "hotpotqa_questions": 185,
+    "gsm8k_questions": 187,
+    "retrieval_status_counts": {
+      "not_applicable_arithmetic_no_external_evidence_required": 187,
+      "supporting_title_retrieved": 184,
+      "retrieval_miss_no_supporting_title_in_top_k": 1
+    },
+    "fever_in_canonical_source": false,
+    "blockers": []
+  },
+  "final_test_metadata": {
+    "metadata": {
+      "dataset_version": "research_v1_final_test_v2_exploratory_v1",
+      "partition": "final_test",
+      "status": "NOT_AUTHORIZED",
+      "enabled": false,
+      "group_count": 600,
+      "candidate_count": 1200,
+      "evaluation_authorization": "PENDING",
+      "label_release": "NOT_AUTHORIZED",
+      "confirmatory_use": "NOT_AUTHORIZED",
+      "custody_status": "DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR",
+      "custody_independence": "NOT_INDEPENDENT",
+      "human_approval": "DEFERRED",
+      "human_adjudication": "DEFERRED",
+      "human_verified_labels": 0,
+      "retired_final_test_reused": false,
+      "manifest_sha256": "e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee"
+    },
+    "label_file_opened": false,
+    "label_file_sha256_recorded": true,
+    "exposure_passed": true,
+    "exposure_overlapping_groups": 0,
+    "leakage_passed": true,
+    "blockers": []
+  }
+}

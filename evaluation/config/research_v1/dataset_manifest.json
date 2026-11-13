@@ -1,0 +1,33 @@
+{
+  "record_type": "research_v1_dataset_manifest_v1",
+  "status": "CITATION_NOT_A_NEW_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "unified_counts": {"history": 8000, "development": 2000, "final_test": 2000},
+  "unified_benchmarks": ["FEVER", "GSM8K", "HotpotQA", "MultiNLI"],
+  "research_populations": ["GSM8K", "HotpotQA"],
+  "not_research_populations": ["FEVER", "MultiNLI"],
+  "research_v1_built_development_groups": {"GSM8K": 200, "HotpotQA": 200, "note": "The built research_v1 population before exploratory quarantine. Not the approved eligibility roster."},
+  "canonical_eligibility": {
+    "manifest": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+    "body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+    "approval_status": "APPROVED_BY_RESEARCH_LEAD",
+    "candidates": 744,
+    "groups": 372,
+    "gsm8k_groups": 187,
+    "hotpotqa_groups": 185,
+    "collection_authorized": false
+  },
+  "provenance_aware_subset_v1": {
+    "questions_per_benchmark": 100,
+    "candidates_per_benchmark": 200,
+    "history_questions": 80,
+    "development_questions": 20,
+    "combined_verified_correct": 191,
+    "combined_verified_incorrect": 0,
+    "combined_unresolved": 209,
+    "role": "Earlier subset. Not the canonical roster."
+  },
+  "unresolved_policy": "Do not convert UNRESOLVED or synthetic borrowed answers into verified labels without a recorded validation basis."
+}

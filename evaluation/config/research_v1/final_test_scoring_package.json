@@ -1,0 +1,15 @@
+{
+  "record_type": "research_v1_final_test_scoring_package_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_AUTHORIZED",
+  "approved": false,
+  "scoring_authorized": false,
+  "label_release": "NOT_AUTHORIZED",
+  "approver": null,
+  "approval_date": null,
+  "separate_from": "evaluation/config/research_v1/collection_authorization_package.json",
+  "manifest": "evaluation/datasets/final_test_research_v1_eval_v2/manifest.json",
+  "manifest_sha256": "e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee",
+  "procedure_when_authorized": "Score only after label release. Report false acceptance, false rejection, coverage, and abstention. Do not use the scores to change the protocol.",
+  "current_procedure": "Refuse scoring."
+}
