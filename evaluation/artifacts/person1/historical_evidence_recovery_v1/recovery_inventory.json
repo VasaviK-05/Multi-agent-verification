@@ -1,0 +1,117 @@
+{
+  "record_type": "historical_evidence_recovery_v1",
+  "final_test_labels_opened": false,
+  "development_evidence_corpus_preserved": "evaluation/artifacts/person1/development_evidence_corpus_v1",
+  "development_evidence_corpus_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+  "development_evidence_corpus_status": "PROPOSAL_NOT_APPROVED",
+  "twelve_output_files": {
+    "inventory": "evaluation/artifacts/person1/historical_evidence_recovery_v1/twelve_original_files_inventory.json",
+    "status": "ORIGINAL_VERIFIED_IN_PLACE",
+    "count": 12
+  },
+  "source_files_recomputed": {
+    "count": 15,
+    "status": "ORIGINAL_VERIFIED_IN_PLACE",
+    "note": "These are the manifest source_sha256 inputs. They are not the 12 output files."
+  },
+  "artifacts": [
+    {
+      "artifact": "twelve_research_v1_output_files",
+      "category": "dataset_outputs",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "cohort": "research_v1",
+      "custody_status": "LOCAL_WORKING_TREE",
+      "authorization_status": "NOT_A_FINAL_TEST_AUTHORIZATION",
+      "unresolved": "Git history does not contain the blobs. Provenance is the 2026-11-02 manifest hash."
+    },
+    {
+      "artifact": "execution_source_custody_zip",
+      "category": "execution_custody",
+      "status": "NOT_RECOVERABLE_FROM_AVAILABLE_EVIDENCE",
+      "original_filename": null,
+      "custody_status": "NOT_FOUND",
+      "authorization_status": "NOT_FOUND",
+      "found_instead": "Gitignored dataset archives listed under custody_archives. None is named or documented as an execution-source custody ZIP. No RECOVERY_ARCHIVE was created.",
+      "unresolved": "Verifier attempt records for research_v1 remain 0. No execution log bundle was identified."
+    },
+    {
+      "artifact": "evaluation/datasets/reconciled_candidates/research_v1.zip",
+      "category": "dataset_archive",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "sha256": "3b04d48494f63e3b6087fd05c3256dd2f436a431070fa3f5eb1e668907b8d807",
+      "bytes": 5367650,
+      "zip_integrity": "testzip returned no bad member",
+      "members_match_seven_reconciled_output_hashes": true,
+      "provenance": "Working tree only. Not a git blob. Not an execution-source custody ZIP."
+    },
+    {
+      "artifact": "evaluation/datasets/offline_examples/research_v1.zip",
+      "category": "dataset_archive",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "sha256": "c8a94af66e747ca446b7f678ab98322c307915a2e98440ee8aeef47b48745493",
+      "bytes": 3411901,
+      "zip_integrity": "testzip returned no bad member",
+      "members_match_five_offline_output_hashes": true,
+      "provenance": "Working tree only. Not an execution-source custody ZIP."
+    },
+    {
+      "artifact": "evaluation/datasets/_custodian.zip",
+      "category": "label_custody_archive",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "sha256": "721fe430d9056fc2b4d0fa78591a42e21b0baebd554a10a6a965a0c4245757ee",
+      "bytes": 438079,
+      "entries": 5,
+      "zip_integrity": "testzip returned no bad member",
+      "contents_inventory": "names only; label members were not extracted",
+      "contains_retired_v1_label_member": true,
+      "provenance": "Label custody archive for the retired provisional Final Test. Not opened."
+    },
+    {
+      "artifact": "evaluation/datasets/_custodian (2).zip",
+      "category": "label_custody_archive",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "sha256": "71c59c07fe69cca6920b9c77105245ecc2c9c3bdd3040651974a075a6574f421",
+      "bytes": 625809,
+      "entries": 10,
+      "zip_integrity": "testzip returned no bad member",
+      "contents_inventory": "names only; label members were not extracted",
+      "contains_v1_and_v2_label_members": true,
+      "provenance": "Second label custody archive. Filename is not an original designation in the docs. Not treated as the execution-source ZIP."
+    },
+    {
+      "artifact": "data/articles_13083.json",
+      "category": "evidence_corpus",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "sha256": "b26539d013201a0435884098ae8bd3544342d0a815964bf104b9524808e9bfa8",
+      "index_version": "idx-6d28c9c49dac"
+    },
+    {
+      "artifact": "data/evidence_corpus.json",
+      "category": "evidence_corpus",
+      "status": "ORIGINAL_VERIFIED_IN_PLACE",
+      "sha256": "668b48aa59c758d6e5d082f9d07b9c544730c545ae3af36728e68a0144ec6ec5",
+      "index_version": "idx-9c87422f0357"
+    },
+    {
+      "artifact": "git:data/articles_13083_index",
+      "category": "misnamed_test_index",
+      "status": "ORIGINAL_RECOVERED",
+      "source_commit": "be52b30c65afdd64a39b7e954d0af4ea32741f9a",
+      "recovered_to": "evaluation/artifacts/person1/historical_evidence_recovery_v1/recovered/data/articles_13083_index/",
+      "identity_note": "Manifest points at the test corpus, not the 13083-article file."
+    },
+    {
+      "artifact": "verifier_collection_adapter",
+      "category": "verifier_configuration",
+      "status": "NOT_RECOVERABLE_FROM_AVAILABLE_EVIDENCE",
+      "matrix": "evaluation/artifacts/person1/historical_evidence_recovery_v1/verifier_configuration_recovery.json"
+    },
+    {
+      "artifact": "final_test_evaluation_authorization",
+      "category": "authorization",
+      "status": "NOT_FOUND",
+      "decision": "NOT_READY_FOR_AUTHORIZATION",
+      "package": "evaluation/artifacts/person1/final_test_authorization_v1/"
+    }
+  ]
+}

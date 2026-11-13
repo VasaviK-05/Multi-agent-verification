@@ -1,0 +1,69 @@
+{
+  "approved": false,
+  "chunk_size": 500,
+  "collection_authorized": false,
+  "corpus_version": "development_evidence_corpus_v1",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "final_test_authorized": false,
+  "frozen": false,
+  "hotpot_release": "hotpotqa/hotpot_qa distractor@1908d6afbbead072334abe2965f91bd2709910ab",
+  "inclusion_rule": "Every non-empty reference paragraph on an eligible HotpotQA Development question is included. Distractors stay. Paragraphs whose hash matches History are excluded. GSM8K solutions are not included. Candidate answers and gold answers are not corpus fields.",
+  "index_version": "idx-c1dc6980912b",
+  "publication_date": "UNKNOWN",
+  "source_roster": "research_v1_exploratory_eligibility_approved_v1",
+  "source_snapshot": "research_v1_exploratory_v1",
+  "status": "PROPOSAL_NOT_APPROVED",
+  "summary": {
+    "contamination": {
+      "counts": {
+        "articles": 1844,
+        "candidate_answer_shorter_than_4_characters": 185,
+        "corpus_contains_answer_fields": 0,
+        "gold_answer_shorter_than_4_characters": 8,
+        "gold_answer_string_occurs_in_own_reference_paragraph": 177
+      },
+      "method": "casefold_substring_length_at_least_4_against_the_question_own_paragraphs",
+      "questions_checked": 185,
+      "statement": "Answer strings were not copied into corpus fields. A substring hit means the benchmark paragraph already contains that string. Short answers are counted separately and are not treated as field embedding."
+    },
+    "corpus_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+    "corpus_version": "development_evidence_corpus_v1",
+    "eligible_by_benchmark": {
+      "GSM8K": 187,
+      "HotpotQA": 185
+    },
+    "eligible_questions": 372,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "freeze": {
+      "approved": false,
+      "approver": null,
+      "collection_authorized": false,
+      "status": "PROPOSAL_NOT_APPROVED"
+    },
+    "gsm8k_retrieval_status": "not_applicable_arithmetic_no_external_evidence_required",
+    "history_overlap": {
+      "excluded_history_overlap_paragraphs": [],
+      "history_overlap_count": 0
+    },
+    "hotpotqa_existing_retrieval": {
+      "articles_13083": 1,
+      "evidence_corpus_500": 0
+    },
+    "hotpotqa_existing_title_presence": {
+      "articles_13083_all_supporting_titles": 0,
+      "evidence_corpus_500_all_supporting_titles": 0
+    },
+    "hotpotqa_new_corpus": {
+      "all_supporting_titles_present_in_new_corpus": 185,
+      "questions": 185,
+      "supporting_title_retrieved": 184
+    },
+    "index_version": "idx-c1dc6980912b",
+    "new_corpus_articles": 1844,
+    "query": "question text only",
+    "relevance_cosine_gate": 0.78,
+    "top_k": 5
+  },
+  "url_status": "DERIVED_FROM_TITLE_NOT_FETCHED",
+  "web_retrieval_date": null
+}
