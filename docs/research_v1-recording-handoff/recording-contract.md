@@ -1,3 +1,5 @@
+> Historical PR35 document. Current approved-eligibility compatibility and Handoff A: [eligibility-approved-v1/tabmayee-handoff.md](eligibility-approved-v1/tabmayee-handoff.md). Original text below is preserved; original identity is pinned in [historical-identities.json](eligibility-approved-v1/historical-identities.json).
+
 # Proposed complete-candidate Development recording contract
 
 Status: NOT APPROVED; no execution authorization. This is a handoff worksheet, not a substitute runtime schema. Paths below are relative to the repository root. Original engineering base is 4c2a2eb9ea1afd953e44f5194b2cc1a6e9b95a1a plus the uncommitted game-owned changes. Current main compatibility is assessed in final-review.md; the complete engineering-source manifest remains local-only. Original B contract is retained in archive/package-b/.

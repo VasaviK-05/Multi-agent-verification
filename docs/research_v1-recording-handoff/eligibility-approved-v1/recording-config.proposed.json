@@ -1,0 +1,94 @@
+{
+  "version": "research_v1_development_recording_proposal_eligibility_v1",
+  "status": "ELIGIBILITY_APPROVED_RECORDING_PROFILE_NOT_APPROVED",
+  "research_id": "research_v1",
+  "dataset_version": "research_v1_exploratory_v1",
+  "development_eligibility": {
+    "approved": true,
+    "manifest_id": "research_v1_exploratory_eligibility_approved_v1",
+    "manifest_body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+    "manifest_file_sha256": "75087c28f01e566be0572c149a182f5b02872f2973bcb32156bb607ecdac1eaa",
+    "candidate_count": 744,
+    "group_count": 372,
+    "benchmark_candidates": {
+      "GSM8K": 374,
+      "HotpotQA": 370
+    },
+    "benchmark_groups": {
+      "GSM8K": 187,
+      "HotpotQA": 185
+    },
+    "scope_index": "scope.ids.json",
+    "candidate_id_set_sha256": "619986f6d8e2de544151aac05d5aa5a4a25636b02fcb8054ab72a1f5c15ac84e",
+    "group_id_set_sha256": "4f82a13ef8be5d2e24df04dd2ba631b5b93e52b0ae07f813bc3eb3a6b791a961"
+  },
+  "collection_authorized": false,
+  "recording_authorized": false,
+  "fitting_authorized": false,
+  "frozen_protocol": false,
+  "final_test_authorized": false,
+  "label_contract": {
+    "protocol": "provisional_automated_labeling_v1",
+    "human_verified": false,
+    "independent_label_mapping_approved": false,
+    "raw_provenance_required": true,
+    "note": "Eligibility approval preserves automated VERIFIED_CORRECT/SYNTHETIC_INCORRECT classes; it does not turn synthetic transformations into independent ground truth."
+  },
+  "semantic_clearance": "NOT_CLAIMED",
+  "input_contract": "verbatim_question_text_v1",
+  "source_inputs_transformed": false,
+  "candidate_roster": [
+    "confidence",
+    "evidence",
+    "rule",
+    "semantic"
+  ],
+  "adapters": {
+    "confidence": "confidence_v1",
+    "evidence": "evidence_v1",
+    "rule": "rule_v1",
+    "semantic": "semantic_v1"
+  },
+  "capability_and_prerequisite_source": "app/selection/capabilities.py (unchanged)",
+  "reference_profile": {
+    "approved": false,
+    "proposal": "GSM8K null; HotpotQA exact permitted source context with explicitly approved serialization; never gold labels."
+  },
+  "complete_candidate_outcomes": 2976,
+  "conditional_dispatch": {
+    "calls": 2602,
+    "semantic_reference_exclusions": 374,
+    "condition": "All four captured; approved existing prerequisites, null GSM8K reference, valid HotpotQA reference, no other exclusions; not a call authorization."
+  },
+  "expected_setup": null,
+  "live_resources_verified": false,
+  "hard_budget_ms": null,
+  "cost_coefficient_per_ms": null,
+  "calibration": "Historical ms means remain in ../source-resource-summary.json; no portability or policy-budget approval is implied by this roster update.",
+  "planning_and_execution_settings": "Unchanged pending proposals in historical ../recording-config.proposed.json; bind only after separate approval.",
+  "early_termination": false,
+  "team_fallback": false,
+  "policy_selection_during_recording": false,
+  "cache_contract": "complete_team_independent_v1",
+  "recording_schema": "offline_recording_request_v1 (unchanged)",
+  "replay_schema": "Example/Attempt and ExecutionContract (unchanged)",
+  "durability": "Existing game-owned file_journal/collect contract, unchanged; local macOS/APFS validation is not intended-platform certification.",
+  "missing_approved_inputs": [
+    "Exact permitted reference serializer",
+    "Truthful independent-label/automated-label recording contract",
+    "Detached per-question analyzer/requirements/eligibility profile",
+    "Actual reviewed source/setup and live resource custody",
+    "Factory/observer and typed error boundary",
+    "Outcome-free custodian reservation and semantic-risk disposition",
+    "Operational caps/randomness/team-independence and intended filesystem",
+    "Explicit complete-candidate recording/collection authorization"
+  ],
+  "historical_proposal": {
+    "commit": "9c38f4de402d510bb13111da592a4f29abe03a24",
+    "path": "docs/research_v1-recording-handoff/recording-config.proposed.json",
+    "sha256": "bcb82d7f22723b128fdbf2c67422a93094ffcfee04947555a8f499ae4ed73525",
+    "candidate_count": 774,
+    "group_count": 387,
+    "meaning": "Original source population/proposal; not the current approved eligibility scope."
+  }
+}
