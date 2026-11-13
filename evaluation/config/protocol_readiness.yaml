@@ -12,7 +12,7 @@ source_versions:
 candidate_label_policy:
   approved: false
   final_test_policy_recorded: true
-  note: The retired provisional Final Test used benchmark-gold-only candidates. A mixed-label v2 needs approved negative rules (GSM8K gold+1 for Final Test use; no HotpotQA rule yet). Development has no HotpotQA verified-incorrect candidates.
+  note: The retired provisional Final Test used benchmark-gold-only candidates. research_v1 Development has no HotpotQA verified-incorrect candidates. research_v1_exploratory_v1 has synthetic HotpotQA incorrect candidates under provisional_automated_labeling_v1; those are not human-verified and are not an approved eligibility set. Final Test v2 labels are not an approval of this policy.
 label_audit:
   approved: false
   human_adjudication_claimed: false

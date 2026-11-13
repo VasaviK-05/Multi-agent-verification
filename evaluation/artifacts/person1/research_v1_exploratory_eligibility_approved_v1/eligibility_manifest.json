@@ -1,0 +1,80 @@
+{
+  "approval": {
+    "approval_date": "2026-11-13",
+    "approver": "Research Lead",
+    "scope": "Development eligibility for research_v1_exploratory_v1 only",
+    "status": "APPROVED_BY_RESEARCH_LEAD"
+  },
+  "approved": true,
+  "collection_authorized": false,
+  "counts": {
+    "eligible_by_benchmark": {
+      "GSM8K": {
+        "SYNTHETIC_INCORRECT": 187,
+        "VERIFIED_CORRECT": 187
+      },
+      "HotpotQA": {
+        "SYNTHETIC_INCORRECT": 185,
+        "VERIFIED_CORRECT": 185
+      }
+    },
+    "eligible_candidates": 744,
+    "eligible_groups": 372,
+    "excluded_rows": 375,
+    "label_validation": {
+      "passed": 774,
+      "unresolved": 332
+    },
+    "label_validation_failed_groups": 0,
+    "provisionally_paired_groups_before_quarantine": 387,
+    "quarantined_shared_context_groups": 15
+  },
+  "dataset_version": "research_v1_exploratory_v1",
+  "does_not_authorize": [
+    "verifier collection",
+    "attempt recording",
+    "protocol freeze",
+    "Experiment 2 budgets",
+    "Final Test label release",
+    "confirmatory evaluation",
+    "policy fitting"
+  ],
+  "eligibility_manifest_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+  "eligibility_protocol": "paired_binary_group_v1",
+  "eligibility_version": "research_v1_exploratory_eligibility_approved_v1",
+  "exact_overlap": {
+    "candidate_id": 0,
+    "content_identity": 0,
+    "normalized_question": 0,
+    "question_id": 0,
+    "related_group_id": 0,
+    "source_dataset_id": 0
+  },
+  "final_test_authorized": false,
+  "frozen_protocol": false,
+  "generator": "evaluation/data_preparation/exploratory_eligibility_approved.py",
+  "generator_code_revision": "d9fd453afe9bfe601ace8e1d30b80a9e593c8484",
+  "hash_algorithm": "SHA-256",
+  "hash_definition": "SHA-256 of canonical JSON (sorted keys, indent 2, trailing newline) or canonical JSONL. eligibility_manifest_sha256 hashes the manifest body with that field removed. The complete-file SHA-256 of eligibility_manifest.json includes the body-hash field and is stored in eligibility_manifest.file_sha256.txt, not inside the JSON, because a digest stored inside the file would change the file.",
+  "label_protocol": "provisional_automated_labeling_v1",
+  "leakage_protocol": "history_development_overlap_v1",
+  "manifest_id": "research_v1_exploratory_eligibility_approved_v1",
+  "maximum_sequence_ratio": 0.6813186813186813,
+  "not_the_research_v1_roster": "evaluation/datasets/person1/research_v1_person1_v1/development_eligible_candidates.jsonl",
+  "output_sha256": {
+    "development_eligible.jsonl": "7ce9d93faf27a61b8fc810025febc4d375629f525565574b55208569bbd462ea",
+    "development_excluded.jsonl": "9556d19d5c9d86801986a1684913759280468b9767344555bf329d0326887cbf",
+    "group_assignments.jsonl": "8d73ffae8b91e66fce53278f665de6ecfa0ab69a5a51168976a52e231950df73",
+    "label_validation.jsonl": "aa130b41ab312c4f5548e9b0b8a2c97171d8a41643457098a49303030dffee1f",
+    "leakage_audit.json": "4c15def559393a00d84bf9b57efe52637aebead7a6ab20c472fc43433919efd2"
+  },
+  "paragraph_hash_overlap_count": 50,
+  "provisional_audit_preserved": "research_v1_exploratory_eligibility_provisional_v1",
+  "recording_authorized": false,
+  "semantic_clearance": "NOT_CLAIMED",
+  "semantic_findings_at_or_above_threshold": 0,
+  "semantic_protocol": "normalized_token_jaccard_and_sequence_ratio_v1",
+  "source_manifest": "evaluation/datasets/research_v1_exploratory/research_v1_exploratory_v1/manifest.json",
+  "source_manifest_sha256": "5e55dbd17bf968eaa7768819945ab3adfc3b30d850817b859c63015e9db03764",
+  "supporting_fact_overlap_count": 2
+}

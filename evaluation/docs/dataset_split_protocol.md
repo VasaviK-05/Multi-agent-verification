@@ -1,5 +1,13 @@
 # Dataset grouping, splitting, and final-test custody
 
+Partition roles for this protocol, not yet an approved freeze:
+
+- **History** estimates reputation only. It does not select policies or evaluate the Final Test.
+- **Development** is the only partition for eligibility, payoff matrices, fitting, baseline selection, and budget selection.
+- **Final Test** is held out. Final Test v2 identities stay reserved. Custody is designated and not independent. Evaluation authorization and label release stay pending. The retired provisional Final Test is not a held-out set and is not relabelled or reused.
+
+Exact History/Development identity overlap on `research_v1_exploratory_v1` was recomputed for the approved eligibility manifest: group, candidate, question, content identity, normalized question, and source dataset ID overlap are 0. Paragraph-hash overlap is 50, covering 15 History groups and 15 Development groups. None of those pairs share a question ID. They are distinct HotpotQA questions that reuse reference paragraphs. Supporting-fact overlap is 2 (`Magic Dirt` sentence 0; `Tom Clancy` sentence 0), and both Development groups are inside the same 15. Those 15 Development groups, 30 candidates, are quarantined from the approved roster. The semantic audit compares each Development question with same-benchmark History questions using token Jaccard and `difflib.SequenceMatcher` ratio on normalized question text (`normalized_token_jaccard_and_sequence_ratio_v1`; duplicate thresholds 0.80 and 0.85). Zero pairs met either threshold. The maximum sequence ratio was 0.6813. The two pairs at or above 0.65 are HotpotQA comparison templates with different named entities and were adjudicated as not paraphrases. Pairs below the thresholds were not all read, so semantic clearance is `NOT_CLAIMED`. The `research_v1` roster of 478 candidates is a different population. The approved roster is 744 candidates in 372 groups.
+
 ## Partitions
 
 | Partition | Purpose |
@@ -44,7 +52,7 @@ The guidance above predates the current partitions. This section records what no
 - **History/Development disjointness:** 0 shared group IDs, dataset IDs, candidate IDs, raw or normalized questions, source IDs, or cross-partition donors for both benchmarks.
 - **Known shared HotpotQA context (conditional pass):** 25 shared stored context hashes (15 History and 15 Development groups), 14 identical paragraph texts and 14 shared titles (9 groups per side), and 2 shared supporting facts (`Magic Dirt` sentence 0, `Tom Clancy` sentence 0). See `research_v1_group_leakage_audit.md`.
 - **Final Test isolation:** every exact comparison against research_v1 History and Development is 0 and matches the frozen audit. The content-level audit against all exposed files failed (807 groups), and the provisional Final Test is retired; see `final_test_contamination_audit.md`.
-- **Semantic/paraphrase leakage:** not audited for any partition.
+- **Semantic/paraphrase leakage:** not audited for the `research_v1` partitions. The exploratory History/Development audit is recorded in `research_v1_exploratory_eligibility_approved_v1` and does not claim semantic clearance.
 
 ### Canonical Development identity
 

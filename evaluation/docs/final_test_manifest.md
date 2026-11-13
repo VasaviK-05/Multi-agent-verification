@@ -10,9 +10,9 @@ The partition passed hash, composition and exact-leakage validation, but only ag
 - Directories: `evaluation/datasets/final_test_research_v1_eval_v2/` and `_custodian/final_test_research_v1_v2/`.
 - 600 fresh groups, each with one VERIFIED_CORRECT and one SYNTHETIC_INCORRECT candidate.
 - 0 overlap with this retired set or any exposed file.
-- NOT_AUTHORIZED, with custody PENDING and human approval DEFERRED.
+- NOT_AUTHORIZED. Custody is `DESIGNATED_CUSTODIAN_IS_DATASET_CREATOR` (the dataset creator, not an independent custodian). Evaluation authorization is `PENDING`. Label release is `NOT_AUTHORIZED`. Protocol freeze is `PENDING`. Human approval is `DEFERRED`. Designated custody is not evaluation authorization.
 
-Details are in `exploratory_dataset_and_final_test_v2.md`. This retired set was not reused.
+Details are in `exploratory_dataset_and_final_test_v2.md`. This retired set was not reused. The approved exploratory Development eligibility manifest is not a Final Test manifest and does not release these labels.
 
 The older `evaluation/datasets/unified/final_test.json` (2,000 rows) and `processed/final_test.json` (1,000 rows) are exposed development artifacts and are not this partition.
 

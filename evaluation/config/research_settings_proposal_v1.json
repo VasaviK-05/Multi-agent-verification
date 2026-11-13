@@ -1,0 +1,135 @@
+{
+  "record_type": "research_settings_proposal_v1",
+  "record_status": "PROPOSAL_ONLY",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "scope": "Experiments 1-4. Applies to neither confirmatory Final Test evaluation nor collection authorization.",
+  "experiment_version": "research_protocol_proposal_v1",
+  "note": "Person 1 records these as proposals. A setting becomes approved only when an approver and date are added in a new version of this record. No value below is approved.",
+  "settings": [
+    {
+      "parameter": "research_claim",
+      "status": "PROPOSED",
+      "proposed_value": "Evaluate whether joint verifier-team and aggregation selection provides a useful verification-loss, coverage, and cost tradeoff under declared resource limits and report-corruption scenarios.",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "Working claim. It asks for a tradeoff evaluation and does not assert superiority."
+    },
+    {
+      "parameter": "primary_estimand",
+      "status": "PROPOSED",
+      "proposed_value": "worst_case_expected_cost_augmented_validation_loss",
+      "supporting_value": "worst_case_expected_decision_only_validation_loss",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "The implemented worst_case_expected_loss is the maximum over attacks of Metrics.mean_loss, which includes resource_weight times estimated attempt cost. Decision-only loss remains a required supporting outcome via Metrics.validation_loss. The resource coefficient itself is not proposed as a number until Person 2 costs exist."
+    },
+    {
+      "parameter": "loss_weights",
+      "status": "PROPOSED",
+      "proposed_value": {"false_accept": 1.0, "false_reject": 1.0, "uncertain": 0.2},
+      "approver": null,
+      "approval_date": null,
+      "rationale": "Uncalibrated pilot proposal already in research_objective.md. Not a fitted or approved penalty."
+    },
+    {
+      "parameter": "resource_coefficient",
+      "status": "PENDING",
+      "proposed_value": null,
+      "approver": null,
+      "approval_date": null,
+      "rationale": "The pilot value 0.1/budget changes with the budget and is not usable for Experiment 2. A fixed coefficient on one cost scale is required. No coefficient is invented here."
+    },
+    {
+      "parameter": "decision_threshold",
+      "status": "PROPOSED",
+      "proposed_value": 0.55,
+      "approver": null,
+      "approval_date": null,
+      "rationale": "DecisionEngine default on an uncalibrated signed score. Implementation default, not an approved freeze."
+    },
+    {
+      "parameter": "minimum_contributors",
+      "status": "PROPOSED",
+      "proposed_value": "selector difficulty defaults: easy and medium at least 2, hard uses the plan minimum; not the pilot override of 2 for every band",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "Matches PlanningContext.minimum_participant_count rather than the unapproved pilot override."
+    },
+    {
+      "parameter": "coverage_constraint",
+      "status": "PROPOSED",
+      "proposed_value": "expected-capability team feasibility at planning; achieved-coverage and contributor guards at finalization; no extra percentage floor",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "This is the implemented rule. A Development coverage percentage is not proposed."
+    },
+    {
+      "parameter": "budget_levels",
+      "status": "PENDING",
+      "proposed_value": null,
+      "minimum_count": 3,
+      "units": "Person 2 measured attempt-cost units, not guessed milliseconds",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "Experiment 2 needs about three levels that change feasible teams. Person 2 has not supplied measurements."
+    },
+    {
+      "parameter": "attack_specification",
+      "status": "PROPOSED",
+      "proposed_value": {"version": "report_corruption_v1", "kinds": ["clean", "forced_support", "forced_rejection", "confidence_inflation", "suppression"], "suppression": "unavailable", "severity": "full-direction report replacement; not a model or evidence compromise"},
+      "approver": null,
+      "approval_date": null,
+      "rationale": "Existing enumerator. Suppression mode is the pilot proposal and is not frozen."
+    },
+    {
+      "parameter": "dependency_assumptions",
+      "status": "PROPOSED",
+      "proposed_value": "Empirical comparisons use shared_unknown: one unresolved component. The two-group registry is a controlled synthetic assumption and is not evidence that verifiers share a real dependency.",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "No empirical dependency evidence is in the repository."
+    },
+    {
+      "parameter": "bootstrap",
+      "status": "PROPOSED",
+      "proposed_value": {"method": "paired_split_identity_cluster_percentile", "unit": "related_group_id", "resamples": null, "confidence_level": null, "seed": null},
+      "approver": null,
+      "approval_date": null,
+      "rationale": "Resampling unit is specified. Interval level and draw count are not approved. Zero coverage leaves selective risk undefined."
+    },
+    {
+      "parameter": "sample_size",
+      "status": "PROPOSED",
+      "proposed_value": "exploratory operational counts only; no power calculation",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "research_v1 Development has 400 groups. The provisional exploratory eligibility audit has 387 paired Development groups. Neither is a power result."
+    },
+    {
+      "parameter": "benchmarks",
+      "status": "PROPOSED",
+      "proposed_value": {"included": ["GSM8K", "HotpotQA"], "excluded_from_these_versions": ["FEVER", "MultiNLI"]},
+      "approver": null,
+      "approval_date": null,
+      "rationale": "FEVER is a different task and has no evidence text in the current adapter. MultiNLI is not an answer-validation task."
+    },
+    {
+      "parameter": "label_acceptance",
+      "status": "PROPOSED",
+      "proposed_value": "provisional_automated_labeling_v1; SYNTHETIC_INCORRECT is not human ground truth; UNRESOLVED is excluded",
+      "approver": null,
+      "approval_date": null,
+      "rationale": "human_verified_labels is 0. Human adjudication remains deferred."
+    },
+    {
+      "parameter": "evidence_corpus",
+      "status": "PROPOSED",
+      "proposed_value": {"bound_for_research_v1": null, "documented_unselected": ["data/articles_13083.json", "data/evidence_corpus.json"]},
+      "approver": null,
+      "approval_date": null,
+      "rationale": "HotpotQA in these datasets uses source reference context. The shared corpus is not assumed to contain supporting pages."
+    }
+  ]
+}

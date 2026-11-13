@@ -1,0 +1,743 @@
+{
+  "exact_overlap": {
+    "candidate_id": 0,
+    "content_identity": 0,
+    "normalized_question": 0,
+    "question_id": 0,
+    "related_group_id": 0,
+    "source_dataset_id": 0
+  },
+  "manually_reviewed_pairs_at_or_above_0_65": [
+    {
+      "adjudication": "not_a_paraphrase_different_named_entities",
+      "benchmark": "HotpotQA",
+      "development_group": "hotpotqa-q-13a69e41a728f972",
+      "history_group": "hotpotqa-q-2191414648d3fbc5",
+      "normalized_questions_equal": false,
+      "rationale": "Manually reviewed the closest pairs. They share a HotpotQA comparison template and name different entities.",
+      "sequence_ratio": 0.6813
+    },
+    {
+      "adjudication": "not_a_paraphrase_different_named_entities",
+      "benchmark": "HotpotQA",
+      "development_group": "hotpotqa-q-26cbb2ec3d118503",
+      "history_group": "hotpotqa-q-2a38a00b91d36d4c",
+      "normalized_questions_equal": false,
+      "rationale": "Manually reviewed the closest pairs. They share a HotpotQA comparison template and name different entities.",
+      "sequence_ratio": 0.6613
+    }
+  ],
+  "maximum_sequence_ratio": 0.6813186813186813,
+  "paragraph_hash_overlap_count": 50,
+  "paragraph_records": [
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-593f22dd87617605"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-3dde070204497e9f"
+      ],
+      "paragraph_sha256": "1387b69c70f8cd9ef59365c188f875d3e54e5925d14c28bb47bc4b4c5a8281eb",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-e26dd81c6509541a"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-d2345758e851a2bf"
+      ],
+      "paragraph_sha256": "189ff30d793fdd20aef9678d33762e7d5bbda7b7cc59062590e95aec43fe4587",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-d688598418df9728"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-38a375f44ca1ff3b"
+      ],
+      "paragraph_sha256": "24a31f163b643630de3e46860b03128a7a42c48bed14adc5973d2706e6373188",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "266cd405291aa39014981f91e1ee67f92e1de713a4285dcd499b67adbd0ac138",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "2a48295d09eebb113b31a2f32692c1ac1579b0cd8010d0d827d838c95e5e060b",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-d688598418df9728"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-38a375f44ca1ff3b"
+      ],
+      "paragraph_sha256": "33303cb04325aacf9f071debb693d93331bf2897d10aac2bdb2cc650653b6ec6",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-f336b97f30935a33"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-7c46de04a339f923"
+      ],
+      "paragraph_sha256": "354d46c57b64e41f3ae02cce1e9a5289733331603703e805be647e05bb611bbd",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "3a8410060649fac474402f6e78fca7d7f06902982dbd7fbd786326a63ddf0ee0",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-59adf375f0c22fce"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-d5b48b19ec5b3a9a"
+      ],
+      "paragraph_sha256": "3ab2f8396e10f0750565d40f94b9f5a08370800d02ca51060bae7fa5d59ba325",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-01efd584ea7ae8cf"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-67907522b3579d0e"
+      ],
+      "paragraph_sha256": "3e52336a53dab140357ccdacd1d0d8e621896526bb659d869ddec6295d6b3cf3",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "427fe2cfd3a268e601f1d187e23352a5ef9e44eb0eff3732ac5c4778400d4901",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-57f2915f56d3b2ca"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-3ca7e8a401827d86"
+      ],
+      "paragraph_sha256": "46064e2c2e3a4091c9ba0094fc31cf5055c2c48ab7c51214d45af05c145a2a59",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-57f2915f56d3b2ca"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-3ca7e8a401827d86"
+      ],
+      "paragraph_sha256": "4eb13e260e48bc3a1c755af9095f472b0c0173591dd3f318fb0e330b07e37c5c",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-bcb56e82d06d5416"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-6a0a65d3825dbeed"
+      ],
+      "paragraph_sha256": "5552afbbc6f62a90b167254deffa646a663ce13b2ccd90f930d70acbcfe733dd",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "55b2f3ecf4dea23581563ebfe5046c6f075137849fc4882c0b0e659b5c39ba2d",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "5bc1a3cb62bad285d8703741258e1de7afe8d6f5f008f25832fa47ab059cc1f6",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "5c245ff83d4ed3eb64faddaeddb7913b10250ff49717cf8c4b22cb15343334fa",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "5da531905030a16d70a9503005537ecae49e9f1cdf03b97e4caa454a8bfcd313",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-e26dd81c6509541a"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-d2345758e851a2bf"
+      ],
+      "paragraph_sha256": "6072af05877209266f0a21f3867dbcd87ce2ac792bc5386bd282aeb1cc840dd2",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "630fd555b008fc6a06c9bec442cc1afb76589135c631447105f500c153db2436",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-bcb56e82d06d5416"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-6a0a65d3825dbeed"
+      ],
+      "paragraph_sha256": "6465b3c5aa79921d06656aa92822f0b6c61952e96b0fe59ce2177fcae9d50e76",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-360d2d548f7105db"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-b0e493a9d81cd050"
+      ],
+      "paragraph_sha256": "65886c99e65a31733aa60a84352dc77708e347b15143c70191c6b6adf6a033f2",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "65fdef38ba2708a7fe272f28a37088097d143c7089a29931782efe22aae4bbe4",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "70b91da6ee83253447564039020044217ca6ea36f787b745acd846562df3250e",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "71c605790823140695756a12ace59649b55707da25ce91a8f4cdd958add16dd5",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "78f6c0a66d68577a40f43675e95bba69e5246a17d9c6a428983d0f33afac3900",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "7a23b102989187424786db31e54b7faec761ec268d9b26f776c808ddf10e95f0",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-59adf375f0c22fce"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-d5b48b19ec5b3a9a"
+      ],
+      "paragraph_sha256": "7ea2d8d66e90088a38c6daf59410f7456f3437f37efe23c91d5ee3efe4544016",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "859d541506af20d44da262c5a66469ada68c846a25b0bfa69b902ed9d6387293",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "93efb5d6b779f240aa65e6986ea586c8f45aecab3fc57ec4b3567a132d6e2276",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-f386282eea312ad2"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-327a239d1ac4cfb7"
+      ],
+      "paragraph_sha256": "985b24037a794dfb57300560e094f38e8509e9ee95b332436f0c94e98f817717",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-a901144f45071da3"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-df8382814d5a40cc"
+      ],
+      "paragraph_sha256": "abba64070d66b594d0f39432a744e23d7bf6e11144664f7119b817a1d9f63f88",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-5974e747d478b04b"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-df2aeb14f6c89154"
+      ],
+      "paragraph_sha256": "ad42679dee33ae883473d85c302cc84653341c8b3c7ee426b2d3f686035de8cf",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-f336b97f30935a33"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-7c46de04a339f923"
+      ],
+      "paragraph_sha256": "b2353737b606197bf5fc8b2a503bce779a5ba8ad30c22ec096e5da15343a6323",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "b954b782f67434f7bf96ec6e848ac0882592806986b741f5ad4e78457aa8a366",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-360d2d548f7105db"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-b0e493a9d81cd050"
+      ],
+      "paragraph_sha256": "b965c5492d9eefdd5e71e08fa4a159062e159fe197b83a75f36a07b34e2bf114",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-f386282eea312ad2"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-327a239d1ac4cfb7"
+      ],
+      "paragraph_sha256": "bd582d12311f8eb682d561dc6e8695b48ea7e0ede50b3fc0d57a07754554fbcb",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-01efd584ea7ae8cf"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-67907522b3579d0e"
+      ],
+      "paragraph_sha256": "c1a09ad8e164b71dccde4931af0c38aa65e632b338e1c53b63f63c17b2d02914",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "c268f0ddde9d86be8b2509df6c4d0b1cf15b6aa74178498e6ea1673db3145654",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-abd70330b77ee650"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-82b5a9da88c4f4ca"
+      ],
+      "paragraph_sha256": "cb37ae2a3f2b5937ea0db662959d46c16d14b2b4b09ce364ff1e84c68a499dd3",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "cbe90ff04b5958730ab0563a78d6784ec5e9a29416a390609fa39690ecd40ba4",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-56ee55f464413488"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-e1d18f1917a170d6"
+      ],
+      "paragraph_sha256": "cc69d53c3f849f3b737eea2ce77503cb66141488ed24841deaa1e6812b871478",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-5974e747d478b04b"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-df2aeb14f6c89154"
+      ],
+      "paragraph_sha256": "cff499d3c2d7e1a4ca7ef056527a9a88ae200aaf1a7262f2ec9152ca3b26e4f4",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-f386282eea312ad2"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-327a239d1ac4cfb7"
+      ],
+      "paragraph_sha256": "d29d229c4692e5317bf46d52b4e4dff5d6632ddacdfef8440b05419ad138032f",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-f386282eea312ad2"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-327a239d1ac4cfb7"
+      ],
+      "paragraph_sha256": "d8347ab1c02b95b39bf7d98a9ee33b6df8cacd7276f26b93b222c4b22b9a9f56",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-a901144f45071da3"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-df8382814d5a40cc"
+      ],
+      "paragraph_sha256": "d8ff117183109df99e277736c78b29ebbb8ab0903257d33070442c65ba6903bb",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-593f22dd87617605"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-3dde070204497e9f"
+      ],
+      "paragraph_sha256": "daf861a68f3d0aa8f4cde4058b8dd7adfc9a05c66a932696e2dda4cfd103ee5c",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "e2378ccb29d5e85956cae8b7a1f88f27f4a060d4838869413cf355ab75be57fd",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "paragraph_sha256": "e30f499a4489b88a23ddb6cea441fc535b9574354d4f8b4a2bb8c62f01178711",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    },
+    {
+      "adjudication": "distinct_questions_shared_hotpotqa_reference_paragraph",
+      "development_groups": [
+        "hotpotqa-q-abd70330b77ee650"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-82b5a9da88c4f4ca"
+      ],
+      "paragraph_sha256": "e90d091c1cfcb3170f94c16e463bc3abafbff2311452b0c1cf693d519c151f4d",
+      "rationale": "Normalized questions and question IDs differ. The shared text is HotpotQA reference context. Development groups are removed so the approved roster does not share that paragraph with History.",
+      "same_question_id": false
+    }
+  ],
+  "protocol": "history_development_overlap_v1",
+  "quarantined_development_groups": [
+    "hotpotqa-q-01efd584ea7ae8cf",
+    "hotpotqa-q-360d2d548f7105db",
+    "hotpotqa-q-56ee55f464413488",
+    "hotpotqa-q-57f2915f56d3b2ca",
+    "hotpotqa-q-593f22dd87617605",
+    "hotpotqa-q-5974e747d478b04b",
+    "hotpotqa-q-59adf375f0c22fce",
+    "hotpotqa-q-a901144f45071da3",
+    "hotpotqa-q-abd70330b77ee650",
+    "hotpotqa-q-bcb56e82d06d5416",
+    "hotpotqa-q-c623c214f6cb4f2f",
+    "hotpotqa-q-d688598418df9728",
+    "hotpotqa-q-e26dd81c6509541a",
+    "hotpotqa-q-f336b97f30935a33",
+    "hotpotqa-q-f386282eea312ad2"
+  ],
+  "semantic_clearance": "NOT_CLAIMED",
+  "semantic_findings_at_or_above_threshold": [],
+  "semantic_protocol": "normalized_token_jaccard_and_sequence_ratio_v1",
+  "semantic_statement": "Zero pairs met the duplicate thresholds. Pairs below the thresholds were not all read. The scan does not prove that every lower-scoring pair is unrelated.",
+  "semantic_thresholds": {
+    "sequence_ratio": 0.85,
+    "token_jaccard": 0.8
+  },
+  "supporting_fact_overlap_count": 2,
+  "supporting_fact_records": [
+    {
+      "adjudication": "distinct_questions_shared_supporting_fact",
+      "development_groups": [
+        "hotpotqa-q-c623c214f6cb4f2f"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-8372a9bf768803d0"
+      ],
+      "rationale": "The same supporting-fact pointer occurs in History and Development. Those Development groups are quarantined with the shared-context rule.",
+      "supporting_fact": {
+        "sentence_index": 0,
+        "title": "Magic Dirt"
+      }
+    },
+    {
+      "adjudication": "distinct_questions_shared_supporting_fact",
+      "development_groups": [
+        "hotpotqa-q-bcb56e82d06d5416"
+      ],
+      "eligibility_decision": "quarantine_development_groups",
+      "history_groups": [
+        "hotpotqa-q-6a0a65d3825dbeed"
+      ],
+      "rationale": "The same supporting-fact pointer occurs in History and Development. Those Development groups are quarantined with the shared-context rule.",
+      "supporting_fact": {
+        "sentence_index": 0,
+        "title": "Tom Clancy"
+      }
+    }
+  ]
+}

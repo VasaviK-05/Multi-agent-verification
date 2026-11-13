@@ -12,14 +12,19 @@
 
 > Evaluate whether joint verifier-team and aggregation selection provides a useful verification-loss, coverage, and cost tradeoff under declared resource limits and report-corruption scenarios.
 
-This wording is the protocol's working claim. Formal approval of the research claim is recorded as pending in `person1_approval_checklist.md`.
+This wording is the protocol's working claim. It is proposed, not approved. The proposal record is `evaluation/config/research_settings_proposal_v1.json`. No approver or approval date is recorded.
+
+The claim is not a hypothesis that the joint policy is superior. Exploratory hypotheses may be examined on Development. A confirmatory hypothesis may be stated only after the settings are approved and only against a reserved Final Test that has a separate evaluation authorization.
 
 ### Primary and supporting outcomes
 
-- **Primary outcome:** worst-case expected validation loss across the declared clean and report-corruption scenarios, computed per method from policy-probability-weighted outcomes on the same eligible groups.
-- **Supporting outcomes:** clean expected loss; false acceptance and false rejection (counts and rates); decision coverage; uncertainty rate; selective risk (undefined at zero coverage); estimated verifier-attempt cost; execution failures; unresolved coverage; verifier inclusion frequencies and strategy probabilities.
+Person 1's proposal, status `PROPOSED` and not approved:
 
-**Estimand gap that needs a decision:** `app/game/research/comparison.py:_score` sets `worst_case_expected_loss = max(mean_loss)` over attack columns, and `Metrics.mean_loss` is the cost-augmented value `decision loss + resource_weight × cost`. The pure decision loss is `Metrics.validation_loss(loss)`. The two coincide only when `resource_weight = 0`. Before confirmatory reporting, the team must declare whether the primary outcome is the cost-augmented worst case (what the code computes) or the decision-only worst case (which would be computed from the same per-attack `Metrics` with `validation_loss`). No code was changed.
+- **Proposed primary outcome:** worst-case expected cost-augmented validation loss. In code this is `max` over attack columns of `Metrics.mean_loss`, and `mean_loss` is decision loss plus `resource_weight × estimated attempt cost`.
+- **Required supporting outcome:** worst-case expected decision-only validation loss, `Metrics.validation_loss`, reported from the same outcomes. The two differ whenever `resource_weight` is not zero.
+- **Other supporting outcomes:** clean expected loss; false acceptance and false rejection (counts and rates); decision coverage; uncertainty rate; selective risk (undefined at zero coverage); estimated verifier-attempt cost; execution failures; unresolved coverage; verifier inclusion frequencies and strategy probabilities.
+
+The resource coefficient is not part of this proposal. `0.1 / budget` remains unapproved because it changes the estimand whenever the budget changes. No coefficient is invented here.
 
 This is an empirical question, not an assumption that the game policy must beat every baseline. “Improve” must be interpreted from the declared loss, coverage, cost, clean-input performance, and attack results together. Comparisons must use compatible inputs, resource limits, labels, and evaluation rules.
 

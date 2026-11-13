@@ -1,5 +1,7 @@
 # Dataset selection recommendation
 
+Person 1 proposal status, 2026-11-13: GSM8K and HotpotQA are the proposed populations for `research_v1` and `research_v1_exploratory_v1`. FEVER and MultiNLI stay out of these versions. Benchmark approval is still false in `protocol_readiness.yaml`. The exploratory snapshot is not the `research_v1` eligibility roster. Development eligibility for that snapshot is approved separately as `research_v1_exploratory_eligibility_approved_v1` (manifest body SHA-256 `f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d`). That approval covers the eligible Development roster only. It does not approve benchmark populations for confirmatory use, freeze the protocol, or authorize collection. The provisional audit `research_v1_exploratory_eligibility_provisional_v1` is preserved unchanged. Licenses in the local `dataset_info.json` files remain empty. The teammate artifact of about 700 results was not found; its owner must supply a path. Details are in `research_protocol_map.md`.
+
 ## Recommendation
 
 Use **GSM8K as the arithmetic population**, after a development-only candidate audit and with the limitation that existing rule verification supports narrow/direct arithmetic patterns rather than the full word-problem distribution. That verifier limitation is not a population marker. Direct arithmetic is not a separate experimental population in `research_v1`: no verified subset, annotation, or direct-arithmetic flag exists, so no direct-arithmetic count is claimed.

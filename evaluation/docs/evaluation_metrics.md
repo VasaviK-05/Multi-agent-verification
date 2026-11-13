@@ -1,5 +1,7 @@
 # Evaluation metric definitions
 
+Proposed primary outcome, not approved: worst-case expected cost-augmented validation loss (`max` of `Metrics.mean_loss`). Decision-only validation loss is supporting and must be reported from the same outcomes. Selective risk is undefined when decision coverage is zero. False-acceptance and false-rejection rates keep abstentions in the gold-role denominator. Coverage uses scheduled eligible attempts, so execution failures reduce coverage. Aggregation frequency is the sum of policy probability on strategies with that aggregation. Verifier inclusion frequency is the sum of policy probability on strategies that include the verifier. Confidence-interval level and bootstrap draw count are unset. No power calculation has been performed.
+
 ## Outcomes and denominator conventions
 
 Let each evaluated candidate have gold status `accept`, `reject`, or, where the task supports it, `abstain/insufficient evidence`. The framework outcomes are definitive accept, definitive reject, abstain, or execution failure. The current baseline maps `passed` to accept, `failed` to reject, and `uncertain`/`unknown` to abstention. A failed execution is separate from an intentional abstention.
