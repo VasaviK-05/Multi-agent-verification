@@ -1,0 +1,2343 @@
+{
+  "audit": {
+    "attack_columns": 7,
+    "benchmarks": {
+      "GSM8K": 2618,
+      "HotpotQA": 2590
+    },
+    "candidates": 744,
+    "completed_cells": 15624,
+    "decision_mismatches": 0,
+    "duplicate_keys": 0,
+    "evidence_label": "EMPIRICAL",
+    "execution_failures": 0,
+    "final_test_accessed": false,
+    "groups": 372,
+    "incomplete_status": 0,
+    "loss_mismatches": 0,
+    "methods": [
+      "fixed_dependency_group",
+      "fixed_reputation_weighted",
+      "full_minimax"
+    ],
+    "rows": 15624,
+    "selected_teams": {
+      "fixed_dependency_group": [
+        [
+          "evidence",
+          "rule"
+        ]
+      ],
+      "fixed_reputation_weighted": [
+        [
+          "evidence",
+          "rule"
+        ]
+      ],
+      "full_minimax": [
+        [
+          "evidence",
+          "rule"
+        ]
+      ]
+    },
+    "status": "COMPLETE"
+  },
+  "calibration_id": "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+  "cold_start": {
+    "dependency_fallback_when_reliability_is_zero": "unweighted_members_then_unweighted_groups",
+    "log_odds_weight_at_one_half": 0.0,
+    "one_verifier_per_component": {
+      "reports": "evidence SUPPORT 1, rule REJECT 1",
+      "same_decision": true,
+      "statuses": {
+        "dependency_group": {
+          "score": 0.0,
+          "status": "uncertain"
+        },
+        "reputation_weighted": {
+          "score": 0.0,
+          "status": "uncertain"
+        }
+      },
+      "team": [
+        "evidence",
+        "rule"
+      ]
+    },
+    "prior_mean": 0.5,
+    "reliability_strength_at_one_half": 0.0,
+    "reputation_fallback_when_weight_is_zero": "equal_weight",
+    "two_verifiers_in_one_component": {
+      "reason": "Reputation averages the three votes. Dependency averages semantic with evidence first, then averages that component with rule.",
+      "reports": "semantic SUPPORT 1, evidence SUPPORT 1, rule REJECT 0.2",
+      "same_decision": false,
+      "statuses": {
+        "dependency_group": {
+          "score": 0.4,
+          "status": "uncertain"
+        },
+        "reputation_weighted": {
+          "score": 0.6,
+          "status": "passed"
+        }
+      },
+      "team": [
+        "semantic",
+        "evidence",
+        "rule"
+      ]
+    }
+  },
+  "evidence_label": "EMPIRICAL",
+  "hashes": {
+    "attack_validation_loss.svg": "8be472c94d29b34caec0829065afcc21eb059b746d0d31f8b2871fc7465b1dd4",
+    "bootstrap_results.json": "2b56ac693740bfdbee00dcf788c0bb4a097d7f70c3ad78b3335bd6b120dce53a",
+    "metrics.json": "2c186172e5f1e9e2c2f344292d0b5a093a11e8fbb746294bde6cb54faeb08c57",
+    "results.json": "82324e96da71095bf1f2e75a2c080a396151590671111a91d7a870a6a657f8f8",
+    "verifier_reports.jsonl": "877d0218dd498e8ca525e651f52f8aa1e337cd6f5123583fb277a2a28e01eca5"
+  },
+  "loss": {
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "uncertain": 0.2
+  },
+  "policy": {
+    "aggregation_disagreements": [
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "confidence",
+          "rule"
+        ]
+      },
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "confidence",
+          "rule",
+          "semantic"
+        ]
+      },
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "confidence",
+          "semantic"
+        ]
+      },
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "evidence",
+          "rule"
+        ]
+      },
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "evidence",
+          "rule",
+          "semantic"
+        ]
+      },
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ]
+      },
+      {
+        "cells": 5208,
+        "decision_disagreements": 0,
+        "verifiers": [
+          "rule",
+          "semantic"
+        ]
+      }
+    ],
+    "attacked_reports": [
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 46,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 22,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "REJECT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 46,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 22,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "REJECT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 46,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 22,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "REJECT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 68,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "REJECT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 46,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 22,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "REJECT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 68,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "REJECT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 46,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 22,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 306,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 17,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 357,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 2,
+        "decision": "SUPPORT",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 372,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "count": 374,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 69,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 49,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 155,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 13,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 77,
+        "decision": "REJECT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 150,
+        "decision": "SUPPORT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 69,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 49,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 155,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 13,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 77,
+        "decision": "REJECT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 150,
+        "decision": "SUPPORT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 69,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 49,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 155,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 13,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 77,
+        "decision": "REJECT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 150,
+        "decision": "SUPPORT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 118,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 168,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 227,
+        "decision": "REJECT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 69,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 49,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 155,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 13,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 77,
+        "decision": "REJECT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 150,
+        "decision": "SUPPORT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 118,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 168,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 227,
+        "decision": "SUPPORT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 69,
+        "decision": "REJECT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 49,
+        "decision": "SUPPORT",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 252,
+        "decision": "UNSURE",
+        "verifier": "confidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 155,
+        "decision": "REJECT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 13,
+        "decision": "SUPPORT",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 202,
+        "decision": "UNSURE",
+        "verifier": "evidence"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 370,
+        "decision": "UNSURE",
+        "verifier": "rule"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 77,
+        "decision": "REJECT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 150,
+        "decision": "SUPPORT",
+        "verifier": "semantic"
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "count": 143,
+        "decision": "UNSURE",
+        "verifier": "semantic"
+      }
+    ],
+    "budget_ms": 14996.39091498102,
+    "coefficient": 1.3399597937725295e-05,
+    "coefficient_counterfactuals": [
+      {
+        "evidence_class": "COUNTERFACTUAL_ON_STORED_EMPIRICAL_REPORTS",
+        "loss_per_ms": 0.0,
+        "optimal_strategies": [
+          {
+            "aggregation": "reputation_weighted",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_augmented_loss": 0.2895161290322581
+          },
+          {
+            "aggregation": "dependency_group",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_augmented_loss": 0.2895161290322581
+          }
+        ],
+        "scenario_id": "no_resource_penalty"
+      },
+      {
+        "evidence_class": "COUNTERFACTUAL_ON_STORED_EMPIRICAL_REPORTS",
+        "loss_per_ms": 1.3399597937725295e-05,
+        "optimal_strategies": [
+          {
+            "aggregation": "reputation_weighted",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_augmented_loss": 0.29096372230211043
+          },
+          {
+            "aggregation": "dependency_group",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_augmented_loss": 0.29096372230211043
+          }
+        ],
+        "scenario_id": "low"
+      },
+      {
+        "evidence_class": "COUNTERFACTUAL_ON_STORED_EMPIRICAL_REPORTS",
+        "loss_per_ms": 6.699798968862647e-05,
+        "optimal_strategies": [
+          {
+            "aggregation": "reputation_weighted",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_augmented_loss": 0.2967540953815198
+          },
+          {
+            "aggregation": "dependency_group",
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_augmented_loss": 0.2967540953815198
+          }
+        ],
+        "scenario_id": "moderate"
+      },
+      {
+        "evidence_class": "COUNTERFACTUAL_ON_STORED_EMPIRICAL_REPORTS",
+        "loss_per_ms": 0.0028379718168483666,
+        "optimal_strategies": [
+          {
+            "aggregation": "reputation_weighted",
+            "verifiers": [
+              "rule",
+              "semantic"
+            ],
+            "worst_augmented_loss": 0.4973185021036101
+          },
+          {
+            "aggregation": "dependency_group",
+            "verifiers": [
+              "rule",
+              "semantic"
+            ],
+            "worst_augmented_loss": 0.4973185021036101
+          }
+        ],
+        "scenario_id": "high"
+      }
+    ],
+    "feasible_strategy_count": 14,
+    "methods": {
+      "fixed_dependency_group": {
+        "aggregation": "dependency_group",
+        "game_value": 0.29096372230211043,
+        "modal_matches_stored_results": true,
+        "modal_strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        "optimal_strategy_count": 1,
+        "optimal_verifiers": [
+          [
+            "evidence",
+            "rule"
+          ]
+        ],
+        "pure": true,
+        "stored_game_value": 0.29096372230211043,
+        "stored_modal_strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ]
+      },
+      "fixed_reputation_weighted": {
+        "aggregation": "reputation_weighted",
+        "game_value": 0.29096372230211043,
+        "modal_matches_stored_results": true,
+        "modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "optimal_strategy_count": 1,
+        "optimal_verifiers": [
+          [
+            "evidence",
+            "rule"
+          ]
+        ],
+        "pure": true,
+        "stored_game_value": 0.29096372230211043,
+        "stored_modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ]
+      },
+      "full_minimax": {
+        "aggregation": "reputation_weighted",
+        "game_value": 0.29096372230211043,
+        "modal_matches_stored_results": true,
+        "modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "optimal_strategy_count": 2,
+        "optimal_verifiers": [
+          [
+            "evidence",
+            "rule"
+          ]
+        ],
+        "pure": true,
+        "stored_game_value": 0.29096372230211043,
+        "stored_modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ]
+      }
+    },
+    "minimum_participants": 2,
+    "rejected": [
+      {
+        "reasons": [
+          "minimum_participant_count"
+        ],
+        "verifiers": [
+          "confidence"
+        ]
+      },
+      {
+        "reasons": [
+          "minimum_participant_count"
+        ],
+        "verifiers": [
+          "evidence"
+        ]
+      },
+      {
+        "reasons": [
+          "minimum_participant_count"
+        ],
+        "verifiers": [
+          "rule"
+        ]
+      },
+      {
+        "reasons": [
+          "minimum_participant_count"
+        ],
+        "verifiers": [
+          "semantic"
+        ]
+      },
+      {
+        "reasons": [
+          "budget"
+        ],
+        "verifiers": [
+          "confidence",
+          "evidence"
+        ]
+      },
+      {
+        "reasons": [
+          "budget"
+        ],
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "rule"
+        ]
+      },
+      {
+        "reasons": [
+          "budget"
+        ],
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "semantic"
+        ]
+      },
+      {
+        "reasons": [
+          "budget"
+        ],
+        "verifiers": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ]
+      }
+    ],
+    "selected_coefficient_optimal": [
+      {
+        "aggregation": "reputation_weighted",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ],
+        "worst_augmented_loss": 0.29096372230211043
+      },
+      {
+        "aggregation": "dependency_group",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ],
+        "worst_augmented_loss": 0.29096372230211043
+      }
+    ],
+    "strategies": [
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.2271505376344086,
+        "clean_uncertainty": 0.7728494623655914,
+        "decision_loss_by_attack": {
+          "clean": 0.24327956989247312,
+          "confidence_inflation [confidence,evidence,semantic]": 0.24919354838709679,
+          "confidence_inflation [rule]": 0.24327956989247312,
+          "forced_rejection [confidence,evidence,semantic]": 0.26129032258064516,
+          "forced_rejection [rule]": 0.24327956989247312,
+          "forced_support [confidence,evidence,semantic]": 0.2895161290322581,
+          "forced_support [rule]": 0.24327956989247312
+        },
+        "estimated_cost_ms": 108.03258997621015,
+        "failed_cells": 0,
+        "resource_penalty": 0.0014475932698523478,
+        "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.29096372230211043
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.2271505376344086,
+        "clean_uncertainty": 0.7728494623655914,
+        "decision_loss_by_attack": {
+          "clean": 0.24327956989247312,
+          "confidence_inflation [confidence,evidence,semantic]": 0.24919354838709679,
+          "confidence_inflation [rule]": 0.24327956989247312,
+          "forced_rejection [confidence,evidence,semantic]": 0.26129032258064516,
+          "forced_rejection [rule]": 0.24327956989247312,
+          "forced_support [confidence,evidence,semantic]": 0.2895161290322581,
+          "forced_support [rule]": 0.24327956989247312
+        },
+        "estimated_cost_ms": 108.03258997621015,
+        "failed_cells": 0,
+        "resource_penalty": 0.0014475932698523478,
+        "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+        "verifiers": [
+          "evidence",
+          "rule"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.29096372230211043
+      },
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.13978494623655913,
+        "clean_uncertainty": 0.8602150537634409,
+        "decision_loss_by_attack": {
+          "clean": 0.24731182795698925,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2903225806451613,
+          "confidence_inflation [rule]": 0.24731182795698925,
+          "forced_rejection [confidence,evidence,semantic]": 0.28763440860215056,
+          "forced_rejection [rule]": 0.24731182795698925,
+          "forced_support [confidence,evidence,semantic]": 0.2970430107526882,
+          "forced_support [rule]": 0.24731182795698925
+        },
+        "estimated_cost_ms": 70.56993665755726,
+        "failed_cells": 0,
+        "resource_penalty": 0.000945608777702009,
+        "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+        "verifiers": [
+          "rule",
+          "semantic"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.2979886195303902
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.13978494623655913,
+        "clean_uncertainty": 0.8602150537634409,
+        "decision_loss_by_attack": {
+          "clean": 0.24731182795698925,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2903225806451613,
+          "confidence_inflation [rule]": 0.24731182795698925,
+          "forced_rejection [confidence,evidence,semantic]": 0.28763440860215056,
+          "forced_rejection [rule]": 0.24731182795698925,
+          "forced_support [confidence,evidence,semantic]": 0.2970430107526882,
+          "forced_support [rule]": 0.24731182795698925
+        },
+        "estimated_cost_ms": 70.56993665755726,
+        "failed_cells": 0,
+        "resource_penalty": 0.000945608777702009,
+        "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+        "verifiers": [
+          "rule",
+          "semantic"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.2979886195303902
+      },
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.2110215053763441,
+        "clean_uncertainty": 0.7889784946236559,
+        "decision_loss_by_attack": {
+          "clean": 0.25053763440860216,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2782258064516129,
+          "confidence_inflation [rule]": 0.25053763440860216,
+          "forced_rejection [confidence,evidence,semantic]": 0.3110215053763441,
+          "forced_rejection [rule]": 0.25053763440860216,
+          "forced_support [confidence,evidence,semantic]": 0.3365591397849462,
+          "forced_support [rule]": 0.25053763440860216
+        },
+        "estimated_cost_ms": 178.40837999052988,
+        "failed_cells": 0,
+        "resource_penalty": 0.002390600560594015,
+        "strategy_id": "6217a7773c2d9d7810dfbe84246628041fd0811b167b5837df44af4e734c3dc8",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.33894974034554026
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.2110215053763441,
+        "clean_uncertainty": 0.7889784946236559,
+        "decision_loss_by_attack": {
+          "clean": 0.25053763440860216,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2782258064516129,
+          "confidence_inflation [rule]": 0.25053763440860216,
+          "forced_rejection [confidence,evidence,semantic]": 0.3110215053763441,
+          "forced_rejection [rule]": 0.25053763440860216,
+          "forced_support [confidence,evidence,semantic]": 0.3365591397849462,
+          "forced_support [rule]": 0.25053763440860216
+        },
+        "estimated_cost_ms": 178.40837999052988,
+        "failed_cells": 0,
+        "resource_penalty": 0.002390600560594015,
+        "strategy_id": "ffd37ff484bdd284b26b778b55d4a61643fccf8c16478dc823747108fda99a1a",
+        "verifiers": [
+          "evidence",
+          "semantic"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.33894974034554026
+      },
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.21370967741935484,
+        "clean_uncertainty": 0.7862903225806451,
+        "decision_loss_by_attack": {
+          "clean": 0.2513440860215054,
+          "confidence_inflation [confidence,evidence,semantic]": 0.27903225806451615,
+          "confidence_inflation [rule]": 0.2513440860215054,
+          "forced_rejection [confidence,evidence,semantic]": 0.3118279569892473,
+          "forced_rejection [rule]": 0.2513440860215054,
+          "forced_support [confidence,evidence,semantic]": 0.33736559139784944,
+          "forced_support [rule]": 0.2513440860215054
+        },
+        "estimated_cost_ms": 178.50545331214863,
+        "failed_cells": 0,
+        "resource_penalty": 0.0023919013040741856,
+        "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+        "verifiers": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.3397574927019236
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.21370967741935484,
+        "clean_uncertainty": 0.7862903225806451,
+        "decision_loss_by_attack": {
+          "clean": 0.2513440860215054,
+          "confidence_inflation [confidence,evidence,semantic]": 0.27903225806451615,
+          "confidence_inflation [rule]": 0.2513440860215054,
+          "forced_rejection [confidence,evidence,semantic]": 0.3118279569892473,
+          "forced_rejection [rule]": 0.2513440860215054,
+          "forced_support [confidence,evidence,semantic]": 0.33736559139784944,
+          "forced_support [rule]": 0.2513440860215054
+        },
+        "estimated_cost_ms": 178.50545331214863,
+        "failed_cells": 0,
+        "resource_penalty": 0.0023919013040741856,
+        "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+        "verifiers": [
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "worst_attack": "forced_support [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.3397574927019236
+      },
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.25268817204301075,
+        "clean_uncertainty": 0.7473118279569892,
+        "decision_loss_by_attack": {
+          "clean": 0.22473118279569895,
+          "confidence_inflation [confidence,evidence,semantic]": 0.22473118279569895,
+          "confidence_inflation [rule]": 0.22473118279569895,
+          "forced_rejection [confidence,evidence,semantic]": 0.29059139784946236,
+          "forced_rejection [rule]": 0.22473118279569895,
+          "forced_support [confidence,evidence,semantic]": 0.2610215053763441,
+          "forced_support [rule]": 0.22473118279569895
+        },
+        "estimated_cost_ms": 14925.918051645082,
+        "failed_cells": 0,
+        "resource_penalty": 0.2000013007434802,
+        "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+        "verifiers": [
+          "confidence",
+          "rule"
+        ],
+        "worst_attack": "forced_rejection [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.4905926985929425
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.25268817204301075,
+        "clean_uncertainty": 0.7473118279569892,
+        "decision_loss_by_attack": {
+          "clean": 0.22473118279569895,
+          "confidence_inflation [confidence,evidence,semantic]": 0.22473118279569895,
+          "confidence_inflation [rule]": 0.22473118279569895,
+          "forced_rejection [confidence,evidence,semantic]": 0.29059139784946236,
+          "forced_rejection [rule]": 0.22473118279569895,
+          "forced_support [confidence,evidence,semantic]": 0.2610215053763441,
+          "forced_support [rule]": 0.22473118279569895
+        },
+        "estimated_cost_ms": 14925.918051645082,
+        "failed_cells": 0,
+        "resource_penalty": 0.2000013007434802,
+        "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+        "verifiers": [
+          "confidence",
+          "rule"
+        ],
+        "worst_attack": "forced_rejection [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.4905926985929425
+      },
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.28897849462365593,
+        "clean_uncertainty": 0.7110215053763441,
+        "decision_loss_by_attack": {
+          "clean": 0.2524193548387097,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2825268817204301,
+          "confidence_inflation [rule]": 0.2524193548387097,
+          "forced_rejection [confidence,evidence,semantic]": 0.3443548387096774,
+          "forced_rejection [rule]": 0.2524193548387097,
+          "forced_support [confidence,evidence,semantic]": 0.33225806451612905,
+          "forced_support [rule]": 0.2524193548387097
+        },
+        "estimated_cost_ms": 14996.293841659402,
+        "failed_cells": 0,
+        "resource_penalty": 0.20094430803422186,
+        "strategy_id": "c29fd335d469ec5b3a677ce60bf87fe2c5cad8291a021d7d22b08222eace6bdf",
+        "verifiers": [
+          "confidence",
+          "semantic"
+        ],
+        "worst_attack": "forced_rejection [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.5452991467438992
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.28897849462365593,
+        "clean_uncertainty": 0.7110215053763441,
+        "decision_loss_by_attack": {
+          "clean": 0.2524193548387097,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2825268817204301,
+          "confidence_inflation [rule]": 0.2524193548387097,
+          "forced_rejection [confidence,evidence,semantic]": 0.3443548387096774,
+          "forced_rejection [rule]": 0.2524193548387097,
+          "forced_support [confidence,evidence,semantic]": 0.33225806451612905,
+          "forced_support [rule]": 0.2524193548387097
+        },
+        "estimated_cost_ms": 14996.293841659402,
+        "failed_cells": 0,
+        "resource_penalty": 0.20094430803422186,
+        "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+        "verifiers": [
+          "confidence",
+          "semantic"
+        ],
+        "worst_attack": "forced_rejection [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.5452991467438992
+      },
+      {
+        "aggregation": "dependency_group",
+        "clean_candidates": 744,
+        "clean_coverage": 0.2916666666666667,
+        "clean_uncertainty": 0.7083333333333334,
+        "decision_loss_by_attack": {
+          "clean": 0.2532258064516129,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2833333333333333,
+          "confidence_inflation [rule]": 0.2532258064516129,
+          "forced_rejection [confidence,evidence,semantic]": 0.34516129032258064,
+          "forced_rejection [rule]": 0.2532258064516129,
+          "forced_support [confidence,evidence,semantic]": 0.33306451612903226,
+          "forced_support [rule]": 0.2532258064516129
+        },
+        "estimated_cost_ms": 14996.39091498102,
+        "failed_cells": 0,
+        "resource_penalty": 0.20094560877770204,
+        "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+        "verifiers": [
+          "confidence",
+          "rule",
+          "semantic"
+        ],
+        "worst_attack": "forced_rejection [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.5461068991002827
+      },
+      {
+        "aggregation": "reputation_weighted",
+        "clean_candidates": 744,
+        "clean_coverage": 0.2916666666666667,
+        "clean_uncertainty": 0.7083333333333334,
+        "decision_loss_by_attack": {
+          "clean": 0.2532258064516129,
+          "confidence_inflation [confidence,evidence,semantic]": 0.2833333333333333,
+          "confidence_inflation [rule]": 0.2532258064516129,
+          "forced_rejection [confidence,evidence,semantic]": 0.34516129032258064,
+          "forced_rejection [rule]": 0.2532258064516129,
+          "forced_support [confidence,evidence,semantic]": 0.33306451612903226,
+          "forced_support [rule]": 0.2532258064516129
+        },
+        "estimated_cost_ms": 14996.39091498102,
+        "failed_cells": 0,
+        "resource_penalty": 0.20094560877770204,
+        "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+        "verifiers": [
+          "confidence",
+          "rule",
+          "semantic"
+        ],
+        "worst_attack": "forced_rejection [confidence,evidence,semantic]",
+        "worst_augmented_loss": 0.5461068991002827
+      }
+    ],
+    "tie_break": "The solver returns one distribution. The recorded modal strategy is the maximum of (probability, strategy_id). Strategies with the same worst-case loss are optimal even when that distribution puts probability 1 on only one of them."
+  },
+  "published_hashes_match": {
+    "attack_validation_loss.svg": true,
+    "bootstrap_results.json": true,
+    "metrics.json": true,
+    "results.json": true,
+    "verifier_reports.jsonl": true
+  },
+  "record_type": "experiment3_policy_diagnosis_v1",
+  "reproduction": {
+    "bootstrap_match": true,
+    "metric_mismatch_count": 0,
+    "metric_mismatches": [],
+    "metrics_match": true,
+    "paired_differences": [
+      {
+        "aggregation_method": "fixed_reputation_weighted",
+        "confidence_interval": {
+          "lower": 0.0,
+          "reason": null,
+          "resamples": 2000,
+          "upper": 0.0
+        },
+        "contrast": "ablation_validation_loss_minus_full_minimax",
+        "evidence_label": "EMPIRICAL",
+        "mean_loss_difference": 0.0,
+        "missing_pairs": 0,
+        "practical_effect": 0.0,
+        "reference": "full_minimax",
+        "related_group_count": 372,
+        "sample_size": 2604,
+        "statistical_interval_available": true,
+        "zero_difference_count": 2604
+      },
+      {
+        "aggregation_method": "fixed_dependency_group",
+        "confidence_interval": {
+          "lower": 0.0,
+          "reason": null,
+          "resamples": 2000,
+          "upper": 0.0
+        },
+        "contrast": "ablation_validation_loss_minus_full_minimax",
+        "evidence_label": "EMPIRICAL",
+        "mean_loss_difference": 0.0,
+        "missing_pairs": 0,
+        "practical_effect": 0.0,
+        "reference": "full_minimax",
+        "related_group_count": 372,
+        "sample_size": 2604,
+        "statistical_interval_available": true,
+        "zero_difference_count": 2604
+      }
+    ],
+    "paired_mismatch_count": 0,
+    "worst_case_loss": [
+      {
+        "aggregation_method": "full_minimax",
+        "cells": 14,
+        "evidence_label": "EMPIRICAL",
+        "worst_case_loss": 0.36324324324324325
+      },
+      {
+        "aggregation_method": "fixed_reputation_weighted",
+        "cells": 14,
+        "evidence_label": "EMPIRICAL",
+        "worst_case_loss": 0.36324324324324325
+      },
+      {
+        "aggregation_method": "fixed_dependency_group",
+        "cells": 14,
+        "evidence_label": "EMPIRICAL",
+        "worst_case_loss": 0.36324324324324325
+      }
+    ]
+  },
+  "seed": 20261113,
+  "slices": {
+    "by_attack": [
+      {
+        "attack": "clean",
+        "candidates": 744,
+        "classified": 169,
+        "correct_acceptance": 8,
+        "correct_rejection": 95,
+        "coverage": 0.2271505376344086,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 96,
+        "false_acceptance_rate": 0.010416666666666666,
+        "false_rejection": 65,
+        "false_rejection_denominator": 73,
+        "false_rejection_rate": 0.8904109589041096,
+        "loss_value_counts": {
+          "0.0": 103,
+          "0.2": 575,
+          "1.0": 66
+        },
+        "mean_decision_loss": 0.24327956989247312,
+        "selective_risk": 0.3905325443786982,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 575
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "candidates": 744,
+        "classified": 187,
+        "correct_acceptance": 11,
+        "correct_rejection": 102,
+        "coverage": 0.2513440860215054,
+        "execution_failures": 0,
+        "false_acceptance": 2,
+        "false_acceptance_denominator": 104,
+        "false_acceptance_rate": 0.019230769230769232,
+        "false_rejection": 72,
+        "false_rejection_denominator": 83,
+        "false_rejection_rate": 0.8674698795180723,
+        "loss_value_counts": {
+          "0.0": 113,
+          "0.2": 557,
+          "1.0": 74
+        },
+        "mean_decision_loss": 0.24919354838709679,
+        "selective_risk": 0.39572192513368987,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 557
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "candidates": 744,
+        "classified": 169,
+        "correct_acceptance": 8,
+        "correct_rejection": 95,
+        "coverage": 0.2271505376344086,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 96,
+        "false_acceptance_rate": 0.010416666666666666,
+        "false_rejection": 65,
+        "false_rejection_denominator": 73,
+        "false_rejection_rate": 0.8904109589041096,
+        "loss_value_counts": {
+          "0.0": 103,
+          "0.2": 575,
+          "1.0": 66
+        },
+        "mean_decision_loss": 0.24327956989247312,
+        "selective_risk": 0.3905325443786982,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 575
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "candidates": 744,
+        "classified": 187,
+        "correct_acceptance": 0,
+        "correct_rejection": 104,
+        "coverage": 0.2513440860215054,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 104,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 83,
+        "false_rejection_denominator": 83,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 104,
+          "0.2": 557,
+          "1.0": 83
+        },
+        "mean_decision_loss": 0.26129032258064516,
+        "selective_risk": 0.44385026737967914,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 557
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "candidates": 744,
+        "classified": 169,
+        "correct_acceptance": 8,
+        "correct_rejection": 95,
+        "coverage": 0.2271505376344086,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 96,
+        "false_acceptance_rate": 0.010416666666666666,
+        "false_rejection": 65,
+        "false_rejection_denominator": 73,
+        "false_rejection_rate": 0.8904109589041096,
+        "loss_value_counts": {
+          "0.0": 103,
+          "0.2": 575,
+          "1.0": 66
+        },
+        "mean_decision_loss": 0.24327956989247312,
+        "selective_risk": 0.3905325443786982,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 575
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "candidates": 744,
+        "classified": 187,
+        "correct_acceptance": 82,
+        "correct_rejection": 1,
+        "coverage": 0.2513440860215054,
+        "execution_failures": 0,
+        "false_acceptance": 103,
+        "false_acceptance_denominator": 104,
+        "false_acceptance_rate": 0.9903846153846154,
+        "false_rejection": 1,
+        "false_rejection_denominator": 83,
+        "false_rejection_rate": 0.012048192771084338,
+        "loss_value_counts": {
+          "0.0": 83,
+          "0.2": 557,
+          "1.0": 104
+        },
+        "mean_decision_loss": 0.2895161290322581,
+        "selective_risk": 0.5561497326203209,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 557
+      },
+      {
+        "attack": "forced_support [rule]",
+        "candidates": 744,
+        "classified": 169,
+        "correct_acceptance": 9,
+        "correct_rejection": 94,
+        "coverage": 0.2271505376344086,
+        "execution_failures": 0,
+        "false_acceptance": 2,
+        "false_acceptance_denominator": 96,
+        "false_acceptance_rate": 0.020833333333333332,
+        "false_rejection": 64,
+        "false_rejection_denominator": 73,
+        "false_rejection_rate": 0.8767123287671232,
+        "loss_value_counts": {
+          "0.0": 103,
+          "0.2": 575,
+          "1.0": 66
+        },
+        "mean_decision_loss": 0.24327956989247312,
+        "selective_risk": 0.3905325443786982,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 575
+      }
+    ],
+    "by_benchmark": [
+      {
+        "benchmark": "GSM8K",
+        "candidates": 2618,
+        "classified": 101,
+        "correct_acceptance": 9,
+        "correct_rejection": 44,
+        "coverage": 0.038579067990832695,
+        "execution_failures": 0,
+        "false_acceptance": 10,
+        "false_acceptance_denominator": 54,
+        "false_acceptance_rate": 0.18518518518518517,
+        "false_rejection": 38,
+        "false_rejection_denominator": 47,
+        "false_rejection_rate": 0.8085106382978723,
+        "loss_value_counts": {
+          "0.0": 53,
+          "0.2": 2517,
+          "1.0": 48
+        },
+        "mean_decision_loss": 0.21061879297173414,
+        "selective_risk": 0.4752475247524752,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 2517
+      },
+      {
+        "benchmark": "HotpotQA",
+        "candidates": 2590,
+        "classified": 1136,
+        "correct_acceptance": 117,
+        "correct_rejection": 542,
+        "coverage": 0.4386100386100386,
+        "execution_failures": 0,
+        "false_acceptance": 100,
+        "false_acceptance_denominator": 642,
+        "false_acceptance_rate": 0.1557632398753894,
+        "false_rejection": 377,
+        "false_rejection_denominator": 494,
+        "false_rejection_rate": 0.7631578947368421,
+        "loss_value_counts": {
+          "0.0": 659,
+          "0.2": 1454,
+          "1.0": 477
+        },
+        "mean_decision_loss": 0.29644787644787646,
+        "selective_risk": 0.4198943661971831,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 1454
+      }
+    ],
+    "by_benchmark_and_attack": [
+      {
+        "attack": "clean",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 11,
+        "correct_acceptance": 0,
+        "correct_rejection": 6,
+        "coverage": 0.029411764705882353,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 6,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 5,
+        "false_rejection_denominator": 5,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 6,
+          "0.2": 363,
+          "1.0": 5
+        },
+        "mean_decision_loss": 0.2074866310160428,
+        "selective_risk": 0.45454545454545453,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 363
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 19,
+        "correct_acceptance": 0,
+        "correct_rejection": 10,
+        "coverage": 0.05080213903743316,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 10,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 9,
+        "false_rejection_denominator": 9,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 10,
+          "0.2": 355,
+          "1.0": 9
+        },
+        "mean_decision_loss": 0.21390374331550802,
+        "selective_risk": 0.47368421052631576,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 355
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 11,
+        "correct_acceptance": 0,
+        "correct_rejection": 6,
+        "coverage": 0.029411764705882353,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 6,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 5,
+        "false_rejection_denominator": 5,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 6,
+          "0.2": 363,
+          "1.0": 5
+        },
+        "mean_decision_loss": 0.2074866310160428,
+        "selective_risk": 0.45454545454545453,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 363
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 19,
+        "correct_acceptance": 0,
+        "correct_rejection": 10,
+        "coverage": 0.05080213903743316,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 10,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 9,
+        "false_rejection_denominator": 9,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 10,
+          "0.2": 355,
+          "1.0": 9
+        },
+        "mean_decision_loss": 0.21390374331550802,
+        "selective_risk": 0.47368421052631576,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 355
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 11,
+        "correct_acceptance": 0,
+        "correct_rejection": 6,
+        "coverage": 0.029411764705882353,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 6,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 5,
+        "false_rejection_denominator": 5,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 6,
+          "0.2": 363,
+          "1.0": 5
+        },
+        "mean_decision_loss": 0.2074866310160428,
+        "selective_risk": 0.45454545454545453,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 363
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 19,
+        "correct_acceptance": 8,
+        "correct_rejection": 1,
+        "coverage": 0.05080213903743316,
+        "execution_failures": 0,
+        "false_acceptance": 9,
+        "false_acceptance_denominator": 10,
+        "false_acceptance_rate": 0.9,
+        "false_rejection": 1,
+        "false_rejection_denominator": 9,
+        "false_rejection_rate": 0.1111111111111111,
+        "loss_value_counts": {
+          "0.0": 9,
+          "0.2": 355,
+          "1.0": 10
+        },
+        "mean_decision_loss": 0.21657754010695188,
+        "selective_risk": 0.5263157894736842,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 355
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "GSM8K",
+        "candidates": 374,
+        "classified": 11,
+        "correct_acceptance": 1,
+        "correct_rejection": 5,
+        "coverage": 0.029411764705882353,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 6,
+        "false_acceptance_rate": 0.16666666666666666,
+        "false_rejection": 4,
+        "false_rejection_denominator": 5,
+        "false_rejection_rate": 0.8,
+        "loss_value_counts": {
+          "0.0": 6,
+          "0.2": 363,
+          "1.0": 5
+        },
+        "mean_decision_loss": 0.2074866310160428,
+        "selective_risk": 0.45454545454545453,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 363
+      },
+      {
+        "attack": "clean",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 158,
+        "correct_acceptance": 8,
+        "correct_rejection": 89,
+        "coverage": 0.42702702702702705,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 90,
+        "false_acceptance_rate": 0.011111111111111112,
+        "false_rejection": 60,
+        "false_rejection_denominator": 68,
+        "false_rejection_rate": 0.8823529411764706,
+        "loss_value_counts": {
+          "0.0": 97,
+          "0.2": 212,
+          "1.0": 61
+        },
+        "mean_decision_loss": 0.2794594594594595,
+        "selective_risk": 0.3860759493670886,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 212
+      },
+      {
+        "attack": "confidence_inflation [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 168,
+        "correct_acceptance": 11,
+        "correct_rejection": 92,
+        "coverage": 0.4540540540540541,
+        "execution_failures": 0,
+        "false_acceptance": 2,
+        "false_acceptance_denominator": 94,
+        "false_acceptance_rate": 0.02127659574468085,
+        "false_rejection": 63,
+        "false_rejection_denominator": 74,
+        "false_rejection_rate": 0.8513513513513513,
+        "loss_value_counts": {
+          "0.0": 103,
+          "0.2": 202,
+          "1.0": 65
+        },
+        "mean_decision_loss": 0.2848648648648649,
+        "selective_risk": 0.3869047619047619,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 202
+      },
+      {
+        "attack": "confidence_inflation [rule]",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 158,
+        "correct_acceptance": 8,
+        "correct_rejection": 89,
+        "coverage": 0.42702702702702705,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 90,
+        "false_acceptance_rate": 0.011111111111111112,
+        "false_rejection": 60,
+        "false_rejection_denominator": 68,
+        "false_rejection_rate": 0.8823529411764706,
+        "loss_value_counts": {
+          "0.0": 97,
+          "0.2": 212,
+          "1.0": 61
+        },
+        "mean_decision_loss": 0.2794594594594595,
+        "selective_risk": 0.3860759493670886,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 212
+      },
+      {
+        "attack": "forced_rejection [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 168,
+        "correct_acceptance": 0,
+        "correct_rejection": 94,
+        "coverage": 0.4540540540540541,
+        "execution_failures": 0,
+        "false_acceptance": 0,
+        "false_acceptance_denominator": 94,
+        "false_acceptance_rate": 0.0,
+        "false_rejection": 74,
+        "false_rejection_denominator": 74,
+        "false_rejection_rate": 1.0,
+        "loss_value_counts": {
+          "0.0": 94,
+          "0.2": 202,
+          "1.0": 74
+        },
+        "mean_decision_loss": 0.3091891891891892,
+        "selective_risk": 0.44047619047619047,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 202
+      },
+      {
+        "attack": "forced_rejection [rule]",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 158,
+        "correct_acceptance": 8,
+        "correct_rejection": 89,
+        "coverage": 0.42702702702702705,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 90,
+        "false_acceptance_rate": 0.011111111111111112,
+        "false_rejection": 60,
+        "false_rejection_denominator": 68,
+        "false_rejection_rate": 0.8823529411764706,
+        "loss_value_counts": {
+          "0.0": 97,
+          "0.2": 212,
+          "1.0": 61
+        },
+        "mean_decision_loss": 0.2794594594594595,
+        "selective_risk": 0.3860759493670886,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 212
+      },
+      {
+        "attack": "forced_support [confidence,evidence,semantic]",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 168,
+        "correct_acceptance": 74,
+        "correct_rejection": 0,
+        "coverage": 0.4540540540540541,
+        "execution_failures": 0,
+        "false_acceptance": 94,
+        "false_acceptance_denominator": 94,
+        "false_acceptance_rate": 1.0,
+        "false_rejection": 0,
+        "false_rejection_denominator": 74,
+        "false_rejection_rate": 0.0,
+        "loss_value_counts": {
+          "0.0": 74,
+          "0.2": 202,
+          "1.0": 94
+        },
+        "mean_decision_loss": 0.36324324324324325,
+        "selective_risk": 0.5595238095238095,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 202
+      },
+      {
+        "attack": "forced_support [rule]",
+        "benchmark": "HotpotQA",
+        "candidates": 370,
+        "classified": 158,
+        "correct_acceptance": 8,
+        "correct_rejection": 89,
+        "coverage": 0.42702702702702705,
+        "execution_failures": 0,
+        "false_acceptance": 1,
+        "false_acceptance_denominator": 90,
+        "false_acceptance_rate": 0.011111111111111112,
+        "false_rejection": 60,
+        "false_rejection_denominator": 68,
+        "false_rejection_rate": 0.8823529411764706,
+        "loss_value_counts": {
+          "0.0": 97,
+          "0.2": 212,
+          "1.0": 61
+        },
+        "mean_decision_loss": 0.2794594594594595,
+        "selective_risk": 0.3860759493670886,
+        "team_cost_ms": 108.03258997621015,
+        "uncertain": 212
+      }
+    ],
+    "population": "full_minimax rows. The other two methods match these decisions and losses on every cell."
+  },
+  "verifier_summary": {
+    "abstain_reasons": [
+      {
+        "benchmark": "GSM8K",
+        "count": 374,
+        "reason": "no_context",
+        "verifier": "semantic"
+      }
+    ],
+    "by_verifier": {
+      "confidence": {
+        "decisions": {
+          "GSM8K": {
+            "REJECT": 46,
+            "SUPPORT": 22,
+            "UNSURE": 306
+          },
+          "HotpotQA": {
+            "REJECT": 69,
+            "SUPPORT": 49,
+            "UNSURE": 252
+          }
+        },
+        "failed": 0,
+        "frozen_calibration_mean_ms": 14925.820978323463,
+        "mean_recorded_ms": 13247.461921640073,
+        "mean_recorded_seconds": 13.247461921640074,
+        "ok": 744,
+        "recorded_minus_frozen_ms": -1678.35905668339
+      },
+      "evidence": {
+        "decisions": {
+          "GSM8K": {
+            "REJECT": 17,
+            "UNSURE": 357
+          },
+          "HotpotQA": {
+            "REJECT": 155,
+            "SUPPORT": 13,
+            "UNSURE": 202
+          }
+        },
+        "failed": 0,
+        "frozen_calibration_mean_ms": 107.93551665459138,
+        "mean_recorded_ms": 209.85769489201903,
+        "mean_recorded_seconds": 0.20985769489201903,
+        "ok": 744,
+        "recorded_minus_frozen_ms": 101.92217823742764
+      },
+      "rule": {
+        "decisions": {
+          "GSM8K": {
+            "REJECT": 2,
+            "UNSURE": 372
+          },
+          "HotpotQA": {
+            "UNSURE": 370
+          }
+        },
+        "failed": 0,
+        "frozen_calibration_mean_ms": 0.09707332161876063,
+        "mean_recorded_ms": 0.0422251338726886,
+        "mean_recorded_seconds": 4.22251338726886e-05,
+        "ok": 744,
+        "recorded_minus_frozen_ms": -0.05484818774607203
+      },
+      "semantic": {
+        "decisions": {
+          "GSM8K": {
+            "UNSURE": 374
+          },
+          "HotpotQA": {
+            "REJECT": 77,
+            "SUPPORT": 150,
+            "UNSURE": 143
+          }
+        },
+        "failed": 0,
+        "frozen_calibration_mean_ms": 70.4728633359385,
+        "mean_recorded_ms": 29.967247043469964,
+        "mean_recorded_seconds": 0.029967247043469963,
+        "ok": 744,
+        "recorded_minus_frozen_ms": -40.50561629246853
+      }
+    },
+    "cost_note": "Recorded milliseconds are this run's wall time. Frozen means are the feasibility and penalty costs. They are different measurements.",
+    "reports": 744
+  }
+}

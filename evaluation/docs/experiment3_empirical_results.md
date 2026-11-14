@@ -1,6 +1,23 @@
 # Experiment 3 empirical results
 
-Evidence label: `EMPIRICAL`. These numbers are computed from `evaluation/experiments/experiment3/empirical/results.json`, `metrics.json`, and `bootstrap_results.json`. Synthetic sensitivity results and synthetic figures are a different record and are not used below.
+Evidence label: `EMPIRICAL`. Counts and losses below are recomputed from `evaluation/experiments/experiment3/empirical/results.json`. `reproduction_check` matches `metrics.json` and `bootstrap_results.json` exactly, including the 2,000-resample intervals. Synthetic sensitivity results are not used as findings. The policy diagnosis is a rescore of the stored verifier reports. It is documented in `experiment3_policy_diagnosis.md`.
+
+## Research questions
+
+1. With matched reports, questions, a cold-start reputation prior, frozen costs, the selected loss, and the structural attacks, do `full_minimax`, `fixed_reputation_weighted`, and `fixed_dependency_group` select different teams or produce different decisions?
+2. How do decision loss, coverage, and error rates move across the seven structural attack columns and across GSM8K and HotpotQA?
+
+## Supported claims
+
+These are the claims the records support.
+
+- The Development collection is complete: 372 groups, 744 candidates, 7 attack columns, 3 methods, 15,624 complete cells, 0 duplicate keys, 0 execution failures, `final_test_accessed` false.
+- All three methods selected evidence and rule and made the same decision on every candidate-attack cell. Every paired group difference is 0. The 95% group bootstrap interval is [0.0, 0.0]. That is not a general equivalence result and not a significance test.
+- Inside each aggregation, evidence + rule is the unique minimax optimum at the selected coefficient. The two aggregations of that team tie. Six other feasible teams have higher worst-case loss.
+- GSM8K decisions are mostly uncertain. HotpotQA forced support of the model component produces 103 false accepts out of 104 classified negatives in the pooled attack, and 94 of those false accepts are the HotpotQA slice.
+- The selected resource coefficient does not change the winning team relative to a zero penalty. A high counterfactual coefficient would. That counterfactual is not a separate collection.
+
+Claims that are not supported: method superiority, general equivalence, a measured dependency structure, an optimized budget, and any Final Test result.
 
 The collection is complete. Status `COMPLETE`. Completed cells 15,624 of 15,624. Candidates 744. Groups 372. `final_test_accessed` is false. Execution failures are 0. No gold label was imputed.
 
@@ -53,6 +70,22 @@ Denominator: 5,208 rows = 744 candidates × 7 attacks.
 
 These overall rates pool benchmarks and attack columns. They are not the clean-condition rate. GSM8K coverage across its 2,618 rows is 0.0386 and its uncertainty rate is 0.9614. HotpotQA coverage across its 2,590 rows is 0.4386 and its uncertainty rate is 0.5614.
 
+## Attack-wise results
+
+One method, pooled across benchmarks. The other two methods match every count. Team cost is the frozen sum for evidence + rule, 108.03258997621015 ms, on every row. Execution failures are 0. False-acceptance denominators are false accepts plus correct rejects. False-rejection denominators are false rejects plus correct accepts. Selective risk uses classified decisions.
+
+| Attack | Candidates | Decision loss | CA | CR | FA | FR | Uncertain | Coverage | Selective risk | FAR | FRR |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| clean | 744 | 0.24327956989247312 | 8 | 95 | 1 | 65 | 575 | 169/744 | 66/169 | 1/96 | 65/73 |
+| confidence_inflation [confidence,evidence,semantic] | 744 | 0.24919354838709679 | 11 | 102 | 2 | 72 | 557 | 187/744 | 74/187 | 2/104 | 72/83 |
+| confidence_inflation [rule] | 744 | 0.24327956989247312 | 8 | 95 | 1 | 65 | 575 | 169/744 | 66/169 | 1/96 | 65/73 |
+| forced_rejection [confidence,evidence,semantic] | 744 | 0.26129032258064516 | 0 | 104 | 0 | 83 | 557 | 187/744 | 83/187 | 0/104 | 83/83 |
+| forced_rejection [rule] | 744 | 0.24327956989247312 | 8 | 95 | 1 | 65 | 575 | 169/744 | 66/169 | 1/96 | 65/73 |
+| forced_support [confidence,evidence,semantic] | 744 | 0.2895161290322581 | 82 | 1 | 103 | 1 | 557 | 187/744 | 104/187 | 103/104 | 1/83 |
+| forced_support [rule] | 744 | 0.24327956989247312 | 9 | 94 | 2 | 64 | 575 | 169/744 | 66/169 | 2/96 | 64/73 |
+
+Rule-targeted columns match clean except forced support on rule, which moves one candidate from correct rejection to false acceptance and one from false rejection to correct acceptance. Forced support of the model component is the worst column. Its decision loss plus the constant penalty is the game value.
+
 ## By benchmark and attack
 
 The table is `full_minimax`. The other two methods are identical on every row, including the counts. Each rate uses the classified decisions in that cell, not the full candidate count. GSM8K cells classify 11 or 19 of 374 candidates. A rate of 0.9000 there is 9 false accepts out of 10 classified negatives.
@@ -89,9 +122,19 @@ Group-level paired bootstrap. Seed `20261113`. 2,000 resamples. 95% interval. Th
 
 Every one of the 2,604 paired differences is zero, so the interval is degenerate. This does not support a claim that one method has lower loss than another on this collection. It also does not support a general claim that the methods are equivalent. The cold-start prior is the same for every verifier, the budget excludes the full roster and confidence-plus-evidence, and both aggregations selected evidence and rule.
 
-## Recorded verifier behavior
+## Benchmark distributions
 
-All 744 reports have `ok: true` for semantic, evidence, rule, and confidence. Mean recorded seconds: semantic 0.030, evidence 0.210, rule about 0, confidence 13.247. These durations are observations of this run. Feasibility still uses the frozen calibration means, not these durations.
+Pooled over the seven attacks, so each candidate appears seven times. These are not seven independent samples.
+
+GSM8K, 2,618 rows: decision loss is 0 on 53 rows, 0.2 on 2,517 rows, and 1 on 48 rows. Mean 0.21061879297173414. Coverage 101/2618. Uncertainty 2517/2618. Selective risk 48/101. False accepts 10/54. False rejects 38/47.
+
+HotpotQA, 2,590 rows: decision loss is 0 on 659 rows, 0.2 on 1,454 rows, and 1 on 477 rows. Mean 0.29644787644787646. Coverage 1136/2590. Uncertainty 1454/2590. Selective risk 477/1136. False accepts 100/642. False rejects 377/494.
+
+GSM8K clean classifies 11 of 374 candidates. GSM8K model-component forced support classifies 19 of 374. HotpotQA clean classifies 158 of 370. HotpotQA model-component forced support classifies 168 of 370 and accepts every one of them: 74 correct accepts and 94 false accepts.
+
+## Verifier behavior
+
+All 744 stored calls returned `ok` for semantic, evidence, rule, and confidence. Clean-report decisions:
 
 | Verifier | GSM8K (374) | HotpotQA (370) |
 | --- | --- | --- |
@@ -100,14 +143,32 @@ All 744 reports have `ok: true` for semantic, evidence, rule, and confidence. Me
 | rule | UNSURE 372, REJECT 2 | UNSURE 370 |
 | confidence | UNSURE 306, REJECT 46, SUPPORT 22 | UNSURE 252, REJECT 69, SUPPORT 49 |
 
-GSM8K semantic abstention is the empty evidence context on those Development inputs. The selected team does not include semantic or confidence. High GSM8K uncertainty follows from evidence and rule both abstaining on most of those items.
+Mean recorded seconds: semantic 0.029967, evidence 0.209858, rule 0.000042, confidence 13.247462. Frozen means used for feasibility are 70.472863, 107.935517, 0.097073, and 14925.820978 ms. Recorded time and frozen cost are different measurements.
+
+The selected team is evidence and rule. Rule is `UNSURE` on 742 of 744 clean reports, so the clean decision is usually the evidence vote alone. Forced support of the model component changes HotpotQA evidence from 155 REJECT and 13 SUPPORT to 168 SUPPORT, with 202 still `UNSURE`. That removes the reject votes and produces the false-accept spike. Rule-targeted attacks leave evidence unchanged, which is why those columns match clean.
+
+Confidence is `UNSURE` on 558 of 744 candidates. It is also the expensive verifier. Teams that include it cover somewhat more clean candidates and have worse worst-case loss. See the policy diagnosis.
+
+## Policy and resource diagnosis
+
+A rescore of the stored reports reproduced the stored pure policies. Evidence + rule is the unique best team. The two aggregations tie because the cold-start prior sets every reputation weight to zero, and on these reports the resulting unweighted rules never crossed the threshold differently. The selected coefficient does not change that team relative to a zero penalty. The high sensitivity coefficient would switch the team to rule + semantic if applied to these same losses. That switch was not collected.
+
+The frozen budget excludes confidence + evidence and the full roster. This run's recorded means would not have excluded them. The experiment kept the frozen means.
 
 ## Interpretation
 
-Under this selected budget, this cold-start prior, and these reports, changing the aggregation method did not change the selected team or any decision. Uncertainty dominates, especially on GSM8K. The attack that most increases decision loss is forced support of the merged confidence/evidence/semantic component, and on HotpotQA that cell accepts every classified candidate. Confidence inflation and forced rejection of that component move HotpotQA loss by less, and rule-only attacks are mostly inert.
+Changing the aggregation method did not change the selected team or any decision. The minimax comparison does separate evidence + rule from the other six feasible teams. Uncertainty dominates GSM8K because semantic has no context and both members of the selected team usually abstain. The attack that most increases decision loss is forced support of the merged model component, and on HotpotQA that cell accepts every classified candidate.
 
 The coefficient and budget remain a selected configuration. They were not fit to these outcomes.
 
-## Figure
+## Figures
 
-`evaluation/experiments/experiment3/empirical/figures/attack_validation_loss.svg` plots the decision losses in the table. It is marked `EMPIRICAL`.
+All of these files are marked `EMPIRICAL`. `attack_validation_loss.svg` is the earlier loss chart and was not replaced. The later charts are drawn from the diagnosis file:
+
+- `evaluation/experiments/experiment3/empirical/figures/attack_decision_loss_by_method.svg`
+- `evaluation/experiments/experiment3/empirical/figures/benchmark_coverage_uncertainty.svg`
+- `evaluation/experiments/experiment3/empirical/figures/benchmark_selective_risk.svg`
+- `evaluation/experiments/experiment3/empirical/figures/attack_false_rates.svg`
+- `evaluation/experiments/experiment3/empirical/figures/verifier_uncertainty.svg`
+- `evaluation/experiments/experiment3/empirical/figures/team_selection.svg`
+- `evaluation/experiments/experiment3/empirical/figures/resource_cost_coverage.svg`

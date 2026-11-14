@@ -65,11 +65,14 @@ It started at `2026-11-14T11:24:21.194Z`, logged 138 additional HotpotQA collect
 
 Do not run `empirical_runner.py` against `evaluation/experiments/experiment3/empirical`. That entry point writes a not-collected status and would replace `results.json`.
 
-The empirical figure, which does not call verifiers:
+Diagnosis and figures, which read the stored reports and do not call verifiers or replace `results.json`:
 
 ```text
-python evaluation/experiments/experiment3/write_empirical_figure.py
+python evaluation/experiments/experiment3/policy_diagnosis.py
+python evaluation/experiments/experiment3/write_empirical_figures.py
 ```
+
+`write_empirical_figure.py` redraws only `attack_validation_loss.svg`. The diagnosis command preserves that file. Do not point `empirical_runner.py` at the live empirical directory.
 
 ## Outputs
 
@@ -82,6 +85,14 @@ Prior not-collected files remain in `evaluation/experiments/experiment3/empirica
 | `empirical/bootstrap_results.json` | `2b56ac693740bfdbee00dcf788c0bb4a097d7f70c3ad78b3335bd6b120dce53a` | 1411 |
 | `empirical/verifier_reports.jsonl` | `877d0218dd498e8ca525e651f52f8aa1e337cd6f5123583fb277a2a28e01eca5` | 11064096 |
 | `empirical/figures/attack_validation_loss.svg` | `8be472c94d29b34caec0829065afcc21eb059b746d0d31f8b2871fc7465b1dd4` | 3978 |
+| `empirical/diagnosis/policy_diagnosis.json` | `40256a5355d00056a1b04013847c02036f517ce922a8e48b5d8d313a8cb036a0` | 73687 |
+| `empirical/figures/attack_decision_loss_by_method.svg` | `e19e3a7d0d50621182b76c9c363e38a4a001ab5f596213f5daae0ee72494b57d` | 4186 |
+| `empirical/figures/benchmark_coverage_uncertainty.svg` | `e52dd0eb1f009f1987b52feca88a0fc6cca87cac03e6e43c6c9269f000ca58c8` | 2835 |
+| `empirical/figures/benchmark_selective_risk.svg` | `c006ebbce86a9fd409136ce9be0bfc01dc5597d348081db9feee2184755fc383` | 2252 |
+| `empirical/figures/attack_false_rates.svg` | `eb73d9688c38511dd4d9c152020388c1a36a3da7aaa85f4b8b962cb6121e7093` | 3714 |
+| `empirical/figures/verifier_uncertainty.svg` | `1baf935e65440ba02e2a0feb30e65fa1002154cd274f1b959605ea5edb1cbf` | 3928 |
+| `empirical/figures/team_selection.svg` | `a7fe4603e1183b8c42c879efcd1051385d769df4436627fce667d29e7eeee92f` | 2632 |
+| `empirical/figures/resource_cost_coverage.svg` | `0c2de7199a4486af16ff7131aa02c0b580dd3e186e5e637019b7c3334a5a554c` | 2905 |
 
 Completed cells: 15624. Candidates: 744. Groups: 372. `final_test_accessed`: false. Evidence label: `EMPIRICAL`.
 

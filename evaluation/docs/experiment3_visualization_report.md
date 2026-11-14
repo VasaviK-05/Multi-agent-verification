@@ -1,10 +1,22 @@
 # Experiment 3 visualization report
 
-## Empirical figure
+## Empirical figures
 
-`evaluation/experiments/experiment3/empirical/figures/attack_validation_loss.svg` is the Development figure. It is drawn from `empirical/metrics.json` by `python evaluation/experiments/experiment3/write_empirical_figure.py`. The SVG text says `EMPIRICAL`. Bar heights are the stored `full_minimax` validation losses. The other two methods match those losses on every cell, so they are not drawn as a second series.
+`attack_validation_loss.svg` remains the first Development loss chart. Its SHA-256 is still `8be472c94d29b34caec0829065afcc21eb059b746d0d31f8b2871fc7465b1dd4`. It was not replaced.
 
-Synthetic figures below are not empirical results. Do not read them as Development estimates. The empirical figure is not in `synthetic/figures`.
+`python evaluation/experiments/experiment3/write_empirical_figures.py` reads `empirical/diagnosis/policy_diagnosis.json` and writes these additional files, each marked `EMPIRICAL`:
+
+- `attack_decision_loss_by_method.svg`: mean decision loss by attack. The three methods are drawn separately and have the same height.
+- `benchmark_coverage_uncertainty.svg`: clean versus model-component forced support, GSM8K denominator 374 and HotpotQA denominator 370.
+- `benchmark_selective_risk.svg`: selective risk for those same cells. Bar labels carry the classified-decision denominator.
+- `attack_false_rates.svg`: false acceptance and false rejection by attack, with count denominators in the caption.
+- `verifier_uncertainty.svg`: clean SUPPORT, REJECT, and UNSURE counts. This is not an attacked-report chart.
+- `team_selection.svg`: worst-case augmented loss of each feasible team.
+- `resource_cost_coverage.svg`: frozen team cost against clean coverage. Red points are other feasible teams scored on the stored reports, not additional experiments.
+
+No confidence interval is drawn. The only bootstrap interval is [0, 0], and a whisker at zero would not show uncertainty beyond that degenerate result.
+
+Synthetic figures below are not empirical results. Do not read them as Development estimates. Empirical figures are not written under `synthetic/figures`.
 
 
 
