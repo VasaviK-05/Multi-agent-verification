@@ -65,21 +65,15 @@ The root `adapter.json` is generic configuration. It is not automatically select
 
 ### SAFE TO RUN NOW
 
-From the repository root, the focused synthetic suite is:
+From a shell with `TEST_PYTHON` set to a prepared compatible test interpreter, the focused synthetic suite can be run with:
 
-```powershell
-.\.venv-test\Scripts\python.exe -B -m pytest -p no:cacheprovider tests/test_research_v1_recording_binding.py tests/test_diagnostic_collection.py::test_diagnostic_same_collection_without_label_or_custody_claims tests/test_diagnostic_collection.py::test_experiment4_diagnostic_request_enforces_development_roster_and_bounds tests/test_diagnostic_collection.py::test_experiment4_specific_measurement_and_bundle_round_trip_synthetically tests/test_diagnostic_collection.py::test_experiment4_unauthorized_cli_stops_before_factory_initialization tests/test_experiment4_applicability.py tests/test_game_collection.py::test_prerequisites_unavailable_and_abstention_are_distinct
+```sh
+"$TEST_PYTHON" -B -m pytest -p no:cacheprovider tests/test_research_v1_recording_binding.py tests/test_diagnostic_collection.py::test_diagnostic_same_collection_without_label_or_custody_claims tests/test_diagnostic_collection.py::test_experiment4_diagnostic_request_enforces_development_roster_and_bounds tests/test_diagnostic_collection.py::test_experiment4_specific_measurement_and_bundle_round_trip_synthetically tests/test_diagnostic_collection.py::test_experiment4_unauthorized_cli_stops_before_factory_initialization tests/test_experiment4_applicability.py tests/test_game_collection.py::test_prerequisites_unavailable_and_abstention_are_distinct
 ```
 
-This exercises synthetic binding, diagnostic, and prerequisite behavior only; it does not demonstrate live readiness.
+`TEST_PYTHON` must point to an already prepared compatible test environment. The recorded Python 3.12/macOS test profile is separate evidence; that environment is not bundled with this publication branch. These tests exercise synthetic binding, diagnostic, and prerequisite behavior only and do not demonstrate live readiness.
 
-The current unauthorized Experiment 4 preflight request can be structurally validated with:
-
-```powershell
-.\.venv-test\Scripts\python.exe -B -m app.game.offline.collect validate docs/research_v1-recording-handoff/experiment4-development-diagnostic-preflight-request-v1.json
-```
-
-The `validate` command does not initialize the factory. A successful result establishes request-schema/structural validity only, not factory construction, resource compatibility, service readiness, authorization, or durable recording.
+Structural validation is available for a supplied recording request. The `validate` command parses and checks the request structure without initializing its factory; it does not establish factory construction, resource compatibility, service readiness, authorization, or durable recording. A concrete validation command requires an actual request file. This publication branch does not include the previously referenced standalone Experiment 4 diagnostic preflight JSON, so no runnable command using that file is provided here.
 
 ### PRE-FLIGHT / STRUCTURAL ONLY
 
