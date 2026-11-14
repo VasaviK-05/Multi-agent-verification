@@ -1,3 +1,5 @@
+"""Reuse finalized cells only when the sole planning change is a hard budget."""
+
 from app.game.models import PayoffMatrix
 from app.game.offline.evaluation import Evaluation, _inputs
 from app.game.strategies import enumerate_strategies
