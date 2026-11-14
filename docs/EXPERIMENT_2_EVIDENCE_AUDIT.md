@@ -90,3 +90,49 @@ The training manifest and development evaluation also matched their correspondin
 **Conclusion:** All three declared run-metadata input files have verified byte-level integrity against their recorded hashes. This strengthens the input-file integrity evidence for the historical Development pipeline validation.
 
 **Limitations:** Hash agreement does not independently establish the original collection environment, execution-source custody, authorization history, or the unresolved application-source digest. It also does not establish a direct internal identifier link between the training manifest and development evaluation. No historical metadata or source artifacts were modified during these checks.
+
+## Development budget feasibility finding
+
+A read-only feasibility analysis was performed using the existing
+`reference-50-v1` Development evaluation. No new verifier executions
+were performed and no Final Test data was accessed.
+
+The execution contract uses:
+- Contributor version: `informative_history_influence_v1`
+- Coverage version: `task_output_contract_v2`
+- Minimum informative contributors: 1
+
+The informative contributor rule requires a positively influential
+report with reputation strictly greater than 0.5.
+
+The historical reputation snapshot showed:
+- Semantic: reputation 0.5, 20 observations
+- Evidence: reputation 0.5, 0 observations
+- Rule: reputation 0.5, 0 observations
+- Confidence: reputation approximately 0.866667, 13 observations
+
+The estimated confidence-verifier attempt cost was approximately
+16,428.737 ms.
+
+Maximum achievable clean Development decision coverage:
+
+| Budget | Budget (ms) | Maximum clean coverage | 90% feasible |
+|---|---:|---:|---|
+| B1 (50%) | 8,297.392 | 0.00 | No |
+| B2 (75%) | 12,446.088 | 0.00 | No |
+| B3 (100%) | 16,594.785 | 0.60 | No |
+
+Consequently, the 90% reliability-first coverage constraint is
+infeasible at all three tested budget levels on this historical
+Development evaluation.
+
+The unconstrained minimax results are degenerate and select
+abstention. They must not be presented as successful budget-sensitive
+decision policies.
+
+These findings are historical Development pipeline diagnostics,
+not completed formal Experiment 2 results. The original provenance
+and calibration limitations remain unresolved.
+
+No reputation values, contributor rules, thresholds, historical
+outcomes, or Final Test data were modified.
