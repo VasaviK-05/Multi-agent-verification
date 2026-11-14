@@ -1,0 +1,25 @@
+{
+  "record_type": "experiment3_resource_approval_record_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/experiments/experiment3/approval_package/resource_configuration_proposal.json",
+  "artifact_sha256": "9393c6b0caf82778670b971d3c4e5ee5b0c8cbf9b01b34a7c244f5f8f94a498c",
+  "resource_coefficient_loss_per_ms": null,
+  "verifier_budget_ms": null,
+  "sensitivity_scenarios": "evaluation/experiments/experiment3/sensitivity/scenarios.json",
+  "sensitivity_scenarios_sha256": "5d1dafb13aa97eddff57c5f9db40821728c1d4c9f493c3eb624fb34327f1c80a",
+  "review_candidate": {
+    "approved": false,
+    "coefficient_id": "low",
+    "coefficient_loss_per_ms": 1.3399597937725295e-05,
+    "budget_id": "confidence_entry",
+    "budget_ms": 14996.39091498102,
+    "basis": "Research-lead selected configuration: low coefficient and the confidence-entry budget. Not empirically optimized, not a measured utility, and not a signature."
+  },
+  "required_signer": "research lead",
+  "scope": "Binds the resource proposal hash. Before signing, write the chosen coefficient and budget here. They must equal approved_settings on the protocol approval.",
+  "limitations": "This template is not a research-lead approval. The review candidate is not approved."
+}

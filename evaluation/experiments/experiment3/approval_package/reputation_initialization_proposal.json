@@ -1,0 +1,37 @@
+{
+  "record_type": "experiment3_reputation_initialization_proposal_v1",
+  "status": "PROPOSED_PENDING_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "implementation": "app.reputation.reputation_manager.ReputationManager",
+  "equations": {
+    "alpha": "prior_alpha + successes",
+    "beta": "prior_beta + failures",
+    "posterior_mean": "alpha / (alpha + beta)",
+    "reported_reputation": "round(posterior_mean, 6)",
+    "posterior_variance": "alpha * beta / ((alpha + beta)^2 * (alpha + beta + 1))"
+  },
+  "proposed_initialization": {
+    "prior_alpha": 1.0,
+    "prior_beta": 1.0,
+    "cold_start_reported_reputation": 0.5,
+    "basis": "This is the only initialization ReputationManager implements. It is uncalibrated."
+  },
+  "smoothing": "Beta(1, 1) prior only. Counts are integers, not confidence-weighted pseudo-counts.",
+  "decay": null,
+  "verifier_roster": ["semantic", "evidence", "rule", "confidence"],
+  "observations_count": 0,
+  "observation_source": null,
+  "development_labels_permitted": false,
+  "history_snapshots_permitted": false,
+  "history_condition": "app.game.offline.records.history_reputation may be used only after an approved update rule. That rule is not approved.",
+  "snapshot_requirements": [
+    "export_state schema version 1",
+    "priors, integer counts, and scoped feedback",
+    "restore_state must reproduce the export",
+    "bind the snapshot to this proposal hash, the verifier roster, and the eligible Development roster hash",
+    "do not write a snapshot until this proposal is signed"
+  ],
+  "scope": "Decision-ready proposal only. Signing is a separate research-lead act. This file does not create a reputation snapshot."
+}

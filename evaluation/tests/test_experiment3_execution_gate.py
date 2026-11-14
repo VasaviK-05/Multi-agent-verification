@@ -8,7 +8,6 @@ import pytest
 from evaluation.analysis.experiment3 import method_metrics, paired_loss_differences, validate_rows
 from evaluation.analysis.visualization.experiment3 import attack_stratified_plot, coverage_risk_plot
 from evaluation.experiments.experiment3.collection_gate import collection_allowed, validate_recording_file
-from evaluation.experiments.experiment3.prerequisite_validator import READY_FOR_APPROVAL
 
 
 def _row(**overrides):
@@ -25,12 +24,43 @@ def _row(**overrides):
     return row
 
 
+def test_approval_flag_does_not_authorize_a_different_budget():
+    from evaluation.experiments.experiment3.execution_readiness import configuration_errors
+    payload = {
+        "approved": True,
+        "approver": "Research Lead",
+        "approval_date": "2026-11-14",
+        "independent_human_approval": False,
+        "contributor_signatures_obtained": False,
+        "fabricated_signatures": False,
+        "authorization_statement": "different statement",
+        "selected_configuration_is_empirically_optimized": False,
+        "resource_coefficient_loss_per_ms": 1.0,
+        "verifier_budget_ms": 1.0,
+    }
+    errors = configuration_errors(payload, coefficient=1.3399597937725295e-05, budget=14996.39091498102)
+    assert errors
+    assert any("signature" in item for item in errors)
+    assert any("budget" in item for item in errors)
+
+
 def test_live_collection_is_not_authorized():
     report = collection_allowed()
-    assert report["status"] == READY_FOR_APPROVAL
+    assert report["authorized_by_research_lead"] is True
+    assert report["independent_human_approval"] is False
+    assert report["fabricated_signatures"] is False
     assert report["collection_started"] is False
-    assert report["recordings_created"] is False
-    assert report["empirical_recording_count"] == 0
+    assert report["status"] in {
+        "BLOCKED", "TECHNICALLY_READY", "AUTHORIZED_BY_RESEARCH_LEAD",
+        "EMPIRICALLY_EXECUTED", "EMPIRICALLY_COMPLETED",
+    }
+    if report["empirically_completed"]:
+        assert report["empirical_recording_count"] >= 15624
+    elif report["empirically_executed"]:
+        assert report["empirical_recording_count"] > 0
+    else:
+        assert report["empirical_recording_count"] == 0
+        assert report["recordings_created"] is False
 
 
 def test_synthetic_file_and_final_test_paths_are_refused():

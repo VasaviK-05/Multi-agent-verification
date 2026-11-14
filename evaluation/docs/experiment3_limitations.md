@@ -1,12 +1,24 @@
 # Experiment 3 limitations
 
-- The protocol is `PENDING_APPROVAL` and is not frozen. Unsigned templates are not approvals.
-- Resource coefficient, verifier budget, and the cost unit are unresolved. A loss that includes cost cannot be computed.
-- Reputation initialization, update, and smoothing are `PENDING_APPROVAL`. Person 3 observations are 0. Development outcomes are not a reputation source.
-- Verifier snapshot hashes, prompt hashes, hardware, timeout, retries, and the collection seed are unknown. The corpus is not approved. Embedding weights are `UNKNOWN`. Leakage clearance is `NOT_CLAIMED`. Gold-answer strings remain a recorded corpus limitation.
-- `provisional_shared_unknown_v1` puts all verifiers in one failure group, so it cannot separate independent and correlated failures. `structural_shared_resource_v1` is an unapproved structural grouping, not a measured correlation.
-- Hypothetical dependency configurations have no loss values. They are not measured dependencies.
-- The synthetic fixture uses hand-built reports for verifiers named `a`, `b`, and `c`. Its losses are not Development results. Suppression in that fixture is part of the fixture's attack list; the proposed Development setting still marks suppression unavailable.
-- The synthetic runner cannot be loaded. Existing fixture outputs were preserved rather than regenerated.
-- Eligibility JSONL files in the working tree use CR bytes. Their LF-normalized hashes match. They were not rewritten.
-- No claim is made that aggregation choice or dependency modeling improves validation performance.
+- Execution was performed under the research-lead authorization recorded in `evaluation/experiments/experiment3/execution_configuration.json`. Independent human approval was not obtained.
+- Other contributors' signatures were not obtained. No signature, approver name, or approval date was fabricated. Person 1's eligibility manifest and the frozen cost calibration were not edited to grant collection.
+- Automated integrity validation replaced manual approval dependencies. A JSON `approved` flag does not authorize execution.
+- `SYNTHETIC_INCORRECT` candidates are generated negatives. They are not human-verified incorrect answers.
+- No human-verified incorrect candidates exist in the approved population.
+- Reputation starts from a `Beta(1, 1)` cold-start prior. Approved historical observations are zero. Development outcomes were not used as reputation observations.
+- Dependency groups are structurally assumed. They were not independently empirically measured. The registry merge of semantic, evidence, and confidence is a consequence of overlapping structural groups.
+- Evaluation is Development only. Sealed Final Test labels were not opened, and the eligibility manifest still has `final_test_authorized: false`.
+- The loss coefficient and the resource budget are selected configuration choices. They are not empirically optimized.
+- The participant floor of 2 and the uniform capability label used for team feasibility are configuration assumptions. They are not an approved difficulty policy and not a measured capability map.
+- Non-clean attacks are applied per structural failure component, not to the whole roster at once. The resulting grid has 15,624 cells, not 8,928. The two components are an assumption of the overlapping structural groups.
+- Verifier model-weight snapshot hashes remain `UNKNOWN`. Rule source hash in the verifier config was not copied into a new collection-configuration hash.
+- Estimated resource cost uses frozen calibration means, not a new wall-time measurement of every Experiment 3 attempt. Per-call durations are stored on the raw report rows.
+- Semantic comparison abstains when the Development input has no evidence context. Rule coverage of GSM8K word problems is unsupported by that verifier. Those abstentions are empirical behavior of the current implementations.
+- Loading `EvidenceVerifier` rewrote `corpus_mtime` in the Development evidence-index manifest. The corpus SHA-256 did not change. That mtime-only edit was restored with `git checkout` of that one file after collection. The corpus bytes were not changed.
+- Policies were fit and scored on the same Development rows. There is no held-out Development split. Final Test was not used as a holdout.
+- All three methods selected the same pure team, evidence and rule, and produced identical decisions. The paired interval is [0, 0] because every paired difference is zero. That is an observed lack of separation under this budget, prior, and report set. It is not evidence that the methods are equivalent in general.
+- GSM8K semantic reports are all `UNSURE` with `no_context` because those Development inputs have an empty evidence context. Rule reports are `UNSURE` on 742 of 744 candidates. Those abstentions make rule-targeted attacks match the clean condition for most cells.
+- GSM8K decisive counts are 11 or 19 of 374 candidates. Rates on those cells, including a false-acceptance rate of 0.9, have small denominators and are not stable estimates.
+- `mean_recorded_attempt_cost` in the metrics file is the average of the selected members' frozen means, about 54.016 ms. The protocol team cost is the sum, 108.03258997621015 ms.
+- Synthetic sensitivity results and synthetic figures are not empirical findings. The empirical figure is only `evaluation/experiments/experiment3/empirical/figures/attack_validation_loss.svg`.
+- The completed structural grid has 15,624 cells. A file with fewer completed empirical cells would not be this experiment. The two-candidate `smoke_results.json` is a probe from an earlier attack layout and is not the result.

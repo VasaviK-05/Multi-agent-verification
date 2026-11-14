@@ -1,0 +1,13 @@
+{
+  "record_type": "experiment3_reputation_approval_record_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/experiments/experiment3/approval_package/reputation_initialization_proposal.json",
+  "artifact_sha256": "5eac889b0904957b2f926dc65a9b10531acd9b1514af0e953b9c01f395d80bad",
+  "required_signer": "research lead",
+  "scope": "Binds the cold-start reputation proposal. Signing accepts Beta(1, 1), reported cold start 0.5, no decay, and zero observations. It does not create observations and does not authorize Development labels or a History snapshot.",
+  "limitations": "This template is not a research-lead approval."
+}

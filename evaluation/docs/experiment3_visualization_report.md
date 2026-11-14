@@ -1,6 +1,12 @@
 # Experiment 3 visualization report
 
-Empirical figures were not produced. There is no empirical result directory.
+## Empirical figure
+
+`evaluation/experiments/experiment3/empirical/figures/attack_validation_loss.svg` is the Development figure. It is drawn from `empirical/metrics.json` by `python evaluation/experiments/experiment3/write_empirical_figure.py`. The SVG text says `EMPIRICAL`. Bar heights are the stored `full_minimax` validation losses. The other two methods match those losses on every cell, so they are not drawn as a second series.
+
+Synthetic figures below are not empirical results. Do not read them as Development estimates. The empirical figure is not in `synthetic/figures`.
+
+
 
 ## Synthetic fixture figures
 

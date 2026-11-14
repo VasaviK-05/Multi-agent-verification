@@ -1,0 +1,275 @@
+{
+  "record_type": "experiment3_empirical_run_manifest_v1",
+  "experiment_id": "experiment3",
+  "branch": "raunak-exp-3",
+  "git_commit": "5485c54eaaecc1e338d4b1e3b889353a7a34ce98",
+  "python": "3.12.1",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "empirical_collection_started": true,
+  "verifiers_called": true,
+  "final_test_accessed": false,
+  "rows_written": 15624,
+  "imputed_labels": 0,
+  "gate_status": "EMPIRICALLY_COMPLETED",
+  "historical_approval_gate": "READY_FOR_APPROVAL",
+  "independent_human_approval": false,
+  "contributor_signatures_obtained": false,
+  "eligibility": {
+    "manifest": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+    "body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+    "dataset_version": "research_v1_exploratory_v1",
+    "label_protocol": "provisional_automated_labeling_v1",
+    "groups": 372,
+    "candidates": 744,
+    "groups_by_benchmark": {
+      "GSM8K": 187,
+      "HotpotQA": 185
+    },
+    "output_lf_sha256": {
+      "development_eligible.jsonl": "7ce9d93faf27a61b8fc810025febc4d375629f525565574b55208569bbd462ea",
+      "development_excluded.jsonl": "9556d19d5c9d86801986a1684913759280468b9767344555bf329d0326887cbf",
+      "group_assignments.jsonl": "8d73ffae8b91e66fce53278f665de6ecfa0ab69a5a51168976a52e231950df73",
+      "label_validation.jsonl": "aa130b41ab312c4f5548e9b0b8a2c97171d8a41643457098a49303030dffee1f",
+      "leakage_audit.json": "4c15def559393a00d84bf9b57efe52637aebead7a6ab20c472fc43433919efd2"
+    },
+    "collection_authorized": false,
+    "does_not_authorize": [
+      "verifier collection",
+      "attempt recording",
+      "protocol freeze",
+      "Experiment 2 budgets",
+      "Final Test label release",
+      "confirmatory evaluation",
+      "policy fitting"
+    ]
+  },
+  "plan": {
+    "experiment_id": "experiment3",
+    "verifiers_called": false,
+    "groups": 372,
+    "candidates": 744,
+    "groups_by_benchmark": {
+      "GSM8K": 187,
+      "HotpotQA": 185
+    },
+    "conditions": [
+      "clean",
+      "forced_support",
+      "forced_rejection",
+      "confidence_inflation"
+    ],
+    "aggregation_methods": [
+      "full_minimax",
+      "fixed_reputation_weighted",
+      "fixed_dependency_group"
+    ],
+    "suppression": "excluded",
+    "dependency_model": "structural_shared_resource_v1",
+    "dependency_status": "PROVISIONAL",
+    "planned_candidate_condition_method_cells": 8928,
+    "plan_sha256": "09e1b5d370efbe07dac86e3661eb235ff81ee347a488b89615ad9463bc82edef",
+    "same_inputs_across_methods": [
+      "question_groups",
+      "candidate_ids",
+      "conditions",
+      "verifier_roster",
+      "resource_configuration",
+      "cost_calibration"
+    ],
+    "executed": false
+  },
+  "calibration": {
+    "bundle": "artifacts/research-v1-development-cost-calibration-v1",
+    "valid": true,
+    "calibration_id": "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+    "input_digest": "543991e00c2c3d19b31f30d226167021a22a27d78cf6c3d0cab3645e9ebed629",
+    "method": "mean_attempt_wall_time_ms_v1",
+    "cost_units": "ms",
+    "attempt_count": 488,
+    "calibration_eligible_attempts": 480,
+    "warmup_attempts": 8,
+    "resource_manifest_id": "754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c",
+    "setup_fingerprint": "83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee",
+    "resource_manifest_id_matches_freeze": true,
+    "setup_fingerprint_matches_freeze": true,
+    "code_revision": "662bd5cdbf2c8b2dc9885f6bb80e42abf7c5205e",
+    "estimates": [
+      {
+        "verifier_name": "confidence",
+        "attempt_cost": 14925.820978323463,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 14925.820978323463,
+        "median_ms": 13753.990900004283,
+        "p95_nearest_rank_ms": 24120.17620005645
+      },
+      {
+        "verifier_name": "evidence",
+        "attempt_cost": 107.93551665459138,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 107.93551665459138,
+        "median_ms": 63.834649859927595,
+        "p95_nearest_rank_ms": 340.4300999827683
+      },
+      {
+        "verifier_name": "rule",
+        "attempt_cost": 0.09707332161876063,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 0.09707332161876063,
+        "median_ms": 0.07880001794546843,
+        "p95_nearest_rank_ms": 0.2321999054402113
+      },
+      {
+        "verifier_name": "semantic",
+        "attempt_cost": 70.4728633359385,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 70.4728633359385,
+        "median_ms": 38.655450101941824,
+        "p95_nearest_rank_ms": 189.06880007125437
+      }
+    ],
+    "policy_fitting_authorized_by_freeze": false,
+    "files": [
+      {
+        "path": "artifacts/research-v1-development-cost-calibration-v1/measurements.json",
+        "expected_sha256": "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+        "expected_bytes": 427057,
+        "working_tree_sha256": "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+        "working_tree_bytes": 427057,
+        "match": "raw",
+        "size_matches_recorded_bytes": true
+      },
+      {
+        "path": "artifacts/research-v1-development-cost-calibration-v1/calibration.json",
+        "expected_sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+        "expected_bytes": 885049,
+        "working_tree_sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+        "working_tree_bytes": 885049,
+        "match": "raw",
+        "size_matches_recorded_bytes": true
+      },
+      {
+        "path": "artifacts/research-v1-development-cost-calibration-v1/calibration-provenance.json",
+        "expected_sha256": "391094b7a74b6da2c6b617a7f6bf27fbc71e94ad56855df7106e618a9d5c5637",
+        "expected_bytes": 2565,
+        "working_tree_sha256": "938f4f1fd4b803004cf55c710b41a9d438bc440db5fa11c352afb497144cf9a0",
+        "working_tree_bytes": 2629,
+        "match": "lf_normalized",
+        "size_matches_recorded_bytes": true
+      }
+    ]
+  },
+  "reputation": {
+    "behavior": {
+      "implementation": "app.reputation.reputation_manager.ReputationManager",
+      "policy_implementation": "app.game.policy.build_policy",
+      "comparison_implementation": "app.game.research.comparison.prepare_comparison",
+      "equations": {
+        "alpha": "prior_alpha + successes",
+        "beta": "prior_beta + failures",
+        "posterior_mean": "alpha / (alpha + beta)",
+        "reported_reputation": "round(posterior_mean, 6)",
+        "posterior_variance": "alpha * beta / ((alpha + beta)^2 * (alpha + beta + 1))"
+      },
+      "prior_alpha": 1.0,
+      "prior_beta": 1.0,
+      "cold_start_reported_reputation": 0.5,
+      "smoothing": "Beta(1, 1) prior only. Successes and failures are integer observations, not confidence-weighted pseudo-counts.",
+      "decay": null,
+      "update": "A directional vote succeeds when its passed flag equals the external boolean label. Abstentions and verifiers that did not run add no observation.",
+      "replay": "record_feedback ignores an exact replay of the same validation id and rejects a changed label or vote list.",
+      "persistence": "export_state/restore_state round-trips priors, integer counts, and scoped feedback at schema version 1. That export is not a database write.",
+      "history_helper": "app.game.offline.records.history_reputation learns only from a history partition. Experiment 3 inputs allow that source only after an approved update rule.",
+      "policy_algorithm": "build_policy enumerates the feasible strategies and solves the minimax linear program. prepare_comparison restricts that matrix for fixed_reputation_weighted and fixed_dependency_group and solves each restricted game.",
+      "reproducibility": "app.game.offline.build.verify_equivalent refits the same specification and compares the matrix, reputation snapshot, and probabilities. It is not invoked while the Experiment 3 inputs are unapproved.",
+      "verifier_roster": [
+        "semantic",
+        "evidence",
+        "rule",
+        "confidence"
+      ],
+      "approved_initialization": null
+    },
+    "snapshot_written": false,
+    "snapshot_blockers": [
+      "Person 3 reputation observations are absent",
+      "no approved reputation source is recorded",
+      "reputation initialization is PENDING_APPROVAL",
+      "reputation update rule is PENDING_APPROVAL; History snapshots stay unused",
+      "reputation smoothing is PENDING_APPROVAL"
+    ]
+  },
+  "policy": {
+    "artifact_written": false,
+    "blockers": [
+      "Person 3 reputation observations are absent",
+      "no approved reputation source is recorded",
+      "reputation initialization is PENDING_APPROVAL",
+      "reputation update rule is PENDING_APPROVAL; History snapshots stay unused",
+      "reputation smoothing is PENDING_APPROVAL",
+      "the protocol approval record has no signed loss, threshold, resource coefficient, or verifier budget",
+      "the cost-calibration freeze does not authorize policy fitting or budget selection",
+      "the eligibility manifest does not authorize policy fitting"
+    ]
+  },
+  "loss": {
+    "signed_settings_present": false,
+    "false_acceptance": 1.0,
+    "false_rejection": 1.0,
+    "uncertainty": 0.2,
+    "decision_threshold": 0.55,
+    "resource_coefficient": 1.3399597937725295e-05,
+    "verifier_budget": 14996.39091498102,
+    "cost_included": true,
+    "selected_configuration_is_empirically_optimized": false,
+    "signature_status": "unsigned; research-lead execution authorization is recorded separately and is not a signature"
+  },
+  "blockers": [],
+  "recording_schema": [
+    "related_group_id",
+    "benchmark",
+    "attack_condition",
+    "dependency_model",
+    "dependency_scenario",
+    "aggregation_method",
+    "decision",
+    "gold_label",
+    "validation_loss",
+    "coverage",
+    "uncertainty",
+    "verifier_reports",
+    "verifier_costs",
+    "execution_status",
+    "provenance",
+    "configuration_id",
+    "evidence_label",
+    "experiment_id",
+    "candidate_id",
+    "question_id",
+    "selected_verifiers",
+    "dependency_groups",
+    "reputation_snapshot_id",
+    "policy_snapshot_id",
+    "resource_configuration_hash",
+    "cost_calibration_hash",
+    "execution_cost",
+    "label_provenance",
+    "correctness",
+    "failure_reason"
+  ],
+  "historical_rehearsal": {
+    "used_as_experiment3_dataset": false,
+    "present_in_checkout": false,
+    "recorded_external_archive": "research_v1_development_rehearsal_662bd5c.zip",
+    "recorded_archive_sha256": "f688faff1cf4a25abe30d7e6516a0eab58bd0015a78d6863054c0435491d10f0",
+    "note": "The ZIP is not in this checkout. Phase C listed its members and did not open the payload. It is not the 372-group Development collection."
+  },
+  "reproduce": "python evaluation/experiments/experiment3/empirical_runner.py",
+  "completed_cells": 15624,
+  "candidates_collected": 744,
+  "evidence_label": "EMPIRICAL",
+  "collection_note": "Completing process started 2026-11-14T11:24:21.194Z and ended 2026-11-14T11:56:55.911Z with exit code 0. An earlier process was aborted at 2026-11-14T11:16:44.119Z after logging 604 candidates; its reports were resumed."
+}

@@ -1,0 +1,155 @@
+{
+  "analysis_class": "CONFIGURATION-SENSITIVITY ANALYSIS",
+  "assumptions": [
+    "Attempt costs are the frozen per-verifier means. Measurement variance is not propagated.",
+    "Every candidate is given the same synthetic expected capability, so expected coverage does not remove teams. This is not the production capability map.",
+    "The dependency registry is shared_unknown for the four names. Dependency groups do not enter the budget test.",
+    "Fixture decision losses belong to verifiers a, b, and c. They are overlaid onto every calibrated team of the same aggregation. They are not empirical roster payoffs.",
+    "Suppression rows stay in the fixture extract and are excluded from the overlay because the settings proposal sets suppression to unavailable.",
+    "resource_weight does not enter enumerate_strategies. The budget does."
+  ],
+  "budgets": [
+    {
+      "defining_team": [
+        "rule",
+        "semantic"
+      ],
+      "derivation": "Estimated cost of the cheapest two-verifier team under enumerate_strategies. At the easy/medium floor this admits only that pair. At the hard floor it admits nothing, because every size-3 team costs more.",
+      "id": "restrictive",
+      "name": "restrictive",
+      "not_a_protocol_budget": true,
+      "selected": false,
+      "unit": "ms",
+      "uses_four_verifier_sum": false,
+      "value_ms": 70.56993665755726
+    },
+    {
+      "defining_team": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "derivation": "Estimated cost of the only three-verifier team that excludes confidence. Every confidence team costs more, so confidence is infeasible at both participant floors. Equality is feasible: enumerate_strategies rejects only a strict cost excess.",
+      "id": "moderate",
+      "name": "moderate",
+      "not_a_protocol_budget": true,
+      "selected": false,
+      "unit": "ms",
+      "uses_four_verifier_sum": false,
+      "value_ms": 178.50545331214863
+    },
+    {
+      "defining_team": [
+        "confidence",
+        "rule",
+        "semantic"
+      ],
+      "derivation": "Estimated cost of the cheapest three-verifier team that includes confidence. This is the smallest cap at which the hard floor can field confidence. It is a boundary used to explain the confidence cost, not a fourth protocol level.",
+      "id": "confidence_entry",
+      "name": "confidence boundary",
+      "not_a_protocol_budget": true,
+      "selected": false,
+      "unit": "ms",
+      "uses_four_verifier_sum": false,
+      "value_ms": 14996.39091498102
+    },
+    {
+      "defining_team": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "derivation": "Estimated cost of the four-verifier team. It equals the sum of the frozen means and is the smallest cap that admits every team. The sum is not a selected protocol budget.",
+      "id": "permissive",
+      "name": "permissive",
+      "not_a_protocol_budget": true,
+      "selected": false,
+      "unit": "ms",
+      "uses_four_verifier_sum": true,
+      "value_ms": 15104.326431635613
+    }
+  ],
+  "calibration": {
+    "calibration_id": "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+    "calibration_sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+    "calibration_sha256_matches_proposal": true,
+    "computed_four_verifier_sum_ms": 15104.326431635613,
+    "four_verifier_sum_is_a_selected_budget": false,
+    "means_ms": {
+      "confidence": 14925.820978323463,
+      "evidence": 107.93551665459138,
+      "rule": 0.09707332161876063,
+      "semantic": 70.4728633359385
+    },
+    "method": "mean_attempt_wall_time_ms_v1",
+    "policy_fitting_or_budget_selection_authorized_by_freeze": false,
+    "recorded_four_verifier_sum_ms": 15104.326431635613,
+    "source": "evaluation/experiments/experiment3/approval_package/resource_configuration_proposal.json",
+    "unit": "ms"
+  },
+  "coefficients": [
+    {
+      "derivation": "LossConfiguration.resource_weight allows zero. The penalty term is then identically zero. This is a decision-only reference, not a recommendation to drop cost from the protocol.",
+      "id": "no_resource_penalty",
+      "name": "no resource penalty",
+      "reference_only": true,
+      "selected": false,
+      "unit": "loss_per_ms",
+      "value_loss_per_ms": 0.0
+    },
+    {
+      "derivation": "Proposed uncertainty loss 0.2 divided by the frozen confidence mean. One confidence attempt then costs the same as one uncertain decision.",
+      "id": "low",
+      "name": "low",
+      "reference_only": false,
+      "selected": false,
+      "unit": "loss_per_ms",
+      "value_loss_per_ms": 1.3399597937725295e-05
+    },
+    {
+      "derivation": "Proposed false-acceptance loss 1.0 divided by the frozen confidence mean. One confidence attempt then costs the same as one false acceptance.",
+      "id": "moderate",
+      "name": "moderate",
+      "reference_only": false,
+      "selected": false,
+      "unit": "loss_per_ms",
+      "value_loss_per_ms": 6.699798968862647e-05
+    },
+    {
+      "derivation": "Proposed uncertainty loss 0.2 divided by the frozen semantic mean. One semantic attempt then costs the same as one uncertain decision, so a confidence attempt costs many false-acceptance losses. Rule is not the denominator: its mean is under a tenth of a millisecond and would only inflate the same ratio.",
+      "id": "high",
+      "name": "high",
+      "reference_only": false,
+      "selected": false,
+      "unit": "loss_per_ms",
+      "value_loss_per_ms": 0.0028379718168483666
+    }
+  ],
+  "empirical_claim": false,
+  "floors": [
+    {
+      "id": "participant_floor_2",
+      "implementation": "Non-hard PlanningContext uses max(2, plan.minimum_count). The default easy and medium bands are (2, 2) and (2, 3).",
+      "minimum_participant_count": 2,
+      "selected": false
+    },
+    {
+      "id": "participant_floor_3",
+      "implementation": "The default hard band is (3, 4), and a hard plan uses plan.minimum_count. This context sets that minimum to 3.",
+      "minimum_participant_count": 3,
+      "selected": false
+    }
+  ],
+  "label": "SYNTHETIC / CONFIGURATION-SENSITIVITY ANALYSIS",
+  "loss_scale": {
+    "approved": false,
+    "false_accept": 1.0,
+    "false_reject": 1.0,
+    "role": "Scale used only to translate milliseconds into loss. Not an approved coefficient.",
+    "source": "evaluation/config/experiments/experiment3_settings_proposal.json",
+    "uncertain": 0.2
+  },
+  "output_class": "SYNTHETIC",
+  "selected_configuration": null
+}

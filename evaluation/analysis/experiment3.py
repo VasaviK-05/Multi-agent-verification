@@ -182,18 +182,25 @@ def dependency_robustness_matrix(rows: list[dict], *, aggregation_method: str, d
 
 
 def _pairs(rows: list[dict], method: str) -> tuple[dict[str, list[float]], int]:
-    full, other = {}, {}
+    """One paired difference per group, condition, and benchmark.
+
+    Candidate rows that share a question group are averaged before the
+    subtraction. They are not separate bootstrap draws, and a later candidate
+    does not replace an earlier one.
+    """
+    full: dict[tuple, list[float]] = defaultdict(list)
+    other: dict[tuple, list[float]] = defaultdict(list)
     for row in rows:
         if not _analyzable(row) or row["aggregation_method"] not in {REFERENCE, method}:
             continue
         key = (row["related_group_id"], row["attack_condition"], row["dependency_model"], row["benchmark"])
         target = full if row["aggregation_method"] == REFERENCE else other
-        target[key] = row["validation_loss"]
+        target[key].append(row["validation_loss"])
     shared = set(full) & set(other)
     missing = (set(full) | set(other)) - shared
     by_group: dict[str, list[float]] = defaultdict(list)
     for key in shared:
-        by_group[key[0]].append(other[key] - full[key])
+        by_group[key[0]].append(_mean(other[key]) - _mean(full[key]))
     return by_group, len(missing)
 
 

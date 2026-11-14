@@ -1,0 +1,53 @@
+{
+  "analysis_class": "CONFIGURATION-SENSITIVITY ANALYSIS",
+  "approval_records_modified": false,
+  "collection_executed": false,
+  "empirical_claim": false,
+  "files": {
+    "analysis_module": {
+      "bytes": 48196,
+      "path": "evaluation/experiments/experiment3/resource_sensitivity.py",
+      "sha256": "ef348829a3997eec3affd83b803b13b5b21df5245268ef16477d09bc3720ef9d"
+    },
+    "calibration_file": {
+      "bytes": 885049,
+      "path": "artifacts/research-v1-development-cost-calibration-v1/calibration.json",
+      "sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3"
+    },
+    "document": {
+      "bytes": 14458,
+      "path": "evaluation/docs/experiment3_resource_sensitivity.md",
+      "sha256": "9bce6a39f9aab707adf51c37c0b6035141d5f6bae46dbd2ac23b492bb1a43a2d"
+    },
+    "resource_proposal": {
+      "bytes": 2236,
+      "path": "evaluation/experiments/experiment3/approval_package/resource_configuration_proposal.json",
+      "sha256": "9393c6b0caf82778670b971d3c4e5ee5b0c8cbf9b01b34a7c244f5f8f94a498c"
+    },
+    "results.json": {
+      "bytes": 271472,
+      "path": "evaluation/experiments/experiment3/sensitivity/results.json",
+      "sha256": "eabe034068ab420ba92d454de92d22a6c30a8ae3382d6126a003f173387f6161"
+    },
+    "scenarios.json": {
+      "bytes": 6543,
+      "path": "evaluation/experiments/experiment3/sensitivity/scenarios.json",
+      "sha256": "5d1dafb13aa97eddff57c5f9db40821728c1d4c9f493c3eb624fb34327f1c80a"
+    },
+    "synthetic_fixture": {
+      "bytes": 50701,
+      "path": "evaluation/experiments/experiment3/synthetic/results.json",
+      "sha256": "3a33deac8497819e616e35a555e630a74766acd1756b0117339f25b11f33596d"
+    }
+  },
+  "git_revision": "5485c54eaaecc1e338d4b1e3b889353a7a34ce98",
+  "label": "SYNTHETIC / CONFIGURATION-SENSITIVITY ANALYSIS",
+  "output_class": "SYNTHETIC",
+  "preserved_not_modified": [
+    "evaluation/experiments/experiment3/synthetic",
+    "evaluation/experiments/experiment3/empirical",
+    "evaluation/experiments/experiment3/approval_package",
+    "evaluation/experiments/experiment3/hypothetical"
+  ],
+  "selected_configuration": null
+}

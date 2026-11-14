@@ -1,83 +1,54 @@
 # Experiment 3 readiness report
 
-Empirical Experiment 3 was not run. Final Test labels were not opened. The working-tree corpus matches the recorded LF bytes. The corpus is not approved or frozen. Collection is not authorized. This chat is not a research-lead approval. On 2026-11-13 the collection gate returned `READY_FOR_APPROVAL` and `collection_started` false.
+## Gate change
 
-## Current status
+`collection_gate.collection_allowed` no longer treats a human signature as a prerequisite for execution. `prerequisite_validator.assess` is unchanged and still reports `READY_FOR_APPROVAL` when the unsigned approval templates are internally consistent. That status means the historical approval package is unsigned. It is not the execution gate.
 
-`assess()` returns `READY_FOR_APPROVAL`. `protocol_complete` is true. Analysis blockers are the pending statistical settings and the absent empirical result rows. Empirical recordings are 0, costs are unavailable, and Person 3 observations are 0. Development collection is not authorized.
+The execution gate is `evaluation/experiments/experiment3/execution_readiness.py`. It distinguishes:
 
-`evaluation/tests/test_experiment3_execution_gate.py`, `tests/test_experiment3_prerequisites.py`, `tests/test_experiment3_visualizations.py`, and `tests/test_research_readiness.py`: 45 passed. `tests/test_experiment3_synthetic.py` cannot be collected. `app.game.dependencies` does not define `controlled_two_group_registry`, `shared_unknown_registry`, or `CONTROLLED_SYNTHETIC_ASSUMPTION`, and the preserved runner bytecode cannot be executed. The existing `synthetic/results.json` was not overwritten.
+- `BLOCKED`: configuration, hash, population, calibration, or dependency integrity failed.
+- `TECHNICALLY_READY`: integrity passed and the verifier runtime is not available.
+- `AUTHORIZED_BY_RESEARCH_LEAD`: integrity passed, the recorded research-lead authorization matches, and the verifier runtime is available. Verifiers have not necessarily been called.
+- `EMPIRICALLY_EXECUTED`: at least one completed empirical cell exists and the full 15,624-cell structural grid is not finished.
+- `EMPIRICALLY_COMPLETED`: 15,624 completed empirical cells are stored. The 8,928 count is the one-column-per-kind design and is not the completion target.
 
-## Proposed settings
+After the completed collection, `execution_report()` returned `EMPIRICALLY_COMPLETED`, `empirical_recording_count` 15624, `verifiers_available` true, and an empty blocker list. `independent_human_approval`, `contributor_signatures_obtained`, and `fabricated_signatures` remain false. `collection_allowed()` still does not launch verifiers. Its status field is the completion record. `collection_started` on that command stays false because the command itself does not start collection.
 
-The specification keeps unresolved fields null. Recommendations live only in `evaluation/config/experiments/experiment3_settings_proposal.json`, each marked `PROPOSED_PENDING_APPROVAL`.
+## What replaced signatures
 
-| Parameter | Recommendation | Why it is offered |
-|---|---|---|
-| False acceptance loss | 1.0, range 1 to 5 | Matches the uncalibrated pilot, which treats a false acceptance as equal to a false rejection. A higher weight favors rejection. |
-| False rejection loss | 1.0, range 1 to 5 | Keeps the other error from being free. Raising it favors acceptance and can reverse a paired difference. |
-| Uncertainty loss | 0.2, range 0.1 to 0.5 | Charges abstention less than an error. A larger penalty can make decisive methods look better on loss. |
-| Resource coefficient | No number | Person 2 has not named a cost unit. A positive coefficient below the false-acceptance weight per attempt is the open range. This coefficient decides whether cost or errors dominate. |
-| Decision threshold | 0.55, range 0.5 to 0.6 | Current uncalibrated DecisionEngine default. Every method must use the same approved threshold. |
-| Verifier budget | No number | One matched budget in Person 2 units. Experiment 2's three levels are a different question. Different budgets would confound aggregation with resources. |
-| Suppression mode | unavailable | The existing attack enumerator records suppression as unavailable. |
-| Bootstrap resamples | 2000, range 1000 to 5000 | Percentile endpoints for a few hundred groups change little past this count. The mean does not depend on the count. |
-| Confidence level | 0.95, range 0.9 to 0.95 | Conventional reporting level, fixed before outcomes exist. A lower level makes intervals narrower. |
-| Bootstrap seed | 20261113 | Preparation date, used only to order resamples. |
-| Sample size | All 372 approved groups | The approved roster after quarantine. The older count of 387 is obsolete. This is a census, not a power calculation. |
-| Matched conditions | Groups, reports, reputation, costs, loss, threshold, attacks, and budget | Only aggregation, and separately the dependency configuration, may change between cells. |
-| Attacks | clean, forced support, forced rejection, confidence inflation, suppression unavailable | Existing report-corruption columns. |
-| Missing data | Exclude unresolved labels from binary correctness. Count missing pairs and failed executions. Do not impute. | Imputation could create a difference where a method did not run. |
+The gate checks the execution configuration against constants and recomputed calibration quantities:
 
-## Corpus approval requirements
+- loss 1.0 / 1.0 / 0.2, threshold 0.55, suppression unavailable
+- coefficient `1.3399597937725295e-05` loss per millisecond
+- budget `14996.39091498102` milliseconds, equal to the cheapest frozen size-3 confidence team
+- calibration id `cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d`
+- dependency `structural_shared_resource_v1` with `empirical_evidence: none`
+- reputation inputs still at 0 observations and not self-approved
+- eligibility roster still 372 groups and 744 candidates, with collection and Final Test flags still false
+- bootstrap seed `20261113`
+- verifier modules import, the Development evidence corpus exists, and local Ollama has `llama3.2:3b`
+- output paths containing `final_test` are refused
 
-The corpus approval template is `evaluation/config/experiments/approvals/experiment3_corpus_approval_record.json`. It is `NOT_AN_APPROVAL`. Approver and date are empty. Freeze status is `NOT_FROZEN`.
+An `approved: true` field, an approver name, or a different budget fails `configuration_errors`. The eligibility manifest and the cost-calibration freeze were not edited to flip their authorization flags.
 
-The record is ready to cite `development_evidence_corpus_v1`, corpus SHA-256 `f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b`, index `idx-c1dc6980912b`, the preparation report, and `evaluation/docs/experiment3_corpus_provenance_reconciliation.md`. The corpus has 1,844 unique sorted articles. Index bytes were not changed. Repository attributes keep LF for the restored corpus. Limitations that stay on the record: one retrieval miss, gold-answer strings in 177 of 185 paragraph sets, an unknown embedding-weight snapshot, GSM8K marked not applicable, and leakage not claimed.
+## What remains unsigned
 
-A freeze is valid only when a signed corpus approval sets `freeze_status` to `FROZEN` and the corpus package `frozen` flag agrees. This package does not freeze the corpus.
+Person 1's eligibility manifest still withholds verifier collection, attempt recording, and policy fitting. Person 3's reputation input file remains `PENDING_PERSON3`. The protocol, corpus, dependency, and collection approval templates remain unsigned. Vasavi's cost freeze remains a freeze of the millisecond measurements, not an Experiment 3 protocol signature. Model-weight snapshot hashes in the collection configuration remain `UNKNOWN`. No hash was invented for them.
 
-## Dependency design
+## Implementation status
 
-The declared model is `structural_shared_resource_v1`. Rule stands alone. Semantic and evidence share the embedding model. Evidence and confidence share the NLI model. Confidence also depends on an unpinned generator. These groups are shared-resource risks, not measured correlations. The empirical heatmap is not estimable until paired failure recordings exist.
+`empirical_runner.run` writes a status manifest and does not call verifiers. `empirical_executor.py` calls `SemanticVerifier`, `EvidenceVerifier`, `RuleVerifier`, and `ConfidenceVerifier` on Development inputs, applies `transform` for the four conditions, scores feasible teams with `DecisionEngine`, and solves the three methods with `solve_minimax`.
 
-No paired failure recording exists. The decision package does not claim measured dependence. If the heatmap is required before such recordings exist, the research lead can approve two labeled stress tests: each verifier in its own group, and semantic plus evidence together with rule and confidence separate. Those rows are hypothetical. The synthetic two-group fixture remains a scoring check. The recommendation is in `evaluation/config/experiments/experiment3_dependency_decision.json`.
+A two-candidate probe wrote `evaluation/experiments/experiment3/empirical/smoke_reports.jsonl` and `smoke_results.json`. That probe is not the experiment. The full collection command is `python -u evaluation/experiments/experiment3/empirical_executor.py`. It resumes `verifier_reports.jsonl`. The completed run stored 744 reports and 15,624 cells.
 
-## Approval templates
+## Tests
 
-These files require an approver role, a date, the artifact identifier, the artifact SHA-256, a decision, a scope, and conditions. None of those identities or dates is filled.
+After the completed collection, this command passed 51 tests:
 
-1. `evaluation/config/experiments/approvals/experiment3_protocol_approval_record.json` — specification `f64b47cfe206548c57f60d48ebf2404dacce65b46ed05e4210fe68fb8250f529`.
-2. `evaluation/config/experiments/approvals/experiment3_corpus_approval_record.json` — corpus `f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b`.
-3. `evaluation/config/experiments/approvals/experiment3_dependency_approval_record.json` — dependency configuration `39d94f453f199c51d9a387c71d4f6fe2bf8cbe6bd63c5cac1267d79a1a8f0a34`.
-4. `evaluation/config/experiments/approvals/experiment3_collection_authorization_record.json` — collection configuration `089b99427a8a02b92ad03d98e2a88a525850484d3d90b8079aeca29538294811`.
+`python -m pytest tests/test_experiment3_approval_package.py tests/test_experiment3_prerequisites.py tests/test_experiment3_empirical_integration.py tests/test_experiment3_resource_sensitivity.py evaluation/tests/test_experiment3_execution_gate.py -q --tb=line`
 
-The validator accepts a record only when its status, decision, and approved flag say approved, the approver and date are present, and the artifact hash matches the file. A proposal file cannot advance the status. An inline approved flag without that record blocks.
+The one failure in the first run was an assertion that collection stayed blocked on an unsigned coefficient. That assertion was updated to require the coefficient and budget to be present, the protocol approval to remain unsigned, and `independent_human_approval` to stay false. The rerun of that test and the live status test passed.
 
-## Approval sequence
+## Blockers
 
-1. Research lead accepts or revises the proposed settings, copies the accepted values into the protocol approval's `approved_settings`, and signs that record against the specification hash. That signature freezes the protocol.
-2. Research lead signs the corpus record against the corpus hash and sets the freeze only in that same signed record.
-3. Research lead signs the dependency record, stating whether the heatmap stress tests are in scope. That signature is not a measured-dependence claim.
-4. Research lead signs the collection authorization only after the three records above are signed. Person 2 then supplies the unknown collection fields. `assess()` reaches `READY_FOR_DEVELOPMENT_COLLECTION` only when the authorization is signed, the corpus freeze agrees, verifier hashes are known, and the random seed is set.
-5. Person 2 collects Development recordings and costs. Person 3 exports reputation observations. `assess()` reaches `READY_FOR_EMPIRICAL_EXPERIMENT` only then. Empirical figures wait for `READY_FOR_EMPIRICAL_EXPERIMENT_ANALYSIS`.
-
-## Person 2
-
-The collection file leaves model snapshot hashes, prompt hashes, hardware, software, code revision, random seed, timeout, retries, warmup, and the cost unit as unknown. Person 2 fills those after authorization and then records Development attempts with `related_group_id`, benchmark, attack, verifier reports, costs, execution status, decision, coverage, uncertainty, configuration id, and provenance. Current code defaults were not copied in as historical settings.
-
-## Person 3
-
-Reputation inputs remain `PENDING_PERSON3` with zero observations. Person 3 still chooses the reputation source, initialization, update rule, and smoothing, then exports a policy after the recordings and the approved settings exist. The synthetic fixture is not that source.
-
-## Research-lead decisions still required
-
-Accept or replace each proposed loss weight, the uncertainty loss, the decision threshold, suppression mode, bootstrap count, confidence level, and seed. Choose a resource coefficient and one matched verifier budget after Person 2 names the cost unit. Confirm the 372-group census, the matched conditions, the attack list, and the missing-data policy. Approve and freeze the corpus with its stated limitations. Approve the structural shared-resource groups for the aggregation ablation and decide whether hypothetical heatmap rows are in scope. Approval is not a measured-dependence claim. Authorize collection only after those approvals.
-
-## Synthetic fixture
-
-The fixture under `evaluation/experiments/experiment3/synthetic/` is `SYNTHETIC`. On hand-built reports, `shared_unknown` worst-case losses were joint 0.4, fixed reputation 0.4, and fixed dependency 1.2. The controlled two-group assumption brought all three worst-case losses to 0.4, while clean losses still differed. Those figures validate the scoring machinery. They are not measured verifier dependence, cost, or robustness.
-
-## Required figures
-
-The grouped bars compare the three aggregation methods on validation loss and decision coverage under matched conditions. The paired-difference plot shows ablation loss minus full-game loss, with zero meaning identical loss. The dependency heatmap is not estimable from current empirical inputs. A synthetic two-group figure can be drawn only with the `SYNTHETIC` label.
+The completed collection has no remaining execution blocker. `execution_report()` blockers are empty. Failed verifier calls, had any occurred, would have been stored and not imputed. None of the 744 stored calls failed. A later reproduction can still fail if Ollama or a model load fails. That would leave the new run short of 15,624 cells, and a short run is not a completed experiment.

@@ -1,0 +1,48 @@
+{
+  "confidence_level": 0.95,
+  "evidence_label": "EMPIRICAL",
+  "paired_differences": [
+    {
+      "aggregation_method": "fixed_reputation_weighted",
+      "confidence_interval": {
+        "lower": 0.0,
+        "reason": null,
+        "resamples": 2000,
+        "upper": 0.0
+      },
+      "contrast": "ablation_validation_loss_minus_full_minimax",
+      "evidence_label": "EMPIRICAL",
+      "mean_loss_difference": 0.0,
+      "missing_pairs": 0,
+      "practical_effect": 0.0,
+      "reference": "full_minimax",
+      "related_group_count": 372,
+      "sample_size": 2604,
+      "statistical_interval_available": true,
+      "zero_difference_count": 2604
+    },
+    {
+      "aggregation_method": "fixed_dependency_group",
+      "confidence_interval": {
+        "lower": 0.0,
+        "reason": null,
+        "resamples": 2000,
+        "upper": 0.0
+      },
+      "contrast": "ablation_validation_loss_minus_full_minimax",
+      "evidence_label": "EMPIRICAL",
+      "mean_loss_difference": 0.0,
+      "missing_pairs": 0,
+      "practical_effect": 0.0,
+      "reference": "full_minimax",
+      "related_group_count": 372,
+      "sample_size": 2604,
+      "statistical_interval_available": true,
+      "zero_difference_count": 2604
+    }
+  ],
+  "record_type": "experiment3_empirical_bootstrap_v1",
+  "resamples": 2000,
+  "seed": 20261113,
+  "status": "COMPLETE"
+}

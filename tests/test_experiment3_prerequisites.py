@@ -8,13 +8,14 @@ from evaluation.data_preparation.final_test_workflow import ROOT, sha256_file
 from evaluation.analysis.experiment3 import REQUIRED_FIELDS
 from evaluation.experiments.experiment3.prerequisite_validator import (
     BLOCKED, COLLECTION, COLLECTION_AUTHORIZATION, CORPUS, CORPUS_APPROVAL, DEPENDENCY, DEPENDENCY_APPROVAL,
-    DEPENDENCY_DECISION, PROTOCOL_APPROVAL, READY_FOR_APPROVAL, READY_FOR_COLLECTION_AUTHORIZATION,
+    DEPENDENCY_DECISION, PROTOCOL_APPROVAL, READY_FOR_APPROVAL, READY_FOR_COLLECTION_AUTHORIZATION, SETTINGS_APPROVAL,
     READY_FOR_DEVELOPMENT_COLLECTION, READY_FOR_EMPIRICAL_EXPERIMENT, READY_FOR_EMPIRICAL_EXPERIMENT_ANALYSIS,
-    REPUTATION, SETTINGS_PROPOSAL, SPEC, assess,
+    REPUTATION, REPUTATION_APPROVAL, REPUTATION_PROPOSAL, RESOURCE_APPROVAL, RESOURCE_PROPOSAL, SETTINGS_PROPOSAL, SPEC, assess,
 )
 
 PACKAGE = [SPEC, CORPUS, COLLECTION, DEPENDENCY, REPUTATION, SETTINGS_PROPOSAL, DEPENDENCY_DECISION,
-           PROTOCOL_APPROVAL, CORPUS_APPROVAL, DEPENDENCY_APPROVAL, COLLECTION_AUTHORIZATION]
+           PROTOCOL_APPROVAL, SETTINGS_APPROVAL, CORPUS_APPROVAL, DEPENDENCY_APPROVAL, COLLECTION_AUTHORIZATION,
+           RESOURCE_PROPOSAL, RESOURCE_APPROVAL, REPUTATION_PROPOSAL, REPUTATION_APPROVAL]
 GATE_SETTINGS = {
     "false_acceptance_loss": 1.0, "false_rejection_loss": 1.0, "uncertainty_loss": 0.2,
     "resource_coefficient": 1.0, "decision_threshold": 0.55, "verifier_budget": 1.0,
@@ -56,6 +57,14 @@ def _authorize_reviews(tmp_path: Path) -> None:
     _sign(tmp_path, PROTOCOL_APPROVAL, SPEC, approved_settings=GATE_SETTINGS)
     _sign(tmp_path, CORPUS_APPROVAL, "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json")
     _sign(tmp_path, DEPENDENCY_APPROVAL, DEPENDENCY)
+
+
+def _bind_execution_records(tmp_path: Path) -> None:
+    """Sign the resource and reputation records the collection gate requires. This is a fixture, not an approval."""
+    _sign(tmp_path, RESOURCE_APPROVAL, RESOURCE_PROPOSAL,
+          resource_coefficient_loss_per_ms=GATE_SETTINGS["resource_coefficient"],
+          verifier_budget_ms=GATE_SETTINGS["verifier_budget"])
+    _sign(tmp_path, REPUTATION_APPROVAL, REPUTATION_PROPOSAL)
 
 
 def test_restored_package_is_ready_for_approval_only():
@@ -173,6 +182,29 @@ def test_collection_ready_state_requires_known_hashes(tmp_path: Path):
     collection = json.loads((tmp_path / COLLECTION).read_text(encoding="utf-8"))
     corpus["frozen"] = True
     collection["collection_authorized"] = True
+    collection["cost_measurements_available"] = True
+    collection["cost_measurement_id"] = "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d"
+    collection["environment"]["random_seed"] = 20261113
+    for row in collection["verifiers"]:
+        if row["verifier_name"] == "rule":
+            row["rule_version_hash"] = "a" * 64
+        else:
+            row["model_weight_snapshot_hash"] = "b" * 64
+    _write(tmp_path, CORPUS, corpus)
+    _write(tmp_path, COLLECTION, collection)
+    _authorize_reviews(tmp_path)
+    _bind_execution_records(tmp_path)
+    _sign(tmp_path, CORPUS_APPROVAL, "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json", freeze_status="FROZEN")
+    _sign(tmp_path, COLLECTION_AUTHORIZATION, COLLECTION, collection_authorized=True)
+    assert assess(tmp_path)["status"] == READY_FOR_DEVELOPMENT_COLLECTION
+
+
+def test_collection_stays_closed_without_resource_reputation_or_cost_binding(tmp_path: Path):
+    _copy_package(tmp_path)
+    corpus = json.loads((tmp_path / CORPUS).read_text(encoding="utf-8"))
+    collection = json.loads((tmp_path / COLLECTION).read_text(encoding="utf-8"))
+    corpus["frozen"] = True
+    collection["collection_authorized"] = True
     collection["environment"]["random_seed"] = 20261113
     for row in collection["verifiers"]:
         if row["verifier_name"] == "rule":
@@ -184,7 +216,22 @@ def test_collection_ready_state_requires_known_hashes(tmp_path: Path):
     _authorize_reviews(tmp_path)
     _sign(tmp_path, CORPUS_APPROVAL, "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json", freeze_status="FROZEN")
     _sign(tmp_path, COLLECTION_AUTHORIZATION, COLLECTION, collection_authorized=True)
-    assert assess(tmp_path)["status"] == READY_FOR_DEVELOPMENT_COLLECTION
+    report = assess(tmp_path)
+    assert report["status"] == READY_FOR_COLLECTION_AUTHORIZATION
+    assert "resource coefficient and verifier budget are not signed" in report["withheld"]
+    assert "reputation initialization is not approved" in report["withheld"]
+    assert "collection configuration does not bind a cost measurement" in report["withheld"]
+    _bind_execution_records(tmp_path)
+    resource = json.loads((tmp_path / RESOURCE_APPROVAL).read_text(encoding="utf-8"))
+    resource["resource_coefficient_loss_per_ms"] = None
+    _write(tmp_path, RESOURCE_APPROVAL, resource)
+    assert assess(tmp_path)["status"] == READY_FOR_COLLECTION_AUTHORIZATION
+    resource["resource_coefficient_loss_per_ms"] = 9.0
+    resource["verifier_budget_ms"] = GATE_SETTINGS["verifier_budget"]
+    _write(tmp_path, RESOURCE_APPROVAL, resource)
+    mismatch = assess(tmp_path)
+    assert mismatch["status"] == BLOCKED
+    assert "resource approval does not bind the protocol resource settings" in mismatch["blockers"]
 
 
 def test_synthetic_recordings_do_not_make_the_experiment_empirical(tmp_path: Path):
@@ -228,6 +275,7 @@ def test_empirical_state_requires_recordings_costs_and_reputation(tmp_path: Path
     _write(tmp_path, COLLECTION, collection)
     _write(tmp_path, REPUTATION, reputation)
     _authorize_reviews(tmp_path)
+    _bind_execution_records(tmp_path)
     _sign(tmp_path, CORPUS_APPROVAL, "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json", freeze_status="FROZEN")
     _sign(tmp_path, COLLECTION_AUTHORIZATION, COLLECTION, collection_authorized=True)
     assert assess(tmp_path)["status"] == READY_FOR_EMPIRICAL_EXPERIMENT
@@ -260,6 +308,7 @@ def test_empirical_analysis_requires_rows_and_an_approved_interval(tmp_path: Pat
     _write(tmp_path, COLLECTION, collection)
     _write(tmp_path, REPUTATION, reputation)
     _authorize_reviews(tmp_path)
+    _bind_execution_records(tmp_path)
     _sign(tmp_path, CORPUS_APPROVAL, "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json", freeze_status="FROZEN")
     _sign(tmp_path, COLLECTION_AUTHORIZATION, COLLECTION, collection_authorized=True)
     assert assess(tmp_path)["status"] == READY_FOR_EMPIRICAL_EXPERIMENT_ANALYSIS

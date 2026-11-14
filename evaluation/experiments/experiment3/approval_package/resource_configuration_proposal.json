@@ -1,0 +1,38 @@
+{
+  "record_type": "experiment3_resource_configuration_proposal_v1",
+  "status": "PROPOSED_PENDING_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "cost_unit": "ms",
+  "cost_unit_source": "artifacts/research-v1-development-cost-calibration-v1/freeze-manifest.json",
+  "measurement_method": "mean_attempt_wall_time_ms_v1",
+  "calibration_id": "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+  "calibration_sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+  "measurements_sha256": "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+  "resource_manifest_id": "754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c",
+  "setup_fingerprint": "83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee",
+  "mean_attempt_cost_ms": {
+    "semantic": 70.4728633359385,
+    "evidence": 107.93551665459138,
+    "rule": 0.09707332161876063,
+    "confidence": 14925.820978323463
+  },
+  "full_roster_mean_sum_ms": 15104.326431635612,
+  "resource_coefficient": null,
+  "verifier_budget_ms": null,
+  "coefficient_derived_from_approved_protocol": false,
+  "approved_budget_candidates": [],
+  "relationship": {
+    "decision_loss": "0 if the decision matches the label; false_accept, false_reject, or uncertain otherwise. Metrics.validation_loss averages that decision loss and excludes cost.",
+    "estimated_cost": "Probability-weighted estimated attempt cost, in the calibration unit.",
+    "mean_loss": "decision loss + resource_weight * estimated_cost",
+    "budget": "A feasibility cap, in the same unit as estimated_cost, shared by all three aggregation methods. It is not a term in the loss."
+  },
+  "not_selected": [
+    "The uncalibrated pilot resource_weight of 0.1/budget. research_settings_proposal_v1 rejects it because it changes with the budget.",
+    "Any numeric budget. The frozen calibration does not authorize budget selection.",
+    "Experiment 2's three-level grid. Experiment 3 compares aggregations at one matched budget."
+  ],
+  "scope": "Binds the frozen millisecond calibration and states that the coefficient and budget are still unset. This file selects neither number."
+}

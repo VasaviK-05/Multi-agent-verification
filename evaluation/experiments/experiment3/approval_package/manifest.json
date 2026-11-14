@@ -1,0 +1,311 @@
+{
+  "record_type": "experiment3_approval_package_manifest_v1",
+  "status": "PREPARED_FOR_REVIEW",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "signs_nothing": true,
+  "collection_authorized": false,
+  "artifacts": [
+    {
+      "role": "protocol",
+      "path": "evaluation/config/experiments/experiment3_specification.json",
+      "sha256": "f64b47cfe206548c57f60d48ebf2404dacce65b46ed05e4210fe68fb8250f529",
+      "version": "experiment3_protocol_specification_v1",
+      "dependencies": [
+        "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+        "evaluation/config/experiments/experiment3_settings_proposal.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "loss_settings",
+      "path": "evaluation/config/experiments/experiment3_settings_proposal.json",
+      "sha256": "77d773fa7aad43bc0591244b64b78f37dd1142f2a9628d89ead7ad9847d8665f",
+      "version": "experiment3_settings_proposal_v1",
+      "dependencies": [],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "settings_approval_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_settings_approval_record.json",
+      "sha256": "32d0999200929977d37216be6c08552343aa6fd856428d6ec617301219241de9",
+      "version": "experiment3_settings_approval_record_v1",
+      "dependencies": [
+        "evaluation/config/experiments/experiment3_settings_proposal.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "protocol_approval_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_protocol_approval_record.json",
+      "sha256": "4dcf0fb8af101294c297b3c7c17d033f597de9ea1c73a2f9aa9a28ecf1420e48",
+      "version": "experiment3_protocol_approval_record_v1",
+      "dependencies": [
+        "evaluation/config/experiments/experiment3_specification.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "resource_configuration",
+      "path": "evaluation/experiments/experiment3/approval_package/resource_configuration_proposal.json",
+      "sha256": "9393c6b0caf82778670b971d3c4e5ee5b0c8cbf9b01b34a7c244f5f8f94a498c",
+      "version": "experiment3_resource_configuration_proposal_v1",
+      "dependencies": [
+        "artifacts/research-v1-development-cost-calibration-v1/freeze-manifest.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "resource_approval_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_resource_approval_record.json",
+      "sha256": "6732d754887f7b093e9747f9f3a5726cafd2c8e0f3465871cdc5bf94a0bd7273",
+      "version": "experiment3_resource_approval_record_v1",
+      "dependencies": [
+        "evaluation/experiments/experiment3/approval_package/resource_configuration_proposal.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "resource_declaration",
+      "path": "evaluation/config/research_v1/resource_config.json",
+      "sha256": "96e7adab02539f8bcf12834e73df34590e6daa729c0f4db28b81152b1d6a11cd",
+      "version": "research_v1_resource_config_v1",
+      "dependencies": [
+        "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "cost_calibration",
+      "path": "artifacts/research-v1-development-cost-calibration-v1/calibration.json",
+      "sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+      "version": "verifier_cost_calibration_v1",
+      "dependencies": [
+        "artifacts/research-v1-development-cost-calibration-v1/measurements.json"
+      ],
+      "preparation_status": "prepared",
+      "required_signer": "none for Experiment 3; the file is a prepared calibration input",
+      "approver": null,
+      "approved_flag": null
+    },
+    {
+      "role": "cost_measurements",
+      "path": "artifacts/research-v1-development-cost-calibration-v1/measurements.json",
+      "sha256": "514e39a1422a1ef0b3846e02f010e6edc4ab1a1aec89e1605e82f03199836a94",
+      "version": "verifier_measurements_v1",
+      "dependencies": [],
+      "preparation_status": "prepared",
+      "required_signer": "none for Experiment 3; the file is a prepared calibration input",
+      "approver": null,
+      "approved_flag": null
+    },
+    {
+      "role": "cost_calibration_provenance",
+      "path": "artifacts/research-v1-development-cost-calibration-v1/calibration-provenance.json",
+      "sha256": "938f4f1fd4b803004cf55c710b41a9d438bc440db5fa11c352afb497144cf9a0",
+      "version": "research_v1_development_calibration_input_provenance_v1",
+      "dependencies": [
+        "artifacts/research-v1-development-cost-calibration-v1/measurements.json"
+      ],
+      "preparation_status": "prepared",
+      "required_signer": "none for Experiment 3; the file is a prepared calibration input",
+      "approver": null,
+      "approved_flag": null
+    },
+    {
+      "role": "cost_calibration_freeze",
+      "path": "artifacts/research-v1-development-cost-calibration-v1/freeze-manifest.json",
+      "sha256": "cba1b8861eacdffd77e0e97865eb24bb45ff723a06d174988f0b0c527a3ada72",
+      "version": "research_v1_development_cost_calibration_freeze_v1",
+      "dependencies": [
+        "artifacts/research-v1-development-cost-calibration-v1/calibration.json",
+        "artifacts/research-v1-development-cost-calibration-v1/measurements.json",
+        "artifacts/research-v1-development-cost-calibration-v1/calibration-provenance.json"
+      ],
+      "preparation_status": "approved",
+      "required_signer": "already signed for the cost-calibration freeze only; not an Experiment 3 protocol signature",
+      "approver": null,
+      "approved_flag": null
+    },
+    {
+      "role": "reputation_configuration",
+      "path": "evaluation/experiments/experiment3/approval_package/reputation_initialization_proposal.json",
+      "sha256": "5eac889b0904957b2f926dc65a9b10531acd9b1514af0e953b9c01f395d80bad",
+      "version": "experiment3_reputation_initialization_proposal_v1",
+      "dependencies": [
+        "evaluation/config/experiments/experiment3_reputation_policy_inputs.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "reputation_approval_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_reputation_approval_record.json",
+      "sha256": "066cbf7af0fd2faebb93052368aff49d151d2b5923701f2a41e068da0ebed96f",
+      "version": "experiment3_reputation_approval_record_v1",
+      "dependencies": [
+        "evaluation/experiments/experiment3/approval_package/reputation_initialization_proposal.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "reputation_inputs",
+      "path": "evaluation/config/experiments/experiment3_reputation_policy_inputs.json",
+      "sha256": "19c0032a0e5556d9ccdf2b9a589582536e00c1ed493acca85e43ca2cbf0a67c7",
+      "version": "experiment3_reputation_policy_inputs_v1",
+      "dependencies": [],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "dependency_configuration",
+      "path": "evaluation/config/experiments/experiment3_dependency_configuration.json",
+      "sha256": "c7dc14f867bedd8345184869fa8c10f7fabb554d843ed44df4d8606e993d7c2d",
+      "version": "experiment3_dependency_configuration_v1",
+      "dependencies": [],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "dependency_approval_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_dependency_approval_record.json",
+      "sha256": "72a4b15bd709bb199a97201a641862dc021197d746fbea2ee8dd108d742e50df",
+      "version": "experiment3_dependency_approval_record_v1",
+      "dependencies": [
+        "evaluation/config/experiments/experiment3_dependency_configuration.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "evidence_corpus",
+      "path": "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json",
+      "sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+      "version": null,
+      "dependencies": [],
+      "preparation_status": "prepared",
+      "required_signer": "research lead, by signing the corpus approval",
+      "approver": null,
+      "approved_flag": null
+    },
+    {
+      "role": "corpus_package",
+      "path": "evaluation/config/experiments/experiment3_corpus_approval_package.json",
+      "sha256": "7c57f6b29ce681a74767d579d8fb8d82c4f65dd85c5373c8423cd171ee79b72f",
+      "version": "development_evidence_corpus_approval_package_v1",
+      "dependencies": [
+        "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "corpus_approval_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_corpus_approval_record.json",
+      "sha256": "f840ca32639b4a37fa3a4f410be9f4a47431ab9ad23453b360161203a268491b",
+      "version": "experiment3_corpus_approval_record_v1",
+      "dependencies": [
+        "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "collection_configuration",
+      "path": "evaluation/config/experiments/experiment3_collection_configuration.json",
+      "sha256": "6f539d60464d684e9633b102f8b06ae6f598c5c4035e0d34f7e8a8d8be3adcda",
+      "version": "experiment3_development_collection_configuration_v1",
+      "dependencies": [
+        "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+        "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead, after Person 2 fills verifier hashes, the seed, and the cost measurement id",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "collection_authorization_template",
+      "path": "evaluation/config/experiments/approvals/experiment3_collection_authorization_record.json",
+      "sha256": "c99f0d35b7c2cfed4e04d1ed95e00955f2fcd5d94b9d7aa0ea47bc8a1dfc5fd6",
+      "version": "experiment3_collection_authorization_record_v1",
+      "dependencies": [
+        "evaluation/config/experiments/experiment3_collection_configuration.json"
+      ],
+      "preparation_status": "proposed",
+      "required_signer": "research lead",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "verifier_configuration",
+      "path": "evaluation/config/research_v1/verifier_config.json",
+      "sha256": "740319254a30711ecb36f6a1e62cd865896fc264d4eaebf11fda9d10a0db3b97",
+      "version": "research_v1_verifier_config_v1",
+      "dependencies": [],
+      "preparation_status": "proposed",
+      "required_signer": "Person 2 supplies weight and rule hashes; the research lead accepts them by signing collection authorization",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "runtime_configuration",
+      "path": "evaluation/config/research_v1/environment_manifest.json",
+      "sha256": "7afb2c1ea39588920fde15eb73f033f90840fd3c14b330aa1cac5175001559e7",
+      "version": "research_v1_environment_manifest_v1",
+      "dependencies": [],
+      "preparation_status": "proposed",
+      "required_signer": "Person 2 records the runtime; the research lead accepts collection authorization",
+      "approver": null,
+      "approved_flag": false
+    },
+    {
+      "role": "development_eligibility",
+      "path": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+      "sha256": "1ebb4357d599a52d1c1fc8d8951ab39fa6992e846cf997d9e588820c87cbe731",
+      "version": "research_v1_exploratory_eligibility_approved_v1",
+      "dependencies": [],
+      "preparation_status": "approved",
+      "required_signer": "already approved for Development eligibility only; not a collection signature",
+      "approver": null,
+      "approved_flag": true
+    }
+  ]
+}

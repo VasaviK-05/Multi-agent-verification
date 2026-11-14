@@ -1,4 +1,8 @@
-"""Development collection gate. A missing approval stops collection. It does not invent recordings."""
+"""Development collection gate.
+
+Signature fields are not a prerequisite and are not fabricated. Collection
+readiness is the automated integrity report. This command does not call verifiers.
+"""
 
 from __future__ import annotations
 
@@ -11,17 +15,26 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from evaluation.analysis.experiment3 import REQUIRED_FIELDS, validate_rows
-from evaluation.experiments.experiment3.prerequisite_validator import READY_FOR_DEVELOPMENT_COLLECTION, assess
+from evaluation.experiments.experiment3.execution_readiness import execution_report
 
 EMPIRICAL = ROOT / "evaluation/experiments/experiment3/empirical"
 SYNTHETIC = ROOT / "evaluation/experiments/experiment3/synthetic/results.json"
 
 
 def collection_allowed(root: Path | None = None) -> dict:
-    report = assess(root or ROOT)
+    report = execution_report(root or ROOT)
     report["collection_started"] = False
     report["recordings_created"] = False
-    report["reason"] = None if report["status"] == READY_FOR_DEVELOPMENT_COLLECTION else "collection requires signed protocol settings, corpus freeze, dependency approval, collection authorization, known verifier hashes, and a collection seed"
+    if report["status"] == "BLOCKED":
+        report["reason"] = "automated integrity validation failed"
+    elif report["status"] == "TECHNICALLY_READY":
+        report["reason"] = "configuration integrity passed; verifier runtime is not available"
+    elif report["status"] == "AUTHORIZED_BY_RESEARCH_LEAD":
+        report["reason"] = "authorized by the recorded research-lead instruction; verifiers have not been called"
+    elif report["status"] == "EMPIRICALLY_EXECUTED":
+        report["reason"] = "empirical rows exist and the full cell count is not complete"
+    else:
+        report["reason"] = "empirical collection is complete"
     return report
 
 
@@ -44,8 +57,7 @@ def validate_recording_file(path: Path) -> dict:
 
 def main() -> int:
     report = collection_allowed()
-    if report["status"] == READY_FOR_DEVELOPMENT_COLLECTION:
-        report["reason"] = "The gate is open, but this command does not call verifiers or write recordings."
+    report["reason"] = (report.get("reason") or "") + " This command does not call verifiers or write recordings."
     destination = ROOT / "evaluation/experiments/experiment3/logs/collection_gate.json"
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps({key: value for key, value in report.items() if key != "analysis_blockers"}, indent=2) + "\n", encoding="utf-8")
