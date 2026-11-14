@@ -83,7 +83,11 @@ class RecordingRequest(FrozenModel):
 
     @model_validator(mode='after')
     def check(self):
-        if self.factory.count(':') != 1 or not all(self.factory.split(':')):
+        e4_preflight = isinstance(self, Experiment4DiagnosticRecordingRequest) and not self.collection_authorized
+        if self.factory is None:
+            if not e4_preflight:
+                raise ValueError('factory must be module:function')
+        elif self.factory.count(':') != 1 or not all(self.factory.split(':')):
             raise ValueError('factory must be module:function')
         if self.intended_use == 'study' and self.study_approval is None:
             raise ValueError('study collection requires explicit study approval')
@@ -98,16 +102,19 @@ class RecordingRequest(FrozenModel):
             raise ValueError('duplicate example in a partition; use a separate warmup request')
         seen, groups = {}, {}
         reservation = self.final_test_reservation
+        if reservation is None and not e4_preflight:
+            raise ValueError('a final-test reservation/exclusion roster is required')
         for e in self.examples:
             if (e.role, e.dataset_id) not in self.permitted_datasets:
                 raise ValueError('dataset not permitted')
-            if e.dataset_id == reservation.dataset_id:
-                raise ValueError('final-test collection forbidden')
-            for r in reservation.examples:
-                if (any(getattr(e, f) == getattr(r, f) for f in
-                        ('example_id', 'split_identity', 'question_id', 'content_identity'))
-                        or e.run_id == r.validation_id):
+            if reservation is not None:
+                if e.dataset_id == reservation.dataset_id:
                     raise ValueError('final-test collection forbidden')
+                for r in reservation.examples:
+                    if (any(getattr(e, f) == getattr(r, f) for f in
+                            ('example_id', 'split_identity', 'question_id', 'content_identity'))
+                            or e.run_id == r.validation_id):
+                        raise ValueError('final-test collection forbidden')
             for field in ('example_id', 'split_identity', 'question_id', 'content_identity'):
                 key = field, getattr(e, field)
                 if key in seen and seen[key] != (e.role, e.dataset_id):
@@ -184,6 +191,18 @@ class DiagnosticExample(PreparationExample):
     label: None = None
 
 
+class Experiment4DiagnosticAttemptMeasurement(AttemptMeasurement):
+    """Experiment 4 diagnostic timing; never accepted as calibration input."""
+    purpose: Literal['diagnostic'] = 'diagnostic'
+
+
+class Experiment4DiagnosticExample(DiagnosticExample):
+    """Development example with both source identity namespaces retained."""
+    purpose: Literal['diagnostic'] = 'diagnostic'
+    source_candidate_id: Text | None
+    benchmark: Literal['GSM8K', 'HotpotQA']
+
+
 class DiagnosticRecordingRequest(RecordingRequest):
     """Same dispatch/recording, with no ground truth or custody approval claim."""
     version: Literal['offline_diagnostic_recording_v1']
@@ -194,11 +213,75 @@ class DiagnosticRecordingRequest(RecordingRequest):
     examples: tuple[DiagnosticExample, ...] = Field(min_length=1)
 
 
+class Experiment4DiagnosticRecordingRequest(DiagnosticRecordingRequest):
+    """Bounded Development-only diagnostic request for Experiment 4 preflight.
+
+    This remains smoke-only and requires the diagnostic exclusion roster and
+    preparation authorization inherited from DiagnosticRecordingRequest.
+    """
+    version: Literal['offline_experiment4_diagnostic_v1']
+    maximum_examples: Literal[4] = 4
+    maximum_attempt_slots: Literal[16] = 16
+    collection_authorized: StrictBool = False
+    collection_authorization: Text | None = None
+    factory: Text | None = None
+    execution_configuration_id: Text | None = None
+    expected_setup: MeasurementSetup | None = None
+    final_test_reservation: DiagnosticExclusionRoster | None = None
+    examples: tuple[Experiment4DiagnosticExample, ...] = Field(min_length=1)
+    eligibility_manifest_id: Text
+    eligibility_manifest_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    eligibility_manifest_file_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    eligibility_candidate_roster_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    eligibility_group_assignments_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    development_source_manifest_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    development_candidates_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    development_verifier_inputs_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+    selected_subset_sha256: Text = Field(pattern=r'^[0-9a-f]{64}$')
+
+    @model_validator(mode='after')
+    def check_experiment4_bounds(self):
+        if self.collection_authorized != (self.collection_authorization is not None):
+            raise ValueError('Experiment 4 collection authorization flag/reference must agree')
+        if len(self.examples) > self.maximum_examples:
+            raise ValueError('Experiment 4 diagnostic request exceeds maximum examples')
+        if len(self.examples) * len(self.candidates) > self.maximum_attempt_slots:
+            raise ValueError('Experiment 4 diagnostic request exceeds maximum attempt slots')
+        if any(example.role != 'development' for example in self.examples):
+            raise ValueError('Experiment 4 diagnostic request is Development-only')
+        if {candidate.verifier_name for candidate in self.candidates} != {
+                'confidence', 'evidence', 'rule', 'semantic'}:
+            raise ValueError('Experiment 4 diagnostic request requires the declared four-verifier roster')
+        if self.collection_authorized:
+            if self.factory is None or self.expected_setup is None or self.final_test_reservation is None:
+                raise ValueError('authorized Experiment 4 collection requires factory, observed setup, and exclusion roster')
+            if self.execution_configuration_id != self.expected_setup.resources.manifest_id:
+                raise ValueError('Experiment 4 execution configuration must identify its resource manifest')
+            self.expected_setup.resources.require_candidates(c.verifier_name for c in self.candidates)
+        elif self.collection_authorization is not None:
+            raise ValueError('unauthorized Experiment 4 preflight cannot carry an execution authorization reference')
+        groups = {}
+        for example in self.examples:
+            groups.setdefault(example.split_identity, 0)
+            groups[example.split_identity] += 1
+        if any(count != 2 for count in groups.values()):
+            raise ValueError('Experiment 4 diagnostic scope must retain complete two-candidate groups')
+        return self
+
+
 def validate_recording_request(value):
     version = value.get('version') if isinstance(value, dict) else getattr(value, 'version', None)
     schema = (HeldoutRecordingRequest if version == 'offline_heldout_recording_v1' else
+              Experiment4DiagnosticRecordingRequest if version == 'offline_experiment4_diagnostic_v1' else
               DiagnosticRecordingRequest if version == 'offline_diagnostic_recording_v1' else RecordingRequest)
     return schema.model_validate(value)
+
+
+def require_collection_authorization(request):
+    """Keep Experiment 4 structural validation distinct from execution authority."""
+    if isinstance(request, Experiment4DiagnosticRecordingRequest):
+        if not request.collection_authorized or request.collection_authorization is None:
+            raise ValueError('Experiment 4 diagnostic collection is not authorized')
 
 
 def collection_plan(request, example):
@@ -215,6 +298,39 @@ def collection_plan(request, example):
                 requirements=asdict(requirement_inputs(example.analysis)), candidates=candidates)
 
 
+class LazyVerifierPool:
+    """Named verifier constructors resolved only after per-example prerequisites pass.
+
+    A factory may return this pool with a complete resource manifest and observer.
+    The collector calls ``get`` only for a registered, prerequisite-eligible slot.
+    Resource identities for roster members that are never constructed remain in
+    the separately validated setup/observer contract.
+    """
+
+    def __init__(self, constructors):
+        if not isinstance(constructors, dict) or not constructors:
+            raise ValueError('lazy verifier pool requires a nonempty name-to-constructor mapping')
+        if any(not isinstance(name, str) or not name.strip() or not callable(build)
+               for name, build in constructors.items()):
+            raise ValueError('lazy verifier pool entries require names and callable constructors')
+        self._constructors = dict(constructors)
+        self._instances = {}
+
+    @property
+    def names(self):
+        return frozenset(self._constructors)
+
+    def get(self, name):
+        if name not in self._constructors:
+            raise KeyError(name)
+        if name not in self._instances:
+            verifier = self._constructors[name]()
+            if getattr(verifier, 'name', None) != name:
+                raise ValueError('lazy verifier constructor returned a different identity')
+            self._instances[name] = verifier
+        return self._instances[name]
+
+
 class CollectedAttempt(FrozenModel):
     attempt_id: Text
     example_id: Text
@@ -225,7 +341,7 @@ class CollectedAttempt(FrozenModel):
     executed: StrictBool
     duration_ms: float | None = Field(default=None, ge=0)
     timing_status: Literal['returned', 'failure', 'timeout', 'interrupted'] | None = None
-    measurement: AttemptMeasurement | HeldoutAttemptMeasurement | None = None
+    measurement: Experiment4DiagnosticAttemptMeasurement | HeldoutAttemptMeasurement | AttemptMeasurement | None = None
     after_resources_json: str | None = None
     returned_payload_json: str | None = None
     achieved_capabilities: tuple[str, ...] = ()
@@ -234,7 +350,7 @@ class CollectedAttempt(FrozenModel):
 
 class RecordingBundle(FrozenModel):
     version: Literal['offline_recording_bundle_v1'] = 'offline_recording_bundle_v1'
-    request: RecordingRequest | DiagnosticRecordingRequest | HeldoutRecordingRequest
+    request: RecordingRequest | Experiment4DiagnosticRecordingRequest | HeldoutRecordingRequest | DiagnosticRecordingRequest
     observed_setup: MeasurementSetup | None
     attempts: tuple[CollectedAttempt, ...]
 
@@ -285,6 +401,13 @@ class RecordingBundle(FrozenModel):
                 if isinstance(self.request,HeldoutRecordingRequest):
                     if (m.setup_fingerprint!=setup.fingerprint or m.verifier_fingerprint!=content_id(next(v for v in setup.resources.verifiers if v.verifier_name==a.candidate).model_dump(mode='json'))):
                         raise ValueError('heldout timing setup/verifier differs')
+                elif isinstance(self.request, Experiment4DiagnosticRecordingRequest):
+                    if (m.purpose != 'diagnostic' or m.setup_fingerprint != setup.fingerprint
+                            or m.verifier_fingerprint != content_id(next(
+                                v for v in setup.resources.verifiers
+                                if v.verifier_name == a.candidate
+                            ).model_dump(mode='json'))):
+                        raise ValueError('diagnostic timing setup/verifier differs')
                 else:
                     MeasurementInput(setup=setup, permitted_datasets=self.request.permitted_datasets,
                         preparation_authorization=self.request.preparation_authorization, attempts=(m,))
@@ -345,6 +468,7 @@ def completeness(bundle):
 def collect(request, verifiers, observed_setup, observer, *, sink=None, completed=(), on_start=None):
     """Execute every eligible candidate once; retain failures and continue offline."""
     request = validate_recording_request(request)
+    require_collection_authorization(request)
     request_id = request.request_id
     setup = None if observed_setup is None else MeasurementSetup.model_validate(observed_setup)
     if request.expected_setup is not None and setup != request.expected_setup:
@@ -353,9 +477,17 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
         setup.resources.require_candidates(c.verifier_name for c in request.candidates)
         if setup.resources.manifest_id != request.execution_configuration_id:
             raise ValueError('factory execution/resource identity mismatch')
-    verifiers = list(verifiers)
-    pool = {v.name: v for v in verifiers}
-    if len(pool) != len(verifiers) or set(pool) - {c.verifier_name for c in request.candidates if c.registered}:
+    lazy_pool = isinstance(verifiers, LazyVerifierPool)
+    if lazy_pool:
+        pool = verifiers
+        pool_names = pool.names
+    else:
+        verifiers = list(verifiers)
+        pool = {v.name: v for v in verifiers}
+        if len(pool) != len(verifiers):
+            raise ValueError('factory returned duplicate verifier identities')
+        pool_names = frozenset(pool)
+    if pool_names - {c.verifier_name for c in request.candidates if c.registered}:
         raise ValueError('factory returned duplicate or undeclared candidates')
     results, interrupted = [], False
     previous=RecordingBundle(request=request,observed_setup=setup,attempts=tuple(completed))
@@ -394,9 +526,10 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
                     issues.append('pre_observation:' + type(exc).__name__ + ':' + str(exc))
                 if not planned['eligible']:
                     state, reason = 'unavailable', planned['exclusion_reason']
-                elif c.verifier_name not in pool:
+                elif c.verifier_name not in pool_names:
                     state, reason = 'unavailable', 'registered adapter unavailable from factory'
                 else:
+                    verifier = pool.get(c.verifier_name) if lazy_pool else pool[c.verifier_name]
                     if on_start is not None:on_start(identity)
                     executed = True
                     metadata = dict(run_id=e.run_id, example_id=e.example_id, split_identity=e.split_identity,
@@ -405,7 +538,7 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
                         setup_fingerprint=setup.fingerprint if setup else 'unknown',
                         verifier_fingerprint=content_id(pre.model_dump(mode='json')) if pre else 'unknown')
                     try:
-                        raw = TimedVerifier(pool[c.verifier_name], durations,
+                        raw = TimedVerifier(verifier, durations,
                             measurement_metadata=metadata, measurements=measurements).verify(e.question, e.answer, e.reference)
                     except (KeyboardInterrupt, SystemExit):
                         interrupted = True
@@ -451,7 +584,9 @@ def collect(request, verifiers, observed_setup, observer, *, sink=None, complete
             incompatible = adapter_incompatibility(attempt)
             if incompatible is not None:
                 issues.append('incompatible_attack_adapter:' + incompatible.expected_adapter)
-            measurement_schema = HeldoutAttemptMeasurement if isinstance(request,HeldoutRecordingRequest) else AttemptMeasurement
+            measurement_schema = (HeldoutAttemptMeasurement if isinstance(request,HeldoutRecordingRequest)
+                else Experiment4DiagnosticAttemptMeasurement if isinstance(request,Experiment4DiagnosticRecordingRequest)
+                else AttemptMeasurement)
             measured = (measurement_schema.model_validate(measurements[0])
                         if measurements and pre is not None and post is not None
                         and pre_issue is None and post_issue is None else None)

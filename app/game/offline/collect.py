@@ -12,7 +12,8 @@ from app.game.offline.file_journal import (AttemptJournal, atomic_write_text,
 from app.game.models import PlanningContext
 from app.game.offline.calibration import read_json
 from app.game.offline.collection import (RecordingRequest, RecordingBundle, CollectedAttempt,
-    collect, completeness, measurement_input, export_training, validate_recording_request)
+    collect, completeness, measurement_input, export_training, validate_recording_request,
+    require_collection_authorization)
 
 
 def load_bundle(path):
@@ -63,6 +64,9 @@ def main(argv=None):
     try:
         if args.command in {'validate', 'collect'}:
             request = validate_recording_request(read_json(args.input))
+            if args.command == 'collect':
+                # Fail before factory import/initialization and before creating output.
+                require_collection_authorization(request)
             validate_factory_prerequisites(request)
             prior=None
             if args.resume_from is not None:
@@ -109,7 +113,9 @@ def main(argv=None):
                 def save(row):
                     if row.attempt_id not in copied:
                         journal.terminal(row.model_dump_json())
-                bundle = collect(request, list(verifiers), setup, observer, sink=save,
+                # Preserve LazyVerifierPool so per-example prerequisite checks
+                # can run before any verifier constructor is called.
+                bundle = collect(request, verifiers, setup, observer, sink=save,
                     completed=() if prior is None else prior.attempts, on_start=journal.start)
             atomic_write_text(destination / 'recordings.json', bundle.model_dump_json(indent=2), replace=False)
             report = completeness(bundle)
