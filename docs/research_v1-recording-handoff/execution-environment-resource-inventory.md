@@ -25,7 +25,28 @@ No factory, verifier, model, service, or collection path was initialized to prep
 
 ## 3. Resource configuration inventory
 
-The root `adapter.json` is a generic `project_collection_adapter_v1` configuration. Its paths were present during this inspection, but no resource contents were loaded or rehashed here. Presence, a saved observation, and historical hashes do not establish an approved or currently verified research setup. The research binding environment variable `RESEARCH_V1_RECORDING_BINDING_CONFIG` was unset in the inspected shell.
+The root `adapter.json` is a generic `project_collection_adapter_v1` configuration, not an approved research configuration. The earlier inventory recorded its declared paths and historical identities; a subsequent local-only inspection adds point-in-time observations below without changing that approval status.
+
+### Subsequent local-only inspection
+
+The candidate binding was supplied explicitly to `resolve_research_configuration()` from the integration checkout (`tanmayee-integration`, HEAD `0d4c0fbd5419172262e356d30e1691a9baba9cb1`). Its relative adapter path resolved to the repository-root `adapter.json`. The candidate was supplied for inspection only; it was not activated for collection.
+
+`inspect_setup()` returned `ready: true`, no blockers, and `ready_scope: "local inputs only; saved service observation is revalidated live by factory"`. Here, `ready: true` means no blockers were collected for the local checks that ran. The inspection read and hashed local model snapshots, corpus, and index files; it read and checked receipt/manifest metadata and parsed the relocation binding and saved service-observation JSON. It did not load model weights into model objects or contact a service.
+
+| Local input | Observation from that inspection |
+|---|---|
+| Embedding snapshot | 11 files, 91,578,415 bytes; SHA-256 `23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255`. This matches the hash previously listed as historical. |
+| NLI snapshot | 7 files, 578,729,785 bytes; SHA-256 `a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e`. This matches the hash previously listed as historical. |
+| Corpus | 9,206 bytes; SHA-256 `28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a`. This matches the hash previously listed as historical. |
+| Index files | `faiss.index`: `5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287`; `chunks.json`: `bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33`; `manifest.json`: `651ce5709b186670806d9319e7f4e73911a628d7eb175bee10f63ac5555fb92e`. The derived evidence-index fingerprint was `a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98`, matching the previously listed historical fingerprint. |
+| Receipt and manifest | The inspection reported no blockers after checking the receipt against locally derived embedding, corpus, index/chunk hashes and configured chunk size, and checking the manifest against expected local metadata. |
+| Saved service observation | The local JSON passed schema and configured URL/model checks. It records alias `llama3.2:3b`, digest `sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72`, and server version `0.40.11`. This is stored metadata, not a live observation. |
+
+The resulting setup fingerprint was `27b7327bfd5bb58125596dd27b0a77aad70e981774cd5d21a1e95a26ceac65a8`; the report recorded code revision `0d4c0fbd5419172262e356d30e1691a9baba9cb1` and application-source digest `466fe5fedaca4436a14cbbf756d4fc9486696f824308151c519de198680258f2`. These are point-in-time identities for the inspected integration checkout and must not be attributed automatically to the separate publication branch.
+
+`inspect_setup()` reported `ready: true` with no blockers after checking the index manifest and receipt against local corpus, index, and model hashes. The prior printed summary did not include `relocation_audit`, so it does not establish whether the relocation-mapping branch was exercised or provide its detailed validation result.
+
+The inspection does not establish research approval, resource approval, current live service compatibility, executable runtime readiness, supported-platform durability, or collection authorization. The saved service observation would require a separate live path such as `observe_service()` to compare against a current service; that function was not called. The candidate was supplied explicitly to the resolver for inspection; this task did not set `RESEARCH_V1_RECORDING_BINDING_CONFIG`.
 
 | Resource | Exact value or identity evidenced | Evidence source and classification | Current research configuration? |
 |---|---|---|---|
@@ -44,7 +65,7 @@ The root `adapter.json` is a generic `project_collection_adapter_v1` configurati
 | Other generic adapter fields | `resource_relocation_binding`: `build/multitask-policy42/resource-relocation-v2.json` (present); Ollama sampling, timeout and chunk settings as above | `adapter.json` DECLARED generic configuration | No |
 | Historical full-roster provenance | Resource manifest ID `754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c`; setup fingerprint `83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee`; historical app revision/digest as in Section 2 | `source-resource-summary.json`, marked historical evidence only | No |
 | Static candidate setup | Candidate manifest ID `898af00e993768ab1d2d320a4cd2d743187ccb475979a39072c1bc8deabf96d7`; candidate setup fingerprint `0fa90ad646008b9ca2f16b9d03d37fe4dc1e5b005828109059a121d4c7d59ca3` | E4 candidate assessment: `CANDIDATE_STATICALLY_COMPATIBLE_PENDING_LIVE_VALIDATION`; generic root adapter not selected/approved; `live_checked=false` | No |
-| Research-specific binding | No selected binding path; `RESEARCH_V1_RECORDING_BINDING_CONFIG` unset in inspected shell. Proposed worksheet status is `PROPOSED_NOT_APPROVED_NOT_EXECUTABLE`; collection authorization false and freeze ID null. | CURRENTLY OBSERVED environment selection plus DECLARED / PROPOSED artifact status | No |
+| Research-specific binding | Candidate was explicitly supplied to `resolve_research_configuration()` for the local inspection only; it was not activated for collection. Earlier inventory recorded the environment variable as unset; this task did not set it. The proposal remains `PROPOSED_NOT_APPROVED_NOT_EXECUTABLE`; collection authorization is false and freeze ID null. | CURRENTLY OBSERVED inspection input plus DECLARED / PROPOSED artifact status | No |
 
 These identities answer what was recorded in generic or historical artifacts. They do not assert that the snapshot paths' present bytes, the corpus/index relationship, the saved service observation, or the verifier instances match an approved research runtime.
 
