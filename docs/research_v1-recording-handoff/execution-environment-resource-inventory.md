@@ -48,6 +48,14 @@ The resulting setup fingerprint was `27b7327bfd5bb58125596dd27b0a77aad70e981774c
 
 The inspection does not establish research approval, resource approval, current live service compatibility, executable runtime readiness, supported-platform durability, or collection authorization. The saved service observation would require a separate live path such as `observe_service()` to compare against a current service; that function was not called. The candidate was supplied explicitly to the resolver for inspection; this task did not set `RESEARCH_V1_RECORDING_BINDING_CONFIG`.
 
+### Current service-observation preflight
+
+**Currently observed:** An OS-level listener check found no TCP listener on port `11434` at the time checked. No HTTP request was sent. Therefore, no current Ollama version, model digest, or live API compatibility was observed. This is a point-in-time listener result; it does not show that Ollama cannot be started later or that another approved runtime cannot provide the service.
+
+**Code-derived behavior:** The configured initial URL is `http://localhost:11434/api/generate` (local/loopback); `observe_service()` derives `http://localhost:11434` and would send GET requests to `/api/version` and `/api/tags`. It does not start the service, load models, construct verifiers, initialize the research factory, or start collection. The Requests GET calls follow redirects by default, and `observe_service()` does not revalidate redirect destinations. `trust_env=False` disables environment proxy inheritance.
+
+The saved `service-observation.json` remains stored metadata, not a current observation. Local consistency from `inspect_setup()` does not substitute for current live service compatibility. No configuration was activated and no collection authorization is implied. **Classification: NOT READY — no local listener observed.**
+
 | Resource | Exact value or identity evidenced | Evidence source and classification | Current research configuration? |
 |---|---|---|---|
 | Semantic verifier | `semantic_v1`; requires a nonblank reference; generic binding uses the configured embedding snapshot. Historical implementation SHA-256 `cddd1bf8b3b8de71453647ff5d58ef65acc5ff18a7c643b216edff3cb8cda2a6` | Adapter/code declaration plus HISTORICAL source-resource summary | No |
