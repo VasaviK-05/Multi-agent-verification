@@ -1,0 +1,118 @@
+{
+  "base_commit": "038779359aac0d13ee8c1e6e686893a34de125d3",
+  "branch": "codex/experiment1-prospective-game",
+  "broad_suite": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "201",
+    "time": "296.682"
+  },
+  "commit_push_merge_or_pr_action": false,
+  "distinct_cases": 205,
+  "earlier_test_failure": "First export test expected a nonempty CI file for a one-group fixture. Fixed export to retain an explicit header for empty intervals; null/one-group reasons remain in aggregate JSON. Added multi-group/null/paired tests.",
+  "empirical_collection": false,
+  "empirical_fitting": false,
+  "empirical_results": false,
+  "environment": "Pre-existing isolated Python dependency and Matplotlib paths; no model construction, socket or database connections permitted by test guard",
+  "files_sha256": {
+    "app/game/research/experiment1/prospective/execute.py": "fe0dd2014e80624d2ac5c2eccbe266f8f6670212f5c07b6772b247f6e81b2cc3",
+    "app/game/research/experiment1/prospective/export.py": "f9da176948302c8364424a160ce431f19cbcb28f19f037fb90de2378af1cd3bc",
+    "app/game/research/experiment1/prospective/reporting.py": "14bc9cd9974861accb5a1ebec4a62224104089537df22e6e8b83d5fd7a6eb0b0",
+    "docs/experiment1/prospective/EXECUTION.md": "31fbaf10d536408eaf7bf27360fb0adee59451af5221438f22cd3f7350a442d1",
+    "docs/experiment1/prospective/README.md": "ced2a3eb38fb3de5f0caab065fb3002bd0cb880aa1a286e389a24bacfbdbad44",
+    "tests/test_experiment1_export.py": "fb7d289137c756c976635aba63a6165ba0fd5e4d8fbd6acaaff6cb7bfc3153ce"
+  },
+  "final_export_execution_suite": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "12",
+    "time": "25.665"
+  },
+  "historical_or_teammate_owned_modules_modified": false,
+  "historical_recovery_repeated": false,
+  "metadata_readiness": {
+    "exit_code": 2,
+    "final_payloads_read": false,
+    "inference_calls": 0,
+    "optimization_calls": 0,
+    "stages": {
+      "final_test_authorization_review": {
+        "ready": false
+      },
+      "final_test_scoring": {
+        "ready": false
+      },
+      "history_development_collection": {
+        "ready": false
+      },
+      "policy_fitting": {
+        "ready": false
+      },
+      "protocol_review": {
+        "ready": true
+      }
+    }
+  },
+  "modified_scope": [
+    "app/game/research/experiment1/prospective/reporting.py",
+    "app/game/research/experiment1/prospective/execute.py",
+    "app/game/research/experiment1/prospective/export.py",
+    "docs/experiment1/prospective/README.md",
+    "docs/experiment1/prospective/EXECUTION.md",
+    "tests/test_experiment1_export.py"
+  ],
+  "original_worktree_status": "## codex/evidence-poisoning-phase1\n M app/game/offline/collect.py\n M app/game/offline/collection.py\n M tests/preparation_fixtures.py\n?? app/game/offline/file_journal.py\n?? app/game/research/prospective.py\n?? docs/experiment1/phase-c-followup/\n?? docs/experiment1/phase-c/\n?? docs/research_v1-precollection-proposal/\n?? research/\n?? tests/test_offline_file_journal.py\n?? tests/test_prospective_collection.py\n?? tests/test_prospective_evaluation.py",
+  "original_worktree_status_unchanged": true,
+  "overlapping_runs_not_added": true,
+  "preservation_review": {
+    "additional_collector_verifier_interface_regression": {
+      "errors": "0",
+      "failures": "1",
+      "skipped": "0",
+      "tests": "71",
+      "time": "10.343"
+    },
+    "core_regression": {
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "205",
+      "time": "300.112"
+    },
+    "empirical_fitting": false,
+    "export_trust_boundary": "Caller-trusted report digest establishes bytes. Replay enforces authorization upstream; exporter does not independently certify authority or scientific provenance. Synthetic export requires explicit opt-in and labels figures.",
+    "failure_source_and_test_unchanged_from_base": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+    "inference_calls": 0,
+    "integration_limits": [
+      "Durable completion fsync/acknowledgment and intended-platform collector certification outstanding",
+      "Actual prerequisite-aware factory, observer, capability/reference/resources and compatible calibration evidence outstanding",
+      "Collector export requires a fresh unbound context; bind task History and offline evaluation before supplying the actual fitting specification",
+      "Legacy Windows-style source paths fail on POSIX; leave existing script unchanged",
+      "Pin finalized source/environment and obtain ID-bound approvals after integration; Matplotlib remains an optional export dependency"
+    ],
+    "interface_failure": "test_heldout_collection.py::test_windows_source_hash_gate_allows_only_separately_sealed_collector: unchanged legacy evaluate_flexible_heldout.py treats Windows backslashes as literal POSIX filename characters; FileNotFoundError on macOS.",
+    "local_commit_authorized": true,
+    "metadata_optimization_calls": 0,
+    "metadata_readiness_exit": 2,
+    "original_worktree_status_unchanged_before_commit": true,
+    "prior_fields_describe_precommit_implementation_snapshot": true,
+    "push_merge_pr_action": false,
+    "restricted_final_payloads_read": false,
+    "scope": "Only the seven requested game-side implementation, documentation, validation and synthetic-test files; no empirical artifacts or restricted data."
+  },
+  "real_final_payload_access": false,
+  "remaining_requirements": [
+    "Reviewed source/environment and bounded supported populations with independent labels and separated groups",
+    "Resource/capability/reference/calibration authentication and durable collector/factory/observer acceptance",
+    "Collection-ID authorization and genuine complete History/Development recordings",
+    "Explicit numerical design, captured bound build specification, protocol/fitting-ID authorization",
+    "New frozen policies and matched baselines; independent untouched Final custody and compatible recordings",
+    "Separate inference authorization for any new Final recordings; exact-manifest scoring release"
+  ],
+  "source_fingerprint": "b910b9a73c36063320a9775a1187ee7fb9f075f046de00d680dd7ff1131b69a5",
+  "uncommitted_changes": true,
+  "version": "prospective_experiment1_execution_export_validation_v1",
+  "visual_qa": "Viewed all four synthetic PNG figure families; PNG and PDF signatures, data CSVs, hash inventory and cohort separation verified by tests"
+}
