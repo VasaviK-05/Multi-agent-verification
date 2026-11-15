@@ -12,7 +12,9 @@
     "tests/test_offline_file_journal.py",
     "tests/test_research_v1_inputs.py",
     "tests/test_research_v1_boundaries.py",
-    "tests/test_research_v1_ownership.py"
+    "tests/test_research_v1_ownership.py",
+    "app/game/offline/eligibility.py",
+    "tests/test_research_v1_eligibility.py"
   ],
   "historical_base_commit": "4c2a2eb9ea1afd953e44f5194b2cc1a6e9b95a1a",
   "comparison": "merge-base of HEAD and reviewed remote main; upstream-only changes excluded, feature/worktree changes still checked"

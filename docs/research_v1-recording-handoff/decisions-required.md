@@ -1,3 +1,5 @@
+> Historical PR35 document. Current approved-eligibility compatibility and Handoff A: [eligibility-approved-v1/tabmayee-handoff.md](eligibility-approved-v1/tabmayee-handoff.md). Original text below is preserved; original identity is pinned in [historical-identities.json](eligibility-approved-v1/historical-identities.json).
+
 # Scientific decisions and approvals required — canonical register
 
 Nothing in this proposal is frozen. The technical input-boundary conflict is resolved by verbatim_question_text_v1 without changing source tuples; this is not scientific scope or label approval. See input-contract.md and blocker-register.csv. Exact current engineering results are in final-review.md. Source manifests document deferred human approval/adjudication. Calibration's local freeze covers timing inputs only. The historical person3 protocol is not research_v1 approval.

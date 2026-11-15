@@ -1,0 +1,81 @@
+{
+  "manifest_id": "research_v1_exploratory_eligibility_approved_v1",
+  "logical_manifest_path": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+  "archive_root": "artifacts/person1/research_v1_exploratory_eligibility_approved_v1/",
+  "manifest_body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+  "manifest_file_sha256": "75087c28f01e566be0572c149a182f5b02872f2973bcb32156bb607ecdac1eaa",
+  "sidecar_file_sha256": "8141e37bef5a72cd93a3323417022338ca7aab6564e5a92e5f08cbe3f7830cae",
+  "supporting_sha256": {
+    "development_eligible.jsonl": "7ce9d93faf27a61b8fc810025febc4d375629f525565574b55208569bbd462ea",
+    "development_excluded.jsonl": "9556d19d5c9d86801986a1684913759280468b9767344555bf329d0326887cbf",
+    "group_assignments.jsonl": "8d73ffae8b91e66fce53278f665de6ecfa0ab69a5a51168976a52e231950df73",
+    "label_validation.jsonl": "aa130b41ab312c4f5548e9b0b8a2c97171d8a41643457098a49303030dffee1f",
+    "leakage_audit.json": "4c15def559393a00d84bf9b57efe52637aebead7a6ab20c472fc43433919efd2"
+  },
+  "archive_sha256": "54a98936741aee65d908872669806e04f8d32ff5d31ebc254acabe654e02fa15",
+  "eligibility_approved": true,
+  "collection_authorized": false,
+  "recording_authorized": false,
+  "semantic_clearance": "NOT_CLAIMED",
+  "version": "research_v1_eligibility_receipt_v1",
+  "source_manifest_sha256": "5e55dbd17bf968eaa7768819945ab3adfc3b30d850817b859c63015e9db03764",
+  "source_payload_join": {
+    "source_manifest_sha256": "5e55dbd17bf968eaa7768819945ab3adfc3b30d850817b859c63015e9db03764",
+    "approved_payloads_matched": 744,
+    "missing_original_payloads_in_supplied_source": [],
+    "removed_candidate_count": 30,
+    "retained_outer_whitespace_candidates": 16,
+    "input_tuples_transformed": false,
+    "independent_labels_attested": false,
+    "reference_serialization_approved": false
+  },
+  "body_hash_definition": "SHA-256 of sorted-key indent-2 JSON plus newline with eligibility_manifest_sha256 removed; not the complete-file digest.",
+  "approval": {
+    "approval_date": "2026-11-13",
+    "approver": "Research Lead",
+    "scope": "Development eligibility for research_v1_exploratory_v1 only",
+    "status": "APPROVED_BY_RESEARCH_LEAD"
+  },
+  "scope_only_approval": true,
+  "exclusions": {
+    "rows": 375,
+    "unresolved_candidate_rows": 332,
+    "quarantined_candidate_rows": 30,
+    "no_verified_gold_group_rows": 13
+  },
+  "semantic_status": {
+    "clearance": "NOT_CLAIMED",
+    "protocol": "normalized_token_jaccard_and_sequence_ratio_v1",
+    "thresholds": {
+      "sequence_ratio": 0.85,
+      "token_jaccard": 0.8
+    },
+    "maximum_sequence_ratio": 0.6813186813186813,
+    "flagged_pairs": 0,
+    "statement": "Zero pairs met the duplicate thresholds. Pairs below the thresholds were not all read. The scan does not prove that every lower-scoring pair is unrelated.",
+    "historical_paragraph_overlap_count": 50,
+    "historical_supporting_fact_overlap_count": 2,
+    "quarantined_groups": [
+      "hotpotqa-q-01efd584ea7ae8cf",
+      "hotpotqa-q-360d2d548f7105db",
+      "hotpotqa-q-56ee55f464413488",
+      "hotpotqa-q-57f2915f56d3b2ca",
+      "hotpotqa-q-593f22dd87617605",
+      "hotpotqa-q-5974e747d478b04b",
+      "hotpotqa-q-59adf375f0c22fce",
+      "hotpotqa-q-a901144f45071da3",
+      "hotpotqa-q-abd70330b77ee650",
+      "hotpotqa-q-bcb56e82d06d5416",
+      "hotpotqa-q-c623c214f6cb4f2f",
+      "hotpotqa-q-d688598418df9728",
+      "hotpotqa-q-e26dd81c6509541a",
+      "hotpotqa-q-f336b97f30935a33",
+      "hotpotqa-q-f386282eea312ad2"
+    ]
+  },
+  "custody_limits": [
+    "User-supplied body hash and manifest identify approved eligibility only; no digital signature is claimed.",
+    "Producer generator path is absent from the declared d9fd453 Git tree; actual generator source/dirty inventory and run custody remain missing.",
+    "No historical calibration call-input ledger, approved reference serialization, live resource observations, authentic History reports or collection authorization is supplied by this manifest."
+  ]
+}

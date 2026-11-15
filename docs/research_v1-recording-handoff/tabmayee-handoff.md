@@ -1,3 +1,5 @@
+> Historical PR35 document. Current approved-eligibility compatibility and Handoff A: [eligibility-approved-v1/tabmayee-handoff.md](eligibility-approved-v1/tabmayee-handoff.md). Original text below is preserved; original identity is pinned in [historical-identities.json](eligibility-approved-v1/historical-identities.json).
+
 # Tabmayee Handoff A — technical review, no collection authorization
 
 ## Status and files

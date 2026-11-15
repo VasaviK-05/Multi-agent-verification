@@ -1,3 +1,5 @@
+> Current Development eligibility update: [Handoff A — approved eligibility v1](eligibility-approved-v1/tabmayee-handoff.md), [scope/configuration](eligibility-approved-v1/recording-config.proposed.json), and [remaining decisions](eligibility-approved-v1/remaining-decisions.md). Eligibility is approved for 744 candidates /372 groups; collection and fitting remain blocked. Root proposals below retain their historical PR35 identities.
+
 # research_v1 canonical pre-collection package
 
 **Engineering proposal for review. Collection and fitting are NOT authorized.**
