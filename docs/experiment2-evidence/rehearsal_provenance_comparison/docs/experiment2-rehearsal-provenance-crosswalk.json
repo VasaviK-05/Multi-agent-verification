@@ -1,0 +1,622 @@
+{
+  "schema_version": "experiment2_rehearsal_provenance_crosswalk_v1",
+  "artifact_class": "DERIVED_COMPARISON_EVIDENCE_NOT_ORIGINAL_REHEARSAL",
+  "created_utc": "2026-11-13T17:17:33Z",
+  "repository": {
+    "branch": "tanmayee-integration",
+    "head": "58bb214671a6f9224b4b88b8a01c67233363711e"
+  },
+  "methodology": {
+    "implementation_path": "evaluation/data_preparation/run_verifier_attempts.py",
+    "implementation_sha256": "761349b966e62385b7a17578564e34c13d3d210cc8ad4cabe97608025179b8d6",
+    "canonical_json_path": "app/game/models.py",
+    "canonical_json_sha256": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73",
+    "function": "permitted_input() plus canonical_json()",
+    "payload_fields": [
+      "question",
+      "candidate_answer",
+      "context"
+    ],
+    "context_normalization": "Repository permitted_input(): null/empty=>null; string unchanged; list[str] joined with two newlines; list[object] projects title and text or sentence_text_extracted, formats title/newline/text, strips passages and joins nonempty passages with two newlines.",
+    "hash": "SHA-256 of UTF-8 canonical JSON; sorted keys, compact separators, ensure_ascii=False, allow_nan=False; canonical_json also normalizes numeric negative zero.",
+    "benchmark_in_hash": false
+  },
+  "source_identities": {
+    "rehearsal_run_identity": "252c312ef4826060c35f5ca06d772270ebf8445bc7d152657411a3b026a8a444",
+    "rehearsal_code_revision": "662bd5cdbf2c8b2dc9885f6bb80e42abf7c5205e",
+    "approved_eligibility_manifest_id": "research_v1_exploratory_eligibility_approved_v1",
+    "approved_dataset_version": "research_v1_exploratory_v1",
+    "source_dataset_version": "research_v1_exploratory_v1",
+    "recording_authorized": false,
+    "collection_authorized": false
+  },
+  "source_files": {
+    "rehearsal_zip": {
+      "path": "artifact_share_staging/research_v1_development_rehearsal_662bd5c.zip",
+      "sha256": "f688faff1cf4a25abe30d7e6516a0eab58bd0015a78d6863054c0435491d10f0"
+    },
+    "rehearsal_attempts": {
+      "path": "evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5c/attempts.jsonl",
+      "sha256": "54b183679376e6f6279106fbe714c90c124e4dce117190242efc56b58f71bc46"
+    },
+    "rehearsal_pilot_manifest": {
+      "path": "evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5c/pilot_manifest.json",
+      "sha256": "b380da97defa9031f77538e50bf6b29b4100a52895a6cdb350733d6c3eff6570"
+    },
+    "rehearsal_artifact_hash_manifest": {
+      "path": "evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5c/artifact_sha256.json",
+      "sha256": "26b9c23d6d552868e009fff3677df1fc3ccd4a2c7b35ce9779c644d5418ce77f"
+    },
+    "rehearsal_pilot_results_integrity_only": {
+      "path": "evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5c/pilot_results.json",
+      "sha256": "5a1711d8aa35b50502cac75fea24980e1c4e09ef0127d6c3bd799a22199a33dc"
+    },
+    "rehearsal_unresolved_integrity_only": {
+      "path": "evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5c/unresolved_not_attempted.jsonl",
+      "sha256": "50cbfb0c2ba209529bc79828ff3ffa67c0e3cdb7d1323e43c2cf1f17b7d5e630"
+    },
+    "rehearsal_prepared_candidates": {
+      "path": "evaluation/datasets/development_pilot/rehearsal_subsets/research_v1_seed_42/development_prepared.jsonl",
+      "sha256": "05e1ed50a5bb6673a9caa86d5eadfd40a7bd332ba3ace9372f04345a730c3b98"
+    },
+    "rehearsal_source_candidates_integrity": {
+      "path": "evaluation/datasets/development_pilot/rehearsal_subsets/research_v1_seed_42/development_candidates.jsonl",
+      "sha256": "9eeece456ff1a665bd82cdfde7035baa69df021def3fa651d8d1684e9a4e655c"
+    },
+    "rehearsal_subset_manifest": {
+      "path": "evaluation/datasets/development_pilot/rehearsal_subsets/research_v1_seed_42/subset_manifest.json",
+      "sha256": "a044f0fddf4f33f7c9be07ae482f1ae54005ac367442eee20983ceb7db0cf557"
+    },
+    "approved_eligibility_manifest": {
+      "path": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+      "sha256": "75087c28f01e566be0572c149a182f5b02872f2973bcb32156bb607ecdac1eaa"
+    },
+    "approved_eligibility_manifest_hash_sidecar": {
+      "path": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.file_sha256.txt",
+      "sha256": "8141e37bef5a72cd93a3323417022338ca7aab6564e5a92e5f08cbe3f7830cae"
+    },
+    "approved_development_eligible": {
+      "path": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/development_eligible.jsonl",
+      "sha256": "7ce9d93faf27a61b8fc810025febc4d375629f525565574b55208569bbd462ea"
+    },
+    "approved_group_assignments_reference": {
+      "path": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/group_assignments.jsonl",
+      "sha256": "8d73ffae8b91e66fce53278f665de6ecfa0ab69a5a51168976a52e231950df73"
+    },
+    "development_source_manifest": {
+      "path": "evaluation/datasets/research_v1_exploratory/research_v1_exploratory_v1/manifest.json",
+      "sha256": "5e55dbd17bf968eaa7768819945ab3adfc3b30d850817b859c63015e9db03764"
+    },
+    "development_source_verifier_inputs": {
+      "path": "evaluation/datasets/research_v1_exploratory/research_v1_exploratory_v1/development_verifier_inputs.jsonl",
+      "sha256": "51e001863d7622819c1f0a69755f041b476d89d28989a2054c04d1ab9675ad42"
+    },
+    "hash_method_implementation": {
+      "path": "evaluation/data_preparation/run_verifier_attempts.py",
+      "sha256": "761349b966e62385b7a17578564e34c13d3d210cc8ad4cabe97608025179b8d6"
+    },
+    "canonical_json_implementation": {
+      "path": "app/game/models.py",
+      "sha256": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73"
+    }
+  },
+  "counts": {
+    "rehearsal_candidates": 13,
+    "retained_attempt_rows": 52,
+    "input_equivalent_candidates": 8,
+    "input_equivalent_attempt_rows": 32,
+    "same_group_question_no_exact_input_match": 4,
+    "group_not_present_in_approved_roster": 1,
+    "rehearsal_approved_candidate_id_overlap": 0
+  },
+  "identity_caveat": "Exact hash equivalence establishes only input-level equality under the recorded repository hash contract. Candidate IDs remain distinct; no remapping or aliasing is performed.",
+  "candidates": [
+    {
+      "rehearsal_candidate_id": "gsm8k_train_2101::candidate_0",
+      "approved_candidate_id": "rx1-d2939939f399fd4497e9",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_2101",
+      "question_id": "GSM8K:gsm8k_train_2101",
+      "related_group_id": "gsm8k-q-bb3c60a2b215fdfb",
+      "rehearsal_verifier_input_sha256": "7f5c29dc0f370d8cccee506b00317fd887f9dec955588bcc2b30749276528887",
+      "approved_verifier_input_sha256": "7f5c29dc0f370d8cccee506b00317fd887f9dec955588bcc2b30749276528887",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "8b263a1388e58ade4ad8f7d50888728afc5f2a4e4aea5ce243a0f19c7ea4d0e6",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "7f5c29dc0f370d8cccee506b00317fd887f9dec955588bcc2b30749276528887"
+        },
+        {
+          "execution_id": "8b263a1388e58ade4ad8f7d50888728afc5f2a4e4aea5ce243a0f19c7ea4d0e6",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "7f5c29dc0f370d8cccee506b00317fd887f9dec955588bcc2b30749276528887"
+        },
+        {
+          "execution_id": "8b263a1388e58ade4ad8f7d50888728afc5f2a4e4aea5ce243a0f19c7ea4d0e6",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "7f5c29dc0f370d8cccee506b00317fd887f9dec955588bcc2b30749276528887"
+        },
+        {
+          "execution_id": "8b263a1388e58ade4ad8f7d50888728afc5f2a4e4aea5ce243a0f19c7ea4d0e6",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "7f5c29dc0f370d8cccee506b00317fd887f9dec955588bcc2b30749276528887"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_2101::candidate_1",
+      "approved_candidate_id": "rx1-04e62b82327f24c3336d",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_2101",
+      "question_id": "GSM8K:gsm8k_train_2101",
+      "related_group_id": "gsm8k-q-bb3c60a2b215fdfb",
+      "rehearsal_verifier_input_sha256": "53f25ff532818b701d6b9170fdc3103331e07f5d60d54b358c20b7ac29b79567",
+      "approved_verifier_input_sha256": "53f25ff532818b701d6b9170fdc3103331e07f5d60d54b358c20b7ac29b79567",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "321095cb9b95266f68d56cf04eabf627125532af9ac9d5d6cb1a6a1c74d9ce52",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "53f25ff532818b701d6b9170fdc3103331e07f5d60d54b358c20b7ac29b79567"
+        },
+        {
+          "execution_id": "321095cb9b95266f68d56cf04eabf627125532af9ac9d5d6cb1a6a1c74d9ce52",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "53f25ff532818b701d6b9170fdc3103331e07f5d60d54b358c20b7ac29b79567"
+        },
+        {
+          "execution_id": "321095cb9b95266f68d56cf04eabf627125532af9ac9d5d6cb1a6a1c74d9ce52",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "53f25ff532818b701d6b9170fdc3103331e07f5d60d54b358c20b7ac29b79567"
+        },
+        {
+          "execution_id": "321095cb9b95266f68d56cf04eabf627125532af9ac9d5d6cb1a6a1c74d9ce52",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "53f25ff532818b701d6b9170fdc3103331e07f5d60d54b358c20b7ac29b79567"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_3539::candidate_0",
+      "approved_candidate_id": "rx1-ff486b25aef85ab21ce7",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_3539",
+      "question_id": "GSM8K:gsm8k_train_3539",
+      "related_group_id": "gsm8k-q-dff1612e4967a07f",
+      "rehearsal_verifier_input_sha256": "b225b7fd924c412fbea6175bcd8fb1a20f3e6eaf4fed8355b9af6c592e62d2b0",
+      "approved_verifier_input_sha256": "b225b7fd924c412fbea6175bcd8fb1a20f3e6eaf4fed8355b9af6c592e62d2b0",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "67f923a2589c2fff3ddfcf2c61458e4cf310e96cfb9f608ba11f0bab76a1a502",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "b225b7fd924c412fbea6175bcd8fb1a20f3e6eaf4fed8355b9af6c592e62d2b0"
+        },
+        {
+          "execution_id": "67f923a2589c2fff3ddfcf2c61458e4cf310e96cfb9f608ba11f0bab76a1a502",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "b225b7fd924c412fbea6175bcd8fb1a20f3e6eaf4fed8355b9af6c592e62d2b0"
+        },
+        {
+          "execution_id": "67f923a2589c2fff3ddfcf2c61458e4cf310e96cfb9f608ba11f0bab76a1a502",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "b225b7fd924c412fbea6175bcd8fb1a20f3e6eaf4fed8355b9af6c592e62d2b0"
+        },
+        {
+          "execution_id": "67f923a2589c2fff3ddfcf2c61458e4cf310e96cfb9f608ba11f0bab76a1a502",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "b225b7fd924c412fbea6175bcd8fb1a20f3e6eaf4fed8355b9af6c592e62d2b0"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_3539::candidate_1",
+      "approved_candidate_id": "rx1-4e434baec9f71473b45a",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_3539",
+      "question_id": "GSM8K:gsm8k_train_3539",
+      "related_group_id": "gsm8k-q-dff1612e4967a07f",
+      "rehearsal_verifier_input_sha256": "964efc9536108a644025b2ce581c3b67ead360cab097ff7189b53aa259aa8187",
+      "approved_verifier_input_sha256": "964efc9536108a644025b2ce581c3b67ead360cab097ff7189b53aa259aa8187",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "7381cdd2b00e98e894fdd9773f336849920a1f885042bcd8e740dd2a39c505de",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "964efc9536108a644025b2ce581c3b67ead360cab097ff7189b53aa259aa8187"
+        },
+        {
+          "execution_id": "7381cdd2b00e98e894fdd9773f336849920a1f885042bcd8e740dd2a39c505de",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "964efc9536108a644025b2ce581c3b67ead360cab097ff7189b53aa259aa8187"
+        },
+        {
+          "execution_id": "7381cdd2b00e98e894fdd9773f336849920a1f885042bcd8e740dd2a39c505de",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "964efc9536108a644025b2ce581c3b67ead360cab097ff7189b53aa259aa8187"
+        },
+        {
+          "execution_id": "7381cdd2b00e98e894fdd9773f336849920a1f885042bcd8e740dd2a39c505de",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "964efc9536108a644025b2ce581c3b67ead360cab097ff7189b53aa259aa8187"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_4500::candidate_0",
+      "approved_candidate_id": "rx1-0c82b8ed0e8c241bcf22",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_4500",
+      "question_id": "GSM8K:gsm8k_train_4500",
+      "related_group_id": "gsm8k-q-d11afd4863388512",
+      "rehearsal_verifier_input_sha256": "a3b8ed34ba975281b7be8519d4ceb8f6aa8d09ccc52a3f564e2ec901d9325ed8",
+      "approved_verifier_input_sha256": "a3b8ed34ba975281b7be8519d4ceb8f6aa8d09ccc52a3f564e2ec901d9325ed8",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "34bb68bf5000408f33fcf466f77b4e4f3bdec78d1e9ab648f5f41d5d85ff669d",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "a3b8ed34ba975281b7be8519d4ceb8f6aa8d09ccc52a3f564e2ec901d9325ed8"
+        },
+        {
+          "execution_id": "34bb68bf5000408f33fcf466f77b4e4f3bdec78d1e9ab648f5f41d5d85ff669d",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "a3b8ed34ba975281b7be8519d4ceb8f6aa8d09ccc52a3f564e2ec901d9325ed8"
+        },
+        {
+          "execution_id": "34bb68bf5000408f33fcf466f77b4e4f3bdec78d1e9ab648f5f41d5d85ff669d",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "a3b8ed34ba975281b7be8519d4ceb8f6aa8d09ccc52a3f564e2ec901d9325ed8"
+        },
+        {
+          "execution_id": "34bb68bf5000408f33fcf466f77b4e4f3bdec78d1e9ab648f5f41d5d85ff669d",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "a3b8ed34ba975281b7be8519d4ceb8f6aa8d09ccc52a3f564e2ec901d9325ed8"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_4500::candidate_1",
+      "approved_candidate_id": "rx1-4296177b918425f2269e",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_4500",
+      "question_id": "GSM8K:gsm8k_train_4500",
+      "related_group_id": "gsm8k-q-d11afd4863388512",
+      "rehearsal_verifier_input_sha256": "520a8923a177a163cc77ae2cc390890c496203eca10fbafefc993fd2e0e298c7",
+      "approved_verifier_input_sha256": "520a8923a177a163cc77ae2cc390890c496203eca10fbafefc993fd2e0e298c7",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "f300f59cc45c4820397b13e1389791c7041b6d71913bc45958f73c24a43da493",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "520a8923a177a163cc77ae2cc390890c496203eca10fbafefc993fd2e0e298c7"
+        },
+        {
+          "execution_id": "f300f59cc45c4820397b13e1389791c7041b6d71913bc45958f73c24a43da493",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "520a8923a177a163cc77ae2cc390890c496203eca10fbafefc993fd2e0e298c7"
+        },
+        {
+          "execution_id": "f300f59cc45c4820397b13e1389791c7041b6d71913bc45958f73c24a43da493",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "520a8923a177a163cc77ae2cc390890c496203eca10fbafefc993fd2e0e298c7"
+        },
+        {
+          "execution_id": "f300f59cc45c4820397b13e1389791c7041b6d71913bc45958f73c24a43da493",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "520a8923a177a163cc77ae2cc390890c496203eca10fbafefc993fd2e0e298c7"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_5541::candidate_0",
+      "approved_candidate_id": "rx1-2e879c21e7503403fdd2",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_5541",
+      "question_id": "GSM8K:gsm8k_train_5541",
+      "related_group_id": "gsm8k-q-80a7b694f4ff7a8d",
+      "rehearsal_verifier_input_sha256": "47036c06ef60fa80b7c6902c4ac76e557f7a42c5bd51451722e4c46ece8483b3",
+      "approved_verifier_input_sha256": "47036c06ef60fa80b7c6902c4ac76e557f7a42c5bd51451722e4c46ece8483b3",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "aaab848b2070d4a76f92f8216ae66dd7ee0293041da8f1285e80acefb7bb8e85",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "47036c06ef60fa80b7c6902c4ac76e557f7a42c5bd51451722e4c46ece8483b3"
+        },
+        {
+          "execution_id": "aaab848b2070d4a76f92f8216ae66dd7ee0293041da8f1285e80acefb7bb8e85",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "47036c06ef60fa80b7c6902c4ac76e557f7a42c5bd51451722e4c46ece8483b3"
+        },
+        {
+          "execution_id": "aaab848b2070d4a76f92f8216ae66dd7ee0293041da8f1285e80acefb7bb8e85",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "47036c06ef60fa80b7c6902c4ac76e557f7a42c5bd51451722e4c46ece8483b3"
+        },
+        {
+          "execution_id": "aaab848b2070d4a76f92f8216ae66dd7ee0293041da8f1285e80acefb7bb8e85",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "47036c06ef60fa80b7c6902c4ac76e557f7a42c5bd51451722e4c46ece8483b3"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "gsm8k_train_6691::candidate_0",
+      "approved_candidate_id": "rx1-9159837fc0687a096eab",
+      "benchmark": "GSM8K",
+      "source_dataset_id": "gsm8k_train_6691",
+      "question_id": "GSM8K:gsm8k_train_6691",
+      "related_group_id": "gsm8k-q-60e26df320cfcb5d",
+      "rehearsal_verifier_input_sha256": "e89d76e7bb2bce2fb334d28d4c1905259146b507581399a483d8f9c00b3ec2b7",
+      "approved_verifier_input_sha256": "e89d76e7bb2bce2fb334d28d4c1905259146b507581399a483d8f9c00b3ec2b7",
+      "hashes_equal": true,
+      "classification": "INPUT_EQUIVALENT",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "1e56e8b4174555968f27d9d7e435d6b00a3e87cc1f3546b82033278b2a530ff1",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "e89d76e7bb2bce2fb334d28d4c1905259146b507581399a483d8f9c00b3ec2b7"
+        },
+        {
+          "execution_id": "1e56e8b4174555968f27d9d7e435d6b00a3e87cc1f3546b82033278b2a530ff1",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "e89d76e7bb2bce2fb334d28d4c1905259146b507581399a483d8f9c00b3ec2b7"
+        },
+        {
+          "execution_id": "1e56e8b4174555968f27d9d7e435d6b00a3e87cc1f3546b82033278b2a530ff1",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "e89d76e7bb2bce2fb334d28d4c1905259146b507581399a483d8f9c00b3ec2b7"
+        },
+        {
+          "execution_id": "1e56e8b4174555968f27d9d7e435d6b00a3e87cc1f3546b82033278b2a530ff1",
+          "verifier_name": "semantic",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "e89d76e7bb2bce2fb334d28d4c1905259146b507581399a483d8f9c00b3ec2b7"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "hotpot_5a710d155542994082a3e520::candidate_0",
+      "approved_candidate_id": null,
+      "benchmark": "HotpotQA",
+      "source_dataset_id": "hotpot_5a710d155542994082a3e520",
+      "question_id": "HotpotQA:hotpot_5a710d155542994082a3e520",
+      "related_group_id": "hotpotqa-q-edfbcfe7ca058b5e",
+      "rehearsal_verifier_input_sha256": "1d81c6b795ed71490100539a5c03d0f011cffde3534b82930db7d333dab6a37c",
+      "approved_verifier_input_sha256": null,
+      "hashes_equal": false,
+      "classification": "SAME_GROUP_NO_EXACT_INPUT_MATCH",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "66c53ee0a63a63c7a3075d7d02088bdc8cc180d07e90fd1a12a31c53c7b1ad97",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "1d81c6b795ed71490100539a5c03d0f011cffde3534b82930db7d333dab6a37c"
+        },
+        {
+          "execution_id": "66c53ee0a63a63c7a3075d7d02088bdc8cc180d07e90fd1a12a31c53c7b1ad97",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "1d81c6b795ed71490100539a5c03d0f011cffde3534b82930db7d333dab6a37c"
+        },
+        {
+          "execution_id": "66c53ee0a63a63c7a3075d7d02088bdc8cc180d07e90fd1a12a31c53c7b1ad97",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "1d81c6b795ed71490100539a5c03d0f011cffde3534b82930db7d333dab6a37c"
+        },
+        {
+          "execution_id": "66c53ee0a63a63c7a3075d7d02088bdc8cc180d07e90fd1a12a31c53c7b1ad97",
+          "verifier_name": "semantic",
+          "state": "directional",
+          "stored_verifier_input_sha256": "1d81c6b795ed71490100539a5c03d0f011cffde3534b82930db7d333dab6a37c"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "hotpot_5a7147fd5542994082a3e758::candidate_0",
+      "approved_candidate_id": null,
+      "benchmark": "HotpotQA",
+      "source_dataset_id": "hotpot_5a7147fd5542994082a3e758",
+      "question_id": "HotpotQA:hotpot_5a7147fd5542994082a3e758",
+      "related_group_id": "hotpotqa-q-ddd3ab7b121be4fe",
+      "rehearsal_verifier_input_sha256": "8f3047c4db44e01b92e73bcd0fc01860f9f033c6261b062fc1011c8b9e04313d",
+      "approved_verifier_input_sha256": null,
+      "hashes_equal": false,
+      "classification": "SAME_GROUP_NO_EXACT_INPUT_MATCH",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "fb51eaff25c6d19c55c8025fbf49a5b1dd9c206ff231980e52c2df9395bdbc02",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "8f3047c4db44e01b92e73bcd0fc01860f9f033c6261b062fc1011c8b9e04313d"
+        },
+        {
+          "execution_id": "fb51eaff25c6d19c55c8025fbf49a5b1dd9c206ff231980e52c2df9395bdbc02",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "8f3047c4db44e01b92e73bcd0fc01860f9f033c6261b062fc1011c8b9e04313d"
+        },
+        {
+          "execution_id": "fb51eaff25c6d19c55c8025fbf49a5b1dd9c206ff231980e52c2df9395bdbc02",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "8f3047c4db44e01b92e73bcd0fc01860f9f033c6261b062fc1011c8b9e04313d"
+        },
+        {
+          "execution_id": "fb51eaff25c6d19c55c8025fbf49a5b1dd9c206ff231980e52c2df9395bdbc02",
+          "verifier_name": "semantic",
+          "state": "directional",
+          "stored_verifier_input_sha256": "8f3047c4db44e01b92e73bcd0fc01860f9f033c6261b062fc1011c8b9e04313d"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "hotpot_5ade66e1554299728e26c713::candidate_0",
+      "approved_candidate_id": null,
+      "benchmark": "HotpotQA",
+      "source_dataset_id": "hotpot_5ade66e1554299728e26c713",
+      "question_id": "HotpotQA:hotpot_5ade66e1554299728e26c713",
+      "related_group_id": "hotpotqa-q-01efd584ea7ae8cf",
+      "rehearsal_verifier_input_sha256": "74cf4698ceb7c63c484c69b5aabf9a6f51d1150f4df1fdfbb309df8c24f93199",
+      "approved_verifier_input_sha256": null,
+      "hashes_equal": false,
+      "classification": "GROUP_NOT_PRESENT_IN_APPROVED_ROSTER",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "f2b8a805b1918866e6565d8189855a66f96a701bac7de736f9ccacd2d6d50b11",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "74cf4698ceb7c63c484c69b5aabf9a6f51d1150f4df1fdfbb309df8c24f93199"
+        },
+        {
+          "execution_id": "f2b8a805b1918866e6565d8189855a66f96a701bac7de736f9ccacd2d6d50b11",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "74cf4698ceb7c63c484c69b5aabf9a6f51d1150f4df1fdfbb309df8c24f93199"
+        },
+        {
+          "execution_id": "f2b8a805b1918866e6565d8189855a66f96a701bac7de736f9ccacd2d6d50b11",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "74cf4698ceb7c63c484c69b5aabf9a6f51d1150f4df1fdfbb309df8c24f93199"
+        },
+        {
+          "execution_id": "f2b8a805b1918866e6565d8189855a66f96a701bac7de736f9ccacd2d6d50b11",
+          "verifier_name": "semantic",
+          "state": "directional",
+          "stored_verifier_input_sha256": "74cf4698ceb7c63c484c69b5aabf9a6f51d1150f4df1fdfbb309df8c24f93199"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "hotpot_5ae25c815542992decbdcccc::candidate_0",
+      "approved_candidate_id": null,
+      "benchmark": "HotpotQA",
+      "source_dataset_id": "hotpot_5ae25c815542992decbdcccc",
+      "question_id": "HotpotQA:hotpot_5ae25c815542992decbdcccc",
+      "related_group_id": "hotpotqa-q-507e4b2663857928",
+      "rehearsal_verifier_input_sha256": "5e028e2324d8e125970743b6dcb388d3e728874c4c8ba349130294f590f1be0b",
+      "approved_verifier_input_sha256": null,
+      "hashes_equal": false,
+      "classification": "SAME_GROUP_NO_EXACT_INPUT_MATCH",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "0cb633331f05cfa08ca952b692c4069d9771011e5bd2139cb5d0740a7cdcbdc5",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "5e028e2324d8e125970743b6dcb388d3e728874c4c8ba349130294f590f1be0b"
+        },
+        {
+          "execution_id": "0cb633331f05cfa08ca952b692c4069d9771011e5bd2139cb5d0740a7cdcbdc5",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "5e028e2324d8e125970743b6dcb388d3e728874c4c8ba349130294f590f1be0b"
+        },
+        {
+          "execution_id": "0cb633331f05cfa08ca952b692c4069d9771011e5bd2139cb5d0740a7cdcbdc5",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "5e028e2324d8e125970743b6dcb388d3e728874c4c8ba349130294f590f1be0b"
+        },
+        {
+          "execution_id": "0cb633331f05cfa08ca952b692c4069d9771011e5bd2139cb5d0740a7cdcbdc5",
+          "verifier_name": "semantic",
+          "state": "directional",
+          "stored_verifier_input_sha256": "5e028e2324d8e125970743b6dcb388d3e728874c4c8ba349130294f590f1be0b"
+        }
+      ]
+    },
+    {
+      "rehearsal_candidate_id": "hotpot_5ae785685542994a481bbd47::candidate_0",
+      "approved_candidate_id": null,
+      "benchmark": "HotpotQA",
+      "source_dataset_id": "hotpot_5ae785685542994a481bbd47",
+      "question_id": "HotpotQA:hotpot_5ae785685542994a481bbd47",
+      "related_group_id": "hotpotqa-q-4801fbf1b400048c",
+      "rehearsal_verifier_input_sha256": "0b4a075aa04244e4b96cc30e57ea416c90d5b241835c055a1da19c0ca0013c2d",
+      "approved_verifier_input_sha256": null,
+      "hashes_equal": false,
+      "classification": "SAME_GROUP_NO_EXACT_INPUT_MATCH",
+      "retained_attempt_count": 4,
+      "attempts": [
+        {
+          "execution_id": "bdde84793d09109b84e09069fd2bbd73c46a4abdc10f896dd149870f4b53953c",
+          "verifier_name": "confidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "0b4a075aa04244e4b96cc30e57ea416c90d5b241835c055a1da19c0ca0013c2d"
+        },
+        {
+          "execution_id": "bdde84793d09109b84e09069fd2bbd73c46a4abdc10f896dd149870f4b53953c",
+          "verifier_name": "evidence",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "0b4a075aa04244e4b96cc30e57ea416c90d5b241835c055a1da19c0ca0013c2d"
+        },
+        {
+          "execution_id": "bdde84793d09109b84e09069fd2bbd73c46a4abdc10f896dd149870f4b53953c",
+          "verifier_name": "rule",
+          "state": "abstention",
+          "stored_verifier_input_sha256": "0b4a075aa04244e4b96cc30e57ea416c90d5b241835c055a1da19c0ca0013c2d"
+        },
+        {
+          "execution_id": "bdde84793d09109b84e09069fd2bbd73c46a4abdc10f896dd149870f4b53953c",
+          "verifier_name": "semantic",
+          "state": "directional",
+          "stored_verifier_input_sha256": "0b4a075aa04244e4b96cc30e57ea416c90d5b241835c055a1da19c0ca0013c2d"
+        }
+      ]
+    }
+  ]
+}

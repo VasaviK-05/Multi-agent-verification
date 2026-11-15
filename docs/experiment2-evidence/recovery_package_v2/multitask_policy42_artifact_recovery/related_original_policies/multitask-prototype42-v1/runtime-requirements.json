@@ -1,0 +1,39 @@
+{
+  "source_revision": "17b695373f935dc1f5fd09c37cf8917969367f7a",
+  "application_source_digest": "d2565ca4897a9e1f938900f4feb80fe675b9229c2acb7b27544781ec1c9bdcaf",
+  "prototype_packager_sha256": "584ee68129922a6bf71ea5bff0f82d42bf38494266c873dd5fad015a5a57848d",
+  "solver_environment": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pydantic": "2.13.5",
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "python_implementation": "CPython",
+    "highs": "1.12.0",
+    "solver_method": "scipy.optimize.linprog:highs",
+    "linprog_options": {
+      "stage_a": "SciPy defaults",
+      "stage_b": {
+        "primal_feasibility_tolerance": 1e-10,
+        "dual_feasibility_tolerance": 1e-10
+      }
+    }
+  },
+  "recording_dependency_versions": {
+    "numpy": "2.4.6",
+    "pydantic": "2.13.5",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "faiss-cpu": "1.15.1",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.2",
+    "python": "3.11.5",
+    "sentencepiece": "not installed; local tokenizer.json avoids conversion"
+  },
+  "execution_contract": "offline_public_decision_v4",
+  "bundle_loader": "bounded_task_policy_bundle_v1",
+  "note": "Source revision plus dirty source digest identifies required owned implementation. External runtime/model resources must be observed separately; no model weights or machine paths included."
+}

@@ -1,0 +1,69 @@
+{
+  "approval_date": null,
+  "approved": false,
+  "approver": null,
+  "collection_authorized": false,
+  "counts": {
+    "development_groups": 387,
+    "development_labelled_candidates": 774,
+    "development_unresolved_excluded": 332,
+    "eligible_by_benchmark": {
+      "GSM8K": {
+        "SYNTHETIC_INCORRECT": 187,
+        "VERIFIED_CORRECT": 187
+      },
+      "HotpotQA": {
+        "SYNTHETIC_INCORRECT": 200,
+        "VERIFIED_CORRECT": 200
+      }
+    },
+    "excluded_rows": 345,
+    "history_labelled_candidates_not_in_eligibility_roster": 1153,
+    "human_verified_incorrect": 0,
+    "provisionally_eligible_candidates": 774,
+    "provisionally_eligible_groups": 387
+  },
+  "dataset_version": "research_v1_exploratory_v1",
+  "duplicate_development_candidate_ids": 0,
+  "eligibility_criteria": "PROVISIONAL, NOT APPROVED. A Development candidate is provisionally eligible only when its dataset_version is research_v1_exploratory_v1, its label_class is VERIFIED_CORRECT or SYNTHETIC_INCORRECT, human_verified is false, and its related_group_id has exactly one VERIFIED_CORRECT and one SYNTHETIC_INCORRECT Development candidate. UNRESOLVED is excluded and is never incorrect. SYNTHETIC_INCORRECT is not HUMAN_VERIFIED_INCORRECT. History is not an eligibility population. This audit does not authorize verifier collection or recording.",
+  "eligibility_manifest_sha256": "9f220e4d9affa2e10d088cd6afcd2587b318912a4b4f0568d5617e3976693ac4",
+  "eligibility_version": "research_v1_exploratory_eligibility_provisional_v1",
+  "frozen": false,
+  "generator": "evaluation/data_preparation/exploratory_eligibility.py",
+  "generator_code_revision": "d9fd453afe9bfe601ace8e1d30b80a9e593c8484",
+  "history_development_overlap": {
+    "candidate_id": 0,
+    "content_identity": 0,
+    "normalized_question": 0,
+    "paragraph_hash": 50,
+    "question_id": 0,
+    "related_group_id": 0,
+    "supporting_fact": 2
+  },
+  "label_classes": {
+    "HUMAN_VERIFIED_INCORRECT": "none in this snapshot",
+    "SYNTHETIC_INCORRECT": "deterministic transformation; not HUMAN_VERIFIED_INCORRECT",
+    "UNRESOLVED": "excluded; never counted as incorrect",
+    "VERIFIED_CORRECT": "benchmark gold under the recorded deterministic check; not a new human adjudication"
+  },
+  "not_the_research_v1_roster": "evaluation/datasets/person1/research_v1_person1_v1/development_eligible_candidates.jsonl",
+  "output_sha256": {
+    "development_excluded.jsonl": "a8e2201174f0681acb20ac1e7e349ae2a857d61ea5085e2e625cc281e622e227",
+    "development_group_assignments.jsonl": "0ddc3f7ad37271d4cc5ad6b8abdddffb84d9981cbdbb63d2590eaf0275ab3ddd",
+    "development_provisionally_eligible.jsonl": "7c2c8d33e21227143ced4c6e8ff4ee4db1312e3feea91ff21f3aa01e4adaeb0c",
+    "label_and_leakage_validation.json": "5cf85e46e5e7b13c894e3e69de49ba05b1f02c5f95374f692f56b4ba4959956a"
+  },
+  "recording_authorized": false,
+  "semantic_or_paraphrase_leakage": "NOT AUDITED; exact identity checks are not semantic leakage clearance",
+  "source_file_sha256": {
+    "development_candidates.jsonl": "3e1bef891d4a279b433511a9f91a5b170b14eaf4973091941d42ab5b78344d24",
+    "history_candidates.jsonl": "0669e5709397a2b95993dcbe65a075e0d1f64420af3c473932e8084b85d14887",
+    "skipped_groups.jsonl": "6d1a0de5260959ead20f393f23155f602fec13e0e16f6076eb59e93560368fd7",
+    "unresolved_candidates.jsonl": "ea2f496da84778bd96c5934fc646e430e7826a2b046d99ed6cd10d1d661f4cf0"
+  },
+  "source_manifest": "evaluation/datasets/research_v1_exploratory/research_v1_exploratory_v1/manifest.json",
+  "source_manifest_sha256": "5e55dbd17bf968eaa7768819945ab3adfc3b30d850817b859c63015e9db03764",
+  "specification_id": null,
+  "specification_status": "NOT_FROZEN",
+  "status": "PROVISIONAL_NOT_APPROVED"
+}

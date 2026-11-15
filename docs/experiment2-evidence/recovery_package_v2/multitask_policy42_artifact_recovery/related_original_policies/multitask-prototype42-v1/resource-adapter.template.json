@@ -1,0 +1,16 @@
+{
+  "chunk_size": 500,
+  "corpus_path": "build\\multitask-policy42\\corpus.json",
+  "device": "cpu",
+  "embedding_snapshot": "REQUIRED_EXTERNAL_EMBEDDING_SNAPSHOT",
+  "index_dir": "build\\multitask-policy42\\index-v2",
+  "index_receipt": "REQUIRED_EXTERNAL_INDEX_RECEIPT",
+  "n_samples": 5,
+  "nli_snapshot": "REQUIRED_EXTERNAL_NLI_SNAPSHOT",
+  "ollama_model": "llama3.2:3b",
+  "ollama_url": "http://localhost:11434/api/generate",
+  "service_observation": "REQUIRED_EXTERNAL_SERVICE_OBSERVATION",
+  "temperature": 0.8,
+  "timeout": 60.0,
+  "version": "project_collection_adapter_v1"
+}

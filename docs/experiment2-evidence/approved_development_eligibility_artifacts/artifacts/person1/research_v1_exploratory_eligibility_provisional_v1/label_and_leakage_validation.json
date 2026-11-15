@@ -1,0 +1,27 @@
+{
+  "duplicate_development_candidate_ids": 0,
+  "eligible_by_benchmark": {
+    "GSM8K": {
+      "SYNTHETIC_INCORRECT": 187,
+      "VERIFIED_CORRECT": 187
+    },
+    "HotpotQA": {
+      "SYNTHETIC_INCORRECT": 200,
+      "VERIFIED_CORRECT": 200
+    }
+  },
+  "history_development_overlap": {
+    "candidate_id": 0,
+    "content_identity": 0,
+    "normalized_question": 0,
+    "paragraph_hash": 50,
+    "question_id": 0,
+    "related_group_id": 0,
+    "supporting_fact": 2
+  },
+  "human_verified_incorrect": 0,
+  "label_protocol": "provisional_automated_labeling_v1",
+  "semantic_or_paraphrase_leakage": "NOT AUDITED",
+  "synthetic_not_converted_to_human": true,
+  "unresolved_excluded": true
+}

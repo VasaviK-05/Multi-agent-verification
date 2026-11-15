@@ -1,0 +1,50 @@
+[
+  {
+    "verifier_name": "semantic",
+    "domain": "general",
+    "alpha": 16.0,
+    "beta": 9.0,
+    "successes": 15,
+    "failures": 8,
+    "observation_count": 23,
+    "posterior_mean": 0.64,
+    "posterior_variance": 0.00886153846153846,
+    "cold_start": false
+  },
+  {
+    "verifier_name": "evidence",
+    "domain": "general",
+    "alpha": 1.0,
+    "beta": 1.0,
+    "successes": 0,
+    "failures": 0,
+    "observation_count": 0,
+    "posterior_mean": 0.5,
+    "posterior_variance": 0.08333333333333333,
+    "cold_start": true
+  },
+  {
+    "verifier_name": "rule",
+    "domain": "general",
+    "alpha": 41.0,
+    "beta": 1.0,
+    "successes": 40,
+    "failures": 0,
+    "observation_count": 40,
+    "posterior_mean": 0.9761904761904762,
+    "posterior_variance": 0.0005405262880345942,
+    "cold_start": false
+  },
+  {
+    "verifier_name": "confidence",
+    "domain": "general",
+    "alpha": 34.0,
+    "beta": 5.0,
+    "successes": 33,
+    "failures": 4,
+    "observation_count": 37,
+    "posterior_mean": 0.8717948717948718,
+    "posterior_variance": 0.0027942143326758714,
+    "cold_start": false
+  }
+]
