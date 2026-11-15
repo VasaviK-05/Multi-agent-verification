@@ -2,9 +2,9 @@
 
 ## 1. Scope and status
 
-This handoff describes the implemented engineering interfaces, synthetic validation, recorded test-environment evidence, and the remaining owner decisions for research_v1 collection preparation.
+This handoff describes the implemented engineering interfaces, synthetic validation, recorded test-environment evidence, and the current execution boundary for the bounded research_v1 Development diagnostic.
 
-It does not establish collection authorization, an approved research runtime configuration, live verifier or service compatibility, supported-platform durability certification, or Final Test authorization. The Experiment 4 diagnostic preflight remains unauthorized. Synthetic tests and historical test-host results are not live research execution evidence.
+Vasavi has explicitly approved the bounded Experiment 4 Development diagnostic collection within the existing framework limitations. The setup-bound request at `experiment4-development-diagnostic-setup-bound-request-v1.json` records that approval and structurally validates. This approval does not establish that the current host is suitable, that resources or live services are compatible, or that collection has run. No actual E4 live collection has yet been performed. Synthetic tests and historical test-host results are not live research execution evidence.
 
 ## 2. Factory and observer architecture
 
@@ -55,7 +55,7 @@ The public validation results explicitly report no live verifiers, models, servi
 
 `filesystem-support.md` describes the recorder's local POSIX filesystem contract: same-directory atomic replacement, hard-link create-if-absent, file fsync and directory fsync; macOS acknowledgments additionally require `F_FULLFSYNC`. Unsupported synchronization fails closed, without a flush-only fallback. The documented test host used temporary directories on local APFS and exercised these interfaces, injected failures, and subprocess exits. These tests do not simulate physical power loss or establish controller/cache guarantees.
 
-Windows/Python 3.10, identified in `filesystem-support.md` as the authentic calibration host, is not supported or certified for this implementation’s POSIX directory-sync durability contract. Linux, deployment storage, network filesystems, special container mounts, and the actual future recording location remain unverified unless separately tested. Exactly-once external verifier effects are not established.
+Windows/Python 3.10, identified in `filesystem-support.md` as the authentic calibration host, is not supported or certified for this implementation's POSIX directory-sync durability contract. Linux, deployment storage, network filesystems, special container mounts, and the actual future recording location remain unverified unless separately tested. Exactly-once external verifier effects are not established.
 
 ## 6. Resource configuration status
 
@@ -67,37 +67,47 @@ The root `adapter.json` is generic configuration. It is not automatically select
 
 ### SAFE TO RUN NOW
 
-From a shell with `TEST_PYTHON` set to a prepared compatible test interpreter, the focused synthetic suite can be run with:
+From the repository root, the focused synthetic suite is:
 
-```sh
-"$TEST_PYTHON" -B -m pytest -p no:cacheprovider tests/test_research_v1_recording_binding.py tests/test_diagnostic_collection.py::test_diagnostic_same_collection_without_label_or_custody_claims tests/test_diagnostic_collection.py::test_experiment4_diagnostic_request_enforces_development_roster_and_bounds tests/test_diagnostic_collection.py::test_experiment4_specific_measurement_and_bundle_round_trip_synthetically tests/test_diagnostic_collection.py::test_experiment4_unauthorized_cli_stops_before_factory_initialization tests/test_experiment4_applicability.py tests/test_game_collection.py::test_prerequisites_unavailable_and_abstention_are_distinct
+```powershell
+.\.venv-test\Scripts\python.exe -B -m pytest -p no:cacheprovider tests/test_research_v1_recording_binding.py tests/test_diagnostic_collection.py::test_diagnostic_same_collection_without_label_or_custody_claims tests/test_diagnostic_collection.py::test_experiment4_diagnostic_request_enforces_development_roster_and_bounds tests/test_diagnostic_collection.py::test_experiment4_specific_measurement_and_bundle_round_trip_synthetically tests/test_diagnostic_collection.py::test_experiment4_unauthorized_cli_stops_before_factory_initialization tests/test_experiment4_applicability.py tests/test_game_collection.py::test_prerequisites_unavailable_and_abstention_are_distinct
 ```
 
-`TEST_PYTHON` must point to an already prepared compatible test environment. The recorded Python 3.12/macOS test profile is separate evidence; that environment is not bundled with this publication branch. These tests exercise synthetic binding, diagnostic, and prerequisite behavior only and do not demonstrate live readiness.
+This exercises synthetic binding, diagnostic, and prerequisite behavior only; it does not demonstrate live readiness.
 
-Structural validation is available for a supplied recording request. The `validate` command parses and checks the request structure without initializing its factory; it does not establish factory construction, resource compatibility, service readiness, authorization, or durable recording. A concrete validation command requires an actual request file. This publication branch does not include the previously referenced standalone Experiment 4 diagnostic preflight JSON, so no runnable command using that file is provided here.
+The authorized setup-bound Experiment 4 Development request can be structurally validated with:
 
-### PRE-FLIGHT / STRUCTURAL ONLY
+```powershell
+.\.venv-test\Scripts\python.exe -B -m app.game.offline.collect validate docs/research_v1-recording-handoff/experiment4-development-diagnostic-setup-bound-request-v1.json
+```
 
-After an owner-reviewed binding and adapter configuration exist, a request may be structurally checked with the `validate` command above. No approved research-specific runtime configuration currently exists. This handoff does not provide a live-resource preflight command: such a command must be defined against the reviewed configuration and its effects before use.
+The reported validation result was `valid: true`, with four examples, 16 candidate outcomes, and `factory_initialized: false`. The request has `collection_authorized: true`, `intended_use: "smoke"`, and `study_approval: null`. Structural validity does not establish target-host compatibility, service readiness, or durable recording.
 
-### NOT AUTHORIZED / REQUIRES OWNER APPROVAL
+The embedded Final Test exclusion roster is the outcome-free `diagnostic_exclusion_roster_v1` for dataset `research_v1_final_test_v2_exploratory_v1`, with 1,200 entries containing only `example_id`, `split_identity`, `question_id`, `content_identity`, and `validation_id`. Its separate artifact is `evaluation/datasets/final_test_research_v1_eval_v2/diagnostic_exclusion_roster_v1.json` (SHA-256 `69e4ed2197d0f5aaa9a731db8355d7f76384725e8487f4dd0a8c2938ad6627b3`). No Final Test questions, labels, answers, scores, or outcomes were accessed for this preparation.
 
-The generic collection command form is:
+### STRUCTURAL VALIDATION / EXECUTION BOUNDARY
+
+The request is explicitly setup-bound to the locally inspected Windows/Python 3.10 configuration. The local `inspect_setup()` result established local-input consistency only; it did not establish live service compatibility or platform durability. Windows is unsupported/uncertified for the recorder's documented durability contract. The request must not be run unchanged on macOS or another host.
+
+Before execution on another host, select the target host and filesystem, configure compatible local resources, run the filesystem validation procedure there, inspect the host-specific configuration, and rebind `expected_setup` and `execution_configuration_id` using the existing schema. Then structurally validate the resulting request. Current live service compatibility must be checked when service contact is permitted. These are execution-readiness steps, not a withdrawal of the bounded collection approval.
+
+### AUTHORIZED SCOPE / NOT YET READY TO EXECUTE
+
+The generic collection command form remains a template, not an instruction to run the current Windows-bound request:
 
 ```text
 python -m app.game.offline.collect collect <approved-request.json> --output-dir <new-run-directory>
 ```
 
-Do not run it until an approved research binding/configuration exists, required resources and service compatibility have been reviewed and validated, a supported recording platform is designated, and explicit collection authorization is granted. No such authorization is established here. Collection may invoke the configured factory and observer, construct verifiers, contact a service, and write a durable journal.
+Collection is authorized only for the bounded Development diagnostic represented by the request. Do not execute it until a supported target platform and storage are designated and validated, the host-specific configuration and request are inspected/rebound and structurally validated, and live service compatibility is checked when permitted. Collection may initialize the configured factory, construct verifiers, contact a service, and write a durable journal. No collection output or live E4 report, failure, abstention, timing, or restart/recovery evidence exists yet.
 
 ## 8. Remaining inputs and ownership
 
 | Owner | Required input |
 |---|---|
-| Vasavi / runtime or research owners | Select and review the authoritative research binding and adapter configuration, including the resource identities and execution settings; distinguish implementation authorization from collection authorization. |
+| Vasavi / runtime or research owners | The bounded Development diagnostic collection has been approved. A target recording host/filesystem and host-specific resource configuration still need to be selected and reviewed before execution. |
 | Raunak / verifier or dataset owner | Review verifier prerequisites and the protocol-specific question/reference/input treatment and confirm that the configured resources match those requirements. |
-| Research lead / custodian | Decide the approved dataset/population and reference treatment, resolve custody boundaries, and provide explicit collection authorization when appropriate. No Final Test payload is accessed by this handoff. |
+| Research lead / custodian | Maintain the approved dataset/population and custody boundary. The outcome-free exclusion roster is embedded in the request; this does not authorize Final Test access, scoring, or label release. No protected Final Test payload was accessed for this handoff. |
 | Platform owner / research lead | Designate the recording host and storage, then validate the required filesystem durability behavior on that platform. |
 
 ## 9. Current status summary
@@ -106,14 +116,12 @@ Do not run it until an approved research binding/configuration exists, required 
 
 - Generic eager factory and separate research-specific lazy binding interfaces exist.
 - The research binding requires explicit configuration and preserves the full nominal roster without eagerly constructing it.
-- Synthetic tests cover binding and prerequisite behavior; the unauthorized E4 preflight remains unauthorized.
+- Synthetic tests cover binding and prerequisite behavior. The bounded Development request is authorized and structurally valid, but no actual E4 collection has run.
 - Test-environment and macOS/APFS filesystem test evidence are documented with their limits.
 - Structural request validation is available without factory initialization.
 
 ### Still required before live collection
 
-- Owner-reviewed research-specific adapter/resource configuration and protocol treatment.
-- Current live resource/service compatibility observation and any required active-instance checks.
-- Approved custody and collection authorization.
-- Designated, validated recording platform and storage.
-- A controlled research run demonstrating actual reports, failures, abstentions, timings, and restart/recovery behavior; synthetic tests do not supply that evidence.
+- A supported target recording platform/storage and host-specific request/resource configuration; collection approval alone does not establish these.
+- Current live service/resource compatibility evidence, checked when service contact is permitted.
+- A controlled E4 run demonstrating actual reports, failures, abstentions, timings, and restart/recovery behavior; synthetic tests and historical rehearsal records do not supply that evidence.
