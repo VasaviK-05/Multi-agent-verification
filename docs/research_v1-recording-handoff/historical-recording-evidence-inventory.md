@@ -22,6 +22,8 @@ Source: `evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5
 
 The paired hash sidecar is `evaluation/datasets/development_pilot/runs/research_v1_rehearsal_662bd5c/artifact_sha256.json`. Its `attempts.jsonl` entry is `54b183679376e6f6279106fbe714c90c124e4dce117190242efc56b58f71bc46`; a read-only SHA-256 recomputation of the attempts file matched that value.
 
+The raw historical Development rehearsal records are maintained and provided separately from the publication branch at the paths above. `attempts.jsonl` and its checksum sidecar are the underlying evidence for the historical counts and checksum reported here. This evidence is not a current controlled-run record and does not establish current runtime readiness, resource compatibility, or collection authorization. The raw report records are not being added to the publication branch as part of this documentation update.
+
 ## Failure evidence boundary
 
 The historical rehearsal contains no recorded failure: all 52 timing statuses are `returned`, and the outcome states are abstention or directional.
