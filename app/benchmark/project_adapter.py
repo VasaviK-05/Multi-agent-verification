@@ -63,6 +63,11 @@ def file_digest(path):
     return digest.hexdigest()
 
 
+def _sort_relative_path_entries(entries):
+    """Sort normalized POSIX relative paths independently of host path rules."""
+    return sorted(entries, key=lambda entry: (entry[0].casefold(), entry[0]))
+
+
 def directory_digest(path):
     """Fingerprint actual local weights/tokenizer/config bytes, not a hub alias."""
     if path is None:
@@ -70,14 +75,16 @@ def directory_digest(path):
     path = local_path(path)
     if not path.is_dir():
         raise ValueError('model snapshot directory unavailable')
-    files = sorted(p for p in path.rglob('*') if p.is_file())
+    entries = _sort_relative_path_entries(
+        (p.relative_to(path).as_posix(), p) for p in path.rglob('*') if p.is_file())
+    files = [p for _, p in entries]
     if not files or not (path / 'config.json').is_file():
         raise ValueError('snapshot lacks config.json')
     if not any(p.suffix in {'.safetensors', '.bin'} for p in files):
         raise ValueError('snapshot lacks local model weights')
     if not any(p.name in {'tokenizer.json', 'vocab.txt', 'spm.model', 'sentencepiece.bpe.model'} for p in files):
         raise ValueError('snapshot lacks local tokenizer')
-    return dict(sha256=content_id([(p.relative_to(path).as_posix(), file_digest(p)) for p in files]),
+    return dict(sha256=content_id([(relative_path, file_digest(p)) for relative_path, p in entries]),
                 files=len(files), bytes=sum(p.stat().st_size for p in files))
 
 
