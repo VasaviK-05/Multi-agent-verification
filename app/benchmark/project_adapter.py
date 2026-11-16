@@ -5,7 +5,7 @@ import hashlib
 import importlib.metadata
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import platform
 import subprocess
 from typing import Literal
@@ -210,6 +210,19 @@ def _current_index_hashes(index_hashes, current_manifest):
 def _evidence_index_fingerprint(index_hashes, receipt, current_manifest=None):
     hashes = index_hashes if current_manifest is None else _current_index_hashes(index_hashes, current_manifest)
     return content_id([hashes, receipt])
+
+
+def _historical_manifest_path(stored_corpus_path, current_index_dir):
+    """Keep the historical corpus path's syntax when deriving its index path."""
+    def pure_path(value):
+        value = str(value)
+        if PureWindowsPath(value).drive or '\\' in value:
+            return PureWindowsPath(value)
+        return PurePosixPath(value)
+
+    historical_corpus = pure_path(stored_corpus_path)
+    current_index = pure_path(current_index_dir)
+    return str(historical_corpus.parent / current_index.name / 'manifest.json')
 
 
 def inspect_setup(configuration, *, relocation_binding=None, _prepare_relocation_binding=False):
@@ -421,7 +434,7 @@ def create_relocation_binding(configuration):
     index = state['index_hashes']
     receipt = state['expected_receipt']
     semantic_configuration = config.model_dump(exclude={'embedding_snapshot', 'nli_snapshot', 'index_receipt', 'service_observation'})
-    historical_manifest_path = str(Path(stored['corpus_path']).parent / Path(config.index_dir).name / 'manifest.json')
+    historical_manifest_path = _historical_manifest_path(stored['corpus_path'], config.index_dir)
     return ResourceRelocationBinding(version='verified_resource_relocation_v1',
         expected_resource_manifest_id=expected.manifest_id,
         historical_corpus_path=stored['corpus_path'], current_corpus_path=str(state['corpus_path']),

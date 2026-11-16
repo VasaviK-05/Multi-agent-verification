@@ -8,11 +8,23 @@ from pathlib import Path
 import pytest
 
 from app.game.models import content_id
+from app.benchmark.project_adapter import _historical_manifest_path
 from app.game.offline.resource_relocation import (
     ResourceRelocationBinding,
     verify_relocated_index,
 )
 from app.game.resource_provenance import ResourceManifest
+
+
+def test_historical_windows_manifest_path_is_preserved_on_posix(tmp_path):
+    historical_corpus = (
+        r"C:\Users\jhaan\Multi-agent-verification\build\multitask-policy42\corpus.json"
+    )
+    current_index_dir = tmp_path / "ubuntu-runtime" / "index-v2"
+
+    assert _historical_manifest_path(historical_corpus, current_index_dir) == (
+        r"C:\Users\jhaan\Multi-agent-verification\build\multitask-policy42\index-v2\manifest.json"
+    )
 
 
 def _resource_manifest(index_fingerprint):
