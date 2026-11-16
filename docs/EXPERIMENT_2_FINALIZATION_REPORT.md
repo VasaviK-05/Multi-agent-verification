@@ -71,9 +71,15 @@ The following historical application-source digests remain unreproduced:
 - `47597967da7d8f05aa56ef1ed6fbd544eb70e607aaf8804e5163e650cea35e4d`
 - `2926e0513be4c929d33bbcfa15787ee76fd96328a509821d91c71ff0467dc238`
 
-The original execution-source ZIP with expected SHA-256 `f3a1d6109a94d394d93ab0deacb1e839489f65154265d0d298878f9344062896` was not recovered. The separate signed authorization document and detailed hardware inventory were also not recovered, although authorization strings exist in the recovered audit/provenance records. The source audit documents a bounded search across 208 commits, dangling Git objects, and accessible working-tree sources.
+The original execution-source ZIP with expected SHA-256 `f3a1d6109a94d394d93ab0deacb1e839489f65154265d0d298878f9344062896` was not recovered. The three requested application-source digests also remain unreproduced. Raunak's final read-only source-custody reconciliation classifies the archive and all three requested source sets as **UNRECOVERABLE WITHIN AVAILABLE CUSTODY SOURCES**. The search limitations are explicit: the machine recorded for the external archive path was not accessed, OneDrive was searched by filename rather than by hashing every file, and remote CI artifacts were not queried. Current application files and installed packages were not substituted for historical sources.
 
-**Classification:** historical provenance is **PARTIALLY VERIFIED**, not fully independently reproduced. The producer script recovery closes the earlier producer-script gap, but it does not close the application-source digest or execution-source archive gaps.
+The custody record's separate 120-entry source-hash list is verified as metadata (`daf466121a83c800b1116f97c6a07d62685fd1b18d4a7100f47bde0c819a441a`), but the corresponding source bytes were not recovered; the referenced commit tree contains 119 Python files and omits one file represented in the hash list. The previously recovered producer script remains verified by its own SHA-256 and is not a substitute for any of the three missing application source sets. Historical dependency/environment metadata is only partially verified: no historical dependency lock or requirements freeze for the requested digests was recovered.
+
+The separate research-protocol proposal at `evaluation/config/experiments/experiment2_proposal.json` records `PENDING_PERSON2_COSTS_AND_APPROVAL` and `collection_authorized: false`. This is proposal metadata and must be distinguished from the study owner's separate report that the research lead approved the Experiment 2 collection, recording, protocol-freeze, budget-level and policy-fitting activities. The proposal's historical fields have not been rewritten. The separate signed approval artifact was not located in the inspected repository evidence.
+
+**Classification:** historical provenance is **PARTIALLY VERIFIED** overall. Within the specific source-custody questions examined by the final reconciliation, the requested archive and three requested application source sets are **UNRECOVERABLE WITHIN AVAILABLE CUSTODY SOURCES**. The producer script and the distinct hash-list metadata remain verified only within their stated scopes.
+
+**Supporting owner reconciliation:** `evaluation/docs/experiment2_final_source_custody_reconciliation.md`, branch `raunak-exp-3`, commit `3860bc7` (16 November 2026).
 
 ### 3.2 Calibration record consistency
 
@@ -144,9 +150,10 @@ The submission must not claim that:
 ## 7. Finalization actions
 
 1. Keep this report and the existing evidence register on the experiment branch; do not rewrite preserved historical manifests or source artifacts.
-2. Attach or reference the external approval record that the study owner confirms is already obtained, and reconcile stale approval fields without changing the original evidence files.
-3. Record the calibration v3 discrepancy as a disclosed limitation. Close the rehearsal contamination-flag discrepancy as unrecoverable within available sources, based on Raunak's read-only audit. Retain the 32 attempts as excluded from admitted evidence while noting that identity-level exclusion remains unverified.
-4. Run only documentation/integrity checks on the final branch diff. Do not rerun historical campaigns, collect new verifier outputs, refit policies, or inspect Final Test labels as a shortcut to closure.
+2. Preserve the study owner's reported activity approvals in `EXPERIMENT_2_APPROVAL_RECONCILIATION.md`; keep the proposal's historical `PENDING_PERSON2_COSTS_AND_APPROVAL` / `collection_authorized: false` metadata unchanged and distinguish it from those reported approvals.
+3. Record the calibration v3 discrepancy as a disclosed limitation. The rehearsal contamination-flag discrepancy is closed as unrecoverable within available sources based on Raunak's read-only audit. Retain the 32 attempts as excluded from admitted evidence while noting that identity-level exclusion remains unverified.
+4. Retain Raunak's final source-custody reconciliation as the owner-published disposition for the missing archive and three unreproduced source sets. Do not substitute current source files or the recovered producer script for those missing historical bytes.
+5. Run only documentation/integrity checks on the final branch diff. Do not rerun historical campaigns, collect new verifier outputs, refit policies, or inspect Final Test labels as a shortcut to closure.
 
 ### Rehearsal contamination discrepancy — Final disposition
 
@@ -163,3 +170,14 @@ The 32 attempts remain excluded from admitted Experiment 2 evidence. This limita
 **Supporting audit:** `evaluation/docs/rehearsal_contamination_flag_audit.md`
 
 **Disposition:** Closed as an unrecoverable provenance limitation, with identity-level exclusion remaining unverified.
+
+
+### Final source-custody reconciliation — owner disposition
+
+Raunak's read-only reconciliation dated 16 November 2026 confirms that the original execution-source archive and all three requested application source sets are **UNRECOVERABLE WITHIN AVAILABLE CUSTODY SOURCES**. The separate 120-entry hash list is verified as metadata only; its corresponding source bytes are unavailable. The previously recovered `multitask_policy42.py` producer script is verified independently and does not close the missing application-source gaps.
+
+The reconciliation's search boundary must remain visible: the external machine was not accessed, OneDrive was searched by filename rather than exhaustively by content hash, and remote CI artifacts were not queried. This is a bounded-custody conclusion, not proof that the files never existed or cannot exist elsewhere.
+
+The reconciliation also records that the research-protocol proposal remains `PENDING_PERSON2_COSTS_AND_APPROVAL` with `collection_authorized: false`. This historical proposal metadata is not silently changed and is not treated as a definitive record of the separately reported research-lead approvals for Experiment 2 activities. The separate signed approval artifact was not located in the inspected repository evidence.
+
+**Supporting source:** `evaluation/docs/experiment2_final_source_custody_reconciliation.md` on `raunak-exp-3`, commit `3860bc7`.

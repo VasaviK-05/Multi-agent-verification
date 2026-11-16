@@ -38,3 +38,15 @@ See the Experiment 2 reports in the repository's `docs/` directory for interpret
 - Documents the historical approval-metadata discrepancy without rewriting original manifests or execution records.
 - The later activity approvals are reported by the study owner; a separate signed approval artifact was not located in the inspected repository evidence.
 - Formal research-team sign-off remains a separate closure requirement.
+
+
+## Final source-custody reconciliation
+
+- **Owner-published source:** `evaluation/docs/experiment2_final_source_custody_reconciliation.md`
+- **Source branch / commit:** `raunak-exp-3` / `3860bc7` (16 November 2026)
+- **Disposition:** The requested original execution-source archive and three requested application source sets are unrecoverable within the custody sources inspected.
+- The separate 120-entry source-hash list is verified as metadata only; its corresponding source bytes were not recovered.
+- The previously recovered producer script is verified independently and does not substitute for the missing application source sets.
+- Search limitations remain explicit: the external machine was not accessed, OneDrive was searched by filename rather than exhaustive content hashing, and remote CI artifacts were not queried.
+- The research-protocol proposal's pending-approval metadata remains unchanged and distinct from the study owner's separately reported Experiment 2 activity approvals.
+- No historical campaign was rerun, no historical artifact was regenerated, and no Final Test outcome data was accessed for this reconciliation.

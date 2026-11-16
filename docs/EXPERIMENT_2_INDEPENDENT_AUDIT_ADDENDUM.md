@@ -73,8 +73,20 @@ The results may be reported as independently numerically reproduced Development-
 
 1. Confirm the coverage-certificate enforcement path from its implementation and recorded certificate.
 2. Record the execution-contract equality limitation in the evidence register.
-3. Obtain owner/custodian disposition of the rehearsal contamination discrepancy, or document the source as unrecoverable.
-4. Reconcile recorded approvals with stale artifact metadata.
+3. **Closed as an unrecoverable provenance limitation:** Raunak's read-only audit documents that the original rehearsal archive and the source material needed to explain the false-to-true flag discrepancy were unavailable within inspected custody sources. The 32 attempts remain excluded from admitted Experiment 2 evidence; identity-level exclusion remains unverified.
+4. **Recorded, not silently reconciled in historical artifacts:** the study owner separately reports research-lead approval for Experiment 2 collection, recording, protocol freeze, budget levels and policy fitting. The research-protocol proposal still records `PENDING_PERSON2_COSTS_AND_APPROVAL` and `collection_authorized: false`; preserve that historical metadata and distinguish it from the separately reported activity approvals. The separate signed approval artifact was not located in the inspected repository evidence.
 5. Obtain research-team sign-off before declaring formal Experiment 2 completion.
 
 **Final status:** Numerical audit reproduced; compatibility and provenance limitations documented; formal closure pending.
+
+## 8. Final source-custody reconciliation
+
+Raunak's owner-published read-only reconciliation dated 16 November 2026 classifies the requested original execution-source archive and all three requested application source sets as **UNRECOVERABLE WITHIN AVAILABLE CUSTODY SOURCES**. It separately verifies the 120-entry custody hash list as metadata only, not the source bytes, and confirms the previously recovered producer script only within that script's own scope.
+
+The search boundary remains explicit: the external machine was not accessed, OneDrive was searched by filename rather than by hashing every file, and remote CI artifacts were not queried. The historical dependency lock and complete source trees were not recovered. Do not substitute current application files, installed packages, or the producer script for the missing historical source sets.
+
+The proposal at `evaluation/config/experiments/experiment2_proposal.json` retains `PENDING_PERSON2_COSTS_AND_APPROVAL` and `collection_authorized: false`. These are historical proposal fields. They are distinct from the study owner's separately reported research-lead approvals for Experiment 2 activities; the separate signed approval artifact was not located in the inspected repository evidence. Do not rewrite the proposal or infer an approval identifier.
+
+**Supporting owner reconciliation:** `evaluation/docs/experiment2_final_source_custody_reconciliation.md`, branch `raunak-exp-3`, commit `3860bc7`.
+
+**Disposition:** Source-custody limitation documented; no historical artifacts changed; formal Experiment 2 sign-off remains outstanding.
