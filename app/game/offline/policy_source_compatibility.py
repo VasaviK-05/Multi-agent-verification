@@ -59,7 +59,7 @@ def verify_er_transition(capsule, root, *, policy_id, expected, observed,
     """
     from app.game.models import content_id
     from app.game.resource_provenance import ResourceManifest
-    if capsule.get('capsule_id') != 'd78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993':
+    if capsule.get('capsule_id') != '7cec7f65456f28ed5ef29b00c9099dece0b296c6e7744c956bff7e7ab0e3f81d':
         raise ValueError('unreviewed transition capsule')
     check_capsule(capsule, root, policy_id=policy_id,
                   observed_manifest_id=capsule['observed_manifest_id'])

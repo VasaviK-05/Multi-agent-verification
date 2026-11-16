@@ -16,7 +16,7 @@ from app.game.offline.resource_relocation import ResourceRelocationBinding, veri
 
 POLICY_ID = '0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532'
 SCOPE_ID = '310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1'
-CAPSULE_ID = 'd78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993'
+CAPSULE_ID = '7cec7f65456f28ed5ef29b00c9099dece0b296c6e7744c956bff7e7ab0e3f81d'
 DEPENDENCIES_ID = '9bd64bb4876aa9108afff2ed23dde10fdc469013d44f5440338934c566962e9b'
 OLD_CONFIGURATION = dict(version='project_collection_adapter_v1', chunk_size=500,
     corpus_path='build\\multitask-policy42\\corpus.json', device='cpu',

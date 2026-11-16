@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+from pathlib import Path
 
 import pytest
 
@@ -108,7 +109,7 @@ def test_identical_content_at_relocated_paths_and_new_timestamps_is_audited(tmp_
     report = verify_relocated_index(**_case(tmp_path))
     assert report["authorized_resource_ids"] == ["index:evidence-index"]
     assert report["historical_corpus_path"] == r"C:\historical\corpus.json"
-    assert report["current_corpus_path"].endswith("new-root\\corpus.json")
+    assert Path(report["current_corpus_path"]).parts[-2:] == ("new-root", "corpus.json")
     assert report["historical_corpus_mtime"] != report["current_corpus_mtime"]
     assert len(report["binding_id"]) == 64
 
