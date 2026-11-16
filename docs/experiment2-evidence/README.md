@@ -30,3 +30,11 @@ See the Experiment 2 reports in the repository's `docs/` directory for interpret
 - Identity-level exclusion of all 32 attempts remains unverified because the original `attempts.jsonl` was unavailable.
 - The 32 attempts remain excluded from admitted Experiment 2 evidence.
 - This finding does not establish that contamination occurred or prove that contamination was impossible.
+
+## Approval reconciliation
+
+- **Supplementary record:** ../EXPERIMENT_2_APPROVAL_RECONCILIATION.md
+- Records the distinction between Development eligibility approval and separately reported Experiment 2 activity approvals.
+- Documents the historical approval-metadata discrepancy without rewriting original manifests or execution records.
+- The later activity approvals are reported by the study owner; a separate signed approval artifact was not located in the inspected repository evidence.
+- Formal research-team sign-off remains a separate closure requirement.
