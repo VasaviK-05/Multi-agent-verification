@@ -145,5 +145,21 @@ The submission must not claim that:
 
 1. Keep this report and the existing evidence register on the experiment branch; do not rewrite preserved historical manifests or source artifacts.
 2. Attach or reference the external approval record that the study owner confirms is already obtained, and reconcile stale approval fields without changing the original evidence files.
-3. Record the calibration v3 discrepancy and rehearsal contamination-field reconciliation as disclosed limitations unless the responsible owners can resolve them from existing records.
+3. Record the calibration v3 discrepancy as a disclosed limitation. Close the rehearsal contamination-flag discrepancy as unrecoverable within available sources, based on Raunak's read-only audit. Retain the 32 attempts as excluded from admitted evidence while noting that identity-level exclusion remains unverified.
 4. Run only documentation/integrity checks on the final branch diff. Do not rerun historical campaigns, collect new verifier outputs, refit policies, or inspect Final Test labels as a shortcut to closure.
+
+### Rehearsal contamination discrepancy — Final disposition
+
+The false-to-true discrepancy in the rehearsal contamination flags has been reviewed by Raunak through a read-only audit.
+
+The recovered producer code at commit `662bd5c` writes all four contamination-related flags as false. However, the available sources do not contain the original rehearsal archive, its manifest and results, or the schema, validation rule, or transformation responsible for the derived report's true values.
+
+The discrepancy is therefore classified as an **unrecoverable provenance limitation**. The derived true flags are not treated as evidence that contamination occurred, and the original false flags are not treated as proof that contamination was impossible.
+
+The 32 rehearsal attempts were not admitted into a research dataset. Experiment 3 records `used_as_experiment3_dataset: false`. However, identity-level exclusion of all 32 attempts remains unverified because `attempts.jsonl` was unavailable.
+
+The 32 attempts remain excluded from admitted Experiment 2 evidence. This limitation is retained explicitly in the final provenance record.
+
+**Supporting audit:** `evaluation/docs/rehearsal_contamination_flag_audit.md`
+
+**Disposition:** Closed as an unrecoverable provenance limitation, with identity-level exclusion remaining unverified.

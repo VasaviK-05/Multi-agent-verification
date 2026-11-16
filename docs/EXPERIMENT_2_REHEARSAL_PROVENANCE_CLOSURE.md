@@ -1,6 +1,6 @@
 ﻿# Experiment 2 — Rehearsal Provenance Closure Note
 
-**Status:** Development-only evidence package documented; full historical and rehearsal provenance closure remains conditional.
+**Status:** Development-only evidence package documented; historical source provenance remains partially verified, and the rehearsal contamination discrepancy is closed as an unrecoverable provenance limitation.
 
 ## 1. Purpose
 
@@ -49,4 +49,20 @@ Final Test labels and payloads remain reserved. This work does not authorize acc
 
 The current evidence package can be finalized as a documented Development-only research submission with explicit limitations.
 
-Full provenance closure remains conditional on resolving the outstanding historical source and rehearsal-contamination evidence gaps.
+The rehearsal contamination discrepancy has been closed as an unrecoverable provenance limitation. Historical source provenance remains partially verified, and identity-level exclusion of the 32 rehearsal attempts remains unverified.
+
+### Rehearsal contamination discrepancy — Final disposition
+
+The false-to-true discrepancy in the rehearsal contamination flags has been reviewed by Raunak through a read-only audit.
+
+The recovered producer code at commit `662bd5c` writes all four contamination-related flags as false. However, the available sources do not contain the original rehearsal archive, its manifest and results, or the schema, validation rule, or transformation responsible for the derived report's true values.
+
+The discrepancy is therefore classified as an **unrecoverable provenance limitation**. The derived true flags are not treated as evidence that contamination occurred, and the original false flags are not treated as proof that contamination was impossible.
+
+The 32 rehearsal attempts were not admitted into a research dataset. Experiment 3 records `used_as_experiment3_dataset: false`. However, identity-level exclusion of all 32 attempts remains unverified because `attempts.jsonl` was unavailable.
+
+The 32 attempts remain excluded from admitted Experiment 2 evidence. This limitation is retained explicitly in the final provenance record.
+
+**Supporting audit:** `evaluation/docs/rehearsal_contamination_flag_audit.md`
+
+**Disposition:** Closed as an unrecoverable provenance limitation, with identity-level exclusion remaining unverified.
