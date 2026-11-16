@@ -1,0 +1,52 @@
+{
+  "deviations": [
+    "Suppression remains unavailable, matching Experiment 3.",
+    "Greedy aggregation is reputation_weighted, the pilot proposal value. experiment1_proposal.json does not name it.",
+    "Question types come from the keyword heuristic, not the optional Ollama analyzer.",
+    "Selector resource weights are the selector's dimensionless profiles. Feasibility then uses the Experiment 3 frozen-millisecond budget.",
+    "deterministic_minimax is the preexisting worst-column rule, not a team named after seeing Experiment 3."
+  ],
+  "evidence_label": "EMPIRICAL",
+  "policies": {
+    "coverage_aware_greedy": {
+      "aggregation": "reputation_weighted",
+      "feasible_candidates": 510,
+      "infeasible_candidates": 234,
+      "infeasible_teams": {
+        "('confidence', 'evidence', 'rule')": 234
+      },
+      "rule": "heuristic QuestionAnalysis plus VerifierSelector coverage greedy, aggregation reputation_weighted",
+      "selected_team_counts": {
+        "('confidence', 'evidence', 'rule')": 234,
+        "('evidence', 'rule')": 140,
+        "('rule', 'semantic')": 370
+      },
+      "source": "predeclared selector code; teams were not chosen from observed losses"
+    },
+    "deterministic_minimax": {
+      "aggregation": "reputation_weighted",
+      "rule": "minimum worst-column augmented loss, then smaller strategy id",
+      "same_verifiers_as_full_minimax": true,
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ]
+    },
+    "full_minimax": {
+      "aggregation": "reputation_weighted",
+      "game_value": 0.29096372230211043,
+      "rule": "solve_minimax modal strategy on the joint matrix",
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ]
+    },
+    "uniform": {
+      "rule": "equal probability on every feasible strategy",
+      "strategy_count": 14,
+      "weight": 0.07142857142857142
+    }
+  }
+}

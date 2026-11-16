@@ -2,7 +2,7 @@
 
 This note is the research narrative for the completed Development run. Measurement details, cell-level tables, and hashes stay in `experiment3_empirical_results.md`, `experiment3_policy_diagnosis.md`, `experiment3_limitations.md`, and `experiment3_reproducibility.md`. Synthetic configuration sweeps stay in `experiment3_resource_sensitivity.md`. Nothing here is a Final Test result.
 
-The original objective in `research_objective.md` asks whether joint team-and-aggregation selection improves validation under resource limits and report corruption. Experiment 3 was the aggregation-and-dependency slice of that question: hold the reports, budget, loss, threshold, and attacks fixed, and compare the joint minimax policy with the same game restricted to reputation-weighted aggregation and to dependency-group aggregation. The run answers that slice on Development. It does not answer the broader claim against greedy, uniform, or fixed-team baselines. Those comparators belong to Experiment 1, which has not been collected.
+The original objective in `research_objective.md` asks whether joint team-and-aggregation selection improves validation under resource limits and report corruption. Experiment 3 was the aggregation-and-dependency slice of that question: hold the reports, budget, loss, threshold, and attacks fixed, and compare the joint minimax policy with the same game restricted to reputation-weighted aggregation and to dependency-group aggregation. The run answers that slice on Development. It does not itself compare greedy, uniform, or a separately declared fixed team. Those comparators are the Experiment 1 offline replay, scored later from these same reports and recorded outside this experiment.
 
 ## A. Research objective
 

@@ -1,0 +1,184 @@
+{
+  "record_type": "multitask_policy42_recovery_inventory_v1",
+  "created": "2026-11-15",
+  "recovery": "Blobs extracted from origin commit 1277e9d3ce91f1395e3deed7e7202748a5a04672. No artifact was regenerated.",
+  "publication_commit": "1277e9d3ce91f1395e3deed7e7202748a5a04672",
+  "fit_code_revision": "17b695373f935dc1f5fd09c37cf8917969367f7a",
+  "fit_code_tree": "a0297b1c504545f1687bc1efa1e240223aa68128",
+  "artifacts": [
+    {
+      "path": "arithmetic/training-manifest.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/arithmetic/training-manifest.json",
+      "bytes": 1033648,
+      "sha256": "c87d65246015919c02d86c4c83f39e0ded6ede02d25aa551a034b66a738ed485",
+      "expected_sha256": "c87d65246015919c02d86c4c83f39e0ded6ede02d25aa551a034b66a738ed485",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": true
+    },
+    {
+      "path": "factual/training-manifest.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/factual/training-manifest.json",
+      "bytes": 1502440,
+      "sha256": "9be8da9773eaced47faae3ff49e4e1536391be21824bb29f1e2c664cf5fd6e3c",
+      "expected_sha256": "9be8da9773eaced47faae3ff49e4e1536391be21824bb29f1e2c664cf5fd6e3c",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": true
+    },
+    {
+      "path": "arithmetic/development-evaluation.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/arithmetic/development-evaluation.json",
+      "bytes": 13561968,
+      "sha256": "e146f2adafe5cfde34395aa4478e2f584d68c597f96a7f8e4efbd7c7c9c87a97",
+      "expected_sha256": "e146f2adafe5cfde34395aa4478e2f584d68c597f96a7f8e4efbd7c7c9c87a97",
+      "content_id": "b1101768d7a2ba0ea44da68708767c2301a54a3006be9f9116f4b471cef3e76d",
+      "expected_content_id": "b1101768d7a2ba0ea44da68708767c2301a54a3006be9f9116f4b471cef3e76d",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": true
+    },
+    {
+      "path": "factual/development-evaluation.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/factual/development-evaluation.json",
+      "bytes": 13337989,
+      "sha256": "fb00b72373e64d08f3566c119a12a19e35af0994bbbb32d1036dbe498ffe86b9",
+      "expected_sha256": "fb00b72373e64d08f3566c119a12a19e35af0994bbbb32d1036dbe498ffe86b9",
+      "content_id": "28268477feeadf614f121eb138718a9c304a7b9bd4f6522400343bfff7d1750c",
+      "expected_content_id": "28268477feeadf614f121eb138718a9c304a7b9bd4f6522400343bfff7d1750c",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": true
+    },
+    {
+      "path": "arithmetic/calibration.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/arithmetic/calibration.json",
+      "bytes": 324026,
+      "sha256": "3e9a9c5c68ffc8976f172b465a414c3a4748b8cc762149c8500cec1557a99770",
+      "expected_sha256": null,
+      "calibration_id": "9678fb81adb197893d768db84dd5e8196ca5780600ccfd6a15c71d61f1da41a0",
+      "input_digest": "71f3709b1c8c398c3f5c321ce6246b09d7dea292e6a603e1c6d9cc1751ef5ff3",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "calibration_id and input_digest match; no prior file SHA-256 was recorded"
+    },
+    {
+      "path": "factual/calibration.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/factual/calibration.json",
+      "bytes": 305565,
+      "sha256": "767124a949d96aa2bf6142ca2b9abc77d0fecb76314425885bb38da84338f13e",
+      "expected_sha256": null,
+      "calibration_id": "084b056eefcc44842c7d66f6896b70b35b33d3f7cc11ecf4cb8c88ff7119e63d",
+      "input_digest": "f270fcb53ca16bba54daf4ba517a1556cb50bdd0d231d4b51d81f54b20cf97f1",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "calibration_id and input_digest match; no prior file SHA-256 was recorded"
+    },
+    {
+      "path": "arithmetic/collection/recordings.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/arithmetic/collection/recordings.json",
+      "bytes": 3279495,
+      "sha256": "7f1a08d0e1b8d42ff8cb81e2b01580e5d308e1ed89e8c61d8bd0f472eae40eed",
+      "expected_sha256": null,
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "publication blob; no prior file SHA-256 was recorded. This is the original recording bundle, not a file named recording-manifest.json"
+    },
+    {
+      "path": "factual/collection/recordings.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/factual/collection/recordings.json",
+      "bytes": 4227114,
+      "sha256": "6250e8bf6b5326b1096d5db3376fbb5fb4484ac2ae408dba2ee76049c0992628",
+      "expected_sha256": null,
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "publication blob; no prior file SHA-256 was recorded"
+    },
+    {
+      "path": "arithmetic/collection/collection-report.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/arithmetic/collection/collection-report.json",
+      "bytes": 563,
+      "sha256": "dd1d75b918f50618942cc37eae0be427777c7726049e0c6939a75fafd4ab5763",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "publication blob; no prior file SHA-256 was recorded"
+    },
+    {
+      "path": "factual/collection/collection-report.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/factual/collection/collection-report.json",
+      "bytes": 563,
+      "sha256": "48beddd0b0139a555b2ceadbafb5f1af8ed11b23104d64e4c71bbe3e6554fc7f",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "publication blob; no prior file SHA-256 was recorded"
+    },
+    {
+      "path": "related_original_policies/arithmetic-coverage-50-policy.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-uncertainty-sweep42/arithmetic/coverage-50/policy.json",
+      "bytes": 45134,
+      "sha256": "ec1be5b69766948bbb444557806a6895cddf573f37c97e03472531685dde282c",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "identical to the Arithmetic member of multitask-prototype42-v1.zip"
+    },
+    {
+      "path": "related_original_policies/factual-coverage-25-policy.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-uncertainty-sweep42/factual/coverage-25/policy.json",
+      "bytes": 44449,
+      "sha256": "df1bef32fa422cadb29cc6034b9968ea9fd01d3dcea847e6d7e96382c0889d87",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "identical to the Factual member of multitask-prototype42-v1.zip"
+    },
+    {
+      "path": "related_original_policies/multitask-prototype42-v1.zip",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:artifacts/policies/multitask-prototype42-v1.zip",
+      "bytes": 41243,
+      "sha256": "99516fbe460e816c68601509ca7e202cbcd3880d8d4250ec655f422244ec657c",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "same ZIP already tracked at artifacts/policies/multitask-prototype42-v1.zip"
+    },
+    {
+      "path": "execution-source/recovered-snapshots/LICENSE",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/sources/LICENSE",
+      "git_blob": "b03120fdfc027ace0e634e9e0c71581c77f660c0",
+      "bytes": 25313,
+      "sha256": "a221a27af5e4ef5a9cecce097c718c28f1aaf7d368cb57c994aa447c68d9defc",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "matches study-audit.json source_hashes.LICENSE; factual input snapshot, not the producer script"
+    },
+    {
+      "path": "execution-source/recovered-snapshots/countries-revision.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/sources/countries-revision.json",
+      "git_blob": "225b15a9f966479c8be775aa20c9013d9496f3fb",
+      "bytes": 99,
+      "sha256": "102428d79a671fa4394dd487e75f8daf517fc388aa86793d8b4575a68c170ba7",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "matches study-audit.json source_hashes.countries-revision.json"
+    },
+    {
+      "path": "execution-source/recovered-snapshots/countries.json",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/sources/countries.json",
+      "git_blob": "455b3fd85abcf8fa01e0fca63e84a853c9ff4422",
+      "bytes": 1398004,
+      "sha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "matches study-audit.json source_hashes.countries.json"
+    },
+    {
+      "path": "execution-source/recovered-snapshots/geonames-countryInfo.txt",
+      "source": "1277e9d3ce91f1395e3deed7e7202748a5a04672:build/multitask-policy42/sources/geonames-countryInfo.txt",
+      "git_blob": "11f5507ea45b3067c10a2cc2522586d4418355ff",
+      "bytes": 32115,
+      "sha256": "5c710efde90ee4cca15001c9f6a97ae7a74c7020b365504913ddc3afeb6d3671",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "matches study-audit.json source_hashes.geonames-countryInfo.txt"
+    },
+    {
+      "path": "execution-source/recovered-snapshots/multitask_policy42.py",
+      "source": "a586dd30a71b27e5b846642f45120e4f3c86b465:scripts/multitask_policy42.py",
+      "also_in": "1415d9cc15df4f995beab4291377870a79198418:scripts/multitask_policy42.py",
+      "git_blob": "48722f26b49300d60d1ae9ebbb07ce904db3698e",
+      "bytes": 56137,
+      "sha256": "174a7b965a15e9a6540f06705c7d330b81de9de45187a638dded4acb1bfaa5ea",
+      "status": "ORIGINAL_RECOVERED_HASH_VERIFIED",
+      "historical_byte_identity": "exact match to producer_script_sha256 in both recovered fit-provenance.json files"
+    },
+    {
+      "path": "artifacts/compound-study-36-v1/local-custody/original-execution-source.zip",
+      "source": null,
+      "sha256": null,
+      "expected_sha256": "f3a1d6109a94d394d93ab0deacb1e839489f65154265d0d298878f9344062896",
+      "status": "NOT_RECOVERABLE",
+      "delivered": false
+    }
+  ]
+}

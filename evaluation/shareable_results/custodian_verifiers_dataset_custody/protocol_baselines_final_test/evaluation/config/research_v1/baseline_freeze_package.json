@@ -1,0 +1,11 @@
+{
+  "record_type": "research_v1_baseline_freeze_package_v1",
+  "status": "NOT_FROZEN_FOR_THIS_PROTOCOL",
+  "approved": false,
+  "frozen": false,
+  "approver": null,
+  "approval_date": null,
+  "historical_packages": "Frozen Reference and Compound policies in reconciliation/policies.json apply only to their allowlists. They are not the baselines for Experiments 1-4.",
+  "experiment_baselines": ["full_minimax", "coverage_aware_greedy", "deterministic_minimax", "clean_development", "uniform", "fixed_reputation_weighted", "fixed_dependency_group"],
+  "freeze_requirement": "Freeze baselines only after the protocol settings and a collection authorization are signed. This file does not freeze them."
+}

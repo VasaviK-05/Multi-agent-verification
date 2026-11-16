@@ -1,0 +1,189 @@
+{
+  "package": "evaluation/shareable_results/raunak_verifiers_dataset_custody",
+  "purpose": "Handoff of existing verifier and dataset-custody evidence. Not an approval.",
+  "final_test_labels_opened": false,
+  "final_test_labels_copied": false,
+  "final_test_labels_rehashed": false,
+  "files": [
+    {
+      "path": "evidence/verifier_config.json",
+      "source": "evaluation/config/research_v1/verifier_config.json",
+      "sha256": "740319254a30711ecb36f6a1e62cd865896fc264d4eaebf11fda9d10a0db3b97",
+      "bytes": 2669,
+      "status": "pending"
+    },
+    {
+      "path": "evidence/environment_manifest.json",
+      "source": "evaluation/config/research_v1/environment_manifest.json",
+      "sha256": "7afb2c1ea39588920fde15eb73f033f90840fd3c14b330aa1cac5175001559e7",
+      "bytes": 746,
+      "status": "pending"
+    },
+    {
+      "path": "evidence/evidence_corpus_manifest.json",
+      "source": "evaluation/config/research_v1/evidence_corpus_manifest.json",
+      "sha256": "57b15645356e00f4381b57aa4f1e556975474bf31d4f1271e22072f61d901809",
+      "bytes": 1217,
+      "status": "proposal_not_approved"
+    },
+    {
+      "path": "evidence/development_eligibility_manifest.json",
+      "source": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.json",
+      "sha256": "1ebb4357d599a52d1c1fc8d8951ab39fa6992e846cf997d9e588820c87cbe731",
+      "bytes": 3673,
+      "status": "approved_development_eligibility_only"
+    },
+    {
+      "path": "evidence/development_group_assignments.jsonl",
+      "source": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/group_assignments.jsonl",
+      "sha256": "5c1008cdc2539fff941fc7161f4818d0689976b1aefb9c978144cd99d99d8cb1",
+      "bytes": 96632,
+      "status": "approved_roster_evidence",
+      "sha256_lf": "8d73ffae8b91e66fce53278f665de6ecfa0ab69a5a51168976a52e231950df73",
+      "note": "Working-tree bytes use CRLF. sha256 is the raw file. sha256_lf matches the eligibility manifest."
+    },
+    {
+      "path": "evidence/development_eligible.jsonl",
+      "source": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/development_eligible.jsonl",
+      "sha256": "80f69e8a56c69554dfcae6cc4a8e2381ff2d6b5130216968ae002a50dc8d26ca",
+      "bytes": 463254,
+      "status": "approved_roster_evidence_provisional_labels",
+      "sha256_lf": "7ce9d93faf27a61b8fc810025febc4d375629f525565574b55208569bbd462ea",
+      "note": "Working-tree bytes use CRLF. sha256 is the raw file. sha256_lf matches the eligibility manifest."
+    },
+    {
+      "path": "evidence/development_eligibility_manifest.file_sha256.txt",
+      "source": "evaluation/artifacts/person1/research_v1_exploratory_eligibility_approved_v1/eligibility_manifest.file_sha256.txt",
+      "sha256": "8141e37bef5a72cd93a3323417022338ca7aab6564e5a92e5f08cbe3f7830cae",
+      "bytes": 66,
+      "status": "stale_sidecar_not_replaced"
+    },
+    {
+      "path": "evidence/exploratory_dataset_manifest.json",
+      "source": "evaluation/datasets/research_v1_exploratory/research_v1_exploratory_v1/manifest.json",
+      "sha256": "5e55dbd17bf968eaa7768819945ab3adfc3b30d850817b859c63015e9db03764",
+      "bytes": 2791,
+      "status": "exploratory_not_approved"
+    },
+    {
+      "path": "evidence/cost_calibration.json",
+      "source": "artifacts/research-v1-development-cost-calibration-v1/calibration.json",
+      "sha256": "7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3",
+      "bytes": 885049,
+      "status": "frozen_measurement_only"
+    },
+    {
+      "path": "evidence/cost_calibration_provenance.json",
+      "source": "artifacts/research-v1-development-cost-calibration-v1/calibration-provenance.json",
+      "sha256": "938f4f1fd4b803004cf55c710b41a9d438bc440db5fa11c352afb497144cf9a0",
+      "bytes": 2629,
+      "status": "frozen_measurement_only"
+    },
+    {
+      "path": "evidence/cost_calibration_freeze_manifest.json",
+      "source": "artifacts/research-v1-development-cost-calibration-v1/freeze-manifest.json",
+      "sha256": "cba1b8861eacdffd77e0e97865eb24bb45ff723a06d174988f0b0c527a3ada72",
+      "bytes": 5784,
+      "status": "frozen_measurement_only"
+    },
+    {
+      "path": "evidence/final_test_custody_metadata.json",
+      "source": "evaluation/artifacts/person1/final_test_authorization_v1/manifest_metadata.json",
+      "sha256": "245ed894abdaa4625f40c07f7f596a9328779d5fd0b103bd3d53868c5224f253",
+      "bytes": 1571,
+      "status": "sealed_metadata_not_authorized"
+    },
+    {
+      "path": "evidence/final_test_custodian_appointment.json",
+      "source": "evaluation/config/final_test_v2_custodian_appointment.json",
+      "sha256": "30fcade5af1bad921d194584fcfdad26913a1637ff246669ad56db33a189e767",
+      "bytes": 1671,
+      "status": "designated_not_independent"
+    },
+    {
+      "path": "evidence/final_test_label_location_metadata.json",
+      "source": "evaluation/config/research_v1/final_test_label_custody_location.json",
+      "sha256": "03be65a5a5f25e8b7c03ed0bd92d5301c085a1912a446c54f11bb823cafccb32",
+      "bytes": 1012,
+      "status": "self_custody_pending_research_lead"
+    },
+    {
+      "path": "evidence/final_test_protocol_amendment.json",
+      "source": "evaluation/config/research_v1/final_test_self_custody_amendment_2026-11-13.json",
+      "sha256": "b61eb2279cc9cc923b7c66b050b728ff492105a5a11a835df5952a77bf51a630",
+      "bytes": 1473,
+      "status": "pending_research_lead"
+    },
+    {
+      "path": "evidence/final_test_self_custody.json",
+      "source": "evaluation/config/research_v1/final_test_self_custody.json",
+      "sha256": "7c6a3dcd86a977ac308609bfce2dc1ba0d5ec3e85f104e56861623733ddb53fa",
+      "bytes": 3413,
+      "status": "self_custody_contradictory_fields"
+    },
+    {
+      "path": "evidence/final_test_access_log.jsonl",
+      "source": "D:/projects/final-test-v2-sealed-custody/custody_access_log.jsonl",
+      "sha256": "c0c9bdc7934e536dcb0b071b894f7ce281284e82e14fc2d719312a07bd04af5f",
+      "bytes": 560,
+      "status": "custody_metadata_not_labels",
+      "note": "One metadata line. The sealed label file was not copied or hashed."
+    },
+    {
+      "path": "01_task_support.md",
+      "source": null,
+      "sha256": "95ca776e1fe88008a08567df33f3491b51819b01fac63a7d81ea783bc4e811ce",
+      "bytes": 5102,
+      "status": "package_documentation"
+    },
+    {
+      "path": "02_verifier_versions_and_resources.md",
+      "source": null,
+      "sha256": "c398f5c66caa33c5ec7a3042a224755cb1f657712cf5beaf77718b1d5005d654",
+      "bytes": 4524,
+      "status": "package_documentation"
+    },
+    {
+      "path": "03_dataset_manifests_and_provenance.md",
+      "source": null,
+      "sha256": "e4556bcb543e67a21583c1fb0f7aba9f91c201320b6971fdbb5f7fc4d030c0f7",
+      "bytes": 5810,
+      "status": "package_documentation"
+    },
+    {
+      "path": "04_verifier_cost_calibration.md",
+      "source": null,
+      "sha256": "575db0dbc2bb92a49587c62b62ec993b4d2a962a956eb934ee15e078d9b0766f",
+      "bytes": 4055,
+      "status": "package_documentation"
+    },
+    {
+      "path": "05_final_test_v2_custody.md",
+      "source": null,
+      "sha256": "032dd3aa27654107cf6449071c04a8daaef501c7f74fa9b7b39d82ba0150707e",
+      "bytes": 5492,
+      "status": "package_documentation"
+    },
+    {
+      "path": "06_dated_protocol_amendment.md",
+      "source": null,
+      "sha256": "714d2fbeddfc973778bbae186c5bf0b6169b9be3d2e0a5b8c6782937335783cc",
+      "bytes": 3314,
+      "status": "package_documentation"
+    },
+    {
+      "path": "07_readiness_and_outstanding_items.md",
+      "source": null,
+      "sha256": "f231204d4a4ceb17b9664068898a3cb3ce36daa61a07130303e7bbbd5b1bf394",
+      "bytes": 4407,
+      "status": "package_documentation"
+    },
+    {
+      "path": "README.md",
+      "source": null,
+      "sha256": "f558b6e1ba91dc5293a58b28b76d388a2da67454a7ed6e320a1fdc8227fc8b81",
+      "bytes": 3498,
+      "status": "package_documentation"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "dataset_version": "research_v1_exploratory_v1",
+  "dependency_sha256": {
+    "label_classes.py": "6482f27c73bb18903d4eaf88b1cecc992dcc463b1acfed74acd59355fcfc10cd",
+    "synthetic_negatives.py": "3bc581169fd8205c4a1346ae0a27c10c95d5f45657dbf07fad3f397ff25857ca"
+  },
+  "final_test_read": false,
+  "generator_sha256": "7fa85d30aa9683e6d5ee25a1c669965a5324ef49be39ff78c8d47d6085d9fbc5",
+  "human_adjudication": "DEFERRED",
+  "human_approval": "DEFERRED",
+  "human_verified_labels": 0,
+  "input_sha256": {
+    "evaluation/datasets/reconciled_candidates/research_v1/development_candidates.jsonl": "2c6272ae74a68e56ef9476716ce651c593dbe3ea5639ff0fde427cad926b55e3",
+    "evaluation/datasets/reconciled_candidates/research_v1/history_candidates.jsonl": "5896b6d0559b7e48e96be19251bf9a44265bf429f83729bdf5bb423261788bd2"
+  },
+  "label_balance": {
+    "development": {
+      "GSM8K": {
+        "HUMAN_VERIFIED_INCORRECT": 0,
+        "SYNTHETIC_INCORRECT": 187,
+        "UNRESOLVED": 122,
+        "VERIFIED_CORRECT": 187,
+        "generated_by_this_version": 96,
+        "groups": 187,
+        "paired_groups": 187
+      },
+      "HotpotQA": {
+        "HUMAN_VERIFIED_INCORRECT": 0,
+        "SYNTHETIC_INCORRECT": 200,
+        "UNRESOLVED": 210,
+        "VERIFIED_CORRECT": 200,
+        "generated_by_this_version": 200,
+        "groups": 200,
+        "paired_groups": 200
+      }
+    },
+    "history": {
+      "GSM8K": {
+        "HUMAN_VERIFIED_INCORRECT": 0,
+        "SYNTHETIC_INCORRECT": 277,
+        "UNRESOLVED": 199,
+        "VERIFIED_CORRECT": 277,
+        "generated_by_this_version": 153,
+        "groups": 277,
+        "paired_groups": 277
+      },
+      "HotpotQA": {
+        "HUMAN_VERIFIED_INCORRECT": 0,
+        "SYNTHETIC_INCORRECT": 299,
+        "UNRESOLVED": 340,
+        "VERIFIED_CORRECT": 300,
+        "generated_by_this_version": 299,
+        "groups": 300,
+        "paired_groups": 299
+      }
+    }
+  },
+  "label_protocol": "provisional_automated_labeling_v1",
+  "output_sha256": {
+    "audit.json": "6db71d73f99734af695b9b016571500ca2d14915a5430eb964b62bbf62487402",
+    "development_candidates.jsonl": "3e1bef891d4a279b433511a9f91a5b170b14eaf4973091941d42ab5b78344d24",
+    "development_verifier_inputs.jsonl": "51e001863d7622819c1f0a69755f041b476d89d28989a2054c04d1ab9675ad42",
+    "history_candidates.jsonl": "0669e5709397a2b95993dcbe65a075e0d1f64420af3c473932e8084b85d14887",
+    "history_verifier_inputs.jsonl": "4f1838f03a126e4be58d1bfe546d8b2433122998e67beee8b9cf2e562b6cf967",
+    "skipped_groups.jsonl": "6d1a0de5260959ead20f393f23155f602fec13e0e16f6076eb59e93560368fd7",
+    "unresolved_candidates.jsonl": "ea2f496da84778bd96c5934fc646e430e7826a2b046d99ed6cd10d1d661f4cf0"
+  },
+  "parent_version": "research_v1",
+  "status": "EXPLORATORY_PROVISIONAL_LABELS"
+}

@@ -1,8 +1,8 @@
 # Research status
 
-Branch `raunak-exp-3`. Commit `5485c54eaaecc1e338d4b1e3b889353a7a34ce98`. The working tree contains the Experiment 3 implementation and results and is not a clean copy of that commit. This note is a status summary. It is not an approval, and it does not replace the experiment documents.
+Branch `raunak-exp-3`. The frozen Experiment 3 commit is `22dbf42fcb8e75f5255a64c95248e75fedd57f55`, and that commit matches `origin/raunak-exp-3`. Later documentation edits and the Experiment 1 replay are separate uncommitted files. This note is a status summary. It is not an approval, and it does not replace the experiment documents.
 
-`evaluation/docs/research_objective.md` still says the planned experiments have not been run and that no verifier attempts exist for `research_v1`. That sentence is current for Experiments 1, 2, and 4. It is not current for Experiment 3. The Development collection described below is the exception.
+`evaluation/docs/research_objective.md` still says the planned experiments have not been run and that no verifier attempts exist for `research_v1`. That sentence is current for Experiments 2 and 4. It is not current for Experiment 3, or for the Experiment 1 offline replay, which reuses the Experiment 3 reports and does not make a new verifier call.
 
 ## Completed components
 
@@ -21,15 +21,15 @@ Development execution for the aggregation comparison is complete. The scientific
 
 The baseline protocol in `baseline_evaluation.md` has a smoke run of 8 instances. `evaluation/results/baseline/baseline_summary.json` is not present, so the full baseline has no measured summary. That smoke set includes FEVER and is not the Experiment 3 comparison.
 
-Experiment 1, the comparison against greedy, uniform, and fixed-team policies, is still `PENDING_APPROVAL` and has not been collected. Experiment 2, the multi-budget comparison, is still waiting on an approved budget set and has not been collected. Experiment 4, live runtime validation, has not been run. The sensitivity experiment that does exist is the synthetic configuration grid, not a second empirical budget study.
+Experiment 1 now has an offline Development replay from the frozen Experiment 3 reports. It compares full minimax, the predeclared worst-column fixed strategy, uniform feasible selection, and coverage-greedy selection. It is documented in `experiment1_offline_replay.md`. The proposal file itself remains `PENDING_APPROVAL`; this replay did not change that file and did not collect new verifier calls. Experiment 2, the multi-budget comparison, is still waiting on an approved budget set and has not been collected. Experiment 4, live runtime validation, has not been run. The sensitivity experiment that does exist is the synthetic configuration grid, not a second empirical budget study.
 
 ## Current evidence
 
-The project can support a Development paper section on Experiment 3: what was asked, how the 15,624 cells were built, the identical method outcomes, the team ranking, the verifier failure modes, and the resource caveats. `experiment3_paper_integration.md` is that section. It cannot yet support the central claim that joint team-and-aggregation selection improves validation relative to other selectors, because those selectors were not scored. It cannot support a confirmatory Final Test claim.
+The project can support a Development paper section on Experiment 3: what was asked, how the 15,624 cells were built, the identical method outcomes, the team ranking, the verifier failure modes, and the resource caveats. `experiment3_paper_integration.md` is that section. The Experiment 1 replay scores the other selectors on the same reports. On this Development matrix the fixed worst-column rule matches full minimax, uniform has higher expected decision loss, and greedy is infeasible for 234 candidates. That replay still cannot support a confirmatory Final Test claim.
 
 ## Remaining work
 
-- Score the Experiment 1 baselines on a new analysis version. The stored verifier reports are enough to avoid another verifier collection. That comparison must not overwrite `empirical/results.json`.
+- The Experiment 1 offline replay is scored and has not been committed. A follow-up that changes the selector's resource model, or admits the 234 infeasible greedy teams, needs its own protocol before any new run.
 - Decide whether any approved reputation history will ever exist. Without it, a non-cold-start aggregation comparison cannot be run, and the present tie is tied to the `Beta(1, 1)` prior.
 - Experiment 2 still needs an explicit budget set if the paper claims budget sensitivity. One selected budget does not answer that question.
 - Experiment 4 still needs a runtime check if the paper claims live execution matches the offline policy.
@@ -43,4 +43,4 @@ No. Experiment 3 is complete as a Development aggregation study. The project is 
 
 ## Are further experiments necessary?
 
-Yes, for the original research claim. The necessary next comparison is the matched baseline set from Experiment 1, ideally scored from the reports already stored. A further reputation-informed rerun is not possible until approved observations exist. A Final Test confirmation is a later step and is not authorized by the Experiment 3 run.
+Yes, for a claim beyond this Development replay. The matched baseline comparison now exists as the Experiment 1 offline replay. A further reputation-informed rerun is not possible until approved observations exist. Changing the budget or the selector so that the infeasible greedy team becomes feasible would be a new experiment, and it has not been started. A Final Test confirmation is a later step and is not authorized by either run.

@@ -1,0 +1,30 @@
+{
+  "record_type": "final_test_v2_self_custody_amendment_v1",
+  "date": "2026-11-13",
+  "custody_status": "SELF_CUSTODY",
+  "independent_custody": false,
+  "independent_verification": false,
+  "preserves": [
+    "evaluation/config/final_test_v2_custodian_appointment.json",
+    "evaluation/config/research_v1/independent_custodian_appointment.json",
+    "evaluation/config/research_v1/final_test_self_custody.json"
+  ],
+  "amends": "evaluation/docs/final_test_self_custody_protocol.md",
+  "label_location": "evaluation/config/research_v1/final_test_label_custody_location.json",
+  "seal": "SEALED_UNTIL_STUDY_CONFIGURATION_POLICIES_BASELINES_AND_EVALUATION_RULES_ARE_FROZEN",
+  "study_configuration_frozen": false,
+  "policies_frozen": false,
+  "baselines_frozen": false,
+  "evaluation_rules_frozen": false,
+  "research_lead_approval": "PENDING",
+  "research_lead_scoring_authorization": "PENDING",
+  "signed_evidence": false,
+  "signature": null,
+  "approver": null,
+  "approval_date": null,
+  "researcher_unsigned_scoring_confirmation": "PRESERVED_DOES_NOT_UNSEAL",
+  "operational_scoring": "NOT_AUTHORIZED_UNTIL_FREEZE_AND_RESEARCH_LEAD_AUTHORIZATION",
+  "labels_parsed_by_this_amendment": false,
+  "experiment_executed": false,
+  "note": "This amendment changes custody status to SELF_CUSTODY and relocates the label file. It does not replace the preserved records, does not establish independent custody, and does not approve scoring."
+}

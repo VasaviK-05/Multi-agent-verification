@@ -1,0 +1,128 @@
+{
+  "record_type": "experiment3_settings_proposal_v1",
+  "status": "PROPOSED_PENDING_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "scope": "Recommended Experiment 3 settings only. This file is not an approval and does not authorize collection.",
+  "separates_from": "evaluation/config/experiments/experiment3_specification.json",
+  "note": "The specification keeps unresolved fields null or PENDING_APPROVAL. Values below are recommendations for the research lead.",
+  "parameters": [
+    {
+      "parameter": "false_acceptance_loss",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 1.0,
+      "defensible_range": [1.0, 5.0],
+      "rationale": "The existing uncalibrated pilot weights a false acceptance equally with a false rejection. A higher upper end is available if a false acceptance should dominate the loss.",
+      "impact": "Raising this weight favors aggregations that reject uncertain support. It can change which method has the lower validation loss without changing the recordings."
+    },
+    {
+      "parameter": "false_rejection_loss",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 1.0,
+      "defensible_range": [1.0, 5.0],
+      "rationale": "Equal to the proposed false-acceptance weight so neither error is free. The pilot did not fit this number.",
+      "impact": "Raising it favors aggregations that accept borderline answers and can reverse a paired loss difference."
+    },
+    {
+      "parameter": "uncertainty_loss",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 0.2,
+      "defensible_range": [0.1, 0.5],
+      "rationale": "The pilot charges an uncertain decision less than a wrong decision, so abstention is allowed but not free. 0.2 is that uncalibrated proposal.",
+      "impact": "A larger penalty reduces coverage differences and can make decisive methods look better on loss even when they make more errors."
+    },
+    {
+      "parameter": "resource_coefficient",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": null,
+      "defensible_range": "A positive coefficient below the false-acceptance weight per attempt, chosen after Person 2 names the cost unit. No number is proposed.",
+      "rationale": "The research settings record refuses a coefficient until attempt costs exist. Inventing one would make the budget comparison arbitrary.",
+      "impact": "The coefficient decides whether cost or decision errors dominate validation loss. Leaving it unset blocks an empirical run."
+    },
+    {
+      "parameter": "decision_threshold",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 0.55,
+      "defensible_range": [0.5, 0.6],
+      "rationale": "0.55 is the current DecisionEngine default on an uncalibrated signed score. It is not a threshold fitted on Development outcomes.",
+      "impact": "Moving the threshold changes acceptance, coverage, and loss for every method. The comparison stays valid only if all three methods use the same approved threshold."
+    },
+    {
+      "parameter": "verifier_budget",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": null,
+      "defensible_range": "One matched budget in Person 2 cost units, large enough that each aggregation can field a team and small enough that the full team is not free.",
+      "rationale": "Experiment 3 holds the budget fixed across aggregations. Experiment 2's three-level grid is a different question. No cost unit has been measured.",
+      "impact": "A different budget changes the feasible teams. Using different budgets across methods would confound aggregation with resources."
+    },
+    {
+      "parameter": "suppression_mode",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": "unavailable",
+      "defensible_range": ["unavailable"],
+      "rationale": "The existing attack enumerator records suppression as unavailable. That is the pilot proposal, not a fitted attack.",
+      "impact": "Choosing an implemented suppression mode would add attack columns and make results incomparable with this proposal."
+    },
+    {
+      "parameter": "bootstrap_resamples",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 2000,
+      "defensible_range": [1000, 5000],
+      "rationale": "Percentile intervals for a few hundred paired groups change little past this count. The point estimate does not depend on the count.",
+      "impact": "Too few resamples makes the interval endpoints noisy. It does not change the paired mean difference."
+    },
+    {
+      "parameter": "confidence_level",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 0.95,
+      "defensible_range": [0.9, 0.95],
+      "rationale": "0.95 is the conventional reporting level for a paired percentile interval. It is not a level selected after seeing differences.",
+      "impact": "A lower level makes intervals narrower and makes a difference more likely to exclude zero. The mean stays the practical effect."
+    },
+    {
+      "parameter": "bootstrap_seed",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": 20261113,
+      "defensible_range": "Any seed fixed before the empirical rows exist. 20261113 is the preparation date.",
+      "rationale": "The seed only orders the paired resamples. It was not chosen from an outcome.",
+      "impact": "A different seed moves the interval endpoints slightly. It does not change which pairs enter the mean."
+    },
+    {
+      "parameter": "sample_size_justification",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": "Use all 372 approved Development question groups. This is the eligibility census, not a power calculation.",
+      "defensible_range": "The full approved roster. Do not subsample to obtain a result.",
+      "rationale": "The approved exploratory eligibility manifest contains 372 groups after the shared-context quarantine. An older proposal count of 387 predates that quarantine.",
+      "impact": "Dropping groups would change the paired means and could be mistaken for a designed sample."
+    },
+    {
+      "parameter": "matched_comparison_conditions",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": ["question_groups", "verifier_reports", "reputation_inputs", "verifier_costs", "loss", "decision_threshold", "attack_scenarios", "budget"],
+      "rationale": "Only aggregation, and separately the dependency configuration, may change between compared cells.",
+      "impact": "An unmatched input makes an aggregation difference uninterpretable."
+    },
+    {
+      "parameter": "attack_scenarios",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": ["clean", "forced_support", "forced_rejection", "confidence_inflation", "suppression_unavailable"],
+      "rationale": "These are the existing report-corruption columns. Suppression stays unavailable under the proposal above.",
+      "impact": "Adding or dropping an attack changes the worst-case loss and the paired contrasts."
+    },
+    {
+      "parameter": "dependency_comparison_design",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": "Primary aggregation ablation uses provisional shared_unknown. Heatmap alternatives are hypothetical stress tests, not measured dependence. See experiment3_dependency_decision.json.",
+      "rationale": "No paired failure recordings exist. The one-group model cannot separate independent and correlated failures.",
+      "impact": "Treating the synthetic two-group registry as empirical would overstate dependence."
+    },
+    {
+      "parameter": "missing_data_policy",
+      "status": "PROPOSED_PENDING_APPROVAL",
+      "proposed_value": "Exclude unresolved labels from binary correctness. Count missing pairs and failed executions. Do not impute a decision or a loss.",
+      "rationale": "This is the policy already written in the unapproved specification.",
+      "impact": "Imputation could create a paired difference where a method did not run."
+    }
+  ]
+}

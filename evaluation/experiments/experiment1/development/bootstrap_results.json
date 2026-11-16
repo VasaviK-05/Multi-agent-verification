@@ -1,0 +1,55 @@
+{
+  "bootstrap": [
+    {
+      "confidence_interval": {
+        "lower": 0.004593837535014006,
+        "upper": 0.045829131652661045
+      },
+      "confidence_level": 0.95,
+      "evidence_label": "EMPIRICAL",
+      "mean_loss_difference": 0.025602240896358545,
+      "method": "coverage_aware_greedy",
+      "reference": "full_minimax",
+      "related_group_count": 255,
+      "resamples": 2000,
+      "sample_size": 1785,
+      "seed": 20261113,
+      "zero_difference_count": 967
+    },
+    {
+      "confidence_interval": {
+        "lower": 0.0036756638139126413,
+        "upper": 0.02456756089532584
+      },
+      "confidence_level": 0.95,
+      "evidence_label": "EMPIRICAL",
+      "mean_loss_difference": 0.014400921658986153,
+      "method": "uniform",
+      "reference": "full_minimax",
+      "related_group_count": 372,
+      "resamples": 2000,
+      "sample_size": 2604,
+      "seed": 20261113,
+      "zero_difference_count": 47
+    },
+    {
+      "confidence_interval": {
+        "lower": 0.0,
+        "upper": 0.0
+      },
+      "confidence_level": 0.95,
+      "evidence_label": "EMPIRICAL",
+      "mean_loss_difference": 0.0,
+      "method": "deterministic_minimax",
+      "reference": "full_minimax",
+      "related_group_count": 372,
+      "resamples": 2000,
+      "sample_size": 2604,
+      "seed": 20261113,
+      "zero_difference_count": 2604
+    }
+  ],
+  "evidence_label": "EMPIRICAL",
+  "resamples": 2000,
+  "seed": 20261113
+}

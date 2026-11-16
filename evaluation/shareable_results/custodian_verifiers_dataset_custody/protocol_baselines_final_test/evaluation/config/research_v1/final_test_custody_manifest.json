@@ -1,0 +1,23 @@
+{
+  "record_type": "research_v1_final_test_custody_manifest_v1",
+  "status": "SEALED",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "dataset_version": "research_v1_final_test_v2_exploratory_v1",
+  "manifest": "evaluation/datasets/final_test_research_v1_eval_v2/manifest.json",
+  "manifest_sha256": "e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee",
+  "manifest_status": "NOT_AUTHORIZED",
+  "enabled": false,
+  "group_count": 600,
+  "candidate_count": 1200,
+  "label_release": "NOT_AUTHORIZED",
+  "evaluation_authorization": "PENDING",
+  "confirmatory_use": "NOT_AUTHORIZED",
+  "custody_independence": "NOT_INDEPENDENT",
+  "independent_custodian_declared_by_this_file": false,
+  "operating_system_protection_claimed": false,
+  "labels_opened_by_this_package": false,
+  "permitted_operations": ["metadata integrity check", "hash comparison", "authorization-template review"],
+  "prohibited_operations": ["open label file", "print labels", "score", "use for tuning", "use for reputation fitting"]
+}

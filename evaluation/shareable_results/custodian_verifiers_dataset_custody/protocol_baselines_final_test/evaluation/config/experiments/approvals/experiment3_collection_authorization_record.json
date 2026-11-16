@@ -1,0 +1,19 @@
+{
+  "record_type": "experiment3_collection_authorization_record_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_AUTHORIZED",
+  "approved": false,
+  "collection_authorized": false,
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/config/experiments/experiment3_collection_configuration.json",
+  "artifact_sha256": "6f539d60464d684e9633b102f8b06ae6f598c5c4035e0d34f7e8a8d8be3adcda",
+  "scope": "Development collection for Experiment 3 only. Final Test collection is outside this scope.",
+  "conditions": [
+    "Requires signed protocol, corpus, and dependency approval records first.",
+    "Unknown model, prompt, hardware, and seed fields must be filled by Person 2 before collection starts.",
+    "This record does not authorize that work."
+  ],
+  "limitations": "Eligibility approval does not authorize collection.",
+  "approver_note": "This template is not a research-lead authorization."
+}

@@ -1,0 +1,24 @@
+{
+  "record_type": "research_v1_environment_manifest_v1",
+  "status": "OBSERVED_NOT_APPROVED",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "observed": {
+    "python": "3.12.1",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "sentence_transformers": "6.0.1",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "faiss_cpu": "1.15.1",
+    "numpy": "2.5.3"
+  },
+  "not_observed": {
+    "hardware_model": "UNKNOWN",
+    "gpu": "UNKNOWN",
+    "ollama_version": "UNKNOWN",
+    "model_weight_snapshot_hashes": "UNKNOWN",
+    "code_revision_approved": false
+  },
+  "note": "These package versions were read from the environment that prepared this manifest. They are not a signed research freeze."
+}

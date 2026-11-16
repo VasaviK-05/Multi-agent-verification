@@ -1,0 +1,25 @@
+{
+  "record_type": "research_v1_protocol_index_v1",
+  "status": "INDEX_NOT_AN_APPROVAL",
+  "approved": false,
+  "approver": null,
+  "approval_date": null,
+  "canonical_roster": {
+    "eligibility": "research_v1_exploratory_eligibility_approved_v1",
+    "body_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+    "groups": 372,
+    "gsm8k_groups": 187,
+    "hotpotqa_groups": 185
+  },
+  "configuration": {
+    "verifier_config": "evaluation/config/research_v1/verifier_config.json",
+    "resource_config": "evaluation/config/research_v1/resource_config.json",
+    "environment_manifest": "evaluation/config/research_v1/environment_manifest.json"
+  },
+  "experiments": {
+    "experiment1": {"document": "evaluation/docs/experiment1_protocol.md", "status": "PENDING_APPROVAL", "approved": false},
+    "experiment2": {"document": "evaluation/docs/experiment2_protocol.md", "status": "PENDING_PERSON2_COSTS_AND_APPROVAL", "approved": false},
+    "experiment3": {"document": "evaluation/docs/experiment3_protocol.md", "specification": "evaluation/docs/experiment3_protocol_specification.md", "status": "READY_FOR_APPROVAL", "approved": false, "collection_authorized": false},
+    "experiment4": {"document": "evaluation/docs/experiment4_protocol.md", "status": "PENDING_PERSON2_AND_PERSON3", "approved": false}
+  }
+}

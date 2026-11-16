@@ -1,0 +1,18 @@
+{
+  "record_type": "research_v1_final_test_release_authorization_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_AUTHORIZED",
+  "approved": false,
+  "scoring_authorized": false,
+  "label_release": "NOT_AUTHORIZED",
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/datasets/final_test_research_v1_eval_v2/manifest.json",
+  "artifact_sha256": "e572093a4f0420c03316c89c83b6a7ab665af3af894d19a1428a6b091d3319ee",
+  "scope": "Final Test release and scoring only. Separate from Development collection.",
+  "conditions": [
+    "Protocol freeze must already be signed.",
+    "An independent custodian must be named by a real appointment. This template does not name one.",
+    "Development collection authorization does not release Final Test."
+  ]
+}

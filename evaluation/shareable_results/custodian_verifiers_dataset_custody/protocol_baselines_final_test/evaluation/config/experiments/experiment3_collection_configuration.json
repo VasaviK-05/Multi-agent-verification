@@ -1,0 +1,62 @@
+{
+  "record_type": "experiment3_development_collection_configuration_v1",
+  "status": "PENDING_APPROVAL",
+  "approved": false,
+  "collection_authorized": false,
+  "adapter_schema": "project_collection_adapter_v1",
+  "roster": {
+    "eligibility_manifest": "research_v1_exploratory_eligibility_approved_v1",
+    "eligibility_manifest_sha256": "f2cc0fd108b961bf4795767df4f90e92d7fa0f418ef9865d0206f32d7b45282d",
+    "dataset_version": "research_v1_exploratory_v1",
+    "partition": "development"
+  },
+  "corpus": {
+    "version": "development_evidence_corpus_v1",
+    "path": "evaluation/artifacts/person1/development_evidence_corpus_v1/corpus.json",
+    "sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+    "preparation_report_sha256": "f76c6ce19661e2fdae44f87f126825d8efc4b3edb3fa1b381d0130c7f82e5e2b",
+    "checksum_status": "RESTORED_MATCHES_PREPARATION_RECORD",
+    "index_dir": "evaluation/artifacts/person1/development_evidence_corpus_v1/evidence_index/corpus",
+    "index_version": "idx-c1dc6980912b",
+    "approval": "PROPOSAL_NOT_APPROVED"
+  },
+  "verifiers": [
+    {"verifier_name": "semantic", "implementation": "app.verifiers.semantic_verifier.SemanticVerifier", "model_name": "all-MiniLM-L6-v2", "model_weight_snapshot_hash": "UNKNOWN", "prompt_hash": "UNKNOWN"},
+    {"verifier_name": "evidence", "implementation": "app.verifiers.evidence_verifier.EvidenceVerifier", "nli_model_name": "cross-encoder/nli-deberta-v3-small", "model_weight_snapshot_hash": "UNKNOWN", "prompt_hash": "UNKNOWN"},
+    {"verifier_name": "rule", "implementation": "app.verifiers.rule_verifier.RuleVerifier", "model_weight_snapshot_hash": "NOT_APPLICABLE", "rule_version_hash": "UNKNOWN"},
+    {"verifier_name": "confidence", "implementation": "app.verifiers.confidence_verifier.ConfidenceVerifier", "generator_model": "UNKNOWN", "model_weight_snapshot_hash": "UNKNOWN", "prompt_hash": "UNKNOWN"}
+  ],
+  "environment": {"hardware": "UNKNOWN", "software_lock": "UNKNOWN", "random_seed": null},
+  "execution": {"warmup": "PENDING_APPROVAL", "timeout_seconds": null, "retries": null, "failure_handling": "Record the failure. Do not impute a decision."},
+  "logging": ["attempt id", "question id", "group id", "verifier name", "configuration hash", "corpus hash", "index version", "outcome", "latency", "estimated cost", "failure reason"],
+  "cost_units": "Person 2 measured attempt-cost units",
+  "cost_measurements_available": false,
+  "development_recordings_available": false,
+  "output_label_when_recordings_exist": "EMPIRICAL",
+  "synthetic_fixture_path": "evaluation/experiments/experiment3/synthetic/",
+  "synthetic_fixture_is_not_a_recording": true,
+  "unknowns_not_substituted": {
+    "model_weight_snapshot_hashes": "UNKNOWN",
+    "prompt_hashes": "UNKNOWN",
+    "rule_version_hash": "UNKNOWN",
+    "hardware": "UNKNOWN",
+    "software_lock": "UNKNOWN",
+    "random_seed": null,
+    "timeout_seconds": null,
+    "retries": null,
+    "warmup": "PENDING_APPROVAL",
+    "embedding_weight_snapshot_hash": "UNKNOWN",
+    "code_revision": "UNKNOWN"
+  },
+  "reproducibility": {
+    "roster_reference": "research_v1_exploratory_eligibility_approved_v1",
+    "corpus_reference": "development_evidence_corpus_v1",
+    "index_version": "idx-c1dc6980912b",
+    "output_schema": "result_schema in evaluation/config/experiments/experiment3_specification.json",
+    "logging_requires_related_group_id": true,
+    "note": "Current code defaults are not historical run settings and are not copied into the unknown fields.",
+    "verifier_config": "evaluation/config/research_v1/verifier_config.json",
+    "resource_config": "evaluation/config/research_v1/resource_config.json",
+    "environment_manifest": "evaluation/config/research_v1/environment_manifest.json"
+  }
+}

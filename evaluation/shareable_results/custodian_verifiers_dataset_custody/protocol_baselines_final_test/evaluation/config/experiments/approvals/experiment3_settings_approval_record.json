@@ -1,0 +1,31 @@
+{
+  "record_type": "experiment3_settings_approval_record_v1",
+  "status": "NOT_AN_APPROVAL",
+  "decision": "NOT_APPROVED",
+  "approved": false,
+  "frozen": false,
+  "approver": null,
+  "approval_date": null,
+  "artifact": "evaluation/config/experiments/experiment3_settings_proposal.json",
+  "artifact_sha256": "77d773fa7aad43bc0591244b64b78f37dd1142f2a9628d89ead7ad9847d8665f",
+  "proposed_not_approved": {
+    "false_acceptance_loss": 1.0,
+    "false_rejection_loss": 1.0,
+    "uncertainty_loss": 0.2,
+    "decision_threshold": 0.55,
+    "suppression_mode": "unavailable",
+    "bootstrap_resamples": 2000,
+    "confidence_level": 0.95,
+    "bootstrap_seed": 20261113,
+    "sample": "all 372 approved Development groups",
+    "unresolved_labels": "excluded from primary analysis",
+    "imputation": "none",
+    "resource_coefficient": null,
+    "verifier_budget": null
+  },
+  "scope": "Recommended settings only. Signing this record requires the research lead to copy accepted values, including a Person 2 cost coefficient and one matched budget, into approved_settings.",
+  "conditions": [
+    "A null resource coefficient or verifier budget cannot be accepted as a number.",
+    "This template is not a signature."
+  ]
+}
