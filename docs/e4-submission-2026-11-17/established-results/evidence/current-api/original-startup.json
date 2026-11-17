@@ -1,0 +1,35 @@
+{
+  "timestamp_utc": "2026-11-17T10:33:57.125687+00:00",
+  "runtime_type": "FlexiblePolicyGameRuntime",
+  "database": "multi_agent_review_test",
+  "port": 5432,
+  "configured": {
+    "EXECUTION_MODE": "game",
+    "GAME_FLEXIBLE_POLICY_PACKAGE_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\reconciliation\\policies.json",
+    "GAME_FLEXIBLE_ADAPTER_CONFIG_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\adapter.reconciled-20261106.json",
+    "GAME_FLEXIBLE_FACTUAL_RELOCATION_BINDING_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\route-relocation-20261106-rerun2\\factual\\binding.json",
+    "GAME_FLEXIBLE_COMPOUND_RELOCATION_BINDING_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\route-relocation-20261106-rerun2\\compound\\binding.json",
+    "GAME_FLEXIBLE_REFERENCE_RELOCATION_BINDING_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\reference-relocation-20261106-rerun1\\binding.json",
+    "GAME_POLICY_BUNDLE_PATH": "",
+    "GAME_POLICY_ARTIFACT_PATH": ""
+  },
+  "bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+  "adapter": {
+    "version": "project_collection_adapter_v1",
+    "embedding_snapshot": "C:/Users/User/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "nli_snapshot": "C:/Users/User/.cache/huggingface/hub/models--cross-encoder--nli-deberta-v3-small/snapshots/fa2804872c3b4bd748f38c0185cc85775361e735",
+    "corpus_path": "build\\multitask-policy42\\corpus.json",
+    "index_dir": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2",
+    "index_receipt": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-receipt.json",
+    "service_observation": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\ollama-observation-local-20261106.json",
+    "resource_relocation_binding": null,
+    "ollama_url": "http://localhost:11434/api/generate",
+    "ollama_model": "llama3.2:3b",
+    "n_samples": 5,
+    "temperature": 0.8,
+    "timeout": 60.0,
+    "chunk_size": 500,
+    "device": "cpu"
+  },
+  "persist_execution": true
+}

@@ -1,0 +1,221 @@
+{
+  "id": "compound-malformed",
+  "category": "compound",
+  "fixture": "contract negative; missing derived field",
+  "expected_correct": null,
+  "payload": {
+    "question": "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+    "answer": "{\"base\":\"29879337\"}"
+  },
+  "http_status": 200,
+  "latency_ms": 3663.07,
+  "transport_error": null,
+  "validation_id": "02730eab-90e7-447b-9a9a-0023757f2a1b",
+  "final_status": "uncertain",
+  "final_score": null,
+  "signed_score": null,
+  "execution_audit": {
+    "public_status": "uncertain",
+    "selection_status": "answer_binding",
+    "selection_reasons": [
+      "exactly base and derived are required"
+    ],
+    "attempts": [],
+    "components": [],
+    "termination": "before_dispatch",
+    "policy_execution_mode": null,
+    "execution_mode": "flexible_game",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "component",
+    "routing_signature": [
+      "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+      "two_required_checks",
+      2.0,
+      false
+    ],
+    "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+    "artifact_id": null,
+    "validation_id": "02730eab-90e7-447b-9a9a-0023757f2a1b",
+    "pre_dispatch_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+    "pre_dispatch_compatibility_proof": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "950b081ac12add37559cf9b058fd74abadfbfab79720fad51b3574a0612b848a",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "32ecc2f8b6119d115664f9ada955204aec6aa3765db2f5a40b9b87434e22fd9b"
+    }
+  },
+  "results": [],
+  "actual_verifier_calls": 0,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "answer_binding",
+  "selection_reasons": [
+    "exactly base and derived are required"
+  ],
+  "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+  "artifact_id": null,
+  "strategy_id": null,
+  "team": null,
+  "aggregation": null,
+  "attempted_verifiers": null,
+  "coverage": {},
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {
+    "pre_dispatch_compatibility_proof": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "950b081ac12add37559cf9b058fd74abadfbfab79720fad51b3574a0612b848a",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "32ecc2f8b6119d115664f9ada955204aec6aa3765db2f5a40b9b87434e22fd9b"
+    }
+  },
+  "response_json": {
+    "results": [],
+    "final_status": "uncertain",
+    "final_score": null,
+    "validation_id": "02730eab-90e7-447b-9a9a-0023757f2a1b",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [],
+    "early_stop_reason": "before_dispatch",
+    "uncertainty_reasons": [
+      "decision_uncertain"
+    ],
+    "signed_score": null,
+    "execution_audit": {
+      "public_status": "uncertain",
+      "selection_status": "answer_binding",
+      "selection_reasons": [
+        "exactly base and derived are required"
+      ],
+      "attempts": [],
+      "components": [],
+      "termination": "before_dispatch",
+      "policy_execution_mode": null,
+      "execution_mode": "flexible_game",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "component",
+      "routing_signature": [
+        "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+        "two_required_checks",
+        2.0,
+        false
+      ],
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "artifact_id": null,
+      "validation_id": "02730eab-90e7-447b-9a9a-0023757f2a1b",
+      "pre_dispatch_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "pre_dispatch_compatibility_proof": {
+        "version": "scoped_source_relocation_composition_v1",
+        "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+        "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+        "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+        "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+          "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "active_instances_checked": true,
+        "constructor_settings_id": "950b081ac12add37559cf9b058fd74abadfbfab79720fad51b3574a0612b848a",
+        "execution_scope": [
+          "evidence",
+          "rule"
+        ],
+        "proof_id": "32ecc2f8b6119d115664f9ada955204aec6aa3765db2f5a40b9b87434e22fd9b"
+      }
+    }
+  }
+}

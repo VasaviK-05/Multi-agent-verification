@@ -1,0 +1,11 @@
+# Runtime timing methodology
+
+The successful measured execution used the reviewed Flexible API configuration, the dedicated multi_agent_review_test database, one arithmetic request, one Rule call and zero generations. The process shut down gracefully after persistence readback. [Execution ledger](../evidence/current-api/timed/execution.json), [startup configuration](../evidence/current-api/timed/startup.json), [response](../evidence/current-api/timed/response.json) and [readback](../evidence/current-api/timed/persistence.json) preserve this run.
+
+Process-local wrappers timed the actual synchronous FastAPI dispatcher and existing functions: scripts.reconciliation.load_bundle; app.game.execution.sample_policy; original native RuleVerifier.verify; DecisionEngine.decide_detailed; app.game.execution.finalize_decision. Application source, frozen policies and persistent configuration remained unchanged.
+
+All intervals use time.perf_counter_ns(). [Raw events](../evidence/current-api/timed/timing-events.jsonl) were appended/flushed immediately. A measurement ID links startup/pre-assignment records to the runtime-assigned validation ID through an explicit binding event. Request records carry that validation ID, UTC event time, thread ID and monotonic start/end timestamps.
+
+[Direct segments](../data/runtime/direct-segments.csv) form a contiguous, non-overlapping partition of the synchronous endpoint. [Stage totals](../data/runtime/stages.csv) sum those direct intervals. Finalization is measured before/after nested aggregation; neither it nor overhead is calculated by subtracting an inclusive total. [Overhead segments](../data/runtime/overhead-segments.csv) describe analysis/routing/resource checks, journal work, report handling, post-checks, response construction and API persistence.
+
+Startup bundle loading is a separate interval, excluding interpreter/import work outside the loading function. The endpoint scope excludes outer ASGI parsing/serialization and network transport. Logging/wrapper effects are included. The exact original verify-call timer (1.1290 ms) excludes entry/return logging and post-call validation/recording; it is nested inside the 1.2731-ms verifier wrapper and is never added separately to the 644.545-ms endpoint total.

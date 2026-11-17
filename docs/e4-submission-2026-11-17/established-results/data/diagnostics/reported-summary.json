@@ -1,0 +1,37 @@
+{
+  "source": "User-provided historical direct-diagnostic reports",
+  "evidence": {
+    "calls": 8,
+    "SUPPORT": 4,
+    "REJECT": 4,
+    "initialization_ms_approx": 332,
+    "peak_process_RSS_KiB_approx": 754000
+  },
+  "rule": {
+    "calls": 9,
+    "SUPPORT": 4,
+    "REJECT": 4,
+    "UNSURE": 1,
+    "reported_aggregate_ms_approx": 0.454,
+    "reported_range_ms": [
+      0.025,
+      0.108
+    ]
+  },
+  "semantic": {
+    "calls": 10,
+    "SUPPORT": 7,
+    "UNSURE": 3,
+    "initialization_ms_approx": 108,
+    "peak_process_RSS_KiB": 458424
+  },
+  "confidence": {
+    "calls": 4,
+    "judgments": 20,
+    "UNSURE": 4,
+    "reported_aggregate_execution_seconds_approx": 20.56
+  },
+  "interpretation": "Individual distributions use only observed per-call values. Reported aggregates retain aggregate scope.",
+  "corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+  "countries_snapshot_sha256": "0d92fb23b43ae080bd439f5dc5d61a8845395fdd0af1479b433c59fe079bd6fd"
+}

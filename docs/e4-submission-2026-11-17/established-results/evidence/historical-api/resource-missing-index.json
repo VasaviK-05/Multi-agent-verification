@@ -1,0 +1,97 @@
+{
+  "id": "resource-missing-index",
+  "category": "resource_incompatibility",
+  "fixture": "isolated adapter with nonexistent index directory; no frozen resource modified",
+  "expected_correct": null,
+  "payload": {
+    "question": "What is the population of Belgium?",
+    "answer": "The population of Belgium is 11941781.",
+    "context": "The population of Belgium is 11941781."
+  },
+  "http_status": 200,
+  "latency_ms": 933.092,
+  "transport_error": null,
+  "validation_id": "53960730-9fb6-4c32-a610-d637cd14d4d5",
+  "final_status": "uncertain",
+  "final_score": null,
+  "signed_score": null,
+  "execution_audit": {
+    "public_status": "uncertain",
+    "selection_status": "resource_incompatible",
+    "selection_reasons": [
+      "[Errno 2] No such file or directory: 'C:\\\\Users\\\\User\\\\Multi-agent-verification-integration\\\\build\\\\flexible-live-acceptance-b2dbe3d\\\\nonexistent-index-negative-fixture\\\\faiss.index'"
+    ],
+    "attempts": [],
+    "components": [],
+    "termination": "before_dispatch",
+    "execution_mode": "flexible_game",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "atomic",
+    "routing_signature": [
+      "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+      "easy",
+      0.13,
+      true
+    ],
+    "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+    "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+    "validation_id": "53960730-9fb6-4c32-a610-d637cd14d4d5"
+  },
+  "results": [],
+  "actual_verifier_calls": 0,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "resource_incompatible",
+  "selection_reasons": [
+    "[Errno 2] No such file or directory: 'C:\\\\Users\\\\User\\\\Multi-agent-verification-integration\\\\build\\\\flexible-live-acceptance-b2dbe3d\\\\nonexistent-index-negative-fixture\\\\faiss.index'"
+  ],
+  "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+  "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+  "strategy_id": null,
+  "team": null,
+  "aggregation": null,
+  "attempted_verifiers": null,
+  "coverage": {},
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {},
+  "response_json": {
+    "results": [],
+    "final_status": "uncertain",
+    "final_score": null,
+    "validation_id": "53960730-9fb6-4c32-a610-d637cd14d4d5",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [],
+    "early_stop_reason": "before_dispatch",
+    "uncertainty_reasons": [
+      "decision_uncertain"
+    ],
+    "signed_score": null,
+    "execution_audit": {
+      "public_status": "uncertain",
+      "selection_status": "resource_incompatible",
+      "selection_reasons": [
+        "[Errno 2] No such file or directory: 'C:\\\\Users\\\\User\\\\Multi-agent-verification-integration\\\\build\\\\flexible-live-acceptance-b2dbe3d\\\\nonexistent-index-negative-fixture\\\\faiss.index'"
+      ],
+      "attempts": [],
+      "components": [],
+      "termination": "before_dispatch",
+      "execution_mode": "flexible_game",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "atomic",
+      "routing_signature": [
+        "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+        "easy",
+        0.13,
+        true
+      ],
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "validation_id": "53960730-9fb6-4c32-a610-d637cd14d4d5"
+    }
+  }
+}

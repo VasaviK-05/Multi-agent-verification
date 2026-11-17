@@ -1,0 +1,83 @@
+{
+  "id": "ref-missing-context",
+  "category": "reference",
+  "fixture": "reference/groups.json reference-fresh-00 development; required context omitted as edge",
+  "expected_correct": null,
+  "payload": {
+    "question": "Paraphrase this reference: Seven lanterns hang above the marina.",
+    "answer": "Above the marina hang seven lanterns.",
+    "context": null
+  },
+  "http_status": 200,
+  "latency_ms": 190.66,
+  "transport_error": null,
+  "validation_id": "673eed23-ca07-4def-8af4-c0bfb6de89e2",
+  "final_status": "uncertain",
+  "final_score": null,
+  "signed_score": null,
+  "execution_audit": {
+    "public_status": "uncertain",
+    "selection_status": "missing_policy",
+    "selection_reasons": [
+      "no unique registered question category/budget policy"
+    ],
+    "attempts": [],
+    "components": [],
+    "termination": "before_dispatch",
+    "execution_mode": "flexible_game",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "missing_policy",
+    "routing_signature": "no unique registered question category/budget policy",
+    "validation_id": "673eed23-ca07-4def-8af4-c0bfb6de89e2"
+  },
+  "results": [],
+  "actual_verifier_calls": 0,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "missing_policy",
+  "selection_reasons": [
+    "no unique registered question category/budget policy"
+  ],
+  "policy_id": null,
+  "artifact_id": null,
+  "strategy_id": null,
+  "team": null,
+  "aggregation": null,
+  "attempted_verifiers": null,
+  "coverage": {},
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {},
+  "response_json": {
+    "results": [],
+    "final_status": "uncertain",
+    "final_score": null,
+    "validation_id": "673eed23-ca07-4def-8af4-c0bfb6de89e2",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [],
+    "early_stop_reason": "before_dispatch",
+    "uncertainty_reasons": [
+      "decision_uncertain"
+    ],
+    "signed_score": null,
+    "execution_audit": {
+      "public_status": "uncertain",
+      "selection_status": "missing_policy",
+      "selection_reasons": [
+        "no unique registered question category/budget policy"
+      ],
+      "attempts": [],
+      "components": [],
+      "termination": "before_dispatch",
+      "execution_mode": "flexible_game",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "missing_policy",
+      "routing_signature": "no unique registered question category/budget policy",
+      "validation_id": "673eed23-ca07-4def-8af4-c0bfb6de89e2"
+    }
+  }
+}

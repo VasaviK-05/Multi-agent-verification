@@ -1,0 +1,7 @@
+test_id,verifier,route,validation_id,decision,final_status,timing_scope,observed_duration_ms,timing_kind,source
+E4-arith-correct,rule,current_bounded_flexible_API,0a68d379-dcc4-41ad-ab13-793787f09168,SUPPORT,passed,internal_verifier,0.95,observed,evidence/current-api/correct/response.json
+E4-arith-correct,rule,current_bounded_flexible_API,0a68d379-dcc4-41ad-ab13-793787f09168,SUPPORT,passed,journal_attempt,1.1933000005228678,observed,evidence/current-api/correct/persistence.json
+E4-arith-correct,rule,current_bounded_flexible_API,0a68d379-dcc4-41ad-ab13-793787f09168,SUPPORT,passed,http_client,783.143999999993,observed,evidence/current-api/correct/transport.json
+E4-arith-incorrect,rule,current_bounded_flexible_API,f8c87ba4-ec77-4ef9-a6a9-bcb9cae888b1,REJECT,failed,internal_verifier,0.04,observed,evidence/current-api/incorrect/response.json
+E4-arith-incorrect,rule,current_bounded_flexible_API,f8c87ba4-ec77-4ef9-a6a9-bcb9cae888b1,REJECT,failed,journal_attempt,0.21050000032118987,observed,evidence/current-api/incorrect/persistence.json
+E4-arith-incorrect,rule,current_bounded_flexible_API,f8c87ba4-ec77-4ef9-a6a9-bcb9cae888b1,REJECT,failed,http_client,798.6985000006825,observed,evidence/current-api/incorrect/transport.json

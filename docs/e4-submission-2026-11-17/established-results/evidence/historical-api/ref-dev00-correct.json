@@ -1,0 +1,2643 @@
+{
+  "id": "ref-dev00-correct",
+  "category": "reference",
+  "fixture": "reference/groups.json reference-fresh-00 development equivalent",
+  "expected_correct": true,
+  "payload": {
+    "question": "Paraphrase this reference: Seven lanterns hang above the marina.",
+    "answer": "Above the marina hang seven lanterns.",
+    "context": "Seven lanterns hang above the marina."
+  },
+  "http_status": 200,
+  "latency_ms": 42929.861,
+  "transport_error": null,
+  "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+  "final_status": "passed",
+  "final_score": 1.0,
+  "signed_score": 1.0,
+  "execution_audit": {
+    "audit_version": "game_execution_audit_v1",
+    "execution_mode": "flexible_game",
+    "episode_id": "registered-ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+    "effective_configuration_fingerprint": "73fb155808f577ad984c12f55cdc9366755a9548b15bd2b0a4857effd26e38bb",
+    "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+    "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+    "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+    "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+    "offline_evaluation_id": "a588ccb4a7c750a66da49be09229969312be5c2034a3885f92f6ddc8df241e73",
+    "selected_strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+    "team": [
+      "confidence",
+      "semantic"
+    ],
+    "aggregation": "reputation_weighted",
+    "threshold": 0.55,
+    "execution_contract": {
+      "version": "offline_public_decision_v4",
+      "coverage_version": "task_output_contract_v2",
+      "contributor_version": "informative_history_influence_v1",
+      "threshold": 0.55,
+      "failure_contract": "all_selected_returned",
+      "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "history_prior_alpha": 1.0,
+      "history_prior_beta": 1.0,
+      "resource_manifest": {
+        "version": "game_resource_manifest_v1",
+        "verifiers": [
+          {
+            "verifier_name": "confidence",
+            "resources": [
+              {
+                "resource_id": "confidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "confidence-implementation",
+                "kind": "implementation",
+                "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              },
+              {
+                "resource_id": "ollama-model",
+                "kind": "model",
+                "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+              },
+              {
+                "resource_id": "self-consistency-short-answer",
+                "kind": "prompt",
+                "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+              },
+              {
+                "resource_id": "ollama-service",
+                "kind": "service",
+                "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+              }
+            ]
+          },
+          {
+            "verifier_name": "evidence",
+            "resources": [
+              {
+                "resource_id": "evidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "evidence-corpus",
+                "kind": "corpus",
+                "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+              },
+              {
+                "resource_id": "evidence-implementation",
+                "kind": "implementation",
+                "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+              },
+              {
+                "resource_id": "evidence-index",
+                "kind": "index",
+                "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              }
+            ]
+          },
+          {
+            "verifier_name": "rule",
+            "resources": [
+              {
+                "resource_id": "rule-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "rule-implementation",
+                "kind": "implementation",
+                "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+              }
+            ]
+          },
+          {
+            "verifier_name": "semantic",
+            "resources": [
+              {
+                "resource_id": "semantic-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "semantic-implementation",
+                "kind": "implementation",
+                "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              }
+            ]
+          }
+        ]
+      },
+      "team_requirements": {
+        "version": "flexible_team_requirements_v1",
+        "minimum_selected": 1,
+        "minimum_informative": 1
+      }
+    },
+    "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+    "dependency_assumptions": [
+      "configured compromise pathways; conservative connected components",
+      "unresolved verifiers share one unknown compromise pathway",
+      "observed provenance is audit-only and never rewrites this registry"
+    ],
+    "budget": 16594.78458249673,
+    "cost_units": "ms",
+    "estimated_selected_cost": 16530.8084824979,
+    "estimated_attempted_cost": 16530.8084824979,
+    "attempted_verifiers": [
+      "confidence",
+      "semantic"
+    ],
+    "attempts": [
+      {
+        "verifier_name": "confidence",
+        "estimated_attempt_cost": 16428.737124999952,
+        "state": "directional"
+      },
+      {
+        "verifier_name": "semantic",
+        "estimated_attempt_cost": 102.07135749794816,
+        "state": "directional"
+      }
+    ],
+    "selection_status": "selected",
+    "selection_reasons": [],
+    "numerical_decision": {
+      "domain": "general",
+      "status": "passed",
+      "raw_score": 1.0,
+      "score": 1.0,
+      "threshold": 0.55,
+      "aggregation": "log_odds",
+      "votes": [
+        {
+          "verifier_name": "confidence",
+          "abstained": false,
+          "passed": true,
+          "confidence": 1.0,
+          "reputation": 0.8666666666666667,
+          "weight": 1.8718021769015918,
+          "contribution": 1.8718021769015918,
+          "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+          "normalized_strength": 1.0,
+          "reliability_strength": 0.7333333333333334,
+          "included": true,
+          "inclusion_reason": "included",
+          "failure_group_id": null
+        },
+        {
+          "verifier_name": "semantic",
+          "abstained": false,
+          "passed": true,
+          "confidence": 0.8967220807206071,
+          "reputation": 0.5,
+          "weight": 0.0,
+          "contribution": 0.0,
+          "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+          "normalized_strength": 0.8967220807206071,
+          "reliability_strength": 0.0,
+          "included": false,
+          "inclusion_reason": "zero_log_odds_weight",
+          "failure_group_id": null
+        }
+      ],
+      "aggregation_id": "reputation_weighted",
+      "aggregation_version": "log_odds_v1",
+      "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+      "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+      "team": [
+        "confidence",
+        "semantic"
+      ],
+      "missing_reports": [],
+      "dependency_configuration_id": null,
+      "dependency_version": null,
+      "dependency_assumptions": [],
+      "groups": [],
+      "fallback": null,
+      "lower_cut": -0.55,
+      "upper_cut": 0.55
+    },
+    "public_status": "passed",
+    "override_reasons": [],
+    "contributors": 1,
+    "minimum_contributors": 1,
+    "minimum_selected_team_size": 1,
+    "pooling_contract_json": null,
+    "expected_resource_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+    "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+    "required": [
+      "semantic_comparison"
+    ],
+    "achieved": [
+      "semantic_comparison"
+    ],
+    "unresolved": [],
+    "reference_resource_compatibility": {
+      "version": "reference_source_resource_transition_v1",
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+      "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+        "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "index_observation": null,
+      "active_instances_checked": true,
+      "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+    },
+    "after_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+    "selection_plan": {
+      "policy_version": "coverage_greedy_v1",
+      "domain": "general",
+      "domain_status": "unknown",
+      "difficulty": "easy",
+      "difficulty_score": 0.1,
+      "analysis_method": "heuristic",
+      "context_version": "question_context_v1",
+      "scoring_version": "bounded_reference_frames_v1",
+      "reference_available": true,
+      "requirements": {
+        "source": "research_context",
+        "status": "known",
+        "requirements": [
+          "semantic_comparison"
+        ],
+        "weights": [
+          [
+            "semantic_comparison",
+            1.0
+          ]
+        ],
+        "requirements_known": true,
+        "legacy_hints": [
+          "semantic_comparison"
+        ],
+        "disagreements": [],
+        "unsupported": [],
+        "errors": [],
+        "legacy_unrecognized": [],
+        "weight_discrepancies": []
+      },
+      "lambda_cost": 0.15,
+      "lambda_latency": 0.1,
+      "lambda_suitability": 0.2,
+      "type_mapping": [
+        [
+          "arithmetic",
+          "rule"
+        ],
+        [
+          "logical_rule",
+          "rule"
+        ],
+        [
+          "direct_fact",
+          "evidence"
+        ],
+        [
+          "evidence_retrieval",
+          "evidence"
+        ],
+        [
+          "semantic_comparison",
+          "semantic"
+        ],
+        [
+          "consistency",
+          "confidence"
+        ]
+      ],
+      "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+      "minimum_count": 2,
+      "target_count": 2,
+      "candidates": [
+        {
+          "verifier_name": "semantic",
+          "registration_order": 0,
+          "reputation": 0.5,
+          "observation_count": 20,
+          "cold_start": false,
+          "cost": 0.3,
+          "latency": 0.4,
+          "resource_penalty": 0.085,
+          "suitability": 1.0,
+          "suitability_contribution": 0.2,
+          "utility": 0.615,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "semantic_comparison"
+          ],
+          "requires_reference": true,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Reference similarity is not factual correctness."
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "registration_order": 1,
+          "reputation": 0.5,
+          "observation_count": 0,
+          "cold_start": true,
+          "cost": 0.8,
+          "latency": 0.9,
+          "resource_penalty": 0.21000000000000002,
+          "suitability": 0.0,
+          "suitability_contribution": 0.0,
+          "utility": 0.29,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "direct_fact",
+            "evidence_retrieval"
+          ],
+          "requires_reference": false,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+            "Corpus/model readiness and claim coverage are unknown until execution."
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "registration_order": 2,
+          "reputation": 0.5,
+          "observation_count": 0,
+          "cold_start": true,
+          "cost": 0.2,
+          "latency": 0.2,
+          "resource_penalty": 0.05,
+          "suitability": 0.0,
+          "suitability_contribution": 0.0,
+          "utility": 0.45,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "arithmetic"
+          ],
+          "requires_reference": false,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+            "Other deterministic/structural checks do not establish general factual coverage."
+          ]
+        },
+        {
+          "verifier_name": "confidence",
+          "registration_order": 3,
+          "reputation": 0.866667,
+          "observation_count": 13,
+          "cold_start": false,
+          "cost": 0.9,
+          "latency": 1.0,
+          "resource_penalty": 0.23500000000000001,
+          "suitability": 0.0,
+          "suitability_contribution": 0.0,
+          "utility": 0.631667,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "consistency"
+          ],
+          "requires_reference": false,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Generation/judgment agreement is not factual evidence or independence.",
+            "Provider readiness is unknown until execution."
+          ]
+        }
+      ],
+      "initial_selected": [
+        "semantic",
+        "confidence"
+      ],
+      "fallback": [
+        "rule",
+        "evidence"
+      ],
+      "expected_covered": [
+        "semantic_comparison"
+      ],
+      "expected_uncovered": [],
+      "coverage_status": "expected_only",
+      "exclusions": [],
+      "reputation_statistics": [
+        {
+          "verifier_name": "semantic",
+          "domain": "general",
+          "alpha": 11.0,
+          "beta": 11.0,
+          "successes": 10,
+          "failures": 10,
+          "observation_count": 20,
+          "posterior_mean": 0.5,
+          "posterior_variance": 0.010869565217391306,
+          "cold_start": false
+        },
+        {
+          "verifier_name": "evidence",
+          "domain": "general",
+          "alpha": 1.0,
+          "beta": 1.0,
+          "successes": 0,
+          "failures": 0,
+          "observation_count": 0,
+          "posterior_mean": 0.5,
+          "posterior_variance": 0.08333333333333333,
+          "cold_start": true
+        },
+        {
+          "verifier_name": "rule",
+          "domain": "general",
+          "alpha": 1.0,
+          "beta": 1.0,
+          "successes": 0,
+          "failures": 0,
+          "observation_count": 0,
+          "posterior_mean": 0.5,
+          "posterior_variance": 0.08333333333333333,
+          "cold_start": true
+        },
+        {
+          "verifier_name": "confidence",
+          "domain": "general",
+          "alpha": 13.0,
+          "beta": 2.0,
+          "successes": 12,
+          "failures": 1,
+          "observation_count": 13,
+          "posterior_mean": 0.8666666666666667,
+          "posterior_variance": 0.007222222222222222,
+          "cold_start": false
+        }
+      ]
+    },
+    "termination": "complete_selected_team",
+    "early_stopping_enabled": false,
+    "fallback_enabled": false,
+    "task_id": "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+    "task_route": "domain_requirements_task_v1",
+    "policy_execution_mode": "game",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "atomic",
+    "routing_signature": [
+      "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+      "easy",
+      0.1,
+      true
+    ],
+    "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+    "pre_dispatch_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+    "pre_dispatch_compatibility_proof": {
+      "version": "reference_source_resource_transition_v1",
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+      "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+        "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "index_observation": null,
+      "active_instances_checked": true,
+      "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+    }
+  },
+  "results": [
+    {
+      "verifier_name": "confidence",
+      "score": 1.0,
+      "passed": true,
+      "reasoning": "Majority judgment: support. Agreement: 5/5. Confidence: 1.0000.",
+      "metadata": {
+        "decision": "SUPPORT",
+        "score_meaning": "Agreement fraction among the judgments (majority count / total). With the default provider the judgments are N independent regenerations of the answer labelled against the candidate answer. A consistency signal, not accuracy and not a probability of correctness: a model can be consistently wrong.",
+        "method": "self_consistency",
+        "judgment_source": "self_consistency",
+        "judgments": [
+          "support",
+          "support",
+          "support",
+          "support",
+          "support"
+        ],
+        "judgment_counts": {
+          "support": 5
+        },
+        "majority_label": "support",
+        "agreement_count": 5,
+        "total_judgments": 5,
+        "n_samples": 5,
+        "claim": "The answer to \"Paraphrase this reference: Seven lanterns hang above the marina.\" is Above the marina hang seven lanterns.",
+        "stable_answer": true,
+        "samples": [
+          {
+            "sample": "Seven lanterns are suspended above the marina.",
+            "method": "nli",
+            "premise": "Seven lanterns are suspended above the marina.",
+            "nli": {
+              "entailment": 0.9956790804862976,
+              "neutral": 0.0036023310385644436,
+              "contradiction": 0.0007186055299825966
+            },
+            "label": "support"
+          },
+          {
+            "sample": "Seven lanterns hang above the marina.",
+            "method": "nli",
+            "premise": "Seven lanterns hang above the marina.",
+            "nli": {
+              "entailment": 0.9922381043434143,
+              "neutral": 0.006358288694173098,
+              "contradiction": 0.0014036200009286404
+            },
+            "label": "support"
+          },
+          {
+            "sample": "Seven lanterns are suspended above the marina.",
+            "method": "nli",
+            "premise": "Seven lanterns are suspended above the marina.",
+            "nli": {
+              "entailment": 0.9956790804862976,
+              "neutral": 0.0036023310385644436,
+              "contradiction": 0.0007186055299825966
+            },
+            "label": "support"
+          },
+          {
+            "sample": "Seven lanterns are suspended above the marina.",
+            "method": "nli",
+            "premise": "Seven lanterns are suspended above the marina.",
+            "nli": {
+              "entailment": 0.9956790804862976,
+              "neutral": 0.0036023310385644436,
+              "contradiction": 0.0007186055299825966
+            },
+            "label": "support"
+          },
+          {
+            "sample": "Seven lanterns are suspended above the marina.",
+            "method": "nli",
+            "premise": "Seven lanterns are suspended above the marina.",
+            "nli": {
+              "entailment": 0.9956790804862976,
+              "neutral": 0.0036023310385644436,
+              "contradiction": 0.0007186055299825966
+            },
+            "label": "support"
+          }
+        ],
+        "generator_model": "llama3.2:3b",
+        "temperature": 0.8,
+        "latency_breakdown_ms": {
+          "sampling": 23715.38,
+          "labeling": 441.34
+        },
+        "latency_ms": 24156.8
+      }
+    },
+    {
+      "verifier_name": "semantic",
+      "score": 0.8967220807206071,
+      "passed": true,
+      "reasoning": "Semantic similarity score: 0.8967. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+      "metadata": {
+        "decision": "SUPPORT",
+        "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+        "raw_similarity": 0.8967220807206071,
+        "threshold": 0.5,
+        "support_threshold": 0.5,
+        "reject_threshold": 0.3,
+        "thresholds_calibrated": false,
+        "comparison_method": "question_answer_vs_context",
+        "compared_text": "Paraphrase this reference: Seven lanterns hang above the marina. Above the marina hang seven lanterns.",
+        "model": "all-MiniLM-L6-v2",
+        "latency_ms": 55.74,
+        "multi_agent_verification.execution": {
+          "audit_version": "game_execution_audit_v1",
+          "execution_mode": "flexible_game",
+          "episode_id": "registered-ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+          "effective_configuration_fingerprint": "73fb155808f577ad984c12f55cdc9366755a9548b15bd2b0a4857effd26e38bb",
+          "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+          "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+          "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+          "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+          "offline_evaluation_id": "a588ccb4a7c750a66da49be09229969312be5c2034a3885f92f6ddc8df241e73",
+          "selected_strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+          "team": [
+            "confidence",
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "threshold": 0.55,
+          "execution_contract": {
+            "version": "offline_public_decision_v4",
+            "coverage_version": "task_output_contract_v2",
+            "contributor_version": "informative_history_influence_v1",
+            "threshold": 0.55,
+            "failure_contract": "all_selected_returned",
+            "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+            "history_prior_alpha": 1.0,
+            "history_prior_beta": 1.0,
+            "resource_manifest": {
+              "version": "game_resource_manifest_v1",
+              "verifiers": [
+                {
+                  "verifier_name": "confidence",
+                  "resources": [
+                    {
+                      "resource_id": "confidence-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "confidence-implementation",
+                      "kind": "implementation",
+                      "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                    },
+                    {
+                      "resource_id": "local-nli-snapshot",
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    },
+                    {
+                      "resource_id": "ollama-model",
+                      "kind": "model",
+                      "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                    },
+                    {
+                      "resource_id": "self-consistency-short-answer",
+                      "kind": "prompt",
+                      "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                    },
+                    {
+                      "resource_id": "ollama-service",
+                      "kind": "service",
+                      "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "evidence",
+                  "resources": [
+                    {
+                      "resource_id": "evidence-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "evidence-corpus",
+                      "kind": "corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                    },
+                    {
+                      "resource_id": "evidence-implementation",
+                      "kind": "implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                    },
+                    {
+                      "resource_id": "evidence-index",
+                      "kind": "index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                    },
+                    {
+                      "resource_id": "local-embedding-snapshot",
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    },
+                    {
+                      "resource_id": "local-nli-snapshot",
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "rule",
+                  "resources": [
+                    {
+                      "resource_id": "rule-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "rule-implementation",
+                      "kind": "implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "semantic",
+                  "resources": [
+                    {
+                      "resource_id": "semantic-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "semantic-implementation",
+                      "kind": "implementation",
+                      "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                    },
+                    {
+                      "resource_id": "local-embedding-snapshot",
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    }
+                  ]
+                }
+              ]
+            },
+            "team_requirements": {
+              "version": "flexible_team_requirements_v1",
+              "minimum_selected": 1,
+              "minimum_informative": 1
+            }
+          },
+          "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+          "dependency_assumptions": [
+            "configured compromise pathways; conservative connected components",
+            "unresolved verifiers share one unknown compromise pathway",
+            "observed provenance is audit-only and never rewrites this registry"
+          ],
+          "budget": 16594.78458249673,
+          "cost_units": "ms",
+          "estimated_selected_cost": 16530.8084824979,
+          "estimated_attempted_cost": 16530.8084824979,
+          "attempted_verifiers": [
+            "confidence",
+            "semantic"
+          ],
+          "attempts": [
+            {
+              "verifier_name": "confidence",
+              "estimated_attempt_cost": 16428.737124999952,
+              "state": "directional"
+            },
+            {
+              "verifier_name": "semantic",
+              "estimated_attempt_cost": 102.07135749794816,
+              "state": "directional"
+            }
+          ],
+          "selection_status": "selected",
+          "selection_reasons": [],
+          "numerical_decision": {
+            "domain": "general",
+            "status": "passed",
+            "raw_score": 1.0,
+            "score": 1.0,
+            "threshold": 0.55,
+            "aggregation": "log_odds",
+            "votes": [
+              {
+                "verifier_name": "confidence",
+                "abstained": false,
+                "passed": true,
+                "confidence": 1.0,
+                "reputation": 0.8666666666666667,
+                "weight": 1.8718021769015918,
+                "contribution": 1.8718021769015918,
+                "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+                "normalized_strength": 1.0,
+                "reliability_strength": 0.7333333333333334,
+                "included": true,
+                "inclusion_reason": "included",
+                "failure_group_id": null
+              },
+              {
+                "verifier_name": "semantic",
+                "abstained": false,
+                "passed": true,
+                "confidence": 0.8967220807206071,
+                "reputation": 0.5,
+                "weight": 0.0,
+                "contribution": 0.0,
+                "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+                "normalized_strength": 0.8967220807206071,
+                "reliability_strength": 0.0,
+                "included": false,
+                "inclusion_reason": "zero_log_odds_weight",
+                "failure_group_id": null
+              }
+            ],
+            "aggregation_id": "reputation_weighted",
+            "aggregation_version": "log_odds_v1",
+            "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+            "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+            "team": [
+              "confidence",
+              "semantic"
+            ],
+            "missing_reports": [],
+            "dependency_configuration_id": null,
+            "dependency_version": null,
+            "dependency_assumptions": [],
+            "groups": [],
+            "fallback": null,
+            "lower_cut": -0.55,
+            "upper_cut": 0.55
+          },
+          "public_status": "passed",
+          "override_reasons": [],
+          "contributors": 1,
+          "minimum_contributors": 1,
+          "minimum_selected_team_size": 1,
+          "pooling_contract_json": null,
+          "expected_resource_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+          "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+          "required": [
+            "semantic_comparison"
+          ],
+          "achieved": [
+            "semantic_comparison"
+          ],
+          "unresolved": [],
+          "reference_resource_compatibility": {
+            "version": "reference_source_resource_transition_v1",
+            "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+            "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+            "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+            "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+            "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+              "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+              "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+              "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "index_observation": null,
+            "active_instances_checked": true,
+            "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+          },
+          "after_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+          "selection_plan": {
+            "policy_version": "coverage_greedy_v1",
+            "domain": "general",
+            "domain_status": "unknown",
+            "difficulty": "easy",
+            "difficulty_score": 0.1,
+            "analysis_method": "heuristic",
+            "context_version": "question_context_v1",
+            "scoring_version": "bounded_reference_frames_v1",
+            "reference_available": true,
+            "requirements": {
+              "source": "research_context",
+              "status": "known",
+              "requirements": [
+                "semantic_comparison"
+              ],
+              "weights": [
+                [
+                  "semantic_comparison",
+                  1.0
+                ]
+              ],
+              "requirements_known": true,
+              "legacy_hints": [
+                "semantic_comparison"
+              ],
+              "disagreements": [],
+              "unsupported": [],
+              "errors": [],
+              "legacy_unrecognized": [],
+              "weight_discrepancies": []
+            },
+            "lambda_cost": 0.15,
+            "lambda_latency": 0.1,
+            "lambda_suitability": 0.2,
+            "type_mapping": [
+              [
+                "arithmetic",
+                "rule"
+              ],
+              [
+                "logical_rule",
+                "rule"
+              ],
+              [
+                "direct_fact",
+                "evidence"
+              ],
+              [
+                "evidence_retrieval",
+                "evidence"
+              ],
+              [
+                "semantic_comparison",
+                "semantic"
+              ],
+              [
+                "consistency",
+                "confidence"
+              ]
+            ],
+            "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+            "minimum_count": 2,
+            "target_count": 2,
+            "candidates": [
+              {
+                "verifier_name": "semantic",
+                "registration_order": 0,
+                "reputation": 0.5,
+                "observation_count": 20,
+                "cold_start": false,
+                "cost": 0.3,
+                "latency": 0.4,
+                "resource_penalty": 0.085,
+                "suitability": 1.0,
+                "suitability_contribution": 0.2,
+                "utility": 0.615,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "semantic_comparison"
+                ],
+                "requires_reference": true,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Reference similarity is not factual correctness."
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "registration_order": 1,
+                "reputation": 0.5,
+                "observation_count": 0,
+                "cold_start": true,
+                "cost": 0.8,
+                "latency": 0.9,
+                "resource_penalty": 0.21000000000000002,
+                "suitability": 0.0,
+                "suitability_contribution": 0.0,
+                "utility": 0.29,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "direct_fact",
+                  "evidence_retrieval"
+                ],
+                "requires_reference": false,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                  "Corpus/model readiness and claim coverage are unknown until execution."
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "registration_order": 2,
+                "reputation": 0.5,
+                "observation_count": 0,
+                "cold_start": true,
+                "cost": 0.2,
+                "latency": 0.2,
+                "resource_penalty": 0.05,
+                "suitability": 0.0,
+                "suitability_contribution": 0.0,
+                "utility": 0.45,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "arithmetic"
+                ],
+                "requires_reference": false,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                  "Other deterministic/structural checks do not establish general factual coverage."
+                ]
+              },
+              {
+                "verifier_name": "confidence",
+                "registration_order": 3,
+                "reputation": 0.866667,
+                "observation_count": 13,
+                "cold_start": false,
+                "cost": 0.9,
+                "latency": 1.0,
+                "resource_penalty": 0.23500000000000001,
+                "suitability": 0.0,
+                "suitability_contribution": 0.0,
+                "utility": 0.631667,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "consistency"
+                ],
+                "requires_reference": false,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Generation/judgment agreement is not factual evidence or independence.",
+                  "Provider readiness is unknown until execution."
+                ]
+              }
+            ],
+            "initial_selected": [
+              "semantic",
+              "confidence"
+            ],
+            "fallback": [
+              "rule",
+              "evidence"
+            ],
+            "expected_covered": [
+              "semantic_comparison"
+            ],
+            "expected_uncovered": [],
+            "coverage_status": "expected_only",
+            "exclusions": [],
+            "reputation_statistics": [
+              {
+                "verifier_name": "semantic",
+                "domain": "general",
+                "alpha": 11.0,
+                "beta": 11.0,
+                "successes": 10,
+                "failures": 10,
+                "observation_count": 20,
+                "posterior_mean": 0.5,
+                "posterior_variance": 0.010869565217391306,
+                "cold_start": false
+              },
+              {
+                "verifier_name": "evidence",
+                "domain": "general",
+                "alpha": 1.0,
+                "beta": 1.0,
+                "successes": 0,
+                "failures": 0,
+                "observation_count": 0,
+                "posterior_mean": 0.5,
+                "posterior_variance": 0.08333333333333333,
+                "cold_start": true
+              },
+              {
+                "verifier_name": "rule",
+                "domain": "general",
+                "alpha": 1.0,
+                "beta": 1.0,
+                "successes": 0,
+                "failures": 0,
+                "observation_count": 0,
+                "posterior_mean": 0.5,
+                "posterior_variance": 0.08333333333333333,
+                "cold_start": true
+              },
+              {
+                "verifier_name": "confidence",
+                "domain": "general",
+                "alpha": 13.0,
+                "beta": 2.0,
+                "successes": 12,
+                "failures": 1,
+                "observation_count": 13,
+                "posterior_mean": 0.8666666666666667,
+                "posterior_variance": 0.007222222222222222,
+                "cold_start": false
+              }
+            ]
+          },
+          "termination": "complete_selected_team",
+          "early_stopping_enabled": false,
+          "fallback_enabled": false,
+          "task_id": "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+          "task_route": "domain_requirements_task_v1",
+          "policy_execution_mode": "game",
+          "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+          "policy_category": "atomic",
+          "routing_signature": [
+            "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+            "easy",
+            0.1,
+            true
+          ],
+          "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+          "pre_dispatch_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+          "pre_dispatch_compatibility_proof": {
+            "version": "reference_source_resource_transition_v1",
+            "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+            "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+            "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+            "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+            "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+              "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+              "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+              "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "index_observation": null,
+            "active_instances_checked": true,
+            "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+          }
+        }
+      }
+    }
+  ],
+  "actual_verifier_calls": 2,
+  "actual_ollama_generations_known": 5,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "selected",
+  "selection_reasons": [],
+  "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+  "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+  "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+  "team": [
+    "confidence",
+    "semantic"
+  ],
+  "aggregation": "reputation_weighted",
+  "attempted_verifiers": [
+    "confidence",
+    "semantic"
+  ],
+  "coverage": {
+    "required": [
+      "semantic_comparison"
+    ],
+    "achieved": [
+      "semantic_comparison"
+    ],
+    "unresolved": []
+  },
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {
+    "pre_dispatch_compatibility_proof": {
+      "version": "reference_source_resource_transition_v1",
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+      "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+        "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "index_observation": null,
+      "active_instances_checked": true,
+      "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+    },
+    "reference_resource_compatibility": {
+      "version": "reference_source_resource_transition_v1",
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+      "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+        "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "index_observation": null,
+      "active_instances_checked": true,
+      "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+    }
+  },
+  "response_json": {
+    "results": [
+      {
+        "verifier_name": "confidence",
+        "score": 1.0,
+        "passed": true,
+        "reasoning": "Majority judgment: support. Agreement: 5/5. Confidence: 1.0000.",
+        "metadata": {
+          "decision": "SUPPORT",
+          "score_meaning": "Agreement fraction among the judgments (majority count / total). With the default provider the judgments are N independent regenerations of the answer labelled against the candidate answer. A consistency signal, not accuracy and not a probability of correctness: a model can be consistently wrong.",
+          "method": "self_consistency",
+          "judgment_source": "self_consistency",
+          "judgments": [
+            "support",
+            "support",
+            "support",
+            "support",
+            "support"
+          ],
+          "judgment_counts": {
+            "support": 5
+          },
+          "majority_label": "support",
+          "agreement_count": 5,
+          "total_judgments": 5,
+          "n_samples": 5,
+          "claim": "The answer to \"Paraphrase this reference: Seven lanterns hang above the marina.\" is Above the marina hang seven lanterns.",
+          "stable_answer": true,
+          "samples": [
+            {
+              "sample": "Seven lanterns are suspended above the marina.",
+              "method": "nli",
+              "premise": "Seven lanterns are suspended above the marina.",
+              "nli": {
+                "entailment": 0.9956790804862976,
+                "neutral": 0.0036023310385644436,
+                "contradiction": 0.0007186055299825966
+              },
+              "label": "support"
+            },
+            {
+              "sample": "Seven lanterns hang above the marina.",
+              "method": "nli",
+              "premise": "Seven lanterns hang above the marina.",
+              "nli": {
+                "entailment": 0.9922381043434143,
+                "neutral": 0.006358288694173098,
+                "contradiction": 0.0014036200009286404
+              },
+              "label": "support"
+            },
+            {
+              "sample": "Seven lanterns are suspended above the marina.",
+              "method": "nli",
+              "premise": "Seven lanterns are suspended above the marina.",
+              "nli": {
+                "entailment": 0.9956790804862976,
+                "neutral": 0.0036023310385644436,
+                "contradiction": 0.0007186055299825966
+              },
+              "label": "support"
+            },
+            {
+              "sample": "Seven lanterns are suspended above the marina.",
+              "method": "nli",
+              "premise": "Seven lanterns are suspended above the marina.",
+              "nli": {
+                "entailment": 0.9956790804862976,
+                "neutral": 0.0036023310385644436,
+                "contradiction": 0.0007186055299825966
+              },
+              "label": "support"
+            },
+            {
+              "sample": "Seven lanterns are suspended above the marina.",
+              "method": "nli",
+              "premise": "Seven lanterns are suspended above the marina.",
+              "nli": {
+                "entailment": 0.9956790804862976,
+                "neutral": 0.0036023310385644436,
+                "contradiction": 0.0007186055299825966
+              },
+              "label": "support"
+            }
+          ],
+          "generator_model": "llama3.2:3b",
+          "temperature": 0.8,
+          "latency_breakdown_ms": {
+            "sampling": 23715.38,
+            "labeling": 441.34
+          },
+          "latency_ms": 24156.8
+        }
+      },
+      {
+        "verifier_name": "semantic",
+        "score": 0.8967220807206071,
+        "passed": true,
+        "reasoning": "Semantic similarity score: 0.8967. Support threshold: 0.50; reject threshold: 0.30. Compared text is semantically close to the reference.",
+        "metadata": {
+          "decision": "SUPPORT",
+          "score_meaning": "Cosine similarity between the compared text and the reference, clipped to [0, 1]. Measures resemblance of meaning, not factual correctness; not a probability and not calibrated.",
+          "raw_similarity": 0.8967220807206071,
+          "threshold": 0.5,
+          "support_threshold": 0.5,
+          "reject_threshold": 0.3,
+          "thresholds_calibrated": false,
+          "comparison_method": "question_answer_vs_context",
+          "compared_text": "Paraphrase this reference: Seven lanterns hang above the marina. Above the marina hang seven lanterns.",
+          "model": "all-MiniLM-L6-v2",
+          "latency_ms": 55.74,
+          "multi_agent_verification.execution": {
+            "audit_version": "game_execution_audit_v1",
+            "execution_mode": "flexible_game",
+            "episode_id": "registered-ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+            "effective_configuration_fingerprint": "73fb155808f577ad984c12f55cdc9366755a9548b15bd2b0a4857effd26e38bb",
+            "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+            "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+            "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+            "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+            "offline_evaluation_id": "a588ccb4a7c750a66da49be09229969312be5c2034a3885f92f6ddc8df241e73",
+            "selected_strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+            "team": [
+              "confidence",
+              "semantic"
+            ],
+            "aggregation": "reputation_weighted",
+            "threshold": 0.55,
+            "execution_contract": {
+              "version": "offline_public_decision_v4",
+              "coverage_version": "task_output_contract_v2",
+              "contributor_version": "informative_history_influence_v1",
+              "threshold": 0.55,
+              "failure_contract": "all_selected_returned",
+              "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+              "history_prior_alpha": 1.0,
+              "history_prior_beta": 1.0,
+              "resource_manifest": {
+                "version": "game_resource_manifest_v1",
+                "verifiers": [
+                  {
+                    "verifier_name": "confidence",
+                    "resources": [
+                      {
+                        "resource_id": "confidence-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "confidence-implementation",
+                        "kind": "implementation",
+                        "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                      },
+                      {
+                        "resource_id": "local-nli-snapshot",
+                        "kind": "model",
+                        "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                      },
+                      {
+                        "resource_id": "ollama-model",
+                        "kind": "model",
+                        "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                      },
+                      {
+                        "resource_id": "self-consistency-short-answer",
+                        "kind": "prompt",
+                        "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                      },
+                      {
+                        "resource_id": "ollama-service",
+                        "kind": "service",
+                        "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+                      }
+                    ]
+                  },
+                  {
+                    "verifier_name": "evidence",
+                    "resources": [
+                      {
+                        "resource_id": "evidence-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "evidence-corpus",
+                        "kind": "corpus",
+                        "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                      },
+                      {
+                        "resource_id": "evidence-implementation",
+                        "kind": "implementation",
+                        "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                      },
+                      {
+                        "resource_id": "evidence-index",
+                        "kind": "index",
+                        "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                      },
+                      {
+                        "resource_id": "local-embedding-snapshot",
+                        "kind": "model",
+                        "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                      },
+                      {
+                        "resource_id": "local-nli-snapshot",
+                        "kind": "model",
+                        "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                      }
+                    ]
+                  },
+                  {
+                    "verifier_name": "rule",
+                    "resources": [
+                      {
+                        "resource_id": "rule-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "rule-implementation",
+                        "kind": "implementation",
+                        "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                      }
+                    ]
+                  },
+                  {
+                    "verifier_name": "semantic",
+                    "resources": [
+                      {
+                        "resource_id": "semantic-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "semantic-implementation",
+                        "kind": "implementation",
+                        "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                      },
+                      {
+                        "resource_id": "local-embedding-snapshot",
+                        "kind": "model",
+                        "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "team_requirements": {
+                "version": "flexible_team_requirements_v1",
+                "minimum_selected": 1,
+                "minimum_informative": 1
+              }
+            },
+            "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+            "dependency_assumptions": [
+              "configured compromise pathways; conservative connected components",
+              "unresolved verifiers share one unknown compromise pathway",
+              "observed provenance is audit-only and never rewrites this registry"
+            ],
+            "budget": 16594.78458249673,
+            "cost_units": "ms",
+            "estimated_selected_cost": 16530.8084824979,
+            "estimated_attempted_cost": 16530.8084824979,
+            "attempted_verifiers": [
+              "confidence",
+              "semantic"
+            ],
+            "attempts": [
+              {
+                "verifier_name": "confidence",
+                "estimated_attempt_cost": 16428.737124999952,
+                "state": "directional"
+              },
+              {
+                "verifier_name": "semantic",
+                "estimated_attempt_cost": 102.07135749794816,
+                "state": "directional"
+              }
+            ],
+            "selection_status": "selected",
+            "selection_reasons": [],
+            "numerical_decision": {
+              "domain": "general",
+              "status": "passed",
+              "raw_score": 1.0,
+              "score": 1.0,
+              "threshold": 0.55,
+              "aggregation": "log_odds",
+              "votes": [
+                {
+                  "verifier_name": "confidence",
+                  "abstained": false,
+                  "passed": true,
+                  "confidence": 1.0,
+                  "reputation": 0.8666666666666667,
+                  "weight": 1.8718021769015918,
+                  "contribution": 1.8718021769015918,
+                  "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+                  "normalized_strength": 1.0,
+                  "reliability_strength": 0.7333333333333334,
+                  "included": true,
+                  "inclusion_reason": "included",
+                  "failure_group_id": null
+                },
+                {
+                  "verifier_name": "semantic",
+                  "abstained": false,
+                  "passed": true,
+                  "confidence": 0.8967220807206071,
+                  "reputation": 0.5,
+                  "weight": 0.0,
+                  "contribution": 0.0,
+                  "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+                  "normalized_strength": 0.8967220807206071,
+                  "reliability_strength": 0.0,
+                  "included": false,
+                  "inclusion_reason": "zero_log_odds_weight",
+                  "failure_group_id": null
+                }
+              ],
+              "aggregation_id": "reputation_weighted",
+              "aggregation_version": "log_odds_v1",
+              "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+              "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+              "team": [
+                "confidence",
+                "semantic"
+              ],
+              "missing_reports": [],
+              "dependency_configuration_id": null,
+              "dependency_version": null,
+              "dependency_assumptions": [],
+              "groups": [],
+              "fallback": null,
+              "lower_cut": -0.55,
+              "upper_cut": 0.55
+            },
+            "public_status": "passed",
+            "override_reasons": [],
+            "contributors": 1,
+            "minimum_contributors": 1,
+            "minimum_selected_team_size": 1,
+            "pooling_contract_json": null,
+            "expected_resource_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+            "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+            "required": [
+              "semantic_comparison"
+            ],
+            "achieved": [
+              "semantic_comparison"
+            ],
+            "unresolved": [],
+            "reference_resource_compatibility": {
+              "version": "reference_source_resource_transition_v1",
+              "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+              "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+              "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+              "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+              "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+                "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+                "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+                "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "index_observation": null,
+              "active_instances_checked": true,
+              "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+            },
+            "after_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+            "selection_plan": {
+              "policy_version": "coverage_greedy_v1",
+              "domain": "general",
+              "domain_status": "unknown",
+              "difficulty": "easy",
+              "difficulty_score": 0.1,
+              "analysis_method": "heuristic",
+              "context_version": "question_context_v1",
+              "scoring_version": "bounded_reference_frames_v1",
+              "reference_available": true,
+              "requirements": {
+                "source": "research_context",
+                "status": "known",
+                "requirements": [
+                  "semantic_comparison"
+                ],
+                "weights": [
+                  [
+                    "semantic_comparison",
+                    1.0
+                  ]
+                ],
+                "requirements_known": true,
+                "legacy_hints": [
+                  "semantic_comparison"
+                ],
+                "disagreements": [],
+                "unsupported": [],
+                "errors": [],
+                "legacy_unrecognized": [],
+                "weight_discrepancies": []
+              },
+              "lambda_cost": 0.15,
+              "lambda_latency": 0.1,
+              "lambda_suitability": 0.2,
+              "type_mapping": [
+                [
+                  "arithmetic",
+                  "rule"
+                ],
+                [
+                  "logical_rule",
+                  "rule"
+                ],
+                [
+                  "direct_fact",
+                  "evidence"
+                ],
+                [
+                  "evidence_retrieval",
+                  "evidence"
+                ],
+                [
+                  "semantic_comparison",
+                  "semantic"
+                ],
+                [
+                  "consistency",
+                  "confidence"
+                ]
+              ],
+              "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+              "minimum_count": 2,
+              "target_count": 2,
+              "candidates": [
+                {
+                  "verifier_name": "semantic",
+                  "registration_order": 0,
+                  "reputation": 0.5,
+                  "observation_count": 20,
+                  "cold_start": false,
+                  "cost": 0.3,
+                  "latency": 0.4,
+                  "resource_penalty": 0.085,
+                  "suitability": 1.0,
+                  "suitability_contribution": 0.2,
+                  "utility": 0.615,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "semantic_comparison"
+                  ],
+                  "requires_reference": true,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Reference similarity is not factual correctness."
+                  ]
+                },
+                {
+                  "verifier_name": "evidence",
+                  "registration_order": 1,
+                  "reputation": 0.5,
+                  "observation_count": 0,
+                  "cold_start": true,
+                  "cost": 0.8,
+                  "latency": 0.9,
+                  "resource_penalty": 0.21000000000000002,
+                  "suitability": 0.0,
+                  "suitability_contribution": 0.0,
+                  "utility": 0.29,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "direct_fact",
+                    "evidence_retrieval"
+                  ],
+                  "requires_reference": false,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                    "Corpus/model readiness and claim coverage are unknown until execution."
+                  ]
+                },
+                {
+                  "verifier_name": "rule",
+                  "registration_order": 2,
+                  "reputation": 0.5,
+                  "observation_count": 0,
+                  "cold_start": true,
+                  "cost": 0.2,
+                  "latency": 0.2,
+                  "resource_penalty": 0.05,
+                  "suitability": 0.0,
+                  "suitability_contribution": 0.0,
+                  "utility": 0.45,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "arithmetic"
+                  ],
+                  "requires_reference": false,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                    "Other deterministic/structural checks do not establish general factual coverage."
+                  ]
+                },
+                {
+                  "verifier_name": "confidence",
+                  "registration_order": 3,
+                  "reputation": 0.866667,
+                  "observation_count": 13,
+                  "cold_start": false,
+                  "cost": 0.9,
+                  "latency": 1.0,
+                  "resource_penalty": 0.23500000000000001,
+                  "suitability": 0.0,
+                  "suitability_contribution": 0.0,
+                  "utility": 0.631667,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "consistency"
+                  ],
+                  "requires_reference": false,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Generation/judgment agreement is not factual evidence or independence.",
+                    "Provider readiness is unknown until execution."
+                  ]
+                }
+              ],
+              "initial_selected": [
+                "semantic",
+                "confidence"
+              ],
+              "fallback": [
+                "rule",
+                "evidence"
+              ],
+              "expected_covered": [
+                "semantic_comparison"
+              ],
+              "expected_uncovered": [],
+              "coverage_status": "expected_only",
+              "exclusions": [],
+              "reputation_statistics": [
+                {
+                  "verifier_name": "semantic",
+                  "domain": "general",
+                  "alpha": 11.0,
+                  "beta": 11.0,
+                  "successes": 10,
+                  "failures": 10,
+                  "observation_count": 20,
+                  "posterior_mean": 0.5,
+                  "posterior_variance": 0.010869565217391306,
+                  "cold_start": false
+                },
+                {
+                  "verifier_name": "evidence",
+                  "domain": "general",
+                  "alpha": 1.0,
+                  "beta": 1.0,
+                  "successes": 0,
+                  "failures": 0,
+                  "observation_count": 0,
+                  "posterior_mean": 0.5,
+                  "posterior_variance": 0.08333333333333333,
+                  "cold_start": true
+                },
+                {
+                  "verifier_name": "rule",
+                  "domain": "general",
+                  "alpha": 1.0,
+                  "beta": 1.0,
+                  "successes": 0,
+                  "failures": 0,
+                  "observation_count": 0,
+                  "posterior_mean": 0.5,
+                  "posterior_variance": 0.08333333333333333,
+                  "cold_start": true
+                },
+                {
+                  "verifier_name": "confidence",
+                  "domain": "general",
+                  "alpha": 13.0,
+                  "beta": 2.0,
+                  "successes": 12,
+                  "failures": 1,
+                  "observation_count": 13,
+                  "posterior_mean": 0.8666666666666667,
+                  "posterior_variance": 0.007222222222222222,
+                  "cold_start": false
+                }
+              ]
+            },
+            "termination": "complete_selected_team",
+            "early_stopping_enabled": false,
+            "fallback_enabled": false,
+            "task_id": "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+            "task_route": "domain_requirements_task_v1",
+            "policy_execution_mode": "game",
+            "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+            "policy_category": "atomic",
+            "routing_signature": [
+              "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+              "easy",
+              0.1,
+              true
+            ],
+            "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+            "pre_dispatch_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+            "pre_dispatch_compatibility_proof": {
+              "version": "reference_source_resource_transition_v1",
+              "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+              "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+              "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+              "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+              "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+                "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+                "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+                "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "index_observation": null,
+              "active_instances_checked": true,
+              "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+            }
+          }
+        }
+      }
+    ],
+    "final_status": "passed",
+    "final_score": 1.0,
+    "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [
+      "confidence",
+      "semantic"
+    ],
+    "early_stop_reason": "complete_selected_team",
+    "uncertainty_reasons": [],
+    "signed_score": 1.0,
+    "execution_audit": {
+      "audit_version": "game_execution_audit_v1",
+      "execution_mode": "flexible_game",
+      "episode_id": "registered-ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "effective_configuration_fingerprint": "73fb155808f577ad984c12f55cdc9366755a9548b15bd2b0a4857effd26e38bb",
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+      "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+      "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+      "offline_evaluation_id": "a588ccb4a7c750a66da49be09229969312be5c2034a3885f92f6ddc8df241e73",
+      "selected_strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+      "team": [
+        "confidence",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "threshold": 0.55,
+      "execution_contract": {
+        "version": "offline_public_decision_v4",
+        "coverage_version": "task_output_contract_v2",
+        "contributor_version": "informative_history_influence_v1",
+        "threshold": 0.55,
+        "failure_contract": "all_selected_returned",
+        "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+        "history_prior_alpha": 1.0,
+        "history_prior_beta": 1.0,
+        "resource_manifest": {
+          "version": "game_resource_manifest_v1",
+          "verifiers": [
+            {
+              "verifier_name": "confidence",
+              "resources": [
+                {
+                  "resource_id": "confidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "confidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                },
+                {
+                  "resource_id": "ollama-model",
+                  "kind": "model",
+                  "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                },
+                {
+                  "resource_id": "self-consistency-short-answer",
+                  "kind": "prompt",
+                  "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                },
+                {
+                  "resource_id": "ollama-service",
+                  "kind": "service",
+                  "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+                }
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "resources": [
+                {
+                  "resource_id": "evidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "evidence-corpus",
+                  "kind": "corpus",
+                  "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                },
+                {
+                  "resource_id": "evidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                },
+                {
+                  "resource_id": "evidence-index",
+                  "kind": "index",
+                  "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                }
+              ]
+            },
+            {
+              "verifier_name": "rule",
+              "resources": [
+                {
+                  "resource_id": "rule-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "rule-implementation",
+                  "kind": "implementation",
+                  "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                }
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "resources": [
+                {
+                  "resource_id": "semantic-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "semantic-implementation",
+                  "kind": "implementation",
+                  "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                }
+              ]
+            }
+          ]
+        },
+        "team_requirements": {
+          "version": "flexible_team_requirements_v1",
+          "minimum_selected": 1,
+          "minimum_informative": 1
+        }
+      },
+      "execution_configuration_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "dependency_assumptions": [
+        "configured compromise pathways; conservative connected components",
+        "unresolved verifiers share one unknown compromise pathway",
+        "observed provenance is audit-only and never rewrites this registry"
+      ],
+      "budget": 16594.78458249673,
+      "cost_units": "ms",
+      "estimated_selected_cost": 16530.8084824979,
+      "estimated_attempted_cost": 16530.8084824979,
+      "attempted_verifiers": [
+        "confidence",
+        "semantic"
+      ],
+      "attempts": [
+        {
+          "verifier_name": "confidence",
+          "estimated_attempt_cost": 16428.737124999952,
+          "state": "directional"
+        },
+        {
+          "verifier_name": "semantic",
+          "estimated_attempt_cost": 102.07135749794816,
+          "state": "directional"
+        }
+      ],
+      "selection_status": "selected",
+      "selection_reasons": [],
+      "numerical_decision": {
+        "domain": "general",
+        "status": "passed",
+        "raw_score": 1.0,
+        "score": 1.0,
+        "threshold": 0.55,
+        "aggregation": "log_odds",
+        "votes": [
+          {
+            "verifier_name": "confidence",
+            "abstained": false,
+            "passed": true,
+            "confidence": 1.0,
+            "reputation": 0.8666666666666667,
+            "weight": 1.8718021769015918,
+            "contribution": 1.8718021769015918,
+            "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+            "normalized_strength": 1.0,
+            "reliability_strength": 0.7333333333333334,
+            "included": true,
+            "inclusion_reason": "included",
+            "failure_group_id": null
+          },
+          {
+            "verifier_name": "semantic",
+            "abstained": false,
+            "passed": true,
+            "confidence": 0.8967220807206071,
+            "reputation": 0.5,
+            "weight": 0.0,
+            "contribution": 0.0,
+            "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+            "normalized_strength": 0.8967220807206071,
+            "reliability_strength": 0.0,
+            "included": false,
+            "inclusion_reason": "zero_log_odds_weight",
+            "failure_group_id": null
+          }
+        ],
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "reputation_snapshot_id": "dd89678c65a3308bab1ab5803921742c7a4423cc51eae737ea65b80d90cafefc",
+        "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+        "team": [
+          "confidence",
+          "semantic"
+        ],
+        "missing_reports": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "dependency_assumptions": [],
+        "groups": [],
+        "fallback": null,
+        "lower_cut": -0.55,
+        "upper_cut": 0.55
+      },
+      "public_status": "passed",
+      "override_reasons": [],
+      "contributors": 1,
+      "minimum_contributors": 1,
+      "minimum_selected_team_size": 1,
+      "pooling_contract_json": null,
+      "expected_resource_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "required": [
+        "semantic_comparison"
+      ],
+      "achieved": [
+        "semantic_comparison"
+      ],
+      "unresolved": [],
+      "reference_resource_compatibility": {
+        "version": "reference_source_resource_transition_v1",
+        "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+        "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+        "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+        "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+          "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+          "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+          "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "index_observation": null,
+        "active_instances_checked": true,
+        "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+      },
+      "after_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "selection_plan": {
+        "policy_version": "coverage_greedy_v1",
+        "domain": "general",
+        "domain_status": "unknown",
+        "difficulty": "easy",
+        "difficulty_score": 0.1,
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "scoring_version": "bounded_reference_frames_v1",
+        "reference_available": true,
+        "requirements": {
+          "source": "research_context",
+          "status": "known",
+          "requirements": [
+            "semantic_comparison"
+          ],
+          "weights": [
+            [
+              "semantic_comparison",
+              1.0
+            ]
+          ],
+          "requirements_known": true,
+          "legacy_hints": [
+            "semantic_comparison"
+          ],
+          "disagreements": [],
+          "unsupported": [],
+          "errors": [],
+          "legacy_unrecognized": [],
+          "weight_discrepancies": []
+        },
+        "lambda_cost": 0.15,
+        "lambda_latency": 0.1,
+        "lambda_suitability": 0.2,
+        "type_mapping": [
+          [
+            "arithmetic",
+            "rule"
+          ],
+          [
+            "logical_rule",
+            "rule"
+          ],
+          [
+            "direct_fact",
+            "evidence"
+          ],
+          [
+            "evidence_retrieval",
+            "evidence"
+          ],
+          [
+            "semantic_comparison",
+            "semantic"
+          ],
+          [
+            "consistency",
+            "confidence"
+          ]
+        ],
+        "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+        "minimum_count": 2,
+        "target_count": 2,
+        "candidates": [
+          {
+            "verifier_name": "semantic",
+            "registration_order": 0,
+            "reputation": 0.5,
+            "observation_count": 20,
+            "cold_start": false,
+            "cost": 0.3,
+            "latency": 0.4,
+            "resource_penalty": 0.085,
+            "suitability": 1.0,
+            "suitability_contribution": 0.2,
+            "utility": 0.615,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "requires_reference": true,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ]
+          },
+          {
+            "verifier_name": "evidence",
+            "registration_order": 1,
+            "reputation": 0.5,
+            "observation_count": 0,
+            "cold_start": true,
+            "cost": 0.8,
+            "latency": 0.9,
+            "resource_penalty": 0.21000000000000002,
+            "suitability": 0.0,
+            "suitability_contribution": 0.0,
+            "utility": 0.29,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "requires_reference": false,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ]
+          },
+          {
+            "verifier_name": "rule",
+            "registration_order": 2,
+            "reputation": 0.5,
+            "observation_count": 0,
+            "cold_start": true,
+            "cost": 0.2,
+            "latency": 0.2,
+            "resource_penalty": 0.05,
+            "suitability": 0.0,
+            "suitability_contribution": 0.0,
+            "utility": 0.45,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "requires_reference": false,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ]
+          },
+          {
+            "verifier_name": "confidence",
+            "registration_order": 3,
+            "reputation": 0.866667,
+            "observation_count": 13,
+            "cold_start": false,
+            "cost": 0.9,
+            "latency": 1.0,
+            "resource_penalty": 0.23500000000000001,
+            "suitability": 0.0,
+            "suitability_contribution": 0.0,
+            "utility": 0.631667,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "requires_reference": false,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ]
+          }
+        ],
+        "initial_selected": [
+          "semantic",
+          "confidence"
+        ],
+        "fallback": [
+          "rule",
+          "evidence"
+        ],
+        "expected_covered": [
+          "semantic_comparison"
+        ],
+        "expected_uncovered": [],
+        "coverage_status": "expected_only",
+        "exclusions": [],
+        "reputation_statistics": [
+          {
+            "verifier_name": "semantic",
+            "domain": "general",
+            "alpha": 11.0,
+            "beta": 11.0,
+            "successes": 10,
+            "failures": 10,
+            "observation_count": 20,
+            "posterior_mean": 0.5,
+            "posterior_variance": 0.010869565217391306,
+            "cold_start": false
+          },
+          {
+            "verifier_name": "evidence",
+            "domain": "general",
+            "alpha": 1.0,
+            "beta": 1.0,
+            "successes": 0,
+            "failures": 0,
+            "observation_count": 0,
+            "posterior_mean": 0.5,
+            "posterior_variance": 0.08333333333333333,
+            "cold_start": true
+          },
+          {
+            "verifier_name": "rule",
+            "domain": "general",
+            "alpha": 1.0,
+            "beta": 1.0,
+            "successes": 0,
+            "failures": 0,
+            "observation_count": 0,
+            "posterior_mean": 0.5,
+            "posterior_variance": 0.08333333333333333,
+            "cold_start": true
+          },
+          {
+            "verifier_name": "confidence",
+            "domain": "general",
+            "alpha": 13.0,
+            "beta": 2.0,
+            "successes": 12,
+            "failures": 1,
+            "observation_count": 13,
+            "posterior_mean": 0.8666666666666667,
+            "posterior_variance": 0.007222222222222222,
+            "cold_start": false
+          }
+        ]
+      },
+      "termination": "complete_selected_team",
+      "early_stopping_enabled": false,
+      "fallback_enabled": false,
+      "task_id": "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+      "task_route": "domain_requirements_task_v1",
+      "policy_execution_mode": "game",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "atomic",
+      "routing_signature": [
+        "5e9d16c7aa94b14b1dc67a9978abae8faaff5ea6e45c874a0bac9073774a4068",
+        "easy",
+        0.1,
+        true
+      ],
+      "validation_id": "67011839-42cc-47b1-ba46-dc199859ef45",
+      "pre_dispatch_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+      "pre_dispatch_compatibility_proof": {
+        "version": "reference_source_resource_transition_v1",
+        "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+        "historical_manifest_id": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+        "intermediate_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+        "observed_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+        "reference_source_capsule_id": "8ae545bf6762dfcc1708be8ef41f347e9f8d2d94d0d05ad8a13782ed639579bc",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "2f08822d9911145cce1d5fbc66bbf040430e1f349aa23bd10edda180a931b50f",
+          "expected_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+          "historical_resource_manifest_id": "273dff5615ee409f65c4f063a537b84db3685668f3a68ece41073e3b91e25714",
+          "observed_resource_manifest_id": "9e8ad4472d0e965e4e47663f0f727777d7364eee18c7a94c1b1e4638866873b3",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "ad5b716491c91068bb72737f379393d8b24d633c98d897c8d17433f0057ae4b0",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "index_observation": null,
+        "active_instances_checked": true,
+        "proof_id": "482a4a8495e87fa290cf21e064c3102c3074f27ef5dc9b7f11042878c21aac9c"
+      }
+    }
+  }
+}

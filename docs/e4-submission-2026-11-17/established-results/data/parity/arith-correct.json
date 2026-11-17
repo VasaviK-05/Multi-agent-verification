@@ -1,0 +1,166 @@
+{
+  "case": "arith-correct",
+  "started_utc": "2026-11-17T10:51:35.401683+00:00",
+  "finished_utc": "2026-11-17T10:51:35.414622+00:00",
+  "execution_kind": "exact_retained_report_replay_through_existing_runtime_finalize_decision",
+  "new_inference": false,
+  "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+  "context_compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+  "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "contract_hash": "f0b37f446344e6dadf932a8f47c7d8bccdb19d8a637b2b32c7791c0f27b37af1",
+  "strategy": {
+    "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+    "verifiers": [
+      "rule"
+    ],
+    "aggregation": "reputation_weighted",
+    "estimated_cost": 9.678209995036013
+  },
+  "validation_id": "0a68d379-dcc4-41ad-ab13-793787f09168",
+  "retained_report_payloads": [
+    {
+      "verifier_name": "rule",
+      "score": 1.0,
+      "passed": true,
+      "reasoning": "Expected 864; received 864.",
+      "metadata": {
+        "rule": "arithmetic_addition",
+        "rule_kind": "factual",
+        "decision": "SUPPORT",
+        "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+        "latency_ms": 0.95,
+        "expected": 864,
+        "actual": 864,
+        "expected_exact": "864",
+        "actual_exact": "864",
+        "comparison_policy": "exact Decimal equality"
+      }
+    }
+  ],
+  "retained_report_payloads_sha256": "7fc0908f4cf12d1304b4c9cfa86549acba32114024316808bb993d44f0b4ae63",
+  "report_payloads_unchanged": true,
+  "complete_selected_reports": true,
+  "expected_original_runtime": {
+    "public_status": "passed",
+    "numerical_decision": {
+      "domain": "general",
+      "status": "passed",
+      "raw_score": 1.0,
+      "score": 1.0,
+      "threshold": 0.55,
+      "aggregation": "log_odds",
+      "votes": [
+        {
+          "verifier_name": "rule",
+          "abstained": false,
+          "passed": true,
+          "confidence": 1.0,
+          "reputation": 0.9761904761904762,
+          "weight": 3.7135720667043066,
+          "contribution": 3.7135720667043066,
+          "validation_id": "0a68d379-dcc4-41ad-ab13-793787f09168",
+          "normalized_strength": 1.0,
+          "reliability_strength": 0.9523809523809523,
+          "included": true,
+          "inclusion_reason": "included",
+          "failure_group_id": null
+        }
+      ],
+      "aggregation_id": "reputation_weighted",
+      "aggregation_version": "log_odds_v1",
+      "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+      "validation_id": "0a68d379-dcc4-41ad-ab13-793787f09168",
+      "team": [
+        "rule"
+      ],
+      "missing_reports": [],
+      "dependency_configuration_id": null,
+      "dependency_version": null,
+      "dependency_assumptions": [],
+      "groups": [],
+      "fallback": null,
+      "lower_cut": -0.55,
+      "upper_cut": 0.55
+    },
+    "contributors": 1,
+    "required": [
+      "arithmetic"
+    ],
+    "achieved": [
+      "arithmetic"
+    ],
+    "unresolved": [],
+    "reasons": [],
+    "execution_states": [
+      [
+        "rule",
+        "directional"
+      ]
+    ],
+    "estimated_attempt_cost": 9.678209995036013
+  },
+  "replayed_finalization": {
+    "public_status": "passed",
+    "numerical_decision": {
+      "domain": "general",
+      "status": "passed",
+      "raw_score": 1.0,
+      "score": 1.0,
+      "threshold": 0.55,
+      "aggregation": "log_odds",
+      "votes": [
+        {
+          "verifier_name": "rule",
+          "abstained": false,
+          "passed": true,
+          "confidence": 1.0,
+          "reputation": 0.9761904761904762,
+          "weight": 3.7135720667043066,
+          "contribution": 3.7135720667043066,
+          "validation_id": "0a68d379-dcc4-41ad-ab13-793787f09168",
+          "normalized_strength": 1.0,
+          "reliability_strength": 0.9523809523809523,
+          "included": true,
+          "inclusion_reason": "included",
+          "failure_group_id": null
+        }
+      ],
+      "aggregation_id": "reputation_weighted",
+      "aggregation_version": "log_odds_v1",
+      "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+      "validation_id": "0a68d379-dcc4-41ad-ab13-793787f09168",
+      "team": [
+        "rule"
+      ],
+      "missing_reports": [],
+      "dependency_configuration_id": null,
+      "dependency_version": null,
+      "dependency_assumptions": [],
+      "groups": [],
+      "fallback": null,
+      "lower_cut": -0.55,
+      "upper_cut": 0.55
+    },
+    "contributors": 1,
+    "required": [
+      "arithmetic"
+    ],
+    "achieved": [
+      "arithmetic"
+    ],
+    "unresolved": [],
+    "reasons": [],
+    "execution_states": [
+      [
+        "rule",
+        "directional"
+      ]
+    ],
+    "estimated_attempt_cost": 9.678209995036013
+  },
+  "differences": {},
+  "exact_match": true,
+  "runtime_record": "evidence/current-api/correct/response.json",
+  "policy_record": "data/configuration/arithmetic-policy.json",
+  "scope": "Exact selected Rule reports replayed through existing pure runtime finalization"
+}

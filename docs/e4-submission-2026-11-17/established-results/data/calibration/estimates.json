@@ -1,0 +1,89 @@
+{
+  "calibration_id": "cc7e7ca8882f602b9854bf21b80b8a7bf70f6c70d05ccd12787322a84a12477d",
+  "method": "mean_attempt_wall_time_ms_v1",
+  "cost_units": "ms",
+  "input_digest": "543991e00c2c3d19b31f30d226167021a22a27d78cf6c3d0cab3645e9ebed629",
+  "result": {
+    "estimates": [
+      {
+        "verifier_name": "confidence",
+        "attempt_cost": 14925.820978323463,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 14925.820978323463,
+        "median_ms": 13753.990900004283,
+        "p95_nearest_rank_ms": 24120.17620005645
+      },
+      {
+        "verifier_name": "evidence",
+        "attempt_cost": 107.93551665459138,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 107.93551665459138,
+        "median_ms": 63.834649859927595,
+        "p95_nearest_rank_ms": 340.4300999827683
+      },
+      {
+        "verifier_name": "rule",
+        "attempt_cost": 0.09707332161876063,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 0.09707332161876063,
+        "median_ms": 0.07880001794546843,
+        "p95_nearest_rank_ms": 0.2321999054402113
+      },
+      {
+        "verifier_name": "semantic",
+        "attempt_cost": 70.4728633359385,
+        "attempts": 120,
+        "failures": 0,
+        "mean_ms": 70.4728633359385,
+        "median_ms": 38.655450101941824,
+        "p95_nearest_rank_ms": 189.06880007125437
+      }
+    ],
+    "exclusions": [
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-gsm8k-0b18a313b7babb3f32d250a86e4199c826ec4b2235a6637047769998ed645c76",
+        "verifier_name": "semantic",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-gsm8k-0b18a313b7babb3f32d250a86e4199c826ec4b2235a6637047769998ed645c76",
+        "verifier_name": "evidence",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-gsm8k-0b18a313b7babb3f32d250a86e4199c826ec4b2235a6637047769998ed645c76",
+        "verifier_name": "rule",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-gsm8k-0b18a313b7babb3f32d250a86e4199c826ec4b2235a6637047769998ed645c76",
+        "verifier_name": "confidence",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-hotpotqa-7ec1c396755c713a49eeae1c32242bb0fc77641e8b0d2b47bb343d0871b58bf9",
+        "verifier_name": "semantic",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-hotpotqa-7ec1c396755c713a49eeae1c32242bb0fc77641e8b0d2b47bb343d0871b58bf9",
+        "verifier_name": "evidence",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-hotpotqa-7ec1c396755c713a49eeae1c32242bb0fc77641e8b0d2b47bb343d0871b58bf9",
+        "verifier_name": "rule",
+        "reason": "warmup_excluded"
+      },
+      {
+        "run_id": "rv1dc-20261110-v1-warmup-hotpotqa-7ec1c396755c713a49eeae1c32242bb0fc77641e8b0d2b47bb343d0871b58bf9",
+        "verifier_name": "confidence",
+        "reason": "warmup_excluded"
+      }
+    ]
+  },
+  "include_warmups": false
+}

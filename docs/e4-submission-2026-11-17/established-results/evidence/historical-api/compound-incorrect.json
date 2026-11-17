@@ -1,0 +1,3494 @@
+{
+  "id": "compound-incorrect",
+  "category": "compound",
+  "fixture": "local-acceptance-plan-v1/6ff91d1eca8d593c2df34944a28fe90383928c33a7753e4bfc3488f00fb292e9",
+  "expected_correct": false,
+  "payload": {
+    "question": "What is the population of Cameroon, and what is that population plus 1000? Give both values.",
+    "answer": "{\"base\":\"29879337\",\"derived\":\"29880336\"}"
+  },
+  "http_status": 200,
+  "latency_ms": 5496.99,
+  "transport_error": null,
+  "validation_id": "1fca31e0-fad3-471e-98d7-c04d3e0ee3db",
+  "final_status": "failed",
+  "final_score": null,
+  "signed_score": null,
+  "execution_audit": {
+    "public_status": "failed",
+    "execution_mode": "flexible_game",
+    "selection_status": "selected",
+    "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+    "selected_strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+    "plan_id": "312a580fb61d3cf0b86f7019ee3f0f466183fc42e0b1b35ae3d1dbedd4a22edc",
+    "team": [
+      "evidence",
+      "rule"
+    ],
+    "attempts": [
+      {
+        "component_id": "base_fact",
+        "verifier_name": "evidence",
+        "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+        "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+        "call_id": "b858bf08e0673382aed703408a7c156e72ab132e0b2382cbdd084278cc8e86a7",
+        "question": "What is the population of Cameroon?",
+        "answer": "The population of Cameroon is 29879337.",
+        "estimated_cost": 84.07056144642411,
+        "report": {
+          "verifier_name": "evidence",
+          "score": 0.990161657333374,
+          "passed": true,
+          "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: CM. Claim: The population of Cameroon is 29879337. NLI confidence: 0.9902.",
+          "metadata": {
+            "decision": "SUPPORT",
+            "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+            "nli_label": "entailment",
+            "nli_model": "cross-encoder/nli-deberta-v3-small",
+            "nli_output_shape": "list[dict]",
+            "unsure_reason": null,
+            "diagnostic_code": null,
+            "top_k": 3,
+            "min_retrieval_score": 0.45,
+            "retrieval_margin": 0.15,
+            "min_nli_score": 0.5,
+            "min_topic_coverage": 0.5,
+            "topic_margin": 0.3,
+            "max_premise_windows": 3,
+            "thresholds_calibrated": false,
+            "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+            "index_version": "idx-0b78f878aa86",
+            "claims": [
+              "The population of Cameroon is 29879337."
+            ],
+            "claim_decisions": [
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "claim": "The population of Cameroon is 29879337.",
+                "hypothesis": "The population of Cameroon is 29879337.",
+                "template": "statement",
+                "decision": "SUPPORT",
+                "confidence": 0.990161657333374,
+                "unsure_reason": null,
+                "best_retrieval_score": 0.8060322403907776,
+                "deciding_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "evidence_refs": {
+                  "supporting": [
+                    "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                  ],
+                  "contradicting": [],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "evaluated": [
+                    "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                  ],
+                  "discarded": [
+                    "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                    "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                  ]
+                }
+              }
+            ],
+            "unchecked_claims": [],
+            "supporting": [
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "title": "CM",
+                "chunk_id": 54,
+                "url": "https://www.geonames.org/countries/CM/",
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "retrieval_score": 0.8060322403907776,
+                "topic_coverage": 1.0,
+                "nli_label": "entailment",
+                "nli_score": 0.990161657333374,
+                "excerpt": "The population of Cameroon is 29879337."
+              }
+            ],
+            "contradicting": [],
+            "ignored_contradictions": [],
+            "ignored_support": [],
+            "evaluated_evidence": [
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "title": "CM",
+                "chunk_id": 54,
+                "url": "https://www.geonames.org/countries/CM/",
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "retrieval_score": 0.8060322403907776,
+                "relevant_evidence": "The population of Cameroon is 29879337.",
+                "match_score": 4,
+                "fact_score": 12,
+                "value_relation": "match",
+                "quantity_kinds": [
+                  "number"
+                ],
+                "quantity_scope_aligned": true,
+                "claim_names_in_premise": true,
+                "office_holder_consistent": true,
+                "relation_aligned": true,
+                "nli_label": "entailment",
+                "nli_score": 0.990161657333374,
+                "probabilities": {
+                  "entailment": 0.990161657333374,
+                  "neutral": 0.007839271798729897,
+                  "contradiction": 0.0019990354776382446
+                },
+                "nli_output_shape": "list[dict]",
+                "premise_windows": [
+                  {
+                    "premise": "The population of Cameroon is 29879337.",
+                    "nli_label": "entailment",
+                    "probabilities": {
+                      "entailment": 0.990161657333374,
+                      "neutral": 0.007839271798729897,
+                      "contradiction": 0.0019990354776382446
+                    },
+                    "token_count": 21,
+                    "title_dependent": false,
+                    "fact_score": 12,
+                    "value_relation": "match"
+                  }
+                ],
+                "topic_coverage": 1.0,
+                "missing_anchor_terms": [],
+                "missing_numbers": [],
+                "missing_event_identifiers": [],
+                "about_subject": true,
+                "title_covers_event": false,
+                "article_covers_event": true,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "condition_consistent": true,
+                "eligibility_basis": "lexical_subject",
+                "discard_code": "candidate_retained_for_nli"
+              }
+            ],
+            "discarded_evidence": [
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "title": "MV",
+                "chunk_id": 5,
+                "url": "https://www.geonames.org/countries/MV/",
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "retrieval_score": 0.4911121129989624,
+                "topic_coverage": 0.24023221105427947,
+                "missing_anchor_terms": [
+                  "cameroon"
+                ],
+                "missing_numbers": [],
+                "missing_event_identifiers": [],
+                "about_subject": false,
+                "title_covers_event": false,
+                "article_covers_event": false,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "condition_consistent": true,
+                "eligibility_basis": null,
+                "reason": "article title is about a different subject than the question",
+                "discard_code": "off_subject"
+              },
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "title": "IN",
+                "chunk_id": 2,
+                "url": "https://www.geonames.org/countries/IN/",
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "retrieval_score": 0.4321584701538086,
+                "topic_coverage": 0.24023221105427947,
+                "missing_anchor_terms": [
+                  "cameroon"
+                ],
+                "missing_numbers": [],
+                "missing_event_identifiers": [],
+                "about_subject": false,
+                "title_covers_event": false,
+                "article_covers_event": false,
+                "entity_consistent": true,
+                "event_consistent": true,
+                "condition_consistent": true,
+                "eligibility_basis": null,
+                "reason": "article title is about a different subject than the question",
+                "discard_code": "off_subject"
+              }
+            ],
+            "candidate_pipeline": [
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "article_id": "CM",
+                "article_key": "url:https://www.geonames.org/countries/CM/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                "index_ref": "idx-0b78f878aa86:CM:54",
+                "title": "CM",
+                "chunk_id": 54,
+                "retrieval_score": 0.8060322403907776,
+                "passed_select_relevant": true,
+                "passed_on_topic": true,
+                "nli_executed": true,
+                "discard_code": null
+              },
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "article_id": "BE",
+                "article_key": "url:https://www.geonames.org/countries/BE/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                "index_ref": "idx-0b78f878aa86:BE:14",
+                "title": "BE",
+                "chunk_id": 14,
+                "retrieval_score": 0.582128643989563,
+                "passed_select_relevant": false,
+                "passed_on_topic": false,
+                "nli_executed": false,
+                "discard_code": null
+              },
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "article_id": "GA",
+                "article_key": "url:https://www.geonames.org/countries/GA/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/GA/#8d99510e73ba",
+                "index_ref": "idx-0b78f878aa86:GA:28",
+                "title": "GA",
+                "chunk_id": 28,
+                "retrieval_score": 0.5356345176696777,
+                "passed_select_relevant": false,
+                "passed_on_topic": false,
+                "nli_executed": false,
+                "discard_code": null
+              },
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "article_id": "MV",
+                "article_key": "url:https://www.geonames.org/countries/MV/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "index_ref": "idx-0b78f878aa86:MV:5",
+                "title": "MV",
+                "chunk_id": 5,
+                "retrieval_score": 0.4911121129989624,
+                "passed_select_relevant": true,
+                "passed_on_topic": false,
+                "nli_executed": false,
+                "discard_code": "off_subject"
+              },
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "article_id": "IN",
+                "article_key": "url:https://www.geonames.org/countries/IN/",
+                "article_key_scope": "global",
+                "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                "index_ref": "idx-0b78f878aa86:IN:2",
+                "title": "IN",
+                "chunk_id": 2,
+                "retrieval_score": 0.4321584701538086,
+                "passed_select_relevant": true,
+                "passed_on_topic": false,
+                "nli_executed": false,
+                "discard_code": "off_subject"
+              }
+            ],
+            "retrieved_counts": [
+              {
+                "claim_index": 0,
+                "claim_id": "claim-0",
+                "retrieved_count": 5
+              }
+            ],
+            "deciding_claim_id": "claim-0",
+            "evidence_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+            "evidence_title": "CM",
+            "evidence_chunk_id": 54,
+            "retrieval_score": 0.8060322403907776,
+            "best_retrieval_score": 0.8060322403907776,
+            "latency_ms": 77.37,
+            "latency_breakdown_ms": {
+              "retrieval": 10.72,
+              "nli": 64.88,
+              "total": 77.37
+            },
+            "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+            "component_id": "base_fact",
+            "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702"
+          }
+        },
+        "state": "directional",
+        "elapsed_ms": 80.60910005588084
+      },
+      {
+        "component_id": "derived_sum",
+        "verifier_name": "rule",
+        "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+        "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+        "call_id": "ac707de8319df0246ee980e8503f390ed4ce6126a15a1652e995a2e698e6647e",
+        "question": "What is 29879337 + 1000?",
+        "answer": "29880336",
+        "estimated_cost": 0.12252813515563805,
+        "report": {
+          "verifier_name": "rule",
+          "score": 0.0,
+          "passed": false,
+          "reasoning": "Expected 29880337; received 29880336.",
+          "metadata": {
+            "rule": "arithmetic_addition",
+            "rule_kind": "factual",
+            "decision": "REJECT",
+            "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+            "latency_ms": 0.06,
+            "expected": 29880337,
+            "actual": 29880336,
+            "expected_exact": "29880337",
+            "actual_exact": "29880336",
+            "comparison_policy": "exact Decimal equality",
+            "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+            "component_id": "derived_sum",
+            "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2"
+          }
+        },
+        "state": "directional",
+        "elapsed_ms": 0.3104000352323055
+      }
+    ],
+    "components": [
+      {
+        "component_id": "base_fact",
+        "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+        "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+        "depends_on": [],
+        "public_status": "passed",
+        "required": [
+          "direct_fact"
+        ],
+        "achieved": [
+          "direct_fact"
+        ],
+        "unresolved": [],
+        "reasons": [],
+        "detail": {
+          "domain": "general",
+          "status": "passed",
+          "raw_score": 0.990161657333374,
+          "score": 0.990162,
+          "threshold": 0.55,
+          "aggregation": "log_odds",
+          "votes": [
+            {
+              "verifier_name": "evidence",
+              "abstained": false,
+              "passed": true,
+              "confidence": 0.990161657333374,
+              "reputation": 0.9615384615384615,
+              "weight": 3.2188758248681983,
+              "contribution": 3.1872074215018267,
+              "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+              "normalized_strength": 0.990161657333374,
+              "reliability_strength": 0.9230769230769229,
+              "included": true,
+              "inclusion_reason": "included",
+              "failure_group_id": null
+            }
+          ],
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "reputation_snapshot_id": "32eb40e0c594afba4edd0ee1aa6a7b1ba37d9c1d10c94ca93f27b929be3132d8",
+          "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+          "team": [
+            "evidence"
+          ],
+          "missing_reports": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "dependency_assumptions": [],
+          "groups": [],
+          "fallback": null,
+          "lower_cut": -0.55,
+          "upper_cut": 0.55
+        },
+        "states": [
+          [
+            "evidence",
+            "directional"
+          ]
+        ]
+      },
+      {
+        "component_id": "derived_sum",
+        "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+        "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+        "depends_on": [
+          "base_fact"
+        ],
+        "public_status": "failed",
+        "required": [
+          "arithmetic"
+        ],
+        "achieved": [
+          "arithmetic"
+        ],
+        "unresolved": [],
+        "reasons": [],
+        "detail": {
+          "domain": "general",
+          "status": "failed",
+          "raw_score": -1.0,
+          "score": -1.0,
+          "threshold": 0.55,
+          "aggregation": "log_odds",
+          "votes": [
+            {
+              "verifier_name": "rule",
+              "abstained": false,
+              "passed": false,
+              "confidence": 1.0,
+              "reputation": 0.98,
+              "weight": 3.8918202981106256,
+              "contribution": -3.8918202981106256,
+              "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+              "normalized_strength": -1.0,
+              "reliability_strength": 0.96,
+              "included": true,
+              "inclusion_reason": "included",
+              "failure_group_id": null
+            }
+          ],
+          "aggregation_id": "reputation_weighted",
+          "aggregation_version": "log_odds_v1",
+          "reputation_snapshot_id": "cdef557e34f6ce3c7c536e5b25f08536e4ec0271b769f7671b511ab277dff4be",
+          "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+          "team": [
+            "rule"
+          ],
+          "missing_reports": [],
+          "dependency_configuration_id": null,
+          "dependency_version": null,
+          "dependency_assumptions": [],
+          "groups": [],
+          "fallback": null,
+          "lower_cut": -0.55,
+          "upper_cut": 0.55
+        },
+        "states": [
+          [
+            "rule",
+            "directional"
+          ]
+        ]
+      }
+    ],
+    "historical_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+    "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+    "resource_compatibility": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+    },
+    "after_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+    "resource_compatibility_after": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+    },
+    "resource_observation_error": null,
+    "contributors": [
+      "evidence",
+      "rule"
+    ],
+    "contributor_count": 2,
+    "dependency_assumptions": {
+      "version": "multitask-observed-dependencies-v1",
+      "dependencies": [
+        {
+          "resource_id": "local-embedding-snapshot",
+          "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verifiers": [
+            "evidence",
+            "semantic"
+          ]
+        },
+        {
+          "resource_id": "local-nli-snapshot",
+          "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verifiers": [
+            "confidence",
+            "evidence"
+          ]
+        }
+      ],
+      "unresolved": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "unknown_treatment": "shared_unknown"
+    },
+    "estimated_selected_cost": 84.19308958157974,
+    "estimated_attempted_cost": 84.19308958157974,
+    "override_reasons": [],
+    "termination": "complete_selected_team",
+    "early_stopping_enabled": false,
+    "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+    "evidence_kind": "empirical",
+    "joint_evidence_id": "570af35064f7124d37794be4df060e83449ad14980e93db9a52a3483c72ee45f",
+    "policy_execution_mode": "component_policy",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "component",
+    "routing_signature": [
+      "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+      "two_required_checks",
+      2.0,
+      false
+    ],
+    "artifact_id": null,
+    "validation_id": "1fca31e0-fad3-471e-98d7-c04d3e0ee3db",
+    "pre_dispatch_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+    "pre_dispatch_compatibility_proof": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+    }
+  },
+  "results": [
+    {
+      "verifier_name": "evidence",
+      "score": 0.990161657333374,
+      "passed": true,
+      "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: CM. Claim: The population of Cameroon is 29879337. NLI confidence: 0.9902.",
+      "metadata": {
+        "decision": "SUPPORT",
+        "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+        "nli_label": "entailment",
+        "nli_model": "cross-encoder/nli-deberta-v3-small",
+        "nli_output_shape": "list[dict]",
+        "unsure_reason": null,
+        "diagnostic_code": null,
+        "top_k": 3,
+        "min_retrieval_score": 0.45,
+        "retrieval_margin": 0.15,
+        "min_nli_score": 0.5,
+        "min_topic_coverage": 0.5,
+        "topic_margin": 0.3,
+        "max_premise_windows": 3,
+        "thresholds_calibrated": false,
+        "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "index_version": "idx-0b78f878aa86",
+        "claims": [
+          "The population of Cameroon is 29879337."
+        ],
+        "claim_decisions": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "claim": "The population of Cameroon is 29879337.",
+            "hypothesis": "The population of Cameroon is 29879337.",
+            "template": "statement",
+            "decision": "SUPPORT",
+            "confidence": 0.990161657333374,
+            "unsure_reason": null,
+            "best_retrieval_score": 0.8060322403907776,
+            "deciding_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+            "evidence_refs": {
+              "supporting": [
+                "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+              ],
+              "contradicting": [],
+              "ignored_contradictions": [],
+              "ignored_support": [],
+              "evaluated": [
+                "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+              ],
+              "discarded": [
+                "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+              ]
+            }
+          }
+        ],
+        "unchecked_claims": [],
+        "supporting": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "CM",
+            "chunk_id": 54,
+            "url": "https://www.geonames.org/countries/CM/",
+            "article_id": "CM",
+            "article_key": "url:https://www.geonames.org/countries/CM/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+            "index_ref": "idx-0b78f878aa86:CM:54",
+            "retrieval_score": 0.8060322403907776,
+            "topic_coverage": 1.0,
+            "nli_label": "entailment",
+            "nli_score": 0.990161657333374,
+            "excerpt": "The population of Cameroon is 29879337."
+          }
+        ],
+        "contradicting": [],
+        "ignored_contradictions": [],
+        "ignored_support": [],
+        "evaluated_evidence": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "CM",
+            "chunk_id": 54,
+            "url": "https://www.geonames.org/countries/CM/",
+            "article_id": "CM",
+            "article_key": "url:https://www.geonames.org/countries/CM/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+            "index_ref": "idx-0b78f878aa86:CM:54",
+            "retrieval_score": 0.8060322403907776,
+            "relevant_evidence": "The population of Cameroon is 29879337.",
+            "match_score": 4,
+            "fact_score": 12,
+            "value_relation": "match",
+            "quantity_kinds": [
+              "number"
+            ],
+            "quantity_scope_aligned": true,
+            "claim_names_in_premise": true,
+            "office_holder_consistent": true,
+            "relation_aligned": true,
+            "nli_label": "entailment",
+            "nli_score": 0.990161657333374,
+            "probabilities": {
+              "entailment": 0.990161657333374,
+              "neutral": 0.007839271798729897,
+              "contradiction": 0.0019990354776382446
+            },
+            "nli_output_shape": "list[dict]",
+            "premise_windows": [
+              {
+                "premise": "The population of Cameroon is 29879337.",
+                "nli_label": "entailment",
+                "probabilities": {
+                  "entailment": 0.990161657333374,
+                  "neutral": 0.007839271798729897,
+                  "contradiction": 0.0019990354776382446
+                },
+                "token_count": 21,
+                "title_dependent": false,
+                "fact_score": 12,
+                "value_relation": "match"
+              }
+            ],
+            "topic_coverage": 1.0,
+            "missing_anchor_terms": [],
+            "missing_numbers": [],
+            "missing_event_identifiers": [],
+            "about_subject": true,
+            "title_covers_event": false,
+            "article_covers_event": true,
+            "entity_consistent": true,
+            "event_consistent": true,
+            "condition_consistent": true,
+            "eligibility_basis": "lexical_subject",
+            "discard_code": "candidate_retained_for_nli"
+          }
+        ],
+        "discarded_evidence": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "MV",
+            "chunk_id": 5,
+            "url": "https://www.geonames.org/countries/MV/",
+            "article_id": "MV",
+            "article_key": "url:https://www.geonames.org/countries/MV/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+            "index_ref": "idx-0b78f878aa86:MV:5",
+            "retrieval_score": 0.4911121129989624,
+            "topic_coverage": 0.24023221105427947,
+            "missing_anchor_terms": [
+              "cameroon"
+            ],
+            "missing_numbers": [],
+            "missing_event_identifiers": [],
+            "about_subject": false,
+            "title_covers_event": false,
+            "article_covers_event": false,
+            "entity_consistent": true,
+            "event_consistent": true,
+            "condition_consistent": true,
+            "eligibility_basis": null,
+            "reason": "article title is about a different subject than the question",
+            "discard_code": "off_subject"
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "IN",
+            "chunk_id": 2,
+            "url": "https://www.geonames.org/countries/IN/",
+            "article_id": "IN",
+            "article_key": "url:https://www.geonames.org/countries/IN/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+            "index_ref": "idx-0b78f878aa86:IN:2",
+            "retrieval_score": 0.4321584701538086,
+            "topic_coverage": 0.24023221105427947,
+            "missing_anchor_terms": [
+              "cameroon"
+            ],
+            "missing_numbers": [],
+            "missing_event_identifiers": [],
+            "about_subject": false,
+            "title_covers_event": false,
+            "article_covers_event": false,
+            "entity_consistent": true,
+            "event_consistent": true,
+            "condition_consistent": true,
+            "eligibility_basis": null,
+            "reason": "article title is about a different subject than the question",
+            "discard_code": "off_subject"
+          }
+        ],
+        "candidate_pipeline": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "CM",
+            "article_key": "url:https://www.geonames.org/countries/CM/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+            "index_ref": "idx-0b78f878aa86:CM:54",
+            "title": "CM",
+            "chunk_id": 54,
+            "retrieval_score": 0.8060322403907776,
+            "passed_select_relevant": true,
+            "passed_on_topic": true,
+            "nli_executed": true,
+            "discard_code": null
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "BE",
+            "article_key": "url:https://www.geonames.org/countries/BE/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "index_ref": "idx-0b78f878aa86:BE:14",
+            "title": "BE",
+            "chunk_id": 14,
+            "retrieval_score": 0.582128643989563,
+            "passed_select_relevant": false,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": null
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "GA",
+            "article_key": "url:https://www.geonames.org/countries/GA/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/GA/#8d99510e73ba",
+            "index_ref": "idx-0b78f878aa86:GA:28",
+            "title": "GA",
+            "chunk_id": 28,
+            "retrieval_score": 0.5356345176696777,
+            "passed_select_relevant": false,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": null
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "MV",
+            "article_key": "url:https://www.geonames.org/countries/MV/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+            "index_ref": "idx-0b78f878aa86:MV:5",
+            "title": "MV",
+            "chunk_id": 5,
+            "retrieval_score": 0.4911121129989624,
+            "passed_select_relevant": true,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": "off_subject"
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "IN",
+            "article_key": "url:https://www.geonames.org/countries/IN/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+            "index_ref": "idx-0b78f878aa86:IN:2",
+            "title": "IN",
+            "chunk_id": 2,
+            "retrieval_score": 0.4321584701538086,
+            "passed_select_relevant": true,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": "off_subject"
+          }
+        ],
+        "retrieved_counts": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "retrieved_count": 5
+          }
+        ],
+        "deciding_claim_id": "claim-0",
+        "evidence_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+        "evidence_title": "CM",
+        "evidence_chunk_id": 54,
+        "retrieval_score": 0.8060322403907776,
+        "best_retrieval_score": 0.8060322403907776,
+        "latency_ms": 77.37,
+        "latency_breakdown_ms": {
+          "retrieval": 10.72,
+          "nli": 64.88,
+          "total": 77.37
+        },
+        "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+        "component_id": "base_fact",
+        "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702"
+      }
+    },
+    {
+      "verifier_name": "rule",
+      "score": 0.0,
+      "passed": false,
+      "reasoning": "Expected 29880337; received 29880336.",
+      "metadata": {
+        "rule": "arithmetic_addition",
+        "rule_kind": "factual",
+        "decision": "REJECT",
+        "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+        "latency_ms": 0.06,
+        "expected": 29880337,
+        "actual": 29880336,
+        "expected_exact": "29880337",
+        "actual_exact": "29880336",
+        "comparison_policy": "exact Decimal equality",
+        "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+        "component_id": "derived_sum",
+        "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+        "multi_agent_verification.execution": {
+          "public_status": "failed",
+          "execution_mode": "flexible_game",
+          "selection_status": "selected",
+          "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+          "selected_strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+          "plan_id": "312a580fb61d3cf0b86f7019ee3f0f466183fc42e0b1b35ae3d1dbedd4a22edc",
+          "team": [
+            "evidence",
+            "rule"
+          ],
+          "attempts": [
+            {
+              "component_id": "base_fact",
+              "verifier_name": "evidence",
+              "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+              "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+              "call_id": "b858bf08e0673382aed703408a7c156e72ab132e0b2382cbdd084278cc8e86a7",
+              "question": "What is the population of Cameroon?",
+              "answer": "The population of Cameroon is 29879337.",
+              "estimated_cost": 84.07056144642411,
+              "report": {
+                "verifier_name": "evidence",
+                "score": 0.990161657333374,
+                "passed": true,
+                "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: CM. Claim: The population of Cameroon is 29879337. NLI confidence: 0.9902.",
+                "metadata": {
+                  "decision": "SUPPORT",
+                  "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+                  "nli_label": "entailment",
+                  "nli_model": "cross-encoder/nli-deberta-v3-small",
+                  "nli_output_shape": "list[dict]",
+                  "unsure_reason": null,
+                  "diagnostic_code": null,
+                  "top_k": 3,
+                  "min_retrieval_score": 0.45,
+                  "retrieval_margin": 0.15,
+                  "min_nli_score": 0.5,
+                  "min_topic_coverage": 0.5,
+                  "topic_margin": 0.3,
+                  "max_premise_windows": 3,
+                  "thresholds_calibrated": false,
+                  "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                  "index_version": "idx-0b78f878aa86",
+                  "claims": [
+                    "The population of Cameroon is 29879337."
+                  ],
+                  "claim_decisions": [
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "claim": "The population of Cameroon is 29879337.",
+                      "hypothesis": "The population of Cameroon is 29879337.",
+                      "template": "statement",
+                      "decision": "SUPPORT",
+                      "confidence": 0.990161657333374,
+                      "unsure_reason": null,
+                      "best_retrieval_score": 0.8060322403907776,
+                      "deciding_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                      "evidence_refs": {
+                        "supporting": [
+                          "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                        ],
+                        "contradicting": [],
+                        "ignored_contradictions": [],
+                        "ignored_support": [],
+                        "evaluated": [
+                          "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                        ],
+                        "discarded": [
+                          "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                          "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                        ]
+                      }
+                    }
+                  ],
+                  "unchecked_claims": [],
+                  "supporting": [
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "title": "CM",
+                      "chunk_id": 54,
+                      "url": "https://www.geonames.org/countries/CM/",
+                      "article_id": "CM",
+                      "article_key": "url:https://www.geonames.org/countries/CM/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                      "index_ref": "idx-0b78f878aa86:CM:54",
+                      "retrieval_score": 0.8060322403907776,
+                      "topic_coverage": 1.0,
+                      "nli_label": "entailment",
+                      "nli_score": 0.990161657333374,
+                      "excerpt": "The population of Cameroon is 29879337."
+                    }
+                  ],
+                  "contradicting": [],
+                  "ignored_contradictions": [],
+                  "ignored_support": [],
+                  "evaluated_evidence": [
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "title": "CM",
+                      "chunk_id": 54,
+                      "url": "https://www.geonames.org/countries/CM/",
+                      "article_id": "CM",
+                      "article_key": "url:https://www.geonames.org/countries/CM/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                      "index_ref": "idx-0b78f878aa86:CM:54",
+                      "retrieval_score": 0.8060322403907776,
+                      "relevant_evidence": "The population of Cameroon is 29879337.",
+                      "match_score": 4,
+                      "fact_score": 12,
+                      "value_relation": "match",
+                      "quantity_kinds": [
+                        "number"
+                      ],
+                      "quantity_scope_aligned": true,
+                      "claim_names_in_premise": true,
+                      "office_holder_consistent": true,
+                      "relation_aligned": true,
+                      "nli_label": "entailment",
+                      "nli_score": 0.990161657333374,
+                      "probabilities": {
+                        "entailment": 0.990161657333374,
+                        "neutral": 0.007839271798729897,
+                        "contradiction": 0.0019990354776382446
+                      },
+                      "nli_output_shape": "list[dict]",
+                      "premise_windows": [
+                        {
+                          "premise": "The population of Cameroon is 29879337.",
+                          "nli_label": "entailment",
+                          "probabilities": {
+                            "entailment": 0.990161657333374,
+                            "neutral": 0.007839271798729897,
+                            "contradiction": 0.0019990354776382446
+                          },
+                          "token_count": 21,
+                          "title_dependent": false,
+                          "fact_score": 12,
+                          "value_relation": "match"
+                        }
+                      ],
+                      "topic_coverage": 1.0,
+                      "missing_anchor_terms": [],
+                      "missing_numbers": [],
+                      "missing_event_identifiers": [],
+                      "about_subject": true,
+                      "title_covers_event": false,
+                      "article_covers_event": true,
+                      "entity_consistent": true,
+                      "event_consistent": true,
+                      "condition_consistent": true,
+                      "eligibility_basis": "lexical_subject",
+                      "discard_code": "candidate_retained_for_nli"
+                    }
+                  ],
+                  "discarded_evidence": [
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "title": "MV",
+                      "chunk_id": 5,
+                      "url": "https://www.geonames.org/countries/MV/",
+                      "article_id": "MV",
+                      "article_key": "url:https://www.geonames.org/countries/MV/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                      "index_ref": "idx-0b78f878aa86:MV:5",
+                      "retrieval_score": 0.4911121129989624,
+                      "topic_coverage": 0.24023221105427947,
+                      "missing_anchor_terms": [
+                        "cameroon"
+                      ],
+                      "missing_numbers": [],
+                      "missing_event_identifiers": [],
+                      "about_subject": false,
+                      "title_covers_event": false,
+                      "article_covers_event": false,
+                      "entity_consistent": true,
+                      "event_consistent": true,
+                      "condition_consistent": true,
+                      "eligibility_basis": null,
+                      "reason": "article title is about a different subject than the question",
+                      "discard_code": "off_subject"
+                    },
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "title": "IN",
+                      "chunk_id": 2,
+                      "url": "https://www.geonames.org/countries/IN/",
+                      "article_id": "IN",
+                      "article_key": "url:https://www.geonames.org/countries/IN/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                      "index_ref": "idx-0b78f878aa86:IN:2",
+                      "retrieval_score": 0.4321584701538086,
+                      "topic_coverage": 0.24023221105427947,
+                      "missing_anchor_terms": [
+                        "cameroon"
+                      ],
+                      "missing_numbers": [],
+                      "missing_event_identifiers": [],
+                      "about_subject": false,
+                      "title_covers_event": false,
+                      "article_covers_event": false,
+                      "entity_consistent": true,
+                      "event_consistent": true,
+                      "condition_consistent": true,
+                      "eligibility_basis": null,
+                      "reason": "article title is about a different subject than the question",
+                      "discard_code": "off_subject"
+                    }
+                  ],
+                  "candidate_pipeline": [
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "article_id": "CM",
+                      "article_key": "url:https://www.geonames.org/countries/CM/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                      "index_ref": "idx-0b78f878aa86:CM:54",
+                      "title": "CM",
+                      "chunk_id": 54,
+                      "retrieval_score": 0.8060322403907776,
+                      "passed_select_relevant": true,
+                      "passed_on_topic": true,
+                      "nli_executed": true,
+                      "discard_code": null
+                    },
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "article_id": "BE",
+                      "article_key": "url:https://www.geonames.org/countries/BE/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                      "index_ref": "idx-0b78f878aa86:BE:14",
+                      "title": "BE",
+                      "chunk_id": 14,
+                      "retrieval_score": 0.582128643989563,
+                      "passed_select_relevant": false,
+                      "passed_on_topic": false,
+                      "nli_executed": false,
+                      "discard_code": null
+                    },
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "article_id": "GA",
+                      "article_key": "url:https://www.geonames.org/countries/GA/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/GA/#8d99510e73ba",
+                      "index_ref": "idx-0b78f878aa86:GA:28",
+                      "title": "GA",
+                      "chunk_id": 28,
+                      "retrieval_score": 0.5356345176696777,
+                      "passed_select_relevant": false,
+                      "passed_on_topic": false,
+                      "nli_executed": false,
+                      "discard_code": null
+                    },
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "article_id": "MV",
+                      "article_key": "url:https://www.geonames.org/countries/MV/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                      "index_ref": "idx-0b78f878aa86:MV:5",
+                      "title": "MV",
+                      "chunk_id": 5,
+                      "retrieval_score": 0.4911121129989624,
+                      "passed_select_relevant": true,
+                      "passed_on_topic": false,
+                      "nli_executed": false,
+                      "discard_code": "off_subject"
+                    },
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "article_id": "IN",
+                      "article_key": "url:https://www.geonames.org/countries/IN/",
+                      "article_key_scope": "global",
+                      "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                      "index_ref": "idx-0b78f878aa86:IN:2",
+                      "title": "IN",
+                      "chunk_id": 2,
+                      "retrieval_score": 0.4321584701538086,
+                      "passed_select_relevant": true,
+                      "passed_on_topic": false,
+                      "nli_executed": false,
+                      "discard_code": "off_subject"
+                    }
+                  ],
+                  "retrieved_counts": [
+                    {
+                      "claim_index": 0,
+                      "claim_id": "claim-0",
+                      "retrieved_count": 5
+                    }
+                  ],
+                  "deciding_claim_id": "claim-0",
+                  "evidence_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                  "evidence_title": "CM",
+                  "evidence_chunk_id": 54,
+                  "retrieval_score": 0.8060322403907776,
+                  "best_retrieval_score": 0.8060322403907776,
+                  "latency_ms": 77.37,
+                  "latency_breakdown_ms": {
+                    "retrieval": 10.72,
+                    "nli": 64.88,
+                    "total": 77.37
+                  },
+                  "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                  "component_id": "base_fact",
+                  "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702"
+                }
+              },
+              "state": "directional",
+              "elapsed_ms": 80.60910005588084
+            },
+            {
+              "component_id": "derived_sum",
+              "verifier_name": "rule",
+              "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+              "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+              "call_id": "ac707de8319df0246ee980e8503f390ed4ce6126a15a1652e995a2e698e6647e",
+              "question": "What is 29879337 + 1000?",
+              "answer": "29880336",
+              "estimated_cost": 0.12252813515563805,
+              "report": {
+                "verifier_name": "rule",
+                "score": 0.0,
+                "passed": false,
+                "reasoning": "Expected 29880337; received 29880336.",
+                "metadata": {
+                  "rule": "arithmetic_addition",
+                  "rule_kind": "factual",
+                  "decision": "REJECT",
+                  "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+                  "latency_ms": 0.06,
+                  "expected": 29880337,
+                  "actual": 29880336,
+                  "expected_exact": "29880337",
+                  "actual_exact": "29880336",
+                  "comparison_policy": "exact Decimal equality",
+                  "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                  "component_id": "derived_sum",
+                  "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2"
+                }
+              },
+              "state": "directional",
+              "elapsed_ms": 0.3104000352323055
+            }
+          ],
+          "components": [
+            {
+              "component_id": "base_fact",
+              "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+              "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+              "depends_on": [],
+              "public_status": "passed",
+              "required": [
+                "direct_fact"
+              ],
+              "achieved": [
+                "direct_fact"
+              ],
+              "unresolved": [],
+              "reasons": [],
+              "detail": {
+                "domain": "general",
+                "status": "passed",
+                "raw_score": 0.990161657333374,
+                "score": 0.990162,
+                "threshold": 0.55,
+                "aggregation": "log_odds",
+                "votes": [
+                  {
+                    "verifier_name": "evidence",
+                    "abstained": false,
+                    "passed": true,
+                    "confidence": 0.990161657333374,
+                    "reputation": 0.9615384615384615,
+                    "weight": 3.2188758248681983,
+                    "contribution": 3.1872074215018267,
+                    "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                    "normalized_strength": 0.990161657333374,
+                    "reliability_strength": 0.9230769230769229,
+                    "included": true,
+                    "inclusion_reason": "included",
+                    "failure_group_id": null
+                  }
+                ],
+                "aggregation_id": "reputation_weighted",
+                "aggregation_version": "log_odds_v1",
+                "reputation_snapshot_id": "32eb40e0c594afba4edd0ee1aa6a7b1ba37d9c1d10c94ca93f27b929be3132d8",
+                "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                "team": [
+                  "evidence"
+                ],
+                "missing_reports": [],
+                "dependency_configuration_id": null,
+                "dependency_version": null,
+                "dependency_assumptions": [],
+                "groups": [],
+                "fallback": null,
+                "lower_cut": -0.55,
+                "upper_cut": 0.55
+              },
+              "states": [
+                [
+                  "evidence",
+                  "directional"
+                ]
+              ]
+            },
+            {
+              "component_id": "derived_sum",
+              "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+              "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+              "depends_on": [
+                "base_fact"
+              ],
+              "public_status": "failed",
+              "required": [
+                "arithmetic"
+              ],
+              "achieved": [
+                "arithmetic"
+              ],
+              "unresolved": [],
+              "reasons": [],
+              "detail": {
+                "domain": "general",
+                "status": "failed",
+                "raw_score": -1.0,
+                "score": -1.0,
+                "threshold": 0.55,
+                "aggregation": "log_odds",
+                "votes": [
+                  {
+                    "verifier_name": "rule",
+                    "abstained": false,
+                    "passed": false,
+                    "confidence": 1.0,
+                    "reputation": 0.98,
+                    "weight": 3.8918202981106256,
+                    "contribution": -3.8918202981106256,
+                    "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                    "normalized_strength": -1.0,
+                    "reliability_strength": 0.96,
+                    "included": true,
+                    "inclusion_reason": "included",
+                    "failure_group_id": null
+                  }
+                ],
+                "aggregation_id": "reputation_weighted",
+                "aggregation_version": "log_odds_v1",
+                "reputation_snapshot_id": "cdef557e34f6ce3c7c536e5b25f08536e4ec0271b769f7671b511ab277dff4be",
+                "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                "team": [
+                  "rule"
+                ],
+                "missing_reports": [],
+                "dependency_configuration_id": null,
+                "dependency_version": null,
+                "dependency_assumptions": [],
+                "groups": [],
+                "fallback": null,
+                "lower_cut": -0.55,
+                "upper_cut": 0.55
+              },
+              "states": [
+                [
+                  "rule",
+                  "directional"
+                ]
+              ]
+            }
+          ],
+          "historical_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "resource_compatibility": {
+            "version": "scoped_source_relocation_composition_v1",
+            "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+            "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+            "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+            "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+              "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "active_instances_checked": true,
+            "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+            "execution_scope": [
+              "evidence",
+              "rule"
+            ],
+            "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+          },
+          "after_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "resource_compatibility_after": {
+            "version": "scoped_source_relocation_composition_v1",
+            "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+            "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+            "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+            "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+              "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "active_instances_checked": true,
+            "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+            "execution_scope": [
+              "evidence",
+              "rule"
+            ],
+            "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+          },
+          "resource_observation_error": null,
+          "contributors": [
+            "evidence",
+            "rule"
+          ],
+          "contributor_count": 2,
+          "dependency_assumptions": {
+            "version": "multitask-observed-dependencies-v1",
+            "dependencies": [
+              {
+                "resource_id": "local-embedding-snapshot",
+                "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verifiers": [
+                  "evidence",
+                  "semantic"
+                ]
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verifiers": [
+                  "confidence",
+                  "evidence"
+                ]
+              }
+            ],
+            "unresolved": [
+              "confidence",
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "unknown_treatment": "shared_unknown"
+          },
+          "estimated_selected_cost": 84.19308958157974,
+          "estimated_attempted_cost": 84.19308958157974,
+          "override_reasons": [],
+          "termination": "complete_selected_team",
+          "early_stopping_enabled": false,
+          "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+          "evidence_kind": "empirical",
+          "joint_evidence_id": "570af35064f7124d37794be4df060e83449ad14980e93db9a52a3483c72ee45f",
+          "policy_execution_mode": "component_policy",
+          "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+          "policy_category": "component",
+          "routing_signature": [
+            "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+            "two_required_checks",
+            2.0,
+            false
+          ],
+          "artifact_id": null,
+          "validation_id": "1fca31e0-fad3-471e-98d7-c04d3e0ee3db",
+          "pre_dispatch_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "pre_dispatch_compatibility_proof": {
+            "version": "scoped_source_relocation_composition_v1",
+            "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+            "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+            "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+            "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+            "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+              "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "active_instances_checked": true,
+            "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+            "execution_scope": [
+              "evidence",
+              "rule"
+            ],
+            "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+          }
+        }
+      }
+    }
+  ],
+  "actual_verifier_calls": 2,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "selected",
+  "selection_reasons": null,
+  "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+  "artifact_id": null,
+  "strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+  "team": [
+    "evidence",
+    "rule"
+  ],
+  "aggregation": null,
+  "attempted_verifiers": [
+    "evidence",
+    "rule"
+  ],
+  "coverage": {},
+  "component_ids": [
+    "base_fact",
+    "derived_sum"
+  ],
+  "binding_ids": [
+    "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+    "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2"
+  ],
+  "compatibility_proofs": {
+    "pre_dispatch_compatibility_proof": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+    },
+    "resource_compatibility": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+    },
+    "resource_compatibility_after": {
+      "version": "scoped_source_relocation_composition_v1",
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+      "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+      "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+      "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+        "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "active_instances_checked": true,
+      "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+      "execution_scope": [
+        "evidence",
+        "rule"
+      ],
+      "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+    }
+  },
+  "response_json": {
+    "results": [
+      {
+        "verifier_name": "evidence",
+        "score": 0.990161657333374,
+        "passed": true,
+        "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: CM. Claim: The population of Cameroon is 29879337. NLI confidence: 0.9902.",
+        "metadata": {
+          "decision": "SUPPORT",
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "nli_label": "entailment",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "unsure_reason": null,
+          "diagnostic_code": null,
+          "top_k": 3,
+          "min_retrieval_score": 0.45,
+          "retrieval_margin": 0.15,
+          "min_nli_score": 0.5,
+          "min_topic_coverage": 0.5,
+          "topic_margin": 0.3,
+          "max_premise_windows": 3,
+          "thresholds_calibrated": false,
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "index_version": "idx-0b78f878aa86",
+          "claims": [
+            "The population of Cameroon is 29879337."
+          ],
+          "claim_decisions": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "claim": "The population of Cameroon is 29879337.",
+              "hypothesis": "The population of Cameroon is 29879337.",
+              "template": "statement",
+              "decision": "SUPPORT",
+              "confidence": 0.990161657333374,
+              "unsure_reason": null,
+              "best_retrieval_score": 0.8060322403907776,
+              "deciding_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+              "evidence_refs": {
+                "supporting": [
+                  "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                ],
+                "contradicting": [],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                  "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                ]
+              }
+            }
+          ],
+          "unchecked_claims": [],
+          "supporting": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "CM",
+              "chunk_id": 54,
+              "url": "https://www.geonames.org/countries/CM/",
+              "article_id": "CM",
+              "article_key": "url:https://www.geonames.org/countries/CM/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+              "index_ref": "idx-0b78f878aa86:CM:54",
+              "retrieval_score": 0.8060322403907776,
+              "topic_coverage": 1.0,
+              "nli_label": "entailment",
+              "nli_score": 0.990161657333374,
+              "excerpt": "The population of Cameroon is 29879337."
+            }
+          ],
+          "contradicting": [],
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "evaluated_evidence": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "CM",
+              "chunk_id": 54,
+              "url": "https://www.geonames.org/countries/CM/",
+              "article_id": "CM",
+              "article_key": "url:https://www.geonames.org/countries/CM/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+              "index_ref": "idx-0b78f878aa86:CM:54",
+              "retrieval_score": 0.8060322403907776,
+              "relevant_evidence": "The population of Cameroon is 29879337.",
+              "match_score": 4,
+              "fact_score": 12,
+              "value_relation": "match",
+              "quantity_kinds": [
+                "number"
+              ],
+              "quantity_scope_aligned": true,
+              "claim_names_in_premise": true,
+              "office_holder_consistent": true,
+              "relation_aligned": true,
+              "nli_label": "entailment",
+              "nli_score": 0.990161657333374,
+              "probabilities": {
+                "entailment": 0.990161657333374,
+                "neutral": 0.007839271798729897,
+                "contradiction": 0.0019990354776382446
+              },
+              "nli_output_shape": "list[dict]",
+              "premise_windows": [
+                {
+                  "premise": "The population of Cameroon is 29879337.",
+                  "nli_label": "entailment",
+                  "probabilities": {
+                    "entailment": 0.990161657333374,
+                    "neutral": 0.007839271798729897,
+                    "contradiction": 0.0019990354776382446
+                  },
+                  "token_count": 21,
+                  "title_dependent": false,
+                  "fact_score": 12,
+                  "value_relation": "match"
+                }
+              ],
+              "topic_coverage": 1.0,
+              "missing_anchor_terms": [],
+              "missing_numbers": [],
+              "missing_event_identifiers": [],
+              "about_subject": true,
+              "title_covers_event": false,
+              "article_covers_event": true,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "condition_consistent": true,
+              "eligibility_basis": "lexical_subject",
+              "discard_code": "candidate_retained_for_nli"
+            }
+          ],
+          "discarded_evidence": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "MV",
+              "chunk_id": 5,
+              "url": "https://www.geonames.org/countries/MV/",
+              "article_id": "MV",
+              "article_key": "url:https://www.geonames.org/countries/MV/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+              "index_ref": "idx-0b78f878aa86:MV:5",
+              "retrieval_score": 0.4911121129989624,
+              "topic_coverage": 0.24023221105427947,
+              "missing_anchor_terms": [
+                "cameroon"
+              ],
+              "missing_numbers": [],
+              "missing_event_identifiers": [],
+              "about_subject": false,
+              "title_covers_event": false,
+              "article_covers_event": false,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "condition_consistent": true,
+              "eligibility_basis": null,
+              "reason": "article title is about a different subject than the question",
+              "discard_code": "off_subject"
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "IN",
+              "chunk_id": 2,
+              "url": "https://www.geonames.org/countries/IN/",
+              "article_id": "IN",
+              "article_key": "url:https://www.geonames.org/countries/IN/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+              "index_ref": "idx-0b78f878aa86:IN:2",
+              "retrieval_score": 0.4321584701538086,
+              "topic_coverage": 0.24023221105427947,
+              "missing_anchor_terms": [
+                "cameroon"
+              ],
+              "missing_numbers": [],
+              "missing_event_identifiers": [],
+              "about_subject": false,
+              "title_covers_event": false,
+              "article_covers_event": false,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "condition_consistent": true,
+              "eligibility_basis": null,
+              "reason": "article title is about a different subject than the question",
+              "discard_code": "off_subject"
+            }
+          ],
+          "candidate_pipeline": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "CM",
+              "article_key": "url:https://www.geonames.org/countries/CM/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+              "index_ref": "idx-0b78f878aa86:CM:54",
+              "title": "CM",
+              "chunk_id": 54,
+              "retrieval_score": 0.8060322403907776,
+              "passed_select_relevant": true,
+              "passed_on_topic": true,
+              "nli_executed": true,
+              "discard_code": null
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "BE",
+              "article_key": "url:https://www.geonames.org/countries/BE/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+              "index_ref": "idx-0b78f878aa86:BE:14",
+              "title": "BE",
+              "chunk_id": 14,
+              "retrieval_score": 0.582128643989563,
+              "passed_select_relevant": false,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": null
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "GA",
+              "article_key": "url:https://www.geonames.org/countries/GA/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/GA/#8d99510e73ba",
+              "index_ref": "idx-0b78f878aa86:GA:28",
+              "title": "GA",
+              "chunk_id": 28,
+              "retrieval_score": 0.5356345176696777,
+              "passed_select_relevant": false,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": null
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "MV",
+              "article_key": "url:https://www.geonames.org/countries/MV/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+              "index_ref": "idx-0b78f878aa86:MV:5",
+              "title": "MV",
+              "chunk_id": 5,
+              "retrieval_score": 0.4911121129989624,
+              "passed_select_relevant": true,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": "off_subject"
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "IN",
+              "article_key": "url:https://www.geonames.org/countries/IN/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+              "index_ref": "idx-0b78f878aa86:IN:2",
+              "title": "IN",
+              "chunk_id": 2,
+              "retrieval_score": 0.4321584701538086,
+              "passed_select_relevant": true,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": "off_subject"
+            }
+          ],
+          "retrieved_counts": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "retrieved_count": 5
+            }
+          ],
+          "deciding_claim_id": "claim-0",
+          "evidence_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+          "evidence_title": "CM",
+          "evidence_chunk_id": 54,
+          "retrieval_score": 0.8060322403907776,
+          "best_retrieval_score": 0.8060322403907776,
+          "latency_ms": 77.37,
+          "latency_breakdown_ms": {
+            "retrieval": 10.72,
+            "nli": 64.88,
+            "total": 77.37
+          },
+          "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+          "component_id": "base_fact",
+          "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702"
+        }
+      },
+      {
+        "verifier_name": "rule",
+        "score": 0.0,
+        "passed": false,
+        "reasoning": "Expected 29880337; received 29880336.",
+        "metadata": {
+          "rule": "arithmetic_addition",
+          "rule_kind": "factual",
+          "decision": "REJECT",
+          "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+          "latency_ms": 0.06,
+          "expected": 29880337,
+          "actual": 29880336,
+          "expected_exact": "29880337",
+          "actual_exact": "29880336",
+          "comparison_policy": "exact Decimal equality",
+          "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+          "component_id": "derived_sum",
+          "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+          "multi_agent_verification.execution": {
+            "public_status": "failed",
+            "execution_mode": "flexible_game",
+            "selection_status": "selected",
+            "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+            "selected_strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+            "plan_id": "312a580fb61d3cf0b86f7019ee3f0f466183fc42e0b1b35ae3d1dbedd4a22edc",
+            "team": [
+              "evidence",
+              "rule"
+            ],
+            "attempts": [
+              {
+                "component_id": "base_fact",
+                "verifier_name": "evidence",
+                "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+                "call_id": "b858bf08e0673382aed703408a7c156e72ab132e0b2382cbdd084278cc8e86a7",
+                "question": "What is the population of Cameroon?",
+                "answer": "The population of Cameroon is 29879337.",
+                "estimated_cost": 84.07056144642411,
+                "report": {
+                  "verifier_name": "evidence",
+                  "score": 0.990161657333374,
+                  "passed": true,
+                  "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: CM. Claim: The population of Cameroon is 29879337. NLI confidence: 0.9902.",
+                  "metadata": {
+                    "decision": "SUPPORT",
+                    "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+                    "nli_label": "entailment",
+                    "nli_model": "cross-encoder/nli-deberta-v3-small",
+                    "nli_output_shape": "list[dict]",
+                    "unsure_reason": null,
+                    "diagnostic_code": null,
+                    "top_k": 3,
+                    "min_retrieval_score": 0.45,
+                    "retrieval_margin": 0.15,
+                    "min_nli_score": 0.5,
+                    "min_topic_coverage": 0.5,
+                    "topic_margin": 0.3,
+                    "max_premise_windows": 3,
+                    "thresholds_calibrated": false,
+                    "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                    "index_version": "idx-0b78f878aa86",
+                    "claims": [
+                      "The population of Cameroon is 29879337."
+                    ],
+                    "claim_decisions": [
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "claim": "The population of Cameroon is 29879337.",
+                        "hypothesis": "The population of Cameroon is 29879337.",
+                        "template": "statement",
+                        "decision": "SUPPORT",
+                        "confidence": 0.990161657333374,
+                        "unsure_reason": null,
+                        "best_retrieval_score": 0.8060322403907776,
+                        "deciding_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                        "evidence_refs": {
+                          "supporting": [
+                            "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                          ],
+                          "contradicting": [],
+                          "ignored_contradictions": [],
+                          "ignored_support": [],
+                          "evaluated": [
+                            "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                          ],
+                          "discarded": [
+                            "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                            "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                          ]
+                        }
+                      }
+                    ],
+                    "unchecked_claims": [],
+                    "supporting": [
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "title": "CM",
+                        "chunk_id": 54,
+                        "url": "https://www.geonames.org/countries/CM/",
+                        "article_id": "CM",
+                        "article_key": "url:https://www.geonames.org/countries/CM/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                        "index_ref": "idx-0b78f878aa86:CM:54",
+                        "retrieval_score": 0.8060322403907776,
+                        "topic_coverage": 1.0,
+                        "nli_label": "entailment",
+                        "nli_score": 0.990161657333374,
+                        "excerpt": "The population of Cameroon is 29879337."
+                      }
+                    ],
+                    "contradicting": [],
+                    "ignored_contradictions": [],
+                    "ignored_support": [],
+                    "evaluated_evidence": [
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "title": "CM",
+                        "chunk_id": 54,
+                        "url": "https://www.geonames.org/countries/CM/",
+                        "article_id": "CM",
+                        "article_key": "url:https://www.geonames.org/countries/CM/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                        "index_ref": "idx-0b78f878aa86:CM:54",
+                        "retrieval_score": 0.8060322403907776,
+                        "relevant_evidence": "The population of Cameroon is 29879337.",
+                        "match_score": 4,
+                        "fact_score": 12,
+                        "value_relation": "match",
+                        "quantity_kinds": [
+                          "number"
+                        ],
+                        "quantity_scope_aligned": true,
+                        "claim_names_in_premise": true,
+                        "office_holder_consistent": true,
+                        "relation_aligned": true,
+                        "nli_label": "entailment",
+                        "nli_score": 0.990161657333374,
+                        "probabilities": {
+                          "entailment": 0.990161657333374,
+                          "neutral": 0.007839271798729897,
+                          "contradiction": 0.0019990354776382446
+                        },
+                        "nli_output_shape": "list[dict]",
+                        "premise_windows": [
+                          {
+                            "premise": "The population of Cameroon is 29879337.",
+                            "nli_label": "entailment",
+                            "probabilities": {
+                              "entailment": 0.990161657333374,
+                              "neutral": 0.007839271798729897,
+                              "contradiction": 0.0019990354776382446
+                            },
+                            "token_count": 21,
+                            "title_dependent": false,
+                            "fact_score": 12,
+                            "value_relation": "match"
+                          }
+                        ],
+                        "topic_coverage": 1.0,
+                        "missing_anchor_terms": [],
+                        "missing_numbers": [],
+                        "missing_event_identifiers": [],
+                        "about_subject": true,
+                        "title_covers_event": false,
+                        "article_covers_event": true,
+                        "entity_consistent": true,
+                        "event_consistent": true,
+                        "condition_consistent": true,
+                        "eligibility_basis": "lexical_subject",
+                        "discard_code": "candidate_retained_for_nli"
+                      }
+                    ],
+                    "discarded_evidence": [
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "title": "MV",
+                        "chunk_id": 5,
+                        "url": "https://www.geonames.org/countries/MV/",
+                        "article_id": "MV",
+                        "article_key": "url:https://www.geonames.org/countries/MV/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                        "index_ref": "idx-0b78f878aa86:MV:5",
+                        "retrieval_score": 0.4911121129989624,
+                        "topic_coverage": 0.24023221105427947,
+                        "missing_anchor_terms": [
+                          "cameroon"
+                        ],
+                        "missing_numbers": [],
+                        "missing_event_identifiers": [],
+                        "about_subject": false,
+                        "title_covers_event": false,
+                        "article_covers_event": false,
+                        "entity_consistent": true,
+                        "event_consistent": true,
+                        "condition_consistent": true,
+                        "eligibility_basis": null,
+                        "reason": "article title is about a different subject than the question",
+                        "discard_code": "off_subject"
+                      },
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "title": "IN",
+                        "chunk_id": 2,
+                        "url": "https://www.geonames.org/countries/IN/",
+                        "article_id": "IN",
+                        "article_key": "url:https://www.geonames.org/countries/IN/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                        "index_ref": "idx-0b78f878aa86:IN:2",
+                        "retrieval_score": 0.4321584701538086,
+                        "topic_coverage": 0.24023221105427947,
+                        "missing_anchor_terms": [
+                          "cameroon"
+                        ],
+                        "missing_numbers": [],
+                        "missing_event_identifiers": [],
+                        "about_subject": false,
+                        "title_covers_event": false,
+                        "article_covers_event": false,
+                        "entity_consistent": true,
+                        "event_consistent": true,
+                        "condition_consistent": true,
+                        "eligibility_basis": null,
+                        "reason": "article title is about a different subject than the question",
+                        "discard_code": "off_subject"
+                      }
+                    ],
+                    "candidate_pipeline": [
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "article_id": "CM",
+                        "article_key": "url:https://www.geonames.org/countries/CM/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                        "index_ref": "idx-0b78f878aa86:CM:54",
+                        "title": "CM",
+                        "chunk_id": 54,
+                        "retrieval_score": 0.8060322403907776,
+                        "passed_select_relevant": true,
+                        "passed_on_topic": true,
+                        "nli_executed": true,
+                        "discard_code": null
+                      },
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "article_id": "BE",
+                        "article_key": "url:https://www.geonames.org/countries/BE/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                        "index_ref": "idx-0b78f878aa86:BE:14",
+                        "title": "BE",
+                        "chunk_id": 14,
+                        "retrieval_score": 0.582128643989563,
+                        "passed_select_relevant": false,
+                        "passed_on_topic": false,
+                        "nli_executed": false,
+                        "discard_code": null
+                      },
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "article_id": "GA",
+                        "article_key": "url:https://www.geonames.org/countries/GA/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/GA/#8d99510e73ba",
+                        "index_ref": "idx-0b78f878aa86:GA:28",
+                        "title": "GA",
+                        "chunk_id": 28,
+                        "retrieval_score": 0.5356345176696777,
+                        "passed_select_relevant": false,
+                        "passed_on_topic": false,
+                        "nli_executed": false,
+                        "discard_code": null
+                      },
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "article_id": "MV",
+                        "article_key": "url:https://www.geonames.org/countries/MV/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                        "index_ref": "idx-0b78f878aa86:MV:5",
+                        "title": "MV",
+                        "chunk_id": 5,
+                        "retrieval_score": 0.4911121129989624,
+                        "passed_select_relevant": true,
+                        "passed_on_topic": false,
+                        "nli_executed": false,
+                        "discard_code": "off_subject"
+                      },
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "article_id": "IN",
+                        "article_key": "url:https://www.geonames.org/countries/IN/",
+                        "article_key_scope": "global",
+                        "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                        "index_ref": "idx-0b78f878aa86:IN:2",
+                        "title": "IN",
+                        "chunk_id": 2,
+                        "retrieval_score": 0.4321584701538086,
+                        "passed_select_relevant": true,
+                        "passed_on_topic": false,
+                        "nli_executed": false,
+                        "discard_code": "off_subject"
+                      }
+                    ],
+                    "retrieved_counts": [
+                      {
+                        "claim_index": 0,
+                        "claim_id": "claim-0",
+                        "retrieved_count": 5
+                      }
+                    ],
+                    "deciding_claim_id": "claim-0",
+                    "evidence_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                    "evidence_title": "CM",
+                    "evidence_chunk_id": 54,
+                    "retrieval_score": 0.8060322403907776,
+                    "best_retrieval_score": 0.8060322403907776,
+                    "latency_ms": 77.37,
+                    "latency_breakdown_ms": {
+                      "retrieval": 10.72,
+                      "nli": 64.88,
+                      "total": 77.37
+                    },
+                    "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                    "component_id": "base_fact",
+                    "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702"
+                  }
+                },
+                "state": "directional",
+                "elapsed_ms": 80.60910005588084
+              },
+              {
+                "component_id": "derived_sum",
+                "verifier_name": "rule",
+                "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+                "call_id": "ac707de8319df0246ee980e8503f390ed4ce6126a15a1652e995a2e698e6647e",
+                "question": "What is 29879337 + 1000?",
+                "answer": "29880336",
+                "estimated_cost": 0.12252813515563805,
+                "report": {
+                  "verifier_name": "rule",
+                  "score": 0.0,
+                  "passed": false,
+                  "reasoning": "Expected 29880337; received 29880336.",
+                  "metadata": {
+                    "rule": "arithmetic_addition",
+                    "rule_kind": "factual",
+                    "decision": "REJECT",
+                    "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+                    "latency_ms": 0.06,
+                    "expected": 29880337,
+                    "actual": 29880336,
+                    "expected_exact": "29880337",
+                    "actual_exact": "29880336",
+                    "comparison_policy": "exact Decimal equality",
+                    "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                    "component_id": "derived_sum",
+                    "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2"
+                  }
+                },
+                "state": "directional",
+                "elapsed_ms": 0.3104000352323055
+              }
+            ],
+            "components": [
+              {
+                "component_id": "base_fact",
+                "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+                "depends_on": [],
+                "public_status": "passed",
+                "required": [
+                  "direct_fact"
+                ],
+                "achieved": [
+                  "direct_fact"
+                ],
+                "unresolved": [],
+                "reasons": [],
+                "detail": {
+                  "domain": "general",
+                  "status": "passed",
+                  "raw_score": 0.990161657333374,
+                  "score": 0.990162,
+                  "threshold": 0.55,
+                  "aggregation": "log_odds",
+                  "votes": [
+                    {
+                      "verifier_name": "evidence",
+                      "abstained": false,
+                      "passed": true,
+                      "confidence": 0.990161657333374,
+                      "reputation": 0.9615384615384615,
+                      "weight": 3.2188758248681983,
+                      "contribution": 3.1872074215018267,
+                      "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                      "normalized_strength": 0.990161657333374,
+                      "reliability_strength": 0.9230769230769229,
+                      "included": true,
+                      "inclusion_reason": "included",
+                      "failure_group_id": null
+                    }
+                  ],
+                  "aggregation_id": "reputation_weighted",
+                  "aggregation_version": "log_odds_v1",
+                  "reputation_snapshot_id": "32eb40e0c594afba4edd0ee1aa6a7b1ba37d9c1d10c94ca93f27b929be3132d8",
+                  "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                  "team": [
+                    "evidence"
+                  ],
+                  "missing_reports": [],
+                  "dependency_configuration_id": null,
+                  "dependency_version": null,
+                  "dependency_assumptions": [],
+                  "groups": [],
+                  "fallback": null,
+                  "lower_cut": -0.55,
+                  "upper_cut": 0.55
+                },
+                "states": [
+                  [
+                    "evidence",
+                    "directional"
+                  ]
+                ]
+              },
+              {
+                "component_id": "derived_sum",
+                "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+                "depends_on": [
+                  "base_fact"
+                ],
+                "public_status": "failed",
+                "required": [
+                  "arithmetic"
+                ],
+                "achieved": [
+                  "arithmetic"
+                ],
+                "unresolved": [],
+                "reasons": [],
+                "detail": {
+                  "domain": "general",
+                  "status": "failed",
+                  "raw_score": -1.0,
+                  "score": -1.0,
+                  "threshold": 0.55,
+                  "aggregation": "log_odds",
+                  "votes": [
+                    {
+                      "verifier_name": "rule",
+                      "abstained": false,
+                      "passed": false,
+                      "confidence": 1.0,
+                      "reputation": 0.98,
+                      "weight": 3.8918202981106256,
+                      "contribution": -3.8918202981106256,
+                      "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                      "normalized_strength": -1.0,
+                      "reliability_strength": 0.96,
+                      "included": true,
+                      "inclusion_reason": "included",
+                      "failure_group_id": null
+                    }
+                  ],
+                  "aggregation_id": "reputation_weighted",
+                  "aggregation_version": "log_odds_v1",
+                  "reputation_snapshot_id": "cdef557e34f6ce3c7c536e5b25f08536e4ec0271b769f7671b511ab277dff4be",
+                  "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                  "team": [
+                    "rule"
+                  ],
+                  "missing_reports": [],
+                  "dependency_configuration_id": null,
+                  "dependency_version": null,
+                  "dependency_assumptions": [],
+                  "groups": [],
+                  "fallback": null,
+                  "lower_cut": -0.55,
+                  "upper_cut": 0.55
+                },
+                "states": [
+                  [
+                    "rule",
+                    "directional"
+                  ]
+                ]
+              }
+            ],
+            "historical_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+            "resource_compatibility": {
+              "version": "scoped_source_relocation_composition_v1",
+              "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+              "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+              "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+              "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+                "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+                "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+                "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "active_instances_checked": true,
+              "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+              "execution_scope": [
+                "evidence",
+                "rule"
+              ],
+              "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+            },
+            "after_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+            "resource_compatibility_after": {
+              "version": "scoped_source_relocation_composition_v1",
+              "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+              "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+              "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+              "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+                "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+                "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+                "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "active_instances_checked": true,
+              "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+              "execution_scope": [
+                "evidence",
+                "rule"
+              ],
+              "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+            },
+            "resource_observation_error": null,
+            "contributors": [
+              "evidence",
+              "rule"
+            ],
+            "contributor_count": 2,
+            "dependency_assumptions": {
+              "version": "multitask-observed-dependencies-v1",
+              "dependencies": [
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "verifiers": [
+                    "evidence",
+                    "semantic"
+                  ]
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "verifiers": [
+                    "confidence",
+                    "evidence"
+                  ]
+                }
+              ],
+              "unresolved": [
+                "confidence",
+                "evidence",
+                "rule",
+                "semantic"
+              ],
+              "unknown_treatment": "shared_unknown"
+            },
+            "estimated_selected_cost": 84.19308958157974,
+            "estimated_attempted_cost": 84.19308958157974,
+            "override_reasons": [],
+            "termination": "complete_selected_team",
+            "early_stopping_enabled": false,
+            "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+            "evidence_kind": "empirical",
+            "joint_evidence_id": "570af35064f7124d37794be4df060e83449ad14980e93db9a52a3483c72ee45f",
+            "policy_execution_mode": "component_policy",
+            "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+            "policy_category": "component",
+            "routing_signature": [
+              "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+              "two_required_checks",
+              2.0,
+              false
+            ],
+            "artifact_id": null,
+            "validation_id": "1fca31e0-fad3-471e-98d7-c04d3e0ee3db",
+            "pre_dispatch_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+            "pre_dispatch_compatibility_proof": {
+              "version": "scoped_source_relocation_composition_v1",
+              "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+              "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+              "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+              "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+              "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+                "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+                "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+                "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "active_instances_checked": true,
+              "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+              "execution_scope": [
+                "evidence",
+                "rule"
+              ],
+              "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+            }
+          }
+        }
+      }
+    ],
+    "final_status": "failed",
+    "final_score": null,
+    "validation_id": "1fca31e0-fad3-471e-98d7-c04d3e0ee3db",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [
+      "evidence",
+      "rule"
+    ],
+    "early_stop_reason": "complete_selected_team",
+    "uncertainty_reasons": [],
+    "signed_score": null,
+    "execution_audit": {
+      "public_status": "failed",
+      "execution_mode": "flexible_game",
+      "selection_status": "selected",
+      "contract_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+      "selected_strategy_id": "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+      "plan_id": "312a580fb61d3cf0b86f7019ee3f0f466183fc42e0b1b35ae3d1dbedd4a22edc",
+      "team": [
+        "evidence",
+        "rule"
+      ],
+      "attempts": [
+        {
+          "component_id": "base_fact",
+          "verifier_name": "evidence",
+          "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+          "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+          "call_id": "b858bf08e0673382aed703408a7c156e72ab132e0b2382cbdd084278cc8e86a7",
+          "question": "What is the population of Cameroon?",
+          "answer": "The population of Cameroon is 29879337.",
+          "estimated_cost": 84.07056144642411,
+          "report": {
+            "verifier_name": "evidence",
+            "score": 0.990161657333374,
+            "passed": true,
+            "reasoning": "NLI result: entailment. Retrieved evidence entails the claim. Evidence: CM. Claim: The population of Cameroon is 29879337. NLI confidence: 0.9902.",
+            "metadata": {
+              "decision": "SUPPORT",
+              "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+              "nli_label": "entailment",
+              "nli_model": "cross-encoder/nli-deberta-v3-small",
+              "nli_output_shape": "list[dict]",
+              "unsure_reason": null,
+              "diagnostic_code": null,
+              "top_k": 3,
+              "min_retrieval_score": 0.45,
+              "retrieval_margin": 0.15,
+              "min_nli_score": 0.5,
+              "min_topic_coverage": 0.5,
+              "topic_margin": 0.3,
+              "max_premise_windows": 3,
+              "thresholds_calibrated": false,
+              "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "index_version": "idx-0b78f878aa86",
+              "claims": [
+                "The population of Cameroon is 29879337."
+              ],
+              "claim_decisions": [
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "claim": "The population of Cameroon is 29879337.",
+                  "hypothesis": "The population of Cameroon is 29879337.",
+                  "template": "statement",
+                  "decision": "SUPPORT",
+                  "confidence": 0.990161657333374,
+                  "unsure_reason": null,
+                  "best_retrieval_score": 0.8060322403907776,
+                  "deciding_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                  "evidence_refs": {
+                    "supporting": [
+                      "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                    ],
+                    "contradicting": [],
+                    "ignored_contradictions": [],
+                    "ignored_support": [],
+                    "evaluated": [
+                      "url:https://www.geonames.org/countries/CM/#31b352a64a12"
+                    ],
+                    "discarded": [
+                      "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                      "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                    ]
+                  }
+                }
+              ],
+              "unchecked_claims": [],
+              "supporting": [
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "title": "CM",
+                  "chunk_id": 54,
+                  "url": "https://www.geonames.org/countries/CM/",
+                  "article_id": "CM",
+                  "article_key": "url:https://www.geonames.org/countries/CM/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                  "index_ref": "idx-0b78f878aa86:CM:54",
+                  "retrieval_score": 0.8060322403907776,
+                  "topic_coverage": 1.0,
+                  "nli_label": "entailment",
+                  "nli_score": 0.990161657333374,
+                  "excerpt": "The population of Cameroon is 29879337."
+                }
+              ],
+              "contradicting": [],
+              "ignored_contradictions": [],
+              "ignored_support": [],
+              "evaluated_evidence": [
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "title": "CM",
+                  "chunk_id": 54,
+                  "url": "https://www.geonames.org/countries/CM/",
+                  "article_id": "CM",
+                  "article_key": "url:https://www.geonames.org/countries/CM/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                  "index_ref": "idx-0b78f878aa86:CM:54",
+                  "retrieval_score": 0.8060322403907776,
+                  "relevant_evidence": "The population of Cameroon is 29879337.",
+                  "match_score": 4,
+                  "fact_score": 12,
+                  "value_relation": "match",
+                  "quantity_kinds": [
+                    "number"
+                  ],
+                  "quantity_scope_aligned": true,
+                  "claim_names_in_premise": true,
+                  "office_holder_consistent": true,
+                  "relation_aligned": true,
+                  "nli_label": "entailment",
+                  "nli_score": 0.990161657333374,
+                  "probabilities": {
+                    "entailment": 0.990161657333374,
+                    "neutral": 0.007839271798729897,
+                    "contradiction": 0.0019990354776382446
+                  },
+                  "nli_output_shape": "list[dict]",
+                  "premise_windows": [
+                    {
+                      "premise": "The population of Cameroon is 29879337.",
+                      "nli_label": "entailment",
+                      "probabilities": {
+                        "entailment": 0.990161657333374,
+                        "neutral": 0.007839271798729897,
+                        "contradiction": 0.0019990354776382446
+                      },
+                      "token_count": 21,
+                      "title_dependent": false,
+                      "fact_score": 12,
+                      "value_relation": "match"
+                    }
+                  ],
+                  "topic_coverage": 1.0,
+                  "missing_anchor_terms": [],
+                  "missing_numbers": [],
+                  "missing_event_identifiers": [],
+                  "about_subject": true,
+                  "title_covers_event": false,
+                  "article_covers_event": true,
+                  "entity_consistent": true,
+                  "event_consistent": true,
+                  "condition_consistent": true,
+                  "eligibility_basis": "lexical_subject",
+                  "discard_code": "candidate_retained_for_nli"
+                }
+              ],
+              "discarded_evidence": [
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "title": "MV",
+                  "chunk_id": 5,
+                  "url": "https://www.geonames.org/countries/MV/",
+                  "article_id": "MV",
+                  "article_key": "url:https://www.geonames.org/countries/MV/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                  "index_ref": "idx-0b78f878aa86:MV:5",
+                  "retrieval_score": 0.4911121129989624,
+                  "topic_coverage": 0.24023221105427947,
+                  "missing_anchor_terms": [
+                    "cameroon"
+                  ],
+                  "missing_numbers": [],
+                  "missing_event_identifiers": [],
+                  "about_subject": false,
+                  "title_covers_event": false,
+                  "article_covers_event": false,
+                  "entity_consistent": true,
+                  "event_consistent": true,
+                  "condition_consistent": true,
+                  "eligibility_basis": null,
+                  "reason": "article title is about a different subject than the question",
+                  "discard_code": "off_subject"
+                },
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "title": "IN",
+                  "chunk_id": 2,
+                  "url": "https://www.geonames.org/countries/IN/",
+                  "article_id": "IN",
+                  "article_key": "url:https://www.geonames.org/countries/IN/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                  "index_ref": "idx-0b78f878aa86:IN:2",
+                  "retrieval_score": 0.4321584701538086,
+                  "topic_coverage": 0.24023221105427947,
+                  "missing_anchor_terms": [
+                    "cameroon"
+                  ],
+                  "missing_numbers": [],
+                  "missing_event_identifiers": [],
+                  "about_subject": false,
+                  "title_covers_event": false,
+                  "article_covers_event": false,
+                  "entity_consistent": true,
+                  "event_consistent": true,
+                  "condition_consistent": true,
+                  "eligibility_basis": null,
+                  "reason": "article title is about a different subject than the question",
+                  "discard_code": "off_subject"
+                }
+              ],
+              "candidate_pipeline": [
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "article_id": "CM",
+                  "article_key": "url:https://www.geonames.org/countries/CM/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+                  "index_ref": "idx-0b78f878aa86:CM:54",
+                  "title": "CM",
+                  "chunk_id": 54,
+                  "retrieval_score": 0.8060322403907776,
+                  "passed_select_relevant": true,
+                  "passed_on_topic": true,
+                  "nli_executed": true,
+                  "discard_code": null
+                },
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "article_id": "BE",
+                  "article_key": "url:https://www.geonames.org/countries/BE/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+                  "index_ref": "idx-0b78f878aa86:BE:14",
+                  "title": "BE",
+                  "chunk_id": 14,
+                  "retrieval_score": 0.582128643989563,
+                  "passed_select_relevant": false,
+                  "passed_on_topic": false,
+                  "nli_executed": false,
+                  "discard_code": null
+                },
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "article_id": "GA",
+                  "article_key": "url:https://www.geonames.org/countries/GA/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/GA/#8d99510e73ba",
+                  "index_ref": "idx-0b78f878aa86:GA:28",
+                  "title": "GA",
+                  "chunk_id": 28,
+                  "retrieval_score": 0.5356345176696777,
+                  "passed_select_relevant": false,
+                  "passed_on_topic": false,
+                  "nli_executed": false,
+                  "discard_code": null
+                },
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "article_id": "MV",
+                  "article_key": "url:https://www.geonames.org/countries/MV/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                  "index_ref": "idx-0b78f878aa86:MV:5",
+                  "title": "MV",
+                  "chunk_id": 5,
+                  "retrieval_score": 0.4911121129989624,
+                  "passed_select_relevant": true,
+                  "passed_on_topic": false,
+                  "nli_executed": false,
+                  "discard_code": "off_subject"
+                },
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "article_id": "IN",
+                  "article_key": "url:https://www.geonames.org/countries/IN/",
+                  "article_key_scope": "global",
+                  "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+                  "index_ref": "idx-0b78f878aa86:IN:2",
+                  "title": "IN",
+                  "chunk_id": 2,
+                  "retrieval_score": 0.4321584701538086,
+                  "passed_select_relevant": true,
+                  "passed_on_topic": false,
+                  "nli_executed": false,
+                  "discard_code": "off_subject"
+                }
+              ],
+              "retrieved_counts": [
+                {
+                  "claim_index": 0,
+                  "claim_id": "claim-0",
+                  "retrieved_count": 5
+                }
+              ],
+              "deciding_claim_id": "claim-0",
+              "evidence_source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+              "evidence_title": "CM",
+              "evidence_chunk_id": 54,
+              "retrieval_score": 0.8060322403907776,
+              "best_retrieval_score": 0.8060322403907776,
+              "latency_ms": 77.37,
+              "latency_breakdown_ms": {
+                "retrieval": 10.72,
+                "nli": 64.88,
+                "total": 77.37
+              },
+              "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+              "component_id": "base_fact",
+              "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702"
+            }
+          },
+          "state": "directional",
+          "elapsed_ms": 80.60910005588084
+        },
+        {
+          "component_id": "derived_sum",
+          "verifier_name": "rule",
+          "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+          "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+          "call_id": "ac707de8319df0246ee980e8503f390ed4ce6126a15a1652e995a2e698e6647e",
+          "question": "What is 29879337 + 1000?",
+          "answer": "29880336",
+          "estimated_cost": 0.12252813515563805,
+          "report": {
+            "verifier_name": "rule",
+            "score": 0.0,
+            "passed": false,
+            "reasoning": "Expected 29880337; received 29880336.",
+            "metadata": {
+              "rule": "arithmetic_addition",
+              "rule_kind": "factual",
+              "decision": "REJECT",
+              "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+              "latency_ms": 0.06,
+              "expected": 29880337,
+              "actual": 29880336,
+              "expected_exact": "29880337",
+              "actual_exact": "29880336",
+              "comparison_policy": "exact Decimal equality",
+              "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+              "component_id": "derived_sum",
+              "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2"
+            }
+          },
+          "state": "directional",
+          "elapsed_ms": 0.3104000352323055
+        }
+      ],
+      "components": [
+        {
+          "component_id": "base_fact",
+          "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+          "binding_id": "eca65f9fe3ce2ca66171f3e1f4e3823d4da94328092fc1e9e94c26534e25e702",
+          "depends_on": [],
+          "public_status": "passed",
+          "required": [
+            "direct_fact"
+          ],
+          "achieved": [
+            "direct_fact"
+          ],
+          "unresolved": [],
+          "reasons": [],
+          "detail": {
+            "domain": "general",
+            "status": "passed",
+            "raw_score": 0.990161657333374,
+            "score": 0.990162,
+            "threshold": 0.55,
+            "aggregation": "log_odds",
+            "votes": [
+              {
+                "verifier_name": "evidence",
+                "abstained": false,
+                "passed": true,
+                "confidence": 0.990161657333374,
+                "reputation": 0.9615384615384615,
+                "weight": 3.2188758248681983,
+                "contribution": 3.1872074215018267,
+                "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+                "normalized_strength": 0.990161657333374,
+                "reliability_strength": 0.9230769230769229,
+                "included": true,
+                "inclusion_reason": "included",
+                "failure_group_id": null
+              }
+            ],
+            "aggregation_id": "reputation_weighted",
+            "aggregation_version": "log_odds_v1",
+            "reputation_snapshot_id": "32eb40e0c594afba4edd0ee1aa6a7b1ba37d9c1d10c94ca93f27b929be3132d8",
+            "validation_id": "f44e91fd6bec8b24abda527936201878fc20a0ce1eef22f2a22301febd85b335",
+            "team": [
+              "evidence"
+            ],
+            "missing_reports": [],
+            "dependency_configuration_id": null,
+            "dependency_version": null,
+            "dependency_assumptions": [],
+            "groups": [],
+            "fallback": null,
+            "lower_cut": -0.55,
+            "upper_cut": 0.55
+          },
+          "states": [
+            [
+              "evidence",
+              "directional"
+            ]
+          ]
+        },
+        {
+          "component_id": "derived_sum",
+          "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+          "binding_id": "1b324a07141181570306a5cc9467a631364393cb2de435274549a202f8e482f2",
+          "depends_on": [
+            "base_fact"
+          ],
+          "public_status": "failed",
+          "required": [
+            "arithmetic"
+          ],
+          "achieved": [
+            "arithmetic"
+          ],
+          "unresolved": [],
+          "reasons": [],
+          "detail": {
+            "domain": "general",
+            "status": "failed",
+            "raw_score": -1.0,
+            "score": -1.0,
+            "threshold": 0.55,
+            "aggregation": "log_odds",
+            "votes": [
+              {
+                "verifier_name": "rule",
+                "abstained": false,
+                "passed": false,
+                "confidence": 1.0,
+                "reputation": 0.98,
+                "weight": 3.8918202981106256,
+                "contribution": -3.8918202981106256,
+                "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+                "normalized_strength": -1.0,
+                "reliability_strength": 0.96,
+                "included": true,
+                "inclusion_reason": "included",
+                "failure_group_id": null
+              }
+            ],
+            "aggregation_id": "reputation_weighted",
+            "aggregation_version": "log_odds_v1",
+            "reputation_snapshot_id": "cdef557e34f6ce3c7c536e5b25f08536e4ec0271b769f7671b511ab277dff4be",
+            "validation_id": "11358327a5c4ad3116f7f08fbece82ff192f41f6566cb6d1c528214ec20e03fd",
+            "team": [
+              "rule"
+            ],
+            "missing_reports": [],
+            "dependency_configuration_id": null,
+            "dependency_version": null,
+            "dependency_assumptions": [],
+            "groups": [],
+            "fallback": null,
+            "lower_cut": -0.55,
+            "upper_cut": 0.55
+          },
+          "states": [
+            [
+              "rule",
+              "directional"
+            ]
+          ]
+        }
+      ],
+      "historical_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "resource_compatibility": {
+        "version": "scoped_source_relocation_composition_v1",
+        "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+        "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+        "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+        "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+          "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "active_instances_checked": true,
+        "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+        "execution_scope": [
+          "evidence",
+          "rule"
+        ],
+        "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+      },
+      "after_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "resource_compatibility_after": {
+        "version": "scoped_source_relocation_composition_v1",
+        "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+        "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+        "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+        "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+          "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "active_instances_checked": true,
+        "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+        "execution_scope": [
+          "evidence",
+          "rule"
+        ],
+        "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+      },
+      "resource_observation_error": null,
+      "contributors": [
+        "evidence",
+        "rule"
+      ],
+      "contributor_count": 2,
+      "dependency_assumptions": {
+        "version": "multitask-observed-dependencies-v1",
+        "dependencies": [
+          {
+            "resource_id": "local-embedding-snapshot",
+            "compromise_pathway": "shared actual installed model 23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+            "verifiers": [
+              "evidence",
+              "semantic"
+            ]
+          },
+          {
+            "resource_id": "local-nli-snapshot",
+            "compromise_pathway": "shared actual installed model a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+            "verifiers": [
+              "confidence",
+              "evidence"
+            ]
+          }
+        ],
+        "unresolved": [
+          "confidence",
+          "evidence",
+          "rule",
+          "semantic"
+        ],
+        "unknown_treatment": "shared_unknown"
+      },
+      "estimated_selected_cost": 84.19308958157974,
+      "estimated_attempted_cost": 84.19308958157974,
+      "override_reasons": [],
+      "termination": "complete_selected_team",
+      "early_stopping_enabled": false,
+      "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+      "evidence_kind": "empirical",
+      "joint_evidence_id": "570af35064f7124d37794be4df060e83449ad14980e93db9a52a3483c72ee45f",
+      "policy_execution_mode": "component_policy",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "component",
+      "routing_signature": [
+        "34734f5a0ab5f85492c726114d99d740926722519476a2a24a160cf61a9610d7",
+        "two_required_checks",
+        2.0,
+        false
+      ],
+      "artifact_id": null,
+      "validation_id": "1fca31e0-fad3-471e-98d7-c04d3e0ee3db",
+      "pre_dispatch_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+      "pre_dispatch_compatibility_proof": {
+        "version": "scoped_source_relocation_composition_v1",
+        "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+        "capsule_id": "d78864a6cceb0262408617c724c8789f93811f9b72aa87856abb57dc49d24993",
+        "historical_scope_id": "310364dae8d9d6c001622d4bbe1866ca0646fb8f50c9c50a022e05f5353688c1",
+        "intermediate_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+        "observed_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "2cb15c142ee76b37b7982daf1b488837c99bbb4893b58b32ab951120ffba80cd",
+          "expected_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "historical_resource_manifest_id": "d8429cd8ebe44523a0b57db16417058663690e5c1069986786d609ae841f05fe",
+          "observed_resource_manifest_id": "236c22e48b9d32aec39a365d2a245132c2478edf6db805a396583940a7585ff3",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "8fa713f008238ff063a639451050212b6d97270eb4cbdfd412763327c29a490f",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "active_instances_checked": true,
+        "constructor_settings_id": "1abb93a89c3001b74cbe01321dbf228ee0e094bba380c301a68c465d9cfd9bec",
+        "execution_scope": [
+          "evidence",
+          "rule"
+        ],
+        "proof_id": "cde40bc9ec41f9559eb25c4d69e78f7115e4a0023e897ac8fab530f9521b6c1e"
+      }
+    }
+  }
+}

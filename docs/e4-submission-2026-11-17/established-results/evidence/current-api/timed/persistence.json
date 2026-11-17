@@ -1,0 +1,3202 @@
+{
+  "validation_records": [
+    {
+      "domain": "general",
+      "context": "864",
+      "question": "What is 328 + 536?",
+      "created_at": "2026-11-17T16:39:40.738808+05:30",
+      "difficulty": "easy",
+      "session_id": null,
+      "final_score": 1,
+      "question_id": null,
+      "final_status": "passed",
+      "signed_score": 1,
+      "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+      "generated_answer": "864",
+      "early_stop_reason": "complete_selected_team",
+      "selected_verifiers": [
+        "rule"
+      ]
+    }
+  ],
+  "validation_executions": [
+    {
+      "worker_id": null,
+      "created_at": "2026-11-17T16:39:40.738808+05:30",
+      "updated_at": "2026-11-17T16:39:41.195035+05:30",
+      "plan_digest": "282ae7ec308e8d0d3b295a31e19e979318fd853fa7e1120b3f47ba851bb602f4",
+      "block_reason": null,
+      "completed_at": "2026-11-17T16:39:41.195035+05:30",
+      "heartbeat_at": null,
+      "plan_payload": {
+        "team": [
+          "rule"
+        ],
+        "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+        "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "aggregation": "reputation_weighted",
+        "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+        "execution_mode": "game",
+        "compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d"
+      },
+      "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+      "execution_mode": "game",
+      "final_response": {
+        "domain": "general",
+        "results": [
+          {
+            "score": 1.0,
+            "passed": true,
+            "metadata": {
+              "rule": "arithmetic_addition",
+              "actual": 864,
+              "decision": "SUPPORT",
+              "expected": 864,
+              "rule_kind": "factual",
+              "latency_ms": 1.1,
+              "actual_exact": "864",
+              "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+              "expected_exact": "864",
+              "comparison_policy": "exact Decimal equality",
+              "multi_agent_verification.execution": {
+                "team": [
+                  "rule"
+                ],
+                "budget": 21258.33526502247,
+                "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+                "achieved": [
+                  "arithmetic"
+                ],
+                "attempts": [
+                  {
+                    "state": "directional",
+                    "report": {
+                      "score": 1.0,
+                      "passed": true,
+                      "metadata": {
+                        "rule": "arithmetic_addition",
+                        "actual": 864,
+                        "decision": "SUPPORT",
+                        "expected": 864,
+                        "rule_kind": "factual",
+                        "latency_ms": 1.1,
+                        "actual_exact": "864",
+                        "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+                        "expected_exact": "864",
+                        "comparison_policy": "exact Decimal equality"
+                      },
+                      "reasoning": "Expected 864; received 864.",
+                      "verifier_name": "rule"
+                    },
+                    "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+                    "verifier_name": "rule",
+                    "journal_attempt_id": "126f12a2-2bf9-446c-85d0-5f3202f56da7",
+                    "estimated_attempt_cost": 9.678209995036013
+                  }
+                ],
+                "required": [
+                  "arithmetic"
+                ],
+                "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+                "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+                "threshold": 0.55,
+                "cost_units": "ms",
+                "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+                "task_route": "domain_requirements_task_v1",
+                "unresolved": [],
+                "aggregation": "reputation_weighted",
+                "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+                "termination": "complete_selected_team",
+                "contributors": 1,
+                "audit_version": "game_execution_audit_v1",
+                "public_status": "passed",
+                "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+                "execution_mode": "flexible_game",
+                "selection_plan": {
+                  "domain": "general",
+                  "fallback": [
+                    "semantic",
+                    "evidence"
+                  ],
+                  "candidates": [
+                    {
+                      "cost": 0.3,
+                      "latency": 0.4,
+                      "utility": 0.555,
+                      "eligible": true,
+                      "cold_start": false,
+                      "registered": true,
+                      "reputation": 0.64,
+                      "limitations": [
+                        "Reference similarity is not factual correctness."
+                      ],
+                      "suitability": 0.0,
+                      "verifier_name": "semantic",
+                      "exclusion_reason": null,
+                      "resource_penalty": 0.085,
+                      "capability_source": "explicit",
+                      "observation_count": 23,
+                      "registration_order": 0,
+                      "requires_reference": true,
+                      "prerequisite_status": "unknown",
+                      "configured_readiness": "unknown",
+                      "expected_capabilities": [
+                        "semantic_comparison"
+                      ],
+                      "suitability_contribution": 0.0
+                    },
+                    {
+                      "cost": 0.8,
+                      "latency": 0.9,
+                      "utility": 0.29,
+                      "eligible": true,
+                      "cold_start": true,
+                      "registered": true,
+                      "reputation": 0.5,
+                      "limitations": [
+                        "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                        "Corpus/model readiness and claim coverage are unknown until execution."
+                      ],
+                      "suitability": 0.0,
+                      "verifier_name": "evidence",
+                      "exclusion_reason": null,
+                      "resource_penalty": 0.21000000000000002,
+                      "capability_source": "explicit",
+                      "observation_count": 0,
+                      "registration_order": 1,
+                      "requires_reference": false,
+                      "prerequisite_status": "unknown",
+                      "configured_readiness": "unknown",
+                      "expected_capabilities": [
+                        "direct_fact",
+                        "evidence_retrieval"
+                      ],
+                      "suitability_contribution": 0.0
+                    },
+                    {
+                      "cost": 0.2,
+                      "latency": 0.2,
+                      "utility": 1.12619,
+                      "eligible": true,
+                      "cold_start": false,
+                      "registered": true,
+                      "reputation": 0.97619,
+                      "limitations": [
+                        "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                        "Other deterministic/structural checks do not establish general factual coverage."
+                      ],
+                      "suitability": 1.0,
+                      "verifier_name": "rule",
+                      "exclusion_reason": null,
+                      "resource_penalty": 0.05,
+                      "capability_source": "explicit",
+                      "observation_count": 40,
+                      "registration_order": 2,
+                      "requires_reference": false,
+                      "prerequisite_status": "unknown",
+                      "configured_readiness": "unknown",
+                      "expected_capabilities": [
+                        "arithmetic"
+                      ],
+                      "suitability_contribution": 0.2
+                    },
+                    {
+                      "cost": 0.9,
+                      "latency": 1.0,
+                      "utility": 0.636795,
+                      "eligible": true,
+                      "cold_start": false,
+                      "registered": true,
+                      "reputation": 0.871795,
+                      "limitations": [
+                        "Generation/judgment agreement is not factual evidence or independence.",
+                        "Provider readiness is unknown until execution."
+                      ],
+                      "suitability": 0.0,
+                      "verifier_name": "confidence",
+                      "exclusion_reason": null,
+                      "resource_penalty": 0.23500000000000001,
+                      "capability_source": "explicit",
+                      "observation_count": 37,
+                      "registration_order": 3,
+                      "requires_reference": false,
+                      "prerequisite_status": "unknown",
+                      "configured_readiness": "unknown",
+                      "expected_capabilities": [
+                        "consistency"
+                      ],
+                      "suitability_contribution": 0.0
+                    }
+                  ],
+                  "difficulty": "easy",
+                  "exclusions": [],
+                  "lambda_cost": 0.15,
+                  "requirements": {
+                    "errors": [],
+                    "source": "research_context",
+                    "status": "known",
+                    "weights": [
+                      [
+                        "arithmetic",
+                        1.0
+                      ]
+                    ],
+                    "unsupported": [],
+                    "legacy_hints": [
+                      "arithmetic"
+                    ],
+                    "requirements": [
+                      "arithmetic"
+                    ],
+                    "disagreements": [],
+                    "requirements_known": true,
+                    "legacy_unrecognized": [],
+                    "weight_discrepancies": []
+                  },
+                  "target_count": 2,
+                  "type_mapping": [
+                    [
+                      "arithmetic",
+                      "rule"
+                    ],
+                    [
+                      "logical_rule",
+                      "rule"
+                    ],
+                    [
+                      "direct_fact",
+                      "evidence"
+                    ],
+                    [
+                      "evidence_retrieval",
+                      "evidence"
+                    ],
+                    [
+                      "semantic_comparison",
+                      "semantic"
+                    ],
+                    [
+                      "consistency",
+                      "confidence"
+                    ]
+                  ],
+                  "domain_status": "unknown",
+                  "minimum_count": 2,
+                  "lambda_latency": 0.1,
+                  "policy_version": "coverage_greedy_v1",
+                  "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+                  "analysis_method": "heuristic",
+                  "context_version": "question_context_v1",
+                  "coverage_status": "expected_only",
+                  "scoring_version": "explicit_task_questions_v1",
+                  "difficulty_score": 0.12,
+                  "expected_covered": [
+                    "arithmetic"
+                  ],
+                  "initial_selected": [
+                    "rule",
+                    "confidence"
+                  ],
+                  "expected_uncovered": [],
+                  "lambda_suitability": 0.2,
+                  "reference_available": true,
+                  "reputation_statistics": [
+                    {
+                      "beta": 9.0,
+                      "alpha": 16.0,
+                      "domain": "general",
+                      "failures": 8,
+                      "successes": 15,
+                      "cold_start": false,
+                      "verifier_name": "semantic",
+                      "posterior_mean": 0.64,
+                      "observation_count": 23,
+                      "posterior_variance": 0.00886153846153846
+                    },
+                    {
+                      "beta": 1.0,
+                      "alpha": 1.0,
+                      "domain": "general",
+                      "failures": 0,
+                      "successes": 0,
+                      "cold_start": true,
+                      "verifier_name": "evidence",
+                      "posterior_mean": 0.5,
+                      "observation_count": 0,
+                      "posterior_variance": 0.08333333333333333
+                    },
+                    {
+                      "beta": 1.0,
+                      "alpha": 41.0,
+                      "domain": "general",
+                      "failures": 0,
+                      "successes": 40,
+                      "cold_start": false,
+                      "verifier_name": "rule",
+                      "posterior_mean": 0.9761904761904762,
+                      "observation_count": 40,
+                      "posterior_variance": 0.0005405262880345942
+                    },
+                    {
+                      "beta": 5.0,
+                      "alpha": 34.0,
+                      "domain": "general",
+                      "failures": 4,
+                      "successes": 33,
+                      "cold_start": false,
+                      "verifier_name": "confidence",
+                      "posterior_mean": 0.8717948717948718,
+                      "observation_count": 37,
+                      "posterior_variance": 0.0027942143326758714
+                    }
+                  ]
+                },
+                "policy_category": "atomic",
+                "fallback_enabled": false,
+                "override_reasons": [],
+                "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+                "selection_status": "selected",
+                "routing_signature": [
+                  "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+                  "easy",
+                  0.12,
+                  true
+                ],
+                "selection_reasons": [],
+                "execution_contract": {
+                  "version": "offline_public_decision_v4",
+                  "threshold": 0.55,
+                  "coverage_version": "task_output_contract_v2",
+                  "failure_contract": "all_selected_returned",
+                  "resource_manifest": {
+                    "version": "game_resource_manifest_v1",
+                    "verifiers": [
+                      {
+                        "resources": [
+                          {
+                            "kind": "configuration",
+                            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                            "resource_id": "confidence-adapter-configuration"
+                          },
+                          {
+                            "kind": "implementation",
+                            "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d",
+                            "resource_id": "confidence-implementation"
+                          },
+                          {
+                            "kind": "model",
+                            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                            "resource_id": "local-nli-snapshot"
+                          },
+                          {
+                            "kind": "model",
+                            "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+                            "resource_id": "ollama-model"
+                          },
+                          {
+                            "kind": "prompt",
+                            "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b",
+                            "resource_id": "self-consistency-short-answer"
+                          },
+                          {
+                            "kind": "service",
+                            "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895",
+                            "resource_id": "ollama-service"
+                          }
+                        ],
+                        "verifier_name": "confidence"
+                      },
+                      {
+                        "resources": [
+                          {
+                            "kind": "configuration",
+                            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                            "resource_id": "evidence-adapter-configuration"
+                          },
+                          {
+                            "kind": "corpus",
+                            "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                            "resource_id": "evidence-corpus"
+                          },
+                          {
+                            "kind": "implementation",
+                            "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4",
+                            "resource_id": "evidence-implementation"
+                          },
+                          {
+                            "kind": "index",
+                            "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                            "resource_id": "evidence-index"
+                          },
+                          {
+                            "kind": "model",
+                            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                            "resource_id": "local-embedding-snapshot"
+                          },
+                          {
+                            "kind": "model",
+                            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                            "resource_id": "local-nli-snapshot"
+                          }
+                        ],
+                        "verifier_name": "evidence"
+                      },
+                      {
+                        "resources": [
+                          {
+                            "kind": "configuration",
+                            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                            "resource_id": "rule-adapter-configuration"
+                          },
+                          {
+                            "kind": "implementation",
+                            "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f",
+                            "resource_id": "rule-implementation"
+                          }
+                        ],
+                        "verifier_name": "rule"
+                      },
+                      {
+                        "resources": [
+                          {
+                            "kind": "configuration",
+                            "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                            "resource_id": "semantic-adapter-configuration"
+                          },
+                          {
+                            "kind": "implementation",
+                            "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098",
+                            "resource_id": "semantic-implementation"
+                          },
+                          {
+                            "kind": "model",
+                            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                            "resource_id": "local-embedding-snapshot"
+                          }
+                        ],
+                        "verifier_name": "semantic"
+                      }
+                    ]
+                  },
+                  "team_requirements": {
+                    "version": "flexible_team_requirements_v1",
+                    "minimum_selected": 1,
+                    "minimum_informative": 1
+                  },
+                  "history_prior_beta": 1.0,
+                  "contributor_version": "informative_history_influence_v1",
+                  "history_prior_alpha": 1.0,
+                  "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+                },
+                "numerical_decision": {
+                  "team": [
+                    "rule"
+                  ],
+                  "score": 1.0,
+                  "votes": [
+                    {
+                      "passed": true,
+                      "weight": 3.7135720667043066,
+                      "included": true,
+                      "abstained": false,
+                      "confidence": 1.0,
+                      "reputation": 0.9761904761904762,
+                      "contribution": 3.7135720667043066,
+                      "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+                      "verifier_name": "rule",
+                      "failure_group_id": null,
+                      "inclusion_reason": "included",
+                      "normalized_strength": 1.0,
+                      "reliability_strength": 0.9523809523809523
+                    }
+                  ],
+                  "domain": "general",
+                  "groups": [],
+                  "status": "passed",
+                  "fallback": null,
+                  "lower_cut": -0.55,
+                  "raw_score": 1.0,
+                  "threshold": 0.55,
+                  "upper_cut": 0.55,
+                  "aggregation": "log_odds",
+                  "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+                  "aggregation_id": "reputation_weighted",
+                  "missing_reports": [],
+                  "dependency_version": null,
+                  "aggregation_version": "log_odds_v1",
+                  "dependency_assumptions": [],
+                  "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+                  "dependency_configuration_id": null
+                },
+                "attempted_verifiers": [
+                  "rule"
+                ],
+                "minimum_contributors": 1,
+                "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+                "policy_execution_mode": "game",
+                "pooling_contract_json": null,
+                "dependency_assumptions": [
+                  "configured compromise pathways; conservative connected components",
+                  "unresolved verifiers share one unknown compromise pathway",
+                  "observed provenance is audit-only and never rewrites this registry"
+                ],
+                "early_stopping_enabled": false,
+                "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+                "estimated_selected_cost": 9.678209995036013,
+                "estimated_attempted_cost": 9.678209995036013,
+                "after_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+                "minimum_selected_team_size": 1,
+                "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+                "observed_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                "pre_dispatch_compatibility_proof": {
+                  "version": "verified_frozen_singleton_execution_v1",
+                  "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+                  "relocation": null,
+                  "aggregation": "reputation_weighted",
+                  "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+                  "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                  "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+                  "native_selected": [
+                    "rule"
+                  ],
+                  "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+                  "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+                  "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                  "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+                  "active_instances_checked": true,
+                  "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                  "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+                  "planning_candidates_preserved": true
+                },
+                "singleton_resource_compatibility": {
+                  "version": "verified_frozen_singleton_execution_v1",
+                  "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+                  "relocation": null,
+                  "aggregation": "reputation_weighted",
+                  "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+                  "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                  "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+                  "native_selected": [
+                    "rule"
+                  ],
+                  "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+                  "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+                  "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                  "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+                  "active_instances_checked": true,
+                  "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                  "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+                  "planning_candidates_preserved": true
+                },
+                "pre_dispatch_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                "effective_configuration_fingerprint": "7111281224c41f2fda3d07cdcf094c52b82ec22bb484bc3a0c50f794c6123037",
+                "singleton_resource_compatibility_after": {
+                  "version": "verified_frozen_singleton_execution_v1",
+                  "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+                  "relocation": null,
+                  "aggregation": "reputation_weighted",
+                  "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+                  "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+                  "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+                  "native_selected": [
+                    "rule"
+                  ],
+                  "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+                  "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+                  "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                  "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+                  "active_instances_checked": true,
+                  "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+                  "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+                  "planning_candidates_preserved": true
+                }
+              }
+            },
+            "reasoning": "Expected 864; received 864.",
+            "verifier_name": "rule"
+          }
+        ],
+        "difficulty": "easy",
+        "session_id": null,
+        "final_score": 1.0,
+        "final_status": "passed",
+        "ground_truth": null,
+        "signed_score": 1.0,
+        "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+        "execution_audit": {
+          "team": [
+            "rule"
+          ],
+          "budget": 21258.33526502247,
+          "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+          "achieved": [
+            "arithmetic"
+          ],
+          "attempts": [
+            {
+              "state": "directional",
+              "report": {
+                "score": 1.0,
+                "passed": true,
+                "metadata": {
+                  "rule": "arithmetic_addition",
+                  "actual": 864,
+                  "decision": "SUPPORT",
+                  "expected": 864,
+                  "rule_kind": "factual",
+                  "latency_ms": 1.1,
+                  "actual_exact": "864",
+                  "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+                  "expected_exact": "864",
+                  "comparison_policy": "exact Decimal equality"
+                },
+                "reasoning": "Expected 864; received 864.",
+                "verifier_name": "rule"
+              },
+              "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+              "verifier_name": "rule",
+              "journal_attempt_id": "126f12a2-2bf9-446c-85d0-5f3202f56da7",
+              "estimated_attempt_cost": 9.678209995036013
+            }
+          ],
+          "required": [
+            "arithmetic"
+          ],
+          "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+          "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+          "threshold": 0.55,
+          "cost_units": "ms",
+          "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "task_route": "domain_requirements_task_v1",
+          "unresolved": [],
+          "aggregation": "reputation_weighted",
+          "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "termination": "complete_selected_team",
+          "contributors": 1,
+          "audit_version": "game_execution_audit_v1",
+          "public_status": "passed",
+          "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+          "execution_mode": "flexible_game",
+          "selection_plan": {
+            "domain": "general",
+            "fallback": [
+              "semantic",
+              "evidence"
+            ],
+            "candidates": [
+              {
+                "cost": 0.3,
+                "latency": 0.4,
+                "utility": 0.555,
+                "eligible": true,
+                "cold_start": false,
+                "registered": true,
+                "reputation": 0.64,
+                "limitations": [
+                  "Reference similarity is not factual correctness."
+                ],
+                "suitability": 0.0,
+                "verifier_name": "semantic",
+                "exclusion_reason": null,
+                "resource_penalty": 0.085,
+                "capability_source": "explicit",
+                "observation_count": 23,
+                "registration_order": 0,
+                "requires_reference": true,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "semantic_comparison"
+                ],
+                "suitability_contribution": 0.0
+              },
+              {
+                "cost": 0.8,
+                "latency": 0.9,
+                "utility": 0.29,
+                "eligible": true,
+                "cold_start": true,
+                "registered": true,
+                "reputation": 0.5,
+                "limitations": [
+                  "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                  "Corpus/model readiness and claim coverage are unknown until execution."
+                ],
+                "suitability": 0.0,
+                "verifier_name": "evidence",
+                "exclusion_reason": null,
+                "resource_penalty": 0.21000000000000002,
+                "capability_source": "explicit",
+                "observation_count": 0,
+                "registration_order": 1,
+                "requires_reference": false,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "direct_fact",
+                  "evidence_retrieval"
+                ],
+                "suitability_contribution": 0.0
+              },
+              {
+                "cost": 0.2,
+                "latency": 0.2,
+                "utility": 1.12619,
+                "eligible": true,
+                "cold_start": false,
+                "registered": true,
+                "reputation": 0.97619,
+                "limitations": [
+                  "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                  "Other deterministic/structural checks do not establish general factual coverage."
+                ],
+                "suitability": 1.0,
+                "verifier_name": "rule",
+                "exclusion_reason": null,
+                "resource_penalty": 0.05,
+                "capability_source": "explicit",
+                "observation_count": 40,
+                "registration_order": 2,
+                "requires_reference": false,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "arithmetic"
+                ],
+                "suitability_contribution": 0.2
+              },
+              {
+                "cost": 0.9,
+                "latency": 1.0,
+                "utility": 0.636795,
+                "eligible": true,
+                "cold_start": false,
+                "registered": true,
+                "reputation": 0.871795,
+                "limitations": [
+                  "Generation/judgment agreement is not factual evidence or independence.",
+                  "Provider readiness is unknown until execution."
+                ],
+                "suitability": 0.0,
+                "verifier_name": "confidence",
+                "exclusion_reason": null,
+                "resource_penalty": 0.23500000000000001,
+                "capability_source": "explicit",
+                "observation_count": 37,
+                "registration_order": 3,
+                "requires_reference": false,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "consistency"
+                ],
+                "suitability_contribution": 0.0
+              }
+            ],
+            "difficulty": "easy",
+            "exclusions": [],
+            "lambda_cost": 0.15,
+            "requirements": {
+              "errors": [],
+              "source": "research_context",
+              "status": "known",
+              "weights": [
+                [
+                  "arithmetic",
+                  1.0
+                ]
+              ],
+              "unsupported": [],
+              "legacy_hints": [
+                "arithmetic"
+              ],
+              "requirements": [
+                "arithmetic"
+              ],
+              "disagreements": [],
+              "requirements_known": true,
+              "legacy_unrecognized": [],
+              "weight_discrepancies": []
+            },
+            "target_count": 2,
+            "type_mapping": [
+              [
+                "arithmetic",
+                "rule"
+              ],
+              [
+                "logical_rule",
+                "rule"
+              ],
+              [
+                "direct_fact",
+                "evidence"
+              ],
+              [
+                "evidence_retrieval",
+                "evidence"
+              ],
+              [
+                "semantic_comparison",
+                "semantic"
+              ],
+              [
+                "consistency",
+                "confidence"
+              ]
+            ],
+            "domain_status": "unknown",
+            "minimum_count": 2,
+            "lambda_latency": 0.1,
+            "policy_version": "coverage_greedy_v1",
+            "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+            "analysis_method": "heuristic",
+            "context_version": "question_context_v1",
+            "coverage_status": "expected_only",
+            "scoring_version": "explicit_task_questions_v1",
+            "difficulty_score": 0.12,
+            "expected_covered": [
+              "arithmetic"
+            ],
+            "initial_selected": [
+              "rule",
+              "confidence"
+            ],
+            "expected_uncovered": [],
+            "lambda_suitability": 0.2,
+            "reference_available": true,
+            "reputation_statistics": [
+              {
+                "beta": 9.0,
+                "alpha": 16.0,
+                "domain": "general",
+                "failures": 8,
+                "successes": 15,
+                "cold_start": false,
+                "verifier_name": "semantic",
+                "posterior_mean": 0.64,
+                "observation_count": 23,
+                "posterior_variance": 0.00886153846153846
+              },
+              {
+                "beta": 1.0,
+                "alpha": 1.0,
+                "domain": "general",
+                "failures": 0,
+                "successes": 0,
+                "cold_start": true,
+                "verifier_name": "evidence",
+                "posterior_mean": 0.5,
+                "observation_count": 0,
+                "posterior_variance": 0.08333333333333333
+              },
+              {
+                "beta": 1.0,
+                "alpha": 41.0,
+                "domain": "general",
+                "failures": 0,
+                "successes": 40,
+                "cold_start": false,
+                "verifier_name": "rule",
+                "posterior_mean": 0.9761904761904762,
+                "observation_count": 40,
+                "posterior_variance": 0.0005405262880345942
+              },
+              {
+                "beta": 5.0,
+                "alpha": 34.0,
+                "domain": "general",
+                "failures": 4,
+                "successes": 33,
+                "cold_start": false,
+                "verifier_name": "confidence",
+                "posterior_mean": 0.8717948717948718,
+                "observation_count": 37,
+                "posterior_variance": 0.0027942143326758714
+              }
+            ]
+          },
+          "policy_category": "atomic",
+          "fallback_enabled": false,
+          "override_reasons": [],
+          "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+          "selection_status": "selected",
+          "routing_signature": [
+            "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+            "easy",
+            0.12,
+            true
+          ],
+          "selection_reasons": [],
+          "execution_contract": {
+            "version": "offline_public_decision_v4",
+            "threshold": 0.55,
+            "coverage_version": "task_output_contract_v2",
+            "failure_contract": "all_selected_returned",
+            "resource_manifest": {
+              "version": "game_resource_manifest_v1",
+              "verifiers": [
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "confidence-adapter-configuration"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d",
+                      "resource_id": "confidence-implementation"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                      "resource_id": "local-nli-snapshot"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+                      "resource_id": "ollama-model"
+                    },
+                    {
+                      "kind": "prompt",
+                      "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b",
+                      "resource_id": "self-consistency-short-answer"
+                    },
+                    {
+                      "kind": "service",
+                      "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895",
+                      "resource_id": "ollama-service"
+                    }
+                  ],
+                  "verifier_name": "confidence"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "evidence-adapter-configuration"
+                    },
+                    {
+                      "kind": "corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                      "resource_id": "evidence-corpus"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4",
+                      "resource_id": "evidence-implementation"
+                    },
+                    {
+                      "kind": "index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                      "resource_id": "evidence-index"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                      "resource_id": "local-embedding-snapshot"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                      "resource_id": "local-nli-snapshot"
+                    }
+                  ],
+                  "verifier_name": "evidence"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "rule-adapter-configuration"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f",
+                      "resource_id": "rule-implementation"
+                    }
+                  ],
+                  "verifier_name": "rule"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "semantic-adapter-configuration"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098",
+                      "resource_id": "semantic-implementation"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                      "resource_id": "local-embedding-snapshot"
+                    }
+                  ],
+                  "verifier_name": "semantic"
+                }
+              ]
+            },
+            "team_requirements": {
+              "version": "flexible_team_requirements_v1",
+              "minimum_selected": 1,
+              "minimum_informative": 1
+            },
+            "history_prior_beta": 1.0,
+            "contributor_version": "informative_history_influence_v1",
+            "history_prior_alpha": 1.0,
+            "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+          },
+          "numerical_decision": {
+            "team": [
+              "rule"
+            ],
+            "score": 1.0,
+            "votes": [
+              {
+                "passed": true,
+                "weight": 3.7135720667043066,
+                "included": true,
+                "abstained": false,
+                "confidence": 1.0,
+                "reputation": 0.9761904761904762,
+                "contribution": 3.7135720667043066,
+                "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+                "verifier_name": "rule",
+                "failure_group_id": null,
+                "inclusion_reason": "included",
+                "normalized_strength": 1.0,
+                "reliability_strength": 0.9523809523809523
+              }
+            ],
+            "domain": "general",
+            "groups": [],
+            "status": "passed",
+            "fallback": null,
+            "lower_cut": -0.55,
+            "raw_score": 1.0,
+            "threshold": 0.55,
+            "upper_cut": 0.55,
+            "aggregation": "log_odds",
+            "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+            "aggregation_id": "reputation_weighted",
+            "missing_reports": [],
+            "dependency_version": null,
+            "aggregation_version": "log_odds_v1",
+            "dependency_assumptions": [],
+            "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+            "dependency_configuration_id": null
+          },
+          "attempted_verifiers": [
+            "rule"
+          ],
+          "minimum_contributors": 1,
+          "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+          "policy_execution_mode": "game",
+          "pooling_contract_json": null,
+          "dependency_assumptions": [
+            "configured compromise pathways; conservative connected components",
+            "unresolved verifiers share one unknown compromise pathway",
+            "observed provenance is audit-only and never rewrites this registry"
+          ],
+          "early_stopping_enabled": false,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "estimated_selected_cost": 9.678209995036013,
+          "estimated_attempted_cost": 9.678209995036013,
+          "after_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "minimum_selected_team_size": 1,
+          "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "observed_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "pre_dispatch_compatibility_proof": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+            "relocation": null,
+            "aggregation": "reputation_weighted",
+            "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "native_selected": [
+              "rule"
+            ],
+            "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+            "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+            "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+            "active_instances_checked": true,
+            "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "planning_candidates_preserved": true
+          },
+          "singleton_resource_compatibility": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+            "relocation": null,
+            "aggregation": "reputation_weighted",
+            "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "native_selected": [
+              "rule"
+            ],
+            "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+            "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+            "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+            "active_instances_checked": true,
+            "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "planning_candidates_preserved": true
+          },
+          "pre_dispatch_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "effective_configuration_fingerprint": "7111281224c41f2fda3d07cdcf094c52b82ec22bb484bc3a0c50f794c6123037",
+          "singleton_resource_compatibility_after": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+            "relocation": null,
+            "aggregation": "reputation_weighted",
+            "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "native_selected": [
+              "rule"
+            ],
+            "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+            "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+            "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+            "active_instances_checked": true,
+            "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "planning_candidates_preserved": true
+          }
+        },
+        "early_stop_reason": "complete_selected_team",
+        "selected_verifiers": [
+          "rule"
+        ],
+        "uncertainty_reasons": []
+      },
+      "request_digest": "2d6d515ebae2bca33b28f46bf1ab0316ece322abac0ea1c41f2d5faf2470e5e6",
+      "failure_details": {},
+      "request_payload": {
+        "answer": "864",
+        "context": "864",
+        "question": "What is 328 + 536?",
+        "session_id": null,
+        "question_id": null
+      },
+      "execution_status": "completed",
+      "lease_expires_at": null,
+      "analysis_snapshot": {
+        "domain": "general",
+        "difficulty": "easy"
+      },
+      "final_response_digest": "0570edeb600471c409507f424b5015e8dceec415d55205bd44356f1957887e41"
+    }
+  ],
+  "live_verifier_attempts": [
+    {
+      "report": {
+        "score": 1.0,
+        "passed": true,
+        "metadata": {
+          "rule": "arithmetic_addition",
+          "actual": 864,
+          "decision": "SUPPORT",
+          "expected": 864,
+          "rule_kind": "factual",
+          "latency_ms": 1.1,
+          "actual_exact": "864",
+          "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+          "expected_exact": "864",
+          "comparison_policy": "exact Decimal equality"
+        },
+        "reasoning": "Expected 864; received 864.",
+        "verifier_name": "rule"
+      },
+      "outcome": "directional",
+      "call_key": "game:0:rule",
+      "attempt_id": "126f12a2-2bf9-446c-85d0-5f3202f56da7",
+      "cost_units": null,
+      "created_at": "2026-11-17T16:39:41.055506+05:30",
+      "error_type": null,
+      "started_at": "2026-11-17T16:39:41.088416+05:30",
+      "updated_at": "2026-11-17T16:39:41.126734+05:30",
+      "duration_ms": 1.7940999996426399,
+      "completed_at": "2026-11-17T16:39:41.126734+05:30",
+      "component_id": null,
+      "error_message": null,
+      "report_digest": "b71531760ea16dad37a9c26850173a9c9a55f3a718f5309b81c30eeeadebc7bb",
+      "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+      "verifier_name": "rule",
+      "estimated_cost": 9.678209995036013,
+      "execution_order": 0,
+      "identity_binding": {},
+      "lifecycle_status": "completed",
+      "report_validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae"
+    }
+  ],
+  "validation_audits": [
+    {
+      "audit_id": "5e938c22-5d40-41f9-8ed2-66ea2b2dd0db",
+      "created_at": "2026-11-17T16:39:41.265962+05:30",
+      "run_status": "completed",
+      "session_id": null,
+      "started_at": "2026-11-17T16:39:41.265962+05:30",
+      "updated_at": "2026-11-17T16:39:41.34491+05:30",
+      "question_id": null,
+      "run_summary": {
+        "team": [
+          "rule"
+        ],
+        "budget": 21258.33526502247,
+        "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+        "achieved": [
+          "arithmetic"
+        ],
+        "attempts": [
+          {
+            "state": "directional",
+            "report": {
+              "score": 1.0,
+              "passed": true,
+              "metadata": {
+                "rule": "arithmetic_addition",
+                "actual": 864,
+                "decision": "SUPPORT",
+                "expected": 864,
+                "rule_kind": "factual",
+                "latency_ms": 1.1,
+                "actual_exact": "864",
+                "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+                "expected_exact": "864",
+                "comparison_policy": "exact Decimal equality"
+              },
+              "reasoning": "Expected 864; received 864.",
+              "verifier_name": "rule"
+            },
+            "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+            "verifier_name": "rule",
+            "journal_attempt_id": "126f12a2-2bf9-446c-85d0-5f3202f56da7",
+            "estimated_attempt_cost": 9.678209995036013
+          }
+        ],
+        "required": [
+          "arithmetic"
+        ],
+        "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+        "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+        "threshold": 0.55,
+        "cost_units": "ms",
+        "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "task_route": "domain_requirements_task_v1",
+        "unresolved": [],
+        "aggregation": "reputation_weighted",
+        "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+        "termination": "complete_selected_team",
+        "contributors": 1,
+        "audit_version": "game_execution_audit_v1",
+        "public_status": "passed",
+        "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+        "execution_mode": "flexible_game",
+        "selection_plan": {
+          "domain": "general",
+          "fallback": [
+            "semantic",
+            "evidence"
+          ],
+          "candidates": [
+            {
+              "cost": 0.3,
+              "latency": 0.4,
+              "utility": 0.555,
+              "eligible": true,
+              "cold_start": false,
+              "registered": true,
+              "reputation": 0.64,
+              "limitations": [
+                "Reference similarity is not factual correctness."
+              ],
+              "suitability": 0.0,
+              "verifier_name": "semantic",
+              "exclusion_reason": null,
+              "resource_penalty": 0.085,
+              "capability_source": "explicit",
+              "observation_count": 23,
+              "registration_order": 0,
+              "requires_reference": true,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "semantic_comparison"
+              ],
+              "suitability_contribution": 0.0
+            },
+            {
+              "cost": 0.8,
+              "latency": 0.9,
+              "utility": 0.29,
+              "eligible": true,
+              "cold_start": true,
+              "registered": true,
+              "reputation": 0.5,
+              "limitations": [
+                "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                "Corpus/model readiness and claim coverage are unknown until execution."
+              ],
+              "suitability": 0.0,
+              "verifier_name": "evidence",
+              "exclusion_reason": null,
+              "resource_penalty": 0.21000000000000002,
+              "capability_source": "explicit",
+              "observation_count": 0,
+              "registration_order": 1,
+              "requires_reference": false,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "direct_fact",
+                "evidence_retrieval"
+              ],
+              "suitability_contribution": 0.0
+            },
+            {
+              "cost": 0.2,
+              "latency": 0.2,
+              "utility": 1.12619,
+              "eligible": true,
+              "cold_start": false,
+              "registered": true,
+              "reputation": 0.97619,
+              "limitations": [
+                "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                "Other deterministic/structural checks do not establish general factual coverage."
+              ],
+              "suitability": 1.0,
+              "verifier_name": "rule",
+              "exclusion_reason": null,
+              "resource_penalty": 0.05,
+              "capability_source": "explicit",
+              "observation_count": 40,
+              "registration_order": 2,
+              "requires_reference": false,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "arithmetic"
+              ],
+              "suitability_contribution": 0.2
+            },
+            {
+              "cost": 0.9,
+              "latency": 1.0,
+              "utility": 0.636795,
+              "eligible": true,
+              "cold_start": false,
+              "registered": true,
+              "reputation": 0.871795,
+              "limitations": [
+                "Generation/judgment agreement is not factual evidence or independence.",
+                "Provider readiness is unknown until execution."
+              ],
+              "suitability": 0.0,
+              "verifier_name": "confidence",
+              "exclusion_reason": null,
+              "resource_penalty": 0.23500000000000001,
+              "capability_source": "explicit",
+              "observation_count": 37,
+              "registration_order": 3,
+              "requires_reference": false,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "consistency"
+              ],
+              "suitability_contribution": 0.0
+            }
+          ],
+          "difficulty": "easy",
+          "exclusions": [],
+          "lambda_cost": 0.15,
+          "requirements": {
+            "errors": [],
+            "source": "research_context",
+            "status": "known",
+            "weights": [
+              [
+                "arithmetic",
+                1.0
+              ]
+            ],
+            "unsupported": [],
+            "legacy_hints": [
+              "arithmetic"
+            ],
+            "requirements": [
+              "arithmetic"
+            ],
+            "disagreements": [],
+            "requirements_known": true,
+            "legacy_unrecognized": [],
+            "weight_discrepancies": []
+          },
+          "target_count": 2,
+          "type_mapping": [
+            [
+              "arithmetic",
+              "rule"
+            ],
+            [
+              "logical_rule",
+              "rule"
+            ],
+            [
+              "direct_fact",
+              "evidence"
+            ],
+            [
+              "evidence_retrieval",
+              "evidence"
+            ],
+            [
+              "semantic_comparison",
+              "semantic"
+            ],
+            [
+              "consistency",
+              "confidence"
+            ]
+          ],
+          "domain_status": "unknown",
+          "minimum_count": 2,
+          "lambda_latency": 0.1,
+          "policy_version": "coverage_greedy_v1",
+          "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "coverage_status": "expected_only",
+          "scoring_version": "explicit_task_questions_v1",
+          "difficulty_score": 0.12,
+          "expected_covered": [
+            "arithmetic"
+          ],
+          "initial_selected": [
+            "rule",
+            "confidence"
+          ],
+          "expected_uncovered": [],
+          "lambda_suitability": 0.2,
+          "reference_available": true,
+          "reputation_statistics": [
+            {
+              "beta": 9.0,
+              "alpha": 16.0,
+              "domain": "general",
+              "failures": 8,
+              "successes": 15,
+              "cold_start": false,
+              "verifier_name": "semantic",
+              "posterior_mean": 0.64,
+              "observation_count": 23,
+              "posterior_variance": 0.00886153846153846
+            },
+            {
+              "beta": 1.0,
+              "alpha": 1.0,
+              "domain": "general",
+              "failures": 0,
+              "successes": 0,
+              "cold_start": true,
+              "verifier_name": "evidence",
+              "posterior_mean": 0.5,
+              "observation_count": 0,
+              "posterior_variance": 0.08333333333333333
+            },
+            {
+              "beta": 1.0,
+              "alpha": 41.0,
+              "domain": "general",
+              "failures": 0,
+              "successes": 40,
+              "cold_start": false,
+              "verifier_name": "rule",
+              "posterior_mean": 0.9761904761904762,
+              "observation_count": 40,
+              "posterior_variance": 0.0005405262880345942
+            },
+            {
+              "beta": 5.0,
+              "alpha": 34.0,
+              "domain": "general",
+              "failures": 4,
+              "successes": 33,
+              "cold_start": false,
+              "verifier_name": "confidence",
+              "posterior_mean": 0.8717948717948718,
+              "observation_count": 37,
+              "posterior_variance": 0.0027942143326758714
+            }
+          ]
+        },
+        "policy_category": "atomic",
+        "fallback_enabled": false,
+        "override_reasons": [],
+        "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+        "selection_status": "selected",
+        "routing_signature": [
+          "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+          "easy",
+          0.12,
+          true
+        ],
+        "selection_reasons": [],
+        "execution_contract": {
+          "version": "offline_public_decision_v4",
+          "threshold": 0.55,
+          "coverage_version": "task_output_contract_v2",
+          "failure_contract": "all_selected_returned",
+          "resource_manifest": {
+            "version": "game_resource_manifest_v1",
+            "verifiers": [
+              {
+                "resources": [
+                  {
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                    "resource_id": "confidence-adapter-configuration"
+                  },
+                  {
+                    "kind": "implementation",
+                    "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d",
+                    "resource_id": "confidence-implementation"
+                  },
+                  {
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                    "resource_id": "local-nli-snapshot"
+                  },
+                  {
+                    "kind": "model",
+                    "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+                    "resource_id": "ollama-model"
+                  },
+                  {
+                    "kind": "prompt",
+                    "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b",
+                    "resource_id": "self-consistency-short-answer"
+                  },
+                  {
+                    "kind": "service",
+                    "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895",
+                    "resource_id": "ollama-service"
+                  }
+                ],
+                "verifier_name": "confidence"
+              },
+              {
+                "resources": [
+                  {
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                    "resource_id": "evidence-adapter-configuration"
+                  },
+                  {
+                    "kind": "corpus",
+                    "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                    "resource_id": "evidence-corpus"
+                  },
+                  {
+                    "kind": "implementation",
+                    "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4",
+                    "resource_id": "evidence-implementation"
+                  },
+                  {
+                    "kind": "index",
+                    "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                    "resource_id": "evidence-index"
+                  },
+                  {
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                    "resource_id": "local-embedding-snapshot"
+                  },
+                  {
+                    "kind": "model",
+                    "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                    "resource_id": "local-nli-snapshot"
+                  }
+                ],
+                "verifier_name": "evidence"
+              },
+              {
+                "resources": [
+                  {
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                    "resource_id": "rule-adapter-configuration"
+                  },
+                  {
+                    "kind": "implementation",
+                    "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f",
+                    "resource_id": "rule-implementation"
+                  }
+                ],
+                "verifier_name": "rule"
+              },
+              {
+                "resources": [
+                  {
+                    "kind": "configuration",
+                    "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                    "resource_id": "semantic-adapter-configuration"
+                  },
+                  {
+                    "kind": "implementation",
+                    "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098",
+                    "resource_id": "semantic-implementation"
+                  },
+                  {
+                    "kind": "model",
+                    "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                    "resource_id": "local-embedding-snapshot"
+                  }
+                ],
+                "verifier_name": "semantic"
+              }
+            ]
+          },
+          "team_requirements": {
+            "version": "flexible_team_requirements_v1",
+            "minimum_selected": 1,
+            "minimum_informative": 1
+          },
+          "history_prior_beta": 1.0,
+          "contributor_version": "informative_history_influence_v1",
+          "history_prior_alpha": 1.0,
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+        },
+        "numerical_decision": {
+          "team": [
+            "rule"
+          ],
+          "score": 1.0,
+          "votes": [
+            {
+              "passed": true,
+              "weight": 3.7135720667043066,
+              "included": true,
+              "abstained": false,
+              "confidence": 1.0,
+              "reputation": 0.9761904761904762,
+              "contribution": 3.7135720667043066,
+              "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+              "verifier_name": "rule",
+              "failure_group_id": null,
+              "inclusion_reason": "included",
+              "normalized_strength": 1.0,
+              "reliability_strength": 0.9523809523809523
+            }
+          ],
+          "domain": "general",
+          "groups": [],
+          "status": "passed",
+          "fallback": null,
+          "lower_cut": -0.55,
+          "raw_score": 1.0,
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "aggregation": "log_odds",
+          "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+          "aggregation_id": "reputation_weighted",
+          "missing_reports": [],
+          "dependency_version": null,
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "dependency_configuration_id": null
+        },
+        "attempted_verifiers": [
+          "rule"
+        ],
+        "minimum_contributors": 1,
+        "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+        "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+        "policy_execution_mode": "game",
+        "pooling_contract_json": null,
+        "dependency_assumptions": [
+          "configured compromise pathways; conservative connected components",
+          "unresolved verifiers share one unknown compromise pathway",
+          "observed provenance is audit-only and never rewrites this registry"
+        ],
+        "early_stopping_enabled": false,
+        "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+        "estimated_selected_cost": 9.678209995036013,
+        "estimated_attempted_cost": 9.678209995036013,
+        "after_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "minimum_selected_team_size": 1,
+        "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "observed_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+        "pre_dispatch_compatibility_proof": {
+          "version": "verified_frozen_singleton_execution_v1",
+          "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+          "relocation": null,
+          "aggregation": "reputation_weighted",
+          "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+          "native_selected": [
+            "rule"
+          ],
+          "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+          "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+          "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+          "active_instances_checked": true,
+          "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "planning_candidates_preserved": true
+        },
+        "singleton_resource_compatibility": {
+          "version": "verified_frozen_singleton_execution_v1",
+          "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+          "relocation": null,
+          "aggregation": "reputation_weighted",
+          "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+          "native_selected": [
+            "rule"
+          ],
+          "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+          "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+          "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+          "active_instances_checked": true,
+          "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "planning_candidates_preserved": true
+        },
+        "pre_dispatch_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+        "effective_configuration_fingerprint": "7111281224c41f2fda3d07cdcf094c52b82ec22bb484bc3a0c50f794c6123037",
+        "singleton_resource_compatibility_after": {
+          "version": "verified_frozen_singleton_execution_v1",
+          "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+          "relocation": null,
+          "aggregation": "reputation_weighted",
+          "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+          "native_selected": [
+            "rule"
+          ],
+          "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+          "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+          "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+          "active_instances_checked": true,
+          "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "planning_candidates_preserved": true
+        }
+      },
+      "completed_at": "2026-11-17T16:39:41.34491+05:30",
+      "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+      "policy_version": "coverage_greedy_v1",
+      "selection_plan": {
+        "domain": "general",
+        "fallback": [
+          "semantic",
+          "evidence"
+        ],
+        "candidates": [
+          {
+            "cost": 0.3,
+            "latency": 0.4,
+            "utility": 0.555,
+            "eligible": true,
+            "cold_start": false,
+            "registered": true,
+            "reputation": 0.64,
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ],
+            "suitability": 0.0,
+            "verifier_name": "semantic",
+            "exclusion_reason": null,
+            "resource_penalty": 0.085,
+            "capability_source": "explicit",
+            "observation_count": 23,
+            "registration_order": 0,
+            "requires_reference": true,
+            "prerequisite_status": "unknown",
+            "configured_readiness": "unknown",
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "suitability_contribution": 0.0
+          },
+          {
+            "cost": 0.8,
+            "latency": 0.9,
+            "utility": 0.29,
+            "eligible": true,
+            "cold_start": true,
+            "registered": true,
+            "reputation": 0.5,
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ],
+            "suitability": 0.0,
+            "verifier_name": "evidence",
+            "exclusion_reason": null,
+            "resource_penalty": 0.21000000000000002,
+            "capability_source": "explicit",
+            "observation_count": 0,
+            "registration_order": 1,
+            "requires_reference": false,
+            "prerequisite_status": "unknown",
+            "configured_readiness": "unknown",
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "suitability_contribution": 0.0
+          },
+          {
+            "cost": 0.2,
+            "latency": 0.2,
+            "utility": 1.12619,
+            "eligible": true,
+            "cold_start": false,
+            "registered": true,
+            "reputation": 0.97619,
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ],
+            "suitability": 1.0,
+            "verifier_name": "rule",
+            "exclusion_reason": null,
+            "resource_penalty": 0.05,
+            "capability_source": "explicit",
+            "observation_count": 40,
+            "registration_order": 2,
+            "requires_reference": false,
+            "prerequisite_status": "unknown",
+            "configured_readiness": "unknown",
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "suitability_contribution": 0.2
+          },
+          {
+            "cost": 0.9,
+            "latency": 1.0,
+            "utility": 0.636795,
+            "eligible": true,
+            "cold_start": false,
+            "registered": true,
+            "reputation": 0.871795,
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ],
+            "suitability": 0.0,
+            "verifier_name": "confidence",
+            "exclusion_reason": null,
+            "resource_penalty": 0.23500000000000001,
+            "capability_source": "explicit",
+            "observation_count": 37,
+            "registration_order": 3,
+            "requires_reference": false,
+            "prerequisite_status": "unknown",
+            "configured_readiness": "unknown",
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "suitability_contribution": 0.0
+          }
+        ],
+        "difficulty": "easy",
+        "exclusions": [],
+        "lambda_cost": 0.15,
+        "requirements": {
+          "errors": [],
+          "source": "research_context",
+          "status": "known",
+          "weights": [
+            [
+              "arithmetic",
+              1.0
+            ]
+          ],
+          "unsupported": [],
+          "legacy_hints": [
+            "arithmetic"
+          ],
+          "requirements": [
+            "arithmetic"
+          ],
+          "disagreements": [],
+          "requirements_known": true,
+          "legacy_unrecognized": [],
+          "weight_discrepancies": []
+        },
+        "target_count": 2,
+        "type_mapping": [
+          [
+            "arithmetic",
+            "rule"
+          ],
+          [
+            "logical_rule",
+            "rule"
+          ],
+          [
+            "direct_fact",
+            "evidence"
+          ],
+          [
+            "evidence_retrieval",
+            "evidence"
+          ],
+          [
+            "semantic_comparison",
+            "semantic"
+          ],
+          [
+            "consistency",
+            "confidence"
+          ]
+        ],
+        "domain_status": "unknown",
+        "minimum_count": 2,
+        "lambda_latency": 0.1,
+        "policy_version": "coverage_greedy_v1",
+        "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "coverage_status": "expected_only",
+        "scoring_version": "explicit_task_questions_v1",
+        "difficulty_score": 0.12,
+        "expected_covered": [
+          "arithmetic"
+        ],
+        "initial_selected": [
+          "rule",
+          "confidence"
+        ],
+        "expected_uncovered": [],
+        "lambda_suitability": 0.2,
+        "reference_available": true,
+        "reputation_statistics": [
+          {
+            "beta": 9.0,
+            "alpha": 16.0,
+            "domain": "general",
+            "failures": 8,
+            "successes": 15,
+            "cold_start": false,
+            "verifier_name": "semantic",
+            "posterior_mean": 0.64,
+            "observation_count": 23,
+            "posterior_variance": 0.00886153846153846
+          },
+          {
+            "beta": 1.0,
+            "alpha": 1.0,
+            "domain": "general",
+            "failures": 0,
+            "successes": 0,
+            "cold_start": true,
+            "verifier_name": "evidence",
+            "posterior_mean": 0.5,
+            "observation_count": 0,
+            "posterior_variance": 0.08333333333333333
+          },
+          {
+            "beta": 1.0,
+            "alpha": 41.0,
+            "domain": "general",
+            "failures": 0,
+            "successes": 40,
+            "cold_start": false,
+            "verifier_name": "rule",
+            "posterior_mean": 0.9761904761904762,
+            "observation_count": 40,
+            "posterior_variance": 0.0005405262880345942
+          },
+          {
+            "beta": 5.0,
+            "alpha": 34.0,
+            "domain": "general",
+            "failures": 4,
+            "successes": 33,
+            "cold_start": false,
+            "verifier_name": "confidence",
+            "posterior_mean": 0.8717948717948718,
+            "observation_count": 37,
+            "posterior_variance": 0.0027942143326758714
+          }
+        ]
+      },
+      "execution_costs": {
+        "candidate_estimated_costs": {
+          "rule": 0.2,
+          "evidence": 0.8,
+          "semantic": 0.3,
+          "confidence": 0.9
+        },
+        "game_estimated_attempt_costs": {
+          "rule": 9.678209995036013
+        },
+        "game_estimated_selected_cost": 9.678209995036013,
+        "candidate_estimated_latencies": {
+          "rule": 0.2,
+          "evidence": 0.9,
+          "semantic": 0.4,
+          "confidence": 1.0
+        },
+        "game_estimated_attempted_cost": 9.678209995036013
+      },
+      "failure_details": [],
+      "decision_summary": {
+        "domain": "general",
+        "final_score": 1.0,
+        "termination": "complete_selected_team",
+        "contributors": 1,
+        "final_status": "passed",
+        "signed_score": 1.0,
+        "selection_plan": {
+          "domain": "general",
+          "fallback": [
+            "semantic",
+            "evidence"
+          ],
+          "candidates": [
+            {
+              "cost": 0.3,
+              "latency": 0.4,
+              "utility": 0.555,
+              "eligible": true,
+              "cold_start": false,
+              "registered": true,
+              "reputation": 0.64,
+              "limitations": [
+                "Reference similarity is not factual correctness."
+              ],
+              "suitability": 0.0,
+              "verifier_name": "semantic",
+              "exclusion_reason": null,
+              "resource_penalty": 0.085,
+              "capability_source": "explicit",
+              "observation_count": 23,
+              "registration_order": 0,
+              "requires_reference": true,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "semantic_comparison"
+              ],
+              "suitability_contribution": 0.0
+            },
+            {
+              "cost": 0.8,
+              "latency": 0.9,
+              "utility": 0.29,
+              "eligible": true,
+              "cold_start": true,
+              "registered": true,
+              "reputation": 0.5,
+              "limitations": [
+                "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                "Corpus/model readiness and claim coverage are unknown until execution."
+              ],
+              "suitability": 0.0,
+              "verifier_name": "evidence",
+              "exclusion_reason": null,
+              "resource_penalty": 0.21000000000000002,
+              "capability_source": "explicit",
+              "observation_count": 0,
+              "registration_order": 1,
+              "requires_reference": false,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "direct_fact",
+                "evidence_retrieval"
+              ],
+              "suitability_contribution": 0.0
+            },
+            {
+              "cost": 0.2,
+              "latency": 0.2,
+              "utility": 1.12619,
+              "eligible": true,
+              "cold_start": false,
+              "registered": true,
+              "reputation": 0.97619,
+              "limitations": [
+                "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                "Other deterministic/structural checks do not establish general factual coverage."
+              ],
+              "suitability": 1.0,
+              "verifier_name": "rule",
+              "exclusion_reason": null,
+              "resource_penalty": 0.05,
+              "capability_source": "explicit",
+              "observation_count": 40,
+              "registration_order": 2,
+              "requires_reference": false,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "arithmetic"
+              ],
+              "suitability_contribution": 0.2
+            },
+            {
+              "cost": 0.9,
+              "latency": 1.0,
+              "utility": 0.636795,
+              "eligible": true,
+              "cold_start": false,
+              "registered": true,
+              "reputation": 0.871795,
+              "limitations": [
+                "Generation/judgment agreement is not factual evidence or independence.",
+                "Provider readiness is unknown until execution."
+              ],
+              "suitability": 0.0,
+              "verifier_name": "confidence",
+              "exclusion_reason": null,
+              "resource_penalty": 0.23500000000000001,
+              "capability_source": "explicit",
+              "observation_count": 37,
+              "registration_order": 3,
+              "requires_reference": false,
+              "prerequisite_status": "unknown",
+              "configured_readiness": "unknown",
+              "expected_capabilities": [
+                "consistency"
+              ],
+              "suitability_contribution": 0.0
+            }
+          ],
+          "difficulty": "easy",
+          "exclusions": [],
+          "lambda_cost": 0.15,
+          "requirements": {
+            "errors": [],
+            "source": "research_context",
+            "status": "known",
+            "weights": [
+              [
+                "arithmetic",
+                1.0
+              ]
+            ],
+            "unsupported": [],
+            "legacy_hints": [
+              "arithmetic"
+            ],
+            "requirements": [
+              "arithmetic"
+            ],
+            "disagreements": [],
+            "requirements_known": true,
+            "legacy_unrecognized": [],
+            "weight_discrepancies": []
+          },
+          "target_count": 2,
+          "type_mapping": [
+            [
+              "arithmetic",
+              "rule"
+            ],
+            [
+              "logical_rule",
+              "rule"
+            ],
+            [
+              "direct_fact",
+              "evidence"
+            ],
+            [
+              "evidence_retrieval",
+              "evidence"
+            ],
+            [
+              "semantic_comparison",
+              "semantic"
+            ],
+            [
+              "consistency",
+              "confidence"
+            ]
+          ],
+          "domain_status": "unknown",
+          "minimum_count": 2,
+          "lambda_latency": 0.1,
+          "policy_version": "coverage_greedy_v1",
+          "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+          "analysis_method": "heuristic",
+          "context_version": "question_context_v1",
+          "coverage_status": "expected_only",
+          "scoring_version": "explicit_task_questions_v1",
+          "difficulty_score": 0.12,
+          "expected_covered": [
+            "arithmetic"
+          ],
+          "initial_selected": [
+            "rule",
+            "confidence"
+          ],
+          "expected_uncovered": [],
+          "lambda_suitability": 0.2,
+          "reference_available": true,
+          "reputation_statistics": [
+            {
+              "beta": 9.0,
+              "alpha": 16.0,
+              "domain": "general",
+              "failures": 8,
+              "successes": 15,
+              "cold_start": false,
+              "verifier_name": "semantic",
+              "posterior_mean": 0.64,
+              "observation_count": 23,
+              "posterior_variance": 0.00886153846153846
+            },
+            {
+              "beta": 1.0,
+              "alpha": 1.0,
+              "domain": "general",
+              "failures": 0,
+              "successes": 0,
+              "cold_start": true,
+              "verifier_name": "evidence",
+              "posterior_mean": 0.5,
+              "observation_count": 0,
+              "posterior_variance": 0.08333333333333333
+            },
+            {
+              "beta": 1.0,
+              "alpha": 41.0,
+              "domain": "general",
+              "failures": 0,
+              "successes": 40,
+              "cold_start": false,
+              "verifier_name": "rule",
+              "posterior_mean": 0.9761904761904762,
+              "observation_count": 40,
+              "posterior_variance": 0.0005405262880345942
+            },
+            {
+              "beta": 5.0,
+              "alpha": 34.0,
+              "domain": "general",
+              "failures": 4,
+              "successes": 33,
+              "cold_start": false,
+              "verifier_name": "confidence",
+              "posterior_mean": 0.8717948717948718,
+              "observation_count": 37,
+              "posterior_variance": 0.0027942143326758714
+            }
+          ]
+        },
+        "early_stop_reason": "complete_selected_team",
+        "numerical_decision": {
+          "team": [
+            "rule"
+          ],
+          "score": 1.0,
+          "votes": [
+            {
+              "passed": true,
+              "weight": 3.7135720667043066,
+              "included": true,
+              "abstained": false,
+              "confidence": 1.0,
+              "reputation": 0.9761904761904762,
+              "contribution": 3.7135720667043066,
+              "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+              "verifier_name": "rule",
+              "failure_group_id": null,
+              "inclusion_reason": "included",
+              "normalized_strength": 1.0,
+              "reliability_strength": 0.9523809523809523
+            }
+          ],
+          "domain": "general",
+          "groups": [],
+          "status": "passed",
+          "fallback": null,
+          "lower_cut": -0.55,
+          "raw_score": 1.0,
+          "threshold": 0.55,
+          "upper_cut": 0.55,
+          "aggregation": "log_odds",
+          "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+          "aggregation_id": "reputation_weighted",
+          "missing_reports": [],
+          "dependency_version": null,
+          "aggregation_version": "log_odds_v1",
+          "dependency_assumptions": [],
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "dependency_configuration_id": null
+        },
+        "attempted_verifiers": [
+          "rule"
+        ],
+        "minimum_contributors": 1,
+        "runtime_availability": {},
+        "unavailable_verifiers": [],
+        "stopping_policy_vetoes": [],
+        "last_stopping_assessment": null
+      },
+      "coverage_outcomes": {
+        "coverage": {},
+        "missing_coverage": []
+      },
+      "selected_strategy": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "execution_contract": {
+        "version": "offline_public_decision_v4",
+        "threshold": 0.55,
+        "coverage_version": "task_output_contract_v2",
+        "failure_contract": "all_selected_returned",
+        "resource_manifest": {
+          "version": "game_resource_manifest_v1",
+          "verifiers": [
+            {
+              "resources": [
+                {
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                  "resource_id": "confidence-adapter-configuration"
+                },
+                {
+                  "kind": "implementation",
+                  "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d",
+                  "resource_id": "confidence-implementation"
+                },
+                {
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "resource_id": "local-nli-snapshot"
+                },
+                {
+                  "kind": "model",
+                  "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+                  "resource_id": "ollama-model"
+                },
+                {
+                  "kind": "prompt",
+                  "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b",
+                  "resource_id": "self-consistency-short-answer"
+                },
+                {
+                  "kind": "service",
+                  "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895",
+                  "resource_id": "ollama-service"
+                }
+              ],
+              "verifier_name": "confidence"
+            },
+            {
+              "resources": [
+                {
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                  "resource_id": "evidence-adapter-configuration"
+                },
+                {
+                  "kind": "corpus",
+                  "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                  "resource_id": "evidence-corpus"
+                },
+                {
+                  "kind": "implementation",
+                  "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4",
+                  "resource_id": "evidence-implementation"
+                },
+                {
+                  "kind": "index",
+                  "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                  "resource_id": "evidence-index"
+                },
+                {
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "resource_id": "local-embedding-snapshot"
+                },
+                {
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                  "resource_id": "local-nli-snapshot"
+                }
+              ],
+              "verifier_name": "evidence"
+            },
+            {
+              "resources": [
+                {
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                  "resource_id": "rule-adapter-configuration"
+                },
+                {
+                  "kind": "implementation",
+                  "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f",
+                  "resource_id": "rule-implementation"
+                }
+              ],
+              "verifier_name": "rule"
+            },
+            {
+              "resources": [
+                {
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                  "resource_id": "semantic-adapter-configuration"
+                },
+                {
+                  "kind": "implementation",
+                  "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098",
+                  "resource_id": "semantic-implementation"
+                },
+                {
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                  "resource_id": "local-embedding-snapshot"
+                }
+              ],
+              "verifier_name": "semantic"
+            }
+          ]
+        },
+        "team_requirements": {
+          "version": "flexible_team_requirements_v1",
+          "minimum_selected": 1,
+          "minimum_informative": 1
+        },
+        "history_prior_beta": 1.0,
+        "contributor_version": "informative_history_influence_v1",
+        "history_prior_alpha": 1.0,
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+      },
+      "selected_verifiers": [
+        "rule"
+      ],
+      "reputation_snapshot": null,
+      "ranking_explanations": [
+        {
+          "cost": 0.3,
+          "latency": 0.4,
+          "utility": 0.555,
+          "eligible": true,
+          "cold_start": false,
+          "registered": true,
+          "reputation": 0.64,
+          "limitations": [
+            "Reference similarity is not factual correctness."
+          ],
+          "suitability": 0.0,
+          "verifier_name": "semantic",
+          "exclusion_reason": null,
+          "resource_penalty": 0.085,
+          "capability_source": "explicit",
+          "observation_count": 23,
+          "registration_order": 0,
+          "requires_reference": true,
+          "prerequisite_status": "unknown",
+          "configured_readiness": "unknown",
+          "expected_capabilities": [
+            "semantic_comparison"
+          ],
+          "suitability_contribution": 0.0
+        },
+        {
+          "cost": 0.8,
+          "latency": 0.9,
+          "utility": 0.29,
+          "eligible": true,
+          "cold_start": true,
+          "registered": true,
+          "reputation": 0.5,
+          "limitations": [
+            "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+            "Corpus/model readiness and claim coverage are unknown until execution."
+          ],
+          "suitability": 0.0,
+          "verifier_name": "evidence",
+          "exclusion_reason": null,
+          "resource_penalty": 0.21000000000000002,
+          "capability_source": "explicit",
+          "observation_count": 0,
+          "registration_order": 1,
+          "requires_reference": false,
+          "prerequisite_status": "unknown",
+          "configured_readiness": "unknown",
+          "expected_capabilities": [
+            "direct_fact",
+            "evidence_retrieval"
+          ],
+          "suitability_contribution": 0.0
+        },
+        {
+          "cost": 0.2,
+          "latency": 0.2,
+          "utility": 1.12619,
+          "eligible": true,
+          "cold_start": false,
+          "registered": true,
+          "reputation": 0.97619,
+          "limitations": [
+            "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+            "Other deterministic/structural checks do not establish general factual coverage."
+          ],
+          "suitability": 1.0,
+          "verifier_name": "rule",
+          "exclusion_reason": null,
+          "resource_penalty": 0.05,
+          "capability_source": "explicit",
+          "observation_count": 40,
+          "registration_order": 2,
+          "requires_reference": false,
+          "prerequisite_status": "unknown",
+          "configured_readiness": "unknown",
+          "expected_capabilities": [
+            "arithmetic"
+          ],
+          "suitability_contribution": 0.2
+        },
+        {
+          "cost": 0.9,
+          "latency": 1.0,
+          "utility": 0.636795,
+          "eligible": true,
+          "cold_start": false,
+          "registered": true,
+          "reputation": 0.871795,
+          "limitations": [
+            "Generation/judgment agreement is not factual evidence or independence.",
+            "Provider readiness is unknown until execution."
+          ],
+          "suitability": 0.0,
+          "verifier_name": "confidence",
+          "exclusion_reason": null,
+          "resource_penalty": 0.23500000000000001,
+          "capability_source": "explicit",
+          "observation_count": 37,
+          "registration_order": 3,
+          "requires_reference": false,
+          "prerequisite_status": "unknown",
+          "configured_readiness": "unknown",
+          "expected_capabilities": [
+            "consistency"
+          ],
+          "suitability_contribution": 0.0
+        }
+      ],
+      "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6"
+    }
+  ],
+  "verifier_outputs": [
+    {
+      "score": 1,
+      "passed": true,
+      "metadata": {
+        "rule": "arithmetic_addition",
+        "actual": 864,
+        "decision": "SUPPORT",
+        "expected": 864,
+        "rule_kind": "factual",
+        "latency_ms": 1.1,
+        "actual_exact": "864",
+        "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+        "expected_exact": "864",
+        "comparison_policy": "exact Decimal equality",
+        "multi_agent_verification.execution": {
+          "team": [
+            "rule"
+          ],
+          "budget": 21258.33526502247,
+          "task_id": "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+          "achieved": [
+            "arithmetic"
+          ],
+          "attempts": [
+            {
+              "state": "directional",
+              "report": {
+                "score": 1.0,
+                "passed": true,
+                "metadata": {
+                  "rule": "arithmetic_addition",
+                  "actual": 864,
+                  "decision": "SUPPORT",
+                  "expected": 864,
+                  "rule_kind": "factual",
+                  "latency_ms": 1.1,
+                  "actual_exact": "864",
+                  "score_meaning": "Deterministic rule outcome bit: 1 when the check passed, 0 when it failed. Not a probability.",
+                  "expected_exact": "864",
+                  "comparison_policy": "exact Decimal equality"
+                },
+                "reasoning": "Expected 864; received 864.",
+                "verifier_name": "rule"
+              },
+              "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+              "verifier_name": "rule",
+              "journal_attempt_id": "126f12a2-2bf9-446c-85d0-5f3202f56da7",
+              "estimated_attempt_cost": 9.678209995036013
+            }
+          ],
+          "required": [
+            "arithmetic"
+          ],
+          "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+          "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+          "threshold": 0.55,
+          "cost_units": "ms",
+          "episode_id": "registered-cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "task_route": "domain_requirements_task_v1",
+          "unresolved": [],
+          "aggregation": "reputation_weighted",
+          "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+          "termination": "complete_selected_team",
+          "contributors": 1,
+          "audit_version": "game_execution_audit_v1",
+          "public_status": "passed",
+          "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+          "execution_mode": "flexible_game",
+          "selection_plan": {
+            "domain": "general",
+            "fallback": [
+              "semantic",
+              "evidence"
+            ],
+            "candidates": [
+              {
+                "cost": 0.3,
+                "latency": 0.4,
+                "utility": 0.555,
+                "eligible": true,
+                "cold_start": false,
+                "registered": true,
+                "reputation": 0.64,
+                "limitations": [
+                  "Reference similarity is not factual correctness."
+                ],
+                "suitability": 0.0,
+                "verifier_name": "semantic",
+                "exclusion_reason": null,
+                "resource_penalty": 0.085,
+                "capability_source": "explicit",
+                "observation_count": 23,
+                "registration_order": 0,
+                "requires_reference": true,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "semantic_comparison"
+                ],
+                "suitability_contribution": 0.0
+              },
+              {
+                "cost": 0.8,
+                "latency": 0.9,
+                "utility": 0.29,
+                "eligible": true,
+                "cold_start": true,
+                "registered": true,
+                "reputation": 0.5,
+                "limitations": [
+                  "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                  "Corpus/model readiness and claim coverage are unknown until execution."
+                ],
+                "suitability": 0.0,
+                "verifier_name": "evidence",
+                "exclusion_reason": null,
+                "resource_penalty": 0.21000000000000002,
+                "capability_source": "explicit",
+                "observation_count": 0,
+                "registration_order": 1,
+                "requires_reference": false,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "direct_fact",
+                  "evidence_retrieval"
+                ],
+                "suitability_contribution": 0.0
+              },
+              {
+                "cost": 0.2,
+                "latency": 0.2,
+                "utility": 1.12619,
+                "eligible": true,
+                "cold_start": false,
+                "registered": true,
+                "reputation": 0.97619,
+                "limitations": [
+                  "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                  "Other deterministic/structural checks do not establish general factual coverage."
+                ],
+                "suitability": 1.0,
+                "verifier_name": "rule",
+                "exclusion_reason": null,
+                "resource_penalty": 0.05,
+                "capability_source": "explicit",
+                "observation_count": 40,
+                "registration_order": 2,
+                "requires_reference": false,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "arithmetic"
+                ],
+                "suitability_contribution": 0.2
+              },
+              {
+                "cost": 0.9,
+                "latency": 1.0,
+                "utility": 0.636795,
+                "eligible": true,
+                "cold_start": false,
+                "registered": true,
+                "reputation": 0.871795,
+                "limitations": [
+                  "Generation/judgment agreement is not factual evidence or independence.",
+                  "Provider readiness is unknown until execution."
+                ],
+                "suitability": 0.0,
+                "verifier_name": "confidence",
+                "exclusion_reason": null,
+                "resource_penalty": 0.23500000000000001,
+                "capability_source": "explicit",
+                "observation_count": 37,
+                "registration_order": 3,
+                "requires_reference": false,
+                "prerequisite_status": "unknown",
+                "configured_readiness": "unknown",
+                "expected_capabilities": [
+                  "consistency"
+                ],
+                "suitability_contribution": 0.0
+              }
+            ],
+            "difficulty": "easy",
+            "exclusions": [],
+            "lambda_cost": 0.15,
+            "requirements": {
+              "errors": [],
+              "source": "research_context",
+              "status": "known",
+              "weights": [
+                [
+                  "arithmetic",
+                  1.0
+                ]
+              ],
+              "unsupported": [],
+              "legacy_hints": [
+                "arithmetic"
+              ],
+              "requirements": [
+                "arithmetic"
+              ],
+              "disagreements": [],
+              "requirements_known": true,
+              "legacy_unrecognized": [],
+              "weight_discrepancies": []
+            },
+            "target_count": 2,
+            "type_mapping": [
+              [
+                "arithmetic",
+                "rule"
+              ],
+              [
+                "logical_rule",
+                "rule"
+              ],
+              [
+                "direct_fact",
+                "evidence"
+              ],
+              [
+                "evidence_retrieval",
+                "evidence"
+              ],
+              [
+                "semantic_comparison",
+                "semantic"
+              ],
+              [
+                "consistency",
+                "confidence"
+              ]
+            ],
+            "domain_status": "unknown",
+            "minimum_count": 2,
+            "lambda_latency": 0.1,
+            "policy_version": "coverage_greedy_v1",
+            "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+            "analysis_method": "heuristic",
+            "context_version": "question_context_v1",
+            "coverage_status": "expected_only",
+            "scoring_version": "explicit_task_questions_v1",
+            "difficulty_score": 0.12,
+            "expected_covered": [
+              "arithmetic"
+            ],
+            "initial_selected": [
+              "rule",
+              "confidence"
+            ],
+            "expected_uncovered": [],
+            "lambda_suitability": 0.2,
+            "reference_available": true,
+            "reputation_statistics": [
+              {
+                "beta": 9.0,
+                "alpha": 16.0,
+                "domain": "general",
+                "failures": 8,
+                "successes": 15,
+                "cold_start": false,
+                "verifier_name": "semantic",
+                "posterior_mean": 0.64,
+                "observation_count": 23,
+                "posterior_variance": 0.00886153846153846
+              },
+              {
+                "beta": 1.0,
+                "alpha": 1.0,
+                "domain": "general",
+                "failures": 0,
+                "successes": 0,
+                "cold_start": true,
+                "verifier_name": "evidence",
+                "posterior_mean": 0.5,
+                "observation_count": 0,
+                "posterior_variance": 0.08333333333333333
+              },
+              {
+                "beta": 1.0,
+                "alpha": 41.0,
+                "domain": "general",
+                "failures": 0,
+                "successes": 40,
+                "cold_start": false,
+                "verifier_name": "rule",
+                "posterior_mean": 0.9761904761904762,
+                "observation_count": 40,
+                "posterior_variance": 0.0005405262880345942
+              },
+              {
+                "beta": 5.0,
+                "alpha": 34.0,
+                "domain": "general",
+                "failures": 4,
+                "successes": 33,
+                "cold_start": false,
+                "verifier_name": "confidence",
+                "posterior_mean": 0.8717948717948718,
+                "observation_count": 37,
+                "posterior_variance": 0.0027942143326758714
+              }
+            ]
+          },
+          "policy_category": "atomic",
+          "fallback_enabled": false,
+          "override_reasons": [],
+          "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+          "selection_status": "selected",
+          "routing_signature": [
+            "844839c998c54e09cce86f82a135e639a137947ba409f28b9f7475bd6b8b91ff",
+            "easy",
+            0.12,
+            true
+          ],
+          "selection_reasons": [],
+          "execution_contract": {
+            "version": "offline_public_decision_v4",
+            "threshold": 0.55,
+            "coverage_version": "task_output_contract_v2",
+            "failure_contract": "all_selected_returned",
+            "resource_manifest": {
+              "version": "game_resource_manifest_v1",
+              "verifiers": [
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "confidence-adapter-configuration"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d",
+                      "resource_id": "confidence-implementation"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                      "resource_id": "local-nli-snapshot"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+                      "resource_id": "ollama-model"
+                    },
+                    {
+                      "kind": "prompt",
+                      "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b",
+                      "resource_id": "self-consistency-short-answer"
+                    },
+                    {
+                      "kind": "service",
+                      "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895",
+                      "resource_id": "ollama-service"
+                    }
+                  ],
+                  "verifier_name": "confidence"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "evidence-adapter-configuration"
+                    },
+                    {
+                      "kind": "corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                      "resource_id": "evidence-corpus"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4",
+                      "resource_id": "evidence-implementation"
+                    },
+                    {
+                      "kind": "index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                      "resource_id": "evidence-index"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                      "resource_id": "local-embedding-snapshot"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                      "resource_id": "local-nli-snapshot"
+                    }
+                  ],
+                  "verifier_name": "evidence"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "rule-adapter-configuration"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f",
+                      "resource_id": "rule-implementation"
+                    }
+                  ],
+                  "verifier_name": "rule"
+                },
+                {
+                  "resources": [
+                    {
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8",
+                      "resource_id": "semantic-adapter-configuration"
+                    },
+                    {
+                      "kind": "implementation",
+                      "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098",
+                      "resource_id": "semantic-implementation"
+                    },
+                    {
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                      "resource_id": "local-embedding-snapshot"
+                    }
+                  ],
+                  "verifier_name": "semantic"
+                }
+              ]
+            },
+            "team_requirements": {
+              "version": "flexible_team_requirements_v1",
+              "minimum_selected": 1,
+              "minimum_informative": 1
+            },
+            "history_prior_beta": 1.0,
+            "contributor_version": "informative_history_influence_v1",
+            "history_prior_alpha": 1.0,
+            "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb"
+          },
+          "numerical_decision": {
+            "team": [
+              "rule"
+            ],
+            "score": 1.0,
+            "votes": [
+              {
+                "passed": true,
+                "weight": 3.7135720667043066,
+                "included": true,
+                "abstained": false,
+                "confidence": 1.0,
+                "reputation": 0.9761904761904762,
+                "contribution": 3.7135720667043066,
+                "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+                "verifier_name": "rule",
+                "failure_group_id": null,
+                "inclusion_reason": "included",
+                "normalized_strength": 1.0,
+                "reliability_strength": 0.9523809523809523
+              }
+            ],
+            "domain": "general",
+            "groups": [],
+            "status": "passed",
+            "fallback": null,
+            "lower_cut": -0.55,
+            "raw_score": 1.0,
+            "threshold": 0.55,
+            "upper_cut": 0.55,
+            "aggregation": "log_odds",
+            "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+            "aggregation_id": "reputation_weighted",
+            "missing_reports": [],
+            "dependency_version": null,
+            "aggregation_version": "log_odds_v1",
+            "dependency_assumptions": [],
+            "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+            "dependency_configuration_id": null
+          },
+          "attempted_verifiers": [
+            "rule"
+          ],
+          "minimum_contributors": 1,
+          "selected_strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "offline_evaluation_id": "109f5fe44818a6238c642c02d1eedc732b148b0b765081b9f7985c0f1bcd8da9",
+          "policy_execution_mode": "game",
+          "pooling_contract_json": null,
+          "dependency_assumptions": [
+            "configured compromise pathways; conservative connected components",
+            "unresolved verifiers share one unknown compromise pathway",
+            "observed provenance is audit-only and never rewrites this registry"
+          ],
+          "early_stopping_enabled": false,
+          "reputation_snapshot_id": "c33b408d64a57ca6cfcd6bf1f79d05ab3734acf08d9e94c57b90f99905eadeb6",
+          "estimated_selected_cost": 9.678209995036013,
+          "estimated_attempted_cost": 9.678209995036013,
+          "after_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "minimum_selected_team_size": 1,
+          "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "observed_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "pre_dispatch_compatibility_proof": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+            "relocation": null,
+            "aggregation": "reputation_weighted",
+            "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "native_selected": [
+              "rule"
+            ],
+            "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+            "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+            "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+            "active_instances_checked": true,
+            "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "planning_candidates_preserved": true
+          },
+          "singleton_resource_compatibility": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+            "relocation": null,
+            "aggregation": "reputation_weighted",
+            "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "native_selected": [
+              "rule"
+            ],
+            "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+            "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+            "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+            "active_instances_checked": true,
+            "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "planning_candidates_preserved": true
+          },
+          "pre_dispatch_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+          "effective_configuration_fingerprint": "7111281224c41f2fda3d07cdcf094c52b82ec22bb484bc3a0c50f794c6123037",
+          "singleton_resource_compatibility_after": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "proof_id": "02988356f1944d95d79d06461982f59c48b71c9e4a79f0fcd82cf65dc6ae0e81",
+            "relocation": null,
+            "aggregation": "reputation_weighted",
+            "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+            "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "native_selected": [
+              "rule"
+            ],
+            "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+            "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+            "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "constructor_settings_id": "5cdfbaa91de1552d7f4d6b6f147ac927dc2bd92ba1c05992339111bee68c0979",
+            "active_instances_checked": true,
+            "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "planning_candidates_preserved": true
+          }
+        }
+      },
+      "reasoning": "Expected 864; received 864.",
+      "attempt_id": "126f12a2-2bf9-446c-85d0-5f3202f56da7",
+      "created_at": "2026-11-17T16:39:41.305746+05:30",
+      "latency_ms": null,
+      "question_id": null,
+      "validation_id": "6cb09591-3858-4f81-8ec5-53d34cc6deae",
+      "verifier_name": "rule",
+      "execution_order": 1,
+      "verifier_result_id": "381eff58-fe9b-49f3-acc1-8611afbb7d86"
+    }
+  ],
+  "readback_pass": true
+}

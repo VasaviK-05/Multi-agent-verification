@@ -1,0 +1,3178 @@
+{
+  "id": "fact-coverage-abstention",
+  "category": "factual_missing_coverage",
+  "fixture": "local-acceptance-plan-v1/BE legitimate context; no-knowledge answer edge",
+  "expected_correct": null,
+  "payload": {
+    "question": "What is the population of Belgium?",
+    "answer": "I do not know.",
+    "context": "The population of Belgium is 11941781."
+  },
+  "http_status": 200,
+  "latency_ms": 5748.875,
+  "transport_error": null,
+  "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+  "final_status": "failed",
+  "final_score": -0.984214,
+  "signed_score": -0.9842139482498169,
+  "execution_audit": {
+    "audit_version": "game_execution_audit_v1",
+    "execution_mode": "flexible_game",
+    "episode_id": "registered-e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+    "effective_configuration_fingerprint": "494655c7057c626ddab2e232c32806f232d92f9798aaf904bb105795a5302790",
+    "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+    "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+    "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+    "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+    "offline_evaluation_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+    "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+    "team": [
+      "evidence"
+    ],
+    "aggregation": "reputation_weighted",
+    "threshold": 0.55,
+    "execution_contract": {
+      "version": "offline_public_decision_v4",
+      "coverage_version": "task_output_contract_v2",
+      "contributor_version": "informative_history_influence_v1",
+      "threshold": 0.55,
+      "failure_contract": "all_selected_returned",
+      "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "history_prior_alpha": 1.0,
+      "history_prior_beta": 1.0,
+      "resource_manifest": {
+        "version": "game_resource_manifest_v1",
+        "verifiers": [
+          {
+            "verifier_name": "confidence",
+            "resources": [
+              {
+                "resource_id": "confidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "confidence-implementation",
+                "kind": "implementation",
+                "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              },
+              {
+                "resource_id": "ollama-model",
+                "kind": "model",
+                "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+              },
+              {
+                "resource_id": "self-consistency-short-answer",
+                "kind": "prompt",
+                "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+              },
+              {
+                "resource_id": "ollama-service",
+                "kind": "service",
+                "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+              }
+            ]
+          },
+          {
+            "verifier_name": "evidence",
+            "resources": [
+              {
+                "resource_id": "evidence-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "evidence-corpus",
+                "kind": "corpus",
+                "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+              },
+              {
+                "resource_id": "evidence-implementation",
+                "kind": "implementation",
+                "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+              },
+              {
+                "resource_id": "evidence-index",
+                "kind": "index",
+                "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              },
+              {
+                "resource_id": "local-nli-snapshot",
+                "kind": "model",
+                "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+              }
+            ]
+          },
+          {
+            "verifier_name": "rule",
+            "resources": [
+              {
+                "resource_id": "rule-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "rule-implementation",
+                "kind": "implementation",
+                "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+              }
+            ]
+          },
+          {
+            "verifier_name": "semantic",
+            "resources": [
+              {
+                "resource_id": "semantic-adapter-configuration",
+                "kind": "configuration",
+                "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+              },
+              {
+                "resource_id": "semantic-implementation",
+                "kind": "implementation",
+                "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+              },
+              {
+                "resource_id": "local-embedding-snapshot",
+                "kind": "model",
+                "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+              }
+            ]
+          }
+        ]
+      },
+      "team_requirements": {
+        "version": "flexible_team_requirements_v1",
+        "minimum_selected": 1,
+        "minimum_informative": 1
+      }
+    },
+    "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+    "dependency_assumptions": [
+      "configured compromise pathways; conservative connected components",
+      "unresolved verifiers share one unknown compromise pathway",
+      "observed provenance is audit-only and never rewrites this registry"
+    ],
+    "budget": 15965.046464995248,
+    "cost_units": "ms",
+    "estimated_selected_cost": 188.79894875281025,
+    "estimated_attempted_cost": 188.79894875281025,
+    "attempted_verifiers": [
+      "evidence"
+    ],
+    "attempts": [
+      {
+        "verifier_name": "evidence",
+        "estimated_attempt_cost": 188.79894875281025,
+        "state": "directional"
+      }
+    ],
+    "selection_status": "selected",
+    "selection_reasons": [],
+    "numerical_decision": {
+      "domain": "general",
+      "status": "failed",
+      "raw_score": -0.9842139482498169,
+      "score": -0.984214,
+      "threshold": 0.55,
+      "aggregation": "log_odds",
+      "votes": [
+        {
+          "verifier_name": "evidence",
+          "abstained": false,
+          "passed": false,
+          "confidence": 0.9842139482498169,
+          "reputation": 0.9500000000000001,
+          "weight": 2.944438979166442,
+          "contribution": -2.8979579130660644,
+          "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+          "normalized_strength": -0.9842139482498169,
+          "reliability_strength": 0.9000000000000001,
+          "included": true,
+          "inclusion_reason": "included",
+          "failure_group_id": null
+        }
+      ],
+      "aggregation_id": "reputation_weighted",
+      "aggregation_version": "log_odds_v1",
+      "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+      "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+      "team": [
+        "evidence"
+      ],
+      "missing_reports": [],
+      "dependency_configuration_id": null,
+      "dependency_version": null,
+      "dependency_assumptions": [],
+      "groups": [],
+      "fallback": null,
+      "lower_cut": -0.55,
+      "upper_cut": 0.55
+    },
+    "public_status": "failed",
+    "override_reasons": [],
+    "contributors": 1,
+    "minimum_contributors": 1,
+    "minimum_selected_team_size": 1,
+    "pooling_contract_json": null,
+    "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+    "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+    "required": [
+      "direct_fact"
+    ],
+    "achieved": [
+      "direct_fact"
+    ],
+    "unresolved": [],
+    "singleton_resource_compatibility": {
+      "version": "verified_frozen_singleton_execution_v1",
+      "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+      "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+      "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "aggregation": "reputation_weighted",
+      "native_selected": [
+        "evidence"
+      ],
+      "planning_candidates_preserved": true,
+      "active_instances_checked": true,
+      "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+        "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+    },
+    "after_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+    "singleton_resource_compatibility_after": {
+      "version": "verified_frozen_singleton_execution_v1",
+      "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+      "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+      "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "aggregation": "reputation_weighted",
+      "native_selected": [
+        "evidence"
+      ],
+      "planning_candidates_preserved": true,
+      "active_instances_checked": true,
+      "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+        "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+    },
+    "selection_plan": {
+      "policy_version": "coverage_greedy_v1",
+      "domain": "general",
+      "domain_status": "unknown",
+      "difficulty": "easy",
+      "difficulty_score": 0.13,
+      "analysis_method": "heuristic",
+      "context_version": "question_context_v1",
+      "scoring_version": "explicit_task_questions_v1",
+      "reference_available": true,
+      "requirements": {
+        "source": "research_context",
+        "status": "known",
+        "requirements": [
+          "direct_fact"
+        ],
+        "weights": [
+          [
+            "direct_fact",
+            1.0
+          ]
+        ],
+        "requirements_known": true,
+        "legacy_hints": [
+          "direct_fact"
+        ],
+        "disagreements": [],
+        "unsupported": [],
+        "errors": [],
+        "legacy_unrecognized": [],
+        "weight_discrepancies": []
+      },
+      "lambda_cost": 0.15,
+      "lambda_latency": 0.1,
+      "lambda_suitability": 0.2,
+      "type_mapping": [
+        [
+          "arithmetic",
+          "rule"
+        ],
+        [
+          "logical_rule",
+          "rule"
+        ],
+        [
+          "direct_fact",
+          "evidence"
+        ],
+        [
+          "evidence_retrieval",
+          "evidence"
+        ],
+        [
+          "semantic_comparison",
+          "semantic"
+        ],
+        [
+          "consistency",
+          "confidence"
+        ]
+      ],
+      "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+      "minimum_count": 2,
+      "target_count": 2,
+      "candidates": [
+        {
+          "verifier_name": "semantic",
+          "registration_order": 0,
+          "reputation": 0.5,
+          "observation_count": 40,
+          "cold_start": false,
+          "cost": 0.3,
+          "latency": 0.4,
+          "resource_penalty": 0.085,
+          "suitability": 0.0,
+          "suitability_contribution": 0.0,
+          "utility": 0.415,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "semantic_comparison"
+          ],
+          "requires_reference": true,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Reference similarity is not factual correctness."
+          ]
+        },
+        {
+          "verifier_name": "evidence",
+          "registration_order": 1,
+          "reputation": 0.95,
+          "observation_count": 38,
+          "cold_start": false,
+          "cost": 0.8,
+          "latency": 0.9,
+          "resource_penalty": 0.21000000000000002,
+          "suitability": 1.0,
+          "suitability_contribution": 0.2,
+          "utility": 0.94,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "direct_fact",
+            "evidence_retrieval"
+          ],
+          "requires_reference": false,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+            "Corpus/model readiness and claim coverage are unknown until execution."
+          ]
+        },
+        {
+          "verifier_name": "rule",
+          "registration_order": 2,
+          "reputation": 0.5,
+          "observation_count": 0,
+          "cold_start": true,
+          "cost": 0.2,
+          "latency": 0.2,
+          "resource_penalty": 0.05,
+          "suitability": 0.0,
+          "suitability_contribution": 0.0,
+          "utility": 0.45,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "arithmetic"
+          ],
+          "requires_reference": false,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+            "Other deterministic/structural checks do not establish general factual coverage."
+          ]
+        },
+        {
+          "verifier_name": "confidence",
+          "registration_order": 3,
+          "reputation": 0.733333,
+          "observation_count": 13,
+          "cold_start": false,
+          "cost": 0.9,
+          "latency": 1.0,
+          "resource_penalty": 0.23500000000000001,
+          "suitability": 0.0,
+          "suitability_contribution": 0.0,
+          "utility": 0.498333,
+          "registered": true,
+          "eligible": true,
+          "capability_source": "explicit",
+          "expected_capabilities": [
+            "consistency"
+          ],
+          "requires_reference": false,
+          "configured_readiness": "unknown",
+          "prerequisite_status": "unknown",
+          "exclusion_reason": null,
+          "limitations": [
+            "Generation/judgment agreement is not factual evidence or independence.",
+            "Provider readiness is unknown until execution."
+          ]
+        }
+      ],
+      "initial_selected": [
+        "evidence",
+        "confidence"
+      ],
+      "fallback": [
+        "rule",
+        "semantic"
+      ],
+      "expected_covered": [
+        "direct_fact"
+      ],
+      "expected_uncovered": [],
+      "coverage_status": "expected_only",
+      "exclusions": [],
+      "reputation_statistics": [
+        {
+          "verifier_name": "semantic",
+          "domain": "general",
+          "alpha": 21.0,
+          "beta": 21.0,
+          "successes": 20,
+          "failures": 20,
+          "observation_count": 40,
+          "posterior_mean": 0.5,
+          "posterior_variance": 0.005813953488372093,
+          "cold_start": false
+        },
+        {
+          "verifier_name": "evidence",
+          "domain": "general",
+          "alpha": 38.0,
+          "beta": 2.0,
+          "successes": 37,
+          "failures": 1,
+          "observation_count": 38,
+          "posterior_mean": 0.9500000000000001,
+          "posterior_variance": 0.001158536585365852,
+          "cold_start": false
+        },
+        {
+          "verifier_name": "rule",
+          "domain": "general",
+          "alpha": 1.0,
+          "beta": 1.0,
+          "successes": 0,
+          "failures": 0,
+          "observation_count": 0,
+          "posterior_mean": 0.5,
+          "posterior_variance": 0.08333333333333333,
+          "cold_start": true
+        },
+        {
+          "verifier_name": "confidence",
+          "domain": "general",
+          "alpha": 11.0,
+          "beta": 4.0,
+          "successes": 10,
+          "failures": 3,
+          "observation_count": 13,
+          "posterior_mean": 0.7333333333333333,
+          "posterior_variance": 0.012222222222222225,
+          "cold_start": false
+        }
+      ]
+    },
+    "termination": "complete_selected_team",
+    "early_stopping_enabled": false,
+    "fallback_enabled": false,
+    "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+    "task_route": "domain_requirements_task_v1",
+    "policy_execution_mode": "game",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "atomic",
+    "routing_signature": [
+      "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+      "easy",
+      0.13,
+      true
+    ],
+    "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+    "pre_dispatch_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+    "pre_dispatch_compatibility_proof": {
+      "version": "verified_frozen_singleton_execution_v1",
+      "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+      "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+      "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "aggregation": "reputation_weighted",
+      "native_selected": [
+        "evidence"
+      ],
+      "planning_candidates_preserved": true,
+      "active_instances_checked": true,
+      "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+        "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+    }
+  },
+  "results": [
+    {
+      "verifier_name": "evidence",
+      "score": 0.9842139482498169,
+      "passed": false,
+      "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: BE. Claim: I do not know. NLI confidence: 0.9842.",
+      "metadata": {
+        "decision": "REJECT",
+        "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+        "nli_label": "contradiction",
+        "nli_model": "cross-encoder/nli-deberta-v3-small",
+        "nli_output_shape": "list[dict]",
+        "unsure_reason": null,
+        "diagnostic_code": null,
+        "top_k": 3,
+        "min_retrieval_score": 0.45,
+        "retrieval_margin": 0.15,
+        "min_nli_score": 0.5,
+        "min_topic_coverage": 0.5,
+        "topic_margin": 0.3,
+        "max_premise_windows": 3,
+        "thresholds_calibrated": false,
+        "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "index_version": "idx-0b78f878aa86",
+        "claims": [
+          "I do not know."
+        ],
+        "claim_decisions": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "claim": "I do not know.",
+            "hypothesis": "I do not know.",
+            "template": "statement",
+            "decision": "REJECT",
+            "confidence": 0.9842139482498169,
+            "unsure_reason": null,
+            "best_retrieval_score": 0.8275878429412842,
+            "deciding_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "evidence_refs": {
+              "supporting": [],
+              "contradicting": [
+                "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+              ],
+              "ignored_contradictions": [],
+              "ignored_support": [],
+              "evaluated": [
+                "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+              ],
+              "discarded": [
+                "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+              ]
+            }
+          }
+        ],
+        "unchecked_claims": [],
+        "supporting": [],
+        "contradicting": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "BE",
+            "chunk_id": 14,
+            "url": "https://www.geonames.org/countries/BE/",
+            "article_id": "BE",
+            "article_key": "url:https://www.geonames.org/countries/BE/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "index_ref": "idx-0b78f878aa86:BE:14",
+            "retrieval_score": 0.8275878429412842,
+            "topic_coverage": 1.0,
+            "nli_label": "contradiction",
+            "nli_score": 0.9842139482498169,
+            "excerpt": "The population of Belgium is 11941781."
+          }
+        ],
+        "ignored_contradictions": [],
+        "ignored_support": [],
+        "evaluated_evidence": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "BE",
+            "chunk_id": 14,
+            "url": "https://www.geonames.org/countries/BE/",
+            "article_id": "BE",
+            "article_key": "url:https://www.geonames.org/countries/BE/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "index_ref": "idx-0b78f878aa86:BE:14",
+            "retrieval_score": 0.8275878429412842,
+            "relevant_evidence": "The population of Belgium is 11941781.",
+            "match_score": 0,
+            "fact_score": 2,
+            "value_relation": "none",
+            "quantity_kinds": [],
+            "quantity_scope_aligned": true,
+            "claim_names_in_premise": true,
+            "office_holder_consistent": true,
+            "relation_aligned": true,
+            "nli_label": "contradiction",
+            "nli_score": 0.9842139482498169,
+            "probabilities": {
+              "contradiction": 0.9842139482498169,
+              "neutral": 0.014492325484752655,
+              "entailment": 0.0012937338324263692
+            },
+            "nli_output_shape": "list[dict]",
+            "premise_windows": [
+              {
+                "premise": "The population of Belgium is 11941781.",
+                "nli_label": "contradiction",
+                "probabilities": {
+                  "contradiction": 0.9842139482498169,
+                  "neutral": 0.014492325484752655,
+                  "entailment": 0.0012937338324263692
+                },
+                "token_count": 17,
+                "title_dependent": false,
+                "fact_score": 2,
+                "value_relation": "none"
+              }
+            ],
+            "topic_coverage": 1.0,
+            "missing_anchor_terms": [],
+            "missing_numbers": [],
+            "missing_event_identifiers": [],
+            "about_subject": true,
+            "title_covers_event": false,
+            "article_covers_event": true,
+            "entity_consistent": true,
+            "event_consistent": true,
+            "condition_consistent": true,
+            "eligibility_basis": "lexical_subject",
+            "discard_code": "candidate_retained_for_nli"
+          }
+        ],
+        "discarded_evidence": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "MV",
+            "chunk_id": 5,
+            "url": "https://www.geonames.org/countries/MV/",
+            "article_id": "MV",
+            "article_key": "url:https://www.geonames.org/countries/MV/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+            "index_ref": "idx-0b78f878aa86:MV:5",
+            "retrieval_score": 0.4451748728752136,
+            "topic_coverage": 0.24023221105427947,
+            "missing_anchor_terms": [
+              "belgium"
+            ],
+            "missing_numbers": [],
+            "missing_event_identifiers": [],
+            "about_subject": false,
+            "title_covers_event": false,
+            "article_covers_event": false,
+            "entity_consistent": true,
+            "event_consistent": true,
+            "condition_consistent": true,
+            "eligibility_basis": null,
+            "reason": "article title is about a different subject than the question",
+            "discard_code": "off_subject"
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "title": "IN",
+            "chunk_id": 2,
+            "url": "https://www.geonames.org/countries/IN/",
+            "article_id": "IN",
+            "article_key": "url:https://www.geonames.org/countries/IN/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+            "index_ref": "idx-0b78f878aa86:IN:2",
+            "retrieval_score": 0.4088893234729767,
+            "topic_coverage": 0.24023221105427947,
+            "missing_anchor_terms": [
+              "belgium"
+            ],
+            "missing_numbers": [],
+            "missing_event_identifiers": [],
+            "about_subject": false,
+            "title_covers_event": false,
+            "article_covers_event": false,
+            "entity_consistent": true,
+            "event_consistent": true,
+            "condition_consistent": true,
+            "eligibility_basis": null,
+            "reason": "article title is about a different subject than the question",
+            "discard_code": "off_subject"
+          }
+        ],
+        "candidate_pipeline": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "BE",
+            "article_key": "url:https://www.geonames.org/countries/BE/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+            "index_ref": "idx-0b78f878aa86:BE:14",
+            "title": "BE",
+            "chunk_id": 14,
+            "retrieval_score": 0.8275878429412842,
+            "passed_select_relevant": true,
+            "passed_on_topic": true,
+            "nli_executed": true,
+            "discard_code": null
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "LR",
+            "article_key": "url:https://www.geonames.org/countries/LR/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/LR/#476b7ca8dbdb",
+            "index_ref": "idx-0b78f878aa86:LR:8",
+            "title": "LR",
+            "chunk_id": 8,
+            "retrieval_score": 0.549077570438385,
+            "passed_select_relevant": false,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": null
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "CM",
+            "article_key": "url:https://www.geonames.org/countries/CM/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+            "index_ref": "idx-0b78f878aa86:CM:54",
+            "title": "CM",
+            "chunk_id": 54,
+            "retrieval_score": 0.5430408716201782,
+            "passed_select_relevant": false,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": null
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "MV",
+            "article_key": "url:https://www.geonames.org/countries/MV/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+            "index_ref": "idx-0b78f878aa86:MV:5",
+            "title": "MV",
+            "chunk_id": 5,
+            "retrieval_score": 0.4451748728752136,
+            "passed_select_relevant": true,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": "off_subject"
+          },
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "article_id": "IN",
+            "article_key": "url:https://www.geonames.org/countries/IN/",
+            "article_key_scope": "global",
+            "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+            "index_ref": "idx-0b78f878aa86:IN:2",
+            "title": "IN",
+            "chunk_id": 2,
+            "retrieval_score": 0.4088893234729767,
+            "passed_select_relevant": true,
+            "passed_on_topic": false,
+            "nli_executed": false,
+            "discard_code": "off_subject"
+          }
+        ],
+        "retrieved_counts": [
+          {
+            "claim_index": 0,
+            "claim_id": "claim-0",
+            "retrieved_count": 5
+          }
+        ],
+        "deciding_claim_id": "claim-0",
+        "evidence_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+        "evidence_title": "BE",
+        "evidence_chunk_id": 14,
+        "retrieval_score": 0.8275878429412842,
+        "best_retrieval_score": 0.8275878429412842,
+        "latency_ms": 137.86,
+        "latency_breakdown_ms": {
+          "retrieval": 16.76,
+          "nli": 118.58,
+          "total": 137.86
+        },
+        "multi_agent_verification.execution": {
+          "audit_version": "game_execution_audit_v1",
+          "execution_mode": "flexible_game",
+          "episode_id": "registered-e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+          "effective_configuration_fingerprint": "494655c7057c626ddab2e232c32806f232d92f9798aaf904bb105795a5302790",
+          "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+          "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+          "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+          "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+          "offline_evaluation_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+          "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          "team": [
+            "evidence"
+          ],
+          "aggregation": "reputation_weighted",
+          "threshold": 0.55,
+          "execution_contract": {
+            "version": "offline_public_decision_v4",
+            "coverage_version": "task_output_contract_v2",
+            "contributor_version": "informative_history_influence_v1",
+            "threshold": 0.55,
+            "failure_contract": "all_selected_returned",
+            "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "history_prior_alpha": 1.0,
+            "history_prior_beta": 1.0,
+            "resource_manifest": {
+              "version": "game_resource_manifest_v1",
+              "verifiers": [
+                {
+                  "verifier_name": "confidence",
+                  "resources": [
+                    {
+                      "resource_id": "confidence-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "confidence-implementation",
+                      "kind": "implementation",
+                      "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                    },
+                    {
+                      "resource_id": "local-nli-snapshot",
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    },
+                    {
+                      "resource_id": "ollama-model",
+                      "kind": "model",
+                      "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                    },
+                    {
+                      "resource_id": "self-consistency-short-answer",
+                      "kind": "prompt",
+                      "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                    },
+                    {
+                      "resource_id": "ollama-service",
+                      "kind": "service",
+                      "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "evidence",
+                  "resources": [
+                    {
+                      "resource_id": "evidence-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "evidence-corpus",
+                      "kind": "corpus",
+                      "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                    },
+                    {
+                      "resource_id": "evidence-implementation",
+                      "kind": "implementation",
+                      "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                    },
+                    {
+                      "resource_id": "evidence-index",
+                      "kind": "index",
+                      "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                    },
+                    {
+                      "resource_id": "local-embedding-snapshot",
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    },
+                    {
+                      "resource_id": "local-nli-snapshot",
+                      "kind": "model",
+                      "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "rule",
+                  "resources": [
+                    {
+                      "resource_id": "rule-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "rule-implementation",
+                      "kind": "implementation",
+                      "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                    }
+                  ]
+                },
+                {
+                  "verifier_name": "semantic",
+                  "resources": [
+                    {
+                      "resource_id": "semantic-adapter-configuration",
+                      "kind": "configuration",
+                      "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                    },
+                    {
+                      "resource_id": "semantic-implementation",
+                      "kind": "implementation",
+                      "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                    },
+                    {
+                      "resource_id": "local-embedding-snapshot",
+                      "kind": "model",
+                      "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                    }
+                  ]
+                }
+              ]
+            },
+            "team_requirements": {
+              "version": "flexible_team_requirements_v1",
+              "minimum_selected": 1,
+              "minimum_informative": 1
+            }
+          },
+          "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "dependency_assumptions": [
+            "configured compromise pathways; conservative connected components",
+            "unresolved verifiers share one unknown compromise pathway",
+            "observed provenance is audit-only and never rewrites this registry"
+          ],
+          "budget": 15965.046464995248,
+          "cost_units": "ms",
+          "estimated_selected_cost": 188.79894875281025,
+          "estimated_attempted_cost": 188.79894875281025,
+          "attempted_verifiers": [
+            "evidence"
+          ],
+          "attempts": [
+            {
+              "verifier_name": "evidence",
+              "estimated_attempt_cost": 188.79894875281025,
+              "state": "directional"
+            }
+          ],
+          "selection_status": "selected",
+          "selection_reasons": [],
+          "numerical_decision": {
+            "domain": "general",
+            "status": "failed",
+            "raw_score": -0.9842139482498169,
+            "score": -0.984214,
+            "threshold": 0.55,
+            "aggregation": "log_odds",
+            "votes": [
+              {
+                "verifier_name": "evidence",
+                "abstained": false,
+                "passed": false,
+                "confidence": 0.9842139482498169,
+                "reputation": 0.9500000000000001,
+                "weight": 2.944438979166442,
+                "contribution": -2.8979579130660644,
+                "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+                "normalized_strength": -0.9842139482498169,
+                "reliability_strength": 0.9000000000000001,
+                "included": true,
+                "inclusion_reason": "included",
+                "failure_group_id": null
+              }
+            ],
+            "aggregation_id": "reputation_weighted",
+            "aggregation_version": "log_odds_v1",
+            "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+            "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+            "team": [
+              "evidence"
+            ],
+            "missing_reports": [],
+            "dependency_configuration_id": null,
+            "dependency_version": null,
+            "dependency_assumptions": [],
+            "groups": [],
+            "fallback": null,
+            "lower_cut": -0.55,
+            "upper_cut": 0.55
+          },
+          "public_status": "failed",
+          "override_reasons": [],
+          "contributors": 1,
+          "minimum_contributors": 1,
+          "minimum_selected_team_size": 1,
+          "pooling_contract_json": null,
+          "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+          "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+          "required": [
+            "direct_fact"
+          ],
+          "achieved": [
+            "direct_fact"
+          ],
+          "unresolved": [],
+          "singleton_resource_compatibility": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+            "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+            "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+            "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "aggregation": "reputation_weighted",
+            "native_selected": [
+              "evidence"
+            ],
+            "planning_candidates_preserved": true,
+            "active_instances_checked": true,
+            "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+              "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+          },
+          "after_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+          "singleton_resource_compatibility_after": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+            "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+            "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+            "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "aggregation": "reputation_weighted",
+            "native_selected": [
+              "evidence"
+            ],
+            "planning_candidates_preserved": true,
+            "active_instances_checked": true,
+            "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+              "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+          },
+          "selection_plan": {
+            "policy_version": "coverage_greedy_v1",
+            "domain": "general",
+            "domain_status": "unknown",
+            "difficulty": "easy",
+            "difficulty_score": 0.13,
+            "analysis_method": "heuristic",
+            "context_version": "question_context_v1",
+            "scoring_version": "explicit_task_questions_v1",
+            "reference_available": true,
+            "requirements": {
+              "source": "research_context",
+              "status": "known",
+              "requirements": [
+                "direct_fact"
+              ],
+              "weights": [
+                [
+                  "direct_fact",
+                  1.0
+                ]
+              ],
+              "requirements_known": true,
+              "legacy_hints": [
+                "direct_fact"
+              ],
+              "disagreements": [],
+              "unsupported": [],
+              "errors": [],
+              "legacy_unrecognized": [],
+              "weight_discrepancies": []
+            },
+            "lambda_cost": 0.15,
+            "lambda_latency": 0.1,
+            "lambda_suitability": 0.2,
+            "type_mapping": [
+              [
+                "arithmetic",
+                "rule"
+              ],
+              [
+                "logical_rule",
+                "rule"
+              ],
+              [
+                "direct_fact",
+                "evidence"
+              ],
+              [
+                "evidence_retrieval",
+                "evidence"
+              ],
+              [
+                "semantic_comparison",
+                "semantic"
+              ],
+              [
+                "consistency",
+                "confidence"
+              ]
+            ],
+            "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+            "minimum_count": 2,
+            "target_count": 2,
+            "candidates": [
+              {
+                "verifier_name": "semantic",
+                "registration_order": 0,
+                "reputation": 0.5,
+                "observation_count": 40,
+                "cold_start": false,
+                "cost": 0.3,
+                "latency": 0.4,
+                "resource_penalty": 0.085,
+                "suitability": 0.0,
+                "suitability_contribution": 0.0,
+                "utility": 0.415,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "semantic_comparison"
+                ],
+                "requires_reference": true,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Reference similarity is not factual correctness."
+                ]
+              },
+              {
+                "verifier_name": "evidence",
+                "registration_order": 1,
+                "reputation": 0.95,
+                "observation_count": 38,
+                "cold_start": false,
+                "cost": 0.8,
+                "latency": 0.9,
+                "resource_penalty": 0.21000000000000002,
+                "suitability": 1.0,
+                "suitability_contribution": 0.2,
+                "utility": 0.94,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "direct_fact",
+                  "evidence_retrieval"
+                ],
+                "requires_reference": false,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                  "Corpus/model readiness and claim coverage are unknown until execution."
+                ]
+              },
+              {
+                "verifier_name": "rule",
+                "registration_order": 2,
+                "reputation": 0.5,
+                "observation_count": 0,
+                "cold_start": true,
+                "cost": 0.2,
+                "latency": 0.2,
+                "resource_penalty": 0.05,
+                "suitability": 0.0,
+                "suitability_contribution": 0.0,
+                "utility": 0.45,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "arithmetic"
+                ],
+                "requires_reference": false,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                  "Other deterministic/structural checks do not establish general factual coverage."
+                ]
+              },
+              {
+                "verifier_name": "confidence",
+                "registration_order": 3,
+                "reputation": 0.733333,
+                "observation_count": 13,
+                "cold_start": false,
+                "cost": 0.9,
+                "latency": 1.0,
+                "resource_penalty": 0.23500000000000001,
+                "suitability": 0.0,
+                "suitability_contribution": 0.0,
+                "utility": 0.498333,
+                "registered": true,
+                "eligible": true,
+                "capability_source": "explicit",
+                "expected_capabilities": [
+                  "consistency"
+                ],
+                "requires_reference": false,
+                "configured_readiness": "unknown",
+                "prerequisite_status": "unknown",
+                "exclusion_reason": null,
+                "limitations": [
+                  "Generation/judgment agreement is not factual evidence or independence.",
+                  "Provider readiness is unknown until execution."
+                ]
+              }
+            ],
+            "initial_selected": [
+              "evidence",
+              "confidence"
+            ],
+            "fallback": [
+              "rule",
+              "semantic"
+            ],
+            "expected_covered": [
+              "direct_fact"
+            ],
+            "expected_uncovered": [],
+            "coverage_status": "expected_only",
+            "exclusions": [],
+            "reputation_statistics": [
+              {
+                "verifier_name": "semantic",
+                "domain": "general",
+                "alpha": 21.0,
+                "beta": 21.0,
+                "successes": 20,
+                "failures": 20,
+                "observation_count": 40,
+                "posterior_mean": 0.5,
+                "posterior_variance": 0.005813953488372093,
+                "cold_start": false
+              },
+              {
+                "verifier_name": "evidence",
+                "domain": "general",
+                "alpha": 38.0,
+                "beta": 2.0,
+                "successes": 37,
+                "failures": 1,
+                "observation_count": 38,
+                "posterior_mean": 0.9500000000000001,
+                "posterior_variance": 0.001158536585365852,
+                "cold_start": false
+              },
+              {
+                "verifier_name": "rule",
+                "domain": "general",
+                "alpha": 1.0,
+                "beta": 1.0,
+                "successes": 0,
+                "failures": 0,
+                "observation_count": 0,
+                "posterior_mean": 0.5,
+                "posterior_variance": 0.08333333333333333,
+                "cold_start": true
+              },
+              {
+                "verifier_name": "confidence",
+                "domain": "general",
+                "alpha": 11.0,
+                "beta": 4.0,
+                "successes": 10,
+                "failures": 3,
+                "observation_count": 13,
+                "posterior_mean": 0.7333333333333333,
+                "posterior_variance": 0.012222222222222225,
+                "cold_start": false
+              }
+            ]
+          },
+          "termination": "complete_selected_team",
+          "early_stopping_enabled": false,
+          "fallback_enabled": false,
+          "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+          "task_route": "domain_requirements_task_v1",
+          "policy_execution_mode": "game",
+          "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+          "policy_category": "atomic",
+          "routing_signature": [
+            "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+            "easy",
+            0.13,
+            true
+          ],
+          "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+          "pre_dispatch_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+          "pre_dispatch_compatibility_proof": {
+            "version": "verified_frozen_singleton_execution_v1",
+            "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+            "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+            "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+            "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+            "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+            "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+            "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "aggregation": "reputation_weighted",
+            "native_selected": [
+              "evidence"
+            ],
+            "planning_candidates_preserved": true,
+            "active_instances_checked": true,
+            "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+            "relocation": {
+              "version": "verified_resource_relocation_v1",
+              "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+              "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+              "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+              "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+              "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+              "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+              "historical_corpus_mtime": 1793449707.0226758,
+              "current_corpus_mtime": 1793543854.5395257,
+              "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+              "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+              "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+              "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+              "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+              "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+              "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+              "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+              "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+              "authorized_resource_ids": [
+                "index:evidence-index"
+              ]
+            },
+            "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+          }
+        }
+      }
+    }
+  ],
+  "actual_verifier_calls": 1,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "selected",
+  "selection_reasons": [],
+  "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+  "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+  "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+  "team": [
+    "evidence"
+  ],
+  "aggregation": "reputation_weighted",
+  "attempted_verifiers": [
+    "evidence"
+  ],
+  "coverage": {
+    "required": [
+      "direct_fact"
+    ],
+    "achieved": [
+      "direct_fact"
+    ],
+    "unresolved": []
+  },
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {
+    "pre_dispatch_compatibility_proof": {
+      "version": "verified_frozen_singleton_execution_v1",
+      "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+      "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+      "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "aggregation": "reputation_weighted",
+      "native_selected": [
+        "evidence"
+      ],
+      "planning_candidates_preserved": true,
+      "active_instances_checked": true,
+      "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+        "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+    },
+    "singleton_resource_compatibility": {
+      "version": "verified_frozen_singleton_execution_v1",
+      "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+      "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+      "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "aggregation": "reputation_weighted",
+      "native_selected": [
+        "evidence"
+      ],
+      "planning_candidates_preserved": true,
+      "active_instances_checked": true,
+      "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+      "relocation": {
+        "version": "verified_resource_relocation_v1",
+        "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+        "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+        "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+        "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+        "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+        "historical_corpus_mtime": 1793449707.0226758,
+        "current_corpus_mtime": 1793543854.5395257,
+        "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+        "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+        "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+        "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+        "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+        "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+        "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+        "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+        "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+        "authorized_resource_ids": [
+          "index:evidence-index"
+        ]
+      },
+      "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+    }
+  },
+  "response_json": {
+    "results": [
+      {
+        "verifier_name": "evidence",
+        "score": 0.9842139482498169,
+        "passed": false,
+        "reasoning": "NLI result: contradiction. Retrieved evidence contradicts the claim. Evidence: BE. Claim: I do not know. NLI confidence: 0.9842.",
+        "metadata": {
+          "decision": "REJECT",
+          "score_meaning": "NLI probability of the label that decided the result (entailment for SUPPORT, contradiction for REJECT) on the deciding evidence chunk; 0 for UNSURE. A class probability from one model, not a calibrated probability that the answer is correct.",
+          "nli_label": "contradiction",
+          "nli_model": "cross-encoder/nli-deberta-v3-small",
+          "nli_output_shape": "list[dict]",
+          "unsure_reason": null,
+          "diagnostic_code": null,
+          "top_k": 3,
+          "min_retrieval_score": 0.45,
+          "retrieval_margin": 0.15,
+          "min_nli_score": 0.5,
+          "min_topic_coverage": 0.5,
+          "topic_margin": 0.3,
+          "max_premise_windows": 3,
+          "thresholds_calibrated": false,
+          "corpus_version": "sha256:28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "index_version": "idx-0b78f878aa86",
+          "claims": [
+            "I do not know."
+          ],
+          "claim_decisions": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "claim": "I do not know.",
+              "hypothesis": "I do not know.",
+              "template": "statement",
+              "decision": "REJECT",
+              "confidence": 0.9842139482498169,
+              "unsure_reason": null,
+              "best_retrieval_score": 0.8275878429412842,
+              "deciding_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+              "evidence_refs": {
+                "supporting": [],
+                "contradicting": [
+                  "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                ],
+                "ignored_contradictions": [],
+                "ignored_support": [],
+                "evaluated": [
+                  "url:https://www.geonames.org/countries/BE/#d4ea91dfb974"
+                ],
+                "discarded": [
+                  "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+                  "url:https://www.geonames.org/countries/IN/#896f20d2c32b"
+                ]
+              }
+            }
+          ],
+          "unchecked_claims": [],
+          "supporting": [],
+          "contradicting": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "BE",
+              "chunk_id": 14,
+              "url": "https://www.geonames.org/countries/BE/",
+              "article_id": "BE",
+              "article_key": "url:https://www.geonames.org/countries/BE/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+              "index_ref": "idx-0b78f878aa86:BE:14",
+              "retrieval_score": 0.8275878429412842,
+              "topic_coverage": 1.0,
+              "nli_label": "contradiction",
+              "nli_score": 0.9842139482498169,
+              "excerpt": "The population of Belgium is 11941781."
+            }
+          ],
+          "ignored_contradictions": [],
+          "ignored_support": [],
+          "evaluated_evidence": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "BE",
+              "chunk_id": 14,
+              "url": "https://www.geonames.org/countries/BE/",
+              "article_id": "BE",
+              "article_key": "url:https://www.geonames.org/countries/BE/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+              "index_ref": "idx-0b78f878aa86:BE:14",
+              "retrieval_score": 0.8275878429412842,
+              "relevant_evidence": "The population of Belgium is 11941781.",
+              "match_score": 0,
+              "fact_score": 2,
+              "value_relation": "none",
+              "quantity_kinds": [],
+              "quantity_scope_aligned": true,
+              "claim_names_in_premise": true,
+              "office_holder_consistent": true,
+              "relation_aligned": true,
+              "nli_label": "contradiction",
+              "nli_score": 0.9842139482498169,
+              "probabilities": {
+                "contradiction": 0.9842139482498169,
+                "neutral": 0.014492325484752655,
+                "entailment": 0.0012937338324263692
+              },
+              "nli_output_shape": "list[dict]",
+              "premise_windows": [
+                {
+                  "premise": "The population of Belgium is 11941781.",
+                  "nli_label": "contradiction",
+                  "probabilities": {
+                    "contradiction": 0.9842139482498169,
+                    "neutral": 0.014492325484752655,
+                    "entailment": 0.0012937338324263692
+                  },
+                  "token_count": 17,
+                  "title_dependent": false,
+                  "fact_score": 2,
+                  "value_relation": "none"
+                }
+              ],
+              "topic_coverage": 1.0,
+              "missing_anchor_terms": [],
+              "missing_numbers": [],
+              "missing_event_identifiers": [],
+              "about_subject": true,
+              "title_covers_event": false,
+              "article_covers_event": true,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "condition_consistent": true,
+              "eligibility_basis": "lexical_subject",
+              "discard_code": "candidate_retained_for_nli"
+            }
+          ],
+          "discarded_evidence": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "MV",
+              "chunk_id": 5,
+              "url": "https://www.geonames.org/countries/MV/",
+              "article_id": "MV",
+              "article_key": "url:https://www.geonames.org/countries/MV/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+              "index_ref": "idx-0b78f878aa86:MV:5",
+              "retrieval_score": 0.4451748728752136,
+              "topic_coverage": 0.24023221105427947,
+              "missing_anchor_terms": [
+                "belgium"
+              ],
+              "missing_numbers": [],
+              "missing_event_identifiers": [],
+              "about_subject": false,
+              "title_covers_event": false,
+              "article_covers_event": false,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "condition_consistent": true,
+              "eligibility_basis": null,
+              "reason": "article title is about a different subject than the question",
+              "discard_code": "off_subject"
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "title": "IN",
+              "chunk_id": 2,
+              "url": "https://www.geonames.org/countries/IN/",
+              "article_id": "IN",
+              "article_key": "url:https://www.geonames.org/countries/IN/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+              "index_ref": "idx-0b78f878aa86:IN:2",
+              "retrieval_score": 0.4088893234729767,
+              "topic_coverage": 0.24023221105427947,
+              "missing_anchor_terms": [
+                "belgium"
+              ],
+              "missing_numbers": [],
+              "missing_event_identifiers": [],
+              "about_subject": false,
+              "title_covers_event": false,
+              "article_covers_event": false,
+              "entity_consistent": true,
+              "event_consistent": true,
+              "condition_consistent": true,
+              "eligibility_basis": null,
+              "reason": "article title is about a different subject than the question",
+              "discard_code": "off_subject"
+            }
+          ],
+          "candidate_pipeline": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "BE",
+              "article_key": "url:https://www.geonames.org/countries/BE/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+              "index_ref": "idx-0b78f878aa86:BE:14",
+              "title": "BE",
+              "chunk_id": 14,
+              "retrieval_score": 0.8275878429412842,
+              "passed_select_relevant": true,
+              "passed_on_topic": true,
+              "nli_executed": true,
+              "discard_code": null
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "LR",
+              "article_key": "url:https://www.geonames.org/countries/LR/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/LR/#476b7ca8dbdb",
+              "index_ref": "idx-0b78f878aa86:LR:8",
+              "title": "LR",
+              "chunk_id": 8,
+              "retrieval_score": 0.549077570438385,
+              "passed_select_relevant": false,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": null
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "CM",
+              "article_key": "url:https://www.geonames.org/countries/CM/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/CM/#31b352a64a12",
+              "index_ref": "idx-0b78f878aa86:CM:54",
+              "title": "CM",
+              "chunk_id": 54,
+              "retrieval_score": 0.5430408716201782,
+              "passed_select_relevant": false,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": null
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "MV",
+              "article_key": "url:https://www.geonames.org/countries/MV/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/MV/#bb2cd40cd9b4",
+              "index_ref": "idx-0b78f878aa86:MV:5",
+              "title": "MV",
+              "chunk_id": 5,
+              "retrieval_score": 0.4451748728752136,
+              "passed_select_relevant": true,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": "off_subject"
+            },
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "article_id": "IN",
+              "article_key": "url:https://www.geonames.org/countries/IN/",
+              "article_key_scope": "global",
+              "source_id": "url:https://www.geonames.org/countries/IN/#896f20d2c32b",
+              "index_ref": "idx-0b78f878aa86:IN:2",
+              "title": "IN",
+              "chunk_id": 2,
+              "retrieval_score": 0.4088893234729767,
+              "passed_select_relevant": true,
+              "passed_on_topic": false,
+              "nli_executed": false,
+              "discard_code": "off_subject"
+            }
+          ],
+          "retrieved_counts": [
+            {
+              "claim_index": 0,
+              "claim_id": "claim-0",
+              "retrieved_count": 5
+            }
+          ],
+          "deciding_claim_id": "claim-0",
+          "evidence_source_id": "url:https://www.geonames.org/countries/BE/#d4ea91dfb974",
+          "evidence_title": "BE",
+          "evidence_chunk_id": 14,
+          "retrieval_score": 0.8275878429412842,
+          "best_retrieval_score": 0.8275878429412842,
+          "latency_ms": 137.86,
+          "latency_breakdown_ms": {
+            "retrieval": 16.76,
+            "nli": 118.58,
+            "total": 137.86
+          },
+          "multi_agent_verification.execution": {
+            "audit_version": "game_execution_audit_v1",
+            "execution_mode": "flexible_game",
+            "episode_id": "registered-e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+            "effective_configuration_fingerprint": "494655c7057c626ddab2e232c32806f232d92f9798aaf904bb105795a5302790",
+            "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+            "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+            "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+            "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+            "offline_evaluation_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+            "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+            "team": [
+              "evidence"
+            ],
+            "aggregation": "reputation_weighted",
+            "threshold": 0.55,
+            "execution_contract": {
+              "version": "offline_public_decision_v4",
+              "coverage_version": "task_output_contract_v2",
+              "contributor_version": "informative_history_influence_v1",
+              "threshold": 0.55,
+              "failure_contract": "all_selected_returned",
+              "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+              "history_prior_alpha": 1.0,
+              "history_prior_beta": 1.0,
+              "resource_manifest": {
+                "version": "game_resource_manifest_v1",
+                "verifiers": [
+                  {
+                    "verifier_name": "confidence",
+                    "resources": [
+                      {
+                        "resource_id": "confidence-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "confidence-implementation",
+                        "kind": "implementation",
+                        "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                      },
+                      {
+                        "resource_id": "local-nli-snapshot",
+                        "kind": "model",
+                        "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                      },
+                      {
+                        "resource_id": "ollama-model",
+                        "kind": "model",
+                        "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                      },
+                      {
+                        "resource_id": "self-consistency-short-answer",
+                        "kind": "prompt",
+                        "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                      },
+                      {
+                        "resource_id": "ollama-service",
+                        "kind": "service",
+                        "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                      }
+                    ]
+                  },
+                  {
+                    "verifier_name": "evidence",
+                    "resources": [
+                      {
+                        "resource_id": "evidence-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "evidence-corpus",
+                        "kind": "corpus",
+                        "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                      },
+                      {
+                        "resource_id": "evidence-implementation",
+                        "kind": "implementation",
+                        "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                      },
+                      {
+                        "resource_id": "evidence-index",
+                        "kind": "index",
+                        "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                      },
+                      {
+                        "resource_id": "local-embedding-snapshot",
+                        "kind": "model",
+                        "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                      },
+                      {
+                        "resource_id": "local-nli-snapshot",
+                        "kind": "model",
+                        "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                      }
+                    ]
+                  },
+                  {
+                    "verifier_name": "rule",
+                    "resources": [
+                      {
+                        "resource_id": "rule-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "rule-implementation",
+                        "kind": "implementation",
+                        "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                      }
+                    ]
+                  },
+                  {
+                    "verifier_name": "semantic",
+                    "resources": [
+                      {
+                        "resource_id": "semantic-adapter-configuration",
+                        "kind": "configuration",
+                        "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                      },
+                      {
+                        "resource_id": "semantic-implementation",
+                        "kind": "implementation",
+                        "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                      },
+                      {
+                        "resource_id": "local-embedding-snapshot",
+                        "kind": "model",
+                        "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "team_requirements": {
+                "version": "flexible_team_requirements_v1",
+                "minimum_selected": 1,
+                "minimum_informative": 1
+              }
+            },
+            "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "dependency_assumptions": [
+              "configured compromise pathways; conservative connected components",
+              "unresolved verifiers share one unknown compromise pathway",
+              "observed provenance is audit-only and never rewrites this registry"
+            ],
+            "budget": 15965.046464995248,
+            "cost_units": "ms",
+            "estimated_selected_cost": 188.79894875281025,
+            "estimated_attempted_cost": 188.79894875281025,
+            "attempted_verifiers": [
+              "evidence"
+            ],
+            "attempts": [
+              {
+                "verifier_name": "evidence",
+                "estimated_attempt_cost": 188.79894875281025,
+                "state": "directional"
+              }
+            ],
+            "selection_status": "selected",
+            "selection_reasons": [],
+            "numerical_decision": {
+              "domain": "general",
+              "status": "failed",
+              "raw_score": -0.9842139482498169,
+              "score": -0.984214,
+              "threshold": 0.55,
+              "aggregation": "log_odds",
+              "votes": [
+                {
+                  "verifier_name": "evidence",
+                  "abstained": false,
+                  "passed": false,
+                  "confidence": 0.9842139482498169,
+                  "reputation": 0.9500000000000001,
+                  "weight": 2.944438979166442,
+                  "contribution": -2.8979579130660644,
+                  "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+                  "normalized_strength": -0.9842139482498169,
+                  "reliability_strength": 0.9000000000000001,
+                  "included": true,
+                  "inclusion_reason": "included",
+                  "failure_group_id": null
+                }
+              ],
+              "aggregation_id": "reputation_weighted",
+              "aggregation_version": "log_odds_v1",
+              "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+              "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+              "team": [
+                "evidence"
+              ],
+              "missing_reports": [],
+              "dependency_configuration_id": null,
+              "dependency_version": null,
+              "dependency_assumptions": [],
+              "groups": [],
+              "fallback": null,
+              "lower_cut": -0.55,
+              "upper_cut": 0.55
+            },
+            "public_status": "failed",
+            "override_reasons": [],
+            "contributors": 1,
+            "minimum_contributors": 1,
+            "minimum_selected_team_size": 1,
+            "pooling_contract_json": null,
+            "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+            "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+            "required": [
+              "direct_fact"
+            ],
+            "achieved": [
+              "direct_fact"
+            ],
+            "unresolved": [],
+            "singleton_resource_compatibility": {
+              "version": "verified_frozen_singleton_execution_v1",
+              "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+              "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+              "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+              "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+              "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+              "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+              "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+              "aggregation": "reputation_weighted",
+              "native_selected": [
+                "evidence"
+              ],
+              "planning_candidates_preserved": true,
+              "active_instances_checked": true,
+              "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+                "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+                "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+                "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+            },
+            "after_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+            "singleton_resource_compatibility_after": {
+              "version": "verified_frozen_singleton_execution_v1",
+              "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+              "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+              "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+              "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+              "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+              "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+              "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+              "aggregation": "reputation_weighted",
+              "native_selected": [
+                "evidence"
+              ],
+              "planning_candidates_preserved": true,
+              "active_instances_checked": true,
+              "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+                "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+                "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+                "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+            },
+            "selection_plan": {
+              "policy_version": "coverage_greedy_v1",
+              "domain": "general",
+              "domain_status": "unknown",
+              "difficulty": "easy",
+              "difficulty_score": 0.13,
+              "analysis_method": "heuristic",
+              "context_version": "question_context_v1",
+              "scoring_version": "explicit_task_questions_v1",
+              "reference_available": true,
+              "requirements": {
+                "source": "research_context",
+                "status": "known",
+                "requirements": [
+                  "direct_fact"
+                ],
+                "weights": [
+                  [
+                    "direct_fact",
+                    1.0
+                  ]
+                ],
+                "requirements_known": true,
+                "legacy_hints": [
+                  "direct_fact"
+                ],
+                "disagreements": [],
+                "unsupported": [],
+                "errors": [],
+                "legacy_unrecognized": [],
+                "weight_discrepancies": []
+              },
+              "lambda_cost": 0.15,
+              "lambda_latency": 0.1,
+              "lambda_suitability": 0.2,
+              "type_mapping": [
+                [
+                  "arithmetic",
+                  "rule"
+                ],
+                [
+                  "logical_rule",
+                  "rule"
+                ],
+                [
+                  "direct_fact",
+                  "evidence"
+                ],
+                [
+                  "evidence_retrieval",
+                  "evidence"
+                ],
+                [
+                  "semantic_comparison",
+                  "semantic"
+                ],
+                [
+                  "consistency",
+                  "confidence"
+                ]
+              ],
+              "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+              "minimum_count": 2,
+              "target_count": 2,
+              "candidates": [
+                {
+                  "verifier_name": "semantic",
+                  "registration_order": 0,
+                  "reputation": 0.5,
+                  "observation_count": 40,
+                  "cold_start": false,
+                  "cost": 0.3,
+                  "latency": 0.4,
+                  "resource_penalty": 0.085,
+                  "suitability": 0.0,
+                  "suitability_contribution": 0.0,
+                  "utility": 0.415,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "semantic_comparison"
+                  ],
+                  "requires_reference": true,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Reference similarity is not factual correctness."
+                  ]
+                },
+                {
+                  "verifier_name": "evidence",
+                  "registration_order": 1,
+                  "reputation": 0.95,
+                  "observation_count": 38,
+                  "cold_start": false,
+                  "cost": 0.8,
+                  "latency": 0.9,
+                  "resource_penalty": 0.21000000000000002,
+                  "suitability": 1.0,
+                  "suitability_contribution": 0.2,
+                  "utility": 0.94,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "direct_fact",
+                    "evidence_retrieval"
+                  ],
+                  "requires_reference": false,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+                    "Corpus/model readiness and claim coverage are unknown until execution."
+                  ]
+                },
+                {
+                  "verifier_name": "rule",
+                  "registration_order": 2,
+                  "reputation": 0.5,
+                  "observation_count": 0,
+                  "cold_start": true,
+                  "cost": 0.2,
+                  "latency": 0.2,
+                  "resource_penalty": 0.05,
+                  "suitability": 0.0,
+                  "suitability_contribution": 0.0,
+                  "utility": 0.45,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "arithmetic"
+                  ],
+                  "requires_reference": false,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+                    "Other deterministic/structural checks do not establish general factual coverage."
+                  ]
+                },
+                {
+                  "verifier_name": "confidence",
+                  "registration_order": 3,
+                  "reputation": 0.733333,
+                  "observation_count": 13,
+                  "cold_start": false,
+                  "cost": 0.9,
+                  "latency": 1.0,
+                  "resource_penalty": 0.23500000000000001,
+                  "suitability": 0.0,
+                  "suitability_contribution": 0.0,
+                  "utility": 0.498333,
+                  "registered": true,
+                  "eligible": true,
+                  "capability_source": "explicit",
+                  "expected_capabilities": [
+                    "consistency"
+                  ],
+                  "requires_reference": false,
+                  "configured_readiness": "unknown",
+                  "prerequisite_status": "unknown",
+                  "exclusion_reason": null,
+                  "limitations": [
+                    "Generation/judgment agreement is not factual evidence or independence.",
+                    "Provider readiness is unknown until execution."
+                  ]
+                }
+              ],
+              "initial_selected": [
+                "evidence",
+                "confidence"
+              ],
+              "fallback": [
+                "rule",
+                "semantic"
+              ],
+              "expected_covered": [
+                "direct_fact"
+              ],
+              "expected_uncovered": [],
+              "coverage_status": "expected_only",
+              "exclusions": [],
+              "reputation_statistics": [
+                {
+                  "verifier_name": "semantic",
+                  "domain": "general",
+                  "alpha": 21.0,
+                  "beta": 21.0,
+                  "successes": 20,
+                  "failures": 20,
+                  "observation_count": 40,
+                  "posterior_mean": 0.5,
+                  "posterior_variance": 0.005813953488372093,
+                  "cold_start": false
+                },
+                {
+                  "verifier_name": "evidence",
+                  "domain": "general",
+                  "alpha": 38.0,
+                  "beta": 2.0,
+                  "successes": 37,
+                  "failures": 1,
+                  "observation_count": 38,
+                  "posterior_mean": 0.9500000000000001,
+                  "posterior_variance": 0.001158536585365852,
+                  "cold_start": false
+                },
+                {
+                  "verifier_name": "rule",
+                  "domain": "general",
+                  "alpha": 1.0,
+                  "beta": 1.0,
+                  "successes": 0,
+                  "failures": 0,
+                  "observation_count": 0,
+                  "posterior_mean": 0.5,
+                  "posterior_variance": 0.08333333333333333,
+                  "cold_start": true
+                },
+                {
+                  "verifier_name": "confidence",
+                  "domain": "general",
+                  "alpha": 11.0,
+                  "beta": 4.0,
+                  "successes": 10,
+                  "failures": 3,
+                  "observation_count": 13,
+                  "posterior_mean": 0.7333333333333333,
+                  "posterior_variance": 0.012222222222222225,
+                  "cold_start": false
+                }
+              ]
+            },
+            "termination": "complete_selected_team",
+            "early_stopping_enabled": false,
+            "fallback_enabled": false,
+            "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+            "task_route": "domain_requirements_task_v1",
+            "policy_execution_mode": "game",
+            "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+            "policy_category": "atomic",
+            "routing_signature": [
+              "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+              "easy",
+              0.13,
+              true
+            ],
+            "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+            "pre_dispatch_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+            "pre_dispatch_compatibility_proof": {
+              "version": "verified_frozen_singleton_execution_v1",
+              "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+              "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+              "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+              "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+              "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+              "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+              "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+              "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+              "aggregation": "reputation_weighted",
+              "native_selected": [
+                "evidence"
+              ],
+              "planning_candidates_preserved": true,
+              "active_instances_checked": true,
+              "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+              "relocation": {
+                "version": "verified_resource_relocation_v1",
+                "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+                "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+                "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+                "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+                "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+                "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+                "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+                "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+                "historical_corpus_mtime": 1793449707.0226758,
+                "current_corpus_mtime": 1793543854.5395257,
+                "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+                "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+                "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+                "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+                "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+                "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+                "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+                "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+                "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+                "authorized_resource_ids": [
+                  "index:evidence-index"
+                ]
+              },
+              "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+            }
+          }
+        }
+      }
+    ],
+    "final_status": "failed",
+    "final_score": -0.984214,
+    "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [
+      "evidence"
+    ],
+    "early_stop_reason": "complete_selected_team",
+    "uncertainty_reasons": [],
+    "signed_score": -0.9842139482498169,
+    "execution_audit": {
+      "audit_version": "game_execution_audit_v1",
+      "execution_mode": "flexible_game",
+      "episode_id": "registered-e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "effective_configuration_fingerprint": "494655c7057c626ddab2e232c32806f232d92f9798aaf904bb105795a5302790",
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+      "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+      "offline_evaluation_id": "5c76daffdb215915959d5ca42cf3195cc4ea141a1a18d47a19ec40ce51f0e107",
+      "selected_strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+      "team": [
+        "evidence"
+      ],
+      "aggregation": "reputation_weighted",
+      "threshold": 0.55,
+      "execution_contract": {
+        "version": "offline_public_decision_v4",
+        "coverage_version": "task_output_contract_v2",
+        "contributor_version": "informative_history_influence_v1",
+        "threshold": 0.55,
+        "failure_contract": "all_selected_returned",
+        "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "history_prior_alpha": 1.0,
+        "history_prior_beta": 1.0,
+        "resource_manifest": {
+          "version": "game_resource_manifest_v1",
+          "verifiers": [
+            {
+              "verifier_name": "confidence",
+              "resources": [
+                {
+                  "resource_id": "confidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "confidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "9d33739bb0216d198b0b2ce2d14aaab724abb07d486a354c05df84700e460a4d"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                },
+                {
+                  "resource_id": "ollama-model",
+                  "kind": "model",
+                  "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+                },
+                {
+                  "resource_id": "self-consistency-short-answer",
+                  "kind": "prompt",
+                  "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+                },
+                {
+                  "resource_id": "ollama-service",
+                  "kind": "service",
+                  "sha256": "5347e328e94b1736cbad1c2d65a812c6255665f92d7e297d2944f1420d97f895"
+                }
+              ]
+            },
+            {
+              "verifier_name": "evidence",
+              "resources": [
+                {
+                  "resource_id": "evidence-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "evidence-corpus",
+                  "kind": "corpus",
+                  "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+                },
+                {
+                  "resource_id": "evidence-implementation",
+                  "kind": "implementation",
+                  "sha256": "0fdcbbb419738a57a262b1f730cf8ff4ea357d562967b52bde85bb19356f60b4"
+                },
+                {
+                  "resource_id": "evidence-index",
+                  "kind": "index",
+                  "sha256": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                },
+                {
+                  "resource_id": "local-nli-snapshot",
+                  "kind": "model",
+                  "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+                }
+              ]
+            },
+            {
+              "verifier_name": "rule",
+              "resources": [
+                {
+                  "resource_id": "rule-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "rule-implementation",
+                  "kind": "implementation",
+                  "sha256": "2f870d6cfb93c2918a38616627a0be8bc42f624afbad49338e69f8bf5a00059f"
+                }
+              ]
+            },
+            {
+              "verifier_name": "semantic",
+              "resources": [
+                {
+                  "resource_id": "semantic-adapter-configuration",
+                  "kind": "configuration",
+                  "sha256": "5f7c798ed72745bdbcb1c3f447120cd9373446fe307c60bb6cd7f936839b5ce8"
+                },
+                {
+                  "resource_id": "semantic-implementation",
+                  "kind": "implementation",
+                  "sha256": "9b76f1ea898782cfbdb43a702e2d9e85f3cbf0f99c8f0bdcb7e67551fbe45098"
+                },
+                {
+                  "resource_id": "local-embedding-snapshot",
+                  "kind": "model",
+                  "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+                }
+              ]
+            }
+          ]
+        },
+        "team_requirements": {
+          "version": "flexible_team_requirements_v1",
+          "minimum_selected": 1,
+          "minimum_informative": 1
+        }
+      },
+      "execution_configuration_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "dependency_assumptions": [
+        "configured compromise pathways; conservative connected components",
+        "unresolved verifiers share one unknown compromise pathway",
+        "observed provenance is audit-only and never rewrites this registry"
+      ],
+      "budget": 15965.046464995248,
+      "cost_units": "ms",
+      "estimated_selected_cost": 188.79894875281025,
+      "estimated_attempted_cost": 188.79894875281025,
+      "attempted_verifiers": [
+        "evidence"
+      ],
+      "attempts": [
+        {
+          "verifier_name": "evidence",
+          "estimated_attempt_cost": 188.79894875281025,
+          "state": "directional"
+        }
+      ],
+      "selection_status": "selected",
+      "selection_reasons": [],
+      "numerical_decision": {
+        "domain": "general",
+        "status": "failed",
+        "raw_score": -0.9842139482498169,
+        "score": -0.984214,
+        "threshold": 0.55,
+        "aggregation": "log_odds",
+        "votes": [
+          {
+            "verifier_name": "evidence",
+            "abstained": false,
+            "passed": false,
+            "confidence": 0.9842139482498169,
+            "reputation": 0.9500000000000001,
+            "weight": 2.944438979166442,
+            "contribution": -2.8979579130660644,
+            "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+            "normalized_strength": -0.9842139482498169,
+            "reliability_strength": 0.9000000000000001,
+            "included": true,
+            "inclusion_reason": "included",
+            "failure_group_id": null
+          }
+        ],
+        "aggregation_id": "reputation_weighted",
+        "aggregation_version": "log_odds_v1",
+        "reputation_snapshot_id": "2622ab506c99fc89ba1ae54dd70d9538ce9b58981a17fa68858aa4cc0729d4e1",
+        "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+        "team": [
+          "evidence"
+        ],
+        "missing_reports": [],
+        "dependency_configuration_id": null,
+        "dependency_version": null,
+        "dependency_assumptions": [],
+        "groups": [],
+        "fallback": null,
+        "lower_cut": -0.55,
+        "upper_cut": 0.55
+      },
+      "public_status": "failed",
+      "override_reasons": [],
+      "contributors": 1,
+      "minimum_contributors": 1,
+      "minimum_selected_team_size": 1,
+      "pooling_contract_json": null,
+      "expected_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "required": [
+        "direct_fact"
+      ],
+      "achieved": [
+        "direct_fact"
+      ],
+      "unresolved": [],
+      "singleton_resource_compatibility": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+        "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+        "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "evidence"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+          "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+          "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+          "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+      },
+      "after_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "singleton_resource_compatibility_after": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+        "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+        "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "evidence"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+          "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+          "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+          "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+      },
+      "selection_plan": {
+        "policy_version": "coverage_greedy_v1",
+        "domain": "general",
+        "domain_status": "unknown",
+        "difficulty": "easy",
+        "difficulty_score": 0.13,
+        "analysis_method": "heuristic",
+        "context_version": "question_context_v1",
+        "scoring_version": "explicit_task_questions_v1",
+        "reference_available": true,
+        "requirements": {
+          "source": "research_context",
+          "status": "known",
+          "requirements": [
+            "direct_fact"
+          ],
+          "weights": [
+            [
+              "direct_fact",
+              1.0
+            ]
+          ],
+          "requirements_known": true,
+          "legacy_hints": [
+            "direct_fact"
+          ],
+          "disagreements": [],
+          "unsupported": [],
+          "errors": [],
+          "legacy_unrecognized": [],
+          "weight_discrepancies": []
+        },
+        "lambda_cost": 0.15,
+        "lambda_latency": 0.1,
+        "lambda_suitability": 0.2,
+        "type_mapping": [
+          [
+            "arithmetic",
+            "rule"
+          ],
+          [
+            "logical_rule",
+            "rule"
+          ],
+          [
+            "direct_fact",
+            "evidence"
+          ],
+          [
+            "evidence_retrieval",
+            "evidence"
+          ],
+          [
+            "semantic_comparison",
+            "semantic"
+          ],
+          [
+            "consistency",
+            "confidence"
+          ]
+        ],
+        "resource_units": "dimensionless relative estimates in [0,1]; uncalibrated",
+        "minimum_count": 2,
+        "target_count": 2,
+        "candidates": [
+          {
+            "verifier_name": "semantic",
+            "registration_order": 0,
+            "reputation": 0.5,
+            "observation_count": 40,
+            "cold_start": false,
+            "cost": 0.3,
+            "latency": 0.4,
+            "resource_penalty": 0.085,
+            "suitability": 0.0,
+            "suitability_contribution": 0.0,
+            "utility": 0.415,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "semantic_comparison"
+            ],
+            "requires_reference": true,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Reference similarity is not factual correctness."
+            ]
+          },
+          {
+            "verifier_name": "evidence",
+            "registration_order": 1,
+            "reputation": 0.95,
+            "observation_count": 38,
+            "cold_start": false,
+            "cost": 0.8,
+            "latency": 0.9,
+            "resource_penalty": 0.21000000000000002,
+            "suitability": 1.0,
+            "suitability_contribution": 0.2,
+            "utility": 0.94,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "direct_fact",
+              "evidence_retrieval"
+            ],
+            "requires_reference": false,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Retrieval is limited to the configured evidence corpus and relevance/NLI gates.",
+              "Corpus/model readiness and claim coverage are unknown until execution."
+            ]
+          },
+          {
+            "verifier_name": "rule",
+            "registration_order": 2,
+            "reputation": 0.5,
+            "observation_count": 0,
+            "cold_start": true,
+            "cost": 0.2,
+            "latency": 0.2,
+            "resource_penalty": 0.05,
+            "suitability": 0.0,
+            "suitability_contribution": 0.0,
+            "utility": 0.45,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "arithmetic"
+            ],
+            "requires_reference": false,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Only implemented arithmetic patterns; no arbitrary logical_rule capability.",
+              "Other deterministic/structural checks do not establish general factual coverage."
+            ]
+          },
+          {
+            "verifier_name": "confidence",
+            "registration_order": 3,
+            "reputation": 0.733333,
+            "observation_count": 13,
+            "cold_start": false,
+            "cost": 0.9,
+            "latency": 1.0,
+            "resource_penalty": 0.23500000000000001,
+            "suitability": 0.0,
+            "suitability_contribution": 0.0,
+            "utility": 0.498333,
+            "registered": true,
+            "eligible": true,
+            "capability_source": "explicit",
+            "expected_capabilities": [
+              "consistency"
+            ],
+            "requires_reference": false,
+            "configured_readiness": "unknown",
+            "prerequisite_status": "unknown",
+            "exclusion_reason": null,
+            "limitations": [
+              "Generation/judgment agreement is not factual evidence or independence.",
+              "Provider readiness is unknown until execution."
+            ]
+          }
+        ],
+        "initial_selected": [
+          "evidence",
+          "confidence"
+        ],
+        "fallback": [
+          "rule",
+          "semantic"
+        ],
+        "expected_covered": [
+          "direct_fact"
+        ],
+        "expected_uncovered": [],
+        "coverage_status": "expected_only",
+        "exclusions": [],
+        "reputation_statistics": [
+          {
+            "verifier_name": "semantic",
+            "domain": "general",
+            "alpha": 21.0,
+            "beta": 21.0,
+            "successes": 20,
+            "failures": 20,
+            "observation_count": 40,
+            "posterior_mean": 0.5,
+            "posterior_variance": 0.005813953488372093,
+            "cold_start": false
+          },
+          {
+            "verifier_name": "evidence",
+            "domain": "general",
+            "alpha": 38.0,
+            "beta": 2.0,
+            "successes": 37,
+            "failures": 1,
+            "observation_count": 38,
+            "posterior_mean": 0.9500000000000001,
+            "posterior_variance": 0.001158536585365852,
+            "cold_start": false
+          },
+          {
+            "verifier_name": "rule",
+            "domain": "general",
+            "alpha": 1.0,
+            "beta": 1.0,
+            "successes": 0,
+            "failures": 0,
+            "observation_count": 0,
+            "posterior_mean": 0.5,
+            "posterior_variance": 0.08333333333333333,
+            "cold_start": true
+          },
+          {
+            "verifier_name": "confidence",
+            "domain": "general",
+            "alpha": 11.0,
+            "beta": 4.0,
+            "successes": 10,
+            "failures": 3,
+            "observation_count": 13,
+            "posterior_mean": 0.7333333333333333,
+            "posterior_variance": 0.012222222222222225,
+            "cold_start": false
+          }
+        ]
+      },
+      "termination": "complete_selected_team",
+      "early_stopping_enabled": false,
+      "fallback_enabled": false,
+      "task_id": "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+      "task_route": "domain_requirements_task_v1",
+      "policy_execution_mode": "game",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "atomic",
+      "routing_signature": [
+        "52ff7e5ebd61e81d169b656f9ae0e1cfb1ace152c0934bb547417f05e2354ca7",
+        "easy",
+        0.13,
+        true
+      ],
+      "validation_id": "06aaef60-7e98-46ed-be02-e6beffe9c1ea",
+      "pre_dispatch_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+      "pre_dispatch_compatibility_proof": {
+        "version": "verified_frozen_singleton_execution_v1",
+        "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+        "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+        "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+        "historical_scope_id": "9f3bbad0dc3d670c168f57f41f09ec034c73ddd12b5e47050da51aed2cea2e01",
+        "intermediate_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+        "observed_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+        "original_context_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+        "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+        "aggregation": "reputation_weighted",
+        "native_selected": [
+          "evidence"
+        ],
+        "planning_candidates_preserved": true,
+        "active_instances_checked": true,
+        "constructor_settings_id": "6b4369acc474993e541e78afbfb2827e2afeb441ccc2b51b7605d0e579aee888",
+        "relocation": {
+          "version": "verified_resource_relocation_v1",
+          "binding_id": "c284889d8cb44f10cd48e94ef0bfa17b205f53a3ba0ffd9540e2bb79eebe8bd0",
+          "expected_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+          "historical_resource_manifest_id": "ff6d7d148cc689fad6f117b24e1a4d67a7c2c778cb4ba901e459f615dabed4a0",
+          "observed_resource_manifest_id": "62826619ed3af0ae573714b07fc05112c96fa4159e8381a1565c8ce557f05f72",
+          "historical_manifest_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\index-v2\\manifest.json",
+          "current_manifest_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\flexible-resources-verified-20261106\\index-v2\\manifest.json",
+          "historical_corpus_path": "C:\\Users\\jhaan\\Multi-agent-verification\\build\\multitask-policy42\\corpus.json",
+          "current_corpus_path": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\multitask-policy42\\corpus.json",
+          "historical_corpus_mtime": 1793449707.0226758,
+          "current_corpus_mtime": 1793543854.5395257,
+          "historical_index_fingerprint": "e802300251695e22ff0de258b39da818488722df347e04af20507e240442489b",
+          "current_index_fingerprint": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98",
+          "verified_corpus_sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a",
+          "verified_faiss_sha256": "5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287",
+          "verified_chunks_sha256": "bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33",
+          "verified_embedding_model_sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255",
+          "verified_nli_model_sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e",
+          "verified_receipt_fingerprint": "e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d",
+          "verified_semantic_configuration_sha256": "858f11bd6c883a5436bb4a4bf9949ca5b51d313f6c052717eade88182e8de429",
+          "authorized_resource_ids": [
+            "index:evidence-index"
+          ]
+        },
+        "proof_id": "a4eeb82e41310d4fbf8242110274ed6a98839a46e3d44968234078eee30ec026"
+      }
+    }
+  }
+}

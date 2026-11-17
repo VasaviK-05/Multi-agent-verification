@@ -1,0 +1,3 @@
+case,validation_id,verifier,original_decision,original_final,replay_final,exact_match,numerical_decision_exact,report_payloads_unchanged,paired_record
+arith-correct,0a68d379-dcc4-41ad-ab13-793787f09168,rule,SUPPORT,passed,passed,True,True,True,data/parity/arith-correct.json
+arith-incorrect,f8c87ba4-ec77-4ef9-a6a9-bcb9cae888b1,rule,REJECT,failed,failed,True,True,True,data/parity/arith-incorrect.json

@@ -1,0 +1,51 @@
+{
+  "started_utc": "2026-11-17T10:31:03.495321+00:00",
+  "finished_utc": "2026-11-17T10:31:17.175478+00:00",
+  "expected_service": {
+    "version": "ollama_metadata_observation_v1",
+    "url": "http://localhost:11434/api/generate",
+    "model": "llama3.2:3b",
+    "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "server_version": "0.40.14"
+  },
+  "actual_service": {
+    "version": "ollama_metadata_observation_v1",
+    "url": "http://localhost:11434/api/generate",
+    "model": "llama3.2:3b",
+    "model_digest": "sha256:a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "server_version": "0.40.14"
+  },
+  "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+  "Rule_resource_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+  "Rule_proof": {
+    "version": "verified_frozen_singleton_execution_v1",
+    "transfer_id": "ddbb12d1a91ee520887ee0462e81a57ea34109b821487b8cc045a90b268eec87",
+    "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+    "original_full_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+    "historical_scope_id": "ee2df40ffe3f9603d001287fd066269fcaf4b4e1c714df93c3fe1a792ae5b5d6",
+    "intermediate_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+    "observed_manifest_id": "65262c664adf35394beef9e0a273886bf622c58b62a1f899457408f5a45efda4",
+    "original_context_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+    "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+    "aggregation": "reputation_weighted",
+    "native_selected": [
+      "rule"
+    ],
+    "planning_candidates_preserved": true,
+    "active_instances_checked": true,
+    "constructor_settings_id": "9166dc62716f9d5dfd3c185d24c62d53e3ce37723cd8b8f8cefef957cb03367a",
+    "relocation": null,
+    "proof_id": "47390978ae8e23607a8a632430ad9aaccc80ca549ab48a019d1dceef8285fa41"
+  },
+  "arithmetic_artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+  "database_configured_target": {
+    "DB_HOST": "localhost",
+    "DB_PORT": "5432",
+    "DB_NAME": "multi_agent_review_test"
+  },
+  "database_observed_target": {
+    "database": "multi_agent_review_test",
+    "port": 5432
+  },
+  "scope": "Observed service identity plus current Rule singleton compatibility and controlled persistence target"
+}

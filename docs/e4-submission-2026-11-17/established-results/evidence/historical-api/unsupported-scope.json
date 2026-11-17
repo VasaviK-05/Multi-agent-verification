@@ -1,0 +1,83 @@
+{
+  "id": "unsupported-scope",
+  "category": "unsupported",
+  "fixture": "explicit out-of-allowlist scope-rejection probe only",
+  "expected_correct": null,
+  "payload": {
+    "question": "Who is the president of France?",
+    "answer": "Emmanuel Macron.",
+    "context": null
+  },
+  "http_status": 200,
+  "latency_ms": 168.158,
+  "transport_error": null,
+  "validation_id": "0fd21faa-bd70-4057-82fb-d475f80b3ba3",
+  "final_status": "uncertain",
+  "final_score": null,
+  "signed_score": null,
+  "execution_audit": {
+    "public_status": "uncertain",
+    "selection_status": "unsupported_category",
+    "selection_reasons": [
+      "question outside explicit allowlist"
+    ],
+    "attempts": [],
+    "components": [],
+    "termination": "before_dispatch",
+    "execution_mode": "flexible_game",
+    "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+    "policy_category": "unsupported_category",
+    "routing_signature": "question outside explicit allowlist",
+    "validation_id": "0fd21faa-bd70-4057-82fb-d475f80b3ba3"
+  },
+  "results": [],
+  "actual_verifier_calls": 0,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": "unsupported_category",
+  "selection_reasons": [
+    "question outside explicit allowlist"
+  ],
+  "policy_id": null,
+  "artifact_id": null,
+  "strategy_id": null,
+  "team": null,
+  "aggregation": null,
+  "attempted_verifiers": null,
+  "coverage": {},
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {},
+  "response_json": {
+    "results": [],
+    "final_status": "uncertain",
+    "final_score": null,
+    "validation_id": "0fd21faa-bd70-4057-82fb-d475f80b3ba3",
+    "domain": "general",
+    "session_id": null,
+    "ground_truth": null,
+    "difficulty": "easy",
+    "selected_verifiers": [],
+    "early_stop_reason": "before_dispatch",
+    "uncertainty_reasons": [
+      "decision_uncertain"
+    ],
+    "signed_score": null,
+    "execution_audit": {
+      "public_status": "uncertain",
+      "selection_status": "unsupported_category",
+      "selection_reasons": [
+        "question outside explicit allowlist"
+      ],
+      "attempts": [],
+      "components": [],
+      "termination": "before_dispatch",
+      "execution_mode": "flexible_game",
+      "policy_bundle_id": "6286898cfdd5ef75b2a09f6556dc2c8fcc1b4f192a6d77dd6decf843867c0882",
+      "policy_category": "unsupported_category",
+      "routing_signature": "question outside explicit allowlist",
+      "validation_id": "0fd21faa-bd70-4057-82fb-d475f80b3ba3"
+    }
+  }
+}

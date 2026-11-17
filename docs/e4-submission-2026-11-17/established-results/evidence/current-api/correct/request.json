@@ -1,0 +1,28 @@
+{
+  "test_id": "E4-arith-correct",
+  "timestamp_utc": "2026-11-17T10:33:57.533112+00:00",
+  "fixture": "local-acceptance-plan-v1/addition-328-536-correct",
+  "payload": {
+    "question": "What is 328 + 536?",
+    "answer": "864",
+    "context": "864"
+  },
+  "question_identity": "e5245a59c29f7710822f2ca9a8ae2b2ae7fa926686ccb9b0391fcb1cb49765d0",
+  "question_id": null,
+  "expected_final": "passed",
+  "expected_team": [
+    "rule"
+  ],
+  "maximum_verifier_calls": 1,
+  "maximum_generations": 0,
+  "configuration": {
+    "EXECUTION_MODE": "game",
+    "GAME_FLEXIBLE_POLICY_PACKAGE_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\reconciliation\\policies.json",
+    "GAME_FLEXIBLE_ADAPTER_CONFIG_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\adapter.reconciled-20261106.json",
+    "GAME_FLEXIBLE_FACTUAL_RELOCATION_BINDING_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\route-relocation-20261106-rerun2\\factual\\binding.json",
+    "GAME_FLEXIBLE_COMPOUND_RELOCATION_BINDING_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\route-relocation-20261106-rerun2\\compound\\binding.json",
+    "GAME_FLEXIBLE_REFERENCE_RELOCATION_BINDING_PATH": "C:\\Users\\User\\Multi-agent-verification-integration\\build\\reference-relocation-20261106-rerun1\\binding.json",
+    "GAME_POLICY_BUNDLE_PATH": "",
+    "GAME_POLICY_ARTIFACT_PATH": ""
+  }
+}

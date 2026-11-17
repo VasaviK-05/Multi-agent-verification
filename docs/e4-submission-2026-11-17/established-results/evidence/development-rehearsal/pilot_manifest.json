@@ -1,0 +1,165 @@
+{
+  "adapter_configuration_sha256": "143d9e0b31f574214b14bf77af60da278190cf9a70caa015db56cc7923b42b29",
+  "application_source_digest": "ecb12d8934a3d55dd745887ecf9b3c164ea308f3b07eaa895a6d69f246e87e6c",
+  "candidate_count": 13,
+  "code_revision": "662bd5cdbf2c8b2dc9885f6bb80e42abf7c5205e",
+  "dependency_versions": {
+    "faiss-cpu": "1.15.1",
+    "numpy": "2.2.6",
+    "pydantic": "2.14.3",
+    "python": "3.10.0",
+    "requests": "2.34.2",
+    "safetensors": "0.8.0",
+    "sentence-transformers": "6.2.0",
+    "sentencepiece": "not installed; local tokenizer.json avoids conversion",
+    "tokenizers": "0.23.3",
+    "torch": "2.14.1",
+    "transformers": "5.20.2"
+  },
+  "execution_configuration_id": "754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c",
+  "final_test_accessed": false,
+  "group_count": 10,
+  "history_inputs_read": false,
+  "labels_or_gold_sent_to_verifiers": false,
+  "measurement_setup_fingerprint": "83c114806aa6eb3ba06664b8d3d6bd1892699f0c588990e0fb88f35bcc37f1ee",
+  "offline_examples_created": 0,
+  "partition": "development",
+  "policy_fitting_performed": false,
+  "resource_manifest": {
+    "verifiers": [
+      {
+        "resources": [
+          {
+            "kind": "configuration",
+            "resource_id": "confidence-adapter-configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "kind": "implementation",
+            "resource_id": "confidence-implementation",
+            "sha256": "1492ddd2562e338a8a1a84dc8edc01ffd997ae1701ab436bc2fec0613e3683f6"
+          },
+          {
+            "kind": "model",
+            "resource_id": "local-nli-snapshot",
+            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+          },
+          {
+            "kind": "model",
+            "resource_id": "ollama-model",
+            "sha256": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+          },
+          {
+            "kind": "prompt",
+            "resource_id": "self-consistency-short-answer",
+            "sha256": "dc09c40fa96b3410833dd681cd674806dbffc8301db4c5890a5b3043b86b868b"
+          },
+          {
+            "kind": "service",
+            "resource_id": "ollama-service",
+            "sha256": "bd8df84f5b911a5ced6db9e39942b8dc16e63eea8a9e543d5d2ec5cc44295aa1"
+          }
+        ],
+        "verifier_name": "confidence"
+      },
+      {
+        "resources": [
+          {
+            "kind": "configuration",
+            "resource_id": "evidence-adapter-configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "kind": "corpus",
+            "resource_id": "evidence-corpus",
+            "sha256": "28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a"
+          },
+          {
+            "kind": "implementation",
+            "resource_id": "evidence-implementation",
+            "sha256": "5903359855c9fef4e92584643aceb8b4c494835907aaaa5106fa80c45b58119e"
+          },
+          {
+            "kind": "index",
+            "resource_id": "evidence-index",
+            "sha256": "a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98"
+          },
+          {
+            "kind": "model",
+            "resource_id": "local-embedding-snapshot",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          },
+          {
+            "kind": "model",
+            "resource_id": "local-nli-snapshot",
+            "sha256": "a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e"
+          }
+        ],
+        "verifier_name": "evidence"
+      },
+      {
+        "resources": [
+          {
+            "kind": "configuration",
+            "resource_id": "rule-adapter-configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "kind": "implementation",
+            "resource_id": "rule-implementation",
+            "sha256": "7522a6bcffe4234e3e0a23e0a944a197f831b7a496f905b049ffed552afd907d"
+          }
+        ],
+        "verifier_name": "rule"
+      },
+      {
+        "resources": [
+          {
+            "kind": "configuration",
+            "resource_id": "semantic-adapter-configuration",
+            "sha256": "f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0"
+          },
+          {
+            "kind": "implementation",
+            "resource_id": "semantic-implementation",
+            "sha256": "cddd1bf8b3b8de71453647ff5d58ef65acc5ff18a7c643b216edff3cb8cda2a6"
+          },
+          {
+            "kind": "model",
+            "resource_id": "local-embedding-snapshot",
+            "sha256": "23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255"
+          }
+        ],
+        "verifier_name": "semantic"
+      }
+    ],
+    "version": "game_resource_manifest_v1"
+  },
+  "run_identity": "252c312ef4826060c35f5ca06d772270ebf8445bc7d152657411a3b026a8a444",
+  "runtime_environment": {
+    "architecture": "AMD64",
+    "concurrency": "sequential",
+    "device": "cpu",
+    "host_fingerprint": "25e565021d779ccab8215f1273d6a6163ee3fdbdb2165610d420acfb71fdec12",
+    "initialization": "eager shared embedding and NLI; excluded from attempt timer",
+    "logical_cpus": "12",
+    "os": "Windows-10-10.0.26200-SP0",
+    "physical_memory_bytes": "16835268608",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "resource_relocation_audit": "{\"authorized_resource_ids\":[\"index:evidence-index\"],\"binding_id\":\"f843ab5e056aea7d94ce694f07df56fc8d2c1c1706e3a251fd9bd5f0af836104\",\"current_corpus_mtime\":1793543854.5395257,\"current_corpus_path\":\"C:\\\\Users\\\\User\\\\Multi-agent-verification-integration\\\\build\\\\multitask-policy42\\\\corpus.json\",\"current_index_fingerprint\":\"a09afd412b9549f5c89d421eed246324eb41884d62a7d44181a8cff74b417f98\",\"current_manifest_path\":\"C:\\\\Users\\\\User\\\\Multi-agent-verification-integration\\\\build\\\\multitask-policy42\\\\index-v2\\\\manifest.json\",\"expected_resource_manifest_id\":\"a91f0383b5252b5d475dbf9c669709ca23b0c1abcff025325cb0c6eadba27513\",\"historical_corpus_mtime\":1793449707.0226758,\"historical_corpus_path\":\"C:\\\\Users\\\\jhaan\\\\Multi-agent-verification\\\\build\\\\multitask-policy42\\\\corpus.json\",\"historical_index_fingerprint\":\"dfe458786f85b38a638ded4e5f14296cf3b8dca2d75c529ae8368c7617be577a\",\"historical_manifest_path\":\"C:\\\\Users\\\\jhaan\\\\Multi-agent-verification\\\\build\\\\multitask-policy42\\\\index-v2\\\\manifest.json\",\"historical_resource_manifest_id\":\"a91f0383b5252b5d475dbf9c669709ca23b0c1abcff025325cb0c6eadba27513\",\"observed_resource_manifest_id\":\"754bfa8ec4b43881a183c64478d791496e6a21d2e68b3c862d85a8e89beda10c\",\"verified_chunks_sha256\":\"bce84c9632b231d0611da47d133c1bb444f2189f0b6ed1701fdbda3929dcec33\",\"verified_corpus_sha256\":\"28e6241079b1afab419ebdbaea580510796c648d1855dcc91759ab3d8950b95a\",\"verified_embedding_model_sha256\":\"23c61c55d84d9ab0045288ba589018e80ff90cf894514f5676e351c14624d255\",\"verified_faiss_sha256\":\"5bc44bf0f694d4ffd08b7d5a51191cd953a784d98f9041bd0b52867d42f7c287\",\"verified_nli_model_sha256\":\"a28c08014f62b13be758a1f22d1cbfd30e9f7b0f91d19fbc3bd5c369b11fcf7e\",\"verified_receipt_fingerprint\":\"e7d1ec0d88ee829b03ae82d790a61f52869729e08da5e6d84587d5789486492d\",\"verified_semantic_configuration_sha256\":\"f638ac090bffc9b348bca8b6c9660ab107e3d15870a237a901273ddb7bc46aa0\",\"version\":\"verified_resource_relocation_v1\"}",
+    "runtime": "3.10.0",
+    "thread_settings": "{\"MKL_NUM_THREADS\": \"runtime default\", \"OMP_NUM_THREADS\": \"runtime default\", \"OPENBLAS_NUM_THREADS\": \"runtime default\"}"
+  },
+  "source_hashes": {
+    "development_candidates.jsonl": "9eeece456ff1a665bd82cdfde7035baa69df021def3fa651d8d1684e9a4e655c",
+    "development_prepared.jsonl": "05e1ed50a5bb6673a9caa86d5eadfd40a7bd332ba3ace9372f04345a730c3b98"
+  },
+  "unresolved_candidate_count": 7,
+  "verifiers": [
+    "semantic",
+    "evidence",
+    "rule",
+    "confidence"
+  ],
+  "version": "research-v1-development-feasibility-pilot-v1"
+}

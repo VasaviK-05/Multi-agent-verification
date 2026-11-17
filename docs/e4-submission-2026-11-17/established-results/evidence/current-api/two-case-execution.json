@@ -1,0 +1,62 @@
+{
+  "started_utc": "2026-11-17T10:33:48.303925+00:00",
+  "approval": "User explicitly approved temporary exact historical child-process settings; <=2 arithmetic requests, <=2 Rule calls, zero generations",
+  "limits": {
+    "http_validate": 2,
+    "Rule_calls": 2,
+    "generations": 0
+  },
+  "http_validate_sent": 2,
+  "Rule_reports": 2,
+  "database": "multi_agent_review_test",
+  "requests": [
+    {
+      "test_id": "E4-arith-correct",
+      "validation_id": "0a68d379-dcc4-41ad-ab13-793787f09168",
+      "final_status": "passed",
+      "team": [
+        "rule"
+      ],
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "aggregation": "reputation_weighted",
+      "budget": 21258.33526502247,
+      "estimated_selected_cost": 9.678209995036013,
+      "cost_units": "ms",
+      "internal_verifier_ms": 0.95,
+      "client_request_ms": 783.143999999993,
+      "persisted_attempt_duration_ms": [
+        1.1933000005228678
+      ],
+      "readback_pass": true
+    },
+    {
+      "test_id": "E4-arith-incorrect",
+      "validation_id": "f8c87ba4-ec77-4ef9-a6a9-bcb9cae888b1",
+      "final_status": "failed",
+      "team": [
+        "rule"
+      ],
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "aggregation": "reputation_weighted",
+      "budget": 21258.33526502247,
+      "estimated_selected_cost": 9.678209995036013,
+      "cost_units": "ms",
+      "internal_verifier_ms": 0.04,
+      "client_request_ms": 798.6985000006825,
+      "persisted_attempt_duration_ms": [
+        0.21050000032118987
+      ],
+      "readback_pass": true
+    }
+  ],
+  "status": "PASS",
+  "parent_environment_unchanged": true,
+  "server_pid": 14384,
+  "shutdown": "graceful",
+  "server_exit_code": 0,
+  "finished_utc": "2026-11-17T10:34:00.182390+00:00",
+  "original_sources_unchanged": true,
+  "existing_records_unchanged": true
+}

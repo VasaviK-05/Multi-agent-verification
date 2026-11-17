@@ -1,0 +1,49 @@
+{
+  "id": "schema-malformed",
+  "category": "malformed_request",
+  "fixture": "ValidationRequest schema rejection; answer omitted",
+  "expected_correct": null,
+  "payload": {
+    "question": "What is 328 + 536?"
+  },
+  "http_status": 422,
+  "latency_ms": 9.488,
+  "transport_error": null,
+  "validation_id": null,
+  "final_status": null,
+  "final_score": null,
+  "signed_score": null,
+  "execution_audit": {},
+  "results": [],
+  "actual_verifier_calls": 0,
+  "actual_ollama_generations_known": 0,
+  "ollama_generation_count_complete": true,
+  "ollama_generations_upper_bound_if_incomplete": 0,
+  "selection_status": null,
+  "selection_reasons": null,
+  "policy_id": null,
+  "artifact_id": null,
+  "strategy_id": null,
+  "team": null,
+  "aggregation": null,
+  "attempted_verifiers": null,
+  "coverage": {},
+  "component_ids": [],
+  "binding_ids": [],
+  "compatibility_proofs": {},
+  "response_json": {
+    "detail": [
+      {
+        "type": "missing",
+        "loc": [
+          "body",
+          "answer"
+        ],
+        "msg": "Field required",
+        "input": {
+          "question": "What is 328 + 536?"
+        }
+      }
+    ]
+  }
+}
