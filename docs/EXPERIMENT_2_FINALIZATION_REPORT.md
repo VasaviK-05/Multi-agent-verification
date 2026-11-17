@@ -87,6 +87,19 @@ The supplied frozen calibration bundle records 488 Development observations, wit
 
 A v3 run-manifest/measurements inconsistency remains documented. No independent external execution witness was located. Report the calibration bundle as supplied frozen calibration evidence with this consistency limitation; do not describe it as independently witnessed.
 
+### 3.2.1 Calibration application-source digest reconciliation
+
+A separate read-only reconciliation examined the application-source digest recorded by the supplied Development calibration artifact.
+
+- Referenced calibration Git revision: `662bd5cdbf2c8b2dc9885f6bb80e42abf7c5205e`
+- Calibration artifact SHA-256: `7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3`
+- Recorded application-source digest: `ecb12d8934a3d55dd745887ecf9b3c164ea308f3b07eaa895a6d69f246e87e6`
+- Reconstructed digest from the referenced historical Git tree: `ade428b710d33d2349db119c1f15d7abbf655f3f849b13a18000ba327111aab6`
+
+The calibration artifact's own file hash was verified, but the recorded application-source digest was not independently reproduced. The original build-time working-tree snapshot or complete source inputs have not been established. The historical tree contained 137 tracked Python files, compared with 138 in the current application tree.
+
+**Disposition:** Calibration application-source provenance remains partially verified. This digest mismatch alone does not establish that the calibration artifact is invalid or tampered with. This finding is distinct from the three previously reported unreproduced historical application-source digests. See `EXPERIMENT_2_CALIBRATION_SOURCE_DIGEST_ADDENDUM.md` for the detailed reconciliation.
+
 ### 3.3 Rehearsal contamination-flag semantics
 
 The rehearsal's `pilot_manifest.json` records `final_test_accessed=false`, `history_inputs_read=false`, `labels_or_gold_sent_to_verifiers=false`, and `policy_fitting_performed=false`. The corresponding `pilot_results.json` omits three of those fields (it records `final_test_accessed=false`). A derived `validation_report.json` records all four `pilot_flags` as true and gives an aggregate `PASS_FOR_RECORDED_PILOT_FLAGS` disposition.

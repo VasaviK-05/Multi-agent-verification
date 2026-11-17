@@ -137,6 +137,19 @@ These application source digests could not be independently reproduced from the 
 
 The original application source files corresponding to those historical digests remain unavailable.
 
+### 7.1.1 Calibration source-digest reconciliation
+
+A separate reconciliation was performed for the Development calibration artifact:
+
+- Calibration Git revision: `662bd5cdbf2c8b2dc9885f6bb80e42abf7c5205e`
+- Calibration artifact SHA-256: `7fbfe418c0c65c3782628ab5117b773f2fc4c8312c33d769934f76d2ff61a7f3`
+- Recorded application source digest: `ecb12d8934a3d55dd745887ecf9b3c164ea308f3b07eaa895a6d69f246e87e6`
+- Reconstructed application source digest: `ade428b710d33d2349db119c1f15d7abbf655f3f849b13a18000ba327111aab6`
+
+The calibration artifact's file hash was verified, but its recorded application source digest could not be independently reproduced from the referenced Git tree. The original build-time working-tree snapshot or complete source inputs have not been established.
+
+**Disposition:** Calibration source provenance remains partially verified; the digest mismatch does not, by itself, establish that the calibration artifact is invalid or tampered with. See `EXPERIMENT_2_CALIBRATION_SOURCE_DIGEST_ADDENDUM.md` for the detailed reconciliation.
+
 ### 7.2 Original execution-source archive
 
 The original execution-source ZIP has not been recovered.
