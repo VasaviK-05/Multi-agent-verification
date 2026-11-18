@@ -6,6 +6,7 @@ from app.orchestration.validation_orchestrator import (
     ValidationContext,
 )
 from app.utils.config import settings
+from app.game.question_routing import QuestionPolicyConfiguration
 
 
 class ValidationService:
@@ -17,6 +18,8 @@ class ValidationService:
         *,
         persist_execution: bool = False,
     ) -> None:
+        self._generation_runtime = None
+        self._generation_configuration = None
         if orchestrator is not None:
             self._orchestrator = orchestrator
             return
@@ -34,6 +37,8 @@ class ValidationService:
             runtime = create_game_runtime()
             question_analyzer = None
             if isinstance(runtime, FlexiblePolicyGameRuntime):
+                self._generation_runtime = runtime
+                self._generation_configuration = runtime.get_policy_configuration()
                 # Flexible routes construct their own reviewed, route-scoped
                 # selector/observer. Keep the orchestrator slot inert so an
                 # E/R compound request does not initialize Confidence/Ollama.
@@ -64,6 +69,18 @@ class ValidationService:
             raise ValueError(
                 "EXECUTION_MODE must be either 'baseline' or 'game'"
             )
+
+    def get_generation_policy_configuration(self) -> QuestionPolicyConfiguration | None:
+        """Expose only the active Flexible snapshot; never initialize a runtime."""
+        from app.services.compound_generation import ConfigurationLoadingError
+        if self._generation_runtime is None:
+            return None
+        if self._generation_configuration is None:
+            raise ConfigurationLoadingError("An active reviewed Flexible runtime is required.")
+        configuration = self._generation_runtime.get_policy_configuration()
+        if configuration is not self._generation_configuration:
+            raise ConfigurationLoadingError("Active generation configuration changed.")
+        return configuration
 
     def validate(self, request: ValidationRequest) -> ValidationResponse:
         """Validate an answer against a question."""

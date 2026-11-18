@@ -2,6 +2,11 @@ import os
 from pathlib import Path
 import psycopg2
 from dotenv import load_dotenv
+
+if __package__:
+    from .migration_013_schema import MIGRATION_013, generated_answer_session_problems
+else:
+    from migration_013_schema import MIGRATION_013, generated_answer_session_problems
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_FILE = ROOT / "db" / "schema.sql"
 MIGRATIONS_DIR = ROOT / "db" / "migrations"
@@ -19,6 +24,7 @@ MIGRATIONS = [
     "010_execution_lease_recovery.sql",
     "011_reputation_snapshot_id_text.sql",
     "012_report_validation_id_text.sql",
+    "013_generated_answer_sessions.sql",
 ]
 
 APPLYABLE_MIGRATIONS = {
@@ -314,6 +320,8 @@ def verify_migration_schema(cursor, filename):
     absent_indexes = REQUIRED_INDEXES.get(filename, set()) - indexes
     if absent_indexes:
         missing.append(f"indexes: {sorted(absent_indexes)}")
+    if filename == MIGRATION_013:
+        missing.extend(generated_answer_session_problems(cursor))
     if missing:
         raise RuntimeError(
             f"Cannot safely adopt {filename}; schema checks failed: "

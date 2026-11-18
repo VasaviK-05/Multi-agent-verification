@@ -95,20 +95,27 @@ def get_session_questions(session_id: str):
 
         cursor.execute(
             """
-            SELECT
-                validation_id,
-                question_id,
-                question,
-                generated_answer,
-                final_status,
-                final_score,
-                domain,
-                created_at
-            FROM validation_records
-            WHERE session_id = %s
-            ORDER BY created_at ASC
+            SELECT validation_id, question_id, question, generated_answer,
+                   final_status, final_score, domain, created_at, history_state
+            FROM (
+                SELECT v.validation_id, v.question_id, v.question, v.generated_answer,
+                       v.final_status, v.final_score, v.domain, v.created_at,
+                       'validation_record'::text AS history_state
+                FROM validation_records v WHERE v.session_id = %s
+                UNION ALL
+                SELECT NULL::uuid, q.id, q.question, q.answer,
+                       NULL::text, NULL::double precision, NULL::text, q.created_at,
+                       'generated_only'::text
+                FROM questions_answers q
+                WHERE q.session_id = %s
+                  AND NOT EXISTS (
+                      SELECT 1 FROM validation_records v
+                      WHERE v.question_id = q.id AND v.session_id = q.session_id
+                  )
+            ) history
+            ORDER BY created_at ASC, question_id ASC, validation_id ASC
             """,
-            (session_id,),
+            (session_id, session_id),
         )
 
         rows = cursor.fetchall()
@@ -123,6 +130,7 @@ def get_session_questions(session_id: str):
                 "final_score": row[5],
                 "domain": row[6],
                 "created_at": row[7],
+                "history_state": row[8],
             }
             for row in rows
         ]

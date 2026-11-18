@@ -24,7 +24,12 @@ from app.models.schemas import (
 )
 from app.services.validation_service import ValidationService
 
-from llm_service import generate_answer
+from app.services.answer_generation import GeneratedAnswer, dispatch_generation
+from app.services.compound_generation import (
+    CompoundGenerationError, UnsupportedRegistrationError, SourceUnavailableError,
+    SourceIntegrityError, FactLookupError, ArithmeticFailure, ContractBindingError,
+    ConfigurationLoadingError,
+)
 from app.ground_truth.storage import save_ground_truth
 
 
@@ -212,6 +217,7 @@ def validate(request: ValidationRequest):
 
 class QuestionRequest(BaseModel):
     question: str = Field(..., min_length=1)
+    session_id: UUID | None = None
 
 
 class GenerateAndValidateRequest(BaseModel):
@@ -220,32 +226,69 @@ class GenerateAndValidateRequest(BaseModel):
     session_id: Optional[str] = None
 
 
+def _generation_metadata(generated: GeneratedAnswer) -> dict:
+    return {"generation_method": generated.generation_method,
+            "generation_provenance": generated.provenance}
+
+
+def _generate_for_request(question: str) -> GeneratedAnswer:
+    # Keep this boundary outside persistence/validation exception handling.
+    try:
+        return dispatch_generation(question, validation_service=_validation_service)
+    except HTTPException:
+        raise
+    except CompoundGenerationError as exc:
+        mapping = {
+            UnsupportedRegistrationError: (422, "COMPOUND_REGISTRATION_UNSUPPORTED", "Compound question is not registered."),
+            SourceUnavailableError: (503, "COMPOUND_SOURCE_UNAVAILABLE", "Approved source material is unavailable."),
+            SourceIntegrityError: (500, "COMPOUND_SOURCE_INTEGRITY_MISMATCH", "Approved source integrity check failed."),
+            FactLookupError: (500, "COMPOUND_SOURCE_FACT_NOT_UNIQUE", "A unique approved source fact is required."),
+            ArithmeticFailure: (500, "COMPOUND_ARITHMETIC_FAILED", "Exact Compound arithmetic failed."),
+            ContractBindingError: (500, "COMPOUND_CONTRACT_BINDING_FAILED", "Generated answer violates its contract."),
+            ConfigurationLoadingError: (500, "GENERATION_CONFIGURATION_INVALID", "Generation configuration is unavailable or inconsistent."),
+        }
+        status, code, message = next((value for kind, value in mapping.items() if isinstance(exc, kind)),
+            (500, "GENERATION_INTERNAL_ERROR", "Answer generation failed."))
+        raise HTTPException(status_code=status, detail={"code": code, "message": message, "stage": "generation"}) from None
+    except Exception:
+        raise HTTPException(status_code=500, detail={"code": "GENERATION_INTERNAL_ERROR",
+            "message": "Answer generation failed.", "stage": "generation"}) from None
+
+
 @router.post("/generate-answer")
 def generate(request: QuestionRequest):
-    """Generate an answer using the LLM and store it."""
+    """Generate an answer through shared dispatch, then store it once."""
 
+    generated = _generate_for_request(request.question)
+    answer = generated.answer
     connection = None
     cursor = None
 
     try:
-        answer = generate_answer(request.question)
-
         connection = get_connection()
         cursor = connection.cursor()
+
+        if request.session_id is not None:
+            cursor.execute("SELECT session_id FROM sessions WHERE session_id = %s",
+                           (str(request.session_id),))
+            if cursor.fetchone() is None:
+                raise HTTPException(status_code=404, detail="Session not found.")
 
         cursor.execute(
             """
             INSERT INTO questions_answers (
                 question,
                 answer,
+                session_id,
                 created_at
             )
-            VALUES (%s, %s, NOW())
+            VALUES (%s, %s, %s, NOW())
             RETURNING id
             """,
             (
                 request.question,
                 answer,
+                str(request.session_id) if request.session_id is not None else None,
             ),
         )
 
@@ -257,15 +300,20 @@ def generate(request: QuestionRequest):
             "question": request.question,
             "answer": answer,
             "status": "success",
+            **_generation_metadata(generated),
         }
 
+    except HTTPException:
+        if connection:
+            connection.rollback()
+        raise
     except Exception:
         if connection:
             connection.rollback()
 
         raise HTTPException(
-            status_code=503,
-            detail="LLM service is unavailable",
+            status_code=500,
+            detail={"code": "ANSWER_PERSISTENCE_FAILED", "message": "Generated answer could not be stored.", "stage": "persistence"},
         )
 
     finally:
@@ -279,8 +327,10 @@ def generate(request: QuestionRequest):
 @router.post("/generate-and-validate")
 def generate_and_validate(request: GenerateAndValidateRequest):
     """Generate an answer and validate it through the verification pipeline."""
+    generated = _generate_for_request(request.question)
+    answer = generated.answer
+    stage = "persistence"
     try:
-        answer = generate_answer(request.question)
 
         connection = None
         cursor = None
@@ -311,6 +361,7 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             if connection:
                 connection.close()
 
+        stage = "validation"
         validation_request = ValidationRequest(
             question=request.question,
             answer=answer,
@@ -332,6 +383,7 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             if (attempt_id := orchestrator.get_attempt_id_for_result(result_item))
         }
 
+        stage = "persistence"
         # Persist validation before creating its audit.
         update_validation_record(
             validation_id=validation_id,
@@ -349,7 +401,8 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             signed_score=validation_result.signed_score,
         )
 
-        initial_summary = validation_result.execution_audit or {}
+        initial_summary = {**(validation_result.execution_audit or {}),
+                           "generation": _generation_metadata(generated)}
         initial_plan = initial_summary.get("selection_plan") or {}
 
         # Audit creation has its own failure boundary.
@@ -404,7 +457,8 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             audit_context = _validation_service.get_validation_context(
                 validation_id
             )
-            run_summary = audit_context.run_summary or {}
+            run_summary = {**(audit_context.run_summary or {}),
+                           "generation": _generation_metadata(generated)}
             selection_plan = run_summary.get("selection_plan") or {}
             candidates = selection_plan.get("candidates") or []
 
@@ -483,17 +537,22 @@ def generate_and_validate(request: GenerateAndValidateRequest):
             raise
 
         return {
+            "question_id": question_id,
             "question": request.question,
             "answer": answer,
             "validation": validation_result,
             "status": "success",
+            **_generation_metadata(generated),
         }
 
-    except Exception as exc:
+    except HTTPException:
+        raise
+    except Exception:
         raise HTTPException(
-            status_code=503,
-            detail=f"Generation or validation failed: {exc}",
-        )
+            status_code=500,
+            detail={"code": "PERSISTENCE_FAILED" if stage == "persistence" else "VALIDATION_FAILED",
+                    "message": "The operation could not be completed.", "stage": stage},
+        ) from None
 
 
 @router.post("/sessions", response_model=SessionResponse)

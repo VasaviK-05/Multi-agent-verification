@@ -1,22 +1,28 @@
+from app.services.answer_generation import GeneratedAnswer
 
 from fastapi.testclient import TestClient
 
 from unittest.mock import patch
 
-from app.reputation.reputation_manager import ReputationManager
+from types import SimpleNamespace
+from fastapi import FastAPI
+import pytest
+from tests.test_api_compound_generation import isolated_routes
+
+# Pure route tests: no production bootstrap or application startup lifespan.
+routes = app = client = None
 
 
-# Import-time service bootstrap is not a live PostgreSQL integration test.
-# Restore the real loader immediately; individual repository tests keep their SQL.
-with patch(
-    "app.orchestration.validation_orchestrator.load_reputation_manager_state",
-    return_value=ReputationManager().export_state(),
-):
-    from app.main import app
-    from app.api import routes
-
-
-client = TestClient(app)
+@pytest.fixture(autouse=True)
+def isolated_api(monkeypatch):
+    with patch("psycopg2.connect", side_effect=AssertionError("No database access permitted")):
+        with isolated_routes(SimpleNamespace()) as module:
+            application = FastAPI()
+            application.include_router(module.router)
+            monkeypatch.setitem(globals(), "routes", module)
+            monkeypatch.setitem(globals(), "app", application)
+            monkeypatch.setitem(globals(), "client", TestClient(application))
+            yield
 
 
 def test_validate_creates_and_updates_audit(monkeypatch):
@@ -60,6 +66,7 @@ def test_validate_creates_and_updates_audit(monkeypatch):
         }
 
     class FakeValidationService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             return FakeResult()
 
@@ -78,7 +85,7 @@ def test_validate_creates_and_updates_audit(monkeypatch):
         routes, "_validation_service", FakeValidationService()
     )
     monkeypatch.setattr(
-        routes, "save_validation", lambda **kwargs: None
+        routes, "update_validation_record", lambda **kwargs: None
     )
     monkeypatch.setattr(
         routes, "save_verifier_outputs", lambda **kwargs: None
@@ -162,6 +169,7 @@ def test_validate_marks_audit_failed_when_verifier_persistence_fails(
         results = []
 
     class FakeValidationService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             return FakeResult()
 
@@ -191,7 +199,7 @@ def test_validate_marks_audit_failed_when_verifier_persistence_fails(
         routes, "_validation_service", FakeValidationService()
     )
     monkeypatch.setattr(
-        routes, "save_validation", lambda **kwargs: None
+        routes, "update_validation_record", lambda **kwargs: None
     )
     monkeypatch.setattr(
         routes, "save_verifier_outputs", fail_saving_verifiers
@@ -288,6 +296,7 @@ def test_generate_and_validate_creates_and_updates_audit(monkeypatch):
         }
 
     class FakeValidationService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             assert request.question_id == 101
             return FakeResult()
@@ -301,10 +310,10 @@ def test_generate_and_validate_creates_and_updates_audit(monkeypatch):
                 {"run_summary": FakeResult.execution_audit},
             )()
 
-    monkeypatch.setattr(routes, "generate_answer", lambda question: "Generated test answer")
+    monkeypatch.setattr(routes, "dispatch_generation", lambda question, **kwargs: GeneratedAnswer("Generated test answer", "llm", None))
     monkeypatch.setattr(routes, "get_connection", lambda: FakeConnection())
     monkeypatch.setattr(routes, "_validation_service", FakeValidationService())
-    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "update_validation_record", lambda **kwargs: None)
     monkeypatch.setattr(routes, "save_verifier_outputs", lambda **kwargs: None)
     monkeypatch.setattr(
         routes,
@@ -339,7 +348,9 @@ def test_generate_and_validate_creates_and_updates_audit(monkeypatch):
         "44444444-4444-4444-8444-444444444444"
     )
     assert created["selection_plan"] == {"policy_version": "policy_v2"}
-    assert created["run_summary"] == FakeResult.execution_audit
+    assert created["run_summary"] == {**FakeResult.execution_audit,
+        "generation": {"generation_method": "llm", "generation_provenance": None}}
+    assert "generation" not in FakeResult.execution_audit
 
     # Verify game cost estimates
     updated = calls[1][2]
@@ -397,6 +408,7 @@ def test_generate_and_validate_returns_error_when_audit_creation_fails(monkeypat
         execution_audit = {}
 
     class FakeValidationService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             assert request.question_id == 101
             return FakeResult()
@@ -406,16 +418,16 @@ def test_generate_and_validate_returns_error_when_audit_creation_fails(monkeypat
         raise RuntimeError("audit creation failed")
 
     monkeypatch.setattr(
-        routes, "generate_answer",
-        lambda question: "Generated test answer",
+        routes, "dispatch_generation",
+        lambda question, **kwargs: GeneratedAnswer("Generated test answer", "llm", None),
     )
     monkeypatch.setattr(routes, "get_connection", lambda: FakeConnection())
     monkeypatch.setattr(
         routes, "_validation_service", FakeValidationService()
     )
     monkeypatch.setattr(
-        routes, "save_validation",
-        lambda **kwargs: calls.append("save_validation"),
+        routes, "update_validation_record",
+        lambda **kwargs: calls.append("update_validation_record"),
     )
     monkeypatch.setattr(
         routes, "create_audit", fail_create_audit
@@ -434,8 +446,10 @@ def test_generate_and_validate_returns_error_when_audit_creation_fails(monkeypat
             },
         )
 
-    assert response.status_code == 503
-    assert calls == ["save_validation", "create_audit"]
+    assert response.status_code == 500
+    assert response.json()["detail"]["code"] == "PERSISTENCE_FAILED"
+    assert response.json()["detail"]["stage"] == "persistence"
+    assert calls == ["update_validation_record", "create_audit"]
     assert "save_verifier_outputs" not in calls
 
 
@@ -457,6 +471,7 @@ def test_validate_returns_error_when_audit_creation_fails(monkeypatch):
         execution_audit = {}
 
     class FakeValidationService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             return FakeResult()
 
@@ -469,8 +484,8 @@ def test_validate_returns_error_when_audit_creation_fails(monkeypatch):
     )
     monkeypatch.setattr(
         routes,
-        "save_validation",
-        lambda **kwargs: calls.append("save_validation"),
+        "update_validation_record",
+        lambda **kwargs: calls.append("update_validation_record"),
     )
     monkeypatch.setattr(
         routes,
@@ -493,7 +508,7 @@ def test_validate_returns_error_when_audit_creation_fails(monkeypatch):
         )
 
     assert response.status_code == 500
-    assert calls == ["save_validation", "create_audit"]
+    assert calls == ["update_validation_record", "create_audit"]
     assert response.text == "Internal Server Error"
 
 
@@ -516,6 +531,7 @@ def test_validate_handles_audit_completion_failure(monkeypatch):
         execution_audit = {}
 
     class FakeValidationService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             return FakeResult()
 
@@ -537,7 +553,7 @@ def test_validate_handles_audit_completion_failure(monkeypatch):
         routes, "_validation_service", FakeValidationService()
     )
     monkeypatch.setattr(
-        routes, "save_validation", lambda **kwargs: None
+        routes, "update_validation_record", lambda **kwargs: None
     )
     monkeypatch.setattr(
         routes, "save_verifier_outputs", lambda **kwargs: None

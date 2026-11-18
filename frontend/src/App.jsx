@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const API_URL = (
@@ -8,10 +8,12 @@ const API_URL = (
 const getResponseErrorMessage = async (response, fallback) => {
   const errorData = await response.json().catch(() => null);
 
-  if (errorData?.detail !== undefined && errorData.detail !== null) {
-    return typeof errorData.detail === "string"
-      ? errorData.detail
-      : JSON.stringify(errorData.detail);
+  const detail = errorData?.detail;
+  if (typeof detail?.message === "string" && detail.message.trim()) {
+    return detail.message;
+  }
+  if (typeof detail === "string" && detail.trim()) {
+    return detail;
   }
 
   return fallback;
@@ -28,6 +30,7 @@ function App() {
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [creatingSession, setCreatingSession] = useState(false);
   const [error, setError] = useState("");
 
   const [history, setHistory] = useState([]);
@@ -40,6 +43,46 @@ function App() {
   const [sessionQuestions, setSessionQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
+
+  // Synchronous refs prevent duplicate events before React re-renders. A view
+  // revision invalidates responses after navigation, resets or a new attempt.
+  const viewRevision = useRef(0);
+  const generationRequest = useRef(null);
+  const validationRequest = useRef(null);
+  const pendingSession = useRef(null);
+  const activeSession = useRef(null);
+  const sessionsRevision = useRef(0);
+  const questionsRevision = useRef(0);
+
+  const selectSession = useCallback((sessionId) => {
+    if (activeSession.current !== sessionId) {
+      activeSession.current = sessionId;
+      questionsRevision.current += 1;
+      setSessionQuestions([]);
+      setQuestionsLoading(false);
+    }
+    setActiveSessionId(sessionId);
+  }, []);
+
+  const resetConversation = () => {
+    viewRevision.current += 1;
+    generationRequest.current = null;
+    validationRequest.current = null;
+    pendingSession.current = null;
+    setCreatingSession(false);
+    setGenerating(false);
+    setLoading(false);
+    setQuestion("");
+    setSubmittedQuestion("");
+    setAnswer("");
+    setContext("");
+    setQuestionId(null);
+    setResult(null);
+    setShowResults(false);
+    setFeedbackSubmitted(false);
+    setError("");
+    return viewRevision.current;
+  };
 
   /*
    * Sessions are returned newest-first by the backend.
@@ -55,6 +98,9 @@ function App() {
   };
 
   useEffect(() => {
+    let cancelled = false;
+    const revision = viewRevision.current;
+    const listRevision = ++sessionsRevision.current;
     const fetchSessions = async () => {
       setSessionsLoading(true);
 
@@ -67,15 +113,16 @@ function App() {
 
         const data = await response.json();
 
+        if (cancelled || sessionsRevision.current !== listRevision) return;
         setSessions(data);
 
-        if (data.length > 0) {
-          setActiveSessionId(data[0].session_id);
+        if (data.length > 0 && viewRevision.current === revision) {
+          selectSession(data[0].session_id);
         }
       } catch (err) {
         console.error("Unable to load sessions:", err);
       } finally {
-        setSessionsLoading(false);
+        if (!cancelled && sessionsRevision.current === listRevision) setSessionsLoading(false);
       }
     };
 
@@ -89,20 +136,32 @@ function App() {
         }
 
         const data = await response.json();
-        setReputation(data);
+        if (!cancelled) setReputation(data);
       } catch (err) {
         console.error("Unable to load verifier reputation:", err);
       }
     };
 
     fetchReputation();
-  }, []);
+    return () => {
+      cancelled = true;
+      viewRevision.current += 1;
+      generationRequest.current = null;
+      validationRequest.current = null;
+      pendingSession.current = null;
+    };
+  }, [selectSession]);
 
   useEffect(() => {
     if (!activeSessionId) {
       setSessionQuestions([]);
+      setQuestionsLoading(false);
       return;
     }
+    let cancelled = false;
+    const revision = ++questionsRevision.current;
+    const isCurrent = () => !cancelled && questionsRevision.current === revision && activeSession.current === activeSessionId;
+    setSessionQuestions([]);
 
     const fetchSessionQuestions = async () => {
       setQuestionsLoading(true);
@@ -118,19 +177,21 @@ function App() {
 
         const data = await response.json();
 
-        setSessionQuestions(data);
+        if (isCurrent()) setSessionQuestions(data);
       } catch (err) {
         console.error("Unable to load session questions:", err);
-        setSessionQuestions([]);
+        if (isCurrent()) setSessionQuestions([]);
       } finally {
-        setQuestionsLoading(false);
+        if (isCurrent()) setQuestionsLoading(false);
       }
     };
 
     fetchSessionQuestions();
+    return () => { cancelled = true; };
   }, [activeSessionId]);
 
   const handleQuestionChange = (e) => {
+    if (pendingSession.current || generationRequest.current || validationRequest.current) return;
     const textarea = e.target;
 
     textarea.style.height = "auto";
@@ -140,6 +201,7 @@ function App() {
   };
 
   const handleContextChange = (e) => {
+    if (pendingSession.current) return;
     const textarea = e.target;
 
     textarea.style.height = "auto";
@@ -161,50 +223,59 @@ function App() {
   };
 
   const startNewChat = async () => {
+    if (pendingSession.current) return;
+    // Invalidate old work, but retain the conversation until creation succeeds.
+    const request = { revision: ++viewRevision.current };
+    generationRequest.current = null;
+    validationRequest.current = null;
+    pendingSession.current = request;
+    setGenerating(false);
+    setLoading(false);
+    setCreatingSession(true);
     setError("");
+    const isCurrent = () => pendingSession.current === request && viewRevision.current === request.revision;
 
     try {
       const response = await fetch(`${API_URL}/sessions`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: "New Validation",
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: "New Validation" }),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to create a new session.");
-      }
-
+      if (!response.ok) throw new Error("Session creation failed.");
       const newSession = await response.json();
-
+      if (!isCurrent()) return;
+      if (typeof newSession?.session_id !== "string" || !newSession.session_id.trim()) {
+        throw new Error("Invalid session response.");
+      }
+      sessionsRevision.current += 1;
+      setSessionsLoading(false);
       setSessions((prev) => [newSession, ...prev]);
-      setActiveSessionId(newSession.session_id);
-
-      setQuestion("");
-      setSubmittedQuestion("");
-      setAnswer("");
-      setContext("");
-      setResult(null);
-      setFeedbackSubmitted(false);
-      setSessionQuestions([]);
-      setShowResults(false);
-      setQuestionId(null);
-    } catch (err) {
-      setError(err.message || "Unable to create a new session.");
+      selectSession(newSession.session_id);
+      // Establish the ID before releasing the pending guard and clearing input.
+      resetConversation();
+    } catch {
+      if (isCurrent()) setError("Unable to create a new session. Please try again.");
+    } finally {
+      if (isCurrent()) {
+        pendingSession.current = null;
+        setCreatingSession(false);
+      }
     }
   };
 
   const generateAnswer = async () => {
+    if (pendingSession.current || generationRequest.current || validationRequest.current) return;
     if (!question.trim()) {
       setError("Please enter a question first.");
       return;
     }
 
+    const requestQuestion = question.trim();
+    const request = { revision: resetConversation(), sessionId: activeSession.current };
+    setQuestion(question);
+    generationRequest.current = request;
+    const isCurrent = () => generationRequest.current === request && viewRevision.current === request.revision;
     setGenerating(true);
-    setError("");
 
     try {
       const response = await fetch(`${API_URL}/generate-answer`, {
@@ -213,35 +284,64 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          question: question.trim(),
+          question: requestQuestion,
+          session_id: request.sessionId,
         }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to generate answer.");
+        throw new Error(await getResponseErrorMessage(response, "Failed to generate answer."));
       }
 
-      const data = await response.json();
+      const data = await response.json().catch(() => null);
 
-      setQuestionId(data.question_id);
-      setSubmittedQuestion(question.trim());
-      setAnswer(data.answer || "");
+      if (!isCurrent()) return;
+      if (typeof data?.answer !== "string" || !data.answer.trim()) {
+        throw new Error("The server did not return a valid answer. Please try again.");
+      }
+      setQuestionId(data.question_id ?? null);
+      setSubmittedQuestion(requestQuestion);
+      setAnswer(data.answer);
+      if (request.sessionId) {
+        const revision = ++questionsRevision.current;
+        const isLatestList = () => questionsRevision.current === revision && activeSession.current === request.sessionId;
+        setQuestionsLoading(true);
+        try {
+          const historyResponse = await fetch(`${API_URL}/sessions/${request.sessionId}/questions`);
+          if (historyResponse.ok) {
+            const items = await historyResponse.json();
+            if (isCurrent() && isLatestList()) setSessionQuestions(items);
+          }
+        } catch {
+          if (isCurrent()) setError("Answer saved, but session history could not be refreshed.");
+        } finally {
+          if (isLatestList()) setQuestionsLoading(false);
+        }
+      }
     } catch (err) {
-      setError(err.message || "Unable to generate answer.");
+      if (isCurrent()) setError(err.message || "Unable to generate answer.");
     } finally {
-      setGenerating(false);
+      if (isCurrent()) {
+        generationRequest.current = null;
+        setGenerating(false);
+      }
     }
   };
 
   const validateAnswer = async (providedContext = "") => {
+    if (pendingSession.current || generationRequest.current || validationRequest.current) return;
     if (!question.trim() || !answer.trim()) {
       setError("Question and answer are required.");
       return;
     }
 
+    const request = { revision: viewRevision.current, sessionId: activeSession.current };
+    validationRequest.current = request;
+    const isCurrent = () => validationRequest.current === request && viewRevision.current === request.revision;
     setLoading(true);
     setError("");
 
+    let failureMessage = "Unable to validate the answer. Please try again.";
     try {
       const response = await fetch(`${API_URL}/validate`, {
         method: "POST",
@@ -250,36 +350,43 @@ function App() {
         },
         body: JSON.stringify({
           question: question.trim(),
-          answer: answer.trim(),
+          answer,
           context: providedContext.trim() || null,
-          session_id: activeSessionId,
+          session_id: request.sessionId,
           question_id: questionId,
         }),
       });
 
       if (!response.ok) {
-        throw new Error(
-          await getResponseErrorMessage(response, "Validation failed.")
-        );
+        failureMessage = await getResponseErrorMessage(response, "Validation failed.");
+        throw new Error("Validation request failed.");
       }
 
       const data = await response.json();
 
+      if (!isCurrent()) return;
       setResult(data);
       setShowResults(true);
 
-      if (activeSessionId) {
-        const questionsResponse = await fetch(
-          `${API_URL}/sessions/${activeSessionId}/questions`
-        );
-
-        if (questionsResponse.ok) {
-          const questions = await questionsResponse.json();
-          setSessionQuestions(questions);
+      if (request.sessionId) {
+        const revision = ++questionsRevision.current;
+        const isLatestList = () => questionsRevision.current === revision && activeSession.current === request.sessionId;
+        setQuestionsLoading(true);
+        try {
+          const questionsResponse = await fetch(`${API_URL}/sessions/${request.sessionId}/questions`);
+          if (questionsResponse.ok) {
+            const questions = await questionsResponse.json();
+            if (isCurrent() && isLatestList()) setSessionQuestions(questions);
+          }
+        } finally {
+          if (isLatestList()) setQuestionsLoading(false);
         }
       }
 
+      if (!isCurrent()) return;
       const historyItem = {
+        question_id: questionId,
+        session_id: request.sessionId,
         question: question,
         answer: answer,
         context: providedContext,
@@ -287,14 +394,18 @@ function App() {
       };
 
       setHistory((prev) => [historyItem, ...prev]);
-    } catch (err) {
-      setError(err.message || "Unable to validate the answer.");
+    } catch {
+      if (isCurrent()) setError(failureMessage);
     } finally {
-      setLoading(false);
+      if (isCurrent()) {
+        validationRequest.current = null;
+        setLoading(false);
+      }
     }
   };
 
   const submitFeedback = async (isCorrect) => {
+    const revision = viewRevision.current;
     if (!result?.validation_id) {
       setError("No validation result is available for feedback.");
       return;
@@ -320,9 +431,11 @@ function App() {
         );
       }
 
+      if (viewRevision.current !== revision) return;
       setError("");
       setFeedbackSubmitted(true);
     } catch (requestError) {
+      if (viewRevision.current !== revision) return;
       setError(
         requestError.message ||
           "Unable to submit feedback. Please try again."
@@ -335,17 +448,21 @@ function App() {
   };
 
   const skipContext = async () => {
+    if (pendingSession.current) return;
     setContext("");
     await validateAnswer("");
   };
 
   const openHistory = (item) => {
+    resetConversation();
+    setQuestionId(item.question_id ?? null);
+    selectSession(item.session_id ?? null);
     setQuestion(item.question);
     setSubmittedQuestion(item.question);
     setAnswer(item.answer);
     setContext(item.context || "");
     setResult(item.result);
-    setShowResults(true);
+    setShowResults(Boolean(item.result));
     setError("");
   };
 
@@ -534,6 +651,7 @@ function App() {
         <button
           className="new-chat-button"
           onClick={startNewChat}
+          disabled={creatingSession}
         >
           <span className="plus">+</span>
           <span>New Validation</span>
@@ -578,10 +696,8 @@ function App() {
                       : ""
                   }`}
                   onClick={() => {
-                    setActiveSessionId(session.session_id);
-                    setShowResults(false);
-                    setResult(null);
-                    setError("");
+                    resetConversation();
+                    selectSession(session.session_id);
                   }}
                 >
                   {getSessionLabel(session, index)}
@@ -611,19 +727,22 @@ function App() {
 
                   {sessionQuestions.map((item) => (
                     <button
-                      key={item.validation_id}
+                      key={item.validation_id || `generated-${item.question_id}`}
                       className="history-item"
                       onClick={() => {
-                        setQuestionId(item.question_id);
+                        resetConversation();
+                        setQuestionId(item.question_id ?? null);
                         setQuestion(item.question);
                         setSubmittedQuestion(item.question);
                         setAnswer(item.generated_answer);
+                        setContext(item.context || "");
                         setResult(null);
                         setShowResults(false);
                         setError("");
                       }}
                     >
                       {item.question}
+                      {item.history_state === "generated_only" && <small> - Not validated</small>}
                     </button>
                   ))}
 
@@ -669,7 +788,7 @@ function App() {
                   <h2>Ask a question</h2>
 
                   <p>
-                    Generate an answer with Llama and validate it
+                    Generate an answer and validate it
                     using multiple independent agents.
                   </p>
 
@@ -744,6 +863,7 @@ function App() {
                     className="question-composer"
                     placeholder="Ask a question..."
                     value={question}
+                    disabled={generating || loading || creatingSession}
                     onChange={handleQuestionChange}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && !e.shiftKey) {
@@ -757,7 +877,7 @@ function App() {
                   <button
                     className="send-button"
                     onClick={generateAnswer}
-                    disabled={generating}
+                    disabled={generating || loading || creatingSession}
                     title="Generate Answer"
                   >
                     {generating ? "..." : "↑"}
@@ -783,6 +903,7 @@ function App() {
                     className="question-composer"
                     placeholder="Add supporting context (optional)..."
                     value={context}
+                    disabled={creatingSession}
                     onChange={handleContextChange}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && !e.shiftKey) {
@@ -796,6 +917,7 @@ function App() {
                   <button
                     className="send-button"
                     onClick={submitContext}
+                    disabled={creatingSession}
                     title="Validate Answer"
                   >
                     ↑
@@ -807,7 +929,7 @@ function App() {
                 <button
                   className="skip-button"
                   onClick={skipContext}
-                  disabled={loading}
+                  disabled={loading || creatingSession}
                 >
                   Skip & Validate
                 </button>
@@ -831,13 +953,6 @@ function App() {
 
           
 
-            {/* ================= ERROR ================= */}
-
-            {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
 
           </>
         ) : (
@@ -1184,12 +1299,23 @@ function App() {
 
             <button
               className="back-button"
-              onClick={() => setShowResults(false)}
+              onClick={() => {
+                if (pendingSession.current) {
+                  viewRevision.current += 1;
+                  pendingSession.current = null;
+                  setCreatingSession(false);
+                }
+                setShowResults(false);
+              }}
             >
               ← Back
             </button>
 
           </>
+        )}
+
+        {error && (
+          <div className="error-message">{error}</div>
         )}
 
       </main>

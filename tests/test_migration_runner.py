@@ -70,6 +70,7 @@ def test_migration_list_contains_existing_migrations():
         "010_execution_lease_recovery.sql",
         "011_reputation_snapshot_id_text.sql",
         "012_report_validation_id_text.sql",
+        "013_generated_answer_sessions.sql",
     ]
 
 

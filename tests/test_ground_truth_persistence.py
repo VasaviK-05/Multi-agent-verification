@@ -1,22 +1,30 @@
+from app.services.answer_generation import GeneratedAnswer
 
 from uuid import UUID
 
 import pytest
 from unittest.mock import patch
 
-from app.reputation.reputation_manager import ReputationManager
-from app.orchestration import validation_orchestrator as orchestrator_module
-
-# Import-time service bootstrap is not a live PostgreSQL integration test.
-# Keep the test independent of database-backed reputation loading.
-orchestrator_module.load_reputation_manager_state = lambda: None
-orchestrator_module.build_reputation_state = (
-    lambda: ReputationManager().export_state()
-)
-
+from types import SimpleNamespace
+from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from app.api import routes
-from app.main import app
+from tests.test_api_compound_generation import isolated_routes
+
+# Pure route tests: no production bootstrap or application startup lifespan.
+routes = app = client = None
+
+
+@pytest.fixture(autouse=True)
+def isolated_api(monkeypatch):
+    with patch("psycopg2.connect", side_effect=AssertionError("No database access permitted")):
+        with isolated_routes(SimpleNamespace()) as module:
+            application = FastAPI()
+            application.include_router(module.router)
+            monkeypatch.setitem(globals(), "routes", module)
+            monkeypatch.setitem(globals(), "app", application)
+            monkeypatch.setitem(globals(), "client", TestClient(application))
+            yield
+
 
 from app.models.schemas import GroundTruthEvaluation, ValidationResponse
 
@@ -44,6 +52,7 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
     question_id = 123
 
     class FakeService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             return make_validation_response()
 
@@ -77,7 +86,7 @@ def test_validate_saves_ground_truth_after_validation(monkeypatch):
         assert kwargs["label"] == "Paris"
         assert kwargs["source"] == "test"
 
-    monkeypatch.setattr(routes, "save_validation", fake_save_validation)
+    monkeypatch.setattr(routes, "update_validation_record", fake_save_validation)
     monkeypatch.setattr(routes, "save_verifier_outputs", fake_save_verifier_outputs)
     monkeypatch.setattr(routes, "save_ground_truth", fake_save_ground_truth)
     monkeypatch.setattr(
@@ -128,6 +137,7 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
     question_id = 456
 
     class FakeService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             assert request.question_id == question_id
             return make_validation_response()
@@ -187,9 +197,9 @@ def test_generate_and_validate_saves_ground_truth_after_validation(monkeypatch):
         assert kwargs["source"] == "test"
 
     monkeypatch.setattr(routes, "_validation_service", FakeService())
-    monkeypatch.setattr(routes, "generate_answer", lambda question: "Paris")
+    monkeypatch.setattr(routes, "dispatch_generation", lambda question, **kwargs: GeneratedAnswer("Paris", "llm", None))
     monkeypatch.setattr(routes, "get_connection", FakeConnection)
-    monkeypatch.setattr(routes, "save_validation", fake_save_validation)
+    monkeypatch.setattr(routes, "update_validation_record", fake_save_validation)
     monkeypatch.setattr(routes, "save_verifier_outputs", fake_save_verifier_outputs)
     monkeypatch.setattr(routes, "save_ground_truth", fake_save_ground_truth)
     monkeypatch.setattr(
@@ -240,6 +250,7 @@ def test_validate_does_not_save_ground_truth_if_validation_save_fails(monkeypatc
     ground_truth_calls = []
 
     class FakeService:
+        _orchestrator = SimpleNamespace(get_attempt_id_for_result=lambda result: None)
         def validate(self, request):
             return make_validation_response()
 
@@ -264,7 +275,7 @@ def test_validate_does_not_save_ground_truth_if_validation_save_fails(monkeypatc
         raise RuntimeError("validation persistence failed")
 
     monkeypatch.setattr(routes, "_validation_service", FakeService())
-    monkeypatch.setattr(routes, "save_validation", fail_save_validation)
+    monkeypatch.setattr(routes, "update_validation_record", fail_save_validation)
     monkeypatch.setattr(
         routes,
         "save_ground_truth",

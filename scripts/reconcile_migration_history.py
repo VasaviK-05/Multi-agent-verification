@@ -5,6 +5,11 @@ from pathlib import Path
 import psycopg2
 from dotenv import load_dotenv
 
+if __package__:
+    from .migration_013_schema import MIGRATION_013, generated_answer_session_problems
+else:
+    from migration_013_schema import MIGRATION_013, generated_answer_session_problems
+
 ROOT = Path(__file__).resolve().parent.parent
 
 MIGRATION_FILES = [
@@ -20,6 +25,7 @@ MIGRATION_FILES = [
     "010_execution_lease_recovery.sql",
     "011_reputation_snapshot_id_text.sql",
     "012_report_validation_id_text.sql",
+    "013_generated_answer_sessions.sql",
 ]
 
 LEGACY_MIGRATION_ALIASES = {
@@ -260,7 +266,7 @@ def read_schema_inventory(cursor):
     return columns, column_types, constraints, indexes
 
 
-def verify_migration(filename, columns, constraints, indexes, column_types):
+def verify_migration(filename, columns, constraints, indexes, column_types, *, cursor=None):
     problems = []
 
     for table, required in REQUIRED_COLUMNS.get(filename, {}).items():
@@ -297,6 +303,11 @@ def verify_migration(filename, columns, constraints, indexes, column_types):
         if "reputation_manager_state_object" not in constraints:
             problems.append("missing reputation_manager_state_object")
 
+    if filename == MIGRATION_013:
+        if cursor is None:
+            problems.append("migration 013 requires detailed catalog verification")
+        else:
+            problems.extend(generated_answer_session_problems(cursor))
     return problems
 
 
@@ -341,7 +352,8 @@ def main():
                 errors = {}
                 for filename in MIGRATION_FILES:
                     problems = verify_migration(
-                        filename, columns, constraints, indexes, column_types
+                        filename, columns, constraints, indexes, column_types,
+                        **({"cursor": cursor} if filename == MIGRATION_013 else {}),
                     )
                     if problems:
                         errors[filename] = problems

@@ -13,7 +13,7 @@ from app.game.artifacts import (
 from app.game.execution import GameRuntime
 from app.game.prototype_bundle import load_prototype
 from app.game.offline.recording_adapters import ProjectObserver
-from app.game.question_routing import QuestionPolicyRouter
+from app.game.question_routing import QuestionPolicyConfiguration, QuestionPolicyRouter
 from app.utils.config import settings
 
 _REFERENCE_ARTIFACT_ID = "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f"
@@ -59,6 +59,13 @@ class FlexiblePolicyGameRuntime:
         adapter_path = (settings.GAME_FLEXIBLE_ADAPTER_CONFIG_PATH
                         or os.environ.get("VERIFIER_COLLECTION_ADAPTER_CONFIG", "adapter.json"))
         self._adapter = AdapterConfiguration.model_validate(read_json(adapter_path))
+
+    def get_policy_configuration(self) -> QuestionPolicyConfiguration:
+        """Return the already reviewed snapshot, without resource construction."""
+        from app.services.compound_generation import ConfigurationLoadingError
+        if self._router.configuration is not self._configuration:
+            raise ConfigurationLoadingError("Active policy configuration does not match its router.")
+        return self._configuration
 
     def _adapter_for(self, route_name):
         binding_setting = {

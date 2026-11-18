@@ -7,14 +7,54 @@ from app.game.models import content_id
 from app.game.task_conditioning import TaskPolicyRouter, analysis_signature
 
 
+class UnsupportedCompoundSyntaxError(ValueError):
+    """An input requests Compound work outside the declared templates."""
+
+
+class QuestionClassificationError(ValueError):
+    """An ordinary question has no supported atomic classification."""
+
+
+# Generation recognition is deliberately separate from validation eligibility.
+# Require a fact question, a second derived-value question, a referent/measure,
+# and an explicit arithmetic operation. A conjunction alone never matches.
+_GENERATION_COMPOUND_REQUEST = re.compile(
+    r"^\s*what\s+is\s+the\s+(?:area|population)\s+of\s+.+?"
+    r"(?:,\s*|\?\s*|\s+)and\s+what\s+is\s+"
+    r"(?:(?:that|this|its|their|his|her)\s+(?:area|population)|"
+    r"(?:the\s+)?[^?\r\n]+?['\u2019]s\s+(?:area|population)|"
+    r"the\s+(?:area|population)(?:\s+of\s+[^?\r\n]+?)?)"
+    r"\s*(?:\b(?:plus|minus|times|multiplied\s+by|divided(?:\s+by)?|modulo|"
+    r"squared|cubed|raised\s+to)\b|[+*/%\u00d7\u00f7-])",
+    re.I | re.S,
+)
+
+
 def classify_question(question, reference=None, *, component_catalog=None, reference_question_version=None):
+    """Validation classifier: retain the base rejection guard and eligibility."""
+    return _classify_question(question, reference, component_catalog=component_catalog,
+        reference_question_version=reference_question_version, for_generation=False)
+
+
+def classify_generation_question(question, reference=None, *, component_catalog=None, reference_question_version=None):
+    """Recognize generation intent only; this never grants validation eligibility."""
+    return _classify_question(question, reference, component_catalog=component_catalog,
+        reference_question_version=reference_question_version, for_generation=True)
+
+
+def _classify_question(question, reference=None, *, component_catalog=None, reference_question_version=None,
+                       for_generation=False):
     """Only pre-dispatch question features; reference contributes presence, not truth."""
     analyzer = CapabilityProbeAnalyzer()
     if reference_question_version is not None and question.startswith('Paraphrase this reference: '):
         from app.analysis.reference_study_analyzer import VERSION as reference_version,analyze_reference
         if reference_question_version!=reference_version:raise ValueError('unsupported reference category version')
-        analysis=analyze_reference(question)
-        return 'atomic',analysis_signature(analysis,reference),analysis
+        try:
+            analysis=analyze_reference(question)
+            signature=analysis_signature(analysis,reference)
+        except ValueError as exc:
+            raise QuestionClassificationError(str(exc)) from exc
+        return 'atomic',signature,analysis
     if component_catalog is not None:
         from app.game.component_sources import Catalog,question_plan as v2_plan,VERSION as V2
         catalog=Catalog.model_validate(component_catalog)
@@ -30,20 +70,27 @@ def classify_question(question, reference=None, *, component_catalog=None, refer
     try:
         plan = question_plan(question)
     except BindingError:
-        # Do not let a factual prefix silently swallow unsupported compound work.
-        if re.search(r'\band\b|\b(?:plus|minus|times|divided)\b|give both values', question, re.I):
+        # Generation needs a narrow intent boundary. Validation keeps exactly
+        # the original broad guard; its scope is not widened by this feature.
+        compound_request = (_GENERATION_COMPOUND_REQUEST.search(question) if for_generation else
+            re.search(r'\band\b|\b(?:plus|minus|times|divided)\b|give both values', question, re.I))
+        if compound_request:
             # Known standalone arithmetic wording must still delegate normally.
             from app.selection.requirements import requirement_inputs
             standalone=analyzer.analyze(question)
             req=requirement_inputs(standalone)
             if req.requirements in {('arithmetic',),('semantic_comparison',)} and not req.unsupported:
-                return 'atomic',analysis_signature(standalone,reference),standalone
-            raise ValueError('unsupported_category: no declared component template')
+                try:
+                    signature=analysis_signature(standalone,reference)
+                except ValueError as exc:
+                    raise QuestionClassificationError(str(exc)) from exc
+                return 'atomic',signature,standalone
+            raise UnsupportedCompoundSyntaxError('unsupported_category: no declared component template')
         analysis = analyzer.analyze(question)
         try:
             signature = analysis_signature(analysis, reference)
         except ValueError as exc:
-            raise ValueError('unsupported_category: ' + str(exc)) from exc
+            raise QuestionClassificationError('unsupported_category: ' + str(exc)) from exc
         return 'atomic', signature, analysis
     analysis = analyzer.base.analyze(question)
     signature = (content_id(dict(version=VERSION, category=plan.category,

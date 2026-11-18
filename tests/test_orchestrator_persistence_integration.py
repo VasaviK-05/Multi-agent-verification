@@ -1,3 +1,4 @@
+from app.services.answer_generation import GeneratedAnswer
 import json
 import os
 from uuid import UUID
@@ -240,8 +241,8 @@ def test_generate_and_validate_persists_attempt_links(test_db, monkeypatch):
     )
     monkeypatch.setattr(
         routes,
-        "generate_answer",
-        lambda question: "A database index improves retrieval efficiency.",
+        "dispatch_generation",
+        lambda question, **kwargs: GeneratedAnswer("A database index improves retrieval efficiency.", "llm", None),
     )
 
     validation_id = None
