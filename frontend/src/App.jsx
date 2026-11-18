@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
+import { getAnswerPresentation } from "./answerPresentation.js";
 
 const API_URL = (
   import.meta.env.VITE_API_BASE_URL?.trim() || "http://127.0.0.1:8000"
@@ -569,6 +570,8 @@ function App() {
       : "Unavailable"
     : `${getScorePercentage(result?.final_score)}%`;
 
+  const answerPresentation = getAnswerPresentation(submittedQuestion, answer);
+
   return (
     <div className="app">
 
@@ -822,7 +825,9 @@ function App() {
                       </div>
 
                       <div className="ai-response">
-                        {answer}
+                        {answerPresentation ? answerPresentation.map(({ label, value }) => (
+                          <div key={label}><strong>{label}:</strong> {value}</div>
+                        )) : answer}
                       </div>
 
                     </div>
