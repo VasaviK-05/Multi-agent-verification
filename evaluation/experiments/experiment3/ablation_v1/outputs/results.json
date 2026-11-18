@@ -1,0 +1,1330 @@
+{
+  "aggregation": {
+    "neutral": {
+      "decision_disagreements": 0,
+      "evidence_label": "EMPIRICAL",
+      "methods": {
+        "fixed_dependency_group": {
+          "coverage": 0.23751920122887865,
+          "game_value": 0.29096372230211043,
+          "game_value_matches": true,
+          "mean_decision_loss": 0.2533026113671275,
+          "modal_matches": true,
+          "modal_strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+          "probabilities_match": true,
+          "pure_solver_probability_is_not_superiority": true,
+          "rows": 5208,
+          "stored_game_value": 0.29096372230211043,
+          "stored_modal_strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0"
+        },
+        "fixed_reputation_weighted": {
+          "coverage": 0.23751920122887865,
+          "game_value": 0.29096372230211043,
+          "game_value_matches": true,
+          "mean_decision_loss": 0.2533026113671275,
+          "modal_matches": true,
+          "modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          "probabilities_match": true,
+          "pure_solver_probability_is_not_superiority": true,
+          "rows": 5208,
+          "stored_game_value": 0.29096372230211043,
+          "stored_modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac"
+        },
+        "full_minimax": {
+          "coverage": 0.23751920122887865,
+          "game_value": 0.29096372230211043,
+          "game_value_matches": true,
+          "mean_decision_loss": 0.2533026113671275,
+          "modal_matches": true,
+          "modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+          "probabilities_match": true,
+          "pure_solver_probability_is_not_superiority": true,
+          "rows": 5208,
+          "stored_game_value": 0.29096372230211043,
+          "stored_modal_strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac"
+        }
+      },
+      "reproduction_matches_historical": true,
+      "reputation": "Beta(1, 1), zero approved observations",
+      "solver_support": {
+        "fixed_dependency_group": {
+          "solver_maximum_probability": 1.0,
+          "strategies_with_that_probability": [
+            "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0"
+          ]
+        },
+        "fixed_reputation_weighted": {
+          "solver_maximum_probability": 1.0,
+          "strategies_with_that_probability": [
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac"
+          ]
+        },
+        "full_minimax": {
+          "solver_maximum_probability": 1.0,
+          "strategies_with_that_probability": [
+            "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac"
+          ]
+        }
+      },
+      "status": "reproduced",
+      "team_attack_cells_compared": 36456,
+      "tie_note": "full_minimax has two optimal evidence-plus-rule rows. The solver probability does not make one aggregation better."
+    },
+    "non_neutral_reputation": {
+      "approved": false,
+      "observations_count": 0,
+      "permitted_history": "History partition labels and recorded attempts only, after an approved update rule. Development outcomes are not a reputation source for this experiment.",
+      "ran": false,
+      "reason": "No approved non-neutral reputation snapshot exists. Development outcomes are excluded as a reputation source, observations_count is 0, and the update rule is not approved. No substitute reputations were invented.",
+      "status": "not_estimable",
+      "update_rule": "PENDING_APPROVAL"
+    }
+  },
+  "candidates": 744,
+  "dependency": {
+    "abstention_policy": "preserve_abstentions",
+    "matched": {
+      "declared_structural": {
+        "scenarios": {
+          "correlated_failures": {
+            "aggregation": "dependency_group",
+            "aggregation_disagreements_on_selected_dependency_team": 0,
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 574,
+                "candidates": 744,
+                "members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 1634,
+                "targeted_count": 3
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "full_minimax_status": "available",
+            "full_minimax_tie_count": 2,
+            "full_minimax_worst_column_decision_loss": 0.2895161290322581,
+            "reason": null,
+            "reputation_only_tie_count": 1,
+            "reputation_only_verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "reputation_only_worst_column_decision_loss": 0.2895161290322581,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          },
+          "independent_failures": {
+            "aggregation": "dependency_group",
+            "aggregation_disagreements_on_selected_dependency_team": 0,
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "full_minimax_status": "available",
+            "full_minimax_tie_count": 2,
+            "full_minimax_worst_column_decision_loss": 0.2895161290322581,
+            "reason": null,
+            "reputation_only_tie_count": 1,
+            "reputation_only_verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "reputation_only_worst_column_decision_loss": 0.2895161290322581,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          }
+        }
+      },
+      "fully_correlated": {
+        "scenarios": {
+          "correlated_failures": {
+            "aggregation": "dependency_group",
+            "aggregation_disagreements_on_selected_dependency_team": 0,
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 574,
+                "candidates": 744,
+                "members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 1634,
+                "targeted_count": 3
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "full_minimax_status": "available",
+            "full_minimax_tie_count": 2,
+            "full_minimax_worst_column_decision_loss": 0.2895161290322581,
+            "reason": null,
+            "reputation_only_tie_count": 1,
+            "reputation_only_verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "reputation_only_worst_column_decision_loss": 0.2895161290322581,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          },
+          "independent_failures": {
+            "aggregation": "dependency_group",
+            "aggregation_disagreements_on_selected_dependency_team": 0,
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "full_minimax_status": "available",
+            "full_minimax_tie_count": 2,
+            "full_minimax_worst_column_decision_loss": 0.2895161290322581,
+            "reason": null,
+            "reputation_only_tie_count": 1,
+            "reputation_only_verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "reputation_only_worst_column_decision_loss": 0.2895161290322581,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          }
+        }
+      },
+      "independent": {
+        "scenarios": {
+          "correlated_failures": {
+            "aggregation": "dependency_group",
+            "aggregation_disagreements_on_selected_dependency_team": 0,
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 574,
+                "candidates": 744,
+                "members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 1634,
+                "targeted_count": 3
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "full_minimax_status": "available",
+            "full_minimax_tie_count": 2,
+            "full_minimax_worst_column_decision_loss": 0.2895161290322581,
+            "reason": null,
+            "reputation_only_tie_count": 1,
+            "reputation_only_verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "reputation_only_worst_column_decision_loss": 0.2895161290322581,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          },
+          "independent_failures": {
+            "aggregation": "dependency_group",
+            "aggregation_disagreements_on_selected_dependency_team": 0,
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "full_minimax_status": "available",
+            "full_minimax_tie_count": 2,
+            "full_minimax_worst_column_decision_loss": 0.2895161290322581,
+            "reason": null,
+            "reputation_only_tie_count": 1,
+            "reputation_only_verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "reputation_only_worst_column_decision_loss": 0.2895161290322581,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          }
+        }
+      }
+    },
+    "native": {
+      "declared_structural": {
+        "groups": [
+          [
+            "confidence",
+            "evidence",
+            "semantic"
+          ],
+          [
+            "rule"
+          ]
+        ],
+        "scenarios": {
+          "correlated_failures": {
+            "aggregation": "dependency_group",
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 574,
+                "candidates": 744,
+                "members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 1634,
+                "targeted_count": 3
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "reason": null,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "severity_matched_to_other_rows": false,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "confidence",
+                  "evidence",
+                  "semantic"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "confidence",
+              "evidence",
+              "semantic"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          },
+          "independent_failures": {
+            "aggregation": "dependency_group",
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "reason": null,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "severity_matched_to_other_rows": true,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          }
+        }
+      },
+      "fully_correlated": {
+        "groups": [
+          [
+            "confidence",
+            "evidence",
+            "rule",
+            "semantic"
+          ]
+        ],
+        "scenarios": {
+          "correlated_failures": {
+            "aggregation": "dependency_group",
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 576,
+                "candidates": 744,
+                "members": [
+                  "confidence",
+                  "evidence",
+                  "rule",
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 2376,
+                "targeted_count": 4
+              }
+            ],
+            "false_acceptance_rate": 1.0,
+            "false_rejection_rate": 0.0,
+            "reason": null,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "severity_matched_to_other_rows": false,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 1.0,
+                "false_rejection_rate": 0.0,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "confidence",
+                  "evidence",
+                  "rule",
+                  "semantic"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "confidence",
+              "evidence",
+              "rule",
+              "semantic"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          },
+          "independent_failures": {
+            "aggregation": "dependency_group",
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "reason": null,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "severity_matched_to_other_rows": true,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          }
+        }
+      },
+      "independent": {
+        "groups": [
+          [
+            "confidence"
+          ],
+          [
+            "evidence"
+          ],
+          [
+            "rule"
+          ],
+          [
+            "semantic"
+          ]
+        ],
+        "scenarios": {
+          "correlated_failures": {
+            "aggregation": "dependency_group",
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "reason": null,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "severity_matched_to_other_rows": false,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          },
+          "independent_failures": {
+            "aggregation": "dependency_group",
+            "candidates": 744,
+            "coverage": 0.2513440860215054,
+            "estimated_cost_ms": 108.03258997621015,
+            "failure_columns": [
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 162,
+                "candidates": 744,
+                "members": [
+                  "confidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 558,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 185,
+                "candidates": 744,
+                "members": [
+                  "evidence"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 559,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 2,
+                "candidates": 744,
+                "members": [
+                  "rule"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 742,
+                "targeted_count": 1
+              },
+              {
+                "abstention_policy": "preserve_abstentions",
+                "actually_corrupted": 227,
+                "candidates": 744,
+                "members": [
+                  "semantic"
+                ],
+                "operator": "forced_support",
+                "preserved_abstentions": 517,
+                "targeted_count": 1
+              }
+            ],
+            "false_acceptance_rate": 0.9903846153846154,
+            "false_rejection_rate": 0.012048192771084338,
+            "reason": null,
+            "resource_penalty": 0.0014475932698523478,
+            "selective_risk": 0.5561497326203209,
+            "severity_matched_to_other_rows": true,
+            "status": "available",
+            "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+            "tie_count": 1,
+            "tied_strategies": [
+              {
+                "aggregation": "dependency_group",
+                "coverage": 0.2513440860215054,
+                "estimated_cost_ms": 108.03258997621015,
+                "false_acceptance_rate": 0.9903846153846154,
+                "false_rejection_rate": 0.012048192771084338,
+                "selective_risk": 0.5561497326203209,
+                "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+                "uncertainty_rate": 0.7486559139784946,
+                "verifiers": [
+                  "evidence",
+                  "rule"
+                ],
+                "worst_attack_members": [
+                  "evidence"
+                ],
+                "worst_column_decision_loss": 0.2895161290322581
+              }
+            ],
+            "uncertainty_rate": 0.7486559139784946,
+            "verifiers": [
+              "evidence",
+              "rule"
+            ],
+            "worst_attack_members": [
+              "evidence"
+            ],
+            "worst_column_decision_loss": 0.2895161290322581
+          }
+        }
+      }
+    },
+    "native_matrix": {
+      "declared_structural": {
+        "correlated_failures": {
+          "candidates": 744,
+          "coverage": 0.2513440860215054,
+          "reason": null,
+          "status": "available",
+          "worst_column_decision_loss": 0.2895161290322581
+        },
+        "independent_failures": {
+          "candidates": 744,
+          "coverage": 0.2513440860215054,
+          "reason": null,
+          "status": "available",
+          "worst_column_decision_loss": 0.2895161290322581
+        }
+      },
+      "fully_correlated": {
+        "correlated_failures": {
+          "candidates": 744,
+          "coverage": 0.2513440860215054,
+          "reason": null,
+          "status": "available",
+          "worst_column_decision_loss": 0.2895161290322581
+        },
+        "independent_failures": {
+          "candidates": 744,
+          "coverage": 0.2513440860215054,
+          "reason": null,
+          "status": "available",
+          "worst_column_decision_loss": 0.2895161290322581
+        }
+      },
+      "independent": {
+        "correlated_failures": {
+          "candidates": 744,
+          "coverage": 0.2513440860215054,
+          "reason": null,
+          "status": "available",
+          "worst_column_decision_loss": 0.2895161290322581
+        },
+        "independent_failures": {
+          "candidates": 744,
+          "coverage": 0.2513440860215054,
+          "reason": null,
+          "status": "available",
+          "worst_column_decision_loss": 0.2895161290322581
+        }
+      }
+    },
+    "operator": "forced_support"
+  },
+  "differences": [
+    {
+      "calculated": true,
+      "exact_ties": 372,
+      "family": "aggregation_neutral",
+      "groups": 372,
+      "label": "fixed_reputation_weighted minus joint",
+      "lower": 0.0,
+      "mean": 0.0,
+      "reason": null,
+      "reference": "full_minimax",
+      "upper": 0.0
+    },
+    {
+      "calculated": true,
+      "exact_ties": 372,
+      "family": "aggregation_neutral",
+      "groups": 372,
+      "label": "fixed_dependency_group minus joint",
+      "lower": 0.0,
+      "mean": 0.0,
+      "reason": null,
+      "reference": "full_minimax",
+      "upper": 0.0
+    },
+    {
+      "calculated": true,
+      "exact_ties": 372,
+      "family": "dependency_matched",
+      "groups": 372,
+      "label": "independent independent_failures minus declared",
+      "lower": 0.0,
+      "mean": 0.0,
+      "reason": null,
+      "reference": "declared_structural",
+      "scenario": "independent_failures",
+      "severity_matched": true,
+      "upper": 0.0
+    },
+    {
+      "calculated": true,
+      "exact_ties": 372,
+      "family": "dependency_matched",
+      "groups": 372,
+      "label": "fully_correlated independent_failures minus declared",
+      "lower": 0.0,
+      "mean": 0.0,
+      "reason": null,
+      "reference": "declared_structural",
+      "scenario": "independent_failures",
+      "severity_matched": true,
+      "upper": 0.0
+    },
+    {
+      "calculated": true,
+      "exact_ties": 372,
+      "family": "dependency_matched",
+      "groups": 372,
+      "label": "independent correlated_failures minus declared",
+      "lower": 0.0,
+      "mean": 0.0,
+      "reason": null,
+      "reference": "declared_structural",
+      "scenario": "correlated_failures",
+      "severity_matched": true,
+      "upper": 0.0
+    },
+    {
+      "calculated": true,
+      "exact_ties": 372,
+      "family": "dependency_matched",
+      "groups": 372,
+      "label": "fully_correlated correlated_failures minus declared",
+      "lower": 0.0,
+      "mean": 0.0,
+      "reason": null,
+      "reference": "declared_structural",
+      "scenario": "correlated_failures",
+      "severity_matched": true,
+      "upper": 0.0
+    }
+  ],
+  "groups": 372,
+  "record_type": "experiment3_ablation_v1",
+  "reports_sha256": "877d0218dd498e8ca525e651f52f8aa1e337cd6f5123583fb277a2a28e01eca5",
+  "reports_unchanged": true
+}
