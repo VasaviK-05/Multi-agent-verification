@@ -1,0 +1,25 @@
+{
+  "version": "native_arithmetic_receipt_archive_v1",
+  "original_directory": "/private/tmp/reusable-arithmetic-native-v2",
+  "byte_identical_files": {
+    "native-calls.jsonl": {
+      "sha256": "11b9047de2bbbca13f8e4f50178163c264ae419f16cae90b75e4f1369ac7c6eb",
+      "bytes": 2638
+    },
+    "plan.json": {
+      "sha256": "6c07185ee6591a848af548f45795fbc61660c2b1357dc7494f35f2b59c189c66",
+      "bytes": 24172
+    },
+    "result.json": {
+      "sha256": "280c5caf11e91f1a3adbd9195a2c1c253de36dfd4e5c5ad9b2881c320ab901c6",
+      "bytes": 47237
+    }
+  },
+  "subprocess_exit_code": 0,
+  "native_execution_invocations": 1,
+  "native_starts": 2,
+  "native_completions": 2,
+  "post_execution_verification": "PASS",
+  "shutdown_diagnostic": "Exception ignored in logging._removeHandlerRef: native_boundary module was None at interpreter teardown; AttributeError on module.startswith. Occurred after result.json saved. No rerun or source patch performed.",
+  "authorization": "User explicitly authorized unchanged sealed v2 plan, exact What is 4 + 4? with answers 8/9 and reference 8; all existing bounds retained."
+}
