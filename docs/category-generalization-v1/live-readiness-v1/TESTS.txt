@@ -1,0 +1,8 @@
+Environment: /private/tmp/category-engineering-v4/bin/python (existing approved isolated Python 3.12 environment)
+Command: python -m pytest -q tests/test_reusable_live_binding.py tests/test_reusable_smoke_preparation.py
+Result: 7 passed, 0 failed, 3 SWIG deprecation warnings, 11.40s.
+Mocks/synthetic fixtures and static preparation only. No native smoke execute call.
+Accepted 120 category tests and 207 exact-route projections were not rerun.
+preservation.json checks historical bytes/registration inventories and verifies archived 69-question/207-check receipt equality; it is not a new dynamic execution.
+Current HEAD: 0361f979d82805b16cc75ecc6fa12f9ca5697a44.
+Readiness additions are uncommitted; no push, merge or deployment performed in this task.
