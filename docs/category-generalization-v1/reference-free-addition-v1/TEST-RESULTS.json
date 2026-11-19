@@ -1,0 +1,36 @@
+{
+  "environment": "/private/tmp/category-engineering-v4",
+  "python": "3.12.0",
+  "base_commit": "e39b77e7e5705c03bf471c1ed5ebe320a9639910",
+  "broad_owned_run": {
+    "passed": 124,
+    "failed": 0,
+    "warnings": 1,
+    "seconds": 62.59,
+    "log": "owned-regressions.log.gz"
+  },
+  "final_profiler_isolation_focused_run": {
+    "passed": 32,
+    "failed": 0,
+    "seconds": 3.6,
+    "log": "focused-final.log.gz",
+    "overlaps_broad_run": true
+  },
+  "routes": {
+    "questions": 69,
+    "checks": 207,
+    "equal": true
+  },
+  "native_attempts": 0,
+  "ollama_generations": 0,
+  "model_downloads": 0,
+  "index_rebuilds": 0,
+  "empirical_fits": 0,
+  "heldout_outcomes_accessed": false,
+  "notes": [
+    "Guarded test runner persistently forbids native Rule/model/provider execution, DB connections, network and empirical fitting.",
+    "Final focused run follows the last profiler callback closure-capture fix; broad run predates only that isolated fix.",
+    "Early test development found fixture import, domain-category identity and synthetic selected-team setup errors; those were corrected without weakening existing context/feasibility guards.",
+    "No full-core/legacy API rerun; previously documented baseline failures remain."
+  ]
+}

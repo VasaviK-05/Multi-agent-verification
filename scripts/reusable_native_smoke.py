@@ -17,6 +17,22 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def is_non_rule_native_call(frame,event):
+    # Teardown may clear module globals. Unknown frames must not crash the
+    # profiler while preserving the restriction for identified native verifiers.
+    module=frame.f_globals.get('__name__')
+    return (event=='call' and isinstance(module,str) and module.startswith('app.verifiers.')
+        and module not in {'app.verifiers.rule_verifier','app.verifiers.base_verifier'}
+        and frame.f_code.co_name in {'__init__','verify'})
+
+
+def make_rule_native_boundary(reject):
+    def boundary(frame,event,arg,_check=is_non_rule_native_call,_reject=reject):
+        if _check(frame,event):
+            _reject('non-Rule verifier construction/execution forbidden')
+    return boundary
+
+
 def enforce_output_only(event,args,output,violation):
     """Reject process launches and filesystem mutations outside the run receipt."""
     def writable(path):
@@ -206,13 +222,7 @@ def execute(plan_path,expected_id,output,approved=False):
                 if any(p==v or p.is_relative_to(v) for v in protected):violation('historical resource write forbidden')
     sys.addaudithook(audit)
     if plan['kind']=='arithmetic':
-        def native_boundary(frame,event,arg):
-            module=frame.f_globals.get('__name__','')
-            if (event=='call' and module.startswith('app.verifiers.')
-                and module not in {'app.verifiers.rule_verifier','app.verifiers.base_verifier'}
-                and frame.f_code.co_name in {'__init__','verify'}):
-                violation('non-Rule verifier construction/execution forbidden')
-        sys.setprofile(native_boundary)
+        sys.setprofile(make_rule_native_boundary(violation))
     import app.game.solver as solver, app.game.policy as policy
     import app.game.offline.evaluation as fitting
     from app.selection.verifier_selector import VerifierSelector

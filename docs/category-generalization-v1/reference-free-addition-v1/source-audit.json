@@ -1,0 +1,215 @@
+{
+  "base_commit": "e39b77e7e5705c03bf471c1ed5ebe320a9639910",
+  "atomic_policies": [
+    {
+      "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+      "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+      "version": "game_policy_reliability_first_v1",
+      "compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+      "matrix_id": "cf85e088b03cb535e4b900ed40602016a6630e9c49c8c487ee4e9b80d5b465ac",
+      "strategy_count": 16,
+      "nonzero_probabilities": [
+        {
+          "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+          "team": [
+            "rule"
+          ],
+          "aggregation": "reputation_weighted",
+          "probability": 1.0
+        }
+      ],
+      "budget": 21258.33526502247,
+      "cost_units": "ms",
+      "attempt_costs": [
+        [
+          "confidence",
+          21127.60563874326
+        ],
+        [
+          "evidence",
+          81.45271127577871
+        ],
+        [
+          "rule",
+          9.678209995036013
+        ],
+        [
+          "semantic",
+          39.59870500839315
+        ]
+      ],
+      "reference_required": true,
+      "resources": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "requirements": [
+        "arithmetic"
+      ],
+      "policy_evidence": "empirical"
+    },
+    {
+      "artifact_id": "e7c4eb8f3fce899cd52e75bb2b43efab2198ddba794b3605664946a8dc06094d",
+      "policy_id": "0df33426333e0f7bbe6418fdf7900719dbda5182f68d50405b593b3341ec9d0d",
+      "version": "game_policy_reliability_first_v1",
+      "compatibility_id": "d25662648b1266587bfa82698e78aace645f5160c91f05d5e235a4cefb2d782b",
+      "matrix_id": "28988c4c3191c8aa31231efebb32f2dc09e52dd26a2b8ad6d97eb41a673d0db8",
+      "strategy_count": 16,
+      "nonzero_probabilities": [
+        {
+          "strategy_id": "3e05661eb80a54b012f4ca25761368edb71affb4fc33e29c90cd2ff8af35b6b3",
+          "team": [
+            "evidence"
+          ],
+          "aggregation": "reputation_weighted",
+          "probability": 1.0
+        }
+      ],
+      "budget": 15965.046464995248,
+      "cost_units": "ms",
+      "attempt_costs": [
+        [
+          "confidence",
+          15732.45631873142
+        ],
+        [
+          "evidence",
+          188.79894875281025
+        ],
+        [
+          "rule",
+          0.10460499906912446
+        ],
+        [
+          "semantic",
+          43.68659251194913
+        ]
+      ],
+      "reference_required": true,
+      "resources": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+      "requirements": [
+        "direct_fact"
+      ],
+      "policy_evidence": "empirical"
+    },
+    {
+      "artifact_id": "ee32392c870fba30b08b4f7509af645019d9f8b92dc7c39bafeceb8207745c8f",
+      "policy_id": "c05a50fb5fc3651c8dc5d1bd55ec02086c3f4c26e49e7145393cb007e7149cda",
+      "version": "game_policy_reliability_first_v1",
+      "compatibility_id": "dda2320b4a1dea8b63df7886cb4d78f481cda1466c8428c8ae6dccf9432388f7",
+      "matrix_id": "90c7f9564573f410b648c7f3b09a23c59a2998da6df0d0f194f4fbab50fb5a13",
+      "strategy_count": 16,
+      "nonzero_probabilities": [
+        {
+          "strategy_id": "6b9707499750396bba9cc51f9681dee9ef6b0c3a9958e67d3c0f84f66ad9877e",
+          "team": [
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "probability": 0.16666666666666663
+        },
+        {
+          "strategy_id": "9b8f912c18417466a3f39b8fcbfd1ead99adf476bb9acf08d076bd2cebe38955",
+          "team": [
+            "confidence",
+            "semantic"
+          ],
+          "aggregation": "reputation_weighted",
+          "probability": 0.8333333333333334
+        }
+      ],
+      "budget": 16594.78458249673,
+      "cost_units": "ms",
+      "attempt_costs": [
+        [
+          "confidence",
+          16428.737124999952
+        ],
+        [
+          "evidence",
+          63.82666750764656
+        ],
+        [
+          "rule",
+          0.1494324911845979
+        ],
+        [
+          "semantic",
+          102.07135749794816
+        ]
+      ],
+      "reference_required": true,
+      "resources": "7dc5ab6098f803133284f413ad577970073c99f12fb020c6b4a2dc75b9642ffb",
+      "requirements": [
+        "semantic_comparison"
+      ],
+      "policy_evidence": "empirical"
+    }
+  ],
+  "compound": {
+    "policy_id": "0192b98e50ab5dcbd40ca78a0d4a3ec3978dfe8086edcb615802c21024c83532",
+    "compatibility_id": "0b93b2782afbf1da65be0064dd7a0218f6e347abda1568f2da3d15daa1fbf3e6",
+    "strategy_count": 2,
+    "probabilities": [
+      [
+        "9db6a209ad0c8f088765bf41f6f4d81b1d14fea51c615c71f3160960349899c6",
+        1.0
+      ],
+      [
+        "4a1f4788418e20084c514f9e3b2634952bf5722e3e3b9f4495d22047d8ef4ecd",
+        0.0
+      ]
+    ]
+  },
+  "resource_path_checks": {
+    "build/local-resources/corpus.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "build/multitask-policy42/corpus.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "build/multitask-policy42/index-v2": {
+      "exists": false,
+      "sha256": null
+    },
+    "corpus.json": {
+      "exists": true,
+      "sha256": "523e51acef45dc91d1d85b5c3c7e4747de47ae322128dc8d1fcad925ea5be57a"
+    },
+    "adapter.json": {
+      "exists": true,
+      "sha256": "72e144b55917ee28d089d2e2dec6658e2dda707c95c52836faadcea7646ee2b0"
+    },
+    "adapter.embedding_snapshot": {
+      "configured_path": "C:/Users/User/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "exists": false
+    },
+    "adapter.nli_snapshot": {
+      "configured_path": "C:/Users/User/.cache/huggingface/hub/models--cross-encoder--nli-deberta-v3-small/snapshots/fa2804872c3b4bd748f38c0185cc85775361e735",
+      "exists": false
+    },
+    "adapter.corpus_path": {
+      "configured_path": "build\\multitask-policy42\\corpus.json",
+      "exists": false
+    },
+    "adapter.index_dir": {
+      "configured_path": "build\\multitask-policy42\\index-v2",
+      "exists": false
+    },
+    "adapter.index_receipt": {
+      "configured_path": "build\\multitask-policy42\\index-receipt.json",
+      "exists": false
+    },
+    "adapter.service_observation": {
+      "configured_path": "build\\multitask-policy42\\service-observation.json",
+      "exists": false
+    }
+  },
+  "network_service_checked": false,
+  "native_attempts": 0,
+  "ollama_generations": 0,
+  "empirical_fits": 0,
+  "reference_free_planning_rows": 8,
+  "reference_free_current_actual_resource_qualified_rows": 0,
+  "qualification_reason": "No reviewed actual-instance resource observer bound to new preparation contract. Historical Rule smoke is evidence for unchanged Rule implementation, not attestation of a newly fitted contract.",
+  "deployment_activated": false
+}

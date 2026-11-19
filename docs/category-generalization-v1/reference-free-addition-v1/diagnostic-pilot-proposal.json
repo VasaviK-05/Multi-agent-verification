@@ -1,0 +1,80 @@
+{
+  "version": "reference_free_addition_diagnostic_proposal_v1",
+  "authorized": false,
+  "runnable": false,
+  "scope": "four diagnostic candidate cases, no fitting, no heldout data",
+  "cases": [
+    {
+      "case_id": "carry-correct",
+      "group_id": "carry",
+      "runtime_request": {
+        "question": "Compute 73 + 28.",
+        "answer": "101",
+        "context": null
+      },
+      "offline_label": {
+        "correct": true,
+        "oracle": "stdlib Fraction exact rational sum; independent of Rule Decimal implementation",
+        "expected_integer": 101
+      }
+    },
+    {
+      "case_id": "carry-incorrect",
+      "group_id": "carry",
+      "runtime_request": {
+        "question": "Compute 73 + 28.",
+        "answer": "100",
+        "context": null
+      },
+      "offline_label": {
+        "correct": false,
+        "oracle": "stdlib Fraction exact rational sum; independent of Rule Decimal implementation",
+        "expected_integer": 101
+      }
+    },
+    {
+      "case_id": "cancellation-correct",
+      "group_id": "cancellation",
+      "runtime_request": {
+        "question": "Compute -19 + 19.",
+        "answer": "0",
+        "context": null
+      },
+      "offline_label": {
+        "correct": true,
+        "oracle": "stdlib Fraction exact rational sum; independent of Rule Decimal implementation",
+        "expected_integer": 0
+      }
+    },
+    {
+      "case_id": "cancellation-incorrect",
+      "group_id": "cancellation",
+      "runtime_request": {
+        "question": "Compute -19 + 19.",
+        "answer": "1",
+        "context": null
+      },
+      "offline_label": {
+        "correct": false,
+        "oracle": "stdlib Fraction exact rational sum; independent of Rule Decimal implementation",
+        "expected_integer": 0
+      }
+    }
+  ],
+  "native_names": [
+    "confidence",
+    "evidence",
+    "rule"
+  ],
+  "maximum_native_attempts": 12,
+  "maximum_ollama_generations": 20,
+  "maximum_loopback_metadata_gets": 80,
+  "maximum_wall_seconds": 1800,
+  "maximum_retries": 0,
+  "network": "only reviewed frozen local Ollama service; all other network forbidden",
+  "writes": "fresh exclusive approved receipt directory only; pinned resources read-only",
+  "resource_setup": "PENDING actual model/corpus/index/service attestations and new reviewed native adapter; no downloads/rebuilds",
+  "execution_command": null,
+  "execution_command_blocker": "No complete reviewed resource-qualified native request/factory exists yet; do not invoke collector with placeholder values",
+  "fitting_permitted": false
+}
