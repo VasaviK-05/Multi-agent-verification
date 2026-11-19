@@ -52,8 +52,63 @@ from app.reputation.reputation_manager import FeedbackEvent, ReputationManager
 from app.selection.verifier_selector import VerifierSelector
 from app.selection.capabilities import BUILTIN_CAPABILITIES
 from app.selection.models import VerifierUnavailable
+from app.selection.baseline_budget import (
+    BudgetLedger, capture_baseline_budget_configuration, plan_with_budget,
+)
 from database import get_connection
 from time import perf_counter
+
+
+class _GameExecutionObserver:
+    """Conservative, monotonic dispatch boundary, also without persistence."""
+    def __init__(self, journal=None):
+        self.journal = journal
+        self.started = False
+
+    def set_plan(self, plan):
+        if self.journal is not None:
+            return self.journal.set_plan(plan)
+
+    def start_attempt(self, **kwargs):
+        # Set before journal work and before either atomic/component verify().
+        self.started = True
+        if self.journal is not None:
+            return self.journal.start_attempt(**kwargs)
+        return {"attempt_id": None}
+
+    def complete_attempt(self, token, **kwargs):
+        if self.journal is not None:
+            return self.journal.complete_attempt(token, **kwargs)
+
+    def unavailable_attempt(self, token, **kwargs):
+        if self.journal is not None:
+            return self.journal.unavailable_attempt(token, **kwargs)
+
+    def failed_attempt(self, token, **kwargs):
+        if self.journal is not None:
+            return self.journal.failed_attempt(token, **kwargs)
+
+
+@dataclass(frozen=True)
+class _GameInitializationFailure:
+    """Only explicitly classified service initialization failures reach here."""
+    diagnostics: dict
+
+    def run(self, selector, analysis, request, validation_id, **kwargs):
+        from app.game.execution import GameRun
+        return GameRun((), None, "uncertain", {
+            "selection_status": self.diagnostics["status"],
+            "selection_reasons": [self.diagnostics["error_message"]],
+            "initialization_failure": dict(self.diagnostics),
+        })
+
+
+@dataclass
+class _BorrowedExecution:
+    lease_token: str
+    heartbeat: ExecutionLeaseHeartbeat
+    failure_recorded: bool = False
+    terminalization_attempted: bool = False
 
 
 class _GameExecutionJournal:
@@ -168,6 +223,7 @@ class ValidationOrchestrator:
         execution_mode: str = "baseline",
         game_runtime=None,
         persist_execution: bool = False,
+        baseline_budget_provider=None,
     ) -> None:
         
         if execution_mode not in {"baseline", "game"}:
@@ -179,7 +235,7 @@ class ValidationOrchestrator:
 
             if not isinstance(
                 game_runtime,
-                (GameRuntime, PrototypeGameRuntime, FlexiblePolicyGameRuntime),
+                (GameRuntime, PrototypeGameRuntime, FlexiblePolicyGameRuntime, _GameInitializationFailure),
             ):
                 raise ValueError(
                     "game mode requires a server-configured GameRuntime"
@@ -189,6 +245,7 @@ class ValidationOrchestrator:
             raise ValueError("game runtime requires explicit game mode")
 
         self._execution_mode = execution_mode
+        self._baseline_budget_provider = baseline_budget_provider or capture_baseline_budget_configuration
         self._persist_execution = persist_execution
         self._game_runtime = game_runtime
 
@@ -212,15 +269,24 @@ class ValidationOrchestrator:
         # Dirty pairs survive a failed save, not a process restart.
         self._feedback_lock = threading.RLock()
         self._pending_posterior_pairs: set[tuple[str, str]] = set()
+        selector_factory = VerifierSelector
+        if execution_mode == "baseline":
+            from app.selection.baseline_resources import BaselineVerifierSelector, load_baseline_evidence_configuration
+            selector_factory = BaselineVerifierSelector
         self._verifier_selector, self._decision_engine, self._reputation_manager = (
-            self._assemble(verifier_selector, decision_engine, reputation_manager)
+            self._assemble(verifier_selector, decision_engine, reputation_manager,
+                           selector_factory=selector_factory)
         )
+        if execution_mode == "baseline" and verifier_selector is None:
+            self._verifier_selector.configure_baseline_evidence(load_baseline_evidence_configuration())
 
     @staticmethod
     def _assemble(
         verifier_selector: VerifierSelector | None,
         decision_engine: DecisionEngine | None,
         reputation_manager: ReputationManager | None,
+        *,
+        selector_factory=VerifierSelector,
     ) -> tuple[VerifierSelector, DecisionEngine, ReputationManager]:
         if verifier_selector is None and decision_engine is None:
             shared = reputation_manager or ReputationManager()
@@ -233,7 +299,7 @@ class ValidationOrchestrator:
                     shared.restore_state(build_reputation_state())
 
             return (
-                VerifierSelector(reputation_manager=shared, capabilities=BUILTIN_CAPABILITIES),
+                selector_factory(reputation_manager=shared, capabilities=BUILTIN_CAPABILITIES),
                 DecisionEngine(reputation_manager=shared),
                 shared,
             )
@@ -249,7 +315,7 @@ class ValidationOrchestrator:
                     "DecisionEngine must use the orchestrator's ReputationManager."
                 )
             return (
-                VerifierSelector(reputation_manager=shared, capabilities=BUILTIN_CAPABILITIES),
+                selector_factory(reputation_manager=shared, capabilities=BUILTIN_CAPABILITIES),
                 decision_engine,
                 shared,
             )
@@ -307,13 +373,36 @@ class ValidationOrchestrator:
 
     def validate(self, request: ValidationRequest) -> ValidationResponse:
         """Run ranked candidates until an approved, covered stop or exhaustion."""
+        # Capture server configuration once, before analysis. Game never consults it.
+        budget_snapshot = (self._baseline_budget_provider(self._verifier_selector)
+                           if self._execution_mode == "baseline" else None)
         analysis = self._question_analyzer.analyze(request.question)
         self._last_analysis = analysis
         validation_id = str(uuid4())
         if self._execution_mode == "game":
             return self._validate_game(request, analysis, validation_id)
 
-        if self._persist_execution:
+        return self._execute_baseline(request, analysis, validation_id, budget_snapshot)
+
+    def _execute_baseline(self, request, analysis, validation_id, budget_snapshot,
+                          *, prepared=None, lifecycle=None, fallback_audit=None):
+        """Shared execution body; a handoff borrows the live Game lease unchanged."""
+        # The fallback caller owns borrowed-lease failure/heartbeat cleanup.
+        return self._execute_baseline_body(request, analysis, validation_id, budget_snapshot,
+            prepared=prepared, lifecycle=lifecycle, fallback_audit=fallback_audit)
+
+    def _execute_baseline_body(self, request, analysis, validation_id, budget_snapshot,
+                               *, prepared=None, lifecycle=None, fallback_audit=None):
+        def record_failure(**kwargs):
+            if lifecycle is not None:
+                lifecycle.terminalization_attempted = True
+            mark_execution_failed(**kwargs)
+            if lifecycle is not None:
+                lifecycle.failure_recorded = True
+
+        budget = BudgetLedger(budget_snapshot, validation_id)
+        baseline_evidence = getattr(self._verifier_selector, "baseline_evidence_configuration", None)
+        if self._persist_execution and lifecycle is None:
             connection = get_connection()
             try:
                 create_validation_record(
@@ -346,16 +435,25 @@ class ValidationOrchestrator:
             finally:
                 connection.close()
 
-        lease_token = None
-        heartbeat = None
+        lease_token, heartbeat = ((lifecycle.lease_token, lifecycle.heartbeat)
+                                  if lifecycle is not None else (None, None))
 
         try:
-            plan = self._verifier_selector.plan(analysis, request.context)
+            plan, admission = prepared if prepared is not None else (
+                self._verifier_selector.plan(analysis, request.context), None)
+            if admission is None:
+                admission = plan_with_budget(plan, budget_snapshot)
+            budget.plan = admission
 
-            if self._persist_execution:
+            if self._persist_execution and lifecycle is not None:
+                heartbeat.assert_owned()
+                update_execution_plan(validation_id=validation_id, lease_token=lease_token,
+                    plan_payload={**plan.to_dict(), "baseline_budget": budget.audit(),
+                                  **(fallback_audit or {})})
+            elif self._persist_execution:
                 mark_execution_ready(
                     validation_id=validation_id,
-                    plan_payload=plan.to_dict(),
+                    plan_payload={**plan.to_dict(), "baseline_budget": budget.audit()},
                     analysis_snapshot={
                         "domain": analysis.domain,
                         "difficulty": analysis.difficulty,
@@ -375,10 +473,10 @@ class ValidationOrchestrator:
 
         except Exception as exc:
             if self._persist_execution:
-                mark_execution_failed(
+                record_failure(
                     validation_id=validation_id,
                     lease_token=lease_token,
-                    failure_details={
+                    failure_details={**(fallback_audit or {}),
                         "error_type": type(exc).__name__,
                         "error_message": str(exc) or type(exc).__name__,
                         "stage": "verifier_planning",
@@ -389,7 +487,8 @@ class ValidationOrchestrator:
         minimum = plan.minimum_count
         if analysis.difficulty != "hard":
             minimum = max(2, minimum)
-        names = plan.initial_selected + plan.fallback
+        initial_selected = admission.initial_selected
+        names = initial_selected + admission.fallback
         required = plan.requirements.requirements + plan.requirements.unsupported
         # Only these existing result contracts establish achieved coverage.
         unsupported_contracts = sorted(set(required) - {"direct_fact", "arithmetic"})
@@ -413,7 +512,7 @@ class ValidationOrchestrator:
         results: list[VerificationResult] = []
         abstained: list[str] = []
         detail = None
-        reason = "candidate_exhaustion"
+        reason = "candidate_exhaustion" if admission.feasible else "budget_planning_infeasible"
         last_assessment = None
         attempted = []
         unavailable = []
@@ -432,10 +531,10 @@ class ValidationOrchestrator:
                         lease_token=lease_token,
                     )
             except Exception as exc:
-                mark_execution_failed(
+                record_failure(
                     validation_id=validation_id,
                     lease_token=lease_token,
-                    failure_details={
+                    failure_details={**(fallback_audit or {}),
                         "error_type": type(exc).__name__,
                         "error_message": str(exc) or type(exc).__name__,
                         "stage": "attempt_creation",
@@ -444,6 +543,9 @@ class ValidationOrchestrator:
                 raise
 
         for name in names:
+            if not budget.admit(name):
+                runtime_availability[name] = "budget_not_admitted"
+                continue
             attempted.append(name)
             attempt_id = (
                 attempt_records[name]["attempt_id"]
@@ -460,14 +562,13 @@ class ValidationOrchestrator:
 
             try:
                 verifier = self._verifier_selector.resolve(name)
-                raw = verifier.verify(
-                    request.question, request.answer, request.context
-                )
+                raw = budget.verify(verifier, request.question, request.answer, request.context)
             except VerifierUnavailable as exc:
                 if self._persist_execution:
                     mark_verifier_attempt_unavailable(
                         attempt_id=attempt_id,
                         reason=str(exc),
+                        **budget.metrics(name),
                         lease_token=lease_token,
                     )
 
@@ -482,22 +583,34 @@ class ValidationOrchestrator:
                         )
                 continue
 
-            except Exception as exc:
-                if self._persist_execution:
-                    mark_verifier_attempt_error(
-                        attempt_id=attempt_id,
-                        error_type=type(exc).__name__,
-                        error_message=str(exc) or type(exc).__name__,
-                        lease_token=lease_token,
-                    )
-                    mark_execution_failed(
-                        validation_id=validation_id,
-                        lease_token=lease_token,
-                        failure_details={
-                            "error_type": type(exc).__name__,
-                            "error_message": str(exc) or type(exc).__name__,
-                        },
-                    )
+            except BaseException as exc:
+                if fallback_audit is not None:
+                    fallback_audit.update(
+                        fallback_decision="interrupted" if not isinstance(exc, Exception) else "failed",
+                        baseline_failure={"error_type": type(exc).__name__, "error_message": str(exc)})
+                try:
+                    if self._persist_execution:
+                        mark_verifier_attempt_error(
+                            attempt_id=attempt_id,
+                            error_type=type(exc).__name__,
+                            error_message=str(exc) or type(exc).__name__,
+                            **budget.metrics(name),
+                            lease_token=lease_token,
+                        )
+                        record_failure(
+                            validation_id=validation_id,
+                            lease_token=lease_token,
+                            failure_details={**(fallback_audit or {}),
+                                "error_type": type(exc).__name__,
+                                "error_message": str(exc) or type(exc).__name__,
+                                "baseline_budget": budget.audit(),
+                            },
+                        )
+                except BaseException as recording_error:
+                    if lifecycle is None or isinstance(exc, Exception):
+                        raise
+                    fallback_audit["attempt_failure_recording_error"] = {
+                        "error_type": type(recording_error).__name__, "error_message": str(recording_error)}
                 raise
 
             if raw.verifier_name != name:
@@ -506,12 +619,13 @@ class ValidationOrchestrator:
                         attempt_id=attempt_id,
                         error_type="VerifierIdentityMismatch",
                         error_message="returned verifier_name does not match planned candidate",
+                        **budget.metrics(name),
                         lease_token=lease_token,
                     )
-                    mark_execution_failed(
+                    record_failure(
                         validation_id=validation_id,
                         lease_token=lease_token,
-                        failure_details={
+                        failure_details={**(fallback_audit or {}),
                             "error_type": "VerifierIdentityMismatch",
                             "error_message": "returned verifier_name does not match planned candidate",
                         },
@@ -529,6 +643,7 @@ class ValidationOrchestrator:
                     attempt_id=attempt_id,
                     report=raw.model_dump(mode="json"),
                     outcome="abstention" if abstention else "directional",
+                    **budget.metrics(name),
                     lease_token=lease_token,
                 )
 
@@ -558,7 +673,7 @@ class ValidationOrchestrator:
                     vetoes.append("requirements_unknown")
                 if plan.requirements.unsupported:
                     vetoes.append("unsupported_requirements")
-                if len(attempted) < len(plan.initial_selected):
+                if any(n not in attempted for n in initial_selected):
                     vetoes.append("initial_team_incomplete")
                 if analysis.difficulty == "hard":
                     vetoes.append("hard_question")
@@ -583,12 +698,17 @@ class ValidationOrchestrator:
                 reason = "approved_early_stop"
                 break
 
+        if reason == "candidate_exhaustion" and budget.skipped:
+            reason = "actual_budget_exhaustion"
         if detail is None:
             detail = self._decision_engine.decide_detailed(results, domain=analysis.domain)
         contributors = self._early_termination.contributor_count(detail, results)
         missing = [key for key, row in coverage.items() if not row["directional"]]
         final_status = detail.status
         uncertainty_reasons = []
+        if reason in {"budget_planning_infeasible", "actual_budget_exhaustion"}:
+            final_status = "uncertain"
+            uncertainty_reasons.append(reason)
 
         if contributors < minimum:
             uncertainty_reasons.append("insufficient_contributors")
@@ -631,6 +751,8 @@ class ValidationOrchestrator:
         final_score = detail.score
         summary = {
            "audit_version": "execution_audit_v2",
+            "baseline_budget": budget.audit(),
+            "baseline_evidence_configuration_id": (baseline_evidence.configuration_id if baseline_evidence else None),
             "uncertainty_reasons": uncertainty_reasons,
             "termination": reason,
             "last_stopping_assessment": last_assessment,
@@ -648,6 +770,13 @@ class ValidationOrchestrator:
         }
         # Keep response, in-memory context, and JSONB metadata identical (the
         # detailed decision contains tuple fields before JSON normalization).
+        if fallback_audit is not None:
+            summary.update(fallback_audit)
+            # The preparation snapshot must not replace actual attempt metrics.
+            summary["baseline_budget"] = budget.audit()
+            summary["baseline_execution_details"] = {
+                "selection_plan": plan.to_dict(), "attempted_verifiers": attempted,
+                "baseline_budget": budget.audit(), "final_decision": final_status}
         summary = json.loads(json.dumps(summary, allow_nan=False))
         if results:
             metadata = dict(results[-1].metadata or {})
@@ -705,13 +834,163 @@ class ValidationOrchestrator:
         )
         if self._persist_execution:
             heartbeat.assert_owned()
+            final_response = response.model_dump(mode="json")
+            if lifecycle is not None:
+                lifecycle.terminalization_attempted = True
             mark_execution_completed(
                 validation_id=validation_id,
-                final_response=response.model_dump(mode="json"),
+                final_response=final_response,
                 lease_token=lease_token,
             )
 
         return response
+
+    def _new_fallback_baseline(self):
+        return ValidationOrchestrator(reputation_manager=self._reputation_manager,
+            persist_execution=self._persist_execution,
+            baseline_budget_provider=self._baseline_budget_provider)
+
+    @staticmethod
+    def _fallback_decision_audit(game_summary, execution_started=False):
+        """Populate rejected decisions too, without inventing Baseline results."""
+        status = game_summary.get("selection_status")
+        if game_summary.get("initialization_failure"):
+            stage = "initialization"
+        elif status in {"resource_incompatible", "provenance_incompatible"}:
+            stage = "resource_preflight"
+        elif (game_summary.get("policy_category") in {"missing_policy", "unsupported_category"}
+              or status in {"task_reference_mismatch", "task_out_of_scope", "unsupported_category"}):
+            stage = "routing"
+        elif status == "missing_policy":
+            stage = "policy_lookup"
+        elif execution_started:
+            stage = "execution"
+        else:
+            stage = "strategy_selection"
+        return dict(requested_mode="game", executed_mode="game", fallback_triggered=False,
+            game_verifier_execution_started=execution_started, game_failure_stage=stage,
+            game_failure_status=status, game_failure_reason=deepcopy(game_summary.get("selection_reasons", [])),
+            game_execution_details=deepcopy(game_summary), baseline_eligibility=False,
+            fallback_decision="rejected", fallback_reason=None,
+            baseline_preparation_status="not_started", baseline_preparation_stage=None)
+
+    def _try_baseline_fallback(self, request, validation_id, game_summary, audit, *, lifecycle):
+        """Own cleanup until execution finishes or rejection returns ownership to Game."""
+        audit.update(self._fallback_decision_audit(game_summary, audit.get("game_verifier_execution_started", False)))
+        borrowed = _BorrowedExecution(*lifecycle) if lifecycle is not None else None
+        resume_game = False
+        propagating_error = None
+        try:
+            status = game_summary.get("selection_status")
+            reasons = game_summary.get("selection_reasons", [])
+            eligible = status in {"no_feasible_strategy", "game_policy_missing", "game_policy_incompatible"}
+            # Flexible missing_policy may denote unmatched/invalid routing.
+            eligible |= status == "missing_policy" and "policy_category" not in game_summary
+            eligible |= status == "incompatible" and bool(reasons) and all(
+                reason in {"incompatible artifact"} or reason.startswith("invalid artifact:") for reason in reasons)
+            if not eligible:
+                audit["fallback_rejection_reason"] = "game_failure_not_eligible"
+                resume_game = True
+                return None
+            try:
+                audit["baseline_preparation_stage"] = "request_validation"
+                if not request.question.strip() or not request.answer.strip():
+                    raise ValueError("request_out_of_scope")
+                # Registered paraphrases have an explicit reference prerequisite.
+                if request.question.strip().casefold().startswith("paraphrase this reference: ") and (
+                        request.context != request.question.strip().partition(": ")[2]):
+                    raise ValueError("request_prerequisite_unsatisfied")
+                audit["baseline_preparation_stage"] = "selector_construction"
+                audit["baseline_preparation_status"] = "in_progress"
+                baseline = self._new_fallback_baseline()
+                audit["baseline_preparation_stage"] = "analysis"
+                analysis = baseline._question_analyzer.analyze(request.question)
+                audit["baseline_preparation_stage"] = "selection_planning"
+                plan = baseline._verifier_selector.plan(analysis, request.context)
+                audit["baseline_selection"] = plan.to_dict()
+                audit["baseline_preparation_stage"] = "requirements_validation"
+                if (plan.requirements.status == "invalid" or plan.requirements.unsupported
+                        or not plan.requirements.requirements_known or plan.expected_uncovered):
+                    raise ValueError("baseline_coverage_unproven")
+                minimum = max(plan.minimum_count, 2 if analysis.difficulty != "hard" else 1)
+                if len(plan.initial_selected + plan.fallback) < minimum:
+                    raise ValueError("request_prerequisite_unsatisfied" if plan.exclusions
+                                     else "baseline_insufficient_contributors")
+                audit["baseline_preparation_stage"] = "resource_validation"
+                from app.selection.baseline_resources import validate_baseline_evidence
+                selected = getattr(baseline._verifier_selector, "baseline_evidence_configuration", None)
+                audit["baseline_resource_validation"] = "not_required"
+                if "evidence" in plan.initial_selected + plan.fallback:
+                    audit["baseline_resource_validation"] = "in_progress"
+                    if selected is None:
+                        raise ValueError("baseline_resources_incompatible")
+                    try:
+                        validate_baseline_evidence(selected)
+                    except (OSError, ValueError, TypeError) as exc:
+                        raise ValueError("baseline_resources_incompatible") from exc
+                    audit["baseline_resource_validation"] = "passed"
+                audit["baseline_preparation_stage"] = "budget_capture"
+                snapshot = baseline._baseline_budget_provider(baseline._verifier_selector)
+                audit["baseline_budget"] = asdict(snapshot)
+                from app.utils.config import settings
+                if settings.BASELINE_BUDGET_CONFIG_PATH and snapshot.status != "configured":
+                    raise ValueError("baseline_budget_configuration_invalid")
+                audit["baseline_preparation_stage"] = "budget_admission"
+                admission = plan_with_budget(plan, snapshot)
+                if not admission.feasible:
+                    raise ValueError("baseline_budget_feasibility_unproven")
+            except Exception as exc:
+                # Preparation never dispatches. Retain diagnostics alongside the
+                # original Game result rather than disguising a rejection as a run.
+                if audit.get("baseline_resource_validation") == "in_progress":
+                    audit["baseline_resource_validation"] = "failed"
+                audit.update(baseline_preparation_status=("not_started" if audit["baseline_preparation_status"] == "not_started"
+                    else "rejected"), fallback_rejection_reason=str(exc),
+                    baseline_failure={"error_type": type(exc).__name__, "error_message": str(exc)})
+                resume_game = True
+                return None
+            audit.update(executed_mode="baseline", fallback_triggered=True,
+                fallback_reason=status, baseline_eligibility=True, fallback_decision="accepted",
+                baseline_preparation_status="completed")
+            baseline._contexts = self._contexts
+            baseline._result_binding = self._result_binding
+            baseline._attempt_binding = self._attempt_binding
+            self._last_analysis = analysis
+            return baseline._execute_baseline(request, analysis, validation_id, snapshot,
+                prepared=(plan, admission), lifecycle=borrowed, fallback_audit=audit)
+        except BaseException as exc:
+            propagating_error = exc
+            interrupted = not isinstance(exc, Exception)
+            if audit.get("baseline_resource_validation") == "in_progress":
+                audit["baseline_resource_validation"] = "interrupted" if interrupted else "failed"
+            if audit["baseline_preparation_status"] != "completed":
+                audit["baseline_preparation_status"] = "interrupted" if interrupted else "failed"
+            audit.update(fallback_decision="interrupted" if interrupted else "failed",
+                baseline_failure={"error_type": type(exc).__name__, "error_message": str(exc)})
+            if borrowed is not None and not borrowed.terminalization_attempted:
+                try:
+                    borrowed.heartbeat.assert_owned()
+                    borrowed.terminalization_attempted = True
+                    mark_execution_failed(validation_id=validation_id, lease_token=borrowed.lease_token,
+                        failure_details={**audit, "stage": "baseline_execution" if audit["baseline_preparation_status"] == "completed"
+                            else "baseline_preparation", "error_type": type(exc).__name__, "error_message": str(exc)})
+                    borrowed.failure_recorded = True
+                except BaseException as recording_error:
+                    # A lost lease/persistence error must not mask the original signal.
+                    audit["failure_recording_error"] = {
+                        "error_type": type(recording_error).__name__, "error_message": str(recording_error)}
+            raise
+        finally:
+            # Ordinary rejection keeps Game's live lease until Game finalizes it.
+            # All other paths are owned here, with no release/reacquisition gap.
+            if borrowed is not None and not resume_game:
+                try:
+                    borrowed.heartbeat.stop()
+                except BaseException as cleanup_error:
+                    if propagating_error is None:
+                        raise
+                    audit["heartbeat_cleanup_error"] = {
+                        "error_type": type(cleanup_error).__name__, "error_message": str(cleanup_error)}
 
     def _validate_game(self, request, analysis, validation_id):
         # One server-configured runtime/episode per run; request metadata cannot replace it.
@@ -773,25 +1052,42 @@ class ValidationOrchestrator:
                                      "stage": "game_journal_start"},
                 )
                 raise
+        observer = _GameExecutionObserver(journal)
         try:
-            if journal is None:
-                run = runtime.run(self._verifier_selector, analysis, request, validation_id)
-            else:
-                run = runtime.run(self._verifier_selector, analysis, request,
-                                  validation_id, execution_journal=journal)
+            run = runtime.run(self._verifier_selector, analysis, request,
+                              validation_id, execution_journal=observer)
         except Exception as exc:
             if journal is not None:
                 try:
+                    failure_audit = self._fallback_decision_audit({
+                        "selection_status": "exception",
+                        "selection_reasons": [str(exc) or type(exc).__name__]}, observer.started)
+                    failure_audit.update(
+                        game_failure_stage="execution" if observer.started else "runtime_before_dispatch",
+                        fallback_rejection_reason="game_execution_started" if observer.started else "game_failure_not_eligible")
                     mark_execution_failed(
                         validation_id=validation_id, lease_token=lease_token,
-                        failure_details={"error_type": type(exc).__name__,
+                        failure_details={**failure_audit, "error_type": type(exc).__name__,
                                          "error_message": str(exc) or type(exc).__name__,
-                                         "stage": "game_execution"},
+                                     "stage": "game_execution",
+                                     "requested_mode": "game", "executed_mode": "game",
+                                     "fallback_triggered": False,
+                                     "game_verifier_execution_started": observer.started},
                     )
                 finally:
                     heartbeat.stop()
             raise
         summary = json.loads(json.dumps(run.summary, allow_nan=False))
+        fallback_audit = self._fallback_decision_audit(summary, observer.started)
+        if not observer.started:
+            response = self._try_baseline_fallback(request, validation_id, summary,
+                fallback_audit, lifecycle=(lease_token, heartbeat) if journal is not None else None)
+            if response is not None:
+                return response
+        else:
+            fallback_audit["fallback_rejection_reason"] = "game_execution_started"
+        summary.update(fallback_audit)
+        summary = json.loads(json.dumps(summary, allow_nan=False))
         run_results = getattr(run, "results", None)
         if run_results is None:
             # Component runs carry their native per-obligation reports in the
@@ -864,7 +1160,7 @@ class ValidationOrchestrator:
             except Exception as exc:
                 mark_execution_failed(
                     validation_id=validation_id, lease_token=lease_token,
-                    failure_details={"error_type": type(exc).__name__,
+                    failure_details={**fallback_audit, "error_type": type(exc).__name__,
                                      "error_message": str(exc) or type(exc).__name__,
                                      "stage": "game_journal_completion"},
                 )

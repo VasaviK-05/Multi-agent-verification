@@ -521,7 +521,20 @@ def test_deployment_loader_rejects_baseline_mode(monkeypatch):
         deployment.create_game_runtime()
 
 
-def test_deployment_loader_requires_artifact_path(monkeypatch):
+@pytest.fixture
+def single_artifact_settings(monkeypatch):
+    """Single-artifact loaders must not inherit a local Flexible deployment.
+
+    This path has no adapter: the artifact contains its frozen context and
+    contract. Clear the unrelated package/adapter only for these four tests.
+    """
+    from app.game import deployment
+
+    monkeypatch.setattr(deployment.settings, "GAME_FLEXIBLE_POLICY_PACKAGE_PATH", "")
+    monkeypatch.setattr(deployment.settings, "GAME_FLEXIBLE_ADAPTER_CONFIG_PATH", "")
+
+
+def test_deployment_loader_requires_artifact_path(monkeypatch, single_artifact_settings):
     from app.game import deployment
 
     monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
@@ -537,7 +550,7 @@ def test_deployment_loader_requires_artifact_path(monkeypatch):
         deployment.create_game_runtime()
 
 
-def test_deployment_loader_rejects_missing_artifact(monkeypatch, tmp_path):
+def test_deployment_loader_rejects_missing_artifact(monkeypatch, tmp_path, single_artifact_settings):
     from app.game import deployment
 
     monkeypatch.setattr(deployment.settings, "EXECUTION_MODE", "game")
@@ -556,7 +569,7 @@ def test_deployment_loader_rejects_missing_artifact(monkeypatch, tmp_path):
         deployment.create_game_runtime()
 
 
-def test_deployment_loader_rejects_invalid_artifact(monkeypatch, tmp_path):
+def test_deployment_loader_rejects_invalid_artifact(monkeypatch, tmp_path, single_artifact_settings):
     from app.game import deployment
 
     artifact_path = tmp_path / "invalid-policy.json"
@@ -639,7 +652,15 @@ def test_validation_service_keeps_game_selection_when_persistence_enabled(monkey
     from app.game import deployment
     from app.benchmark import project_adapter
 
+    from app.game.question_routing import QuestionPolicyRouter
+    from scripts.reconciliation import load_bundle
+
+    # Supply the captured snapshot required by the real public accessor,
+    # without constructing adapters, providers or verifier resources.
+    configuration = load_bundle()[0]
     runtime = object.__new__(deployment.FlexiblePolicyGameRuntime)
+    runtime._configuration = configuration
+    runtime._router = QuestionPolicyRouter(configuration)
     created = {}
 
     class FakeOrchestrator:
@@ -650,8 +671,13 @@ def test_validation_service_keeps_game_selection_when_persistence_enabled(monkey
     monkeypatch.setattr(deployment, "create_game_runtime", lambda: runtime)
     monkeypatch.setattr(validation_service, "ValidationOrchestrator", FakeOrchestrator)
 
-    validation_service.ValidationService(persist_execution=True)
+    def unexpected_verifier_construction():
+        pytest.fail("Flexible service initialization must not construct verifiers")
 
+    monkeypatch.setattr(project_adapter, "create_verifiers", unexpected_verifier_construction)
+    service = validation_service.ValidationService(persist_execution=True)
+
+    assert service.get_generation_policy_configuration() is configuration
     assert created["execution_mode"] == "game"
     assert created["game_runtime"] is runtime
     assert created["persist_execution"] is True
@@ -669,7 +695,7 @@ def test_validation_service_rejects_invalid_execution_mode(monkeypatch):
         validation_service.ValidationService()
 
 
-def test_deployment_loader_loads_valid_artifact(monkeypatch, tmp_path):
+def test_deployment_loader_loads_valid_artifact(monkeypatch, tmp_path, single_artifact_settings):
     from app.game import deployment
 
     artifact, _, _ = artifact_fixture()

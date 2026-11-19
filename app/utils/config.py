@@ -12,6 +12,10 @@ class Settings:
     # Server-controlled validation execution mode.
     EXECUTION_MODE: str = os.getenv("EXECUTION_MODE", "baseline").strip().lower()
 
+    # Optional server-owned baseline settings. No default budget or calibration.
+    BASELINE_BUDGET_CONFIG_PATH: str = os.getenv("BASELINE_BUDGET_CONFIG_PATH", "").strip()
+    BASELINE_EVIDENCE_CONFIG_PATH: str = os.getenv("BASELINE_EVIDENCE_CONFIG_PATH", "").strip()
+
     # Required when EXECUTION_MODE=game.
     GAME_POLICY_ARTIFACT_PATH: str = os.getenv(
         "GAME_POLICY_ARTIFACT_PATH", ""

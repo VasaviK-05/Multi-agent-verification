@@ -2,6 +2,13 @@
 
 import pytest
 import itertools
+from types import SimpleNamespace
+from unittest.mock import Mock
+
+from fastapi import FastAPI
+from fastapi.testclient import TestClient
+
+from tests.test_api_compound_generation import isolated_routes
 
 from app.analysis.question_analyzer import QuestionAnalysis, QuestionAnalyzer
 from app.decision.decision_engine import DecisionEngine
@@ -21,16 +28,29 @@ def offline_pipeline_boundaries(monkeypatch):
     These unit/integration tests do not validate a live PostgreSQL deployment
     or Wikidata. Patch only those boundaries, never selector/decision math.
     """
+    import requests
+    import httpx
     import app.orchestration.validation_orchestrator as module
+    monkeypatch.setattr(requests.sessions.Session, "request",
+                        Mock(side_effect=AssertionError("No external HTTP permitted")))
+    monkeypatch.setattr(httpx.HTTPTransport, "handle_request",
+                        Mock(side_effect=AssertionError("No external HTTP permitted")))
     monkeypatch.setattr(module, "load_reputation_manager_state", lambda: None)
     monkeypatch.setattr(module, "build_reputation_state", lambda: ReputationManager().export_state())
     monkeypatch.setattr(module, "save_reputation_state_and_rows", lambda state: None)
     monkeypatch.setattr(module, "save_reputation", lambda **kwargs: None)
     monkeypatch.setattr(module.AutomaticGroundTruthEvaluator, "evaluate", lambda *args, **kwargs: None)
-    # Import after replacing bootstrap I/O; service construction remains real.
-    from app.api import routes
-    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
-    monkeypatch.setattr(routes, "save_verifier_outputs", lambda **kwargs: None)
+    # Guard eager API construction before importing routes. Never import
+    # app.main: its lifespan performs execution recovery against PostgreSQL.
+    with isolated_routes(SimpleNamespace()) as routes:
+        persistence = {}
+        for name in ("update_validation_record", "save_verifier_outputs",
+                     "save_ground_truth", "create_audit", "update_audit"):
+            persistence[name] = Mock()
+            monkeypatch.setattr(routes, name, persistence[name])
+        app = FastAPI()
+        app.include_router(routes.router)
+        yield SimpleNamespace(routes=routes, app=app, persistence=persistence)
 
 
 @pytest.mark.parametrize("history", ["prior", "success", "failure", "balanced"])
@@ -164,15 +184,15 @@ def test_campaign_custom_selector_minimum_is_binding_in_connected_run(band):
 
 
 @pytest.mark.parametrize("answer,passed,expected", [("4", True, "passed"), ("5", False, "failed")])
-def test_campaign_actual_api_serializes_approved_rule_snapshot(monkeypatch, answer, passed, expected):
+def test_campaign_actual_api_serializes_approved_rule_snapshot(monkeypatch, offline_pipeline_boundaries, answer, passed, expected):
     """Real route/service/rule; other vote controlled, no live model or database."""
     from fastapi.testclient import TestClient
-    from app.main import app
-    from app.api import routes
+    app = offline_pipeline_boundaries.app
+    routes = offline_pipeline_boundaries.routes
 
     monkeypatch.setattr(routes, "create_audit", lambda **kwargs: None)
     monkeypatch.setattr(routes, "update_audit", lambda *args, **kwargs: None)
-    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "update_validation_record", lambda **kwargs: None)
 
     from app.services.validation_service import ValidationService
     from app.verifiers.rule_verifier import RuleVerifier
@@ -1161,7 +1181,13 @@ def test_failed_reputation_snapshot_save_does_not_silently_succeed(monkeypatch):
     from app.orchestration import validation_orchestrator as orchestrator_module
 
     manager = ReputationManager()
-    orchestrator = ValidationOrchestrator(reputation_manager=manager)
+    # This tests feedback persistence, not provider/model initialization.
+    # Keep real planning, execution and feedback with controlled providers.
+    orchestrator = ValidationOrchestrator(
+        question_analyzer=QuestionAnalyzer(mode="heuristic"),
+        verifier_selector=VerifierSelector(verifiers=_named_factual(), reputation_manager=manager),
+        decision_engine=DecisionEngine(manager),
+    )
 
     response = orchestrator.validate(
         ValidationRequest(question="test question", answer="test answer")
@@ -1300,17 +1326,17 @@ def test_empty_pool_audit_is_additive_detached_and_serializable():
     assert run.validation_context(response.validation_id).run_summary["selection_plan"]["domain"] == "general"
     assert ValidationResponse(results=[], final_status="uncertain").execution_audit is None
 
-def test_empty_pool_api_exposes_uncertainty_and_execution_audit(monkeypatch):
+def test_empty_pool_api_exposes_uncertainty_and_execution_audit(monkeypatch, offline_pipeline_boundaries):
     from fastapi.testclient import TestClient
-    from app.main import app
-    from app.api import routes
+    app = offline_pipeline_boundaries.app
+    routes = offline_pipeline_boundaries.routes
     from app.services.validation_service import ValidationService
 
     run = connected([], hints=["direct_fact"])
     monkeypatch.setattr(routes, "_validation_service", ValidationService(run))
     monkeypatch.setattr(routes, "create_audit", lambda **kwargs: None)
     monkeypatch.setattr(routes, "update_audit", lambda *args, **kwargs: None)
-    monkeypatch.setattr(routes, "save_validation", lambda **kwargs: None)
+    monkeypatch.setattr(routes, "update_validation_record", lambda **kwargs: None)
     monkeypatch.setattr(routes, "save_verifier_outputs", lambda *args, **kwargs: None)
 
     with TestClient(app) as client:
@@ -1556,3 +1582,155 @@ def test_p2_unknown_requirements_record_veto_instead_of_accepted_numerical_stop(
     assert audit["termination"] == "candidate_exhaustion"
     assert [event["result_count"] for event in audit["stopping_policy_vetoes"]] == [2, 3]
     assert all(event["reasons"] == ["requirements_unknown"] for event in audit["stopping_policy_vetoes"])
+
+
+@pytest.fixture
+def adaptive_api(monkeypatch, offline_pipeline_boundaries):
+    """Real baseline pipeline, with only verifier/provider and DB boundaries controlled."""
+    from app.services.validation_service import ValidationService
+
+    boundary = offline_pipeline_boundaries
+
+    def execute(checkers, question, *, context=None, manager=None, profiles=None,
+                capabilities=None):
+        manager = manager or ReputationManager()
+        selector = VerifierSelector(
+            verifiers=checkers, reputation_manager=manager,
+            verifier_profiles=profiles, capabilities=capabilities,
+            lambda_latency=0, lambda_suitability=0,
+        )
+        run = ValidationOrchestrator(
+            question_analyzer=QuestionAnalyzer(mode="heuristic"),
+            verifier_selector=selector, decision_engine=DecisionEngine(manager),
+            execution_mode="baseline",
+        )
+        calls = []
+        for checker in checkers:
+            original = checker.verify
+
+            def recorded(question, answer, context=None, *, checker=checker, original=original):
+                calls.append(checker.name)
+                return original(question, answer, context)
+
+            monkeypatch.setattr(checker, "verify", recorded)
+        monkeypatch.setattr(boundary.routes, "_validation_service", ValidationService(run))
+        with TestClient(boundary.app) as client:
+            response = client.post("/validate", json={
+                "question": question, "answer": "controlled answer", "context": context,
+            })
+        assert response.status_code == 200, response.text
+        body = response.json()
+        audit = body["execution_audit"]
+        assert audit["attempted_verifiers"] == calls
+        assert audit["returned_result_verifiers"] == [row["verifier_name"] for row in body["results"]]
+        boundary.persistence["update_validation_record"].assert_called_once()
+        boundary.persistence["save_verifier_outputs"].assert_called_once()
+        boundary.persistence["create_audit"].assert_called_once()
+        boundary.persistence["update_audit"].assert_called_once()
+        completed = boundary.persistence["update_audit"].call_args.kwargs
+        assert completed["run_status"] == "completed"
+        assert completed["decision_summary"]["final_status"] == body["final_status"]
+        assert completed["decision_summary"]["attempted_verifiers"] == calls
+        assert completed["selection_plan"] == audit["selection_plan"]
+        return body, audit, calls
+
+    return execute
+
+
+@pytest.mark.parametrize("domain,question,first", [
+    ("medical", "What is the population of a patient?", "medical_best"),
+    ("technical", "What is the population of a database?", "technical_best"),
+])
+def test_api_real_analyzer_domain_reputation_and_cost_drive_dispatch(adaptive_api, domain, question, first):
+    manager = ReputationManager()
+    # Give both initial votes informative weights; a cold-start zero-weight
+    # vote must not be mistaken for an early-stopping contributor.
+    for candidate in ("expensive", "cheap", "medical_best", "technical_best"):
+        for specialist_domain in ("medical", "technical"):
+            manager.update_reputation(candidate, specialist_domain, True)
+    for name, specialist_domain in (("medical_best", "medical"), ("technical_best", "technical")):
+        for _ in range(8):
+            manager.update_reputation(name, specialist_domain, True)
+    checkers = [MetadataChecker(name, metadata=factual_metadata()) for name in
+                ("expensive", "cheap", "medical_best", "technical_best")]
+    profiles = {name: {"cost": cost, "latency": 0} for name, cost in
+                (("expensive", 1), ("cheap", 0), ("medical_best", .5), ("technical_best", .5))}
+    body, audit, calls = adaptive_api(checkers, question, manager=manager, profiles=profiles,
+        capabilities={c.name: CapabilityDescriptor(("direct_fact",)) for c in checkers})
+    plan = audit["selection_plan"]
+    assert body["domain"] == plan["domain"] == domain
+    assert plan["difficulty"] == "easy"
+    assert plan["initial_selected"] == [first, "cheap"]
+    assert calls == [first, "cheap"]
+    assert "expensive" in plan["fallback"]
+    assert audit["termination"] == "approved_early_stop"
+    rows = {row["verifier_name"]: row for row in plan["candidates"]}
+    assert rows[first]["observation_count"] == 9
+    assert rows["cheap"]["utility"] > rows["expensive"]["utility"]
+    assert body["final_status"] == "passed"
+
+
+@pytest.mark.parametrize("hard", [False, True])
+def test_api_real_analyzer_difficulty_changes_team_and_stopping(adaptive_api, hard):
+    question = ("Explain why a patient disease treatment diagnosis clinical drug needs analysis; "
+                "compare and evaluate how symptoms affect a patient; justify the treatment and "
+                "discuss why the clinical diagnosis needs careful analysis of all symptoms "
+                "and additional patient information before any treatment recommendation?"
+                if hard else "What is the population of a patient?")
+    checkers = [MetadataChecker(name, metadata=factual_metadata()) for name in ("a", "b", "c", "d")]
+    body, audit, calls = adaptive_api(checkers, question,
+        capabilities={c.name: CapabilityDescriptor(("direct_fact",)) for c in checkers})
+    plan = audit["selection_plan"]
+    assert plan["difficulty"] == body["difficulty"] == ("hard" if hard else "easy")
+    assert plan["minimum_count"] == (3 if hard else 2)
+    assert calls[:len(plan["initial_selected"])] == plan["initial_selected"]
+    assert len(plan["initial_selected"]) == (4 if hard else 2)
+    assert calls == (["a", "b", "c", "d"] if hard else ["a", "b"])
+    assert audit["termination"] == ("candidate_exhaustion" if hard else "approved_early_stop")
+
+
+@pytest.mark.parametrize("context", [None, "Trusted reference text"])
+def test_api_reference_prerequisite_controls_actual_dispatch(adaptive_api, context):
+    checkers = [MetadataChecker(name, metadata=factual_metadata()) for name in ("reference", "a", "b")]
+    body, audit, calls = adaptive_api(checkers, "What is the population of a patient?",
+        context=context, capabilities={
+            "reference": CapabilityDescriptor(("direct_fact",), requires_reference=True),
+            "a": CapabilityDescriptor(("direct_fact",)), "b": CapabilityDescriptor(("direct_fact",)),
+        })
+    plan = audit["selection_plan"]
+    assert plan["reference_available"] is (context is not None)
+    if context is None:
+        assert calls == ["a", "b"]
+        assert plan["exclusions"] == [["reference", "reference context is absent"]]
+        assert checkers[0].calls == 0
+    else:
+        assert calls == ["reference", "a"]
+        assert plan["exclusions"] == []
+    assert body["final_status"] == "passed"
+
+
+def test_api_fallback_separates_planned_attempted_returned_and_unavailable(adaptive_api):
+    checkers = [UnavailableChecker("offline"), MetadataChecker("generic"),
+                MetadataChecker("fallback", metadata=factual_metadata())]
+    body, audit, calls = adaptive_api(checkers, "What is the population of a patient?",
+        capabilities={name: CapabilityDescriptor(("direct_fact",)) for name in ("offline", "fallback")})
+    assert audit["selection_plan"]["initial_selected"] == ["offline", "generic"]
+    assert audit["selection_plan"]["fallback"] == ["fallback"]
+    assert calls == ["offline", "generic", "fallback"]
+    assert audit["returned_result_verifiers"] == ["generic", "fallback"]
+    assert audit["unavailable_verifiers"] == [{"verifier": "offline", "reason": "maintenance"}]
+    assert audit["runtime_availability"] == {
+        "offline": "unavailable", "generic": "returned_result", "fallback": "returned_result"}
+    assert body["final_status"] == "passed"
+
+
+def test_api_missing_achieved_coverage_vetoes_numerical_early_stop(adaptive_api):
+    checkers = [MetadataChecker(name) for name in ("expected_fact", "generic", "fallback")]
+    body, audit, calls = adaptive_api(checkers, "What is the population of a patient?",
+        capabilities={"expected_fact": CapabilityDescriptor(("direct_fact",))})
+    assert audit["selection_plan"]["initial_selected"] == ["expected_fact", "generic"]
+    assert calls == ["expected_fact", "generic", "fallback"]
+    assert any("missing_achieved_coverage:direct_fact" in row["reasons"]
+               for row in audit["stopping_policy_vetoes"])
+    assert audit["termination"] == "candidate_exhaustion"
+    assert body["final_status"] == "uncertain"
