@@ -1,0 +1,442 @@
+{
+  "version": "reusable_native_readiness_smoke_v1",
+  "kind": "arithmetic",
+  "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+  "policy_id": "c6a1f9c14bf2337aa3202124a2ed087616d48a46d70f56e7f37aba0a2a446e14",
+  "policy_version": "game_policy_reliability_first_v1",
+  "compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+  "probabilities": [
+    [
+      "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      1.0
+    ],
+    [
+      "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+      0.0
+    ],
+    [
+      "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      0.0
+    ],
+    [
+      "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+      0.0
+    ],
+    [
+      "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      0.0
+    ],
+    [
+      "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      0.0
+    ],
+    [
+      "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      0.0
+    ],
+    [
+      "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      0.0
+    ],
+    [
+      "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      0.0
+    ],
+    [
+      "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      0.0
+    ],
+    [
+      "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+      0.0
+    ],
+    [
+      "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+      0.0
+    ],
+    [
+      "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      0.0
+    ],
+    [
+      "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      0.0
+    ],
+    [
+      "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      0.0
+    ],
+    [
+      "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      0.0
+    ]
+  ],
+  "strategies": [
+    {
+      "strategy_id": "afbd22f1ed2281814985af413a3945c5706d1aa838eba2d1b79cc391371521ac",
+      "verifiers": [
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 9.678209995036013
+    },
+    {
+      "strategy_id": "b96bfbe87d3b8f0039c16a624c30cbd374d049f3febac4a08312a76adb990570",
+      "verifiers": [
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 9.678209995036013
+    },
+    {
+      "strategy_id": "d795e00a8d21ac1e182d750a9fe048d30c3c4492280e44b743b43b6757dd67af",
+      "verifiers": [
+        "confidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21137.283848738298
+    },
+    {
+      "strategy_id": "64b162c44dcbea1a090efbd170737e194dc8d94b9e7eb9c7d31dbf80d7a7587e",
+      "verifiers": [
+        "confidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21137.283848738298
+    },
+    {
+      "strategy_id": "7bebbe44c42c138b65816273a8807e0be825e5543903862c49970aa7f92813ac",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 91.13092127081472
+    },
+    {
+      "strategy_id": "ad0b8ffb719c57171af3713fed9ef5ee56abfeb911bb36d093c9e29406ae23f0",
+      "verifiers": [
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 91.13092127081472
+    },
+    {
+      "strategy_id": "4740575c2e29074c1bfdc0e85077446d31884b4a0e65ad126156df4a5ed3bf95",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 49.27691500342917
+    },
+    {
+      "strategy_id": "a2ea28d77c27dec2a4854796d14860e9876d1a4c7f2672a90d80a637f49c0b1f",
+      "verifiers": [
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 49.27691500342917
+    },
+    {
+      "strategy_id": "dea450431e59622e8ab01bcacdd36a476ac4178be40fd69aa9dd96827ca4a4cc",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21218.736560014077
+    },
+    {
+      "strategy_id": "540a5c0b689536093709b5679474795b804bad7cef677cd9f0b568cb424dd7b6",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21218.736560014077
+    },
+    {
+      "strategy_id": "af11eaa3ee6059ee3c6f347c12e36fc7e13ba2dac7b4abc089ac1401834d25bd",
+      "verifiers": [
+        "confidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21176.88255374669
+    },
+    {
+      "strategy_id": "e7f6a62bdd249067887d49775a0d48564437cccac307a41b977c6c0900f82fad",
+      "verifiers": [
+        "confidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21176.88255374669
+    },
+    {
+      "strategy_id": "0fe15a30015ee9a39c985f9da48410607557e8d2367fd93edd8c86cf811b42d8",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 130.72962627920788
+    },
+    {
+      "strategy_id": "93f8f1735acd71696c00f71b470f27264d552eef589a6342b913525568f74273",
+      "verifiers": [
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 130.72962627920788
+    },
+    {
+      "strategy_id": "3622f462375d038af2cce7dfac0fdb65ccef7e5410c40f153d709b3d428fed04",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "reputation_weighted",
+      "estimated_cost": 21258.33526502247
+    },
+    {
+      "strategy_id": "a4c895d6c9e9095ae7ff52c31be7bf0324109e4868d61f3d136ddeb23c27cc80",
+      "verifiers": [
+        "confidence",
+        "evidence",
+        "rule",
+        "semantic"
+      ],
+      "aggregation": "dependency_group",
+      "estimated_cost": 21258.33526502247
+    }
+  ],
+  "original_resource_manifest_id": "e23c6f034a4c660d30433d133be3a197db620abbdf22a78907ef5e3687d45ccb",
+  "budget": 21258.33526502247,
+  "cost_units": "ms",
+  "scope": {
+    "version": "reusable_policy_scope_v1",
+    "artifact_id": "cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477",
+    "compatibility_id": "5f217f601b87ab4d2889b59ca9bda07d8a07a6774d074625f8b01c2050cb736d",
+    "question_pattern": ".+",
+    "maximum_question_chars": 300,
+    "question_rules_version": "explicit_task_questions_v1",
+    "review_basis": "Proposed bounded native readiness smoke only; execution approval and independent certification not supplied",
+    "evaluation_status": "historical_evaluation_unchanged"
+  },
+  "configuration": {
+    "version": "project_collection_adapter_v1",
+    "embedding_snapshot": null,
+    "nli_snapshot": null,
+    "corpus_path": "build\\multitask-policy42\\corpus.json",
+    "index_dir": "build\\multitask-policy42\\index-v2",
+    "index_receipt": null,
+    "service_observation": null,
+    "resource_relocation_binding": null,
+    "ollama_url": "http://localhost:11434/api/generate",
+    "ollama_model": "llama3.2:3b",
+    "n_samples": 5,
+    "temperature": 0.8,
+    "timeout": 60.0,
+    "chunk_size": 500,
+    "device": "cpu"
+  },
+  "requests": [
+    {
+      "question": "What is 4 + 4?",
+      "answer": "8",
+      "context": "8",
+      "expected_public_status": "passed"
+    },
+    {
+      "question": "What is 4 + 4?",
+      "answer": "9",
+      "context": "8",
+      "expected_public_status": "failed"
+    }
+  ],
+  "reference_receipt": {
+    "method": "independent Fraction and Decimal exact arithmetic, computed before candidates",
+    "value": "8",
+    "candidate_independent": true
+  },
+  "seed": 1103,
+  "maximum_native_attempts": 2,
+  "maximum_generations": 0,
+  "maximum_metadata_requests": 0,
+  "maximum_wall_seconds": 120,
+  "allowed_native_names": [
+    "rule"
+  ],
+  "resource_preparation": {
+    "mode": "source/configuration hashes only; no native instance constructed",
+    "observed_manifest_id": "c53d93e72864ad960841cf5762e84b9a3f7653d93d0b96e724622ddb7b64092c"
+  },
+  "blockers": [],
+  "source_files": {
+    "app/__init__.py": "1149920b49235469adfe22447d60acd95c4e781b5e2a992bf8340412857175d6",
+    "app/analysis/__init__.py": "a1cc8f6b7521c7c9115b48a77204fb61693e961839b9d08c8f753eb1ab10e4a4",
+    "app/analysis/capability_probe_analyzer.py": "ef3399e9727f940d21f020f362b6389d8918f0ffce8246b06d29fe5b1ae27af4",
+    "app/analysis/evaluate_context.py": "38e06b7185a22fd247acfeb2afc503de6c558ce5183d5a5eae0310467d524aa6",
+    "app/analysis/heuristic.py": "b98c8217ac02b8bbcfb16da116d9dae44422c1e140bed7a6d1883f7a25055435",
+    "app/analysis/model_assessment.py": "6bfb0d7855bb7c2551e356c3fcddaa6c9b9a95db1eed3e919c3c1b3aebcff2e5",
+    "app/analysis/models.py": "d2ba1ff0063e3666ce8929f0cec7b90265ca4615c1de0dd6a771390f56829447",
+    "app/analysis/question_analyzer.py": "72e0d10e0686425024c04a9f81443493245285fe12048b2bdbebc81e1b69b89e",
+    "app/analysis/reference_study_analyzer.py": "77909309d2f71ff08b3b3bd90ae9d5b0d2ccb5697e4896ab490d54b9540ccae3",
+    "app/analysis/research_context.py": "1d310137b752266976b4d295ab794c633c6ce245893b4bc9f9839ee46420f0cc",
+    "app/analysis/task_analyzer.py": "133d21a7f8179d940dbb540e1d0f891fb107f4eaa70c9273087b1ffeeb2e8b5b",
+    "app/api/__init__.py": "d8e3aa7a6955d50a5836a796d67df7c5562bb369c29a5b3f82f5cf196b8ec7bf",
+    "app/api/feedback_routes.py": "d2a306b43967f1c5476e48c07a7acd4fd1363496909891bd334750a5227e7ab5",
+    "app/api/routes.py": "28670faca2520263a9fb685ebbb4d9d424ffb6f4cea9c61c11e6bcb3bd8a4371",
+    "app/benchmark/__init__.py": "c9efa400bf3a98329ad2a698ddc36d89ed46527476e33d5ed2517c9c28362166",
+    "app/benchmark/collect_costs.py": "617713aede0e2fd611105d051a8581837bfbccb141b39c6321ad13c957756bd2",
+    "app/benchmark/offline_benchmark.py": "9a3731ec4517e85e2d3de38222f2f576f9d68321fe94da61bc98f11be4d79ef5",
+    "app/benchmark/prepare_collection.py": "c0b92659cec282c4946cc11622d03b79e8451eef3e192626ffd621612dd83193",
+    "app/benchmark/project_adapter.py": "6b7893a98510a5c4a487d8ae8b64590839195f52b228c4f7759923dee19c33a1",
+    "app/database/__init__.py": "b137f1f097c5c037a1a12dc5d242199e30fb4d88718f3217c17bfc60ae176cad",
+    "app/database/audit_repository.py": "ea4044708f9511fad9bb57a6718039f4dff6103cc859422aaeeccdf3fdba2cf2",
+    "app/database/execution_journal_repository.py": "6b82cd1f52cb6bee9188d514342420c774b2d6779f784e18f584561c805f7386",
+    "app/database/execution_lease.py": "67a20fc9b16c0d2acb58e2375a656fc72c4730b5b6c5fc3fe1d30ddce8be2dde",
+    "app/database/execution_recovery.py": "276cc9b6cff6d82bfa2032f7e904dcc9e313a7b90ec8ab662c5bd8621f1dfff8",
+    "app/database/feedback_repository.py": "5b0a31eb90d4227f71bcf7a2915d236f33a43f312e0bc4f05fb3f9b7609500b4",
+    "app/database/models.py": "e10e7b5844af9ab5536389f5c01e6861d9cf0467569b7af3b71918eb8e79583a",
+    "app/database/repository.py": "6a97acd4c0e797a606af9b5ac7c4709363ccaf43a33ed7446ba9a383f600d018",
+    "app/database/reputation_repository.py": "7da7636ef508b7b7631641ac8a765b991a926d529ac295c185308a71519a6522",
+    "app/database/session_repository.py": "63c500b8695ad4aa3920c4150205e33229b600f462835099edf2bd540ef50540",
+    "app/database/validation_repository.py": "739f5300837fdc4f75899b2130fc6f0c5ab4f9673f4688cee692b0750dc2b954",
+    "app/database/verifier_cost_repository.py": "2736e596085eea3c9c5358d0dbb90fbf9a6dc48a26dc9d86925b11b75006e2d4",
+    "app/database/verifier_repository.py": "f9ef9124b80a0efc04f38f7741a063329a7fba4869b4d5278e7d493a24d1b486",
+    "app/decision/__init__.py": "11bdd0d72d29c5585218f88448f87729a6a45be10805ade3ff85cadb8b75c0cb",
+    "app/decision/coverage.py": "ec2d656101ec344f7d27faeea63bce6e96fb409d1080ba6ded30899133c6a496",
+    "app/decision/decision_engine.py": "482873d0a36983f4d222c3b7ab07fc4e90672f7509ae9e6e25e7dc7d0497c2ed",
+    "app/decision/dependency_aggregation.py": "5fc0ce5d646dcc896032cfa986c8a3d90dc54d754daf098af7e32de06e9f1ffd",
+    "app/decision/early_termination.py": "3502e168776c0f56765c676625b290c8a80fd8d5cdfd4b04094aabe6603166f0",
+    "app/decision/report_identity.py": "7a95472a5b8e2599d996d900a448f3b47a96ea3f7caac8e6627ef7d56403b4f0",
+    "app/decision/vote_normalization.py": "c0b42ca38bf73c9e2c914ecc7a8cb3bd7d70f14881bcb0070770b52a60ff36e9",
+    "app/evaluation/answer_correctness.py": "1617a00a395a0b70348080d13866774e945ee161a67aeb780e36f2b32033ea6e",
+    "app/evaluation/automatic_ground_truth.py": "bdbd52fcde1b5c42ff4d010d56f0c506ee3fe6a822207e5eb9d48dd50826d0d3",
+    "app/evaluation/compare_similarity.py": "5836a0aedf9484fb495e83c042c8edb95b743d9114074a2c6dba03c91aae6d46",
+    "app/evaluation/semantic_calibration.py": "c5677eec8e5add9f0b4791c74b036cf181341925fd312d150355dfe21fb9da92",
+    "app/evaluation/semantic_evaluation.py": "c2d78dfad561e6263e51d125efc621c3c5afe4814ea2c297dadea86516b49738",
+    "app/feedback/__init__.py": "bb981f97782b2b7302198c5a471841b9f1e5514d3243a3d9cbf3b83b69f69602",
+    "app/feedback/evaluation_service.py": "bb508a5cecf6054fa73894ba048bb29523e8621ac748f8c9095d44aa87b01953",
+    "app/game/__init__.py": "b6cadaba6e2cef6a39a23125d0ff495fb27993a031f29b56cb8766b56a5fea03",
+    "app/game/artifacts.py": "89adc9857d9fdbe82252fd5a2be8cdf4ceeb0f4e915dd894e886743fdb70930d",
+    "app/game/category_applicability.py": "9a60f990a01a3eebf1e3ec92cdf625724502930969e60488ae0963a7c204ad0b",
+    "app/game/category_deployment.py": "3716478dc635c6c7258f28602cf1bf62b63edc27ec3c35a6aa88a58674bfb854",
+    "app/game/category_runtime.py": "4586814536b8c0628678316fb3bcef10a6bfe718953d2e80ba1d4808f77f9ff5",
+    "app/game/component_binding.py": "d6804f3bb8990f2835d7974d59d0e674545edd580a5ced8a87da0d5d50ba8522",
+    "app/game/component_execution.py": "024f5790cc8edcc27d62fb20e93c2cac6de7a58d7feece0eab4af3da943f68f7",
+    "app/game/component_sources.py": "c6e0e837ec8e114f72c0ebd5cc3fed13e75140266bfc0eb865b60d91433923e3",
+    "app/game/consistency_assessment.py": "ee5994b8a40d6f11718148d1611c3583b2eecc86ea27f552fc60772788dfe186",
+    "app/game/coverage_contract.py": "fdf494957844f293d6206dbd87f73a10cd710a59f8b87bf3caa3371e773e68a8",
+    "app/game/decision_inputs.py": "ffc7f5603764ac822f83a1c55f894bd51129e4b7b75709661afafcccb5fff487",
+    "app/game/dependencies.py": "52d5982551e16145d8e6a5f4c53b2531633df4b6e83d19f0888a4a9d39fa1bf5",
+    "app/game/deployment.py": "a0ec13c693c0f8afdd9606441cc35598c99c30c8b7932c2a334760bbe7605f95",
+    "app/game/domain_routing.py": "db6d0b16cc637c37a45e6823f3e6bdf4f0dbbf048dfd1892de5408e615c76cf5",
+    "app/game/execution.py": "65442182330fdf5334d1ad88e1c6e9664f3e6e7999a68c8c801ec288d50d33e6",
+    "app/game/execution_contract.py": "4eab5bc2cd171581ffce69898573e72a42ff475402b4ef9ed83c0761a44a05e8",
+    "app/game/finalization.py": "612c835788cbdd6495c458ac84b4609722dc750ebaa9351d18ad62196f575f46",
+    "app/game/frozen_planning.py": "6c7024a175793d8f06d63dfd062270f2d07abb9b465bc0f32845270e0618ab3f",
+    "app/game/models.py": "c23baf7af8d8524bd6b113cc3c35fcf4a600e1b824203c6d18f0b40cddcb1f73",
+    "app/game/offline/__init__.py": "7b6f75ae87fd0790d81c41abe0e9e4be38d5df5000ddee85e8c03c29c161815e",
+    "app/game/offline/arithmetic_pilot.py": "d4fec835db5440770d47850d890396313c5fb7e6f223a5ce9cb7cc00b271afb2",
+    "app/game/offline/attacks.py": "c3df7424471e92e15d60b352e55118387c6fbb188f8e354af279b734a82e079c",
+    "app/game/offline/budget_sensitivity.py": "135f0c35588e51338c1d6f2407b6ae358a859a98226defdd823cf1eb2afddea3",
+    "app/game/offline/build.py": "a86b8563566e67579396971122f095437d76b9f3c0f682e470dc6773513bd528",
+    "app/game/offline/calibration.py": "d65261e4a1a861f83daa2a111682a17adfeb331cdd1343d57af22228fd80a3d3",
+    "app/game/offline/collect.py": "e238f010654a8c0d799836f444334bd13d0cfb66a6f8f9929f65fa4462564d7d",
+    "app/game/offline/collection.py": "220bc0e9b3d4f25af2c89464fdf73f80fe5c4869b59726a1935ef0a1c340ea76",
+    "app/game/offline/compound.py": "7a5f09a96c82978586df420644711b1268601e32ce0b5b40ad76aef92ba63628",
+    "app/game/offline/compound_journal.py": "58bfd039a962dc93a0f4b5591af3609972396544509c5d7aed1a398ff9983d70",
+    "app/game/offline/coverage.py": "006fa73a4206a185c83270e903e90c319cfb447267970a70f7632604aee64456",
+    "app/game/offline/eligibility.py": "79fa7a4d1321f8b00021320cbfd06e0902a3dada5e7125dc5b4e17f4159e0f11",
+    "app/game/offline/evaluation.py": "3235d6dd57ad01c8cf0a8d0aa2fc5529e1a78b8de38925baee07811b30329e13",
+    "app/game/offline/file_journal.py": "8c30ce5e73fe5e72403336fb30c23f169739099d62e1555ab479c418afc588f7",
+    "app/game/offline/input_contract.py": "2ddeb05959ac754670d0a6c2ff3507d0130188807107a9038aa3b43d0176a277",
+    "app/game/offline/pilot_proposal.py": "b6e8bd4ed800f187e63284451ffbc00e94311db0c5dd0acbb8d81969959af364",
+    "app/game/offline/policy_source_compatibility.py": "e05860e2084f5f41b3b4c77aa78ba8ccef161dc1d940a497e957f21b4901dc6e",
+    "app/game/offline/pooling.py": "de34c508075a209491457cd30f9584d5ba39b34e03c65ebb08d7aca509d7796e",
+    "app/game/offline/prepare_calibrated_context.py": "ab00e257a7585bfc07f98dee80537cec66dc9726e780e64c17609aba7a98be99",
+    "app/game/offline/prototype.py": "8ddaf3db90329e6f6163153dd73bb9363fccd5454b044f8599c0f784d958b60e",
+    "app/game/offline/reconciled_resources.py": "08eccb8bd82574d89c2ab4f2b1118747e37d8d907d65481cd5565f82a3bac4aa",
+    "app/game/offline/recording_adapters.py": "20ec9c693be8f641ad7eb13980664bbd5c9f06a68374a6194d8b8100cc7d954b",
+    "app/game/offline/records.py": "b5a172dbc50147ff4f77e6929192c6641ea26415ec22f1721ce50d242c0506a9",
+    "app/game/offline/reference_compatibility.py": "c1e5a07362e120cee3cdd51bb30bdb1c4dc0679a9a6c073ab4c3a19309721a2f",
+    "app/game/offline/reliability.py": "d076e744ba8791f2eaa300c1d9e3a3b6eb34714015d4522ed5da9ae760d8884f",
+    "app/game/offline/replay.py": "265c88d625e429a9a059a0e582773c8dba8f9ead796b9f39b7b714f70ec9c1db",
+    "app/game/offline/resource_relocation.py": "a23246cfb678833b655da99607f25ab6e429be81a21d1d1faf261ecfe7b748f8",
+    "app/game/offline/singleton_compatibility.py": "8a9c1bb49a8a01ec15d5d06eb57a161d24c24b0b9f7b67cf9d8fbd128676d96f",
+    "app/game/offline/timing.py": "f1ce242bb20ee62924fd96bffeb32bc0124a8c34a19d269931d496cd629e6565",
+    "app/game/offline/upstream.py": "d0fc1ef63a0932a76e0bc0ecec56cbe6ca118e44e7b71ef12dcc33ee19a5f776",
+    "app/game/offline/upstream_evaluation.py": "d2b55efe83681c0317f47dbbf1b0f8751af53ea0444a3d5d87bb502d23be652e",
+    "app/game/offline/upstream_transfer.py": "b9b176bcedd13c44970cf76ef88b244aad652d6e8ebb5c380bfb682d9bdc858d",
+    "app/game/policy.py": "a72083e3162ff4f6c03aa8145ac827e1f23a32e138784c7754782e1a04f2fdd3",
+    "app/game/pooling_contract.py": "6c5cbf7674d7c8c82b0c82b2270d64557ca1f09966beda6dfdb8f755b47f97ac",
+    "app/game/prototype_bundle.py": "f70f2163ecbb5f9e582c92cbceaabb7caaedd426c91ae42380bc2d956cf12c00",
+    "app/game/question_routing.py": "4d8f99e1ba67678f909d6d2a6c69331e2084a533e8028b66eb4ab4c11d3f40a6",
+    "app/game/reliability_contract.py": "f74fae6633397476959dd520fd95517ddeb391967161c170279efd7fb6e0a575",
+    "app/game/research/__init__.py": "ade58432041f2d6ddfe5e2d7002a04dfce2ead11d58fb9dd641531b90f560bf5",
+    "app/game/research/__main__.py": "a5d1aabebd3e5be0f49d75132a5329e8a1c633b3ed00d64d430a1e17d99d86a3",
+    "app/game/research/comparison.py": "278685bc1a49ae7cd46d88151c97a8ba733619f01d634e97d73308b59c485441",
+    "app/game/research/evidence_validation.py": "be0dd947dea0254b30b16342e0bff5586366e4430dfad0c145e6618eb3fd39d6",
+    "app/game/research/readiness.py": "ffa011e2782cf2b74d8a4c4a55c6c8bfb46a7cb5cb73ac3b39e9016ea5c3bee8",
+    "app/game/research/specification.py": "18b406907342c9fbc93fb2016b908404bbdfed37f4e5dbaba39becf912c89408",
+    "app/game/research/uncertainty.py": "3893b8291cf7d3b221ed24abe122cb92e90e135f8a336122a0e5321fdfd38a8b",
+    "app/game/resource_provenance.py": "cae72472158404da3ef24a47425bd4b8d44942b01d5c8765f9f74dbeff1c0645",
+    "app/game/resource_transfer.py": "02a9f29e0b223cf0145dd282faac0a997f0fcdbc36bf551c82afd38188d84238",
+    "app/game/reusable_deployment.py": "a0650467b8f211c3a8142360a02e5cb72b78f4af8d9e08eb7536d23473ba28e1",
+    "app/game/reusable_policy.py": "b13a53810f358efa13be40ed7a659e5ce5fab0d262ae0bf7b44140ce9cbbbb4b",
+    "app/game/solver.py": "f6f8cb2c758b82b17c831fc1ac66bb0bd303b8a00a3e1de7bc47574fc7d133f9",
+    "app/game/strategies.py": "dce023d1dcee3625a556bbac92c65370a4ec482223705595c070547731d5702d",
+    "app/game/task_conditioning.py": "bf1f5a1c95f952de022f8aed775f5ee40c41d5b278271df2e016b0dee1f3fb69",
+    "app/ground_truth/models.py": "151017556982c314bf16f3cc2959c211686bd615116fc5dd4f2b0cbdf359406a",
+    "app/ground_truth/service.py": "bea621f0bf9bb6896c2b6e5bb44f71aff088962bf6db107ad64977ead7ed92d1",
+    "app/ground_truth/storage.py": "bb07e5e512d8a0e0861f2c3e60d5e08498e27067615a2ed104dd425428490eb0",
+    "app/ground_truth/wikidata_client.py": "c1293301294dfd315cfccfecc1994978a3fa235df9415b7aae6d7d5e6f458fc5",
+    "app/main.py": "870f4c9c2e4e636c0b9177fe0bda32b43d0be0d85c975c30746a4f878cc6db41",
+    "app/models/__init__.py": "77b5aea857cb83212ed9a30c0ee1ef2d882e32748911132c23c539e11747f19d",
+    "app/models/schemas.py": "2ddcb19b63af208c6b513de09016b5acccb21a72211b543f6449cad912528c53",
+    "app/orchestration/__init__.py": "64a5f38922b22823d1809ffcf7076764d891efa4af0e8ca680e6a97abd7005ea",
+    "app/orchestration/validation_orchestrator.py": "a66d0cc44b1fa565d2a75c1d314212b962f07593deb3121f253b55bc6bb24512",
+    "app/reputation/__init__.py": "c1ff4c4329d56841a181e13c1391c557a9dca289baa3cd23dc7465873b777c39",
+    "app/reputation/reputation_manager.py": "17010c3dc85c7f36fecb95620c0dd519535f3651c94fafaecfd7aa860be96e92",
+    "app/selection/__init__.py": "4fe9180342056097ff9dde9308cfad8c303a9911c3525d01465a4944ef6f2869",
+    "app/selection/capabilities.py": "3781e0dded2c3d57fabb6fa3e1cfa2c2d95c68236d15b2a7a594299f217cb3c2",
+    "app/selection/models.py": "66550daa602bd8812a1ef656891dd571a21e22dde668b8f15006e8b1ade7a422",
+    "app/selection/requirements.py": "db10256ee5a6d7d0617174d7a7465a1af857c06becdc6c059747e641570c6108",
+    "app/selection/verifier_selector.py": "b14227e5d4c65b24939119d3c2afddb11281ab67352845bda683824a85fcf0a6",
+    "app/services/__init__.py": "8f40df194c1dfd547b7fb2a4282ceec59f63d46f9a2af10b9608de3a865e496a",
+    "app/services/validation_service.py": "b2ef7694c542605d8c6c0dd6c878bcc32c69feb5042756b1ef8814fdc9245c22",
+    "app/utils/__init__.py": "342574de9d4b6b87389b91bea02f652f0220b026269b7d2811f2b2fcba49a5df",
+    "app/utils/config.py": "619df5f731f405ea5b3efe5ae793f46470e7d05ac70f318839359d730683592a",
+    "app/verifiers/__init__.py": "16c953c79922d971247d3deb5193086665df40c26698e0c8996bd45f3a9c2dc5",
+    "app/verifiers/base_verifier.py": "f50cef7e220ed68e56a677666b2d08bcf809b7a9b0533fcfc704f7ba76a3d899",
+    "app/verifiers/claim_generator.py": "b8eee29e3de5dffa1eafff0171a83f0d338095c913877b4f108adaa288ce4e01",
+    "app/verifiers/confidence_verifier.py": "e05617149ea32f4f6136cc9ac8512296075acd285005d7d99670e4ab750ed94f",
+    "app/verifiers/evidence_retriever.py": "d99f4377c68a1cc2d8b7d3a29bc682d95c135814ebd6792c035989dbbc9af774",
+    "app/verifiers/evidence_verifier.py": "b76f25a8416f0c515e279feba26e1b94ad716ad50c3e4170b58d5a97c1c7755c",
+    "app/verifiers/rule_verifier.py": "bf9d212d6f179e786241559a2ce974a69dcdfa74d3d8f5c59fd8cab2c4b61715",
+    "app/verifiers/self_consistency.py": "627b0e81bf9b57cd502f90a42c363af18d407e8c4465cae9fef25a39bc996ca4",
+    "app/verifiers/semantic_verifier.py": "c72cf7a6f34a66d16e36e360286ab6085000e1594e86dd1e124480aa43086bd8",
+    "app/verifiers/verification_trace.py": "f17a35d1f8d3fe5653eec42dedf4df9fb7a71a0822d453854a4dee57a51a96cc",
+    "scripts/reusable_native_smoke.py": "cbb3c21e6fd4faeb8599f50022a922e92853bb3985edef901ef4b1debb763f1c"
+  },
+  "bundle_sha256": "3ab4040b7df7b86eaa0b914459429bceefb129790073b60657ceb54ebffad184",
+  "execution_authorized": false,
+  "plan_id": "34b309882e79e547e564fc2382495565c42e4ee79bd2e8e6dfd461c4f79e20ad"
+}

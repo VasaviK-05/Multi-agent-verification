@@ -17,6 +17,27 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def enforce_output_only(event,args,output,violation):
+    """Reject process launches and filesystem mutations outside the run receipt."""
+    def writable(path):
+        if not isinstance(path,(str,bytes,os.PathLike)):
+            violation('unapproved file descriptor mutation')
+        p=Path(os.fsdecode(path)).resolve()
+        if p!=output and not p.is_relative_to(output):
+            violation('write outside approved output directory')
+    if event in {'subprocess.Popen','os.system','os.posix_spawn','os.fork','os.exec','pty.spawn'}:
+        violation('child processes forbidden')
+    if event=='open':
+        path,mode,flags=args
+        if ((isinstance(mode,str) and any(c in mode for c in 'wax+'))
+            or (isinstance(flags,int) and flags & (os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC))):
+            writable(path)
+    if event in {'os.remove','os.rmdir','os.mkdir','os.chmod','os.chown','os.truncate','os.utime'}:
+        writable(args[0])
+    if event in {'os.rename','os.link','os.symlink'}:
+        writable(args[0]);writable(args[1])
+
+
 def source_inventory():
     paths=list((ROOT/'app').rglob('*.py'))+[Path(__file__).resolve()]
     return {p.relative_to(ROOT).as_posix():digest(p) for p in sorted(paths)}
@@ -133,6 +154,7 @@ class NativeJournal:
 
 def execute(plan_path,expected_id,output,approved=False):
     if not approved:raise ValueError('native execution requires separate explicit owner approval')
+    sys.dont_write_bytecode=True
     import signal
     from urllib.parse import urlsplit
     from app.game.models import content_id
@@ -141,7 +163,7 @@ def execute(plan_path,expected_id,output,approved=False):
     if plan['source_files']!=source_inventory() or plan['bundle_sha256']!=digest(ROOT/'reconciliation/policies.json'):
         raise ValueError('reviewed source/bundle changed; prepare and review a new plan')
     if plan['configuration'] is None:raise ValueError('approved native configuration required; no downloads or substitutes')
-    output=Path(output);output.mkdir(parents=True,exist_ok=False)
+    output=Path(output).resolve();output.mkdir(parents=True,exist_ok=False)
     (output/'plan.json').write_text(json.dumps(dict(plan,plan_id=provided),indent=2))
     journal=NativeJournal(output,plan);result=dict(plan_id=provided,native_smoke_complete=False,requests=[],generations=0,metadata_requests=0)
     # Whole-process time bound, not an early successful selected-team decision.
@@ -170,6 +192,7 @@ def execute(plan_path,expected_id,output,approved=False):
         return original(session,method,address,**kwargs)
     requests.sessions.Session.request=http
     def audit(event,args):
+        enforce_output_only(event,args,output,violation)
         if event in {'socket.connect','socket.getaddrinfo'}:
             target=args[1] if event=='socket.connect' else args
             if (plan['kind']!='reference' or not isinstance(target,tuple) or target[0] not in {'localhost','127.0.0.1','::1'}
@@ -182,6 +205,14 @@ def execute(plan_path,expected_id,output,approved=False):
                     if key in {'corpus_path','index_dir','embedding_snapshot','nli_snapshot','index_receipt'} and value]
                 if any(p==v or p.is_relative_to(v) for v in protected):violation('historical resource write forbidden')
     sys.addaudithook(audit)
+    if plan['kind']=='arithmetic':
+        def native_boundary(frame,event,arg):
+            module=frame.f_globals.get('__name__','')
+            if (event=='call' and module.startswith('app.verifiers.')
+                and module not in {'app.verifiers.rule_verifier','app.verifiers.base_verifier'}
+                and frame.f_code.co_name in {'__init__','verify'}):
+                violation('non-Rule verifier construction/execution forbidden')
+        sys.setprofile(native_boundary)
     import app.game.solver as solver, app.game.policy as policy
     import app.game.offline.evaluation as fitting
     from app.selection.verifier_selector import VerifierSelector

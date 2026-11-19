@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "arithmetic",
+    "plan_id": "34b309882e79e547e564fc2382495565c42e4ee79bd2e8e6dfd461c4f79e20ad",
+    "path": "docs/category-generalization-v1/live-readiness-v2/plans/arithmetic.json",
+    "blockers": []
+  },
+  {
+    "kind": "evidence",
+    "plan_id": "150717d4c56d2923f323cd3a52886feefc2e7e56259929598fa501180dab0d67",
+    "path": "docs/category-generalization-v1/live-readiness-v2/plans/evidence.json",
+    "blockers": [
+      "approved route-specific native configuration absent",
+      "exact native resource/instance attestation pending execution approval"
+    ]
+  },
+  {
+    "kind": "reference",
+    "plan_id": "ebdf5a6d21759a5663ad10b60a35fb1d95f367e24e3492d08e85e872493c4caa",
+    "path": "docs/category-generalization-v1/live-readiness-v2/plans/reference.json",
+    "blockers": [
+      "approved route-specific native configuration absent",
+      "exact native resource/instance attestation pending execution approval"
+    ]
+  }
+]

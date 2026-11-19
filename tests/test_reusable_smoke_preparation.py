@@ -44,3 +44,41 @@ def test_native_journal_rejects_zero_probability_and_duplicate_attempts(tmp_path
     journal.start_attempt(verifier_name='rule')
     with pytest.raises(ValueError,match='retry blocked'):journal.start_attempt(verifier_name='rule')
     assert len(journal.starts)==1
+
+
+def test_smoke_isolation_rejects_external_writes_and_child_processes(tmp_path):
+    import os
+    from scripts.reusable_native_smoke import enforce_output_only
+    output=tmp_path/'receipt'
+    def reject(reason):raise RuntimeError(reason)
+    for event,args in [
+        ('open',(str(tmp_path/'outside.json'),'w',os.O_CREAT|os.O_WRONLY)),
+        ('os.mkdir',(str(tmp_path/'cache'),0o777,-1)),
+        ('os.rename',(str(output/'a'),str(tmp_path/'outside'),-1,-1)),
+        ('subprocess.Popen',('ollama',[],None,None)),
+        ('os.system',('ollama serve',)),
+    ]:
+        with pytest.raises(RuntimeError):enforce_output_only(event,args,output,reject)
+    enforce_output_only('open',(str(output/'ledger.json'),'w',os.O_WRONLY),output,reject)
+    enforce_output_only('open',(str(tmp_path/'input'),'r',os.O_RDONLY),output,reject)
+
+
+def test_reference_free_planning_is_representable_but_not_historically_compatible():
+    from scripts.reconciliation import load_bundle
+    from app.game.question_routing import classify_question
+    from app.game.models import capture_context
+    from app.game.frozen_planning import frozen_selector
+    from app.selection.verifier_selector import VerifierSelector
+    from app.selection.capabilities import BUILTIN_CAPABILITIES
+    _,provider,_=load_bundle()
+    artifact=next(a for a in provider.snapshot() if a.artifact_id=='cf4507400b26f79ab63366ab64b25ef779870fb85f8c33f7aa60a735a4762477')
+    kind,_,analysis=classify_question('What is 4 + 4?',None)
+    assert kind=='atomic'
+    current=capture_context(frozen_selector(VerifierSelector(capabilities=BUILTIN_CAPABILITIES),artifact.context),
+        analysis,context=None,**artifact.context.model_dump(exclude={'selection_json','analyzer_provenance'}))
+    assert current.requirement_signature==artifact.context.requirement_signature
+    assert not current.plan.reference_available
+    rows={c.verifier_name:c for c in current.plan.candidates}
+    assert rows['rule'].eligible and not rows['rule'].requires_reference
+    assert not rows['semantic'].eligible and rows['semantic'].prerequisite_status=='missing_reference'
+    assert current.compatibility_id!=artifact.context.compatibility_id
