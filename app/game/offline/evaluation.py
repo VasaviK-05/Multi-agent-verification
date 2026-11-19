@@ -58,7 +58,7 @@ def bind_evaluation(context, manifest, contract, specification):
     manifest = validate_manifest(manifest)
     contract = ReplayContract.model_validate(contract)
     specification = AttackSpecification.model_validate(specification)
-    if contract.version=='offline_public_decision_v4' and context.task_conditioning_json is None:
+    if contract.version in {'offline_public_decision_v4','offline_public_decision_v5'} and context.task_conditioning_json is None:
         raise ValueError('task-aware fitting requires task-isolated history binding')
     from app.game.task_conditioning import validate_task_history
     validate_task_history(context,manifest)

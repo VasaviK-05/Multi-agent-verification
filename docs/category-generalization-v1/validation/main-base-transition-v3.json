@@ -1,0 +1,128 @@
+{
+  "version": "category_main_base_transition_v1",
+  "original_branch": "codex/evidence-poisoning-phase1",
+  "original_commit": "e38a96d367610065e3679ec22fa162cfcc94daf5",
+  "base_commit": "b3150012d7097729cd676317006a13d577585c82",
+  "files": {
+    "app/api/routes.py": {
+      "original_sha256": "9d7df937575e477dc4439e61e8577c7916a21b5132c7278dd13944612f61ea99",
+      "main_base_sha256": "28670faca2520263a9fb685ebbb4d9d424ffb6f4cea9c61c11e6bcb3bd8a4371",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/database/validation_repository.py": {
+      "original_sha256": "3a59cb70a67ea6b322043c2860605e3ebaf51f2863c9a3554129dd31654c61ba",
+      "main_base_sha256": "739f5300837fdc4f75899b2130fc6f0c5ab4f9673f4688cee692b0750dc2b954",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/database/verifier_repository.py": {
+      "original_sha256": "f751e36962e4d7f82d2a67ac280744bcec7b014958d8c106bb58e859c78e4fa5",
+      "main_base_sha256": "f9ef9124b80a0efc04f38f7741a063329a7fba4869b4d5278e7d493a24d1b486",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/component_execution.py": {
+      "original_sha256": "e6d70834e8a8dfd8701a965e6b067bfd7ada20cb10f917be89975f766351e201",
+      "main_base_sha256": "024f5790cc8edcc27d62fb20e93c2cac6de7a58d7feece0eab4af3da943f68f7",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/deployment.py": {
+      "original_sha256": "f2f3b7592ad2e0a29ab8d7d57efe635aa6e55fd9ec8fcf04b0152880cda403bc",
+      "main_base_sha256": "a0ec13c693c0f8afdd9606441cc35598c99c30c8b7932c2a334760bbe7605f95",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/execution.py": {
+      "original_sha256": "5182a48060deb1a3f9f10fe53163931cee534b14d610823c4fac8e9c073c4b6e",
+      "main_base_sha256": "65442182330fdf5334d1ad88e1c6e9664f3e6e7999a68c8c801ec288d50d33e6",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/offline/collection.py": {
+      "original_sha256": "3eea07eff4bc7b8ca7d2bdf468e642e4b6c8f35c8d2e2f959e2ac95a11e2b9bd",
+      "main_base_sha256": "220bc0e9b3d4f25af2c89464fdf73f80fe5c4869b59726a1935ef0a1c340ea76",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/offline/records.py": {
+      "original_sha256": "a602170b3d494982216073ef5d70e53bce2fe0cedcecc6a978929dc22e15eff4",
+      "main_base_sha256": "b5a172dbc50147ff4f77e6929192c6641ea26415ec22f1721ce50d242c0506a9",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/question_routing.py": {
+      "original_sha256": "9732298c4b1e00972226ec105b93ac9886ab9bd74461ad75f7c33004a9313f9d",
+      "main_base_sha256": "4d8f99e1ba67678f909d6d2a6c69331e2084a533e8028b66eb4ab4c11d3f40a6",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/comparison.py": {
+      "original_sha256": "de06a4d5695802bbd34f062192434a92b93ab4cf9335716114ce5b3c7a497dbf",
+      "main_base_sha256": "278685bc1a49ae7cd46d88151c97a8ba733619f01d634e97d73308b59c485441",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/component_comparison.py": {
+      "original_sha256": "c3a329763eab3d8d4e934a5f66d088d8b5528ae3301ca4fac4bd607f4408a331",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/experiment1/__init__.py": {
+      "original_sha256": "de6d52e20c3833f8063daddaa263d02f34c1774b0d5c989ebb216e325cb07c28",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/experiment1/__main__.py": {
+      "original_sha256": "aa8f6a64a2d0fc1738d45e4a39c2bf87cc665cd1ea4e9a7d75dec1e53735900b",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/experiment1/manifest.py": {
+      "original_sha256": "e9e6a97832ac24f30b077eeea1d1317ed8973700c11c0ccdda7940709fd66048",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/experiment1/metrics.py": {
+      "original_sha256": "e6db18fb4c9da6c17667216a6e1c0d35c45651db97de17485a489dd0352d9179",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/experiment1/runner.py": {
+      "original_sha256": "8749cc10b77fe6a89ed8abef760384d90a022fd83f8c98dfb1c14d6ec524c58e",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/prospective.py": {
+      "original_sha256": "397c28d7d7fba922cc0658823da79d6dc43f271f5dd78ec784c526c37a077dc4",
+      "main_base_sha256": null,
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/research/uncertainty.py": {
+      "original_sha256": "80cebff58361b41a2ccd576809693fc7814b4ffa5f10dddd4ccedaaa963de880",
+      "main_base_sha256": "3893b8291cf7d3b221ed24abe122cb92e90e135f8a336122a0e5321fdfd38a8b",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/game/task_conditioning.py": {
+      "original_sha256": "123eff948c28cc9fa6891aec586da0cb2fd3b90cbc40f4bade38267de778a0e0",
+      "main_base_sha256": "bf1f5a1c95f952de022f8aed775f5ee40c41d5b278271df2e016b0dee1f3fb69",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/main.py": {
+      "original_sha256": "7cdda571c215e5383a5beb97d21bff54361f1e2ba946861cc2594458116f4fc7",
+      "main_base_sha256": "870f4c9c2e4e636c0b9177fe0bda32b43d0be0d85c975c30746a4f878cc6db41",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/orchestration/validation_orchestrator.py": {
+      "original_sha256": "79f378047de59cafa204ed9b43122c938839e8c3b673e278853ceefd5f4b5a47",
+      "main_base_sha256": "a66d0cc44b1fa565d2a75c1d314212b962f07593deb3121f253b55bc6bb24512",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "app/services/validation_service.py": {
+      "original_sha256": "522d6e2b67f4e06712a6a3c9f3ed1d090569bf17a4f5911e9e6d7c66e28b097e",
+      "main_base_sha256": "b2ef7694c542605d8c6c0dd6c878bcc32c69feb5042756b1ef8814fdc9245c22",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "scripts/reconcile_migration_history.py": {
+      "original_sha256": "9a75313cdf99e7490b910b55b009478dfb4ffee1dfeb3efaaac9eebcedcf9102",
+      "main_base_sha256": "c052187abbc624588ae03195fbb38e29dab6ac5595f2cc9d93c099bd4ead8c93",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    },
+    "scripts/run_migrations.py": {
+      "original_sha256": "6bc8ec09da47c03cd7ea409b3dab5c0ad3b6c52ac2956664e973a48e9544966e",
+      "main_base_sha256": "9d54db783bc85077d0ecc169bf52ca4a94565124704f6d026d7235bb2f2cbedb",
+      "reason": "Inherited from reviewed origin/main or omitted unrelated research branch files; not transferred category changes"
+    }
+  }
+}

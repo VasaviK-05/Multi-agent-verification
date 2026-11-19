@@ -73,7 +73,9 @@ def check_readiness(spec, *, actual_code_revision):
     except ValueError as exc:
         blockers.append("history_or_evaluation_binding_incompatible:" + str(exc))
     required = set(context.plan.requirements.requirements) | set(context.plan.requirements.unsupported)
-    supported=SUPPORTED_ACHIEVED | ({'semantic_comparison'} if spec.contract.coverage_version=='task_output_contract_v2' else set())
+    supported=SUPPORTED_ACHIEVED | ({'semantic_comparison'} if spec.contract.coverage_version in {'task_output_contract_v2','game_assessment_output_v3'} else set())
+    if spec.contract.coverage_version == 'game_assessment_output_v3':
+        supported |= {'consistency'}
     unsupported = tuple(sorted(required - supported))
     if unsupported:
         blockers.append("unsupported_achieved_coverage:" + ",".join(unsupported))

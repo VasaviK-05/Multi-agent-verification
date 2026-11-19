@@ -27,7 +27,7 @@ class DeploymentEpisode(FrozenModel):
 
     @model_validator(mode="after")
     def validate_episode(self):
-        if self.contract.version=='offline_public_decision_v4' and self.context.task_conditioning_json is None:
+        if self.contract.version in {'offline_public_decision_v4','offline_public_decision_v5'} and self.context.task_conditioning_json is None:
             raise ValueError('task-aware execution requires task-isolated history binding')
         identifier(self.episode_id)
         if self.context.offline_evaluation_id is None or self.context.execution_contract_json is None:

@@ -1,0 +1,27 @@
+{
+  "version": "category_owned_source_overlay_v3",
+  "base_commit": "b3150012d7097729cd676317006a13d577585c82",
+  "reason": "User-authorized additive execution v5 and game-owned completed consistency coverage; v1-v4 serialization/defaults preserved",
+  "files": {
+    "app/game/artifacts.py": {
+      "base_sha256": "f2e05ab39978975747a2950a5d00beb9b8df24b5de4b7dd6b7b56636856238d3",
+      "category_sha256": "89adc9857d9fdbe82252fd5a2be8cdf4ceeb0f4e915dd894e886743fdb70930d"
+    },
+    "app/game/execution_contract.py": {
+      "base_sha256": "1880faa828fa54db0a3ac9053df0887cfca625551c5cd9c08a67154f4837c432",
+      "category_sha256": "4eab5bc2cd171581ffce69898573e72a42ff475402b4ef9ed83c0761a44a05e8"
+    },
+    "app/game/finalization.py": {
+      "base_sha256": "4d14530940198eee394808f339111ab0556f4f7ade756e67dd43958de9fc1c8b",
+      "category_sha256": "612c835788cbdd6495c458ac84b4609722dc750ebaa9351d18ad62196f575f46"
+    },
+    "app/game/offline/evaluation.py": {
+      "base_sha256": "8dd3580055a96ce1001f7d5357ce09c670a1c73f5582cf7ad9279f3fe745a148",
+      "category_sha256": "3235d6dd57ad01c8cf0a8d0aa2fc5529e1a78b8de38925baee07811b30329e13"
+    },
+    "app/game/research/readiness.py": {
+      "base_sha256": "226423f7772c650f24eb7a81b566391ec57522fe54cc03f9d06a084d79332528",
+      "category_sha256": "ffa011e2782cf2b74d8a4c4a55c6c8bfb46a7cb5cb73ac3b39e9016ea5c3bee8"
+    }
+  }
+}

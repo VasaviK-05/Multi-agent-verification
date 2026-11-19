@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import Field, StrictFloat, StrictInt, model_serializer, model_validator
 from app.game.dependencies import FrozenModel, identifier
 from app.game.resource_provenance import ResourceManifest
+from app.game.consistency_assessment import ConsistencyAssessmentContract
 
 class TeamRequirements(FrozenModel):
     """Explicit game-only minima, independent of difficulty and greedy routing."""
@@ -13,8 +14,8 @@ class TeamRequirements(FrozenModel):
 
 
 class ExecutionContract(FrozenModel):
-    version: Literal["offline_public_decision_v1", "offline_public_decision_v2",'offline_public_decision_v3','offline_public_decision_v4']
-    coverage_version: Literal["factual_output_contract_v1",'task_output_contract_v2']
+    version: Literal["offline_public_decision_v1", "offline_public_decision_v2",'offline_public_decision_v3','offline_public_decision_v4','offline_public_decision_v5']
+    coverage_version: Literal["factual_output_contract_v1",'task_output_contract_v2','game_assessment_output_v3']
     contributor_version: Literal["baseline_log_odds_active_group_v1",'informative_history_influence_v1']
     threshold: StrictFloat = Field(gt=0, lt=1)
     failure_contract: Literal["all_selected_returned", "allow_failed_if_covered"]
@@ -23,6 +24,7 @@ class ExecutionContract(FrozenModel):
     history_prior_beta: StrictFloat = Field(gt=0)
     resource_manifest: ResourceManifest | None = None
     team_requirements: TeamRequirements | None = None
+    consistency_assessment: ConsistencyAssessmentContract | None = None
 
     @model_serializer(mode="wrap")
     def serialize_contract(self, handler):
@@ -31,6 +33,8 @@ class ExecutionContract(FrozenModel):
             data.pop("resource_manifest", None)
         if self.team_requirements is None:
             data.pop("team_requirements", None)
+        if self.consistency_assessment is None:
+            data.pop("consistency_assessment", None)
         return data
 
     @model_validator(mode="after")
@@ -38,11 +42,14 @@ class ExecutionContract(FrozenModel):
         identifier(self.execution_configuration_id)
         if self.team_requirements is not None and self.contributor_version != "informative_history_influence_v1":
             raise ValueError("explicit team requirements require informative contributor semantics")
-        if (self.version in {'offline_public_decision_v3','offline_public_decision_v4'})!=(self.contributor_version=='informative_history_influence_v1'):
+        if (self.version in {'offline_public_decision_v3','offline_public_decision_v4','offline_public_decision_v5'})!=(self.contributor_version=='informative_history_influence_v1'):
             raise ValueError('informative contributor semantics require execution contract v3')
         if (self.version=='offline_public_decision_v4')!=(self.coverage_version=='task_output_contract_v2'):
             raise ValueError('task-specific output coverage requires opt-in contract v4')
-        if self.version in {"offline_public_decision_v2",'offline_public_decision_v3','offline_public_decision_v4'}:
+        if ((self.version == 'offline_public_decision_v5') != (self.coverage_version == 'game_assessment_output_v3')
+                or (self.version == 'offline_public_decision_v5') != (self.consistency_assessment is not None)):
+            raise ValueError('completed consistency coverage requires explicit opt-in contract v5')
+        if self.version in {"offline_public_decision_v2",'offline_public_decision_v3','offline_public_decision_v4','offline_public_decision_v5'}:
             if self.resource_manifest is None or self.execution_configuration_id != self.resource_manifest.manifest_id:
                 raise ValueError("v2/v3 execution identity must equal its resource manifest digest")
         elif self.resource_manifest is not None:

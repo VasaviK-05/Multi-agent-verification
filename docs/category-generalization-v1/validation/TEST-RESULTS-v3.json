@@ -1,0 +1,49 @@
+{
+  "version": "category_engineering_results_v3",
+  "date": "2026-11-19",
+  "base_commit": "b3150012d7097729cd676317006a13d577585c82",
+  "branch": "codex/category-generalization-v3",
+  "category": {
+    "passed": 120,
+    "failed": 0,
+    "skipped": 0,
+    "deselected": 0,
+    "log": "category-acceptance-final-v4.log.gz"
+  },
+  "core": {
+    "passed": 756,
+    "failed": 1,
+    "skipped": 0,
+    "deselected": 17,
+    "log": "core-regressions-final-v4.log.gz",
+    "failure": "test_deeply_nested_json_matches_complete_heuristic_fallback[assessment]; reproduced unchanged on clean main"
+  },
+  "targeted_clean_main_reproduction": {
+    "passed": 1,
+    "failed": 7,
+    "skipped": 0,
+    "log": "clean-base-failures-v4.log.gz",
+    "failures": "one analyzer JSON-depth expectation and six stale legacy API fixture/interface failures"
+  },
+  "routes": {
+    "questions": 69,
+    "checks": 207,
+    "equal": true,
+    "before_sha256": "6f4d1f14b3b3b4215be4e2d436e84071eb51bb1330a5f97b114dc324abedb5f2",
+    "after_sha256": "6f4d1f14b3b3b4215be4e2d436e84071eb51bb1330a5f97b114dc324abedb5f2"
+  },
+  "dependency_manifests_changed": false,
+  "historical_artifacts_changed": false,
+  "native_ml_inference_run": false,
+  "ollama_generations_run": false,
+  "real_database_connections": false,
+  "new_empirical_policy_fit": false,
+  "deployment_activated": false,
+  "preliminary_profiler_only_run_not_a_zero_native_rule_receipt": true,
+  "blockers": [
+    "Repository-wide legacy tests are not clean (reproduced baseline failures).",
+    "Actual native instance/resource attestation and expanded empirical applicability remain unvalidated.",
+    "New v5 standalone-consistency empirical artifact remains to be fitted/evaluated under separate authorization.",
+    "Standalone evidence_retrieval achieved-output contract remains unspecified."
+  ]
+}

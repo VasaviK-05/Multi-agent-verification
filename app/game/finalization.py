@@ -59,7 +59,7 @@ def finalize_decision(context, strategy, contract, reports, execution_states, va
     contract = ExecutionContract.model_validate(contract)
     if context.execution_contract_json is not None:
         bound_contract=ExecutionContract.model_validate_json(context.execution_contract_json)
-        task_aware='offline_public_decision_v4' in {bound_contract.version,contract.version}
+        task_aware=bool({'offline_public_decision_v4','offline_public_decision_v5'} & {bound_contract.version,contract.version})
         if ((task_aware and bound_contract!=contract)
             or bound_contract.team_requirements!=contract.team_requirements
             or bound_contract.contributor_version!=contract.contributor_version):
@@ -83,17 +83,33 @@ def finalize_decision(context, strategy, contract, reports, execution_states, va
     detail = DecisionEngine(threshold=contract.threshold).decide_detailed(rows, domain=context.plan.domain,
         snapshot=FrozenReputationSnapshot.from_planning_context(context), aggregation=strategy.aggregation,
         team=strategy.verifiers, validation_id=validation_id)
+    invalid_assessments = ()
+    informative_rows = rows
+    if contract.coverage_version == 'game_assessment_output_v3':
+        from app.game.consistency_assessment import completed_consistency
+        invalid_assessments = tuple(r.verifier_name for r in rows if r.verifier_name == 'confidence'
+            and not is_abstention(r) and not completed_consistency(r, contract.consistency_assessment))
+        informative_rows = tuple(r for r in rows if r.verifier_name not in invalid_assessments)
     if contract.contributor_version=='informative_history_influence_v1':
-        contributors=informative_contributor_count(context,detail,rows,strategy.aggregation)
+        contributors=informative_contributor_count(context,detail,informative_rows,strategy.aggregation)
     elif strategy.aggregation == "reputation_weighted":
         contributors = AdaptiveEarlyTermination.contributor_count(detail, rows)
     else:
         contributors = sum(v.included and not _is_structural_rule(r) for v, r in zip(detail.votes, rows))
     required = tuple(sorted(set(context.plan.requirements.requirements + context.plan.requirements.unsupported)))
-    achieved = tuple(sorted(set().union(*(task_capabilities(r,requirements=required,reference_available=context.plan.reference_available)
-        if contract.coverage_version=='task_output_contract_v2' else factual_capabilities(r) for r in rows))))
+    def achieved_capabilities(row):
+        if contract.coverage_version in {'task_output_contract_v2','game_assessment_output_v3'}:
+            achieved = task_capabilities(row, requirements=required, reference_available=context.plan.reference_available)
+            if contract.coverage_version == 'game_assessment_output_v3' and 'consistency' in required:
+                from app.game.consistency_assessment import consistency_capabilities
+                achieved |= consistency_capabilities(row, contract.consistency_assessment)
+            return achieved
+        return factual_capabilities(row)
+    achieved = tuple(sorted(set().union(*(achieved_capabilities(r) for r in rows))))
     unresolved = tuple(r for r in required if r not in achieved)
     reasons = []
+    if invalid_assessments:
+        reasons.append("invalid_consistency_assessment")
     if contributors < context.minimum_informative_count:
         reasons.append("minimum_contributors")
     if unresolved:
